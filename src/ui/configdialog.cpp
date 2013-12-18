@@ -29,8 +29,8 @@ using namespace Sonnet;
 class ConfigDialog::Private
 {
 public:
-    Private( ConfigDialog *parent )
-       : q( parent ) {}
+    Private(ConfigDialog *parent)
+        : q(parent) {}
     ConfigWidget *ui;
     ConfigDialog *q;
     void slotConfigChanged();
@@ -38,16 +38,16 @@ public:
 
 void ConfigDialog::Private::slotConfigChanged()
 {
-  emit q->languageChanged( ui->language() );
+    emit q->languageChanged(ui->language());
 }
 
 ConfigDialog::ConfigDialog(QWidget *parent)
     : QDialog(parent),
       d(new Private(this))
 {
-    setObjectName( "SonnetConfigDialog" );
-    setModal( true );
-    setWindowTitle( tr( "Spell Checking Configuration" ) );
+    setObjectName("SonnetConfigDialog");
+    setModal(true);
+    setWindowTitle(tr("Spell Checking Configuration"));
 
     QVBoxLayout *layout = new QVBoxLayout;
     setLayout(layout);
@@ -57,7 +57,7 @@ ConfigDialog::ConfigDialog(QWidget *parent)
 
     QDialogButtonBox *buttonBox = new QDialogButtonBox(this);
     buttonBox->setStandardButtons(QDialogButtonBox::Ok
-                                | QDialogButtonBox::Cancel);
+                                  | QDialogButtonBox::Cancel);
     layout->addWidget(buttonBox);
 
     connect(buttonBox, SIGNAL(accepted()),
@@ -70,7 +70,7 @@ ConfigDialog::ConfigDialog(QWidget *parent)
         */
     connect(d->ui, SIGNAL(configChanged()),
             this, SLOT(slotConfigChanged()));
-    
+
     connect(d->ui, SIGNAL(configChanged()),
             this, SIGNAL(configChanged()));
 }
@@ -91,9 +91,9 @@ void ConfigDialog::slotApply()
     d->ui->save();
 }
 
-void ConfigDialog::setLanguage( const QString &language )
+void ConfigDialog::setLanguage(const QString &language)
 {
-    d->ui->setLanguage( language );
+    d->ui->setLanguage(language);
 }
 
 QString ConfigDialog::language() const

@@ -1,4 +1,3 @@
-// -*- Mode: C++; c-basic-offset: 4; indent-tabs-mode: nil; -*-
 /**
  * Copyright 2006  Zack Rusin <zack@kde.org>
  *
@@ -27,8 +26,9 @@
 #include <QtCore/QVariantList>
 #include <enchant.h>
 
-namespace Sonnet {
-    class SpellerPlugin;
+namespace Sonnet
+{
+class SpellerPlugin;
 }
 using Sonnet::SpellerPlugin;
 
@@ -41,7 +41,8 @@ public:
     QSpellEnchantClient(QObject *parent = 0);
     ~QSpellEnchantClient();
 
-    virtual int reliability() const {
+    virtual int reliability() const
+    {
         return 30;
     }
 
@@ -49,7 +50,8 @@ public:
 
     virtual QStringList languages() const;
 
-    virtual QString name() const {
+    virtual QString name() const
+    {
         return QString::fromLatin1("Enchant");
     }
 
@@ -60,7 +62,7 @@ public:
 private:
     EnchantBroker *m_broker;
     QSet<QString>  m_languages;
-    QHash<EnchantDict*, int> m_dictRefs;
+    QHash<EnchantDict *, int> m_dictRefs;
 };
 
 #endif

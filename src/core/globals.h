@@ -23,27 +23,28 @@
 
 #include <sonnet/sonnetcore_export.h>
 
-namespace Sonnet {
+namespace Sonnet
+{
 
-    /**
-     * The function will return the language code for the
-     * language in which it thinks the sentence which
-     * has been passed to it is.
-     *
-     * @since 4.2
-     */
-    extern SONNETCORE_EXPORT QString detectLanguage(const QString &sentence);
+/**
+ * The function will return the language code for the
+ * language in which it thinks the sentence which
+ * has been passed to it is.
+ *
+ * @since 4.2
+ */
+extern SONNETCORE_EXPORT QString detectLanguage(const QString &sentence);
 
-    /**
-     * @return the default language which is stored in the sonnetrc config file.
-     *         This is the language the user has set globally in the control
-     *         center.
-     *         Note that this returns the localized language name, not the
-     *         dictionary name/language code.
-     *
-     * @since 4.2
-     */
-    extern SONNETCORE_EXPORT QString defaultLanguageName();
+/**
+ * @return the default language which is stored in the sonnetrc config file.
+ *         This is the language the user has set globally in the control
+ *         center.
+ *         Note that this returns the localized language name, not the
+ *         dictionary name/language code.
+ *
+ * @since 4.2
+ */
+extern SONNETCORE_EXPORT QString defaultLanguageName();
 }
 
 #endif

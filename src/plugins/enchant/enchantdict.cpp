@@ -1,4 +1,3 @@
-// -*- Mode: C++; c-basic-offset: 4; indent-tabs-mode: nil; -*-
 /**
  * Copyright 2006  Zack Rusin <zack@kde.org>
  *
@@ -25,7 +24,7 @@
 
 using namespace Sonnet;
 
-QSpellEnchantDict::QSpellEnchantDict(QSpellEnchantClient *client, 
+QSpellEnchantDict::QSpellEnchantDict(QSpellEnchantClient *client,
                                      EnchantBroker *broker,
                                      EnchantDict *dict,
                                      const QString &language)
@@ -34,7 +33,7 @@ QSpellEnchantDict::QSpellEnchantDict(QSpellEnchantClient *client,
       m_dict(dict),
       m_client(client)
 {
-    qDebug()<<"Enchant dict for"<<language << dict;
+    qDebug() << "Enchant dict for" << language << dict;
 }
 
 QSpellEnchantDict::~QSpellEnchantDict()
@@ -67,13 +66,14 @@ QStringList QSpellEnchantDict::suggest(const QString &word) const
         qsug.append(codec->toUnicode(suggestions[i]));
     }
 
-    if (suggestions && number)
+    if (suggestions && number) {
         enchant_dict_free_string_list(m_dict, suggestions);
+    }
     return qsug;
 }
 
 bool QSpellEnchantDict::storeReplacement(const QString &bad,
-                                  const QString &good)
+        const QString &good)
 {
     enchant_dict_store_replacement(m_dict,
                                    bad.toUtf8(), bad.toUtf8().length(),

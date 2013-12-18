@@ -35,9 +35,9 @@ class SpellCheckDecorator::Private
 {
 public:
     Private(SpellCheckDecorator *installer, QTextEdit *textEdit)
-    : q(installer)
-    , m_textEdit(textEdit)
-    , m_highlighter(0)
+        : q(installer)
+        , m_textEdit(textEdit)
+        , m_highlighter(0)
     {
         // Catch pressing the "menu" key
         m_textEdit->installEventFilter(q);
@@ -67,8 +67,8 @@ bool SpellCheckDecorator::Private::onContextMenuEvent(QContextMenuEvent *event)
 
     // Check if the user clicked a selected word
     const bool selectedWordClicked = cursor.hasSelection() &&
-                               mousePos >= cursor.selectionStart() &&
-                               mousePos <= cursor.selectionEnd();
+                                     mousePos >= cursor.selectionStart() &&
+                                     mousePos <= cursor.selectionEnd();
 
     // Get the word under the (mouse-)cursor and see if it is misspelled.
     // Don't include apostrophes at the start/end of the word in the selection.
@@ -80,27 +80,28 @@ bool SpellCheckDecorator::Private::onContextMenuEvent(QContextMenuEvent *event)
     bool isMouseCursorInsideWord = true;
     if ((mousePos < wordSelectCursor.selectionStart() ||
             mousePos >= wordSelectCursor.selectionEnd())
-                                        && (selectedWord.length() > 1)) {
-         isMouseCursorInsideWord = false;
+            && (selectedWord.length() > 1)) {
+        isMouseCursorInsideWord = false;
     }
 
     // Clear the selection again, we re-select it below (without the apostrophes).
-    wordSelectCursor.setPosition(wordSelectCursor.position()-selectedWord.size());
+    wordSelectCursor.setPosition(wordSelectCursor.position() - selectedWord.size());
     if (selectedWord.startsWith('\'') || selectedWord.startsWith('\"')) {
         selectedWord = selectedWord.right(selectedWord.size() - 1);
         wordSelectCursor.movePosition(QTextCursor::NextCharacter, QTextCursor::MoveAnchor);
     }
-    if (selectedWord.endsWith('\'') || selectedWord.endsWith('\"'))
+    if (selectedWord.endsWith('\'') || selectedWord.endsWith('\"')) {
         selectedWord.chop(1);
+    }
 
     wordSelectCursor.movePosition(QTextCursor::NextCharacter,
                                   QTextCursor::KeepAnchor, selectedWord.size());
 
     const bool wordIsMisspelled = isMouseCursorInsideWord &&
-                            m_highlighter->isActive() &&
-                            !selectedWord.isEmpty() &&
-                            m_highlighter &&
-                            m_highlighter->isWordMisspelled(selectedWord);
+                                  m_highlighter->isActive() &&
+                                  !selectedWord.isEmpty() &&
+                                  m_highlighter &&
+                                  m_highlighter->isWordMisspelled(selectedWord);
 
     // If the user clicked a selected word, do nothing.
     // If the user clicked somewhere else, move the cursor there.
@@ -155,8 +156,7 @@ void SpellCheckDecorator::Private::execSuggestionMenu(const QPoint &pos, const Q
         if (selectedAction == ignoreAction) {
             m_highlighter->ignoreWord(selectedWord);
             m_highlighter->rehighlight();
-        }
-        else if (selectedAction == addToDictAction) {
+        } else if (selectedAction == addToDictAction) {
             m_highlighter->addWordToDictionary(selectedWord);
             m_highlighter->rehighlight();
         }
@@ -177,8 +177,8 @@ void SpellCheckDecorator::Private::createDefaultHighlighter()
 }
 
 SpellCheckDecorator::SpellCheckDecorator(QTextEdit *textEdit)
-: QObject(textEdit)
-, d(new Private(this, textEdit))
+    : QObject(textEdit)
+    , d(new Private(this, textEdit))
 {
 }
 

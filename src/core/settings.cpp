@@ -1,4 +1,3 @@
-// -*- Mode: C++; c-basic-offset: 4; indent-tabs-mode: nil; -*-
 /**
  *
  * Copyright (C)  2003  Zack Rusin <zack@kde.org>
@@ -33,7 +32,7 @@ namespace Sonnet
 class Settings::Private
 {
 public:
-    Loader*  loader; //can't be a Ptr since we don't want to hold a ref on it
+    Loader  *loader; //can't be a Ptr since we don't want to hold a ref on it
     bool     modified;
 
     QString defaultLanguage;
@@ -51,7 +50,7 @@ public:
 };
 
 Settings::Settings(Loader *loader)
-	:d(new Private)
+    : d(new Private)
 {
     d->loader = loader;
 
@@ -69,7 +68,7 @@ void Settings::setDefaultLanguage(const QString &lang)
 {
     const QStringList cs = d->loader->languages();
     if (cs.indexOf(lang) != -1 &&
-        d->defaultLanguage != lang) {
+            d->defaultLanguage != lang) {
         d->defaultLanguage = lang;
         d->modified = true;
         d->loader->changed();
@@ -160,7 +159,7 @@ void Settings::setQuietIgnoreList(const QStringList &ignores)
 {
     d->ignore = QMap<QString, bool>();//clear out
     for (QStringList::const_iterator itr = ignores.begin();
-         itr != ignores.end(); ++itr) {
+            itr != ignores.end(); ++itr) {
         d->ignore.insert(*itr, true);
     }
 }
@@ -174,13 +173,13 @@ void Settings::addWordToIgnore(const QString &word)
 {
     if (!d->ignore.contains(word)) {
         d->modified = true;
-        d->ignore.insert( word, true );
+        d->ignore.insert(word, true);
     }
 }
 
-bool Settings::ignore( const QString& word )
+bool Settings::ignore(const QString &word)
 {
-    return d->ignore.contains( word );
+    return d->ignore.contains(word);
 }
 
 int Settings::disablePercentageWordError() const
@@ -202,11 +201,12 @@ void Settings::save()
     settings.setValue("skipRunTogether", d->skipRunTogether);
     settings.setValue("backgroundCheckerEnabled", d->backgroundCheckerEnabled);
     settings.setValue("checkerEnabledByDefault", d->checkerEnabledByDefault);
-    QString defaultLanguage = QString::fromLatin1( "ignore_%1" ).arg(d->defaultLanguage);
-    if(settings.contains(defaultLanguage) && d->ignore.isEmpty())
+    QString defaultLanguage = QString::fromLatin1("ignore_%1").arg(d->defaultLanguage);
+    if (settings.contains(defaultLanguage) && d->ignore.isEmpty()) {
         settings.remove(defaultLanguage);
-    else if(!d->ignore.isEmpty())
+    } else if (!d->ignore.isEmpty()) {
         settings.setValue(defaultLanguage, QStringList(d->ignore.keys()));
+    }
 }
 
 void Settings::restore()
@@ -223,11 +223,10 @@ void Settings::restore()
     d->disablePercentage = settings.value("Sonnet_AsYouTypeDisablePercentage", 42).toInt();
     d->disableWordCount = settings.value("Sonnet_AsYouTypeDisableWordCount", 100).toInt();
 
-    const QString ignoreEntry = QString::fromLatin1( "ignore_%1" ).arg(d->defaultLanguage);
+    const QString ignoreEntry = QString::fromLatin1("ignore_%1").arg(d->defaultLanguage);
     const QStringList ignores = settings.value(ignoreEntry, QStringList()).toStringList();
     setQuietIgnoreList(ignores);
 }
-
 
 bool Settings::modified() const
 {

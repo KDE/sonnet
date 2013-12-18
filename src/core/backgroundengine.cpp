@@ -93,12 +93,13 @@ void BackgroundEngine::checkNext()
         return;
     }
 
-    if (Q_UNLIKELY( m_dict.isMisspelled(w.word) )) {
+    if (Q_UNLIKELY(m_dict.isMisspelled(w.word))) {
         //qDebug()<<"found misspelling "<< w.word;
         emit misspelling(w.word, w.start);
         //wait for the handler. the parent will decide itself when to continue
-    } else
+    } else {
         continueChecking();
+    }
 }
 
 bool BackgroundEngine::checkWord(const QString &word)

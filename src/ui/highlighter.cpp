@@ -39,7 +39,8 @@
 #include <QApplication>
 #include <QMetaMethod>
 
-namespace Sonnet {
+namespace Sonnet
+{
 
 class Highlighter::Private
 {
@@ -48,7 +49,7 @@ public:
     Filter     *filter;
     Loader     *loader;
     Speller    *dict;
-    QHash<QString, Speller*> dictCache;
+    QHash<QString, Speller *> dictCache;
     QTextEdit *edit;
     bool active;
     bool automatic;
@@ -65,13 +66,13 @@ public:
 
 Highlighter::Private::~Private()
 {
-  qDeleteAll(dictCache);
-  delete filter;
+    qDeleteAll(dictCache);
+    delete filter;
 }
 
 Highlighter::Highlighter(QTextEdit *textEdit,
-                         const QString& configFile,
-                         const QColor& _col)
+                         const QString &configFile,
+                         const QColor &_col)
     : QSyntaxHighlighter(textEdit),
       d(new Private)
 {
@@ -86,8 +87,8 @@ Highlighter::Highlighter(QTextEdit *textEdit,
     d->spellColor = _col.isValid() ? _col : Qt::red;
     d->suggestionListeners = 0;
 
-    textEdit->installEventFilter( this );
-    textEdit->viewport()->installEventFilter( this );
+    textEdit->installEventFilter(this);
+    textEdit->viewport()->installEventFilter(this);
 
     d->loader = Loader::openLoader();
 
@@ -101,11 +102,12 @@ Highlighter::Highlighter(QTextEdit *textEdit,
     d->dict = new Sonnet::Speller();
     d->spellCheckerFound = d->dict->isValid();
     d->rehighlightRequest = new QTimer(this);
-    connect( d->rehighlightRequest, SIGNAL(timeout()),
-             this, SLOT(slotRehighlight()));
+    connect(d->rehighlightRequest, SIGNAL(timeout()),
+            this, SLOT(slotRehighlight()));
 
-    if(!d->spellCheckerFound)
+    if (!d->spellCheckerFound) {
         return;
+    }
 
     d->dictCache.insert(d->dict->language(), d->dict);
 
@@ -114,8 +116,8 @@ Highlighter::Highlighter(QTextEdit *textEdit,
 
     //Add kde personal word
     const QStringList l = Highlighter::personalWords();
-    for ( QStringList::ConstIterator it = l.begin(); it != l.end(); ++it ) {
-        d->dict->addToSession( *it );
+    for (QStringList::ConstIterator it = l.begin(); it != l.end(); ++it) {
+        d->dict->addToSession(*it);
     }
     d->completeRehighlightRequired = true;
     d->rehighlightRequest->setInterval(0);
@@ -137,17 +139,19 @@ bool Highlighter::spellCheckerFound() const
 // we keep track of whether the user actually wants some, and only offer them
 // in that case
 // With Qt5, we could use QObject::isSignalConnected(), but this is faster.
-void Highlighter::connectNotify(const QMetaMethod& signal)
+void Highlighter::connectNotify(const QMetaMethod &signal)
 {
-    if (signal.methodSignature() == "newSuggestions(QString,QStringList)")
+    if (signal.methodSignature() == "newSuggestions(QString,QStringList)") {
         ++d->suggestionListeners;
+    }
     QSyntaxHighlighter::connectNotify(signal);
 }
 
-void Highlighter::disconnectNotify(const QMetaMethod& signal)
+void Highlighter::disconnectNotify(const QMetaMethod &signal)
 {
-    if (signal.methodSignature() == "newSuggestions(QString,QStringList)")
+    if (signal.methodSignature() == "newSuggestions(QString,QStringList)") {
         --d->suggestionListeners;
+    }
     QSyntaxHighlighter::disconnectNotify(signal);
 }
 
@@ -159,29 +163,28 @@ void Highlighter::slotRehighlight()
         rehighlight();
 
     } else {
-	//rehighlight the current para only (undo/redo safe)
+        //rehighlight the current para only (undo/redo safe)
         QTextCursor cursor = d->edit->textCursor();
-        cursor.insertText( "" );
+        cursor.insertText("");
     }
     //if (d->checksDone == d->checksRequested)
     //d->completeRehighlightRequired = false;
-    QTimer::singleShot( 0, this, SLOT(slotAutoDetection()));
+    QTimer::singleShot(0, this, SLOT(slotAutoDetection()));
 }
-
 
 QStringList Highlighter::personalWords()
 {
     QStringList l;
-    l.append( "KMail" );
-    l.append( "KOrganizer" );
-    l.append( "KAddressBook" );
-    l.append( "KHTML" );
-    l.append( "KIO" );
-    l.append( "KJS" );
-    l.append( "Konqueror" );
-    l.append( "Sonnet" );
-    l.append( "Kontact" );
-    l.append( "Qt" );
+    l.append("KMail");
+    l.append("KOrganizer");
+    l.append("KAddressBook");
+    l.append("KHTML");
+    l.append("KIO");
+    l.append("KJS");
+    l.append("Konqueror");
+    l.append("Sonnet");
+    l.append("Kontact");
+    l.append("Qt");
     return l;
 }
 
@@ -195,20 +198,21 @@ bool Highlighter::intraWordEditing() const
     return d->intraWordEditing;
 }
 
-void Highlighter::setIntraWordEditing( bool editing )
+void Highlighter::setIntraWordEditing(bool editing)
 {
     d->intraWordEditing = editing;
 }
 
-
-void Highlighter::setAutomatic( bool automatic )
+void Highlighter::setAutomatic(bool automatic)
 {
-    if ( automatic  == d->automatic )
+    if (automatic  == d->automatic) {
         return;
+    }
 
     d->automatic = automatic;
-    if ( d->automatic )
+    if (d->automatic) {
         slotAutoDetection();
+    }
 }
 
 void Highlighter::slotAutoDetection()
@@ -219,7 +223,7 @@ void Highlighter::slotAutoDetection()
     if (d->automatic && d->wordCount >= 10) {
         // tme = Too many errors
         bool tme = (d->errorCount >= d->disableWordCount) && (
-            d->errorCount * 100 >= d->disablePercentage * d->wordCount);
+                       d->errorCount * 100 >= d->disablePercentage * d->wordCount);
         if (d->active && tme) {
             d->active = false;
         } else if (!d->active && !tme) {
@@ -231,8 +235,8 @@ void Highlighter::slotAutoDetection()
         if (d->active) {
             emit activeChanged(tr("As-you-type spell checking enabled."));
         } else {
-            emit activeChanged(tr( "Too many misspelled words. "
-                               "As-you-type spell checking disabled."));
+            emit activeChanged(tr("Too many misspelled words. "
+                                  "As-you-type spell checking disabled."));
         }
 
         d->completeRehighlightRequired = true;
@@ -242,18 +246,19 @@ void Highlighter::slotAutoDetection()
 
 }
 
-void Highlighter::setActive( bool active )
+void Highlighter::setActive(bool active)
 {
-    if ( active == d->active )
+    if (active == d->active) {
         return;
+    }
     d->active = active;
     rehighlight();
 
-
-    if ( d->active )
-        emit activeChanged( tr("As-you-type spell checking enabled.") );
-    else
-        emit activeChanged( tr("As-you-type spell checking disabled.") );
+    if (d->active) {
+        emit activeChanged(tr("As-you-type spell checking enabled."));
+    } else {
+        emit activeChanged(tr("As-you-type spell checking disabled."));
+    }
 }
 
 bool Highlighter::isActive() const
@@ -263,20 +268,23 @@ bool Highlighter::isActive() const
 
 void Highlighter::highlightBlock(const QString &text)
 {
-    if (text.isEmpty() || !d->active || !d->spellCheckerFound)
+    if (text.isEmpty() || !d->active || !d->spellCheckerFound) {
         return;
+    }
 
-    d->filter->setBuffer( text );
+    d->filter->setBuffer(text);
     Word w = d->filter->nextWord();
-    while ( !w.end ) {
+    while (!w.end) {
         ++d->wordCount;
         if (d->dict->isMisspelled(w.word)) {
             ++d->errorCount;
             setMisspelled(w.start, w.word.length());
-            if (d->suggestionListeners)
+            if (d->suggestionListeners) {
                 emit newSuggestions(w.word, d->dict->suggest(w.word));
-        } else
+            }
+        } else {
             unsetMisspelled(w.start, w.word.length());
+        }
         w = d->filter->nextWord();
     }
     //QTimer::singleShot( 0, this, SLOT(checkWords()) );
@@ -319,82 +327,84 @@ void Highlighter::setMisspelled(int start, int count)
     setFormat(start, count, format);
 }
 
-void Highlighter::unsetMisspelled( int start, int count )
+void Highlighter::unsetMisspelled(int start, int count)
 {
     setFormat(start, count, QTextCharFormat());
 }
 
-bool Highlighter::eventFilter( QObject *o, QEvent *e)
+bool Highlighter::eventFilter(QObject *o, QEvent *e)
 {
 #if 0
     if (o == textEdit() && (e->type() == QEvent::FocusIn)) {
-        if ( d->globalConfig ) {
+        if (d->globalConfig) {
             QString skey = spellKey();
-            if ( d->spell && d->spellKey != skey ) {
+            if (d->spell && d->spellKey != skey) {
                 d->spellKey = skey;
                 KDictSpellingHighlighter::dictionaryChanged();
             }
         }
     }
 #endif
-    if (!d->spellCheckerFound)
+    if (!d->spellCheckerFound) {
         return false;
+    }
     if (o == d->edit  && (e->type() == QEvent::KeyPress)) {
-	QKeyEvent *k = static_cast<QKeyEvent *>(e);
-	//d->autoReady = true;
-	if (d->rehighlightRequest->isActive()) // try to stay out of the users way
-	    d->rehighlightRequest->start( 500 );
-	if ( k->key() == Qt::Key_Enter ||
-	     k->key() == Qt::Key_Return ||
-	     k->key() == Qt::Key_Up ||
-	     k->key() == Qt::Key_Down ||
-	     k->key() == Qt::Key_Left ||
-	     k->key() == Qt::Key_Right ||
-	     k->key() == Qt::Key_PageUp ||
-	     k->key() == Qt::Key_PageDown ||
-	     k->key() == Qt::Key_Home ||
-	     k->key() == Qt::Key_End ||
-	     (( k->modifiers()== Qt::ControlModifier ) &&
-	      ((k->key() == Qt::Key_A) ||
-	       (k->key() == Qt::Key_B) ||
-	       (k->key() == Qt::Key_E) ||
-	       (k->key() == Qt::Key_N) ||
-	       (k->key() == Qt::Key_P))) ) {
-	    if ( intraWordEditing() ) {
-		setIntraWordEditing( false );
-		d->completeRehighlightRequired = true;
-		d->rehighlightRequest->setInterval(500);
+        QKeyEvent *k = static_cast<QKeyEvent *>(e);
+        //d->autoReady = true;
+        if (d->rehighlightRequest->isActive()) { // try to stay out of the users way
+            d->rehighlightRequest->start(500);
+        }
+        if (k->key() == Qt::Key_Enter ||
+                k->key() == Qt::Key_Return ||
+                k->key() == Qt::Key_Up ||
+                k->key() == Qt::Key_Down ||
+                k->key() == Qt::Key_Left ||
+                k->key() == Qt::Key_Right ||
+                k->key() == Qt::Key_PageUp ||
+                k->key() == Qt::Key_PageDown ||
+                k->key() == Qt::Key_Home ||
+                k->key() == Qt::Key_End ||
+                ((k->modifiers() == Qt::ControlModifier) &&
+                 ((k->key() == Qt::Key_A) ||
+                  (k->key() == Qt::Key_B) ||
+                  (k->key() == Qt::Key_E) ||
+                  (k->key() == Qt::Key_N) ||
+                  (k->key() == Qt::Key_P)))) {
+            if (intraWordEditing()) {
+                setIntraWordEditing(false);
+                d->completeRehighlightRequired = true;
+                d->rehighlightRequest->setInterval(500);
                 d->rehighlightRequest->setSingleShot(true);
                 d->rehighlightRequest->start();
-	    }
+            }
 #if 0
-	    if (d->checksDone != d->checksRequested) {
-		// Handle possible change of paragraph while
-		// words are pending spell checking
-		d->completeRehighlightRequired = true;
-		d->rehighlightRequest->start( 500, true );
-	    }
+            if (d->checksDone != d->checksRequested) {
+                // Handle possible change of paragraph while
+                // words are pending spell checking
+                d->completeRehighlightRequired = true;
+                d->rehighlightRequest->start(500, true);
+            }
 #endif
-	} else {
-	    setIntraWordEditing( true );
-	}
-	if ( k->key() == Qt::Key_Space ||
-	     k->key() == Qt::Key_Enter ||
-	     k->key() == Qt::Key_Return ) {
-	    QTimer::singleShot( 0, this, SLOT(slotAutoDetection()));
-	}
+        } else {
+            setIntraWordEditing(true);
+        }
+        if (k->key() == Qt::Key_Space ||
+                k->key() == Qt::Key_Enter ||
+                k->key() == Qt::Key_Return) {
+            QTimer::singleShot(0, this, SLOT(slotAutoDetection()));
+        }
     }
 
-    else if ( o == d->edit->viewport() &&
-              ( e->type() == QEvent::MouseButtonPress )) {
-	//d->autoReady = true;
-	if ( intraWordEditing() ) {
-	    setIntraWordEditing( false );
-	    d->completeRehighlightRequired = true;
-	    d->rehighlightRequest->setInterval(0);
+    else if (o == d->edit->viewport() &&
+             (e->type() == QEvent::MouseButtonPress)) {
+        //d->autoReady = true;
+        if (intraWordEditing()) {
+            setIntraWordEditing(false);
+            d->completeRehighlightRequired = true;
+            d->rehighlightRequest->setInterval(0);
             d->rehighlightRequest->setSingleShot(true);
             d->rehighlightRequest->start();
-	}
+        }
     }
     return false;
 }
@@ -412,9 +422,10 @@ void Highlighter::ignoreWord(const QString &word)
 QStringList Highlighter::suggestionsForWord(const QString &word, int max)
 {
     QStringList suggestions = d->dict->suggest(word);
-    if ( max != -1 ) {
-        while ( suggestions.count() > max )
+    if (max != -1) {
+        while (suggestions.count() > max) {
             suggestions.removeLast();
+        }
     }
     return suggestions;
 }
@@ -433,6 +444,5 @@ bool Highlighter::checkerEnabledByDefault() const
 {
     return d->loader->settings()->checkerEnabledByDefault();
 }
-
 
 }

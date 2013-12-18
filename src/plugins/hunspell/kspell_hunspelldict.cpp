@@ -27,16 +27,17 @@
 
 using namespace Sonnet;
 
-HunspellDict::HunspellDict( const QString& lang )
+HunspellDict::HunspellDict(const QString &lang)
     : SpellerPlugin(lang), m_speller(0)
 {
-    qDebug()<<" HunspellDict::HunspellDict( const QString& lang ):"<<lang;
-        QString dic=QString("/usr/share/myspell/dicts/%1.dic").arg(lang);
-    if (QFileInfo(dic).exists())
-        m_speller = new Hunspell(QString("/usr/share/myspell/dicts/%1.aff").arg(lang).toUtf8().constData(),dic.toUtf8().constData());
-    else
+    qDebug() << " HunspellDict::HunspellDict( const QString& lang ):" << lang;
+    QString dic = QString("/usr/share/myspell/dicts/%1.dic").arg(lang);
+    if (QFileInfo(dic).exists()) {
+        m_speller = new Hunspell(QString("/usr/share/myspell/dicts/%1.aff").arg(lang).toUtf8().constData(), dic.toUtf8().constData());
+    } else {
         m_speller = 0;
-    qDebug()<<" dddddd "<<m_speller;
+    }
+    qDebug() << " dddddd " << m_speller;
 
 }
 
@@ -47,51 +48,54 @@ HunspellDict::~HunspellDict()
 
 bool HunspellDict::isCorrect(const QString &word) const
 {
-    qDebug()<<" isCorrect :"<<word;
-    if(!m_speller)
+    qDebug() << " isCorrect :" << word;
+    if (!m_speller) {
         return false;
+    }
     int result = m_speller->spell(word.toUtf8());
-    qDebug()<<" result :"<<result;
-    return (result != 0) ;
+    qDebug() << " result :" << result;
+    return (result != 0);
 }
 
 QStringList HunspellDict::suggest(const QString &word) const
 {
-    if(!m_speller)
+    if (!m_speller) {
         return QStringList();
-    char ** selection;
+    }
+    char **selection;
     QStringList lst;
     int nbWord = m_speller->suggest(&selection, word.toUtf8());
-    for(int i = 0; i <nbWord;++i)
-    {
+    for (int i = 0; i < nbWord; ++i) {
         lst << QString::fromUtf8(selection[i]);
     }
     m_speller->free_list(&selection, nbWord);
     return lst;
 }
 
-
-bool HunspellDict::storeReplacement( const QString& bad,
-                                   const QString& good )
+bool HunspellDict::storeReplacement(const QString &bad,
+                                    const QString &good)
 {
-    if (!m_speller)
+    if (!m_speller) {
         return false;
-    qDebug()<<"HunspellDict::storeReplacement not implemented";
+    }
+    qDebug() << "HunspellDict::storeReplacement not implemented";
     return false;
 }
 
-bool HunspellDict::addToPersonal( const QString& word )
+bool HunspellDict::addToPersonal(const QString &word)
 {
-    if (!m_speller)
+    if (!m_speller) {
         return false;
+    }
     m_speller->add(word.toUtf8());
     return false;
 }
 
-bool HunspellDict::addToSession( const QString& word )
+bool HunspellDict::addToSession(const QString &word)
 {
-    if (!m_speller)
+    if (!m_speller) {
         return false;
-    qDebug()<<" bool HunspellDict::addToSession not implemented";
+    }
+    qDebug() << " bool HunspellDict::addToSession not implemented";
     return false;
 }

@@ -43,7 +43,7 @@ public:
     /**
      * Constructor
      */
-    explicit DictionaryComboBox( QWidget * parent=0 );
+    explicit DictionaryComboBox(QWidget *parent = 0);
 
     /**
      * Destructor
@@ -69,12 +69,12 @@ public:
     /**
      * Sets the current dictionaryName to the given dictionaryName
      */
-    void setCurrentByDictionaryName( const QString & dictionaryName );
+    void setCurrentByDictionaryName(const QString &dictionaryName);
 
     /**
      * Sets the current dictionary to the given dictionary.
      */
-    void setCurrentByDictionary( const QString & dictionary );
+    void setCurrentByDictionary(const QString &dictionary);
 
 Q_SIGNALS:
     /**
@@ -82,19 +82,19 @@ Q_SIGNALS:
      * by user intervention or on setCurrentByDictionaryName() or on
      * setCurrentByDictionary(). For example "de_CH".
      */
-    void dictionaryChanged( const QString & dictionary );
+    void dictionaryChanged(const QString &dictionary);
 
     /**
      * @em Emitted whenever the current dictionary changes. Either
      * by user intervention or on setCurrentByDictionaryName() or on
      * setCurrentByDictionary(). For example "German (Switzerland)".
      */
-    void dictionaryNameChanged( const QString & dictionaryName );
+    void dictionaryNameChanged(const QString &dictionaryName);
 
 private:
     class Private;
-    Private* const d;
-    Q_PRIVATE_SLOT(d, void slotDictionaryChanged( int ) )
+    Private *const d;
+    Q_PRIVATE_SLOT(d, void slotDictionaryChanged(int))
 };
 
 }

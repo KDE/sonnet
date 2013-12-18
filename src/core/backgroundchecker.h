@@ -32,99 +32,99 @@
  */
 namespace Sonnet
 {
-    class Speller;
+class Speller;
+
+/**
+ *
+ * BackgroundChecker is used to perform spell checking without
+ * blocking the application. You can use it as is by calling
+ * the checkText function or subclass it and reimplement
+ * getMoreText function.
+ *
+ * The misspelling signal is emitted whenever a misspelled word
+ * is found. The background checker stops right before emitting
+ * the signal. So the parent has to call continueChecking function
+ * to resume the checking.
+ *
+ * done signal is emitted when whole text is spell checked.
+ *
+ * @author Zack Rusin <zack@kde.org>
+ * @short class used for spell checking in the background
+ */
+class SONNETCORE_EXPORT BackgroundChecker : public QObject
+{
+    Q_OBJECT
+public:
+    explicit BackgroundChecker(QObject *parent = 0);
+    explicit BackgroundChecker(const Speller &speller, QObject *parent = 0);
+    ~BackgroundChecker();
 
     /**
+     * This method is used to spell check static text.
+     * It automatically invokes start().
      *
-     * BackgroundChecker is used to perform spell checking without
-     * blocking the application. You can use it as is by calling
-     * the checkText function or subclass it and reimplement
-     * getMoreText function.
-     *
-     * The misspelling signal is emitted whenever a misspelled word
-     * is found. The background checker stops right before emitting
-     * the signal. So the parent has to call continueChecking function
-     * to resume the checking.
-     *
-     * done signal is emitted when whole text is spell checked.
-     *
-     * @author Zack Rusin <zack@kde.org>
-     * @short class used for spell checking in the background
+     * Use fetchMoreText() with start() to spell check a stream.
      */
-    class SONNETCORE_EXPORT BackgroundChecker : public QObject
-    {
-        Q_OBJECT
-    public:
-        explicit BackgroundChecker(QObject *parent =0);
-        explicit BackgroundChecker(const Speller &speller, QObject *parent =0);
-        ~BackgroundChecker();
+    void setText(const QString &text);
+    QString text() const;
 
-        /**
-         * This method is used to spell check static text.
-         * It automatically invokes start().
-         *
-         * Use fetchMoreText() with start() to spell check a stream.
-         */
-        void setText(const QString &text);
-        QString text() const;
+    QString currentContext() const;
 
-        QString currentContext() const;
+    Speller speller() const;
+    void setSpeller(const Speller &speller);
 
-        Speller speller() const;
-        void setSpeller(const Speller &speller);
+    bool checkWord(const QString &word);
+    QStringList suggest(const QString &word) const;
+    bool addWordToPersonal(const QString &word);
 
-        bool checkWord(const QString &word);
-        QStringList suggest(const QString &word) const;
-        bool addWordToPersonal(const QString &word);
+public Q_SLOTS:
+    virtual void start();
+    virtual void stop();
+    void replace(int start, const QString &oldText,
+                 const QString &newText);
+    void changeLanguage(const QString &lang);
 
-    public Q_SLOTS:
-        virtual void start();
-        virtual void stop();
-        void replace(int start, const QString &oldText,
-                     const QString &newText);
-        void changeLanguage(const QString &lang);
+    /**
+     * After emitting misspelling signal the background
+     * checker stops. The catcher is responsible for calling
+     * continueChecking function to resume checking.
+     */
+    virtual void continueChecking();
 
-        /**
-         * After emitting misspelling signal the background
-         * checker stops. The catcher is responsible for calling
-         * continueChecking function to resume checking.
-         */
-        virtual void continueChecking();
+Q_SIGNALS:
+    /**
+     * Emitted whenever a misspelled word is found
+     */
+    void misspelling(const QString &word, int start);
 
-    Q_SIGNALS:
-        /**
-         * Emitted whenever a misspelled word is found
-         */
-        void misspelling(const QString &word, int start);
+    /**
+     * Emitted after the whole text has been spell checked.
+     */
+    void done();
 
-        /**
-         * Emitted after the whole text has been spell checked.
-         */
-        void done();
+protected:
+    /**
+     * This function is called to get the text to spell check.
+     * It will be called continuesly until it returns QString()
+     * in which case the done() signal is emitted.
+     * Note: the start parameter in mispelling() is not a combined
+     * position but a position in the last string returned
+     * by fetchMoreText. You need to store the state in the derivatives.
+     */
+    virtual QString fetchMoreText();
 
-    protected:
-        /**
-         * This function is called to get the text to spell check.
-         * It will be called continuesly until it returns QString()
-         * in which case the done() signal is emitted.
-         * Note: the start parameter in mispelling() is not a combined
-         * position but a position in the last string returned
-         * by fetchMoreText. You need to store the state in the derivatives.
-         */
-        virtual QString fetchMoreText();
+    /**
+     * This function will be called whenever the background checker
+     * will be finished text which it got from fetchMoreText.
+     */
+    virtual void finishedCurrentFeed();
 
-        /**
-         * This function will be called whenever the background checker
-         * will be finished text which it got from fetchMoreText.
-         */
-        virtual void finishedCurrentFeed();
-
-    protected Q_SLOTS:
-        void slotEngineDone();
-    private:
-        class Private;
-        Private *const d;
-    };
+protected Q_SLOTS:
+    void slotEngineDone();
+private:
+    class Private;
+    Private *const d;
+};
 
 }
 

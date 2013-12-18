@@ -1,4 +1,3 @@
-// -*- Mode: C++; c-basic-offset: 4; indent-tabs-mode: nil; -*-
 /**
  *
  * Copyright (C)  2003  Zack Rusin <zack@kde.org>
@@ -41,7 +40,7 @@ public:
     Settings *settings;
 
     // <language, Clients with that language >
-    QMap<QString, QList<Client*> > languageClients;
+    QMap<QString, QList<Client *> > languageClients;
     QStringList clients;
 
     QStringList languagesNameCache;
@@ -59,7 +58,7 @@ Loader *Loader::openLoader()
 }
 
 Loader::Loader()
-    :d(new Private)
+    : d(new Private)
 {
     d->settings = new Settings(this);
     d->settings->restore();
@@ -73,8 +72,8 @@ Loader::~Loader()
     delete d;
 }
 
-SpellerPlugin *Loader::createSpeller(const QString& language,
-                                     const QString& clientName) const
+SpellerPlugin *Loader::createSpeller(const QString &language,
+                                     const QString &clientName) const
 {
     QString pclient = clientName;
     QString plang   = language;
@@ -83,16 +82,16 @@ SpellerPlugin *Loader::createSpeller(const QString& language,
         plang = d->settings->defaultLanguage();
     }
 
-    const QList<Client*> lClients = d->languageClients[plang];
+    const QList<Client *> lClients = d->languageClients[plang];
 
     if (lClients.isEmpty()) {
         qWarning() << "No language dictionaries for the language:" << plang;
         return 0;
     }
 
-    QListIterator<Client*> itr(lClients);
+    QListIterator<Client *> itr(lClients);
     while (itr.hasNext()) {
-        Client* item = itr.next();
+        Client *item = itr.next();
         if (!pclient.isEmpty()) {
             if (pclient == item->name()) {
                 SpellerPlugin *dict = item->createSpeller(plang);
@@ -122,28 +121,27 @@ QStringList Loader::languages() const
 QString Loader::languageNameForCode(const QString &langCode) const
 {
     QString currentDictionary = langCode,   // e.g. en_GB-ize-wo_accents
-        isoCode,            // locale ISO name
-        variantName,         // dictionary variant name e.g. w_accents
-        localizedLang,       // localized language
-        localizedCountry,    // localized country
-        localizedVariant;
+            isoCode,            // locale ISO name
+            variantName,         // dictionary variant name e.g. w_accents
+            localizedLang,       // localized language
+            localizedCountry,    // localized country
+            localizedVariant;
     QByteArray variantEnglish; // dictionary variant in English
 
     int minusPos,          // position of "-" char
         variantCount = 0;  // used to iterate over variantList
 
-    struct variantListType
-    {
-        const char* variantShortName;
-        const char* variantEnglishName;
+    struct variantListType {
+        const char *variantShortName;
+        const char *variantEnglishName;
     };
-    
-/*
- * This redefines the QT_TRANSLATE_NOOP3 macro provided by Qt to indicate that
- * statically initialised text should be translated so that it expands to just
- * the string that should be translated, making it possible to use it in the
- * single string construct below.
- */
+
+    /*
+     * This redefines the QT_TRANSLATE_NOOP3 macro provided by Qt to indicate that
+     * statically initialised text should be translated so that it expands to just
+     * the string that should be translated, making it possible to use it in the
+     * single string construct below.
+     */
 #undef QT_TRANSLATE_NOOP3
 #define QT_TRANSLATE_NOOP3(a, b, c) b
 
@@ -176,14 +174,16 @@ QString Loader::languageNameForCode(const QString &langCode) const
     if (minusPos != -1) {
         variantName = currentDictionary.right(currentDictionary.length() - minusPos - 1);
         while (variantList[variantCount].variantShortName != 0)
-            if (QLatin1String(variantList[variantCount].variantShortName) == variantName)
+            if (QLatin1String(variantList[variantCount].variantShortName) == variantName) {
                 break;
-            else
+            } else {
                 variantCount++;
-        if (variantList[variantCount].variantShortName != 0)
+            }
+        if (variantList[variantCount].variantShortName != 0) {
             variantEnglish = variantList[variantCount].variantEnglishName;
-        else
+        } else {
             variantEnglish = variantName.toLatin1();
+        }
 
         localizedVariant = tr(variantEnglish, "dictionary variant");
         isoCode = currentDictionary.left(minusPos);
@@ -195,15 +195,16 @@ QString Loader::languageNameForCode(const QString &langCode) const
     localizedCountry = locale.nativeCountryName();
     localizedLang = locale.nativeLanguageName();
 
-    if (localizedLang.isEmpty() && localizedCountry.isEmpty())
-        return isoCode; // We have nothing
+    if (localizedLang.isEmpty() && localizedCountry.isEmpty()) {
+        return isoCode;    // We have nothing
+    }
 
     if (!localizedCountry.isEmpty() && !localizedVariant.isEmpty()) { // We have both a country name and a variant
         return tr("%1 (%2) [%3]", "dictionary name; %1 = language name, %2 = country name and %3 = language variant name"
-            ).arg(localizedLang, localizedCountry, localizedVariant);
+                 ).arg(localizedLang, localizedCountry, localizedVariant);
     } else if (!localizedCountry.isEmpty()) { // We have a country name
         return tr("%1 (%2)", "dictionary name; %1 = language name, %2 = country name"
-            ).arg(localizedLang, localizedCountry);
+                 ).arg(localizedLang, localizedCountry);
     } else { // We only have a language name
         return localizedLang;
     }
@@ -214,14 +215,15 @@ QStringList Loader::languageNames() const
     /* For whatever reason languages() might change. So,
      * to be in sync with it let's do the following check.
      */
-    if (d->languagesNameCache.count() == languages().count() )
+    if (d->languagesNameCache.count() == languages().count()) {
         return d->languagesNameCache;
+    }
 
     QStringList allLocalizedDictionaries;
     const QStringList allDictionaries = languages();
 
     for (QStringList::ConstIterator it = allDictionaries.begin();
-         it != allDictionaries.end(); ++it) {
+            it != allDictionaries.end(); ++it) {
         allLocalizedDictionaries.append(languageNameForCode(*it));
     }
     // cache the list
@@ -229,7 +231,7 @@ QStringList Loader::languageNames() const
     return allLocalizedDictionaries;
 }
 
-Settings* Loader::settings() const
+Settings *Loader::settings() const
 {
     return d->settings;
 }
@@ -238,10 +240,12 @@ void Loader::loadPlugins()
 {
     const QStringList libPaths = QCoreApplication::libraryPaths();
     const QLatin1String pathSuffix("/kf5/sonnet_clients/");
-    Q_FOREACH(const QString &libPath, libPaths) {
+    Q_FOREACH (const QString &libPath, libPaths) {
         QDir dir(libPath + pathSuffix);
-        if (!dir.exists()) continue;
-        Q_FOREACH(const QString &fileName, dir.entryList(QDir::Files)) {
+        if (!dir.exists()) {
+            continue;
+        }
+        Q_FOREACH (const QString &fileName, dir.entryList(QDir::Files)) {
             loadPlugin(dir.absoluteFilePath(fileName));
         }
     }
@@ -255,7 +259,7 @@ void Loader::loadPlugin(const QString &pluginPath)
         return;
     }
 
-    Client *client = qobject_cast<Client*>(plugin.instance());
+    Client *client = qobject_cast<Client *>(plugin.instance());
     if (!client) {
         qWarning() << "Invalid plugin loaded" << pluginPath;
         plugin.unload(); // don't leave it in memory
@@ -265,15 +269,16 @@ void Loader::loadPlugin(const QString &pluginPath)
     const QStringList languages = client->languages();
     d->clients.append(client->name());
 
-    Q_FOREACH(const QString &language, languages) {
-        QList<Client*> &languageClients = d->languageClients[language];
+    Q_FOREACH (const QString &language, languages) {
+        QList<Client *> &languageClients = d->languageClients[language];
 
-        if (languageClients.isEmpty())
-            languageClients.append(client); // no clients yet, just add it
-        else if (client->reliability() < languageClients.first()->reliability())
-            languageClients.append(client); // less reliable, to the end
-        else
-            languageClients.prepend(client); // more reliable, to the front
+        if (languageClients.isEmpty()) {
+            languageClients.append(client);    // no clients yet, just add it
+        } else if (client->reliability() < languageClients.first()->reliability()) {
+            languageClients.append(client);    // less reliable, to the end
+        } else {
+            languageClients.prepend(client);    // more reliable, to the front
+        }
     }
 }
 

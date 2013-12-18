@@ -34,7 +34,6 @@ public:
     QString currentText;
 };
 
-
 BackgroundChecker::BackgroundChecker(QObject *parent)
     : QObject(parent),
       d(new Private)
@@ -105,7 +104,7 @@ Speller BackgroundChecker::speller() const
 
 bool BackgroundChecker::checkWord(const QString &word)
 {
-    return d->engine->checkWord( word );
+    return d->engine->checkWord(word);
 }
 
 bool BackgroundChecker::addWordToPersonal(const QString &word)
@@ -133,10 +132,10 @@ void BackgroundChecker::slotEngineDone()
     finishedCurrentFeed();
     d->currentText = fetchMoreText();
 
-    if ( d->currentText.isNull() ) {
+    if (d->currentText.isNull()) {
         emit done();
     } else {
-        d->engine->setText( d->currentText );
+        d->engine->setText(d->currentText);
         d->engine->start();
     }
 }
@@ -145,7 +144,6 @@ QString BackgroundChecker::text() const
 {
     return d->engine->filter()->buffer();
 }
-
 
 QString BackgroundChecker::currentContext() const
 {

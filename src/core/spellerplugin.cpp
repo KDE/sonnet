@@ -1,4 +1,3 @@
-// -*- Mode: C++; c-basic-offset: 4; indent-tabs-mode: nil; -*-
 /**
  *
  * Copyright 2006  Zack Rusin <zack@kde.org>
@@ -54,8 +53,9 @@ bool SpellerPlugin::checkAndSuggest(const QString &word,
                                     QStringList &suggestions) const
 {
     bool c = isCorrect(word);
-    if (!c)
+    if (!c) {
         suggestions = suggest(word);
+    }
     return c;
 }
 

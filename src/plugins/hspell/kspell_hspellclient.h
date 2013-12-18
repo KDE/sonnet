@@ -29,8 +29,9 @@ extern "C" {
 #include "hspell.h"
 }
 
-namespace Sonnet {
-    class SpellerPlugin;
+namespace Sonnet
+{
+class SpellerPlugin;
 }
 using Sonnet::SpellerPlugin;
 
@@ -43,7 +44,8 @@ public:
     HSpellClient(QObject *parent = 0);
     ~HSpellClient();
 
-    virtual int reliability() const {
+    virtual int reliability() const
+    {
         return 20;
     }
 
@@ -51,7 +53,8 @@ public:
 
     virtual QStringList languages() const;
 
-    virtual QString name() const {
+    virtual QString name() const
+    {
         return QString::fromLatin1("HSpell");
     }
 private:

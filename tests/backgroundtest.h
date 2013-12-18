@@ -34,7 +34,7 @@ public:
 
 protected Q_SLOTS:
     void slotDone();
-    void slotMisspelling( const QString& word, int start );
+    void slotMisspelling(const QString &word, int start);
 
 private:
     Sonnet::BackgroundChecker *m_checker;

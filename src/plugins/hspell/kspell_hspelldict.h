@@ -31,18 +31,21 @@ extern "C" {
 class HSpellDict : public Sonnet::SpellerPlugin
 {
 public:
-    explicit HSpellDict( const QString& lang );
+    explicit HSpellDict(const QString &lang);
     ~HSpellDict();
-    virtual bool isCorrect( const QString& word ) const;
+    virtual bool isCorrect(const QString &word) const;
 
-    virtual QStringList suggest( const QString& word ) const;
+    virtual QStringList suggest(const QString &word) const;
 
-    virtual bool storeReplacement( const QString& bad,
-                                   const QString& good );
+    virtual bool storeReplacement(const QString &bad,
+                                  const QString &good);
 
-    virtual bool addToPersonal( const QString& word );
-    virtual bool addToSession( const QString& word );
-    inline bool isInitialized() const { return initialized; }
+    virtual bool addToPersonal(const QString &word);
+    virtual bool addToSession(const QString &word);
+    inline bool isInitialized() const
+    {
+        return initialized;
+    }
 private:
     struct dict_radix *m_speller;
     QTextCodec *codec;

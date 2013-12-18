@@ -25,8 +25,9 @@
 
 #include "hunspell/hunspell.hxx"
 
-namespace Sonnet {
-    class SpellerPlugin;
+namespace Sonnet
+{
+class SpellerPlugin;
 }
 using Sonnet::SpellerPlugin;
 
@@ -39,7 +40,8 @@ public:
     HunspellClient(QObject *parent = 0);
     ~HunspellClient();
 
-    virtual int reliability() const {
+    virtual int reliability() const
+    {
         return 40;
     }
 
@@ -47,7 +49,8 @@ public:
 
     virtual QStringList languages() const;
 
-    virtual QString name() const {
+    virtual QString name() const
+    {
         return "Hunspell";
     }
 };

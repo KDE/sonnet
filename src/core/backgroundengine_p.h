@@ -29,53 +29,59 @@
 
 namespace Sonnet
 {
-    class Filter;
-    class Loader;
-    class SpellerPlugin;
-    class BackgroundEngine : public QObject
+class Filter;
+class Loader;
+class SpellerPlugin;
+class BackgroundEngine : public QObject
+{
+    Q_OBJECT
+public:
+    explicit BackgroundEngine(QObject *parent);
+    ~BackgroundEngine();
+
+    void setSpeller(const Speller &speller);
+    Speller speller() const
     {
-        Q_OBJECT
-    public:
-        explicit BackgroundEngine(QObject *parent);
-        ~BackgroundEngine();
+        return m_dict;
+    }
 
-        void setSpeller(const Speller &speller);
-        Speller speller() const { return m_dict; }
+    void setText(const QString &);
+    QString text() const;
 
-        void setText(const QString &);
-        QString text() const;
+    void changeLanguage(const QString &);
+    QString language() const;
 
-        void changeLanguage(const QString &);
-        QString language() const;
+    void setFilter(Filter *filter);
+    Filter *filter() const
+    {
+        return m_filter;
+    }
 
-        void setFilter(Filter *filter);
-        Filter *filter() const { return m_filter; }
+    void start();
+    void continueChecking();
+    void stop();
 
-        void start();
-        void continueChecking();
-        void stop();
+    bool        checkWord(const QString &word);
+    QStringList suggest(const QString &word);
+    bool        addWord(const QString &word);
+Q_SIGNALS:
 
-        bool        checkWord(const QString &word);
-        QStringList suggest(const QString &word);
-        bool        addWord(const QString &word);
-    Q_SIGNALS:
+    /**
+     * Emitted when a misspelling is found.
+     */
+    void misspelling(const QString &, int);
 
-        /**
-         * Emitted when a misspelling is found.
-         */
-        void misspelling(const QString&, int);
+    /**
+     * Emitted when all words have been checked.
+     */
+    void done();
 
-        /**
-         * Emitted when all words have been checked.
-         */
-        void done();
-
-    protected Q_SLOTS:
-        void checkNext();
-    private:
-        Filter            *m_filter;
-        Speller            m_dict;
-    };
+protected Q_SLOTS:
+    void checkNext();
+private:
+    Filter            *m_filter;
+    Speller            m_dict;
+};
 }
 
 #endif // SONNET_BACKGROUNDENGINE_P_H

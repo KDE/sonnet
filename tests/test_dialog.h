@@ -32,8 +32,8 @@ public:
     TestDialog();
 
 public Q_SLOTS:
-    void check( const QString& buffer );
-    void doneChecking( const QString& );
+    void check(const QString &buffer);
+    void doneChecking(const QString &);
 };
 
 #endif

@@ -1,4 +1,3 @@
-// -*- Mode: C++; c-basic-offset: 4; indent-tabs-mode: nil; -*-
 /*
  * dialog.h
  *
@@ -31,137 +30,137 @@ class QModelIndex;
 
 namespace Sonnet
 {
-    class BackgroundChecker;
+class BackgroundChecker;
+
+/**
+ * @short Spellcheck dialog
+ *
+ * \code
+ * Sonnet::Dialog dlg = new Sonnet::Dialog(
+ *       new Sonnet::BackgroundChecker(this), this);
+ * //connect signals
+ * ...
+ * dlg->setBuffer( someText );
+ * dlg->show();
+ * \endcode
+ *
+ * You can change buffer inside a slot connected to done() signal
+ * and spellcheck will continue with new data automatically.
+ */
+class SONNETUI_EXPORT Dialog : public QDialog
+{
+    Q_OBJECT
+public:
+    Dialog(BackgroundChecker *checker,
+           QWidget *parent);
+    ~Dialog();
+
+    QString originalBuffer() const;
+    QString buffer() const;
+
+    void show();
+    void activeAutoCorrect(bool _active);
+
+    // Hide warning about done(), which is a slot in QDialog and a signal here.
+    using QDialog::done;
 
     /**
-     * @short Spellcheck dialog
+     * Controls whether an (indefinite) progress dialog is shown when the spell
+     * checking takes longer than the given time to complete. By default no
+     * progress dialog is shown. If the progress dialog is set to be shown, no
+     * time consuming operation (for example, showing a notification message) should
+     * be performed in a slot connected to the 'done' signal as this might trigger
+     * the progress dialog unnecessarily.
      *
-     * \code
-     * Sonnet::Dialog dlg = new Sonnet::Dialog(
-     *       new Sonnet::BackgroundChecker(this), this);
-     * //connect signals
-     * ...
-     * dlg->setBuffer( someText );
-     * dlg->show();
-     * \endcode
-     *
-     * You can change buffer inside a slot connected to done() signal
-     * and spellcheck will continue with new data automatically.
+     * @param timeout time after which the progress dialog should appear; a negative
+     *                value can be used to hide it
+     * @since 4.4
      */
-    class SONNETUI_EXPORT Dialog : public QDialog
-    {
-        Q_OBJECT
-    public:
-        Dialog(BackgroundChecker *checker,
-               QWidget *parent);
-        ~Dialog();
+    void showProgressDialog(int timeout = 500);
 
-        QString originalBuffer() const;
-        QString buffer() const;
+    /**
+     * Controls whether a message box indicating the completion of the spell checking
+     * is shown or not. By default it is not shown.
+     *
+     * @since 4.4
+     */
+    void showSpellCheckCompletionMessage(bool b = true);
 
-        void show();
-        void activeAutoCorrect(bool _active);
+    /**
+     * Controls whether the spell checking is continued after the replacement of a
+     * misspelled word has been performed. By default it is continued.
+     *
+     * @since 4.4
+     */
+    void setSpellCheckContinuedAfterReplacement(bool b);
 
-        // Hide warning about done(), which is a slot in QDialog and a signal here.
-        using QDialog::done;
+public Q_SLOTS:
+    void setBuffer(const QString &);
 
-        /**
-         * Controls whether an (indefinite) progress dialog is shown when the spell
-         * checking takes longer than the given time to complete. By default no
-         * progress dialog is shown. If the progress dialog is set to be shown, no
-         * time consuming operation (for example, showing a notification message) should
-         * be performed in a slot connected to the 'done' signal as this might trigger
-         * the progress dialog unnecessarily.
-         *
-         * @param timeout time after which the progress dialog should appear; a negative
-         *                value can be used to hide it
-         * @since 4.4
-         */
-         void showProgressDialog(int timeout = 500);
+Q_SIGNALS:
+    /**
+     * The dialog won't be closed if you setBuffer() in slot connected to this signal
+     *
+     * Also emitted after stop() signal
+     */
+    void done(const QString &newBuffer);
+    void misspelling(const QString &word, int start);
+    void replace(const QString &oldWord, int start,
+                 const QString &newWord);
 
-        /**
-         * Controls whether a message box indicating the completion of the spell checking
-         * is shown or not. By default it is not shown.
-         *
-         * @since 4.4
-         */
-        void showSpellCheckCompletionMessage( bool b = true );
+    void stop();
+    void cancel();
+    void autoCorrect(const QString &currentWord, const QString &replaceWord);
 
-        /**
-         * Controls whether the spell checking is continued after the replacement of a
-         * misspelled word has been performed. By default it is continued.
-         *
-         * @since 4.4
-         */
-        void setSpellCheckContinuedAfterReplacement( bool b );
+    /**
+     * Signal sends when spell checking is finished/stopped/completed
+     * @since 4.1
+     */
+    void spellCheckStatus(const QString &);
 
-    public Q_SLOTS:
-        void setBuffer(const QString &);
+    /**
+     * Emitted when the user changes the language used for spellchecking,
+     * which is shown in a combobox of this dialog.
+     *
+     * @param dictionary the new language the user selected
+     * @since 4.1
+     */
+    void languageChanged(const QString &language);
 
-    Q_SIGNALS:
-        /**
-         * The dialog won't be closed if you setBuffer() in slot connected to this signal
-         *
-         * Also emitted after stop() signal
-         */
-        void done( const QString& newBuffer );
-        void misspelling( const QString& word, int start );
-        void replace( const QString& oldWord, int start,
-                      const QString& newWord );
+private Q_SLOTS:
+    void slotMisspelling(const QString &word, int start);
+    void slotDone();
 
-        void stop();
-        void cancel();
-        void autoCorrect( const QString & currentWord, const QString & replaceWord );
+    void slotFinished();
+    void slotCancel();
 
-        /**
-         * Signal sends when spell checking is finished/stopped/completed
-         * @since 4.1
-         */
-        void spellCheckStatus(const QString &);
+    void slotAddWord();
+    void slotReplaceWord();
+    void slotReplaceAll();
+    void slotSkip();
+    void slotSkipAll();
+    void slotSuggest();
+    void slotChangeLanguage(const QString &);
+    void slotSelectionChanged(const QModelIndex &);
+    void slotAutocorrect();
 
-        /**
-         * Emitted when the user changes the language used for spellchecking,
-         * which is shown in a combobox of this dialog.
-         *
-         * @param dictionary the new language the user selected
-         * @since 4.1
-         */
-        void languageChanged( const QString &language );
+    void setGuiEnabled(bool b);
+    void setProgressDialogVisible(bool b);
 
-    private Q_SLOTS:
-        void slotMisspelling(const QString& word, int start );
-        void slotDone();
+private:
+    void updateDialog(const QString &word);
+    void fillDictionaryComboBox();
+    void updateDictionaryComboBox();
+    void fillSuggestions(const QStringList &suggs);
+    void initConnections();
+    void initGui();
+    void continueChecking();
 
-        void slotFinished();
-        void slotCancel();
-
-        void slotAddWord();
-        void slotReplaceWord();
-        void slotReplaceAll();
-        void slotSkip();
-        void slotSkipAll();
-        void slotSuggest();
-        void slotChangeLanguage( const QString& );
-        void slotSelectionChanged(const QModelIndex &);
-        void slotAutocorrect();
-
-        void setGuiEnabled(bool b);
-        void setProgressDialogVisible(bool b);
-
-    private:
-        void updateDialog( const QString& word );
-        void fillDictionaryComboBox();
-        void updateDictionaryComboBox();
-        void fillSuggestions( const QStringList& suggs );
-        void initConnections();
-        void initGui();
-        void continueChecking();
-
-    private:
-        class Private;
-        Private* const d;
-        Q_DISABLE_COPY( Dialog )
-    };
+private:
+    class Private;
+    Private *const d;
+    Q_DISABLE_COPY(Dialog)
+};
 }
 
 #endif

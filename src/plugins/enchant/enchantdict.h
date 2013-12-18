@@ -1,4 +1,3 @@
-// -*- Mode: C++; c-basic-offset: 4; indent-tabs-mode: nil; -*-
 /**
  * Copyright 2006  Zack Rusin <zack@kde.org>
  *

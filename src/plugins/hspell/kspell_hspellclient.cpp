@@ -47,7 +47,7 @@ QStringList HSpellClient::languages() const
     QStringList langs;
     HSpellDict ad("he");
     if (ad.isInitialized()) {
-      langs.append(QLatin1String("he"));
+        langs.append(QLatin1String("he"));
     }
     return langs;
 }

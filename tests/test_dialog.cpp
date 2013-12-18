@@ -29,35 +29,35 @@
 using namespace Sonnet;
 
 TestDialog::TestDialog()
-    : QObject( 0 )
+    : QObject(0)
 {
 
 }
 
-void TestDialog::check( const QString& buffer )
+void TestDialog::check(const QString &buffer)
 {
     Sonnet::Dialog *dlg = new Sonnet::Dialog(
-        new BackgroundChecker( this ), 0);
-    connect( dlg, SIGNAL(done(QString)),
-             SLOT(doneChecking(QString)) );
-    dlg->setBuffer( buffer );
+        new BackgroundChecker(this), 0);
+    connect(dlg, SIGNAL(done(QString)),
+            SLOT(doneChecking(QString)));
+    dlg->setBuffer(buffer);
     dlg->show();
 }
 
-void TestDialog::doneChecking( const QString& buf )
+void TestDialog::doneChecking(const QString &buf)
 {
-    qDebug()<<"Done with :"<<buf;
+    qDebug() << "Done with :" << buf;
     qApp->quit();
 }
 
-int main( int argc, char** argv )
+int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
 
     TestDialog test;
-    test.check( "This is a sample buffer. Whih this thingg will "
-                "be checkin for misstakes. Whih, Enviroment, govermant. Whih."
-        );
+    test.check("This is a sample buffer. Whih this thingg will "
+               "be checkin for misstakes. Whih, Enviroment, govermant. Whih."
+              );
 
     return app.exec();
 }

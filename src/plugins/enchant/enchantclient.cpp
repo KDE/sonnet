@@ -1,4 +1,3 @@
-// -*- Mode: C++; c-basic-offset: 4; indent-tabs-mode: nil; -*-
 /**
  * Copyright 2006  Zack Rusin <zack@kde.org>
  *
@@ -25,14 +24,14 @@
 
 using namespace Sonnet;
 
-static void enchantDictDescribeFn(const char * const lang_tag,
-                                  const char * const provider_name,
-                                  const char * const provider_desc,
-                                  const char * const provider_file,
-                                  void * user_data)
+static void enchantDictDescribeFn(const char *const lang_tag,
+                                  const char *const provider_name,
+                                  const char *const provider_desc,
+                                  const char *const provider_file,
+                                  void *user_data)
 {
     QSpellEnchantClient *client =
-        reinterpret_cast<QSpellEnchantClient*>(user_data);
+        reinterpret_cast<QSpellEnchantClient *>(user_data);
     //qDebug()<<lang_tag<<provider_name<<provider_desc<<provider_file;
     Q_UNUSED(provider_name);
     Q_UNUSED(provider_desc);
@@ -59,12 +58,12 @@ SpellerPlugin *QSpellEnchantClient::createSpeller(
     const QString &language)
 {
     EnchantDict *dict = enchant_broker_request_dict(m_broker,
-                                                    language.toUtf8());
+                        language.toUtf8());
 
     if (!dict) {
-#ifndef NDEBUG	    
+#ifndef NDEBUG
         const char *err = enchant_broker_get_error(m_broker);
-        qDebug()<<"Couldn't create speller for"<<language<<": "<<err;
+        qDebug() << "Couldn't create speller for" << language << ": " << err;
 #endif
         return 0;
     } else {

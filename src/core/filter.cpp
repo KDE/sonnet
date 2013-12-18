@@ -1,4 +1,3 @@
-// -*- Mode: C++; c-basic-offset: 4; indent-tabs-mode: nil; -*-
 /**
  * filter.cpp
  *
@@ -27,7 +26,6 @@
 
 #include <QDebug>
 
-
 namespace Sonnet
 {
 
@@ -42,7 +40,7 @@ public:
     Settings *settings;
 };
 
-Filter* Filter::defaultFilter()
+Filter *Filter::defaultFilter()
 {
     return new Filter();
 }
@@ -63,7 +61,7 @@ Filter::~Filter()
     delete d;
 }
 
-void Filter::setSettings( Settings *conf )
+void Filter::setSettings(Settings *conf)
 {
     d->settings = conf;
 }
@@ -78,7 +76,7 @@ void Filter::restart()
     m_finder.toStart();
 }
 
-void Filter::setBuffer( const QString& buffer )
+void Filter::setBuffer(const QString &buffer)
 {
     m_buffer = buffer;
     m_finder = QTextBoundaryFinder(QTextBoundaryFinder::Word, m_buffer);
@@ -99,14 +97,14 @@ bool Filter::atEnd() const
 static bool
 isValidWord(const QString &str)
 {
-    if(str.isEmpty() || (str.length() == 1 && !str[0].isLetter())) {
-      return false;
+    if (str.isEmpty() || (str.length() == 1 && !str[0].isLetter())) {
+        return false;
     }
     const int length = str.length();
-    for(int i = 0; i < length; ++i) {
-      if(!str[i].isNumber()) {
-        return true;
-      }
+    for (int i = 0; i < length; ++i) {
+        if (!str[i].isNumber()) {
+            return true;
+        }
     }
     // 'str' only contains numbers
     return false;
@@ -128,7 +126,7 @@ finderNextWord(QTextBoundaryFinder &finder, QString &word, int &bufferStart)
                 bufferStart = start;
 #if 0
                 qDebug().nospace() << "Word at " << start << " word="
-                         <<  str << ", len=" << str.length();
+                                   <<  str << ", len=" << str.length();
 #endif
                 return true;
             }
@@ -156,8 +154,9 @@ static bool finderWordAt(QTextBoundaryFinder &finder,
              * the first word */
             if (at > 0 && finder.string().length() > 0) {
                 finder.toStart();
-            } else
+            } else {
                 return false;
+            }
         }
     }
     bool ret = finderNextWord(finder, word, bufferStart);
@@ -172,30 +171,32 @@ Word Filter::nextWord() const
     bool allUppercase = false;
     bool runTogether = false;
 
-    if (!finderNextWord(m_finder, foundWord, start))
+    if (!finderNextWord(m_finder, foundWord, start)) {
         return Filter::end();
+    }
 
-    allUppercase = ( foundWord == foundWord.toUpper() );
+    allUppercase = (foundWord == foundWord.toUpper());
 
     //TODO implement runtogether correctly.
     //We must ask to sonnet plugins to do it and not directly here.
 
-    if ( shouldBeSkipped( allUppercase, runTogether, foundWord ) )
+    if (shouldBeSkipped(allUppercase, runTogether, foundWord)) {
         return nextWord();
-    return Word( foundWord, start );
+    }
+    return Word(foundWord, start);
 }
 
-Word Filter::wordAtPosition( unsigned int pos ) const
+Word Filter::wordAtPosition(unsigned int pos) const
 {
     QString foundWord;
     int start;
-    if (!finderWordAt(m_finder, pos, foundWord, start))
+    if (!finderWordAt(m_finder, pos, foundWord, start)) {
         return Filter::end();
-    return Word( foundWord, start );
+    }
+    return Word(foundWord, start);
 }
 
-
-void Filter::setCurrentPosition( int i )
+void Filter::setCurrentPosition(int i)
 {
     QString word;
     int pos;
@@ -212,14 +213,14 @@ int Filter::currentPosition() const
     return m_finder.position();
 }
 
-void Filter::replace( const Word& w, const QString& newWord)
+void Filter::replace(const Word &w, const QString &newWord)
 {
     int oldLen = w.word.length();
 
     //start spell checkin from the just correct word
-    m_buffer = m_buffer.replace( w.start, oldLen, newWord );
+    m_buffer = m_buffer.replace(w.start, oldLen, newWord);
     m_finder = QTextBoundaryFinder(QTextBoundaryFinder::Word,
-                                     m_buffer);
+                                   m_buffer);
     m_finder.setPosition(w.start);
 }
 
@@ -229,23 +230,22 @@ QString Filter::context() const
     //we don't want the expression underneath casted to an unsigned int
     //which would cause it to always evaluate to false
     int signedPosition = m_finder.position();
-    bool begin = (signedPosition - len/2)<=0;
-
+    bool begin = (signedPosition - len / 2) <= 0;
 
     QString buffer = m_buffer;
-    Word word = wordAtPosition( m_finder.position() );
-    buffer = buffer.replace( word.start, word.word.length(),
-                             QString::fromLatin1( "<b>%1</b>" ).arg( word.word ) );
+    Word word = wordAtPosition(m_finder.position());
+    buffer = buffer.replace(word.start, word.word.length(),
+                            QString::fromLatin1("<b>%1</b>").arg(word.word));
 
     QString context;
-    if ( begin )
+    if (begin)
         context = QString::fromLatin1("%1...")
-                  .arg( buffer.mid(  0, len ) );
+                  .arg(buffer.mid(0, len));
     else
         context = QString::fromLatin1("...%1...")
-                  .arg( buffer.mid(  m_finder.position() - 20, len ) );
+                  .arg(buffer.mid(m_finder.position() - 20, len));
 
-    context.replace( QLatin1Char('\n'), QLatin1Char(' ') );
+    context.replace(QLatin1Char('\n'), QLatin1Char(' '));
 
     return context;
 }
@@ -255,26 +255,27 @@ bool Filter::trySkipLinks() const
     QChar currentChar;
     int currentPosition = m_finder.position();
 
-    if (currentPosition < 0 || currentPosition >= m_buffer.length())
+    if (currentPosition < 0 || currentPosition >= m_buffer.length()) {
         return false;
-    currentChar = m_buffer.at( currentPosition );
+    }
+    currentChar = m_buffer.at(currentPosition);
 
     int length = m_buffer.length();
     //URL - if so skip
-    if ( currentChar == QLatin1Char(':')
-         && (currentPosition+1 < length)
-         && (m_buffer.at( ++currentPosition ) == QLatin1Char('/') || ( currentPosition + 1 ) >= length ) ) {
+    if (currentChar == QLatin1Char(':')
+            && (currentPosition + 1 < length)
+            && (m_buffer.at(++currentPosition) == QLatin1Char('/') || (currentPosition + 1) >= length)) {
         //in both cases url is considered finished at the first whitespace occurrence
         //TODO hey, "http://en.wikipedia.org/wiki/Main Page" --Nick Shaforostoff
-        while ( !m_buffer.at( currentPosition++ ).isSpace() && currentPosition < length )
+        while (!m_buffer.at(currentPosition++).isSpace() && currentPosition < length)
             ;
         m_finder.setPosition(currentPosition);
         return true;
     }
 
     //Email - if so skip
-    if ( currentChar == QLatin1Char('@')) {
-        while ( ++currentPosition < length && !m_buffer.at( currentPosition ).isSpace() )
+    if (currentChar == QLatin1Char('@')) {
+        while (++currentPosition < length && !m_buffer.at(currentPosition).isSpace())
             ;
         m_finder.setPosition(currentPosition);
         return true;
@@ -283,30 +284,33 @@ bool Filter::trySkipLinks() const
     return false;
 }
 
-bool Filter::ignore( const QString& word ) const
+bool Filter::ignore(const QString &word) const
 {
-    return d->settings && d->settings->ignore( word );
+    return d->settings && d->settings->ignore(word);
 }
 
-bool Filter::shouldBeSkipped( bool wordWasUppercase, bool wordWasRunTogether,
-                             const QString& foundWord ) const
+bool Filter::shouldBeSkipped(bool wordWasUppercase, bool wordWasRunTogether,
+                             const QString &foundWord) const
 {
-    bool checkUpper = ( d->settings ) ?
-                      d->settings->checkUppercase () : true;
+    bool checkUpper = (d->settings) ?
+                      d->settings->checkUppercase() : true;
 
-    bool skipRunTogether = ( d->settings ) ?
+    bool skipRunTogether = (d->settings) ?
                            d->settings->skipRunTogether() : true;
 
-    if ( trySkipLinks() )
+    if (trySkipLinks()) {
         return true;
+    }
 
-    if ( wordWasUppercase && !checkUpper )
+    if (wordWasUppercase && !checkUpper) {
         return true;
+    }
 
-    if ( wordWasRunTogether && skipRunTogether )
+    if (wordWasRunTogether && skipRunTogether) {
         return true;
+    }
 
-    return ignore( foundWord );
+    return ignore(foundWord);
 }
 
 }

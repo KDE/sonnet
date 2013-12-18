@@ -29,41 +29,41 @@ using namespace Sonnet;
 class DictionaryComboBoxTest : public QWidget
 {
     Q_OBJECT
-    public:
-        DictionaryComboBoxTest()
-        {
-            QHBoxLayout *topLayout = new QHBoxLayout( this );
-            dcb = new DictionaryComboBox( this );
-            topLayout->addWidget( dcb );
-            connect( dcb, SIGNAL(dictionaryChanged(QString)), SLOT(dictChanged(QString)) );
-            connect( dcb, SIGNAL(dictionaryNameChanged(QString)), SLOT(dictNameChanged(QString)) );
-            QPushButton *btn = new QPushButton( "Dump", this );
-            topLayout->addWidget( btn );
-            connect( btn, SIGNAL(clicked()), SLOT(dump()) );
-        }
+public:
+    DictionaryComboBoxTest()
+    {
+        QHBoxLayout *topLayout = new QHBoxLayout(this);
+        dcb = new DictionaryComboBox(this);
+        topLayout->addWidget(dcb);
+        connect(dcb, SIGNAL(dictionaryChanged(QString)), SLOT(dictChanged(QString)));
+        connect(dcb, SIGNAL(dictionaryNameChanged(QString)), SLOT(dictNameChanged(QString)));
+        QPushButton *btn = new QPushButton("Dump", this);
+        topLayout->addWidget(btn);
+        connect(btn, SIGNAL(clicked()), SLOT(dump()));
+    }
 
-    public Q_SLOTS:
-        void dump()
-        {
-            qDebug() << "Current dictionary: " << dcb->currentDictionary();
-            qDebug() << "Current dictionary name: " << dcb->currentDictionaryName();
-        }
+public Q_SLOTS:
+    void dump()
+    {
+        qDebug() << "Current dictionary: " << dcb->currentDictionary();
+        qDebug() << "Current dictionary name: " << dcb->currentDictionaryName();
+    }
 
-        void dictChanged( const QString &name )
-        {
-            qDebug() << "Current dictionary changed: " << name;
-        }
+    void dictChanged(const QString &name)
+    {
+        qDebug() << "Current dictionary changed: " << name;
+    }
 
-        void dictNameChanged( const QString &name )
-        {
-            qDebug() << "Current dictionary name changed: " << name;
-        }
+    void dictNameChanged(const QString &name)
+    {
+        qDebug() << "Current dictionary name changed: " << name;
+    }
 
-    private:
-        DictionaryComboBox *dcb;
+private:
+    DictionaryComboBox *dcb;
 };
 
-int main( int argc, char** argv )
+int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
 

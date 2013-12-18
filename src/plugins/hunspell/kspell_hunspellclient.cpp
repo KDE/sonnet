@@ -28,9 +28,9 @@
 using namespace Sonnet;
 
 HunspellClient::HunspellClient(QObject *parent)
-    : Client( parent )
+    : Client(parent)
 {
-    qDebug()<<" HunspellClient::HunspellClient";
+    qDebug() << " HunspellClient::HunspellClient";
 }
 
 HunspellClient::~HunspellClient()
@@ -39,8 +39,8 @@ HunspellClient::~HunspellClient()
 
 SpellerPlugin *HunspellClient::createSpeller(const QString &language)
 {
-    qDebug()<<" SpellerPlugin *HunspellClient::createSpeller(const QString &language) ;"<<language;
-    HunspellDict *ad = new HunspellDict( language );
+    qDebug() << " SpellerPlugin *HunspellClient::createSpeller(const QString &language) ;" << language;
+    HunspellDict *ad = new HunspellDict(language);
     return ad;
 }
 
@@ -49,7 +49,7 @@ QStringList HunspellClient::languages() const
     QStringList lst;
     QDir dir("/usr/share/myspell/dicts/");
     if (dir.exists()) {
-        QStringList lstDic = dir.entryList(QStringList("*.dic"), QDir::Files );
+        QStringList lstDic = dir.entryList(QStringList("*.dic"), QDir::Files);
         foreach (const QString &tmp, lstDic) {
             lst << tmp.left(tmp.length() - 4); // remove ".dic"
         }

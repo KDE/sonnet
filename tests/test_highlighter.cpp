@@ -32,19 +32,19 @@
 TestSpell::TestSpell()
     : QTextEdit()
 {
-    hl = new Sonnet::Highlighter( this );
+    hl = new Sonnet::Highlighter(this);
 }
 
 void TestSpell::contextMenuEvent(QContextMenuEvent *e)
 {
-    qDebug()<<"TestSpell::contextMenuEvent";
+    qDebug() << "TestSpell::contextMenuEvent";
     QMenu *popup = createStandardContextMenu();
-    QMenu *subMenu = new QMenu( popup );
-    subMenu->setTitle( "Text highlighting" );
-    connect( subMenu, SIGNAL(triggered(QAction*)),this, SLOT(slotActivate()) );
-    QAction *action = new QAction( "active or not", popup );
+    QMenu *subMenu = new QMenu(popup);
+    subMenu->setTitle("Text highlighting");
+    connect(subMenu, SIGNAL(triggered(QAction*)), this, SLOT(slotActivate()));
+    QAction *action = new QAction("active or not", popup);
     popup->addSeparator();
-    popup->addMenu( subMenu );
+    popup->addMenu(subMenu);
     subMenu->addAction(action);
     popup->exec(e->globalPos());
     delete popup;
@@ -52,11 +52,11 @@ void TestSpell::contextMenuEvent(QContextMenuEvent *e)
 
 void TestSpell::slotActivate()
 {
-    qDebug()<<"Activate or not highlight :";
+    qDebug() << "Activate or not highlight :";
     hl->setActive(!hl->isActive());
 }
 
-int main( int argc, char** argv )
+int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
 

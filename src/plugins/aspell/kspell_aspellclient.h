@@ -25,8 +25,9 @@
 
 #include "aspell.h"
 
-namespace Sonnet {
-    class SpellerPlugin;
+namespace Sonnet
+{
+class SpellerPlugin;
 }
 using Sonnet::SpellerPlugin;
 
@@ -37,10 +38,11 @@ class ASpellClient : public Sonnet::Client
     Q_PLUGIN_METADATA(IID "org.kde.Sonnet.ASpellClient")
 
 public:
-    ASpellClient(QObject* parent=0);
+    ASpellClient(QObject *parent = 0);
     ~ASpellClient();
 
-    virtual int reliability() const {
+    virtual int reliability() const
+    {
         return 20;
     }
 
@@ -48,7 +50,8 @@ public:
 
     virtual QStringList languages() const;
 
-    virtual QString name() const {
+    virtual QString name() const
+    {
         return QString::fromLatin1("ASpell");
     }
 private:

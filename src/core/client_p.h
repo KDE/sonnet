@@ -1,4 +1,3 @@
-// -*- Mode: C++; c-basic-offset: 4; indent-tabs-mode: nil; -*-
 /*
  *
  * Copyright (C)  2003  Zack Rusin <zack@kde.org>
@@ -34,45 +33,45 @@
  */
 namespace Sonnet
 {
-    class SpellerPlugin;
+class SpellerPlugin;
+
+/**
+ * \internal
+ * Client
+ */
+class SONNETCORE_EXPORT Client : public QObject
+{
+    Q_OBJECT
+public:
+    Client(QObject *parent = 0);
 
     /**
-     * \internal
-     * Client
+     * @returns how reliable the answer is (higher is better).
      */
-    class SONNETCORE_EXPORT Client : public QObject
-    {
-        Q_OBJECT
-    public:
-        Client( QObject *parent = 0 );
+    virtual int reliability() const = 0;
 
-        /**
-         * @returns how reliable the answer is (higher is better).
-         */
-        virtual int reliability() const = 0;
+    /**
+     * Returns a dictionary for the given language.
+     *
+     * @param language specifies the language of the dictionary. If an
+     *        empty string is passed the default language will be
+     *        used. Has to be one of the values returned by
+     *        languages()
+     *
+     * @returns a dictionary for the language or 0 if there was an error.
+     */
+    virtual SpellerPlugin *createSpeller(const QString &language) = 0;
 
-        /**
-         * Returns a dictionary for the given language.
-         *
-         * @param language specifies the language of the dictionary. If an
-         *        empty string is passed the default language will be
-         *        used. Has to be one of the values returned by
-         *        languages()
-         *
-         * @returns a dictionary for the language or 0 if there was an error.
-         */
-        virtual SpellerPlugin *createSpeller(const QString &language) =0;
+    /**
+     * @returns a list of supported languages.
+     */
+    virtual QStringList languages() const = 0;
 
-        /**
-         * @returns a list of supported languages.
-         */
-        virtual QStringList languages() const =0;
-
-        /**
-         * @returns the name of the implementating class.
-         */
-        virtual QString name() const =0;
-    };
+    /**
+     * @returns the name of the implementating class.
+     */
+    virtual QString name() const = 0;
+};
 }
 
 Q_DECLARE_INTERFACE(Sonnet::Client, "org.kde.sonnet.Client")

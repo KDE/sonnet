@@ -1,4 +1,3 @@
-// -*- Mode: C++; c-basic-offset: 4; indent-tabs-mode: nil; -*-
 /*
  *
  * Copyright (C)  2007  Zack Rusin <zack@kde.org>
@@ -28,124 +27,123 @@
 
 namespace Sonnet
 {
+/**
+ * Spell checker object.
+ *
+ * @short class used for actuall spell checking
+ */
+class SONNETCORE_EXPORT Speller
+{
+public:
+    Speller(const QString &lang = QString());
+    ~Speller();
+
+    Speller(const Speller &speller);
+    Speller &operator=(const Speller &speller);
+
     /**
-     * Spell checker object.
-     *
-     * @short class used for actuall spell checking
+     * Returns true if the speller supports currently selected
+     * language.
      */
-    class SONNETCORE_EXPORT Speller
-    {
-    public:
-        Speller(const QString &lang=QString());
-        ~Speller();
+    bool isValid() const;
 
-        Speller(const Speller &speller);
-        Speller &operator=(const Speller &speller);
+    /**
+     * Sets the language supported by this speller.
+     */
+    void setLanguage(const QString &lang);
+    /**
+     * Returns language supported by this speller.
+     */
+    QString language() const;
 
-        /**
-         * Returns true if the speller supports currently selected
-         * language.
-         */
-        bool isValid() const;
+    /**
+     * Checks the given word.
+     * @return false if the word is misspelled. true otherwise
+     */
+    bool isCorrect(const QString &word) const;
 
-        /**
-         * Sets the language supported by this speller.
-         */
-        void setLanguage(const QString &lang);
-        /**
-         * Returns language supported by this speller.
-         */
-        QString language() const;
+    /**
+     * Checks the given word.
+     * @return true if the word is misspelled. false otherwise
+     */
+    bool isMisspelled(const QString &word) const;
 
-        /**
-         * Checks the given word.
-         * @return false if the word is misspelled. true otherwise
-         */
-        bool isCorrect(const QString &word) const;
+    /**
+     * Fetches suggestions for the word.
+     *
+     * @return list of all suggestions for the word
+     */
+    QStringList suggest(const QString &word) const;
 
-        /**
-         * Checks the given word.
-         * @return true if the word is misspelled. false otherwise
-         */
-        bool isMisspelled(const QString &word) const;
+    /**
+     * Convience method calling isCorrect() and suggest()
+     * if the word isn't correct.
+     */
+    bool checkAndSuggest(const QString &word,
+                         QStringList &suggestions) const;
 
-        /**
-         * Fetches suggestions for the word.
-         *
-         * @return list of all suggestions for the word
-         */
-        QStringList suggest(const QString &word) const;
+    /**
+     * Stores user defined good replacement for the bad word.
+     * @returns true on success
+     */
+    bool storeReplacement(const QString &bad,
+                          const QString &good);
 
-        /**
-         * Convience method calling isCorrect() and suggest()
-         * if the word isn't correct.
-         */
-        bool checkAndSuggest(const QString &word,
-                             QStringList &suggestions) const;
+    /**
+     * Adds word to the list of of personal words.
+     * @return true on success
+     */
+    bool addToPersonal(const QString &word);
 
-        /**
-         * Stores user defined good replacement for the bad word.
-         * @returns true on success
-         */
-        bool storeReplacement(const QString &bad,
-                              const QString &good);
+    /**
+     * Adds word to the words recognizable in the current session.
+     * @return true on success
+     */
+    bool addToSession(const QString &word);
 
-        /**
-         * Adds word to the list of of personal words.
-         * @return true on success
-         */
-        bool addToPersonal(const QString &word);
-
-        /**
-         * Adds word to the words recognizable in the current session.
-         * @return true on success
-         */
-        bool addToSession(const QString &word);
-
-    public: // Configuration API
-        enum Attribute {
-            CheckUppercase,
-            SkipRunTogether
-        };
-        void save();
-        void restore();
-
-        /**
-         * Returns names of all supported backends (e.g. ISpell, ASpell)
-         */
-        QStringList availableBackends() const;
-
-        /**
-         * Returns a list of supported languages.
-         *
-         * Note: use availableDictionaries
-         */
-        QStringList availableLanguages() const;
-        /**
-         * Returns a localized list of names of supported languages.
-         *
-         * Note: use availableDictionaries
-         */
-        QStringList availableLanguageNames() const;
-
-        /**
-         * Returns a map of all available language descriptions and their
-         * codes
-         */
-        QMap<QString, QString> availableDictionaries() const;
-
-
-        void setDefaultLanguage(const QString &lang);
-        QString defaultLanguage() const;
-
-        void setDefaultClient(const QString &client);
-        QString defaultClient() const;
-
-        void setAttribute(Attribute attr, bool b = true);
-        bool testAttribute(Attribute attr) const;
-    private:
-        class Private;
-        Private *const d;
+public: // Configuration API
+    enum Attribute {
+        CheckUppercase,
+        SkipRunTogether
     };
+    void save();
+    void restore();
+
+    /**
+     * Returns names of all supported backends (e.g. ISpell, ASpell)
+     */
+    QStringList availableBackends() const;
+
+    /**
+     * Returns a list of supported languages.
+     *
+     * Note: use availableDictionaries
+     */
+    QStringList availableLanguages() const;
+    /**
+     * Returns a localized list of names of supported languages.
+     *
+     * Note: use availableDictionaries
+     */
+    QStringList availableLanguageNames() const;
+
+    /**
+     * Returns a map of all available language descriptions and their
+     * codes
+     */
+    QMap<QString, QString> availableDictionaries() const;
+
+    void setDefaultLanguage(const QString &lang);
+    QString defaultLanguage() const;
+
+    void setDefaultClient(const QString &client);
+    QString defaultClient() const;
+
+    void setAttribute(Attribute attr, bool b = true);
+    bool testAttribute(Attribute attr) const;
+private:
+    class Private;
+    Private *const d;
+};
 }
 #endif

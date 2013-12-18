@@ -37,36 +37,34 @@ int main()
     QDataStream out(&sout);
 
     bool ok = true, ok2;
-    QHash<quint32,quint8> data;
-    QHash<qint8,QString> catalog;
+    QHash<quint32, quint8> data;
+    QHash<qint8, QString> catalog;
 
-    while ( ok )
-    {
+    while (ok) {
         QString line = in.readLine();
         ok =  !in.atEnd();
 
-        if ( line.isEmpty() || line.startsWith('#') )
+        if (line.isEmpty() || line.startsWith('#')) {
             continue;
+        }
 
         QRegExp rx(";");
         int split = rx.indexIn(line);
 
-        QString catagoryString = line.right( line.size() - split - 1 ).simplified();
+        QString catagoryString = line.right(line.size() - split - 1).simplified();
 
         qint8 catagory = catalog.key(catagoryString);
-        if(!catagory)
-        {
-            catalog[ catagory = catalog.size()+1 ] = catagoryString;
+        if (!catagory) {
+            catalog[ catagory = catalog.size() + 1 ] = catagoryString;
         }
 
-        QString codes = line.left( split ).simplified();
-        QStringList codeList = codes.split ( ".." );
+        QString codes = line.left(split).simplified();
+        QStringList codeList = codes.split("..");
 
         quint32 start = codeList.at(0).toInt(&ok2, 16);
         quint32 end = (codeList.size() == 2) ? codeList.at(1).toInt(&ok2, 16) : start;
-        for (quint32 code = start; code<=end; ++code)
-        {
-            data.insert( code, catagory );
+        for (quint32 code = start; code <= end; ++code) {
+            data.insert(code, catagory);
             qDebug() << "[" << catagory << "] " << code;
         }
     }

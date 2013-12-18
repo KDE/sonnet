@@ -27,14 +27,14 @@
 
 using namespace Sonnet;
 
-int main( int argc, char** argv )
+int main(int argc, char **argv)
 {
-    QCoreApplication app(argc,argv);
+    QCoreApplication app(argc, argv);
 
     Speller dict("en_US");
 
-    qDebug()<< "Clients are "   << dict.availableBackends();
-    qDebug()<< "Languages are " << dict.availableLanguages();
+    qDebug() << "Clients are "   << dict.availableBackends();
+    qDebug() << "Languages are " << dict.availableLanguages();
 
     QStringList words;
 
@@ -82,7 +82,7 @@ int main( int argc, char** argv )
     QTime mtime;
     mtime.start();
     for (QStringList::Iterator itr = words.begin();
-         itr != words.end(); ++itr) {
+            itr != words.end(); ++itr) {
         if (!dict.isCorrect(*itr)) {
             //qDebug()<<"Word " << *itr <<" is misspelled";
             QStringList sug = dict.suggest(*itr);
@@ -90,7 +90,7 @@ int main( int argc, char** argv )
         }
     }
     //mtime.stop();
-    qDebug()<<"Elapsed time is "<<mtime.elapsed();
+    qDebug() << "Elapsed time is " << mtime.elapsed();
 
     return 0;
 }

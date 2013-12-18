@@ -35,10 +35,10 @@ void SonnetCoreTest::testCore()
 {
     Speller dict("en_US");
 
-    qDebug()<< "Clients are "   << dict.availableBackends();
-    qDebug()<< "Languages are " << dict.availableLanguages();
-    qDebug()<< "Language names are " << dict.availableLanguageNames();
-    qDebug()<< "Language dicts " << dict.availableDictionaries();
+    qDebug() << "Clients are "   << dict.availableBackends();
+    qDebug() << "Languages are " << dict.availableLanguages();
+    qDebug() << "Language names are " << dict.availableLanguageNames();
+    qDebug() << "Language dicts " << dict.availableDictionaries();
 
     QStringList words;
 
@@ -86,7 +86,7 @@ void SonnetCoreTest::testCore()
     QTime mtime;
     mtime.start();
     for (QStringList::Iterator itr = words.begin();
-         itr != words.end(); ++itr) {
+            itr != words.end(); ++itr) {
         if (!dict.isCorrect(*itr)) {
             //qDebug()<<"Word " << *itr <<" is misspelled";
             QStringList sug = dict.suggest(*itr);
@@ -94,11 +94,11 @@ void SonnetCoreTest::testCore()
         }
     }
     //mtime.stop();
-    qDebug()<<"Elapsed time is "<<mtime.elapsed();
+    qDebug() << "Elapsed time is " << mtime.elapsed();
 
-    qDebug()<<"Detecting language ...";
+    qDebug() << "Detecting language ...";
     QString sentence = QString::fromLatin1("QClipboard features some convenience functions to access common data types: setText() allows the exchange of Unicode text and setPixmap() and setImage() allows the exchange of QPixmaps and QImages between applications.");
-    qDebug()<<"\tlang is "<<Sonnet::detectLanguage(sentence);
+    qDebug() << "\tlang is " << Sonnet::detectLanguage(sentence);
 }
 
 void SonnetCoreTest::testCore2()
@@ -108,10 +108,10 @@ void SonnetCoreTest::testCore2()
         QSKIP("This test requires a german spelling dictionary");
         return;
     }
-    qDebug()<< "Clients are "   << dict.availableBackends();
-    qDebug()<< "Languages are " << dict.availableLanguages();
-    qDebug()<< "Language names are " << dict.availableLanguageNames();
-    qDebug()<< "Language dicts " << dict.availableDictionaries();
+    qDebug() << "Clients are "   << dict.availableBackends();
+    qDebug() << "Languages are " << dict.availableLanguages();
+    qDebug() << "Language names are " << dict.availableLanguageNames();
+    qDebug() << "Language dicts " << dict.availableDictionaries();
 
     QStringList words;
 
@@ -154,7 +154,7 @@ void SonnetCoreTest::testCore2()
     QTime mtime;
     mtime.start();
     for (QStringList::Iterator itr = words.begin();
-         itr != words.end(); ++itr) {
+            itr != words.end(); ++itr) {
         if (!dict.isCorrect(*itr)) {
             //qDebug()<<"Word " << *itr <<" is misspelled";
             QStringList sug = dict.suggest(*itr);
@@ -162,10 +162,10 @@ void SonnetCoreTest::testCore2()
         }
     }
     //mtime.stop();
-    qDebug()<<"Elapsed time is "<<mtime.elapsed();
+    qDebug() << "Elapsed time is " << mtime.elapsed();
 
-    qDebug()<<"Detecting language ...";
+    qDebug() << "Detecting language ...";
     QString sentence = QString::fromLatin1("Die K Desktop Environment (KDE; auf Deutsch K-Arbeitsumgebung; früher: Kool Desktop Environment) ist eine frei verfügbare Arbeitsumgebung, das heißt eine grafische Benutzeroberfläche mit vielen Zusatzprogrammen für den täglichen Gebrauch.");
-    qDebug()<<"\tlang is "<<Sonnet::detectLanguage(sentence);
+    qDebug() << "\tlang is " << Sonnet::detectLanguage(sentence);
 }
 

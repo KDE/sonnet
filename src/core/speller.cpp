@@ -1,4 +1,3 @@
-// -*- Mode: C++; c-basic-offset: 4; indent-tabs-mode: nil; -*-
 /**
  *
  * Copyright (C)  2007  Zack Rusin <zack@kde.org>
@@ -46,8 +45,9 @@ public:
 
         language = lang;
 
-        if (language.isEmpty())
+        if (language.isEmpty()) {
             language = settings->defaultLanguage();
+        }
 
         dict = loader->createSpeller(language);
     }
@@ -77,13 +77,11 @@ Speller::Speller(const QString &lang)
     d->init(lang);
 }
 
-
 Speller::~Speller()
 {
     //qDebug()<<"deleting "<<this;
     delete d;
 }
-
 
 Speller::Speller(const Speller &speller)
     : d(new Private)
@@ -92,78 +90,78 @@ Speller::Speller(const Speller &speller)
     d->init(d->language);
 }
 
-
-Speller & Speller::operator=(const Speller &speller)
+Speller &Speller::operator=(const Speller &speller)
 {
     d->language = speller.language();
     d->recreateDict();
     return *this;
 }
 
-
 bool Speller::isCorrect(const QString &word) const
 {
-    if (!d->isValid())
+    if (!d->isValid()) {
         return true;
+    }
     return d->dict->isCorrect(word);
 }
 
-
 bool Speller::isMisspelled(const QString &word) const
 {
-    if (!d->isValid())
+    if (!d->isValid()) {
         return false;
+    }
     return d->dict->isMisspelled(word);
 }
 
 QStringList Speller::suggest(const QString &word) const
 {
-    if (!d->isValid())
+    if (!d->isValid()) {
         return QStringList();
+    }
     return d->dict->suggest(word);
 }
 
 bool Speller::checkAndSuggest(const QString &word,
                               QStringList &suggestions) const
 {
-    if (!d->isValid())
+    if (!d->isValid()) {
         return true;
+    }
     return d->dict->checkAndSuggest(word, suggestions);
 }
-
 
 bool Speller::storeReplacement(const QString &bad,
                                const QString &good)
 {
-    if (!d->isValid())
+    if (!d->isValid()) {
         return false;
+    }
     return d->dict->storeReplacement(bad, good);
 }
 
-
 bool Speller::addToPersonal(const QString &word)
 {
-    if (!d->isValid())
+    if (!d->isValid()) {
         return false;
+    }
     return d->dict->addToPersonal(word);
 }
 
-
 bool Speller::addToSession(const QString &word)
 {
-    if (!d->isValid())
+    if (!d->isValid()) {
         return false;
+    }
     return d->dict->addToSession(word);
 }
 
-
 QString Speller::language() const
 {
-    if (!d->isValid())
+    if (!d->isValid()) {
         return QString();
+    }
     return d->dict->language();
 }
-
 
 void Speller::save()
 {
@@ -171,7 +169,6 @@ void Speller::save()
         d->settings->save();
     }
 }
-
 
 void Speller::restore()
 {
@@ -181,13 +178,11 @@ void Speller::restore()
     }
 }
 
-
 QStringList Speller::availableBackends() const
 {
     Loader *l = Loader::openLoader();
     return l->clients();
 }
-
 
 QStringList Speller::availableLanguages() const
 {
@@ -195,37 +190,31 @@ QStringList Speller::availableLanguages() const
     return l->languages();
 }
 
-
 QStringList Speller::availableLanguageNames() const
 {
     Loader *l = Loader::openLoader();
     return l->languageNames();
 }
 
-
 void Speller::setDefaultLanguage(const QString &lang)
 {
     d->settings->setDefaultLanguage(lang);
 }
-
 
 QString Speller::defaultLanguage() const
 {
     return d->settings->defaultLanguage();
 }
 
-
 void Speller::setDefaultClient(const QString &client)
 {
     d->settings->setDefaultClient(client);
 }
 
-
 QString Speller::defaultClient() const
 {
     return d->settings->defaultClient();
 }
-
 
 void Speller::setAttribute(Attribute attr, bool b)
 {
@@ -238,7 +227,6 @@ void Speller::setAttribute(Attribute attr, bool b)
         break;
     }
 }
-
 
 bool Speller::testAttribute(Attribute attr) const
 {
@@ -270,17 +258,18 @@ QMap<QString, QString> Sonnet::Speller::availableDictionaries() const
     const QStringList lst = l->languages();
     QMap<QString, QString> langs;
 
-    Q_FOREACH(QString tag, lst) { // krazy:exclude=foreach (no const& because tag is modified below)
+    Q_FOREACH (QString tag, lst) { // krazy:exclude=foreach (no const& because tag is modified below)
         tag = tag.mid(0, tag.indexOf(QLatin1Char('-')));
         QLocale loc(tag);
         QString description;
 
         if (!loc.nativeCountryName().isEmpty())
-            description= QString::fromLatin1("%1 (%2)")
-                         .arg(loc.nativeLanguageName())
-                         .arg(loc.nativeCountryName());
-        else
-            description= loc.nativeLanguageName();
+            description = QString::fromLatin1("%1 (%2)")
+                          .arg(loc.nativeLanguageName())
+                          .arg(loc.nativeCountryName());
+        else {
+            description = loc.nativeLanguageName();
+        }
         //qDebug()<<"Dict is "<<tag<<" ( "<<loc.name()<<")"<<", descr = "<<description;
         langs.insert(description, tag);
     }

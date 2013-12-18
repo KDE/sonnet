@@ -72,7 +72,7 @@ This is the most obvious library to reuse as it is currently used to generate\
 the KDE documentation, and is also a very complete and fast\
 implementation. The down side of using this code is that it would either need\
 "
-"a new DOM implementation in KHTML (which used the libxml2 structures), a \
+                   "a new DOM implementation in KHTML (which used the libxml2 structures), a \
 wrapper library that made on of the DOM trees support the API of the other, or\
 binding layer that parsed the XML twice and somehow maintained a mapping\
 between the two DOM trees. Unfortunately the documentation of this library is\
@@ -131,14 +131,14 @@ Discussion\
 If you want to talk about this code feel free to mail us.";
 
 BackgroundTest::BackgroundTest()
-    : QObject( 0 )
+    : QObject(0)
 {
     m_checker = new BackgroundChecker(this);
     connect(m_checker, SIGNAL(done()),
             SLOT(slotDone()));
     connect(m_checker, SIGNAL(misspelling(QString,int)),
             SLOT(slotMisspelling(QString,int)));
-    m_len = strlen( text );
+    m_len = strlen(text);
     m_checker->setText(text);
     m_timer.start();
 }
@@ -149,14 +149,13 @@ void BackgroundTest::slotDone()
     QApplication::exit();
 }
 
-void BackgroundTest::slotMisspelling( const QString& word, int start )
+void BackgroundTest::slotMisspelling(const QString &word, int start)
 {
-    qDebug() << "Misspelling \""<< word << "\" at" << start;
+    qDebug() << "Misspelling \"" << word << "\" at" << start;
     m_checker->continueChecking();
 }
 
-
-int main( int argc, char** argv )
+int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
 

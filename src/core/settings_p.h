@@ -1,4 +1,3 @@
-// -*- Mode: C++; c-basic-offset: 4; indent-tabs-mode: nil; -*-
 /*
  *
  * Copyright (C)  2003  Zack Rusin <zack@kde.org>
@@ -27,59 +26,59 @@
 
 namespace Sonnet
 {
-    class Loader;
+class Loader;
 
-    /**
-     * Settings class
-     */
-    class SONNETCORE_EXPORT Settings
-    {
-    public:
-        ~Settings();
+/**
+ * Settings class
+ */
+class SONNETCORE_EXPORT Settings
+{
+public:
+    ~Settings();
 
-        bool modified() const;
-        void setModified(bool modified);
+    bool modified() const;
+    void setModified(bool modified);
 
-        void setDefaultLanguage(const QString &lang);
-        QString defaultLanguage() const;
+    void setDefaultLanguage(const QString &lang);
+    QString defaultLanguage() const;
 
-        void setDefaultClient(const QString &client);
-        QString defaultClient() const;
+    void setDefaultClient(const QString &client);
+    QString defaultClient() const;
 
-        void setCheckUppercase(bool);
-        bool checkUppercase() const;
+    void setCheckUppercase(bool);
+    bool checkUppercase() const;
 
-        void setSkipRunTogether(bool);
-        bool skipRunTogether() const;
+    void setSkipRunTogether(bool);
+    bool skipRunTogether() const;
 
-        void setBackgroundCheckerEnabled(bool);
-        bool backgroundCheckerEnabled() const;
+    void setBackgroundCheckerEnabled(bool);
+    bool backgroundCheckerEnabled() const;
 
-        void setCheckerEnabledByDefault(bool);
-        bool checkerEnabledByDefault() const;
+    void setCheckerEnabledByDefault(bool);
+    bool checkerEnabledByDefault() const;
 
-        void setCurrentIgnoreList(const QStringList &ignores);
-        void addWordToIgnore(const QString &word);
-        QStringList currentIgnoreList() const;
-        bool ignore(const QString &word);
+    void setCurrentIgnoreList(const QStringList &ignores);
+    void addWordToIgnore(const QString &word);
+    QStringList currentIgnoreList() const;
+    bool ignore(const QString &word);
 
-        void save();
-        void restore();
+    void save();
+    void restore();
 
-        int disablePercentageWordError() const;
-        int disableWordErrorCount() const;
+    int disablePercentageWordError() const;
+    int disableWordErrorCount() const;
 
-    private:
-        void readIgnoreList();
-        void setQuietIgnoreList(const QStringList &ignores);
+private:
+    void readIgnoreList();
+    void setQuietIgnoreList(const QStringList &ignores);
 
-    private:
-        friend class Loader;
-        Settings(Loader *loader);
-    private:
-        class Private;
-        Private *const d;
-    };
+private:
+    friend class Loader;
+    Settings(Loader *loader);
+private:
+    class Private;
+    Private *const d;
+};
 }
 
 #endif // SONNET_SETTINGS_P_H

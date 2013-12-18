@@ -1,4 +1,3 @@
-// -*- Mode: C++; c-basic-offset: 4; indent-tabs-mode: nil; -*-
 /*
  *
  * Copyright (C)  2004  Zack Rusin <zack@kde.org>
@@ -28,92 +27,91 @@
 
 namespace Sonnet
 {
-    class Settings;
+class Settings;
+
+/**
+ * Structure abstracts the word and its position in the
+ * parent text.
+ *
+ * @author Zack Rusin <zack@kde.org>
+ * @short struct represents word
+ */
+struct SONNETCORE_EXPORT Word {
+    Word() : start(0), end(true)
+    {}
+
+    Word(const QString &w, int st, bool e = false)
+        : word(w), start(st), end(e)
+    {}
+    Word(const Word &other)
+        : word(other.word), start(other.start),
+          end(other.end)
+    {}
+
+    QString word;
+    int    start;
+    bool    end;
+};
+
+/**
+ * Filter is used to split text into words which
+ * will be spell checked.
+ *
+ * @author Zack Rusin <zack@kde.org>
+ * @short used to split text into words
+ */
+class SONNETCORE_EXPORT Filter
+{
+public:
+    static Filter *defaultFilter();
+public:
+    Filter();
+    virtual ~Filter();
+
+    static Word end();
 
     /**
-     * Structure abstracts the word and its position in the
-     * parent text.
-     *
-     * @author Zack Rusin <zack@kde.org>
-     * @short struct represents word
+     * Sets the Settings object for this Filter
      */
-    struct SONNETCORE_EXPORT Word
-    {
-        Word() : start( 0 ), end( true )
-            {}
-
-        Word( const QString& w, int st, bool e = false )
-            : word( w ), start( st ), end( e )
-            {}
-        Word( const Word& other )
-            : word( other.word ), start( other.start ),
-              end( other.end )
-            {}
-
-        QString word;
-        int    start;
-        bool    end;
-    };
+    void setSettings(Settings *);
 
     /**
-     * Filter is used to split text into words which
-     * will be spell checked.
-     *
-     * @author Zack Rusin <zack@kde.org>
-     * @short used to split text into words
+     * Returns currently used Settings object
      */
-    class SONNETCORE_EXPORT Filter
-    {
-    public:
-        static Filter *defaultFilter();
-    public:
-        Filter();
-        virtual ~Filter();
+    Settings *settings() const;
 
-        static Word end();
+    bool atEnd() const;
 
-        /**
-         * Sets the Settings object for this Filter
-         */
-        void setSettings(Settings*);
+    void setBuffer(const QString &buffer);
+    QString buffer() const;
 
-        /**
-         * Returns currently used Settings object
-         */
-        Settings *settings() const;
+    void restart();
 
-        bool atEnd() const;
+    virtual Word nextWord() const;
+    virtual Word wordAtPosition(unsigned int pos) const;
 
-        void setBuffer( const QString& buffer );
-        QString buffer() const;
+    virtual void setCurrentPosition(int);
+    virtual int currentPosition() const;
+    virtual void replace(const Word &w, const QString &newWord);
 
-        void restart();
+    /**
+     * Should return the sentence containing the current word
+     */
+    virtual QString context() const;
+protected:
+    bool trySkipLinks() const;
+    bool ignore(const QString &word) const;
+    bool shouldBeSkipped(bool wordWasUppercase, bool wordWasRunTogether,
+                         const QString &foundWord) const;
 
-        virtual Word nextWord() const;
-        virtual Word wordAtPosition( unsigned int pos ) const;
+protected:
+    QString m_buffer;
+    mutable QTextBoundaryFinder m_finder;
 
-        virtual void setCurrentPosition( int );
-        virtual int currentPosition() const;
-        virtual void replace( const Word& w, const QString& newWord );
-
-        /**
-         * Should return the sentence containing the current word
-         */
-        virtual QString context() const;
-    protected:
-        bool trySkipLinks() const;
-        bool ignore( const QString& word ) const;
-        bool shouldBeSkipped( bool wordWasUppercase, bool wordWasRunTogether,
-                              const QString& foundWord ) const;
-
-    protected:
-        QString m_buffer;
-        mutable QTextBoundaryFinder m_finder;
-
-    private:
-        class Private;
-        Private* const d;
-    };
+private:
+    class Private;
+    Private *const d;
+};
 
 }
 
