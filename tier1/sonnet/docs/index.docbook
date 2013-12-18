@@ -1,0 +1,89 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
+  <!ENTITY kappname "&sonnet;">
+  <!ENTITY % English "INCLUDE" > <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE">
+]>
+
+<article id="sonnet" lang="&language;">
+
+<articleinfo>
+<!--title>The &sonnet; Handbook</title-->
+<title>Check Spelling Dialog</title>
+
+<authorgroup>
+<author>&David.Sweet; &David.Sweet.mail;</author>
+
+<!-- TRANS:ROLES_OF_TRANSLATORS -->
+</authorgroup>
+
+<date>2010-09-02</date>
+<releaseinfo>&kde; 4.5</releaseinfo>
+<abstract>
+<para>&sonnet; is the spelling checker used by &kde; applications such
+as &kate;, &kmail;, and &kword;. It is a &GUI; frontend to various free spell checkers. 
+More Information about required spell checkers and dictionaries you find in the 
+documentation of the &systemsettings; module 
+<ulink url="help:kcontrol/spellchecking">Spell Checker</ulink>.</para>
+
+</abstract>
+<keywordset>
+<keyword>spell</keyword>
+<keyword>spelling</keyword>
+<keyword>sonnet</keyword>
+<keyword>ispell</keyword>
+<keyword>aspell</keyword>
+<keyword>check</keyword>
+<keyword>checker</keyword>
+<keyword>KDE</keyword>
+</keywordset>
+</articleinfo>
+
+<para><anchor id="spelldlg"/>
+The top line in the dialog displays a possibly misspelled word which was found in your
+document. &sonnet; attempts to find an appropriate replacement word. One or
+several may be found.</para>
+<para>The best guess is shown to the right of <guilabel>Replace with</guilabel>.
+To accept this replacement, click on <guibutton>Replace</guibutton>.</para> 
+<para>You may also select a word
+from the list of suggestions and then click <guibutton>Replace</guibutton> 
+to replace the misspelled word with the selected word. To add more suggestions 
+from the dictionary to the suggestions list click the <guibutton>Suggest</guibutton>
+button.</para>
+
+<para>To keep your original spelling, click on <guilabel>Ignore</guilabel>.</para>
+
+<para>To stop the spellchecking -- keeping the changes you've already made -- click
+on <guibutton>Finished</guibutton>.</para>
+
+<para>To stop the spellchecking and cancel the changes you've already made, click on
+<guibutton>Cancel</guibutton>.</para>
+
+<para>Clicking on <guibutton>Replace All</guibutton> will initially perform the same function as
+clicking on <guibutton>Replace</guibutton>, but will automatically replace the misspelled word
+with the chosen replacement word, if it appears again (at a later point) in your
+document.</para>
+
+<para>The <guibutton>Ignore All</guibutton> button ignores this and all future occurrences of the
+misspelled word.</para>
+
+<para>Clicking on <guibutton>Add to Dictionary</guibutton> will add the misspelled word to your personal dictionary
+(this is distinct from the original system dictionary, so the additions you make
+will not be seen by other users).</para>
+
+<para>The drop down box <guilabel>Language</guilabel> at the bottom of this dialog
+allows you to switch to another dictionary temporarily.</para>
+
+<para>The default configuration options are available in the &systemsettings; module 
+<ulink url="help:kcontrol/spellchecking">Spell Checker</ulink>.</para>
+
+</article>
+<!--
+Local Variables:
+mode: sgml
+sgml-omittag: nil
+sgml-shorttag: t
+sgml-general-insert-case: lower
+End:
+-->
+

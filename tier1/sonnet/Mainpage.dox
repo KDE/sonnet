@@ -1,0 +1,29 @@
+/** @mainpage Sonnet
+
+%Sonnet is the %KDE language processing architecture.
+<p>
+This directory only contains plugins.  The core functionality of
+%Sonnet is contained in sonnetcore, and the user-interface
+components in sonnetui.
+
+See the Sonnet namespace in sonnetcore, and Sonnet::ConfigDialog,
+Sonnet::Dialog and Sonnet::Highlighter in sonnetui.
+
+TechBase has a
+<a href="http://techbase.kde.org/Development/Tutorials/Sonnet/SonnetTutorial">tutorial
+on Sonnet</a>.
+
+@authors
+Zack Rusin \<zack@kde.org\><br>
+Jacob R Rideout \<kde@jacobrideout.net\>
+
+@maintainers
+Martin Sandsmark \<martin.sandsmark@kde.org\>
+
+@licenses
+@lgpl
+
+*/
+
+// DOXYGEN_SET_PROJECT_NAME = Sonnet
+// vim:ts=4:sw=4:expandtab:filetype=doxygen

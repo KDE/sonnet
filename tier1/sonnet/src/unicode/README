@@ -1,0 +1,9 @@
+parseucd parses the unicode data file.
+
+It takes a datafile as stdin and output a serialized version of the data to a QMultiMap in stdout for later use.
+
+CMake needs process the relevent UCD files for inclusion in the word and sentence boundry checker
+something like:
+./parseucd < ../data/GraphemeBreakProperty.txt > gb.map
+./parseucd < ../data/SentenceBreakProperty.txt > sb.map
+./parseucd < ../data/WordBreakProperty.txt > wb.map
