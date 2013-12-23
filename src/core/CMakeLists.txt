@@ -10,11 +10,13 @@ set(sonnetcore_SRCS
    backgroundchecker.cpp
    backgroundengine.cpp
    globals.cpp
+   guesslanguage.cpp
 )
 set(sonnetcore_HEADERS
     backgroundchecker.h
     speller.h
     globals.h
+    guesslanguage.h
     ${CMAKE_CURRENT_BINARY_DIR}/sonnetcore_export.h
 )
 
