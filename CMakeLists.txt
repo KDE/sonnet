@@ -34,6 +34,7 @@ ecm_setup_version(5.0.0 VARIABLE_PREFIX SONNET
 add_subdirectory(src)
 add_subdirectory(autotests)
 add_subdirectory(tests)
+add_subdirectory(data)
 
 
 # create a Config.cmake and a ConfigVersion.cmake file and install them
