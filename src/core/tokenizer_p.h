@@ -136,5 +136,26 @@ private:
     BreakTokenizerPrivate* const d;
 };
 
+
+/**
+ @ short ParagraphTokenizer splits supplied buffer into individual paragraphs.
+
+ ParagraphTokenizer splits buffer into paragraphs according to rules from Unicode standard 5.1.
+ * @since 4.3
+ */
+class SONNETCORE_EXPORT ParagraphTokenizer : public AbstractTokenizer
+{
+public:
+    ParagraphTokenizer(const QString& buffer=QString());
+    ~ParagraphTokenizer();
+    void setBuffer(const QString& buffer);
+    bool hasNext() const;
+    QStringRef next();
+    QString buffer() const;
+    void replace(int position, int len, const QString& newWord);
+private:
+    BreakTokenizerPrivate* const d;
+};
+
 }
 #endif

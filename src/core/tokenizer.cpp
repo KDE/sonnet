@@ -33,10 +33,10 @@ class BreakTokenizerPrivate
 {
 public:
     enum Type {Words, Sentences, Paragraphs};
-    // TODO: Paragraph tokenizer
-    BreakTokenizerPrivate(bool s) :
+
+    BreakTokenizerPrivate(Type s) :
             breakFinder(new TextBreaks),
-            cacheValid(false), sentences(s), inAddress(false), ignoreUppercase(false)
+            cacheValid(false), type(s), inAddress(false), ignoreUppercase(false)
     {}
     ~BreakTokenizerPrivate() { delete breakFinder; }
     TextBreaks::Positions breaks() const;
@@ -52,7 +52,7 @@ public:
     int itemPosition;
     mutable bool cacheValid;
     QStringRef last;
-    bool sentences;
+    Type type;
     bool inAddress;
     bool ignoreUppercase;
     
@@ -101,8 +101,13 @@ void BreakTokenizerPrivate::regenerateCache() const
 
     breakFinder->setText(buffer);
 
-    if (sentences) cachedBreaks = breakFinder->sentenceBreaks();
-    else cachedBreaks = breakFinder->wordBreaks();
+    if (type == Sentences) {
+        cachedBreaks = breakFinder->sentenceBreaks();
+    } else if (type == Words) {
+        cachedBreaks = breakFinder->wordBreaks();
+    } else if (type == Paragraphs) {
+        cachedBreaks = breakFinder->paragraphBreaks();
+    }
 
     // Conforming KTextBreaks must either return and empty QSting() or
     // must return all breaks found, the ends of the string are always breaks
@@ -138,7 +143,7 @@ void BreakTokenizerPrivate::replace(int pos, int len, const QString& newWord)
 /*-----------------------------------------------------------*/
 
 WordTokenizer::WordTokenizer( const QString& buffer ) :
-        d(new BreakTokenizerPrivate(false))
+        d(new BreakTokenizerPrivate(BreakTokenizerPrivate::Words))
 {
     setBuffer(buffer);
 }
@@ -208,7 +213,7 @@ bool WordTokenizer::isSpellcheckable() const {
 /* --------------------------------------------------------------------*/
 
 SentenceTokenizer::SentenceTokenizer( const QString& buffer ) :
-        d(new BreakTokenizerPrivate(true))
+        d(new BreakTokenizerPrivate(BreakTokenizerPrivate::Sentences))
 {
     setBuffer(buffer);
 }
@@ -239,6 +244,45 @@ QString SentenceTokenizer::buffer() const
 }
 
 void SentenceTokenizer::replace(int pos, int len, const QString& newWord)
+{
+    d->replace(pos,len,newWord);
+}
+
+
+/* --------------------------------------------------------------------*/
+
+ParagraphTokenizer::ParagraphTokenizer( const QString& buffer ) :
+d(new BreakTokenizerPrivate(BreakTokenizerPrivate::Paragraphs))
+{
+    setBuffer(buffer);
+}
+
+ParagraphTokenizer::~ParagraphTokenizer()
+{
+    delete d;
+}
+
+bool ParagraphTokenizer::hasNext() const
+{
+    return d->hasNext();
+}
+
+void ParagraphTokenizer::setBuffer( const QString& buffer )
+{
+    d->setBuffer(buffer);
+}
+
+QStringRef ParagraphTokenizer::next()
+{
+    return d->next();
+}
+
+QString ParagraphTokenizer::buffer() const
+{
+    return d->buffer;
+}
+
+void ParagraphTokenizer::replace(int pos, int len, const QString& newWord)
 {
     d->replace(pos,len,newWord);
 }
