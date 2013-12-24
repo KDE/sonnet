@@ -110,6 +110,26 @@ TextBreaks::Positions TextBreaks::sentenceBreaks( const QString & text )
     return breaks;
 }
 
+
+TextBreaks::Positions TextBreaks::paragraphBreaks( const QString & text )
+{
+    Positions breaks;
+
+    if (text.isEmpty())
+        return breaks;
+
+    breaks.append(0);
+
+
+    for (int i=0; i<text.length(); i++) {
+        if (text[i].category() == QChar::Separator_Paragraph || text[i] == '\r' || text[i] == '\n')
+            breaks.append(i);
+    }
+
+
+    return breaks;
+}
+
 TextBreaks::Positions TextBreaks::graphemeBreaks( ) const
 {
     return graphemeBreaks(d->text);
@@ -124,5 +144,11 @@ TextBreaks::Positions TextBreaks::sentenceBreaks( ) const
 {
     return sentenceBreaks(d->text);
 }
+
+TextBreaks::Positions TextBreaks::paragraphBreaks( ) const
+{
+    return paragraphBreaks(d->text);
+}
+
 
 }

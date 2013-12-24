@@ -97,6 +97,13 @@ public:
     static Positions sentenceBreaks( const QString & text );
 
     /**
+     * Return the Positions of each paragraph for the given  @p text.
+     * @param text to be checked
+     * @return positions of breaks
+     */
+    static Positions paragraphBreaks( const QString & text );
+
+    /**
      * Return the Positions of each grapheme for the text previously set.
      * @return positions of breaks
      */
@@ -113,6 +120,12 @@ public:
      * @return positions of breaks
      */
     virtual Positions sentenceBreaks( ) const;
+
+    /**
+     * Return the Positions of each paragraph for the text previously set.
+     * @return positions of breaks
+     */
+    virtual Positions paragraphBreaks( ) const;
 
 private:
     TextBreaksPrivate* const d;
