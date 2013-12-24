@@ -42,6 +42,7 @@ public:
     bool skipRunTogether;
     bool backgroundCheckerEnabled;
     bool checkerEnabledByDefault;
+    bool autodetectLanguage;
 
     int disablePercentage;
     int disableWordCount;
@@ -108,6 +109,19 @@ void Settings::setCheckUppercase(bool check)
 bool Settings::checkUppercase() const
 {
     return d->checkUppercase;
+}
+
+void Settings::setAutodetectLanguage(bool detect)
+{
+    if (d->autodetectLanguage != detect) {
+        d->modified=true;
+        d->autodetectLanguage=detect;
+    }
+}
+
+bool Settings::autodetectLanguage() const
+{
+    return d->autodetectLanguage;
 }
 
 void Settings::setSkipRunTogether(bool skip)

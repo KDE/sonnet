@@ -48,6 +48,9 @@ public:
     void setCheckUppercase(bool);
     bool checkUppercase() const;
 
+    void setAutodetectLanguage(bool);
+    bool autodetectLanguage() const;
+
     void setSkipRunTogether(bool);
     bool skipRunTogether() const;
 

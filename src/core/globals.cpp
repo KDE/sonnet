@@ -20,7 +20,6 @@
 
 #include "speller.h"
 
-#include "filter_p.h"
 #include "loader_p.h"
 #include "settings_p.h"
 #include "tokenizer_p.h"
