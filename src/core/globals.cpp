@@ -23,6 +23,7 @@
 #include "filter_p.h"
 #include "loader_p.h"
 #include "settings_p.h"
+#include "tokenizer_p.h"
 
 #include <QMap>
 #include <QVector>
@@ -38,11 +39,44 @@ namespace Sonnet
  * is likely the language we're looking for. (unless of course
  * someone is a real terrible speller).
  */
+QString detectLanguage(const QString& sentence, const QStringList& candidates)
+{
+    QList<Speller> spellers;
+    Q_FOREACH (const QString& lang, candidates) {
+        Speller sp;
+        sp.setLanguage(lang);
+        if (sp.isValid()) spellers << sp;
+    }
+
+    if (spellers.isEmpty()) return QString();
+
+    QMap<QString, int> correctHits;
+
+    WordTokenizer t(sentence);
+    while (t.hasNext()) {
+        QStringRef word = t.next();
+        if (!t.isSpellcheckable()) continue;
+        for (int i = 0; i < spellers.count(); ++i) {
+            if (spellers[i].isValid() && spellers[i].isCorrect(word.toString()))
+                correctHits[spellers[i].language()] += 1;
+        }
+    }
+
+    if (correctHits.isEmpty()) return QString();
+
+    QMap<QString, int>::const_iterator max = correctHits.constBegin();
+    for (QMap<QString, int>::const_iterator itr = correctHits.constBegin();
+         itr != correctHits.constEnd(); ++itr) {
+        if (itr.value() > max.value())
+            max = itr;
+         }
+         return max.key();
+}
+
 QString detectLanguage(const QString &sentence)
 {
     Speller speller;
     QMap<QString, QString> dicts = speller.availableDictionaries();
-    QMap<QString, int> correctHits;
     QSet<QString> seenLangs;
     {
         QMap<QString, QString>::const_iterator itr = dicts.constBegin();
@@ -52,37 +86,7 @@ QString detectLanguage(const QString &sentence)
         }
     }
 
-    QVector<Speller> spellers(seenLangs.count());
-    {
-        QSet<QString>::const_iterator itr = seenLangs.constBegin();
-        for (int i = 0; i < spellers.count(); ++i) {
-            spellers[i].setLanguage(*itr);
-            ++itr;
-        }
-    }
-
-    Filter f;
-    f.setBuffer(sentence);
-    while (!f.atEnd()) {
-        Word word = f.nextWord();
-
-        if (!word.word.isEmpty()) {
-            for (int i = 0; i < spellers.count(); ++i) {
-                if (spellers[i].isCorrect(word.word)) {
-                    correctHits[spellers[i].language()] += 1;
-                }
-            }
-        }
-    }
-
-    QMap<QString, int>::const_iterator max = correctHits.constBegin();
-    for (QMap<QString, int>::const_iterator itr = correctHits.constBegin();
-            itr != correctHits.constEnd(); ++itr) {
-        if (itr.value() > max.value()) {
-            max = itr;
-        }
-    }
-    return max.key();
+    return detectLanguage(sentence, seenLangs.toList());
 }
 
 // SLOW!!!
