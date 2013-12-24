@@ -12,6 +12,7 @@ set(sonnetcore_SRCS
    globals.cpp
    guesslanguage.cpp
    textbreaks.cpp
+   tokenizer.cpp
 )
 set(sonnetcore_HEADERS
     backgroundchecker.h
