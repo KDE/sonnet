@@ -8,7 +8,6 @@ set(sonnetcore_SRCS
    filter.cpp
    settings.cpp
    backgroundchecker.cpp
-   backgroundengine.cpp
    globals.cpp
    guesslanguage.cpp
    textbreaks.cpp
