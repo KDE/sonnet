@@ -103,6 +103,7 @@ void ConfigWidget::slotIgnoreWordAdded()
 {
     QStringList ignoreList = d->loader->settings()->currentIgnoreList();
     QString newWord = d->ui.newIgnoreEdit->text();
+    d->ui.newIgnoreEdit->clear();
     if (newWord.isEmpty() || ignoreList.contains(newWord)) {
         return;
     }
