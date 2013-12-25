@@ -35,7 +35,6 @@ class SONNETUI_EXPORT Highlighter : public QSyntaxHighlighter
     Q_OBJECT
 public:
     explicit Highlighter(QTextEdit *textEdit,
-                         const QString &configFile = QString(),
                          const QColor &col = QColor());
     ~Highlighter();
 
@@ -157,9 +156,16 @@ protected:
     void setIntraWordEditing(bool editing);
 
 public Q_SLOTS:
+    /**
+     * Set language to use for spell checking.
+     * Warning: this disables automatic language detection
+     */
     void setCurrentLanguage(const QString &lang);
     void slotAutoDetection();
     void slotRehighlight();
+
+private Q_SLOTS:
+    void contentsChange(int pos, int added, int removed);
 
 private:
     virtual void connectNotify(const QMetaMethod &signal);
