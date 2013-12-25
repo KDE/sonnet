@@ -83,7 +83,7 @@
    <item row="2" column="0" colspan="2">
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
-      <string>Ignored Words</string>
+      <string>Ignored Words:</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
