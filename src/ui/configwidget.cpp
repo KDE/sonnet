@@ -60,8 +60,8 @@ ConfigWidget::ConfigWidget(QWidget *parent)
     d->ui.ignoreListWidget->addItems(ignoreList);
     d->ui.m_bgSpellCB->setChecked(d->loader->settings()->backgroundCheckerEnabled());
     d->ui.m_bgSpellCB->hide();//hidden by default
-    connect(d->ui.addButton, SIGNAL(clicked()), SLOT(slotIgnoreAdded()));
-    connect(d->ui.removeButton, SIGNAL(clicked()), SLOT(slotIgnoreAdded()));
+    connect(d->ui.addButton, SIGNAL(clicked()), SLOT(slotIgnoreWordAdded()));
+    connect(d->ui.removeButton, SIGNAL(clicked()), SLOT(slotIgnoreWordRemoved()));
 
     layout->addWidget(d->wdg);
     connect(d->ui.m_langCombo, SIGNAL(dictionaryChanged(QString)), this, SIGNAL(configChanged()));
