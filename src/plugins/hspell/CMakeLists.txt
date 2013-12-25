@@ -17,5 +17,5 @@ add_library(kspell_hspell MODULE ${kspell_hspell_PART_SRCS})
 
 target_link_libraries(kspell_hspell PRIVATE KF5::SonnetCore ${HSPELL_LIBRARIES} ${ZLIB_LIBRARY})
 
-install(TARGETS kspell_hspell  DESTINATION ${PLUGIN_INSTALL_DIR}/plugins/sonnet_clients/ )
+install(TARGETS kspell_hspell  DESTINATION ${PLUGIN_INSTALL_DIR}/sonnet_clients/ )
 
