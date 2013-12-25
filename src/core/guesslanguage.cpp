@@ -176,18 +176,16 @@ void GuessLanguage::setLimits(int n, double dx)
 
 void GuessLanguagePrivate::loadModels()
 {
-
-    QTime t;
-    t.start();
-    QString triMapFile =  QStandardPaths::locate(QStandardPaths::DataLocation, "sonnet/trigrams.map" );
+    QString triMapFile = QStandardPaths::locate(QStandardPaths::DataLocation, "sonnet/trigrams.map");
 
     QFile sin(triMapFile);
-    if ( ! sin.open(QIODevice::ReadOnly) )
+    if (!sin.open(QIODevice::ReadOnly)) {
+        qWarning() << "Sonnet: Unable to load trigram models";
         return;
+    }
 
     QDataStream in(&sin);
     in >> m_models;
-    qDebug() << "Loading took " << t.elapsed() << " ms";
 }
 
 QList<QChar::Script> GuessLanguagePrivate::findRuns(const QString & text)
