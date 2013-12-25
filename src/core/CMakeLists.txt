@@ -5,7 +5,6 @@ set(sonnetcore_SRCS
    client.cpp
    spellerplugin.cpp
    speller.cpp
-   filter.cpp
    settings.cpp
    backgroundchecker.cpp
    globals.cpp
