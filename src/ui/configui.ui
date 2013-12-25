@@ -33,27 +33,34 @@
      </property>
      <layout class="QGridLayout">
       <item row="0" column="0">
+       <widget class="QCheckBox" name="m_autodetectCB">
+        <property name="text">
+         <string>Enable autodetection of &amp;language</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
        <widget class="QCheckBox" name="m_bgSpellCB">
         <property name="text">
          <string>Enable &amp;background spellchecking</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
+      <item row="2" column="0">
        <widget class="QCheckBox" name="m_checkerEnabledByDefaultCB">
         <property name="text">
          <string>&amp;Automatic spell checking enabled by default</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="0">
+      <item row="3" column="0">
        <widget class="QCheckBox" name="m_skipUpperCB">
         <property name="text">
          <string>Skip all &amp;uppercase words</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
+      <item row="4" column="0">
        <widget class="QCheckBox" name="m_skipRunTogetherCB">
         <property name="text">
          <string>S&amp;kip run-together words</string>
