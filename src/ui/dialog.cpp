@@ -24,7 +24,6 @@
 
 #include "backgroundchecker.h"
 #include "speller.h"
-#include "filter_p.h"
 #include "settings_p.h"
 
 #include <qprogressdialog.h>
@@ -63,10 +62,11 @@ public:
     QWidget *wdg;
     QDialogButtonBox *buttonBox;
     QProgressDialog *progressDialog;
-    QString   originalBuffer;
+    QString originalBuffer;
     BackgroundChecker *checker;
 
-    Word   currentWord;
+    QString currentWord;
+    int currentPosition;
     QMap<QString, QString> replaceAllMap;
     bool restart;//used when text is distributed across several qtextedits, eg in KAider
 
@@ -201,7 +201,7 @@ void Dialog::slotAutocorrect()
 {
     setGuiEnabled(false);
     setProgressDialogVisible(true);
-    emit autoCorrect(d->currentWord.word, d->ui.m_replacement->text());
+    emit autoCorrect(d->currentWord, d->ui.m_replacement->text());
     slotReplaceWord();
 }
 
@@ -318,7 +318,7 @@ void Dialog::slotAddWord()
 {
     setGuiEnabled(false);
     setProgressDialogVisible(true);
-    d->checker->addWordToPersonal(d->currentWord.word);
+    d->checker->addWordToPersonal(d->currentWord);
     d->checker->continueChecking();
 }
 
@@ -327,12 +327,12 @@ void Dialog::slotReplaceWord()
     setGuiEnabled(false);
     setProgressDialogVisible(true);
     QString replacementText = d->ui.m_replacement->text();
-    emit replace(d->currentWord.word, d->currentWord.start,
+    emit replace(d->currentWord, d->currentPosition,
                  replacementText);
 
     if (d->spellCheckContinuedAfterReplacement) {
-        d->checker->replace(d->currentWord.start,
-                            d->currentWord.word,
+        d->checker->replace(d->currentPosition,
+                            d->currentWord,
                             replacementText);
         d->checker->continueChecking();
     } else {
@@ -344,7 +344,7 @@ void Dialog::slotReplaceAll()
 {
     setGuiEnabled(false);
     setProgressDialogVisible(true);
-    d->replaceAllMap.insert(d->currentWord.word,
+    d->replaceAllMap.insert(d->currentWord,
                             d->ui.m_replacement->text());
     slotReplaceWord();
 }
@@ -362,7 +362,7 @@ void Dialog::slotSkipAll()
     setProgressDialogVisible(true);
     //### do we want that or should we have a d->ignoreAll list?
     Speller speller = d->checker->speller();
-    speller.addToPersonal(d->currentWord.word);
+    speller.addToPersonal(d->currentWord);
     d->checker->setSpeller(speller);
     d->checker->continueChecking();
 }
@@ -406,7 +406,8 @@ void Dialog::slotMisspelling(const QString &word, int start)
         return;
     }
 
-    d->currentWord = Word(word, start);
+    d->currentWord =  word;
+    d->currentPosition =  start;
     if (d->replaceAllMap.contains(word)) {
         d->ui.m_replacement->setText(d->replaceAllMap[ word ]);
         slotReplaceWord();
