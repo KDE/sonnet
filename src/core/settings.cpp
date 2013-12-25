@@ -215,6 +215,7 @@ void Settings::save()
     settings.setValue("checkUppercase", d->checkUppercase);
     settings.setValue("skipRunTogether", d->skipRunTogether);
     settings.setValue("backgroundCheckerEnabled", d->backgroundCheckerEnabled);
+    settings.setValue("autodetectLanguage",d->autodetectLanguage);
     settings.setValue("checkerEnabledByDefault", d->checkerEnabledByDefault);
     QString defaultLanguage = QString::fromLatin1("ignore_%1").arg(d->defaultLanguage);
     if (settings.contains(defaultLanguage) && d->ignore.isEmpty()) {
@@ -233,7 +234,7 @@ void Settings::restore()
         d->defaultLanguage = "en";
     }
 
-    //same defaults are in the default filter (filter.cpp)
+    d->autodetectLanguage = settings.value("autodetectLanguage", true).toBool();
     d->checkUppercase = settings.value("checkUppercase", true).toBool();
     d->skipRunTogether = settings.value("skipRunTogether", true).toBool();
     d->backgroundCheckerEnabled = settings.value("backgroundCheckerEnabled", true).toBool();
