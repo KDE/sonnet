@@ -73,8 +73,9 @@ void BreakTokenizerPrivate::invalidate()
 
 bool BreakTokenizerPrivate::hasNext () const
 {
-    if (itemPosition >= (breaks().size()-2))
+    if (itemPosition >= (breaks().size()-1)) {
         return false;
+    }
 
     return true;
 }
@@ -82,16 +83,20 @@ bool BreakTokenizerPrivate::hasNext () const
 
 TextBreaks::Positions BreakTokenizerPrivate::breaks() const
 {
-    if (!cacheValid)
+    if (!cacheValid) {
         regenerateCache();
+    }
 
     return cachedBreaks;
 }
 
 void BreakTokenizerPrivate::shiftBreaks(int from, int offset)
 {
-    for (int i=0;i<cachedBreaks.size();i++) 
-        if (cachedBreaks[i]>from) cachedBreaks[i]=cachedBreaks[i]-offset;
+    for (int i=0;i<cachedBreaks.size();i++) {
+        if (cachedBreaks[i].start>from) {
+            cachedBreaks[i].start = cachedBreaks[i].start - offset;
+        }
+    }
 }
 
 void BreakTokenizerPrivate::regenerateCache() const
@@ -105,14 +110,7 @@ void BreakTokenizerPrivate::regenerateCache() const
         cachedBreaks = breakFinder->sentenceBreaks();
     } else if (type == Words) {
         cachedBreaks = breakFinder->wordBreaks();
-    } else if (type == Paragraphs) {
-        cachedBreaks = breakFinder->paragraphBreaks();
     }
-
-    // Conforming KTextBreaks must either return and empty QSting() or
-    // must return all breaks found, the ends of the string are always breaks
-    // so size must be >=2
-    Q_ASSERT( cachedBreaks.size() != 1 );
 
     cacheValid = true;
 }
@@ -127,8 +125,7 @@ QStringRef BreakTokenizerPrivate::next()
     }
     
     itemPosition++;
-    int length = breaks().at(itemPosition+1) - breaks().at(itemPosition);
-    last=QStringRef(&buffer, breaks().at(itemPosition), length );
+    last=QStringRef(&buffer, breaks().at(itemPosition).start, breaks().at(itemPosition).length);
     return last;
 }
 

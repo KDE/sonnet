@@ -57,21 +57,9 @@ void TextBreaks::setText( const QString & text )
     d->text = text;
 }
 
-TextBreaks::Positions TextBreaks::graphemeBreaks( const QString & text )
+static inline bool isWordSeparator(const QChar &character)
 {
-    Positions breaks;
-
-    if (text.isEmpty())
-        return breaks;
-
-    breaks.append(0);
-
-    for (int i=0; i<text.length(); i++) {
-        if (text[i].isLetter() && text[i].category() != QChar::Letter_Modifier)
-            breaks.append(i);
-    }
-
-    return breaks;
+    return (character.isSpace() || character.isMark() || character.isPunct());
 }
 
 TextBreaks::Positions TextBreaks::wordBreaks(const QString &text)
@@ -81,59 +69,71 @@ TextBreaks::Positions TextBreaks::wordBreaks(const QString &text)
     if (text.isEmpty())
         return breaks;
 
-    breaks.append(0);
+    int i=0;
+    do {
+        if (i == 0 || isWordSeparator(text[i])) {
+            Position pos;
 
-    for (int i=0; i<text.length(); i++) {
-        if (text[i].isSpace() || text[i].isMark() || text[i].isPunct())
-            breaks.append(i);
-    }
+            // Seek past leading separators
+            while (i < text.length() && isWordSeparator(text[i])) {
+                i++;
+            }
+
+            pos.start = i;
+            do {
+                i++;
+            } while (i < text.length() && !isWordSeparator(text[i]));
+            pos.length = i - pos.start;
+
+            // null-terminated, hence more than 1
+            if (pos.length > 1)
+                breaks.append(pos);
+        } else {
+            i++;
+        }
+    } while (i < text.length());
 
     return breaks;
 }
 
-TextBreaks::Positions TextBreaks::sentenceBreaks( const QString & text )
+static inline bool isSentenceSeparator(const QChar &character)
+{
+    return character.isMark() || character.isPunct() || character.category() == QChar::Separator_Paragraph;
+}
+
+TextBreaks::Positions TextBreaks::sentenceBreaks(const QString & text)
 {
     Positions breaks;
 
     if (text.isEmpty())
         return breaks;
 
-    breaks.append(0);
+    int i=0;
+    do {
+        if (i == 0 || isSentenceSeparator(text[i])) {
+            Position pos;
 
+            while (i < text.length() && !text[i].isLetter()) {
+                i++;
+            }
 
-    for (int i=0; i<text.length(); i++) {
-        if (text[i].isMark() || text[i].isPunct() || text[i].category() == QChar::Separator_Paragraph)
-            breaks.append(i);
-    }
+            pos.start = i;
+            do {
+                i++;
+            } while (i < text.length() && !isSentenceSeparator(text[i]));
+            pos.length = i - pos.start;
 
-
-    return breaks;
-}
-
-
-TextBreaks::Positions TextBreaks::paragraphBreaks( const QString & text )
-{
-    Positions breaks;
-
-    if (text.isEmpty())
-        return breaks;
-
-    breaks.append(0);
-
-
-    for (int i=0; i<text.length(); i++) {
-        if (text[i].category() == QChar::Separator_Paragraph || text[i] == '\r' || text[i] == '\n')
-            breaks.append(i);
-    }
-
+            // null-terminated, hence more than 1
+            if (pos.length > 1)
+                breaks.append(pos);
+        } else {
+            i++;
+        }
+    } while (i < text.length());
 
     return breaks;
 }
 
-TextBreaks::Positions TextBreaks::graphemeBreaks( ) const
-{
-    return graphemeBreaks(d->text);
-}
 
 TextBreaks::Positions TextBreaks::wordBreaks( ) const
 {
@@ -144,11 +144,5 @@ TextBreaks::Positions TextBreaks::sentenceBreaks( ) const
 {
     return sentenceBreaks(d->text);
 }
-
-TextBreaks::Positions TextBreaks::paragraphBreaks( ) const
-{
-    return paragraphBreaks(d->text);
-}
-
 
 }

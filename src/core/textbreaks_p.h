@@ -45,11 +45,15 @@ class  SONNETCORE_EXPORT TextBreaks
 {
 public:
 
+    struct Position {
+        int start, length;
+    };
+
     /**
      * This structure abstracts the positions of breaks in the test. As per the
      * unicode annex, both the start and end of the text are returned.
      */
-    typedef QList<int> Positions;
+    typedef QList<Position> Positions;
 
     /** Constructor
      * Creates a new TextBreaks instance. If @p text is specified,
@@ -76,13 +80,6 @@ public:
     void setText( const QString & text );
 
     /**
-     * Return the Positions of each grapheme for the given  @p text.
-     * @param text to be checked
-     * @return positions of breaks
-     */
-    static Positions graphemeBreaks( const QString & text );
-
-    /**
      * Return the Positions of each word for the given  @p text.
      * @param text to be checked
      * @return positions of breaks
@@ -97,19 +94,6 @@ public:
     static Positions sentenceBreaks( const QString & text );
 
     /**
-     * Return the Positions of each paragraph for the given  @p text.
-     * @param text to be checked
-     * @return positions of breaks
-     */
-    static Positions paragraphBreaks( const QString & text );
-
-    /**
-     * Return the Positions of each grapheme for the text previously set.
-     * @return positions of breaks
-     */
-    virtual Positions graphemeBreaks( ) const;
-
-    /**
      * Return the Positions of each word for the text previously set.
      * @return positions of breaks
      */
@@ -120,12 +104,6 @@ public:
      * @return positions of breaks
      */
     virtual Positions sentenceBreaks( ) const;
-
-    /**
-     * Return the Positions of each paragraph for the text previously set.
-     * @return positions of breaks
-     */
-    virtual Positions paragraphBreaks( ) const;
 
 private:
     TextBreaksPrivate* const d;
