@@ -76,6 +76,7 @@ public:
     static QStringList ARABIC;
     static QStringList DEVANAGARI;
     static QStringList PT;
+    static QStringList HAN;
     static QHash<QChar::Script, QString> s_singletons;
 
     const int MIN_LENGTH;
@@ -90,6 +91,7 @@ QStringList GuessLanguagePrivate::ALL_LATIN;
 QStringList GuessLanguagePrivate::CYRILLIC;
 QStringList GuessLanguagePrivate::ARABIC;
 QStringList GuessLanguagePrivate::DEVANAGARI;
+QStringList GuessLanguagePrivate::HAN;
 QHash<QChar::Script, QString> GuessLanguagePrivate::s_singletons;
 QStringList GuessLanguagePrivate::PT;
 
@@ -113,6 +115,8 @@ GuessLanguagePrivate::GuessLanguagePrivate()
     DEVANAGARI << "hi" << "ne";
 
     PT << "pt_BR" << "pt_PT";
+
+    HAN << "zh" << "ja";
 
     // NOTE mn appears twice, once for mongolian script and once for CYRILLIC
     s_singletons[QChar::Script_Armenian] = "hy";
@@ -142,8 +146,6 @@ GuessLanguagePrivate::GuessLanguagePrivate()
     s_singletons[QChar::Script_Hiragana] = "ja";
     s_singletons[QChar::Script_Bopomofo] = "zh";
     s_singletons[QChar::Script_Yi] = "zh";
-    s_singletons[QChar::Script_Han] = "zh";
-
 
     if (m_models.isEmpty())
         loadModels();
@@ -245,15 +247,17 @@ QStringList GuessLanguagePrivate::identify(const QString& sample, const QList<QC
     if (sample.size() < 3)
         return QStringList();
 
+    if (scripts.contains(QChar::Script_Cyrillic))
+        return check(sample, CYRILLIC);
 
-    if ( scripts.contains(QChar::Script_Cyrillic) )
-        return check( sample, CYRILLIC );
+    if (scripts.contains(QChar::Script_Arabic) || scripts.contains(QChar::Script_OldSouthArabian))
+        return check(sample, ARABIC);
 
-    if ( scripts.contains(QChar::Script_Arabic) || scripts.contains(QChar::Script_OldSouthArabian))
-        return check( sample, ARABIC );
+    if (scripts.contains(QChar::Script_Devanagari))
+        return check(sample, DEVANAGARI);
 
-    if ( scripts.contains(QChar::Script_Devanagari))
-        return check( sample, DEVANAGARI );
+    if (scripts.contains(QChar::Script_Han))
+        return check(sample, HAN);
 
 
     // Try languages with unique scripts
