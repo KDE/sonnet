@@ -161,7 +161,6 @@ GuessLanguage::~GuessLanguage()
 
 QStringList GuessLanguage::identify(const QString & text) const
 {
-
     if (text.isEmpty())
         return QList<QString>();
 
@@ -199,13 +198,13 @@ QList<QChar::Script> GuessLanguagePrivate::findRuns(const QString & text)
     int totalCount = 0;
 
 
-    while (!c->isNull())
+    foreach (const QChar &c, text)
     {
-        script = c->script();
+        script = c.script();
         if (script == QChar::Script_Common)
             continue;
 
-        if (c->isLetter())
+        if (c.isLetter())
         {
             ++count;
             ++totalCount;
@@ -218,7 +217,6 @@ QList<QChar::Script> GuessLanguagePrivate::findRuns(const QString & text)
                 count = 0;
             }
         }
-        ++c;
     }
 
     // add last count
