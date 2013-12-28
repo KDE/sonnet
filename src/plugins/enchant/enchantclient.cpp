@@ -58,7 +58,7 @@ SpellerPlugin *QSpellEnchantClient::createSpeller(
     const QString &language)
 {
     EnchantDict *dict = enchant_broker_request_dict(m_broker,
-                        language.toUtf8());
+                        language.toUtf8().constData());
 
     if (!dict) {
 #ifndef NDEBUG

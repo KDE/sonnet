@@ -31,9 +31,9 @@ HunspellDict::HunspellDict(const QString &lang)
     : SpellerPlugin(lang), m_speller(0)
 {
     qDebug() << " HunspellDict::HunspellDict( const QString& lang ):" << lang;
-    QString dic = QString("/usr/share/myspell/dicts/%1.dic").arg(lang);
+    QString dic = QStringLiteral("/usr/share/myspell/dicts/%1.dic").arg(lang);
     if (QFileInfo(dic).exists()) {
-        m_speller = new Hunspell(QString("/usr/share/myspell/dicts/%1.aff").arg(lang).toUtf8().constData(), dic.toUtf8().constData());
+        m_speller = new Hunspell(QStringLiteral("/usr/share/myspell/dicts/%1.aff").arg(lang).toUtf8().constData(), dic.toUtf8().constData());
     } else {
         m_speller = 0;
     }
@@ -52,7 +52,7 @@ bool HunspellDict::isCorrect(const QString &word) const
     if (!m_speller) {
         return false;
     }
-    int result = m_speller->spell(word.toUtf8());
+    int result = m_speller->spell(word.toUtf8().constData());
     qDebug() << " result :" << result;
     return (result != 0);
 }
@@ -64,7 +64,7 @@ QStringList HunspellDict::suggest(const QString &word) const
     }
     char **selection;
     QStringList lst;
-    int nbWord = m_speller->suggest(&selection, word.toUtf8());
+    int nbWord = m_speller->suggest(&selection, word.toUtf8().constData());
     for (int i = 0; i < nbWord; ++i) {
         lst << QString::fromUtf8(selection[i]);
     }
@@ -87,7 +87,7 @@ bool HunspellDict::addToPersonal(const QString &word)
     if (!m_speller) {
         return false;
     }
-    m_speller->add(word.toUtf8());
+    m_speller->add(word.toUtf8().constData());
     return false;
 }
 

@@ -86,11 +86,11 @@ bool SpellCheckDecorator::Private::onContextMenuEvent(QContextMenuEvent *event)
 
     // Clear the selection again, we re-select it below (without the apostrophes).
     wordSelectCursor.setPosition(wordSelectCursor.position() - selectedWord.size());
-    if (selectedWord.startsWith('\'') || selectedWord.startsWith('\"')) {
+    if (selectedWord.startsWith(QLatin1Char('\'')) || selectedWord.startsWith(QLatin1Char('\"'))) {
         selectedWord = selectedWord.right(selectedWord.size() - 1);
         wordSelectCursor.movePosition(QTextCursor::NextCharacter, QTextCursor::MoveAnchor);
     }
-    if (selectedWord.endsWith('\'') || selectedWord.endsWith('\"')) {
+    if (selectedWord.endsWith(QLatin1Char('\'')) || selectedWord.endsWith(QLatin1Char('\"'))) {
         selectedWord.chop(1);
     }
 

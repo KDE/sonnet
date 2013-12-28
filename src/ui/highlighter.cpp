@@ -165,7 +165,7 @@ void Highlighter::slotRehighlight()
     } else {
         //rehighlight the current para only (undo/redo safe)
         QTextCursor cursor = d->edit->textCursor();
-        cursor.insertText("");
+        cursor.insertText(QString());
     }
     //if (d->checksDone == d->checksRequested)
     //d->completeRehighlightRequired = false;
@@ -175,16 +175,16 @@ void Highlighter::slotRehighlight()
 QStringList Highlighter::personalWords()
 {
     QStringList l;
-    l.append("KMail");
-    l.append("KOrganizer");
-    l.append("KAddressBook");
-    l.append("KHTML");
-    l.append("KIO");
-    l.append("KJS");
-    l.append("Konqueror");
-    l.append("Sonnet");
-    l.append("Kontact");
-    l.append("Qt");
+    l.append(QStringLiteral("KMail"));
+    l.append(QStringLiteral("KOrganizer"));
+    l.append(QStringLiteral("KAddressBook"));
+    l.append(QStringLiteral("KHTML"));
+    l.append(QStringLiteral("KIO"));
+    l.append(QStringLiteral("KJS"));
+    l.append(QStringLiteral("Konqueror"));
+    l.append(QStringLiteral("Sonnet"));
+    l.append(QStringLiteral("Kontact"));
+    l.append(QStringLiteral("Qt"));
     return l;
 }
 

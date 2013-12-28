@@ -45,7 +45,7 @@ ConfigDialog::ConfigDialog(QWidget *parent)
     : QDialog(parent),
       d(new Private(this))
 {
-    setObjectName("SonnetConfigDialog");
+    setObjectName(QStringLiteral("SonnetConfigDialog"));
     setModal(true);
     setWindowTitle(tr("Spell Checking Configuration"));
 

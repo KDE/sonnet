@@ -45,9 +45,9 @@ SpellerPlugin *HSpellClient::createSpeller(const QString &language)
 QStringList HSpellClient::languages() const
 {
     QStringList langs;
-    HSpellDict ad("he");
+    HSpellDict ad(QStringLiteral("he"));
     if (ad.isInitialized()) {
-        langs.append(QLatin1String("he"));
+        langs.append(QStringLiteral("he"));
     }
     return langs;
 }

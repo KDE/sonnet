@@ -37,4 +37,4 @@ endif()
 
 add_subdirectory(plugins)
 add_subdirectory(ui)
-add_subdirectory(unicode)
+#add_subdirectory(unicode)

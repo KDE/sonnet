@@ -30,7 +30,7 @@ ASpellDict::ASpellDict(const QString &lang)
     : SpellerPlugin(lang), m_speller(0)
 {
     m_config = new_aspell_config();
-    aspell_config_replace(m_config, "lang", lang.toLatin1());
+    aspell_config_replace(m_config, "lang", lang.toLatin1().constData());
     /* All communication with Aspell is done in UTF-8 */
     /* For reference, please look at BR#87250         */
     aspell_config_replace(m_config, "encoding", "utf-8");
@@ -64,7 +64,7 @@ bool ASpellDict::isCorrect(const QString &word) const
     if (!m_speller) {
         return false;
     }
-    int correct = aspell_speller_check(m_speller, word.toUtf8(), word.toUtf8().length());
+    int correct = aspell_speller_check(m_speller, word.toUtf8().constData(), word.toUtf8().length());
     return correct;
 }
 
@@ -79,7 +79,7 @@ QStringList ASpellDict::suggest(const QString &word) const
     /* ASpell is expecting length of a string in char representation */
     /* word.length() != word.toUtf8().length() for nonlatin strings    */
     const AspellWordList *suggestions = aspell_speller_suggest(m_speller,
-                                        word.toUtf8(),
+                                        word.toUtf8().constData(),
                                         word.toUtf8().length());
 
     AspellStringEnumeration *elements = aspell_word_list_elements(suggestions);
@@ -106,8 +106,8 @@ bool ASpellDict::storeReplacement(const QString &bad,
     /* ASpell is expecting length of a string in char representation */
     /* word.length() != word.toUtf8().length() for nonlatin strings    */
     return aspell_speller_store_replacement(m_speller,
-                                            bad.toUtf8(), bad.toUtf8().length(),
-                                            good.toUtf8(), good.toUtf8().length());
+                                            bad.toUtf8().constData(), bad.toUtf8().length(),
+                                            good.toUtf8().constData(), good.toUtf8().length());
 }
 
 bool ASpellDict::addToPersonal(const QString &word)
@@ -118,7 +118,7 @@ bool ASpellDict::addToPersonal(const QString &word)
     qDebug() << "ASpellDict::addToPersonal: word = " << word;
     /* ASpell is expecting length of a string in char representation */
     /* word.length() != word.toUtf8().length() for nonlatin strings    */
-    aspell_speller_add_to_personal(m_speller, word.toUtf8(),
+    aspell_speller_add_to_personal(m_speller, word.toUtf8().constData(),
                                    word.toUtf8().length());
     /* Add is not enough, one has to save it. This is not documented */
     /* in ASpell's API manual. I found it in                         */
@@ -133,6 +133,6 @@ bool ASpellDict::addToSession(const QString &word)
     }
     /* ASpell is expecting length of a string in char representation */
     /* word.length() != word.toUtf8().length() for nonlatin strings    */
-    return aspell_speller_add_to_session(m_speller, word.toUtf8(),
+    return aspell_speller_add_to_session(m_speller, word.toUtf8().constData(),
                                          word.toUtf8().length());
 }
