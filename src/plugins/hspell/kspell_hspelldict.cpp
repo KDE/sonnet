@@ -56,12 +56,12 @@ bool HSpellDict::isCorrect(const QString &word) const
     QByteArray wordISO = codec->fromUnicode(word);
     /* returns 1 if the word is correct, 0 otherwise */
     int correct = hspell_check_word(m_speller,
-                                    wordISO,
+                                    wordISO.constData(),
                                     &preflen); //this going to be removed
     //in next hspell releases
     /* I do not really understand what gimatria is   */
     if (correct != 1) {
-        if (hspell_is_canonic_gimatria(wordISO) != 0) {
+        if (hspell_is_canonic_gimatria(wordISO.constData()) != 0) {
             correct = 1;
         }
     }
@@ -74,7 +74,7 @@ QStringList HSpellDict::suggest(const QString &word) const
     struct corlist cl;
     int n_sugg;
     corlist_init(&cl);
-    hspell_trycorrect(m_speller, codec->fromUnicode(word), &cl);
+    hspell_trycorrect(m_speller, codec->fromUnicode(word).constData(), &cl);
     for (n_sugg = 0; n_sugg < corlist_n(&cl); n_sugg++) {
         qsug.append(codec->toUnicode(corlist_str(&cl, n_sugg)));
     }

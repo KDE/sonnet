@@ -185,7 +185,7 @@ QString Loader::languageNameForCode(const QString &langCode) const
             variantEnglish = variantName.toLatin1();
         }
 
-        localizedVariant = tr(variantEnglish, "dictionary variant");
+        localizedVariant = tr(variantEnglish.constData(), "dictionary variant");
         isoCode = currentDictionary.left(minusPos);
     } else {
         isoCode = currentDictionary;

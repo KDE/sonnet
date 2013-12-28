@@ -209,14 +209,13 @@ int Settings::disableWordErrorCount() const
 
 void Settings::save()
 {
-    QSettings settings("KDE", "Sonnet");
-    settings.setValue("defaultClient", d->defaultClient);
-    settings.setValue("defaultLanguage", d->defaultLanguage);
-    settings.setValue("checkUppercase", d->checkUppercase);
-    settings.setValue("skipRunTogether", d->skipRunTogether);
-    settings.setValue("backgroundCheckerEnabled", d->backgroundCheckerEnabled);
-    settings.setValue("autodetectLanguage",d->autodetectLanguage);
-    settings.setValue("checkerEnabledByDefault", d->checkerEnabledByDefault);
+    QSettings settings(QStringLiteral("KDE"), QStringLiteral("Sonnet"));
+    settings.setValue(QStringLiteral("defaultClient"), d->defaultClient);
+    settings.setValue(QStringLiteral("defaultLanguage"), d->defaultLanguage);
+    settings.setValue(QStringLiteral("checkUppercase"), d->checkUppercase);
+    settings.setValue(QStringLiteral("skipRunTogether"), d->skipRunTogether);
+    settings.setValue(QStringLiteral("backgroundCheckerEnabled"), d->backgroundCheckerEnabled);
+    settings.setValue(QStringLiteral("checkerEnabledByDefault"), d->checkerEnabledByDefault);
     QString defaultLanguage = QString::fromLatin1("ignore_%1").arg(d->defaultLanguage);
     if (settings.contains(defaultLanguage) && d->ignore.isEmpty()) {
         settings.remove(defaultLanguage);
@@ -230,40 +229,37 @@ void Settings::save()
 static QStringList kdeWords()
 {
     QStringList l;
-    l.append("KMail");
-    l.append("KOrganizer");
-    l.append("KAddressBook");
-    l.append("KHTML");
-    l.append("KIO");
-    l.append("KJS");
-    l.append("Konqueror");
-    l.append("Sonnet");
-    l.append("Kontact");
-    l.append("Qt");
-    l.append("Okular");
-    l.append("KMix");
-    l.append("Amarok");
-    l.append("KDevelop");
+    l.append(QStringLiteral("KMail"));
+    l.append(QStringLiteral("KOrganizer"));
+    l.append(QStringLiteral("KAddressBook"));
+    l.append(QStringLiteral("KHTML"));
+    l.append(QStringLiteral("KIO"));
+    l.append(QStringLiteral("KJS"));
+    l.append(QStringLiteral("Konqueror"));
+    l.append(QStringLiteral("Sonnet"));
+    l.append(QStringLiteral("Kontact"));
+    l.append(QStringLiteral("Qt"));
+    l.append(QStringLiteral("Okular"));
+    l.append(QStringLiteral("KMix"));
+    l.append(QStringLiteral("Amarok"));
+    l.append(QStringLiteral("KDevelop"));
     return l;
 }
 
 
 void Settings::restore()
 {
-    QSettings settings("KDE", "Sonnet");
-    d->defaultClient = settings.value("defaultClient", QString()).toString();
-    d->defaultLanguage = settings.value("defaultLanguage", QLocale::system().bcp47Name()).toString();
-    if (d->defaultLanguage == "C") {
-        d->defaultLanguage = "en_US";
-    }
+    QSettings settings(QStringLiteral("KDE"), QStringLiteral("Sonnet"));
+    d->defaultClient = settings.value(QStringLiteral("defaultClient"), QString()).toString();
+    d->defaultLanguage = settings.value(QStringLiteral("defaultLanguage"), QLocale::system().bcp47Name()).toString();
 
-    d->autodetectLanguage = settings.value("autodetectLanguage", true).toBool();
-    d->checkUppercase = settings.value("checkUppercase", true).toBool();
-    d->skipRunTogether = settings.value("skipRunTogether", true).toBool();
-    d->backgroundCheckerEnabled = settings.value("backgroundCheckerEnabled", true).toBool();
-    d->checkerEnabledByDefault = settings.value("checkerEnabledByDefault", false).toBool();
-    d->disablePercentage = settings.value("Sonnet_AsYouTypeDisablePercentage", 42).toInt();
-    d->disableWordCount = settings.value("Sonnet_AsYouTypeDisableWordCount", 100).toInt();
+    //same defaults are in the default filter (filter.cpp)
+    d->checkUppercase = settings.value(QStringLiteral("checkUppercase"), true).toBool();
+    d->skipRunTogether = settings.value(QStringLiteral("skipRunTogether"), true).toBool();
+    d->backgroundCheckerEnabled = settings.value(QStringLiteral("backgroundCheckerEnabled"), true).toBool();
+    d->checkerEnabledByDefault = settings.value(QStringLiteral("checkerEnabledByDefault"), false).toBool();
+    d->disablePercentage = settings.value(QStringLiteral("Sonnet_AsYouTypeDisablePercentage"), 42).toInt();
+    d->disableWordCount = settings.value(QStringLiteral("Sonnet_AsYouTypeDisableWordCount"), 100).toInt();
 
     const QString ignoreEntry = QString::fromLatin1("ignore_%1").arg(d->defaultLanguage);
     const QStringList ignores = settings.value(ignoreEntry, kdeWords()).toStringList();

@@ -149,7 +149,7 @@ void Highlighter::slotRehighlight()
     } else {
         //rehighlight the current para only (undo/redo safe)
         QTextCursor cursor = d->edit->textCursor();
-        cursor.insertText("");
+        cursor.insertText(QString());
     }
     //if (d->checksDone == d->checksRequested)
     //d->completeRehighlightRequired = false;

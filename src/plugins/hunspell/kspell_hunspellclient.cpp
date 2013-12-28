@@ -47,9 +47,9 @@ SpellerPlugin *HunspellClient::createSpeller(const QString &language)
 QStringList HunspellClient::languages() const
 {
     QStringList lst;
-    QDir dir("/usr/share/myspell/dicts/");
+    QDir dir(QStringLiteral("/usr/share/myspell/dicts/"));
     if (dir.exists()) {
-        QStringList lstDic = dir.entryList(QStringList("*.dic"), QDir::Files);
+        QStringList lstDic = dir.entryList(QStringList(QStringLiteral("*.dic")), QDir::Files);
         foreach (const QString &tmp, lstDic) {
             lst << tmp.left(tmp.length() - 4); // remove ".dic"
         }

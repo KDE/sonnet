@@ -46,7 +46,7 @@ QSpellEnchantDict::~QSpellEnchantDict()
 
 bool QSpellEnchantDict::isCorrect(const QString &word) const
 {
-    int wrong = enchant_dict_check(m_dict, word.toUtf8(),
+    int wrong = enchant_dict_check(m_dict, word.toUtf8().constData(),
                                    word.toUtf8().length());
     return !wrong;
 }
@@ -58,7 +58,7 @@ QStringList QSpellEnchantDict::suggest(const QString &word) const
 
     size_t number = 0;
     char **suggestions =
-        enchant_dict_suggest(m_dict, word.toUtf8(), word.toUtf8().length(),
+        enchant_dict_suggest(m_dict, word.toUtf8().constData(), word.toUtf8().length(),
                              &number);
 
     QStringList qsug;
@@ -76,8 +76,8 @@ bool QSpellEnchantDict::storeReplacement(const QString &bad,
         const QString &good)
 {
     enchant_dict_store_replacement(m_dict,
-                                   bad.toUtf8(), bad.toUtf8().length(),
-                                   good.toUtf8(), good.toUtf8().length());
+                                   bad.toUtf8().constData(), bad.toUtf8().length(),
+                                   good.toUtf8().constData(), good.toUtf8().length());
     return true;
 }
 
@@ -85,14 +85,14 @@ bool QSpellEnchantDict::addToPersonal(const QString &word)
 {
     qDebug() << "QSpellEnchantDict::addToPersonal: word = "
              << word;
-    enchant_dict_add_to_pwl(m_dict, word.toUtf8(),
+    enchant_dict_add_to_pwl(m_dict, word.toUtf8().constData(),
                             word.toUtf8().length());
     return true;
 }
 
 bool QSpellEnchantDict::addToSession(const QString &word)
 {
-    enchant_dict_add_to_session(m_dict, word.toUtf8(),
+    enchant_dict_add_to_session(m_dict, word.toUtf8().constData(),
                                 word.toUtf8().length());
     return true;
 }

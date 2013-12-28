@@ -51,7 +51,7 @@ public:
 
     virtual QString name() const
     {
-        return "Hunspell";
+        return QStringLiteral("Hunspell");
     }
 };
 
