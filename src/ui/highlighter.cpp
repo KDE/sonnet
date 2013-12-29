@@ -48,7 +48,6 @@ class LanguageCache : public QTextBlockUserData {
 public:
     QMap<QPair<int,int>, QString> languages;
     void invalidate(int pos) {
-        qDebug() << "Invalidate at " << pos << " there was " << languages;
         QMutableMapIterator<QPair<int,int>, QString> it(languages);
         it.toBack();
         while (it.hasPrevious()) {
@@ -56,7 +55,6 @@ public:
             if (it.key().first+it.key().second >=pos) it.remove();
             else break;
         }
-        qDebug() << languages << " left";
     }
 };
 
@@ -65,10 +63,10 @@ class Highlighter::Private
 {
 public:
     ~Private();
-    WordTokenizer* tokenizer;
-    LanguageFilter* languageFilter;
-    Loader     *loader;
-    Speller    *spellchecker;
+    WordTokenizer *tokenizer;
+    LanguageFilter *languageFilter;
+    Loader *loader;
+    Speller *spellchecker;
     QTextEdit *edit;
     bool active;
     bool automatic;
@@ -247,6 +245,7 @@ void Highlighter::slotAutoDetection()
         if (d->active) {
             emit activeChanged(tr("As-you-type spell checking enabled."));
         } else {
+            qDebug() << "Sonnet: Disabling spell checking, too many errors";
             emit activeChanged(tr("Too many misspelled words. "
                                   "As-you-type spell checking disabled."));
         }
@@ -255,7 +254,6 @@ void Highlighter::slotAutoDetection()
         d->rehighlightRequest->setInterval(100);
         d->rehighlightRequest->setSingleShot(true);
     }
-
 }
 
 void Highlighter::setActive(bool active)
@@ -280,13 +278,14 @@ bool Highlighter::isActive() const
 
 void Highlighter::contentsChange(int pos, int add, int rem)
 {
-    qDebug() << "Change " << pos << "  +" << add << " -"<<rem;
-    if ((add-rem) == 0 ) return;
-    //FIXME: go over all blocks
-    QTextBlock block=document()->findBlock(pos);
-    LanguageCache* cache=dynamic_cast<LanguageCache*>(block.userData());
-    //FIXME: invalidate only affected part
-    if (cache) cache->invalidate(pos-block.position());
+    // Invalidate the cache where the text has changed
+    const QTextBlock &lastBlock = document()->findBlock(pos + add - rem);
+    QTextBlock block = document()->findBlock(pos);
+    do {
+        LanguageCache* cache=dynamic_cast<LanguageCache*>(block.userData());
+        if (cache) cache->invalidate(pos-block.position());
+        block = block.next();
+    } while (block < lastBlock);
 }
 
 void Highlighter::highlightBlock(const QString &text)
@@ -295,7 +294,6 @@ void Highlighter::highlightBlock(const QString &text)
         return;
     }
 
-    //FIXME: deal with editor->setDocument()
     if (!d->connected) {
         connect(document(), SIGNAL(contentsChange(int,int,int)),
                 SLOT(contentsChange(int,int,int)));
@@ -326,12 +324,10 @@ void Highlighter::highlightBlock(const QString &text)
                 // try cache first
                 if (cache->languages.contains(spos)) {
                     lang=cache->languages.value(spos);
-                    qDebug() << "Got from cache " << spos << " : " << lang;
                 } else {
                     lang=d->languageFilter->language();
                     if (!d->languageFilter->isSpellcheckable()) lang.clear();
                     cache->languages[spos]=lang;
-                    qDebug() << "Not in cache " << spos << " : " << lang;
                 }
                 if (lang.isEmpty()) continue;
                 d->spellchecker->setLanguage(lang);
@@ -490,6 +486,12 @@ void Highlighter::setMisspelledColor(const QColor &color)
 bool Highlighter::checkerEnabledByDefault() const
 {
     return d->loader->settings()->checkerEnabledByDefault();
+}
+
+void Highlighter::setDocument(QTextDocument* document)
+{
+    d->connected = false;
+    QSyntaxHighlighter::setDocument(document);
 }
 
 }

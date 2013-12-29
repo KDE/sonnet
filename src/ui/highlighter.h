@@ -125,6 +125,8 @@ public:
      */
     bool checkerEnabledByDefault() const;
 
+    void setDocument(QTextDocument *document);
+
 Q_SIGNALS:
 
     /**
