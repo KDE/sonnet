@@ -43,7 +43,7 @@ class SONNETCORE_EXPORT Client : public QObject
 {
     Q_OBJECT
 public:
-    Client(QObject *parent = 0);
+    explicit Client(QObject *parent = 0);
 
     /**
      * @returns how reliable the answer is (higher is better).

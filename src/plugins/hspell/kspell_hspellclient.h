@@ -41,7 +41,7 @@ class HSpellClient : public Sonnet::Client
     Q_INTERFACES(Sonnet::Client)
     Q_PLUGIN_METADATA(IID "org.kde.Sonnet.HSpellClient")
 public:
-    HSpellClient(QObject *parent = 0);
+    explicit HSpellClient(QObject *parent = 0);
     ~HSpellClient();
 
     virtual int reliability() const

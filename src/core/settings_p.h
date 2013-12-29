@@ -77,7 +77,7 @@ private:
 
 private:
     friend class Loader;
-    Settings(Loader *loader);
+    explicit Settings(Loader *loader);
 private:
     class Private;
     Private *const d;

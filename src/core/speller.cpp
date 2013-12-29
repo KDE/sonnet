@@ -58,9 +58,9 @@ public:
     }
 
     void updateDict() {
-        qDebug() << "setLanguage " << language << " in cache " << dictCache.contains(language);
-        if (dictCache.contains(language)) dict=dictCache.object(language);
-        else {
+        if (dictCache.contains(language)) {
+            dict = dictCache.object(language);
+        } else {
             dict = Loader::openLoader()->createSpeller(language);
             dictCache.insert(language, dict);
         }
