@@ -123,10 +123,6 @@ Highlighter::Highlighter(QTextEdit *textEdit,
     d->disablePercentage = d->loader->settings()->disablePercentageWordError();
     d->disableWordCount = d->loader->settings()->disableWordErrorCount();
 
-    //Add kde personal word
-    foreach(const QString &word, Highlighter::personalWords()) {
-        d->spellchecker->addToSession(word);
-    }
     d->completeRehighlightRequired = true;
     d->rehighlightRequest->setInterval(0);
     d->rehighlightRequest->setSingleShot(true);
@@ -158,22 +154,6 @@ void Highlighter::slotRehighlight()
     //if (d->checksDone == d->checksRequested)
     //d->completeRehighlightRequired = false;
     QTimer::singleShot(0, this, SLOT(slotAutoDetection()));
-}
-
-QStringList Highlighter::personalWords()
-{
-    QStringList l;
-    l.append("KMail");
-    l.append("KOrganizer");
-    l.append("KAddressBook");
-    l.append("KHTML");
-    l.append("KIO");
-    l.append("KJS");
-    l.append("Konqueror");
-    l.append("Sonnet");
-    l.append("Kontact");
-    l.append("Qt");
-    return l;
 }
 
 bool Highlighter::automatic() const

@@ -42,8 +42,6 @@ public:
 
     QString currentLanguage() const;
 
-    static QStringList personalWords();
-
     /**
      * @short Enable/Disable spell checking.
      *

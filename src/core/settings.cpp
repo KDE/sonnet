@@ -225,6 +225,29 @@ void Settings::save()
     }
 }
 
+
+// A static list of KDE specific words that we want to recognize
+static QStringList kdeWords()
+{
+    QStringList l;
+    l.append("KMail");
+    l.append("KOrganizer");
+    l.append("KAddressBook");
+    l.append("KHTML");
+    l.append("KIO");
+    l.append("KJS");
+    l.append("Konqueror");
+    l.append("Sonnet");
+    l.append("Kontact");
+    l.append("Qt");
+    l.append("Okular");
+    l.append("KMix");
+    l.append("Amarok");
+    l.append("KDevelop");
+    return l;
+}
+
+
 void Settings::restore()
 {
     QSettings settings("KDE", "Sonnet");
@@ -243,7 +266,7 @@ void Settings::restore()
     d->disableWordCount = settings.value("Sonnet_AsYouTypeDisableWordCount", 100).toInt();
 
     const QString ignoreEntry = QString::fromLatin1("ignore_%1").arg(d->defaultLanguage);
-    const QStringList ignores = settings.value(ignoreEntry, QStringList()).toStringList();
+    const QStringList ignores = settings.value(ignoreEntry, kdeWords()).toStringList();
     setQuietIgnoreList(ignores);
 }
 
