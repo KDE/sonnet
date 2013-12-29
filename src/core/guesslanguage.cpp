@@ -297,7 +297,6 @@ QStringList GuessLanguagePrivate::check(const QString & sample, const QStringLis
     {
         const QString languageLowercase = language.toLower();
 
-        //qDebug() << "modelkey:" << lkey;
         if ( m_models.contains(languageLowercase) )
         {
             scores.insert(distance(sampleTrigrams, m_models[languageLowercase]), language);
@@ -319,7 +318,6 @@ QStringList GuessLanguagePrivate::check(const QString & sample, const QStringLis
         counter++;
         confidence += (it.key() - prev_score)/(double)it.key();
         ret += prev_item;
-        qDebug() << "Adding " << prev_item << " at " << prev_score << " cc " << confidence;
         prev_item=it.value();
         prev_score=it.key();
     }

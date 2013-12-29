@@ -56,7 +56,6 @@ QString LanguageFilterPrivate::doIdentify(const QString& text, const QStringList
 {
     QStringList candidates=gl.identify(text);
     
-    qDebug() << "Guess for " << text << " got "  << candidates;
     // guesser was sure enough
     if (candidates.size() == 1) return candidates.front();
 
@@ -79,7 +78,6 @@ QString LanguageFilterPrivate::doIdentify(const QString& text, const QStringList
     // dictionary-based detection did not work, return best guess from previous step
     if (ret.isEmpty() && !candidates.isEmpty()) ret=candidates.front();
 
-    qDebug() << "Dict got " << ret << " using " << candidates;
     return ret;
 }
 
