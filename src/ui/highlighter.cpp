@@ -79,7 +79,6 @@ public:
     int wordCount, errorCount;
     QTimer *rehighlightRequest;
     QColor spellColor;
-    int suggestionListeners; // #of connections for the newSuggestions signal
 };
 
 Highlighter::Private::~Private()
@@ -103,7 +102,6 @@ Highlighter::Highlighter(QTextEdit *textEdit,
     d->intraWordEditing = false;
     d->completeRehighlightRequired = false;
     d->spellColor = _col.isValid() ? _col : Qt::red;
-    d->suggestionListeners = 0;
     d->languageFilter = new LanguageFilter(new SentenceTokenizer());
 
     textEdit->installEventFilter(this);
@@ -143,26 +141,6 @@ Highlighter::~Highlighter()
 bool Highlighter::spellCheckerFound() const
 {
     return d->spellCheckerFound;
-}
-
-// Since figuring out spell correction suggestions is extremely costly,
-// we keep track of whether the user actually wants some, and only offer them
-// in that case
-// With Qt5, we could use QObject::isSignalConnected(), but this is faster.
-void Highlighter::connectNotify(const QMetaMethod &signal)
-{
-    if (signal.methodSignature() == "newSuggestions(QString,QStringList)") {
-        ++d->suggestionListeners;
-    }
-    QSyntaxHighlighter::connectNotify(signal);
-}
-
-void Highlighter::disconnectNotify(const QMetaMethod &signal)
-{
-    if (signal.methodSignature() == "newSuggestions(QString,QStringList)") {
-        --d->suggestionListeners;
-    }
-    QSyntaxHighlighter::disconnectNotify(signal);
 }
 
 void Highlighter::slotRehighlight()
@@ -343,9 +321,6 @@ void Highlighter::highlightBlock(const QString &text)
                 if (d->spellchecker->isMisspelled(word.toString())) {
                     ++d->errorCount;
                     setMisspelled(word.position()+offset, word.length());
-                    if (d->suggestionListeners) {
-                        emit newSuggestions(word.toString(), d->spellchecker->suggest(word.toString()));
-                    }
                 } else {
                     unsetMisspelled(word.position()+offset, word.length());
                 }

@@ -137,16 +137,6 @@ Q_SIGNALS:
      */
     void activeChanged(const QString &description);
 
-    /**
-     *
-     * @param originalWord missspelled word
-     *
-     * @param suggestions list of word which can replace missspelled word
-     *
-     * @deprecated use isWordMisspelled() and suggestionsForWord() instead.
-     */
-    QT_MOC_COMPAT void newSuggestions(const QString &originalWord, const QStringList &suggestions);
-
 protected:
 
     virtual void highlightBlock(const QString &text);
@@ -170,8 +160,6 @@ private Q_SLOTS:
     void contentsChange(int pos, int added, int removed);
 
 private:
-    virtual void connectNotify(const QMetaMethod &signal);
-    virtual void disconnectNotify(const QMetaMethod &signal);
     class Private;
     Private *const d;
     Q_DISABLE_COPY(Highlighter)
