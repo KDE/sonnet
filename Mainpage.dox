@@ -4,12 +4,13 @@
 <p>
 Sonnet is a plugin-based spell checking library for Qt-based
 applications. It supports several different plugins, including
-HSpell, Enchant, ASpell and HUNSPELL.
+HSpell, Enchant, ASpell and HUNSPELL. It also has automated
+language detection (see for example the Sonnet::GuessLanguage class).
 
 For an easy way to use Sonnet in your own Qt-based application, see the
 Sonnet::SpellCheckDecorator class.
 
-Other interesting classes are the Sonnet namespace in sonnetcore, and
+Other interesting things are the Sonnet namespace in sonnetcore, and
 Sonnet::ConfigDialog, Sonnet::Dialog and Sonnet::Highlighter in sonnetui.
 
 TechBase has a
