@@ -231,7 +231,7 @@ void Settings::restore()
     d->defaultClient = settings.value("defaultClient", QString()).toString();
     d->defaultLanguage = settings.value("defaultLanguage", QLocale::system().bcp47Name()).toString();
     if (d->defaultLanguage == "C") {
-        d->defaultLanguage = "en";
+        d->defaultLanguage = "en_US";
     }
 
     d->autodetectLanguage = settings.value("autodetectLanguage", true).toBool();

@@ -284,7 +284,7 @@ void Dialog::fillDictionaryComboBox()
 
 void Dialog::updateDictionaryComboBox()
 {
-    Speller speller = d->checker->speller();
+    const Speller &speller = d->checker->speller();
     d->ui.m_language->setCurrentIndex(d->dictsMap.values().indexOf(speller.language()));
 }
 
@@ -306,7 +306,6 @@ void Dialog::show()
 {
     d->canceled = false;
     fillDictionaryComboBox();
-    updateDictionaryComboBox();
     if (d->originalBuffer.isEmpty()) {
         d->checker->start();
     } else {
