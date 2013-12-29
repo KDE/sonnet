@@ -3,6 +3,7 @@
  *
  * Copyright (C)  2004  Zack Rusin <zack@kde.org>
  * Copyright (C)  2006  Laurent Montel <montel@kde.org>
+ * Copyright (C)  2013  Martin Sandsmark <martin.sandsmark@org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -42,7 +43,6 @@
 
 namespace Sonnet
 {
-
 
 class LanguageCache : public QTextBlockUserData {
 public:

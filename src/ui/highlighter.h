@@ -2,6 +2,7 @@
  * highlighter.h
  *
  * Copyright (C)  2004  Zack Rusin <zack@kde.org>
+ * Copyright (C)  2013  Martin Sandsmark <martin.sandsmark@kde.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -29,7 +30,7 @@ class QTextEdit;
 
 namespace Sonnet
 {
-/// The Sonnet Highlighter
+/// The Sonnet Highlighter class, used for drawing pretty red lines in text fields
 class SONNETUI_EXPORT Highlighter : public QSyntaxHighlighter
 {
     Q_OBJECT
@@ -38,8 +39,19 @@ public:
                          const QColor &col = QColor());
     ~Highlighter();
 
+    /**
+     * Returns whether a spell checking backend with support for the
+     * @ref currentLanguage was found.
+     *
+     * @return true if spell checking is supported for the current language.
+     */
     bool spellCheckerFound() const;
 
+    /**
+     * Returns the current language used for spell checking.
+     *
+     * @return the language code for the current language.
+     */
     QString currentLanguage() const;
 
     /**
@@ -66,8 +78,21 @@ public:
      */
     bool isActive() const;
 
+    /**
+     * Returns the state of the automatic disabling of spell checking.
+     *
+     * @return true if spell checking is automatically disabled if there's
+     * too many errors
+     */
     bool automatic() const;
 
+    /**
+     * Sets whether to automatically disable spell checking if there's too
+     * many errors.
+     *
+     * @param automatic if true, spell checking will be disabled if there's
+     * a significant amount of errors.
+     */
     void setAutomatic(bool automatic);
 
     /**
@@ -123,6 +148,11 @@ public:
      */
     bool checkerEnabledByDefault() const;
 
+    /**
+     * Set a new @ref QTextDocument for this highlighter to operate on.
+     *
+     * @param document the new document to operate on.
+     */
     void setDocument(QTextDocument *document);
 
 Q_SIGNALS:
@@ -136,7 +166,6 @@ Q_SIGNALS:
     void activeChanged(const QString &description);
 
 protected:
-
     virtual void highlightBlock(const QString &text);
     virtual void setMisspelled(int start, int count);
     virtual void unsetMisspelled(int start,  int count);
@@ -149,9 +178,19 @@ public Q_SLOTS:
     /**
      * Set language to use for spell checking.
      * Warning: this disables automatic language detection
+     *
+     * @param language the language code for the new language to use.
      */
-    void setCurrentLanguage(const QString &lang);
+    void setCurrentLanguage(const QString &language);
+
+    /**
+     * Run auto detection, disabling spell checking if too many errors are found.
+     */
     void slotAutoDetection();
+
+    /**
+     * Force a new highlighting.
+     */
     void slotRehighlight();
 
 private Q_SLOTS:
