@@ -1,5 +1,5 @@
 Sonnet
-------
+======
 
 Sonnet is a plugin-based spell checking library for Qt-based
 applications. It supports several different plugins, including
@@ -11,13 +11,14 @@ combination of different algorithms.
 The simplest way to use Sonnet in your application is to use the
 SpellCheckDecorator class on your QTextEdit.
 
-Example:
+Example
+-------
 
-#include <QTextEdit>
-#include <spellcheckdecorator.h>
-
-MyFoo::MyFoo(QWidget *parent) : QWidget(parent)
-{
-    QTextEdit *textEdit = new QTextEdit(this);
-    Sonnet::SpellCheckDecorator *decorator = new Sonnet::SpellCheckDecorator(textEdit);
-}
+    #include <QTextEdit>
+    #include <spellcheckdecorator.h>
+    
+    MyFoo::MyFoo(QWidget *parent) : QWidget(parent)
+    {
+        QTextEdit *textEdit = new QTextEdit(this);
+        Sonnet::SpellCheckDecorator *decorator = new Sonnet::SpellCheckDecorator(textEdit);
+    }
