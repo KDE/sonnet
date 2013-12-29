@@ -164,6 +164,7 @@ void Dialog::initGui()
     d->buttonBox->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 
     layout->addWidget(d->wdg);
+    layout->addWidget(d->buttonBox);
 
     //d->ui.m_suggestions->setSorting( NONSORTINGCOLUMN );
     fillDictionaryComboBox();
