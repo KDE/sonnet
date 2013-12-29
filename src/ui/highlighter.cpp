@@ -331,7 +331,7 @@ void Highlighter::setCurrentLanguage(const QString &lang)
     d->wordCount = 0;
     d->errorCount = 0;
     if (d->automatic) {
-        slotAutoDetection();
+        d->rehighlightRequest->start(0);
     }
 }
 
