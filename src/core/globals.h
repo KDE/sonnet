@@ -36,17 +36,6 @@ namespace Sonnet
 extern SONNETCORE_EXPORT QString detectLanguage(const QString &sentence);
 
 /**
- * @return the default language which is stored in the sonnetrc config file.
- *         This is the language the user has set globally in the control
- *         center.
- *         Note that this returns the localized language name, not the
- *         dictionary name/language code.
- *
- * @since 4.2
- */
-extern SONNETCORE_EXPORT QString defaultLanguageName();
-
-/**
  * The function will return the language code for the
  * language in which it thinks the sentence which
  * has been passed to it is. Languages to check are passed in second parameter
