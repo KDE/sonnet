@@ -22,6 +22,9 @@
 #ifndef KSPELL_HSPELLDICT_H
 #define KSPELL_HSPELLDICT_H
 
+#include <QtCore/QMap>
+#include <QtCore/QSet>
+
 #include "spellerplugin_p.h"
 /* libhspell is a C library and it does not have #ifdef __cplusplus */
 extern "C" {
@@ -47,9 +50,14 @@ public:
         return initialized;
     }
 private:
+    void storePersonalWords();
+   
     struct dict_radix *m_speller;
     QTextCodec *codec;
     bool initialized;
+    QSet<QString> m_sessionWords;
+    QSet<QString> m_personalWords;
+    QHash<QString, QString> m_replacements;
 };
 
 #endif
