@@ -105,7 +105,6 @@ void DictionaryComboBox::reloadCombo()
     QMapIterator<QString, QString> i(dictionaries);
     while (i.hasNext()) {
         i.next();
-        //qDebug() << "Populate combo:" << i.key() << ":" << i.value();
         addItem(i.key(), i.value());
     }
     delete speller;

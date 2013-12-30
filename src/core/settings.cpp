@@ -74,6 +74,7 @@ void Settings::setDefaultLanguage(const QString &lang)
         d->defaultLanguage = lang;
         d->modified = true;
         d->loader->changed();
+        save();
     }
 }
 
@@ -91,6 +92,7 @@ void Settings::setDefaultClient(const QString &client)
         d->defaultClient = client;
         d->modified = true;
         d->loader->changed();
+        save();
     }
 }
 
@@ -104,6 +106,7 @@ void Settings::setCheckUppercase(bool check)
     if (d->checkUppercase != check) {
         d->modified = true;
         d->checkUppercase = check;
+        save();
     }
 }
 
@@ -117,6 +120,7 @@ void Settings::setAutodetectLanguage(bool detect)
     if (d->autodetectLanguage != detect) {
         d->modified=true;
         d->autodetectLanguage=detect;
+        save();
     }
 }
 
@@ -130,6 +134,7 @@ void Settings::setSkipRunTogether(bool skip)
     if (d->skipRunTogether != skip) {
         d->modified = true;
         d->skipRunTogether = skip;
+        save();
     }
 }
 
@@ -143,6 +148,7 @@ void Settings::setCheckerEnabledByDefault(bool check)
     if (d->checkerEnabledByDefault != check) {
         d->modified = true;
         d->checkerEnabledByDefault = check;
+        save();
     }
 }
 
@@ -156,6 +162,7 @@ void Settings::setBackgroundCheckerEnabled(bool enable)
     if (d->backgroundCheckerEnabled != enable) {
         d->modified = true;
         d->backgroundCheckerEnabled = enable;
+        save();
     }
 }
 
@@ -168,6 +175,7 @@ void Settings::setCurrentIgnoreList(const QStringList &ignores)
 {
     setQuietIgnoreList(ignores);
     d->modified = true;
+    save();
 }
 
 void Settings::setQuietIgnoreList(const QStringList &ignores)
@@ -176,6 +184,7 @@ void Settings::setQuietIgnoreList(const QStringList &ignores)
     for (QStringList::const_iterator itr = ignores.begin();
             itr != ignores.end(); ++itr) {
         d->ignore.insert(*itr, true);
+        save();
     }
 }
 
@@ -189,6 +198,7 @@ void Settings::addWordToIgnore(const QString &word)
     if (!d->ignore.contains(word)) {
         d->modified = true;
         d->ignore.insert(word, true);
+        save();
     }
 }
 
