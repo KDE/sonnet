@@ -32,7 +32,7 @@ namespace Sonnet
 class BreakTokenizerPrivate
 {
 public:
-    enum Type {Words, Sentences, Paragraphs};
+    enum Type {Words, Sentences};
 
     BreakTokenizerPrivate(Type s) :
             breakFinder(new TextBreaks),
@@ -206,7 +206,6 @@ bool WordTokenizer::isSpellcheckable() const {
     return true;
 }
 
-
 /* --------------------------------------------------------------------*/
 
 SentenceTokenizer::SentenceTokenizer( const QString& buffer ) :
@@ -244,45 +243,5 @@ void SentenceTokenizer::replace(int pos, int len, const QString& newWord)
 {
     d->replace(pos,len,newWord);
 }
-
-
-/* --------------------------------------------------------------------*/
-
-ParagraphTokenizer::ParagraphTokenizer( const QString& buffer ) :
-d(new BreakTokenizerPrivate(BreakTokenizerPrivate::Paragraphs))
-{
-    setBuffer(buffer);
-}
-
-ParagraphTokenizer::~ParagraphTokenizer()
-{
-    delete d;
-}
-
-bool ParagraphTokenizer::hasNext() const
-{
-    return d->hasNext();
-}
-
-void ParagraphTokenizer::setBuffer( const QString& buffer )
-{
-    d->setBuffer(buffer);
-}
-
-QStringRef ParagraphTokenizer::next()
-{
-    return d->next();
-}
-
-QString ParagraphTokenizer::buffer() const
-{
-    return d->buffer;
-}
-
-void ParagraphTokenizer::replace(int pos, int len, const QString& newWord)
-{
-    d->replace(pos,len,newWord);
-}
-
 
 }
