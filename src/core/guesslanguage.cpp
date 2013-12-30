@@ -290,50 +290,38 @@ void GuessLanguagePrivate::loadModels()
 QList<QChar::Script> GuessLanguagePrivate::findRuns(const QString & text)
 {
     QChar::Script script = QChar::Script_Unknown;
-    QChar::Script prevScript = script;
     QHash<QChar::Script, int> scriptCounts;
 
-    int count = 0;
     int totalCount = 0;
-
 
     foreach (const QChar &c, text)
     {
         script = c.script();
-        if (script == QChar::Script_Common)
+
+        if (script == QChar::Script_Common || script == QChar::Script_Inherited) {
             continue;
-
-        if (c.isLetter())
-        {
-            ++count;
-            ++totalCount;
-            if ( prevScript != script && script != QChar::Script_Inherited)
-            {
-
-                prevScript = script;
-
-                scriptCounts[script] += count;
-                count = 0;
-            }
         }
-    }
 
-    // add last count
-    scriptCounts[script] += count;
+        if (!c.isLetter()) {
+            continue;
+        }
+
+        scriptCounts[script]++;
+        totalCount++;
+    }
 
     QList<QChar::Script> relevantScripts;
 
     if (totalCount == 0) return relevantScripts;
 
-
     foreach(const QChar::Script &script, scriptCounts.keys()) {
         // return run types that used for 40% or more of the string
-        if (scriptCounts[script] * 100 / totalCount >= 40)
+        if (scriptCounts[script] * 100 / totalCount >= 40) {
             relevantScripts << script;
-
         // always return basic latin if found more than 15%.
-        else if (script == QChar::Script_Latin && scriptCounts[script] * 100 / totalCount >= 15)
+        } else if (script == QChar::Script_Latin && scriptCounts[script] * 100 / totalCount >= 15) {
             relevantScripts << script;
+        }
     }
 
     return relevantScripts;
@@ -359,8 +347,9 @@ QStringList GuessLanguagePrivate::identify(const QString& sample, const QList<QC
 
     // Try languages with unique scripts
     foreach(const QChar::Script &script, s_singletons.keys()) {
-        if (scripts.contains(script))
+        if (scripts.contains(script)) {
             return QStringList(s_singletons.value(script));
+        }
     }
 
     //if ( scripts.contains("Latin Extended Additional") )
@@ -375,8 +364,9 @@ QStringList GuessLanguagePrivate::identify(const QString& sample, const QList<QC
         else
             return latinLang;
     }*/
-    if (scripts.contains(QChar::Script_Latin))
+    if (scripts.contains(QChar::Script_Latin)) {
         return check( sample, ALL_LATIN );
+    }
 
     return QStringList();
 }
