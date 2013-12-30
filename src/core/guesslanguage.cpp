@@ -102,50 +102,106 @@ GuessLanguagePrivate::GuessLanguagePrivate()
     if (!BASIC_LATIN.isEmpty())
         return;
 
-    BASIC_LATIN << "en"  << "ha" << "so"  << "id" << "la" << "sw" << "eu" << "nr" << "nso" << "zu" << "xh" << "ss" << "st" << "tn" << "ts";
+    BASIC_LATIN << QStringLiteral("en")
+                << QStringLiteral("ha")
+                << QStringLiteral("so")
+                << QStringLiteral("id")
+                << QStringLiteral("la")
+                << QStringLiteral("sw")
+                << QStringLiteral("eu")
+                << QStringLiteral("nr")
+                << QStringLiteral("nso")
+                << QStringLiteral("zu")
+                << QStringLiteral("xh")
+                << QStringLiteral("ss")
+                << QStringLiteral("st")
+                << QStringLiteral("tn")
+                << QStringLiteral("ts");
 
-    EXTENDED_LATIN << "cs" << "af" << "pl" << "hr" << "ro" << "sk" << "sl" << "tr" << "hu" << "az" << "et" << "sq" << "ca" << "es" << "fr" << "de" << "nl" << "it" << "da" << "is" << "nb" << "sv" << "fi" << "lv" << "pt" << "ve" << "lt" << "tl" << "cy" ;
+    EXTENDED_LATIN << QStringLiteral("cs")
+                   << QStringLiteral("af")
+                   << QStringLiteral("pl")
+                   << QStringLiteral("hr")
+                   << QStringLiteral("ro")
+                   << QStringLiteral("sk")
+                   << QStringLiteral("sl")
+                   << QStringLiteral("tr")
+                   << QStringLiteral("hu")
+                   << QStringLiteral("az")
+                   << QStringLiteral("et")
+                   << QStringLiteral("sq")
+                   << QStringLiteral("ca")
+                   << QStringLiteral("es")
+                   << QStringLiteral("fr")
+                   << QStringLiteral("de")
+                   << QStringLiteral("nl")
+                   << QStringLiteral("it")
+                   << QStringLiteral("da")
+                   << QStringLiteral("is")
+                   << QStringLiteral("nb")
+                   << QStringLiteral("sv")
+                   << QStringLiteral("fi")
+                   << QStringLiteral("lv")
+                   << QStringLiteral("pt")
+                   << QStringLiteral("ve")
+                   << QStringLiteral("lt")
+                   << QStringLiteral("tl")
+                   << QStringLiteral("cy");
 
     ALL_LATIN << BASIC_LATIN << EXTENDED_LATIN;
 
-    CYRILLIC << "ru" << "uk" << "kk" << "uz" << "mn" << "sr" << "mk" << "bg" << "ky";
+    CYRILLIC << QStringLiteral("ru")
+             << QStringLiteral("uk")
+             << QStringLiteral("kk")
+             << QStringLiteral("uz")
+             << QStringLiteral("mn")
+             << QStringLiteral("sr")
+             << QStringLiteral("mk")
+             << QStringLiteral("bg")
+             << QStringLiteral("ky");
 
-    ARABIC << "ar" << "fa" << "ps" << "ur";
+    ARABIC << QStringLiteral("ar")
+           << QStringLiteral("fa")
+           << QStringLiteral("ps")
+           << QStringLiteral("ur");
 
-    DEVANAGARI << "hi" << "ne";
+    DEVANAGARI << QStringLiteral("hi")
+               << QStringLiteral("ne");
 
-    PT << "pt_BR" << "pt_PT";
+    PT << QStringLiteral("pt_BR")
+       << QStringLiteral("pt_PT");
 
-    HAN << "zh" << "ja";
+    HAN << QStringLiteral("zh")
+        << QStringLiteral("ja");
 
     // NOTE mn appears twice, once for mongolian script and once for CYRILLIC
-    s_singletons[QChar::Script_Armenian] = "hy";
-    s_singletons[QChar::Script_Hebrew] = "he";
-    s_singletons[QChar::Script_Bengali] = "bn";
-    s_singletons[QChar::Script_Gurmukhi] = "pa";
-    s_singletons[QChar::Script_Greek] = "el";
-    s_singletons[QChar::Script_Gujarati] = "gu";
-    s_singletons[QChar::Script_Hangul] = "ko";
-    s_singletons[QChar::Script_Oriya] = "or";
-    s_singletons[QChar::Script_Tamil] = "ta";
-    s_singletons[QChar::Script_Telugu] = "te";
-    s_singletons[QChar::Script_Kannada] = "kn";
-    s_singletons[QChar::Script_Malayalam] = "ml";
-    s_singletons[QChar::Script_Sinhala] = "si";
-    s_singletons[QChar::Script_Thai] = "th";
-    s_singletons[QChar::Script_Lao] = "lo";
-    s_singletons[QChar::Script_Tibetan] = "bo";
-    s_singletons[QChar::Script_Myanmar] = "my";
-    s_singletons[QChar::Script_Georgian] = "ka";
-    s_singletons[QChar::Script_Mongolian] = "mn";
-    s_singletons[QChar::Script_Khmer] = "km";
-    s_singletons[QChar::Script_TaiViet] = "blt";
-    s_singletons[QChar::Script_Greek] = "el";
-    s_singletons[QChar::Script_Coptic] = "el";
-    s_singletons[QChar::Script_Katakana] = "ja";
-    s_singletons[QChar::Script_Hiragana] = "ja";
-    s_singletons[QChar::Script_Bopomofo] = "zh";
-    s_singletons[QChar::Script_Yi] = "zh";
+    s_singletons[QChar::Script_Armenian] = QStringLiteral("hy");
+    s_singletons[QChar::Script_Hebrew] = QStringLiteral("he");
+    s_singletons[QChar::Script_Bengali] = QStringLiteral("bn");
+    s_singletons[QChar::Script_Gurmukhi] = QStringLiteral("pa");
+    s_singletons[QChar::Script_Greek] = QStringLiteral("el");
+    s_singletons[QChar::Script_Gujarati] = QStringLiteral("gu");
+    s_singletons[QChar::Script_Hangul] = QStringLiteral("ko");
+    s_singletons[QChar::Script_Oriya] = QStringLiteral("or");
+    s_singletons[QChar::Script_Tamil] = QStringLiteral("ta");
+    s_singletons[QChar::Script_Telugu] = QStringLiteral("te");
+    s_singletons[QChar::Script_Kannada] = QStringLiteral("kn");
+    s_singletons[QChar::Script_Malayalam] = QStringLiteral("ml");
+    s_singletons[QChar::Script_Sinhala] = QStringLiteral("si");
+    s_singletons[QChar::Script_Thai] = QStringLiteral("th");
+    s_singletons[QChar::Script_Lao] = QStringLiteral("lo");
+    s_singletons[QChar::Script_Tibetan] = QStringLiteral("bo");
+    s_singletons[QChar::Script_Myanmar] = QStringLiteral("my");
+    s_singletons[QChar::Script_Georgian] = QStringLiteral("ka");
+    s_singletons[QChar::Script_Mongolian] = QStringLiteral("mn");
+    s_singletons[QChar::Script_Khmer] = QStringLiteral("km");
+    s_singletons[QChar::Script_TaiViet] = QStringLiteral("blt");
+    s_singletons[QChar::Script_Greek] = QStringLiteral("el");
+    s_singletons[QChar::Script_Coptic] = QStringLiteral("el");
+    s_singletons[QChar::Script_Katakana] = QStringLiteral("ja");
+    s_singletons[QChar::Script_Hiragana] = QStringLiteral("ja");
+    s_singletons[QChar::Script_Bopomofo] = QStringLiteral("zh");
+    s_singletons[QChar::Script_Yi] = QStringLiteral("zh");
 
     if (m_models.isEmpty())
         loadModels();
@@ -177,7 +233,7 @@ void GuessLanguage::setLimits(int n, double dx)
 
 void GuessLanguagePrivate::loadModels()
 {
-    QString triMapFile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "sonnet/trigrams.map");
+    QString triMapFile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("sonnet/trigrams.map"));
 
     QFile sin(triMapFile);
     if (!sin.open(QIODevice::ReadOnly)) {
@@ -191,7 +247,6 @@ void GuessLanguagePrivate::loadModels()
 
 QList<QChar::Script> GuessLanguagePrivate::findRuns(const QString & text)
 {
-    const QChar *c  = text.constData();
     QChar::Script script = QChar::Script_Unknown;
     QChar::Script prevScript = script;
     QHash<QChar::Script, int> scriptCounts;

@@ -170,8 +170,8 @@ QStringRef WordTokenizer::next()
     // check if this word starts an email address of url
     if (!d->inAddress || hasNext()) {
         int pos=n.position()+n.length();
-        if (d->buffer[pos]=='@') d->inAddress=true;
-        if (d->buffer[pos]==':' && d->buffer[pos+1]=='/'  && d->buffer[pos+2]=='/') d->inAddress=true;
+        if (d->buffer[pos] == QLatin1Char('@')) d->inAddress=true;
+        if (d->buffer[pos] == QLatin1Char(':') && d->buffer[pos+1] == QLatin1Char('/')  && d->buffer[pos+2] == QLatin1Char('/')) d->inAddress=true;
     }
     return n;
 }

@@ -38,11 +38,12 @@ int main(int argc, char **argv)
     sout.open(stdout, QIODevice::WriteOnly);
     QDataStream out(&sout);
 
-    QDir td(argv[1]);
+    QString path = QLatin1String(argv[1]);
+    QDir td(path);
 
     QHash< QString, QHash<QString,int> > models;
 
-    QStringList files=td.entryList(QDir::Files);
+    QStringList files = td.entryList(QDir::Files);
 
     Q_FOREACH (const QString& fname, files) {
 
@@ -55,7 +56,7 @@ int main(int argc, char **argv)
         while (!stream.atEnd())
         {
             QString line = stream.readLine();
-            QRegExp rx("(.{3})\\s+(.*)");
+            QRegExp rx(QLatin1String("(.{3})\\s+(.*)"));
             int pos = rx.indexIn(line);
             if ( pos != -1 )
                 models[lname][line.left(3)] = rx.cap(2).toInt();

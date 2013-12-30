@@ -194,17 +194,17 @@ QString BackgroundChecker::currentContext() const
 
     QString buffer = d->mainTokenizer.buffer();
     buffer = buffer.replace( currentPosition, d->lastMisspelled.length(),
-                             QString( "<b>%1</b>" ).arg( d->lastMisspelled.toString() ) );
+                             QStringLiteral( "<b>%1</b>" ).arg( d->lastMisspelled.toString() ) );
 
     QString context;
     if ( begin )
-        context = QString( "%1...")
+        context = QStringLiteral( "%1...")
         .arg( buffer.mid(  0, len ) );
     else
-        context = QString( "...%1..." )
+        context = QStringLiteral( "...%1..." )
         .arg( buffer.mid(  currentPosition - 20, len ) );
 
-    context = context.replace( '\n', ' ' );
+    context = context.replace(QLatin1Char('\n'), QLatin1Char(' '));
 
     return context;
 }
