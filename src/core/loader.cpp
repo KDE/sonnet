@@ -163,9 +163,9 @@ QString Loader::languageNameForCode(const QString &langCode) const
         { "variant_2",      QT_TRANSLATE_NOOP3("Sonnet::Loader", "variant 2", "dictionary variant") },
         { "wo_accents",     QT_TRANSLATE_NOOP3("Sonnet::Loader", "without accents", "dictionary variant") },
         { "w_accents",      QT_TRANSLATE_NOOP3("Sonnet::Loader", "with accents", "dictionary variant") },
-        { "ye",             QT_TRANSLATE_NOOP3("Sonnet::Loader", "with ye", "dictionary variant") },
-        { "yeyo",           QT_TRANSLATE_NOOP3("Sonnet::Loader", "with yeyo", "dictionary variant") },
-        { "yo",             QT_TRANSLATE_NOOP3("Sonnet::Loader", "with yo", "dictionary variant") },
+        { "ye",             QT_TRANSLATE_NOOP3("Sonnet::Loader", "with ye, modern russian", "dictionary variant") },
+        { "yeyo",           QT_TRANSLATE_NOOP3("Sonnet::Loader", "with yeyo, modern and old russian", "dictionary variant") },
+        { "yo",             QT_TRANSLATE_NOOP3("Sonnet::Loader", "with yo, old russian", "dictionary variant") },
         { "extended",       QT_TRANSLATE_NOOP3("Sonnet::Loader", "extended", "dictionary variant") },
         { 0, 0 }
     };
