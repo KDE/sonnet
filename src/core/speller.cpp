@@ -280,20 +280,8 @@ QMap<QString, QString> Sonnet::Speller::availableDictionaries() const
     QStringList lst = l->languages();
     QMap<QString, QString> langs;
 
-    Q_FOREACH (QString tag, lst) { // krazy:exclude=foreach (no const& because tag is modified below)
-        tag = tag.mid(0, tag.indexOf(QLatin1Char('-')));
-        QLocale loc(tag);
-        QString description;
-
-        if (!loc.nativeCountryName().isEmpty())
-            description = QString::fromLatin1("%1 (%2)")
-                          .arg(loc.nativeLanguageName())
-                          .arg(loc.nativeCountryName());
-        else {
-            description = loc.nativeLanguageName();
-        }
-        //qDebug()<<"Dict is "<<tag<<" ( "<<loc.name()<<")"<<", descr = "<<description;
-        langs.insert(description, tag);
+    Q_FOREACH (const QString &tag, lst) {
+        langs.insert(l->languageNameForCode(tag), tag);
     }
 
     return langs;
