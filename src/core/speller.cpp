@@ -252,13 +252,10 @@ bool Speller::testAttribute(Attribute attr) const
     switch (attr) {
     case CheckUppercase:
         return d->settings->checkUppercase();
-        break;
     case SkipRunTogether:
         return d->settings->skipRunTogether();
-        break;
     case AutoDetectLanguage:
         return d->settings->autodetectLanguage();
-        break;
     }
     return false;
 }
