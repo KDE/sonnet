@@ -191,7 +191,6 @@ QString BackgroundChecker::currentContext() const
     int currentPosition= d->lastMisspelled.position()+d->sentenceOffset;
     bool begin = ( (currentPosition - len/2)<=0 ) ? true : false;
 
-
     QString buffer = d->mainTokenizer.buffer();
     buffer = buffer.replace( currentPosition, d->lastMisspelled.length(),
                              QStringLiteral( "<b>%1</b>" ).arg( d->lastMisspelled.toString() ) );

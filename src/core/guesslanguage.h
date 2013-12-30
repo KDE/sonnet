@@ -79,7 +79,7 @@ public:
      * @return list of the presumed languages of the text, sorted by decreasing confidence. Empty list means
      * it is impossible to determine language with confidence required by setLimits
      */
-    QStringList identify(const QString & text) const;
+    QString identify(const QString& text, const QStringList &suggestions = QStringList()) const;
 
 private:
     GuessLanguagePrivate* const d;

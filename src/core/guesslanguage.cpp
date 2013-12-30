@@ -27,6 +27,9 @@
 #include <QtCore/QTime>
 
 #include "guesslanguage.h"
+#include "loader_p.h"
+#include "speller.h"
+#include "tokenizer_p.h"
 
 /*
 All language tags should be valid according to IETF BCP 47, as codefied in RFC 4646.
@@ -68,6 +71,7 @@ public:
     int distance( const QList<QString>& model, const QHash<QString,int>& knownModel );
     QStringList check(const QString & sample, const QStringList& langs);
     QStringList identify(const QString& sample, const QList< QChar::Script >& scripts);
+    QString guessDictionary(const QString& sentence, const QStringList& candidates);
 
     static QStringList BASIC_LATIN;
     static QStringList EXTENDED_LATIN;
@@ -217,12 +221,50 @@ GuessLanguage::~GuessLanguage()
     delete d;
 }
 
-QStringList GuessLanguage::identify(const QString & text) const
+QString GuessLanguage::identify(const QString& text, const QStringList& suggestions) const
 {
     if (text.isEmpty())
-        return QList<QString>();
+        return QString();
 
-    return d->identify( text, d->findRuns(text) );
+    QStringList candidates = d->identify(text, d->findRuns(text));
+
+    // guesser was sure enough
+    if (candidates.size() == 1) {
+        return candidates.front();
+    }
+
+    // guesser was unable to even narrow it down to 3 candidates. In this case try fallbacks too
+    if (candidates.size() == d->m_maxItems || candidates.isEmpty()) {
+        candidates += suggestions;
+    }
+    candidates.removeDuplicates();
+
+    Loader *l = Loader::openLoader();
+    QStringList availableDictionaries = l->languages();
+    QStringList toDictDetect;
+
+    // make sure that dictionary-based detection only gets languages with installed dictionaries
+    Q_FOREACH(const QString& s, candidates) {
+        if (availableDictionaries.contains(s)) {
+            toDictDetect += s;
+        }
+    }
+
+    QString ret;
+
+    // only one of candidates has dictionary - use it
+    if (toDictDetect.size()==1) {
+        ret=toDictDetect.front();
+    } else if (!toDictDetect.isEmpty()) {
+        ret = d->guessDictionary(text, toDictDetect);
+    }
+
+    // dictionary-based detection did not work, return best guess from previous step
+    if (ret.isEmpty() && !candidates.isEmpty()) {
+        ret=candidates.front();
+    }
+
+    return ret;
 }
 
 void GuessLanguage::setLimits(int n, double dx)
@@ -420,6 +462,42 @@ int GuessLanguagePrivate::distance( const QList<QString>& model, const QHash<QSt
     }
 
     return dist;
+}
+
+QString GuessLanguagePrivate::guessDictionary(const QString& sentence, const QStringList& candidates)
+{
+    // Try to see how many languages we can get spell checking for
+    QList<Speller> spellers;
+    Q_FOREACH (const QString& lang, candidates) {
+        Speller sp;
+        sp.setLanguage(lang);
+        if (sp.isValid()) spellers << sp;
+    }
+
+    if (spellers.isEmpty()) return QString();
+
+    QMap<QString, int> correctHits;
+
+    WordTokenizer t(sentence);
+    while (t.hasNext()) {
+        QStringRef word = t.next();
+        if (!t.isSpellcheckable()) continue;
+
+        for (int i = 0; i < spellers.count(); ++i) {
+            if (spellers[i].isValid() && spellers[i].isCorrect(word.toString()))
+                correctHits[spellers[i].language()] += 1;
+        }
+    }
+
+    if (correctHits.isEmpty()) return QString();
+
+    QMap<QString, int>::const_iterator max = correctHits.constBegin();
+    for (QMap<QString, int>::const_iterator itr = correctHits.constBegin();
+        itr != correctHits.constEnd(); ++itr) {
+        if (itr.value() > max.value())
+            max = itr;
+    }
+    return max.key();
 }
 
 

@@ -24,7 +24,6 @@
 #include "languagefilter_p.h"
 #include "guesslanguage.h"
 #include "speller.h"
-#include "globals.h"
 
 namespace Sonnet
 {
@@ -38,7 +37,6 @@ public:
     LanguageFilterPrivate(AbstractTokenizer* s) : source(s) { gl.setLimits(MAX_ITEMS, MIN_RELIABILITY); }
     ~LanguageFilterPrivate() { delete source; }
     
-    QString doIdentify(const QString& text, const QStringList& fallbacks) const;
     QString mainLanguage() const;
     
     AbstractTokenizer* source;
@@ -52,38 +50,11 @@ public:
     Speller sp;
 };
 
-QString LanguageFilterPrivate::doIdentify(const QString& text, const QStringList& fallbacks) const
-{
-    QStringList candidates=gl.identify(text);
-    
-    // guesser was sure enough
-    if (candidates.size() == 1) return candidates.front();
-
-    // guesser was unable to even narrow it down to 3 candidates. In this case try fallbacks too 
-    if (candidates.size()==MAX_ITEMS || candidates.isEmpty()) candidates += fallbacks;
-    candidates.removeDuplicates();
-
-    QStringList availableDictionaries=Speller().availableLanguages();
-    QStringList toDictDetect;
-
-    // make sure that dictionary-based detection only gets languages with installed dictionaries
-    Q_FOREACH(const QString& s, candidates) if (availableDictionaries.contains(s)) toDictDetect += s;
-
-    QString ret;
-
-    // only one of candidates has dictionary - use it
-    if (toDictDetect.size()==1) ret=toDictDetect.front();
-    else if (!toDictDetect.isEmpty()) ret=detectLanguage(text, toDictDetect);
-
-    // dictionary-based detection did not work, return best guess from previous step
-    if (ret.isEmpty() && !candidates.isEmpty()) ret=candidates.front();
-
-    return ret;
-}
-
 QString LanguageFilterPrivate::mainLanguage() const
 {
-    if (cachedMainLanguage.isNull())  cachedMainLanguage=doIdentify(source->buffer(), QStringList(Speller().defaultLanguage()));
+    if (cachedMainLanguage.isNull()) {
+        cachedMainLanguage = gl.identify(source->buffer(), QStringList(Speller().defaultLanguage()));
+    }
     return cachedMainLanguage;
 }
 
@@ -102,32 +73,39 @@ bool LanguageFilter::hasNext() const
 
 void LanguageFilter::setBuffer( const QString& buffer )
 {
-    d->cachedMainLanguage=QString();
+    d->cachedMainLanguage = QString();
     d->source->setBuffer(buffer);
 }
 
 QStringRef LanguageFilter::next() 
 {
-    d->lastToken=d->source->next();
-    d->prevLanguage=d->lastLanguage;
-    d->lastLanguage=QString();
+    d->lastToken = d->source->next();
+    d->prevLanguage = d->lastLanguage;
+    d->lastLanguage = QString();
     return d->lastToken;
 }
 
 QString LanguageFilter::language() const
 {
-    if (d->lastLanguage.isNull()) 
-        d->lastLanguage=d->doIdentify(d->lastToken.toString(), QStringList() << d->mainLanguage() << d->prevLanguage);
+    if (d->lastLanguage.isNull()) {
+        d->lastLanguage=d->gl.identify(d->lastToken.toString(), QStringList() << d->mainLanguage() << d->prevLanguage);
+    }
+
     return d->lastLanguage;
 }
 
 bool LanguageFilter::isSpellcheckable() const {
     const QString& lastlang=language();
-    if (lastlang.isEmpty()) return false;
+    if (lastlang.isEmpty()) {
+        return false;
+    }
     
     //FIXME: do something a little more smart here
-    Q_FOREACH(const QString& lang, d->sp.availableLanguages()) 
-        if (lang.startsWith(lastlang)) return true;
+    Q_FOREACH(const QString& lang, d->sp.availableLanguages()) {
+        if (lang.startsWith(lastlang)) {
+            return true;
+        }
+    }
     return false;
 }
 
@@ -135,6 +113,7 @@ QString LanguageFilter::buffer() const
 {
     return d->source->buffer();
 }
+
 void LanguageFilter::replace(int position, int len, const QString& newWord)
 {
     d->source->replace(position,len,newWord);
@@ -142,7 +121,5 @@ void LanguageFilter::replace(int position, int len, const QString& newWord)
     // uncache language for current token - it may have changed
     d->lastLanguage=QString();
 }
-
-
 
 }
