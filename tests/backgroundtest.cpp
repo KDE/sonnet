@@ -131,15 +131,17 @@ Discussion\
 If you want to talk about this code feel free to mail us.";
 
 BackgroundTest::BackgroundTest()
-    : QObject(0)
+    : QObject(0), m_speller("en")
 {
-    m_checker = new BackgroundChecker(this);
+
+    m_checker = new BackgroundChecker(m_speller, this);
     connect(m_checker, SIGNAL(done()),
             SLOT(slotDone()));
     connect(m_checker, SIGNAL(misspelling(QString,int)),
             SLOT(slotMisspelling(QString,int)));
     m_len = strlen(text);
     m_checker->setText(text);
+    m_checker->speller().setLanguage("en");
     m_timer.start();
 }
 
@@ -151,7 +153,7 @@ void BackgroundTest::slotDone()
 
 void BackgroundTest::slotMisspelling(const QString &word, int start)
 {
-    qDebug() << "Misspelling \"" << word << "\" at" << start;
+    qDebug() << "Misspelling" << word << "at" << start;
     m_checker->continueChecking();
 }
 

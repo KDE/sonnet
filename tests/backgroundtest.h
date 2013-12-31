@@ -38,6 +38,7 @@ protected Q_SLOTS:
 
 private:
     Sonnet::BackgroundChecker *m_checker;
+    Sonnet::Speller m_speller;
     QTime m_timer;
     int m_len;
 };
