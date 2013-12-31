@@ -206,9 +206,6 @@ GuessLanguagePrivate::GuessLanguagePrivate()
     s_singletons[QChar::Script_Hiragana] = QStringLiteral("ja");
     s_singletons[QChar::Script_Bopomofo] = QStringLiteral("zh");
     s_singletons[QChar::Script_Yi] = QStringLiteral("zh");
-
-    if (m_models.isEmpty())
-        loadModels();
 }
 
 GuessLanguage::GuessLanguage() :
@@ -225,6 +222,10 @@ QString GuessLanguage::identify(const QString& text, const QStringList& suggesti
 {
     if (text.isEmpty())
         return QString();
+
+    // Load the model on demand
+    if (d->m_models.isEmpty())
+        d->loadModels();
 
     QStringList candidates = d->identify(text, d->findRuns(text));
 
