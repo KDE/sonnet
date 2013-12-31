@@ -63,15 +63,15 @@ class GuessLanguagePrivate
 public:
     GuessLanguagePrivate();
     //            language       trigram  score
-    static QHash< QString, QHash<QString, int> > m_models;
+    static QHash< QString, QHash<QString, int> > s_knownModels;
 
     void loadModels( );
     QList< QChar::Script > findRuns(const QString& text);
     QList<QString> createOrderedModel(const QString& content);
     int distance( const QList<QString>& model, const QHash<QString,int>& knownModel );
-    QStringList check(const QString & sample, const QStringList& langs);
+    QStringList guessFromTrigrams(const QString & sample, const QStringList& langs);
     QStringList identify(const QString& sample, const QList< QChar::Script >& scripts);
-    QString guessDictionary(const QString& sentence, const QStringList& candidates);
+    QString guessFromDictionaries(const QString& sentence, const QStringList& candidates);
 
     static QStringList BASIC_LATIN;
     static QStringList EXTENDED_LATIN;
@@ -88,7 +88,7 @@ public:
     double m_minConfidence;
 };
 
-QHash< QString, QHash<QString,int> > GuessLanguagePrivate::m_models;
+QHash< QString, QHash<QString,int> > GuessLanguagePrivate::s_knownModels;
 QStringList GuessLanguagePrivate::BASIC_LATIN;
 QStringList GuessLanguagePrivate::EXTENDED_LATIN;
 QStringList GuessLanguagePrivate::ALL_LATIN;
@@ -96,8 +96,8 @@ QStringList GuessLanguagePrivate::CYRILLIC;
 QStringList GuessLanguagePrivate::ARABIC;
 QStringList GuessLanguagePrivate::DEVANAGARI;
 QStringList GuessLanguagePrivate::HAN;
-QHash<QChar::Script, QString> GuessLanguagePrivate::s_singletons;
 QStringList GuessLanguagePrivate::PT;
+QHash<QChar::Script, QString> GuessLanguagePrivate::s_singletons;
 
 
 GuessLanguagePrivate::GuessLanguagePrivate()
@@ -224,7 +224,7 @@ QString GuessLanguage::identify(const QString& text, const QStringList& suggesti
         return QString();
 
     // Load the model on demand
-    if (d->m_models.isEmpty())
+    if (d->s_knownModels.isEmpty())
         d->loadModels();
 
     QStringList candidates = d->identify(text, d->findRuns(text));
@@ -240,38 +240,37 @@ QString GuessLanguage::identify(const QString& text, const QStringList& suggesti
     }
     candidates.removeDuplicates();
 
-    Loader *l = Loader::openLoader();
-    QStringList availableDictionaries = l->languages();
+    QStringList availableDictionaries = Loader::openLoader()->languages();
     QStringList toDictDetect;
 
     // make sure that dictionary-based detection only gets languages with installed dictionaries
-    Q_FOREACH(const QString& s, candidates) {
-        if (availableDictionaries.contains(s)) {
-            toDictDetect += s;
+    Q_FOREACH(const QString& candidate, candidates) {
+        if (availableDictionaries.contains(candidate)) {
+            toDictDetect += candidate;
         }
     }
 
     QString ret;
 
     // only one of candidates has dictionary - use it
-    if (toDictDetect.size()==1) {
-        ret=toDictDetect.front();
+    if (toDictDetect.size() == 1) {
+        ret = toDictDetect.front();
     } else if (!toDictDetect.isEmpty()) {
-        ret = d->guessDictionary(text, toDictDetect);
+        ret = d->guessFromDictionaries(text, toDictDetect);
     }
 
     // dictionary-based detection did not work, return best guess from previous step
     if (ret.isEmpty() && !candidates.isEmpty()) {
-        ret=candidates.front();
+        ret = candidates.front();
     }
 
     return ret;
 }
 
-void GuessLanguage::setLimits(int n, double dx)
+void GuessLanguage::setLimits(int maxItems, double minConfidence)
 {
-    d->m_maxItems=n;
-    d->m_minConfidence=dx;
+    d->m_maxItems = maxItems;
+    d->m_minConfidence = minConfidence;
 }
 
 void GuessLanguagePrivate::loadModels()
@@ -285,7 +284,7 @@ void GuessLanguagePrivate::loadModels()
     }
 
     QDataStream in(&sin);
-    in >> m_models;
+    in >> s_knownModels;
 }
 
 QList<QChar::Script> GuessLanguagePrivate::findRuns(const QString & text)
@@ -334,16 +333,16 @@ QStringList GuessLanguagePrivate::identify(const QString& sample, const QList<QC
         return QStringList();
 
     if (scripts.contains(QChar::Script_Cyrillic))
-        return check(sample, CYRILLIC);
+        return guessFromTrigrams(sample, CYRILLIC);
 
     if (scripts.contains(QChar::Script_Arabic) || scripts.contains(QChar::Script_OldSouthArabian))
-        return check(sample, ARABIC);
+        return guessFromTrigrams(sample, ARABIC);
 
     if (scripts.contains(QChar::Script_Devanagari))
-        return check(sample, DEVANAGARI);
+        return guessFromTrigrams(sample, DEVANAGARI);
 
     if (scripts.contains(QChar::Script_Han))
-        return check(sample, HAN);
+        return guessFromTrigrams(sample, HAN);
 
 
     // Try languages with unique scripts
@@ -366,49 +365,51 @@ QStringList GuessLanguagePrivate::identify(const QString& sample, const QList<QC
             return latinLang;
     }*/
     if (scripts.contains(QChar::Script_Latin)) {
-        return check( sample, ALL_LATIN );
+        return guessFromTrigrams(sample, ALL_LATIN);
     }
 
     return QStringList();
 }
 
-QStringList GuessLanguagePrivate::check(const QString & sample, const QStringList& languages)
+QStringList GuessLanguagePrivate::guessFromTrigrams(const QString & sample, const QStringList& languages)
 {
     QStringList ret;
-    if (sample.size() < MIN_LENGTH)
+    if (sample.size() < MIN_LENGTH) {
         return ret;
+    }
 
     QMap<int,QString> scores;
     const QList<QString> sampleTrigrams = createOrderedModel(sample);
 
-    foreach (const QString &language, languages )
-    {
+    Q_FOREACH (const QString &language, languages) {
         const QString languageLowercase = language.toLower();
 
-        if ( m_models.contains(languageLowercase) )
-        {
-            scores.insert(distance(sampleTrigrams, m_models[languageLowercase]), language);
+        if (s_knownModels.contains(languageLowercase)) {
+            scores.insert(distance(sampleTrigrams, s_knownModels[languageLowercase]), language);
         }
     }
 
-    if ( scores.isEmpty() )
+    if (scores.isEmpty()) {
         return ret;
+    }
 
-    int counter=0;
-    double confidence=0;
+    int counter = 0;
+    double confidence = 0;
     QMapIterator<int,QString> it(scores);
     it.next();
-    QString prev_item=it.value();
-    int prev_score=it.key();
+
+    QString prevItem = it.value();
+    int prevScore = it.key();
     
-    while (it.hasNext() && counter<m_maxItems && confidence<m_minConfidence) {
+    while (it.hasNext() && counter < m_maxItems && confidence < m_minConfidence) {
         it.next();
         counter++;
-        confidence += (it.key() - prev_score)/(double)it.key();
-        ret += prev_item;
-        prev_item=it.value();
-        prev_score=it.key();
+        confidence += (it.key() - prevScore)/(double)it.key();
+        ret += prevItem;
+        prevItem=it.value();
+        prevScore=it.key();
     }
+
     return ret;
 }
 
@@ -418,9 +419,8 @@ QList<QString> GuessLanguagePrivate::createOrderedModel(const QString& content)
     QHash<QString,int> trigramCounts;
     QMap<int,QString> orderedTrigrams;
 
-    for ( int i = 0; i < (content.size() - 2) ; ++i )
-    {
-        QString tri = content.mid( i, 3 ).toLower();
+    for (int i = 0; i < (content.size() - 2); ++i) {
+        QString tri = content.mid(i, 3).toLower();
         trigramCounts[tri]++;
     }
 
@@ -435,48 +435,56 @@ QList<QString> GuessLanguagePrivate::createOrderedModel(const QString& content)
     return orderedTrigrams.values();
 }
 
-int GuessLanguagePrivate::distance( const QList<QString>& model, const QHash<QString,int>& knownModel )
+int GuessLanguagePrivate::distance(const QList<QString>& model, const QHash<QString,int>& knownModel)
 {
     int counter = -1;
     int dist = 0;
 
     static const int MAXGRAMS = 300;
 
-    Q_FOREACH(const QString& trigram, model ) 
-    {
-        if ( knownModel.contains(trigram) )
-            dist += qAbs( ++counter - knownModel.value(trigram) );
-        else
+    Q_FOREACH(const QString& trigram, model) {
+        if (knownModel.contains(trigram)) {
+            dist += qAbs(++counter - knownModel.value(trigram));
+        } else {
             dist += MAXGRAMS;
-        if (counter==(MAXGRAMS-1))
+        }
+
+        if (counter==(MAXGRAMS-1)) {
             break;
+        }
     }
 
     return dist;
 }
 
-QString GuessLanguagePrivate::guessDictionary(const QString& sentence, const QStringList& candidates)
+QString GuessLanguagePrivate::guessFromDictionaries(const QString& sentence, const QStringList& candidates)
 {
     // Try to see how many languages we can get spell checking for
     QList<Speller> spellers;
     Q_FOREACH (const QString& lang, candidates) {
-        Speller sp;
-        sp.setLanguage(lang);
-        if (sp.isValid()) spellers << sp;
+        Speller speller;
+        speller.setLanguage(lang);
+        if (speller.isValid()) {
+            spellers << speller;
+        }
     }
 
-    if (spellers.isEmpty()) return QString();
+    // If there's no spell checkers, give up
+    if (spellers.isEmpty()) {
+        return QString();
+    }
 
     QMap<QString, int> correctHits;
 
-    WordTokenizer t(sentence);
-    while (t.hasNext()) {
-        QStringRef word = t.next();
-        if (!t.isSpellcheckable()) continue;
+    WordTokenizer tokenizer(sentence);
+    while (tokenizer.hasNext()) {
+        QStringRef word = tokenizer.next();
+        if (!tokenizer.isSpellcheckable()) continue;
 
         for (int i = 0; i < spellers.count(); ++i) {
-            if (spellers[i].isValid() && spellers[i].isCorrect(word.toString()))
-                correctHits[spellers[i].language()] += 1;
+            if (spellers[i].isValid() && spellers[i].isCorrect(word.toString())) {
+                correctHits[spellers[i].language()]++;
+            }
         }
     }
 
@@ -485,8 +493,9 @@ QString GuessLanguagePrivate::guessDictionary(const QString& sentence, const QSt
     QMap<QString, int>::const_iterator max = correctHits.constBegin();
     for (QMap<QString, int>::const_iterator itr = correctHits.constBegin();
         itr != correctHits.constEnd(); ++itr) {
-        if (itr.value() > max.value())
+        if (itr.value() > max.value()) {
             max = itr;
+        }
     }
     return max.key();
 }
