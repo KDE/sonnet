@@ -59,7 +59,7 @@ void TextBreaks::setText( const QString & text )
 
 static inline bool isWordSeparator(const QChar &character)
 {
-    return (character.isSpace() || character.isMark() || character.isPunct());
+    return character.isSpace() || character.isMark() || character.isPunct() || character.isSymbol();
 }
 
 TextBreaks::Positions TextBreaks::wordBreaks(const QString &text)
