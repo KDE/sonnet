@@ -18,11 +18,10 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
  * 02110-1301  USA
  */
-#include "kspell_hunspellclient.h"
+#include "hunspellclient.h"
+#include "hunspelldict.h"
+
 #include <QDir>
-
-#include "kspell_hunspelldict.h"
-
 #include <QDebug>
 
 using namespace Sonnet;
