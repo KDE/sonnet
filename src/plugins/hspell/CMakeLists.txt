@@ -13,9 +13,9 @@ include_directories( ${HSPELL_INCLUDE_DIR}  )
 set(kspell_hspell_PART_SRCS kspell_hspellclient.cpp kspell_hspelldict.cpp )
 
 
-add_library(kspell_hspell MODULE ${kspell_hspell_PART_SRCS})
+add_library(sonnet_hspell MODULE ${kspell_hspell_PART_SRCS})
 
-target_link_libraries(kspell_hspell PRIVATE KF5::SonnetCore ${HSPELL_LIBRARIES} ${ZLIB_LIBRARY})
+target_link_libraries(sonnet_hspell PRIVATE KF5::SonnetCore ${HSPELL_LIBRARIES} ${ZLIB_LIBRARY})
 
-install(TARGETS kspell_hspell  DESTINATION ${PLUGIN_INSTALL_DIR}/sonnet_clients/ )
+install(TARGETS sonnet_hspell  DESTINATION ${PLUGIN_INSTALL_DIR}/sonnet_clients/ )
 
