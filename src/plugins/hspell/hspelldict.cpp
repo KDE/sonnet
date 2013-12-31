@@ -21,9 +21,9 @@
  * 02110-1301  USA
  */
 
-#include "kspell_hspelldict.h"
-#include <QtCore/QDebug>
+#include "hspelldict.h"
 
+#include <QtCore/QDebug>
 #include <QtCore/QTextCodec>
 #include <QSettings>
 

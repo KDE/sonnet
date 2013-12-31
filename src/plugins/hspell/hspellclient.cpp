@@ -19,11 +19,9 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
  * 02110-1301  USA
  */
-#include "kspell_hspellclient.h"
+#include "hspellclient.h"
 
-#include "kspell_hspelldict.h"
-
-#include <QDebug>
+#include "hspelldict.h"
 
 using namespace Sonnet;
 

@@ -5,15 +5,15 @@ set_package_properties(ZLIB PROPERTIES DESCRIPTION "Support for gzip compressed 
                        PURPOSE "Required by the hspell sonnet plugin"
                       )
 
-include_directories( ${HSPELL_INCLUDE_DIR}  )
+include_directories(${HSPELL_INCLUDE_DIR})
 
 
 ########### next target ###############
 
-set(kspell_hspell_PART_SRCS kspell_hspellclient.cpp kspell_hspelldict.cpp )
+set(sonnet_hspell_PART_SRCS hspellclient.cpp hspelldict.cpp )
 
 
-add_library(sonnet_hspell MODULE ${kspell_hspell_PART_SRCS})
+add_library(sonnet_hspell MODULE ${sonnet_hspell_PART_SRCS})
 
 target_link_libraries(sonnet_hspell PRIVATE KF5::SonnetCore ${HSPELL_LIBRARIES} ${ZLIB_LIBRARY})
 
