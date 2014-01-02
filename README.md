@@ -16,7 +16,7 @@ Example
 
     #include <QTextEdit>
     #include <spellcheckdecorator.h>
-    
+
     MyFoo::MyFoo(QWidget *parent) : QWidget(parent)
     {
         QTextEdit *textEdit = new QTextEdit(this);
