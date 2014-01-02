@@ -36,16 +36,16 @@ class LanguageFilterPrivate
 public:
     LanguageFilterPrivate(AbstractTokenizer* s) : source(s) { gl.setLimits(MAX_ITEMS, MIN_RELIABILITY); }
     ~LanguageFilterPrivate() { delete source; }
-    
+
     QString mainLanguage() const;
-    
+
     AbstractTokenizer* source;
     QStringRef lastToken;
-    
+
     mutable QString lastLanguage;
     mutable QString cachedMainLanguage;
     QString prevLanguage;
-    
+
     GuessLanguage gl;
     Speller sp;
 };
@@ -63,7 +63,20 @@ QString LanguageFilterPrivate::mainLanguage() const
 
 LanguageFilter::LanguageFilter(AbstractTokenizer* source) : d(new LanguageFilterPrivate(source))
 {
-    d->prevLanguage=Speller().defaultLanguage();
+    d->prevLanguage = Speller().defaultLanguage();
+}
+
+LanguageFilter::LanguageFilter(const LanguageFilter &other) : d(new LanguageFilterPrivate(other.d->source))
+{
+    d->lastToken = other.d->lastToken;
+    d->lastLanguage = other.d->lastLanguage;
+    d->cachedMainLanguage = other.d->cachedMainLanguage;
+    d->prevLanguage = other.d->prevLanguage;
+}
+
+LanguageFilter::~LanguageFilter()
+{
+    delete d;
 }
 
 bool LanguageFilter::hasNext() const
@@ -77,7 +90,7 @@ void LanguageFilter::setBuffer( const QString& buffer )
     d->source->setBuffer(buffer);
 }
 
-QStringRef LanguageFilter::next() 
+QStringRef LanguageFilter::next()
 {
     d->lastToken = d->source->next();
     d->prevLanguage = d->lastLanguage;
@@ -88,7 +101,7 @@ QStringRef LanguageFilter::next()
 QString LanguageFilter::language() const
 {
     if (d->lastLanguage.isNull()) {
-        d->lastLanguage=d->gl.identify(d->lastToken.toString(), QStringList() << d->mainLanguage() << d->prevLanguage);
+        d->lastLanguage = d->gl.identify(d->lastToken.toString(), QStringList() << d->mainLanguage() << d->prevLanguage);
     }
 
     return d->lastLanguage;
@@ -99,7 +112,7 @@ bool LanguageFilter::isSpellcheckable() const {
     if (lastlang.isEmpty()) {
         return false;
     }
-    
+
     //FIXME: do something a little more smart here
     Q_FOREACH(const QString& lang, d->sp.availableLanguages()) {
         if (lang.startsWith(lastlang)) {

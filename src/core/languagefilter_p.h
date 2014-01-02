@@ -45,13 +45,16 @@ public:
     This means that no source's methods should be called anymore.
     */
     LanguageFilter(AbstractTokenizer* source);
-    
+    LanguageFilter(const LanguageFilter &other);
+
+    ~LanguageFilter();
+
     /** Language for token last returned by next() */
     QString language() const;
-    
+
     /** Returns true if there is spellchecker installed for last token's language  */
     bool isSpellcheckable() const;
-    
+
     /** Returns true if there is grammar checker installed for last token's language */
 //  bool isGrammarCheckable() const;
     void setBuffer(const QString& buffer);
