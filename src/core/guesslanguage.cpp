@@ -294,7 +294,7 @@ QList<QChar::Script> GuessLanguagePrivate::findRuns(const QString & text)
 
     int totalCount = 0;
 
-    foreach (const QChar &c, text) {
+    foreach (const QChar c, text) {
         script = c.script();
 
         if (script == QChar::Script_Common || script == QChar::Script_Inherited) {
