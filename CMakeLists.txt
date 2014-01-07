@@ -15,6 +15,7 @@ set(REQUIRED_QT_VERSION 5.2.0)
 find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets)
 
 include(FeatureSummary)
+include(GenerateExportHeader)
 
 include(ECMSetupVersion)
 
