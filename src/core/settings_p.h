@@ -48,6 +48,9 @@ public:
     void setCheckUppercase(bool);
     bool checkUppercase() const;
 
+    void setAutodetectLanguage(bool);
+    bool autodetectLanguage() const;
+
     void setSkipRunTogether(bool);
     bool skipRunTogether() const;
 
@@ -74,7 +77,7 @@ private:
 
 private:
     friend class Loader;
-    Settings(Loader *loader);
+    explicit Settings(Loader *loader);
 private:
     class Private;
     Private *const d;

@@ -3,6 +3,7 @@
  *
  * Copyright (C)  2004  Zack Rusin <zack@kde.org>
  * Copyright (C)  2006  Laurent Montel <montel@kde.org>
+ * Copyright (C)  2013  Martin Sandsmark <martin.sandsmark@org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -24,8 +25,9 @@
 
 #include "speller.h"
 #include "loader_p.h"
-#include "filter_p.h"
+#include "tokenizer_p.h"
 #include "settings_p.h"
+#include "languagefilter_p.h"
 
 #include <QDebug>
 #include <QTextEdit>
@@ -42,41 +44,56 @@
 namespace Sonnet
 {
 
+class LanguageCache : public QTextBlockUserData {
+public:
+    QMap<QPair<int,int>, QString> languages;
+    void invalidate(int pos) {
+        QMutableMapIterator<QPair<int,int>, QString> it(languages);
+        it.toBack();
+        while (it.hasPrevious()) {
+            it.previous();
+            if (it.key().first+it.key().second >=pos) it.remove();
+            else break;
+        }
+    }
+};
+
+
 class Highlighter::Private
 {
 public:
     ~Private();
-    Filter     *filter;
-    Loader     *loader;
-    Speller    *dict;
-    QHash<QString, Speller *> dictCache;
+    WordTokenizer *tokenizer;
+    LanguageFilter *languageFilter;
+    Loader *loader;
+    Speller *spellchecker;
     QTextEdit *edit;
     bool active;
     bool automatic;
     bool completeRehighlightRequired;
     bool intraWordEditing;
     bool spellCheckerFound; //cached d->dict->isValid() value
+    bool connected;
     int disablePercentage;
     int disableWordCount;
     int wordCount, errorCount;
     QTimer *rehighlightRequest;
     QColor spellColor;
-    int suggestionListeners; // #of connections for the newSuggestions signal
 };
 
 Highlighter::Private::~Private()
 {
-    qDeleteAll(dictCache);
-    delete filter;
+    delete spellchecker;
+    delete languageFilter;
+    delete tokenizer;
 }
 
 Highlighter::Highlighter(QTextEdit *textEdit,
-                         const QString &configFile,
                          const QColor &_col)
     : QSyntaxHighlighter(textEdit),
       d(new Private)
 {
-    d->filter = Filter::defaultFilter();
+    d->tokenizer = new WordTokenizer();
     d->edit = textEdit;
     d->active = true;
     d->automatic = true;
@@ -85,22 +102,16 @@ Highlighter::Highlighter(QTextEdit *textEdit,
     d->intraWordEditing = false;
     d->completeRehighlightRequired = false;
     d->spellColor = _col.isValid() ? _col : Qt::red;
-    d->suggestionListeners = 0;
+    d->languageFilter = new LanguageFilter(new SentenceTokenizer());
 
     textEdit->installEventFilter(this);
     textEdit->viewport()->installEventFilter(this);
 
     d->loader = Loader::openLoader();
+    d->loader->settings()->restore();
 
-    //Do not load an empty settings file as it will cause the spellchecker to fail
-    //if the KLocale::global()->language() (default value) spellchecker is not installed,
-    //and we have a global sonnetrc file with a spellcheck lang installed which could be used.
-    if (!configFile.isEmpty()) {
-        d->filter->setSettings(d->loader->settings());
-    }
-
-    d->dict = new Sonnet::Speller();
-    d->spellCheckerFound = d->dict->isValid();
+    d->spellchecker = new Sonnet::Speller();
+    d->spellCheckerFound = d->spellchecker->isValid();
     d->rehighlightRequest = new QTimer(this);
     connect(d->rehighlightRequest, SIGNAL(timeout()),
             this, SLOT(slotRehighlight()));
@@ -109,16 +120,9 @@ Highlighter::Highlighter(QTextEdit *textEdit,
         return;
     }
 
-    d->dictCache.insert(d->dict->language(), d->dict);
-
     d->disablePercentage = d->loader->settings()->disablePercentageWordError();
     d->disableWordCount = d->loader->settings()->disableWordErrorCount();
 
-    //Add kde personal word
-    const QStringList l = Highlighter::personalWords();
-    for (QStringList::ConstIterator it = l.begin(); it != l.end(); ++it) {
-        d->dict->addToSession(*it);
-    }
     d->completeRehighlightRequired = true;
     d->rehighlightRequest->setInterval(0);
     d->rehighlightRequest->setSingleShot(true);
@@ -133,26 +137,6 @@ Highlighter::~Highlighter()
 bool Highlighter::spellCheckerFound() const
 {
     return d->spellCheckerFound;
-}
-
-// Since figuring out spell correction suggestions is extremely costly,
-// we keep track of whether the user actually wants some, and only offer them
-// in that case
-// With Qt5, we could use QObject::isSignalConnected(), but this is faster.
-void Highlighter::connectNotify(const QMetaMethod &signal)
-{
-    if (signal.methodSignature() == "newSuggestions(QString,QStringList)") {
-        ++d->suggestionListeners;
-    }
-    QSyntaxHighlighter::connectNotify(signal);
-}
-
-void Highlighter::disconnectNotify(const QMetaMethod &signal)
-{
-    if (signal.methodSignature() == "newSuggestions(QString,QStringList)") {
-        --d->suggestionListeners;
-    }
-    QSyntaxHighlighter::disconnectNotify(signal);
 }
 
 void Highlighter::slotRehighlight()
@@ -170,22 +154,6 @@ void Highlighter::slotRehighlight()
     //if (d->checksDone == d->checksRequested)
     //d->completeRehighlightRequired = false;
     QTimer::singleShot(0, this, SLOT(slotAutoDetection()));
-}
-
-QStringList Highlighter::personalWords()
-{
-    QStringList l;
-    l.append(QStringLiteral("KMail"));
-    l.append(QStringLiteral("KOrganizer"));
-    l.append(QStringLiteral("KAddressBook"));
-    l.append(QStringLiteral("KHTML"));
-    l.append(QStringLiteral("KIO"));
-    l.append(QStringLiteral("KJS"));
-    l.append(QStringLiteral("Konqueror"));
-    l.append(QStringLiteral("Sonnet"));
-    l.append(QStringLiteral("Kontact"));
-    l.append(QStringLiteral("Qt"));
-    return l;
 }
 
 bool Highlighter::automatic() const
@@ -235,6 +203,7 @@ void Highlighter::slotAutoDetection()
         if (d->active) {
             emit activeChanged(tr("As-you-type spell checking enabled."));
         } else {
+            qDebug() << "Sonnet: Disabling spell checking, too many errors";
             emit activeChanged(tr("Too many misspelled words. "
                                   "As-you-type spell checking disabled."));
         }
@@ -243,7 +212,6 @@ void Highlighter::slotAutoDetection()
         d->rehighlightRequest->setInterval(100);
         d->rehighlightRequest->setSingleShot(true);
     }
-
 }
 
 void Highlighter::setActive(bool active)
@@ -266,26 +234,78 @@ bool Highlighter::isActive() const
     return d->active;
 }
 
+void Highlighter::contentsChange(int pos, int add, int rem)
+{
+    // Invalidate the cache where the text has changed
+    const QTextBlock &lastBlock = document()->findBlock(pos + add - rem);
+    QTextBlock block = document()->findBlock(pos);
+    do {
+        LanguageCache* cache=dynamic_cast<LanguageCache*>(block.userData());
+        if (cache) cache->invalidate(pos-block.position());
+        block = block.next();
+    } while (block < lastBlock);
+}
+
 void Highlighter::highlightBlock(const QString &text)
 {
     if (text.isEmpty() || !d->active || !d->spellCheckerFound) {
         return;
     }
 
-    d->filter->setBuffer(text);
-    Word w = d->filter->nextWord();
-    while (!w.end) {
-        ++d->wordCount;
-        if (d->dict->isMisspelled(w.word)) {
-            ++d->errorCount;
-            setMisspelled(w.start, w.word.length());
-            if (d->suggestionListeners) {
-                emit newSuggestions(w.word, d->dict->suggest(w.word));
-            }
-        } else {
-            unsetMisspelled(w.start, w.word.length());
+    if (!d->connected) {
+        connect(document(), SIGNAL(contentsChange(int,int,int)),
+                SLOT(contentsChange(int,int,int)));
+        d->connected = true;
+    }
+
+    QTextCursor cursor = d->edit->textCursor();
+    int index = cursor.position();
+
+    const int lengthPosition = text.length() - 1;
+
+    if ( index != lengthPosition ||
+            ( lengthPosition > 0 && !text[lengthPosition-1].isLetter() ) ) {
+        d->languageFilter->setBuffer(text);
+
+        LanguageCache* cache=dynamic_cast<LanguageCache*>(currentBlockUserData());
+        if (!cache) {
+            cache = new LanguageCache;
+            setCurrentBlockUserData(cache);
         }
-        w = d->filter->nextWord();
+
+        while (d->languageFilter->hasNext()) {
+            QStringRef sentence=d->languageFilter->next();
+            if (d->spellchecker->testAttribute(Speller::AutoDetectLanguage)) {
+
+                QString lang;
+                QPair<int,int> spos=QPair<int,int>(sentence.position(),sentence.length());
+                // try cache first
+                if (cache->languages.contains(spos)) {
+                    lang=cache->languages.value(spos);
+                } else {
+                    lang=d->languageFilter->language();
+                    if (!d->languageFilter->isSpellcheckable()) lang.clear();
+                    cache->languages[spos]=lang;
+                }
+                if (lang.isEmpty()) continue;
+                d->spellchecker->setLanguage(lang);
+            }
+
+
+            d->tokenizer->setBuffer(sentence.toString());
+            int offset=sentence.position();
+            while (d->tokenizer->hasNext()) {
+                QStringRef word=d->tokenizer->next();
+                if (!d->tokenizer->isSpellcheckable()) continue;
+                ++d->wordCount;
+                if (d->spellchecker->isMisspelled(word.toString())) {
+                    ++d->errorCount;
+                    setMisspelled(word.position()+offset, word.length());
+                } else {
+                    unsetMisspelled(word.position()+offset, word.length());
+                }
+            }
+        }
     }
     //QTimer::singleShot( 0, this, SLOT(checkWords()) );
     setCurrentBlockState(0);
@@ -293,24 +313,21 @@ void Highlighter::highlightBlock(const QString &text)
 
 QString Highlighter::currentLanguage() const
 {
-    return d->dict->language();
+    return d->spellchecker->language();
 }
 
 void Highlighter::setCurrentLanguage(const QString &lang)
 {
-    if (!d->dictCache.contains(lang)) {
-        d->dict = new Speller(*d->dict);
-        d->dict->setLanguage(lang);
-        if (d->dict->isValid()) {
-            d->dictCache.insert(lang, d->dict);
-        } else {
-            d->spellCheckerFound = false;
-            qWarning() << "No dictionary for \"" << lang << "\" staying with the current language.";
-            return;
-        }
+    QString prevLang=d->spellchecker->language();
+    d->spellchecker->setLanguage(lang);
+    if (!d->spellchecker->isValid()) {
+        qDebug() << "No dictionary for \""
+            << lang
+            << "\" staying with the current language.";
+        d->spellchecker->setLanguage(prevLang);
+        return;
     }
-    d->dict = d->dictCache[lang];
-    d->spellCheckerFound = d->dict->isValid();
+    d->spellchecker->setAttribute(Speller::AutoDetectLanguage, false);
     d->wordCount = 0;
     d->errorCount = 0;
     if (d->automatic) {
@@ -334,17 +351,6 @@ void Highlighter::unsetMisspelled(int start, int count)
 
 bool Highlighter::eventFilter(QObject *o, QEvent *e)
 {
-#if 0
-    if (o == textEdit() && (e->type() == QEvent::FocusIn)) {
-        if (d->globalConfig) {
-            QString skey = spellKey();
-            if (d->spell && d->spellKey != skey) {
-                d->spellKey = skey;
-                KDictSpellingHighlighter::dictionaryChanged();
-            }
-        }
-    }
-#endif
     if (!d->spellCheckerFound) {
         return false;
     }
@@ -377,14 +383,6 @@ bool Highlighter::eventFilter(QObject *o, QEvent *e)
                 d->rehighlightRequest->setSingleShot(true);
                 d->rehighlightRequest->start();
             }
-#if 0
-            if (d->checksDone != d->checksRequested) {
-                // Handle possible change of paragraph while
-                // words are pending spell checking
-                d->completeRehighlightRequired = true;
-                d->rehighlightRequest->start(500, true);
-            }
-#endif
         } else {
             setIntraWordEditing(true);
         }
@@ -411,17 +409,17 @@ bool Highlighter::eventFilter(QObject *o, QEvent *e)
 
 void Highlighter::addWordToDictionary(const QString &word)
 {
-    d->dict->addToPersonal(word);
+    d->spellchecker->addToPersonal(word);
 }
 
 void Highlighter::ignoreWord(const QString &word)
 {
-    d->dict->addToSession(word);
+    d->spellchecker->addToSession(word);
 }
 
 QStringList Highlighter::suggestionsForWord(const QString &word, int max)
 {
-    QStringList suggestions = d->dict->suggest(word);
+    QStringList suggestions = d->spellchecker->suggest(word);
     if (max != -1) {
         while (suggestions.count() > max) {
             suggestions.removeLast();
@@ -432,7 +430,7 @@ QStringList Highlighter::suggestionsForWord(const QString &word, int max)
 
 bool Highlighter::isWordMisspelled(const QString &word)
 {
-    return d->dict->isMisspelled(word);
+    return d->spellchecker->isMisspelled(word);
 }
 
 void Highlighter::setMisspelledColor(const QColor &color)
@@ -443,6 +441,12 @@ void Highlighter::setMisspelledColor(const QColor &color)
 bool Highlighter::checkerEnabledByDefault() const
 {
     return d->loader->settings()->checkerEnabledByDefault();
+}
+
+void Highlighter::setDocument(QTextDocument* document)
+{
+    d->connected = false;
+    QSyntaxHighlighter::setDocument(document);
 }
 
 }

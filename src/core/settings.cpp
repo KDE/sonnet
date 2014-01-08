@@ -2,6 +2,7 @@
  *
  * Copyright (C)  2003  Zack Rusin <zack@kde.org>
  * Copyright (C)  2006  Laurent Montel <montel@kde.org>
+ * Copyright (C)  2013  Martin Sandsmark <martin.sandsmark@kde.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -42,6 +43,7 @@ public:
     bool skipRunTogether;
     bool backgroundCheckerEnabled;
     bool checkerEnabledByDefault;
+    bool autodetectLanguage;
 
     int disablePercentage;
     int disableWordCount;
@@ -72,6 +74,7 @@ void Settings::setDefaultLanguage(const QString &lang)
         d->defaultLanguage = lang;
         d->modified = true;
         d->loader->changed();
+        save();
     }
 }
 
@@ -89,6 +92,7 @@ void Settings::setDefaultClient(const QString &client)
         d->defaultClient = client;
         d->modified = true;
         d->loader->changed();
+        save();
     }
 }
 
@@ -102,6 +106,7 @@ void Settings::setCheckUppercase(bool check)
     if (d->checkUppercase != check) {
         d->modified = true;
         d->checkUppercase = check;
+        save();
     }
 }
 
@@ -110,11 +115,26 @@ bool Settings::checkUppercase() const
     return d->checkUppercase;
 }
 
+void Settings::setAutodetectLanguage(bool detect)
+{
+    if (d->autodetectLanguage != detect) {
+        d->modified=true;
+        d->autodetectLanguage=detect;
+        save();
+    }
+}
+
+bool Settings::autodetectLanguage() const
+{
+    return d->autodetectLanguage;
+}
+
 void Settings::setSkipRunTogether(bool skip)
 {
     if (d->skipRunTogether != skip) {
         d->modified = true;
         d->skipRunTogether = skip;
+        save();
     }
 }
 
@@ -128,6 +148,7 @@ void Settings::setCheckerEnabledByDefault(bool check)
     if (d->checkerEnabledByDefault != check) {
         d->modified = true;
         d->checkerEnabledByDefault = check;
+        save();
     }
 }
 
@@ -141,6 +162,7 @@ void Settings::setBackgroundCheckerEnabled(bool enable)
     if (d->backgroundCheckerEnabled != enable) {
         d->modified = true;
         d->backgroundCheckerEnabled = enable;
+        save();
     }
 }
 
@@ -153,6 +175,7 @@ void Settings::setCurrentIgnoreList(const QStringList &ignores)
 {
     setQuietIgnoreList(ignores);
     d->modified = true;
+    save();
 }
 
 void Settings::setQuietIgnoreList(const QStringList &ignores)
@@ -161,6 +184,7 @@ void Settings::setQuietIgnoreList(const QStringList &ignores)
     for (QStringList::const_iterator itr = ignores.begin();
             itr != ignores.end(); ++itr) {
         d->ignore.insert(*itr, true);
+        save();
     }
 }
 
@@ -174,6 +198,7 @@ void Settings::addWordToIgnore(const QString &word)
     if (!d->ignore.contains(word)) {
         d->modified = true;
         d->ignore.insert(word, true);
+        save();
     }
 }
 
@@ -201,6 +226,7 @@ void Settings::save()
     settings.setValue(QStringLiteral("skipRunTogether"), d->skipRunTogether);
     settings.setValue(QStringLiteral("backgroundCheckerEnabled"), d->backgroundCheckerEnabled);
     settings.setValue(QStringLiteral("checkerEnabledByDefault"), d->checkerEnabledByDefault);
+    settings.setValue(QStringLiteral("autodetectLanguage"), d->autodetectLanguage);
     QString defaultLanguage = QString::fromLatin1("ignore_%1").arg(d->defaultLanguage);
     if (settings.contains(defaultLanguage) && d->ignore.isEmpty()) {
         settings.remove(defaultLanguage);
@@ -208,6 +234,30 @@ void Settings::save()
         settings.setValue(defaultLanguage, QStringList(d->ignore.keys()));
     }
 }
+
+
+// A static list of KDE specific words that we want to recognize
+static QStringList kdeWords()
+{
+    QStringList l;
+    l.append(QStringLiteral("KMail"));
+    l.append(QStringLiteral("KOrganizer"));
+    l.append(QStringLiteral("KAddressBook"));
+    l.append(QStringLiteral("KHTML"));
+    l.append(QStringLiteral("KIO"));
+    l.append(QStringLiteral("KJS"));
+    l.append(QStringLiteral("Konqueror"));
+    l.append(QStringLiteral("Sonnet"));
+    l.append(QStringLiteral("Kontact"));
+    l.append(QStringLiteral("Qt"));
+    l.append(QStringLiteral("Okular"));
+    l.append(QStringLiteral("KMix"));
+    l.append(QStringLiteral("Amarok"));
+    l.append(QStringLiteral("KDevelop"));
+    l.append(QStringLiteral("Nepomuk"));
+    return l;
+}
+
 
 void Settings::restore()
 {
@@ -222,9 +272,10 @@ void Settings::restore()
     d->checkerEnabledByDefault = settings.value(QStringLiteral("checkerEnabledByDefault"), false).toBool();
     d->disablePercentage = settings.value(QStringLiteral("Sonnet_AsYouTypeDisablePercentage"), 42).toInt();
     d->disableWordCount = settings.value(QStringLiteral("Sonnet_AsYouTypeDisableWordCount"), 100).toInt();
+    d->autodetectLanguage = settings.value(QStringLiteral("autodetectLanguage"), true).toBool();
 
     const QString ignoreEntry = QString::fromLatin1("ignore_%1").arg(d->defaultLanguage);
-    const QStringList ignores = settings.value(ignoreEntry, QStringList()).toStringList();
+    const QStringList ignores = settings.value(ignoreEntry, kdeWords()).toStringList();
     setQuietIgnoreList(ignores);
 }
 

@@ -35,7 +35,7 @@ namespace Sonnet
 class SONNETCORE_EXPORT Speller
 {
 public:
-    Speller(const QString &lang = QString());
+    explicit Speller(const QString &lang = QString());
     ~Speller();
 
     Speller(const Speller &speller);
@@ -104,7 +104,8 @@ public:
 public: // Configuration API
     enum Attribute {
         CheckUppercase,
-        SkipRunTogether
+        SkipRunTogether,
+        AutoDetectLanguage
     };
     void save();
     void restore();

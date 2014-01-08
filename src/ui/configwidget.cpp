@@ -50,19 +50,18 @@ ConfigWidget::ConfigWidget(QWidget *parent)
     d->wdg = new QWidget(this);
     d->ui.setupUi(d->wdg);
 
-    //QStringList clients = d->loader->clients();
     d->ui.m_langCombo->setCurrentByDictionary(d->loader->settings()->defaultLanguage());
-    //d->ui->m_clientCombo->insertStringList( clients );
     d->ui.m_skipUpperCB->setChecked(!d->loader->settings()->checkUppercase());
     d->ui.m_skipRunTogetherCB->setChecked(d->loader->settings()->skipRunTogether());
     d->ui.m_checkerEnabledByDefaultCB->setChecked(d->loader->settings()->checkerEnabledByDefault());
+    d->ui.m_autodetectCB->setChecked(d->loader->settings()->autodetectLanguage());
     QStringList ignoreList = d->loader->settings()->currentIgnoreList();
     ignoreList.sort();
     d->ui.ignoreListWidget->addItems(ignoreList);
     d->ui.m_bgSpellCB->setChecked(d->loader->settings()->backgroundCheckerEnabled());
     d->ui.m_bgSpellCB->hide();//hidden by default
-    connect(d->ui.addButton, SIGNAL(clicked()), SLOT(slotIgnoreAdded()));
-    connect(d->ui.removeButton, SIGNAL(clicked()), SLOT(slotIgnoreAdded()));
+    connect(d->ui.addButton, SIGNAL(clicked()), SLOT(slotIgnoreWordAdded()));
+    connect(d->ui.removeButton, SIGNAL(clicked()), SLOT(slotIgnoreWordRemoved()));
 
     layout->addWidget(d->wdg);
     connect(d->ui.m_langCombo, SIGNAL(dictionaryChanged(QString)), this, SIGNAL(configChanged()));
@@ -70,6 +69,7 @@ ConfigWidget::ConfigWidget(QWidget *parent)
     connect(d->ui.m_skipUpperCB, SIGNAL(clicked(bool)), this, SIGNAL(configChanged()));
     connect(d->ui.m_skipRunTogetherCB, SIGNAL(clicked(bool)), this, SIGNAL(configChanged()));
     connect(d->ui.m_checkerEnabledByDefaultCB, SIGNAL(clicked(bool)), this, SIGNAL(configChanged()));
+    connect(d->ui.m_autodetectCB, SIGNAL(clicked(bool)), this, SIGNAL(configChanged()));
 }
 
 ConfigWidget::~ConfigWidget()
@@ -95,12 +95,15 @@ void ConfigWidget::setFromGui()
         d->ui.m_bgSpellCB->isChecked());
     d->loader->settings()->setCheckerEnabledByDefault(
         d->ui.m_checkerEnabledByDefaultCB->isChecked());
+    d->loader->settings()->setAutodetectLanguage(
+        d->ui.m_autodetectCB->isChecked());
 }
 
 void ConfigWidget::slotIgnoreWordAdded()
 {
     QStringList ignoreList = d->loader->settings()->currentIgnoreList();
     QString newWord = d->ui.newIgnoreEdit->text();
+    d->ui.newIgnoreEdit->clear();
     if (newWord.isEmpty() || ignoreList.contains(newWord)) {
         return;
     }
@@ -136,6 +139,7 @@ bool ConfigWidget::backgroundCheckingButtonShown() const
 
 void ConfigWidget::slotDefault()
 {
+    d->ui.m_autodetectCB->setChecked(true);
     d->ui.m_skipUpperCB->setChecked(false);
     d->ui.m_skipRunTogetherCB->setChecked(false);
     d->ui.m_checkerEnabledByDefaultCB->setChecked(false);

@@ -2,12 +2,16 @@
 
 %Sonnet is the %KDE language processing architecture.
 <p>
-This directory only contains plugins.  The core functionality of
-%Sonnet is contained in sonnetcore, and the user-interface
-components in sonnetui.
+Sonnet is a plugin-based spell checking library for Qt-based
+applications. It supports several different plugins, including
+HSpell, Enchant, ASpell and HUNSPELL. It also has automated
+language detection (see for example the Sonnet::GuessLanguage class).
 
-See the Sonnet namespace in sonnetcore, and Sonnet::ConfigDialog,
-Sonnet::Dialog and Sonnet::Highlighter in sonnetui.
+For an easy way to use Sonnet in your own Qt-based application, see the
+Sonnet::SpellCheckDecorator class.
+
+Other interesting things are the Sonnet namespace in sonnetcore, and
+Sonnet::ConfigDialog, Sonnet::Dialog and Sonnet::Highlighter in sonnetui.
 
 TechBase has a
 <a href="http://techbase.kde.org/Development/Tutorials/Sonnet/SonnetTutorial">tutorial
@@ -16,6 +20,9 @@ on Sonnet</a>.
 @authors
 Zack Rusin \<zack@kde.org\><br>
 Jacob R Rideout \<kde@jacobrideout.net\>
+Aurélien Gâteau \<agateau@kde.org\>
+Martin Sandsmark \<martin.sandsmark@kde.org\>
+Laurent Montel \<montel@kde.org\>
 
 @maintainers
 Martin Sandsmark \<martin.sandsmark@kde.org\>

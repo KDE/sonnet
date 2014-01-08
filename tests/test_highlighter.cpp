@@ -20,7 +20,6 @@
  */
 #include "highlighter.h"
 #include "test_highlighter.h"
-#include "filter_p.h"
 
 #include <qapplication.h>
 #include <QDebug>

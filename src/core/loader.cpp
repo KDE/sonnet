@@ -163,9 +163,9 @@ QString Loader::languageNameForCode(const QString &langCode) const
         { "variant_2",      QT_TRANSLATE_NOOP3("Sonnet::Loader", "variant 2", "dictionary variant") },
         { "wo_accents",     QT_TRANSLATE_NOOP3("Sonnet::Loader", "without accents", "dictionary variant") },
         { "w_accents",      QT_TRANSLATE_NOOP3("Sonnet::Loader", "with accents", "dictionary variant") },
-        { "ye",             QT_TRANSLATE_NOOP3("Sonnet::Loader", "with ye", "dictionary variant") },
-        { "yeyo",           QT_TRANSLATE_NOOP3("Sonnet::Loader", "with yeyo", "dictionary variant") },
-        { "yo",             QT_TRANSLATE_NOOP3("Sonnet::Loader", "with yo", "dictionary variant") },
+        { "ye",             QT_TRANSLATE_NOOP3("Sonnet::Loader", "with ye, modern russian", "dictionary variant") },
+        { "yeyo",           QT_TRANSLATE_NOOP3("Sonnet::Loader", "with yeyo, modern and old russian", "dictionary variant") },
+        { "yo",             QT_TRANSLATE_NOOP3("Sonnet::Loader", "with yo, old russian", "dictionary variant") },
         { "extended",       QT_TRANSLATE_NOOP3("Sonnet::Loader", "extended", "dictionary variant") },
         { 0, 0 }
     };
@@ -240,6 +240,7 @@ void Loader::loadPlugins()
 {
     const QStringList libPaths = QCoreApplication::libraryPaths();
     const QLatin1String pathSuffix("/kf5/sonnet_clients/");
+    int plugins = 0;
     Q_FOREACH (const QString &libPath, libPaths) {
         QDir dir(libPath + pathSuffix);
         if (!dir.exists()) {
@@ -247,7 +248,11 @@ void Loader::loadPlugins()
         }
         Q_FOREACH (const QString &fileName, dir.entryList(QDir::Files)) {
             loadPlugin(dir.absoluteFilePath(fileName));
+            plugins++;
         }
+    }
+    if (plugins == 0) {
+        qWarning() << "Sonnet: No speller backends available!";
     }
 }
 
@@ -255,13 +260,13 @@ void Loader::loadPlugin(const QString &pluginPath)
 {
     QPluginLoader plugin(pluginPath);
     if (!plugin.load()) { // We do this separately for better error handling
-        qWarning() << "Unable to load plugin" << pluginPath << "Error:" << plugin.errorString();
+        qWarning() << "Sonnet: Unable to load plugin" << pluginPath << "Error:" << plugin.errorString();
         return;
     }
 
     Client *client = qobject_cast<Client *>(plugin.instance());
     if (!client) {
-        qWarning() << "Invalid plugin loaded" << pluginPath;
+        qWarning() << "Sonnet: Invalid plugin loaded" << pluginPath;
         plugin.unload(); // don't leave it in memory
         return;
     }

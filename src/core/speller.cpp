@@ -16,16 +16,19 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
  * 02110-1301  USA
- */
+*/
 #include "speller.h"
 
 #include "loader_p.h"
 #include "settings_p.h"
 #include "spellerplugin_p.h"
 
-#include <QtCore/QLocale>
+#include <QLocale>
+#include <QCache>
 #include <QSet>
 #include <QDebug>
+
+#define MAXLANGUAGES 5
 
 namespace Sonnet
 {
@@ -33,10 +36,13 @@ namespace Sonnet
 class Speller::Private
 {
 public:
+    Private() : dictCache(MAXLANGUAGES), dict(0)
+    {
+    }
+
     ~Private()
     {
-        delete dict;
-        dict = 0;
+        // no need to delete dict - dictCache will take care of that
     }
     void init(const QString &lang)
     {
@@ -48,8 +54,16 @@ public:
         if (language.isEmpty()) {
             language = settings->defaultLanguage();
         }
+        updateDict();
+    }
 
-        dict = loader->createSpeller(language);
+    void updateDict() {
+        if (dictCache.contains(language)) {
+            dict = dictCache.object(language);
+        } else {
+            dict = Loader::openLoader()->createSpeller(language);
+            dictCache.insert(language, dict);
+        }
     }
     bool isValid()
     {
@@ -61,10 +75,11 @@ public:
     }
     void recreateDict()
     {
-        delete dict;
-        dict = Loader::openLoader()->createSpeller(language);
+        dictCache.clear();
+        updateDict();
     }
 
+    QCache<QString,SpellerPlugin> dictCache;
     SpellerPlugin *dict;
     Settings      *settings;
 
@@ -225,18 +240,22 @@ void Speller::setAttribute(Attribute attr, bool b)
     case SkipRunTogether:
         d->settings->setSkipRunTogether(b);
         break;
+    case AutoDetectLanguage:
+        d->settings->setAutodetectLanguage(b);
+        break;
     }
 }
+
 
 bool Speller::testAttribute(Attribute attr) const
 {
     switch (attr) {
     case CheckUppercase:
         return d->settings->checkUppercase();
-        break;
     case SkipRunTogether:
         return d->settings->skipRunTogether();
-        break;
+    case AutoDetectLanguage:
+        return d->settings->autodetectLanguage();
     }
     return false;
 }
@@ -249,29 +268,17 @@ bool Speller::isValid() const
 void Speller::setLanguage(const QString &lang)
 {
     d->language = lang;
-    d->recreateDict();
+    d->updateDict();
 }
 
 QMap<QString, QString> Sonnet::Speller::availableDictionaries() const
 {
     Loader *l = Loader::openLoader();
-    const QStringList lst = l->languages();
+    QStringList lst = l->languages();
     QMap<QString, QString> langs;
 
-    Q_FOREACH (QString tag, lst) { // krazy:exclude=foreach (no const& because tag is modified below)
-        tag = tag.mid(0, tag.indexOf(QLatin1Char('-')));
-        QLocale loc(tag);
-        QString description;
-
-        if (!loc.nativeCountryName().isEmpty())
-            description = QString::fromLatin1("%1 (%2)")
-                          .arg(loc.nativeLanguageName())
-                          .arg(loc.nativeCountryName());
-        else {
-            description = loc.nativeLanguageName();
-        }
-        //qDebug()<<"Dict is "<<tag<<" ( "<<loc.name()<<")"<<", descr = "<<description;
-        langs.insert(description, tag);
+    Q_FOREACH (const QString &tag, lst) {
+        langs.insert(l->languageNameForCode(tag), tag);
     }
 
     return langs;

@@ -22,7 +22,6 @@
 #include "test_dialog.h"
 
 #include "backgroundchecker.h"
-#include "filter_p.h"
 
 #include <qapplication.h>
 #include <qdebug.h>

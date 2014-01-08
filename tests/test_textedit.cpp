@@ -41,7 +41,7 @@ protected:
     bool isSpellCheckingEnabledForBlock(const QString &blockText) const Q_DECL_OVERRIDE
     {
         qDebug() << blockText;
-        return !blockText.startsWith(">");
+        return !blockText.startsWith(QLatin1Char('>'));
     }
 };
 

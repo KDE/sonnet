@@ -5,16 +5,17 @@ set(sonnetcore_SRCS
    client.cpp
    spellerplugin.cpp
    speller.cpp
-   filter.cpp
    settings.cpp
    backgroundchecker.cpp
-   backgroundengine.cpp
-   globals.cpp
+   guesslanguage.cpp
+   textbreaks.cpp
+   tokenizer.cpp
+   languagefilter.cpp
 )
 set(sonnetcore_HEADERS
     backgroundchecker.h
     speller.h
-    globals.h
+    guesslanguage.h
     ${CMAKE_CURRENT_BINARY_DIR}/sonnetcore_export.h
 )
 
