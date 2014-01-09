@@ -21,8 +21,6 @@
  */
 #include "backgroundchecker.h"
 #include "backgroundchecker_p.h"
-#include <kdebug.h>
-
 
 using namespace Sonnet;
 
