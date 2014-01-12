@@ -1,5 +1,7 @@
 # Sonnet
 
+Multi-language spell checker
+
 ## Introduction
 
 This is KSpell 2 beta implementation. KSpell 2 is completely in
@@ -76,3 +78,7 @@ Sample usage of KSpell 2 looks like follows:
 
     delete enDict;
     delete deDict;
+
+## Links
+
+- Home page: <https://projects.kde.org/projects/frameworks/sonnet>
