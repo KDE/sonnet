@@ -1,84 +1,31 @@
-# Sonnet
+Sonnet
+======
 
-Multi-language spell checker
+Sonnet is a plugin-based spell checking library for Qt-based
+applications. It supports several different plugins, including
+HSpell, Enchant, ASpell and HUNSPELL.
 
-## Introduction
+It also supports automated language detection, based on a
+combination of different algorithms.
 
-This is KSpell 2 beta implementation. KSpell 2 is completely in
-process and is plugin based.
+The simplest way to use Sonnet in your application is to use the
+SpellCheckDecorator class on your QTextEdit.
 
-The main class in the KSpell 2 is the KSpell::Loader. Loader is
-responsible for loading all the plugins and creating the actual
-dictionaries.
+Example
+-------
 
-Dictionaries are abstracted in the KSpell::Dictionary object which
-encapsulates all spell-checking functionality.
+    #include <QTextEdit>
+    #include <spellcheckdecorator.h>
 
-You'll notice that the Loader is being created via the 
-`Loader::Ptr Loader::openLoader( KSharedConfig *config =0 );`
-call. The Loader is a shared object and the reason for this construct
-is very simple:
-
-- most application would need to have a few Loader objects (one for
-the dialog dictionaries, one for the background spell checking, one
-for the suggestion dictionaries) and because Loader loads plugins on
-creation it would be ineffective to have a few redundant Loader
-objects in one application,
-
-- each Loader maps to a configuration file. If one Loader would change
-in the application, all others would have to reparse and repopulate
-the options, which would be really inefficient.
-
-Due to the above you deal with the loader via the Loader::Ptr
-interface.
-
-Once you have the Loader object in your application, you can ask it
-for a Dictionary of some language. If such a dictionary is available
-you get it back as a Dictionary class and you use that class to do the
-actual spell checking.
-
-Loader on construction checks for available KSpell::Client's which are
-loaded as dynamic plugins. It's the actual KSpell::Client that gives
-the loader the KSpell::Dictionary.
-One can specify a default client and the default language for a Loader
-theough the settings() method and the KSpell::Settings class which it
-returns.
-
-Also note that you can have dictionaries for multiple languages in
-your application.
-And most importantly the interface to KSpell::Dictionary is
-synchronous so once you pass a word to check you don't have to wait
-for any signals - you get corrections right back.
-
-Sample usage of KSpell 2 looks like follows:
-
-    #include <kspell_loader.h>
-    #include <kspell_dictionary.h>
-    using namespace KSpell;
-
-
-    Loader::Ptr loader = Loader::openLoader( someKSettingsObject );
-    Dictionary *enDict = loader->dictionary( "en_US" );
-    Dictionary *deDict = loader->dictionary( "de_DE" );
-
-    void someFunc( const QString& word )
+    MyFoo::MyFoo(QWidget *parent) : QWidget(parent)
     {
-        if ( enDict->check( word ) ) {
-            qDebug()<<"Word \""<<word<<"\" is misspelled.";
-            QStringList suggestion = enDict->suggest( word );	
-            qDebug()<<"Suggestions: "<< suggestions;
-        }
-
-        QStringList suggestions;
-        if ( deDict->checkAndSuggest( word, suggestions ) ) {
-           qDebug()<<"Wort \""<<word<<"\" ist fehlbuchstabiert.";
-           qDebug()<<"Vorschlage: "<< suggestions;
-        }
+        QTextEdit *textEdit = new QTextEdit(this);
+        Sonnet::SpellCheckDecorator *decorator = new Sonnet::SpellCheckDecorator(textEdit);
     }
 
-    delete enDict;
-    delete deDict;
 
-## Links
+Links
+-----
 
 - Home page: <https://projects.kde.org/projects/frameworks/sonnet>
+
