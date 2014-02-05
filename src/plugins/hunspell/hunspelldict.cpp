@@ -74,6 +74,8 @@ QStringList HunspellDict::suggest(const QString &word) const
 bool HunspellDict::storeReplacement(const QString &bad,
                                     const QString &good)
 {
+    Q_UNUSED(bad);
+    Q_UNUSED(good);
     if (!m_speller) {
         return false;
     }
@@ -92,6 +94,7 @@ bool HunspellDict::addToPersonal(const QString &word)
 
 bool HunspellDict::addToSession(const QString &word)
 {
+    Q_UNUSED(word);
     if (!m_speller) {
         return false;
     }
