@@ -64,7 +64,7 @@ install(FILES ${SonnetUi_CamelCase_HEADERS} DESTINATION ${INCLUDE_INSTALL_DIR}/S
 install(FILES
    ${SonnetUi_HEADERS}
    ${CMAKE_CURRENT_BINARY_DIR}/sonnetui_export.h
-   DESTINATION ${INCLUDE_INSTALL_DIR}/SonnetUi COMPONENT Devel)
+   DESTINATION ${INCLUDE_INSTALL_DIR}/SonnetUi/sonnet COMPONENT Devel)
 
 include(ECMGeneratePriFile)
 ecm_generate_pri_file(BASE_NAME SonnetUi LIB_NAME KF5SonnetUi DEPS "widgets" FILENAME_VAR PRI_FILENAME)

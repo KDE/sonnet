@@ -45,7 +45,7 @@ install(FILES ${SonnetCore_CamelCase_HEADERS} DESTINATION ${INCLUDE_INSTALL_DIR}
 install(FILES
    ${SonnetCore_HEADERS}
    ${CMAKE_CURRENT_BINARY_DIR}/sonnetcore_export.h
-   DESTINATION ${INCLUDE_INSTALL_DIR}/SonnetCore COMPONENT Devel)
+   DESTINATION ${INCLUDE_INSTALL_DIR}/SonnetCore/sonnet COMPONENT Devel)
 
 include(ECMGeneratePriFile)
 ecm_generate_pri_file(BASE_NAME SonnetCore LIB_NAME KF5SonnetCore DEPS "core" FILENAME_VAR PRI_FILENAME)
