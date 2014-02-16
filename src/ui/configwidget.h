@@ -21,7 +21,7 @@
 #define SONNET_CONFIGWIDGET_H
 
 #include <QWidget>
-#include <sonnetui_export.h>
+#include "sonnetui_export.h"
 
 namespace Sonnet
 {

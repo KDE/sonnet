@@ -21,7 +21,7 @@
 #ifndef SONNET_DICTIONARYCOMBOBOX_H
 #define SONNET_DICTIONARYCOMBOBOX_H
 
-#include <sonnetui_export.h>
+#include "sonnetui_export.h"
 
 #include <QtWidgets/QComboBox>
 

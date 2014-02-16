@@ -23,7 +23,7 @@
 
 #include "speller.h"
 
-#include <sonnetcore_export.h>
+#include "sonnetcore_export.h"
 
 #include <QtCore/QObject>
 

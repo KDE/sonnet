@@ -23,7 +23,7 @@
 
 #include <QtCore/QObject>
 
-#include <sonnetui_export.h>
+#include "sonnetui_export.h"
 
 class QTextEdit;
 

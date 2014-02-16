@@ -23,7 +23,7 @@
 
 #include <QtCore/QString>
 #include <tokenizer_p.h>
-#include <sonnetcore_export.h>
+#include "sonnetcore_export.h"
 
 namespace Sonnet
 {
