@@ -59,7 +59,7 @@ target_include_directories(KF5SonnetUi PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT
 
 install(TARGETS KF5SonnetUi EXPORT KF5SonnetTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
 
-install(FILES ${SonnetUi_CamelCase_HEADERS} DESTINATION ${INCLUDE_INSTALL_DIR}/Sonnet/SonnetUi COMPONENT Devel)
+install(FILES ${SonnetUi_CamelCase_HEADERS} DESTINATION ${INCLUDE_INSTALL_DIR}/SonnetUi/Sonnet COMPONENT Devel)
 
 install(FILES
    ${SonnetUi_HEADERS}

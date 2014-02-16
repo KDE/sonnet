@@ -18,7 +18,7 @@ add_library(KF5SonnetCore ${sonnetcore_SRCS})
 generate_export_header(KF5SonnetCore BASE_NAME SonnetCore EXPORT_FILE_NAME sonnetcore_export.h)
 add_library(KF5::SonnetCore ALIAS KF5SonnetCore)
 
-ecm_generate_headers(SonnetCore_HEADERS
+ecm_generate_headers(SonnetCore_CamelCase_HEADERS
   HEADER_NAMES
     BackgroundChecker
     Speller
@@ -40,7 +40,7 @@ target_include_directories(KF5SonnetCore PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRE
 
 install(TARGETS KF5SonnetCore EXPORT KF5SonnetTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
 
-install(FILES ${SonnetCore_CamelCase_HEADERS} DESTINATION ${INCLUDE_INSTALL_DIR}/Sonnet/SonnetCore COMPONENT Devel)
+install(FILES ${SonnetCore_CamelCase_HEADERS} DESTINATION ${INCLUDE_INSTALL_DIR}/SonnetCore/Sonnet COMPONENT Devel)
 
 install(FILES
    ${SonnetCore_HEADERS}
