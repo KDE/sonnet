@@ -23,7 +23,7 @@
 #include <QtCore/QString>
 #include <QtCore/QLocale>
 
-#include <sonnet/sonnetcore_export.h>
+#include <sonnetcore_export.h>
 
 namespace Sonnet
 {

@@ -6,8 +6,6 @@ include_directories(
 )
 
 include_directories(
-    ${CMAKE_CURRENT_BINARY_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/../core
     ${CMAKE_CURRENT_BINARY_DIR}/../core
 )
@@ -26,13 +24,16 @@ set(sonnetui_UI
     sonnetui.ui
 )
 
-set(sonnetui_HDRS
-    dialog.h
-    highlighter.h
-    configdialog.h
-    configwidget.h
-    dictionarycombobox.h
-    spellcheckdecorator.h
+ecm_generate_headers(SonnetUi_CamelCase_HEADERS
+  HEADER_NAMES
+    Dialog
+    Highlighter
+    ConfigDialog
+    ConfigWidget
+    DictionaryComboBox
+    SpellCheckDecorator
+  PREFIX Sonnet
+  REQUIRED_HEADERS SonnetUi_HEADERS
 )
 
 qt5_wrap_ui(sonnetui_SRCS ${sonnetui_UI})
@@ -51,18 +52,19 @@ set_target_properties(KF5SonnetUi PROPERTIES VERSION ${SONNET_VERSION_STRING}
                                              EXPORT_NAME SonnetUi
 )
 
-target_include_directories(KF5SonnetUi PUBLIC
-  "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>" # needed?
-  "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>" # needed?
-  "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/..>"
-  "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/../include>" # sonnet/*.h
-)
+
+# CMAKE_CURRENT_BINARY_DIR: for camelcase headers and lowercase forwarders
+target_include_directories(KF5SonnetUi INTERFACE "$<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}/SonnetUi>")
+target_include_directories(KF5SonnetUi PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>")
 
 install(TARGETS KF5SonnetUi EXPORT KF5SonnetTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
 
-install( FILES ${sonnetui_HDRS} ${CMAKE_CURRENT_BINARY_DIR}/sonnetui_export.h
-         DESTINATION ${INCLUDE_INSTALL_DIR}/sonnet COMPONENT Devel)
+install(FILES ${SonnetUi_CamelCase_HEADERS} DESTINATION ${INCLUDE_INSTALL_DIR}/Sonnet/SonnetUi COMPONENT Devel)
 
+install(FILES
+   ${SonnetUi_HEADERS}
+   ${CMAKE_CURRENT_BINARY_DIR}/sonnetui_export.h
+   DESTINATION ${INCLUDE_INSTALL_DIR}/SonnetUi COMPONENT Devel)
 
 include(ECMGeneratePriFile)
 ecm_generate_pri_file(BASE_NAME SonnetUi LIB_NAME KF5SonnetUi DEPS "widgets" FILENAME_VAR PRI_FILENAME)

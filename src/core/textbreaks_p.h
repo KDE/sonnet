@@ -23,7 +23,7 @@
 class QString;
 
 #include <QtContainerFwd>
-#include <sonnet/sonnetcore_export.h>
+#include <sonnetcore_export.h>
 
 namespace Sonnet
 {

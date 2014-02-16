@@ -12,17 +12,20 @@ set(sonnetcore_SRCS
    tokenizer.cpp
    languagefilter.cpp
 )
-set(sonnetcore_HEADERS
-    backgroundchecker.h
-    speller.h
-    guesslanguage.h
-    ${CMAKE_CURRENT_BINARY_DIR}/sonnetcore_export.h
-)
 
 
 add_library(KF5SonnetCore ${sonnetcore_SRCS})
 generate_export_header(KF5SonnetCore BASE_NAME SonnetCore EXPORT_FILE_NAME sonnetcore_export.h)
 add_library(KF5::SonnetCore ALIAS KF5SonnetCore)
+
+ecm_generate_headers(SonnetCore_HEADERS
+  HEADER_NAMES
+    BackgroundChecker
+    Speller
+    GuessLanguage
+  PREFIX Sonnet
+  REQUIRED_HEADERS SonnetCore_HEADERS
+)
 
 target_link_libraries(KF5SonnetCore PUBLIC Qt5::Core)
 
@@ -31,19 +34,18 @@ set_target_properties(KF5SonnetCore PROPERTIES VERSION ${SONNET_VERSION_STRING}
                                                EXPORT_NAME SonnetCore
 )
 
-target_include_directories(KF5SonnetCore PUBLIC
-  "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>" # needed?
-  "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>" # needed?
-  "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/..>"
-  "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/../include>" # sonnet/*.h
-)
+# CMAKE_CURRENT_BINARY_DIR: for camelcase headers and lowercase forwarders
+target_include_directories(KF5SonnetCore INTERFACE "$<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}/SonnetCore>")
+target_include_directories(KF5SonnetCore PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>")
 
 install(TARGETS KF5SonnetCore EXPORT KF5SonnetTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
 
+install(FILES ${SonnetCore_CamelCase_HEADERS} DESTINATION ${INCLUDE_INSTALL_DIR}/Sonnet/SonnetCore COMPONENT Devel)
 
-install( FILES ${sonnetcore_HEADERS}
-         DESTINATION ${INCLUDE_INSTALL_DIR}/sonnet COMPONENT Devel)
-
+install(FILES
+   ${SonnetCore_HEADERS}
+   ${CMAKE_CURRENT_BINARY_DIR}/sonnetcore_export.h
+   DESTINATION ${INCLUDE_INSTALL_DIR}/SonnetCore COMPONENT Devel)
 
 include(ECMGeneratePriFile)
 ecm_generate_pri_file(BASE_NAME SonnetCore LIB_NAME KF5SonnetCore DEPS "core" FILENAME_VAR PRI_FILENAME)

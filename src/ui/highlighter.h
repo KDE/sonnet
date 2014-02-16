@@ -24,7 +24,7 @@
 
 #include <QSyntaxHighlighter>
 #include <QtCore/QStringList>
-#include <sonnet/sonnetui_export.h>
+#include <sonnetui_export.h>
 
 class QTextEdit;
 

@@ -23,7 +23,7 @@
 #define SONNET_DIALOG_H
 
 #include <QDialog>
-#include <sonnet/sonnetui_export.h>
+#include <sonnetui_export.h>
 
 class QListWidgetItem;
 class QModelIndex;

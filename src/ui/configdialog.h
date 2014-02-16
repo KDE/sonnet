@@ -22,7 +22,7 @@
 #define SONNET_CONFIGDIALOG_H
 
 #include <QDialog>
-#include <sonnet/sonnetui_export.h>
+#include <sonnetui_export.h>
 
 namespace Sonnet
 {

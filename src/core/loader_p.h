@@ -20,7 +20,7 @@
 #ifndef SONNET_LOADER_P_H
 #define SONNET_LOADER_P_H
 
-#include <sonnet/sonnetcore_export.h>
+#include <sonnetcore_export.h>
 
 #include <QtCore/QObject>
 #include <QtCore/QStringList>
