@@ -24,7 +24,8 @@ set(KF5_VERSION "4.96.0")
 
 ecm_setup_version(${KF5_VERSION} VARIABLE_PREFIX SONNET
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/sonnet_version.h"
-                        PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5SonnetConfigVersion.cmake")
+                        PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5SonnetConfigVersion.cmake"
+                        SOVERSION 5)
 
 
 # Enable when kdoctools will be usable from the outside (macros are broken ATM)
