@@ -1,5 +1,8 @@
-Sonnet
-======
+# Sonnet
+
+Multi-language spell checker
+
+## Introduction
 
 Sonnet is a plugin-based spell checking library for Qt-based
 applications. It supports several different plugins, including
@@ -11,8 +14,7 @@ combination of different algorithms.
 The simplest way to use Sonnet in your application is to use the
 SpellCheckDecorator class on your QTextEdit.
 
-Example
--------
+## Example
 
     #include <QTextEdit>
     #include <spellcheckdecorator.h>
@@ -23,9 +25,9 @@ Example
         Sonnet::SpellCheckDecorator *decorator = new Sonnet::SpellCheckDecorator(textEdit);
     }
 
-
-Links
------
+## Links
 
 - Home page: <https://projects.kde.org/projects/frameworks/sonnet>
-
+- Mailing list: <https://mail.kde.org/mailman/listinfo/kde-frameworks-devel>
+- IRC channel: #kde-devel on Freenode
+- Git repository: <https://projects.kde.org/projects/frameworks/sonnet/repository>
