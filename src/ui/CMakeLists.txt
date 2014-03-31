@@ -17,6 +17,7 @@ set(sonnetui_SRCS
     dictionarycombobox.cpp
     highlighter.cpp
     spellcheckdecorator.cpp
+    ${sonnet_QM_LOADER}
 )
 
 set(sonnetui_UI
