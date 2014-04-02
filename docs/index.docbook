@@ -17,14 +17,15 @@
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
 </authorgroup>
 
-<date>2010-09-02</date>
-<releaseinfo>&kde; 4.5</releaseinfo>
+<date>2014-04-22</date>
+<releaseinfo>5.0</releaseinfo>
 <abstract>
-<para>&sonnet; is the spelling checker used by &kde; applications such
-as &kate;, &kmail;, and &kword;. It is a &GUI; frontend to various free spell checkers. 
-More Information about required spell checkers and dictionaries you find in the 
-documentation of the &systemsettings; module 
-<ulink url="help:kcontrol/spellchecking">Spell Checker</ulink>.</para>
+<para>&sonnet; provides a &GUI; frontend to various free spell checkers, allowing
+spell-checking to be easily integrated into Qt-based applications.</para>
+<para>If you have &systemsettings; installed, the
+<ulink url="help:kcontrol/spellchecking">Spell Checker</ulink> module can be used
+to control the behaviour of the &sonnet;, including the default language to use.
+</para>
 
 </abstract>
 <keywordset>
