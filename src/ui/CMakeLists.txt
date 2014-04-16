@@ -10,6 +10,8 @@ include_directories(
     ${CMAKE_CURRENT_BINARY_DIR}/../core
 )
 
+ecm_create_qm_loader(sonnet_QM_LOADER sonnet5)
+
 set(sonnetui_SRCS
     configdialog.cpp
     configwidget.cpp
