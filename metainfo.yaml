@@ -1,1 +1,9 @@
+maintainer: sandsmark
+description: Support for spellchecking
 tier: 1
+type: solution
+platforms:
+    - name: All
+portingAid: false
+deprecated: false
+release: true
