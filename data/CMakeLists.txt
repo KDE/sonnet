@@ -19,4 +19,4 @@ create_trigrams_map(sonnet
                     ${CMAKE_SOURCE_DIR}/data/trigrams
                     ${CMAKE_CURRENT_BINARY_DIR}/trigrams.map
                    )
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/trigrams.map DESTINATION ${DATA_INSTALL_DIR}/sonnet/)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/trigrams.map DESTINATION ${KF5_DATA_INSTALL_DIR}/sonnet/)

@@ -275,7 +275,7 @@ void GuessLanguage::setLimits(int maxItems, double minConfidence)
 
 void GuessLanguagePrivate::loadModels()
 {
-    QString triMapFile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("sonnet/trigrams.map"));
+    QString triMapFile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("kf5/sonnet/trigrams.map"));
 
     QFile sin(triMapFile);
     if (!sin.open(QIODevice::ReadOnly)) {
