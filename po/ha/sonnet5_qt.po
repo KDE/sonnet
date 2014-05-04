@@ -1,0 +1,1149 @@
+# Hausa translation for kdelibs strings.
+# Copyright 2009 Adriaan de Groot, Mustapha Abubakar, Ibrahim Dasuna
+# This file is distributed under the same license as the kdelibs package.
+#
+# Adriaan de Groot <groot@kde.org>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: kdelibs4\n"
+"Report-Msgid-Bugs-To: http://bugs.kde.org\n"
+"POT-Creation-Date: 2014-03-23 01:50+0000\n"
+"PO-Revision-Date: 2009-03-17 11:22+0100\n"
+"Last-Translator: Adriaan de Groot <groot@kde.org>\n"
+"Language-Team: Hausa <kde-i18n-doc@lists.kde.org>\n"
+"Language: ha\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 0.2\n"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:149
+#, fuzzy
+#| msgid "4"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "40"
+msgstr "4"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:150
+#, fuzzy
+#| msgid "6"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "60"
+msgstr "6"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:151
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "80"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:152
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ise suffixes"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:153
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ize suffixes"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:154
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ise suffixes and with accents"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:155
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ise suffixes and without accents"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:156
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ize suffixes and with accents"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:157
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ize suffixes and without accents"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:158
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "large"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:159
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "medium"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:160
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "small"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:161
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "variant 0"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:162
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "variant 1"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:163
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "variant 2"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:164
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "without accents"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:165
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "with accents"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:166
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "with ye, modern russian"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:167
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "with yeyo, modern and old russian"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:168
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "with yo, old russian"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:169
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "extended"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:203
+#, qt-format
+msgctxt ""
+"Sonnet::Loader|dictionary name; %1 = language name, %2 = country name and %3 "
+"= language variant name"
+msgid "%1 (%2) [%3]"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:206
+#, qt-format
+msgctxt "Sonnet::Loader|dictionary name; %1 = language name, %2 = country name"
+msgid "%1 (%2)"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/configdialog.cpp:50
+msgctxt "Sonnet::ConfigDialog|"
+msgid "Spell Checking Configuration"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/configui.ui:32
+#, fuzzy
+#| msgid "Action"
+msgctxt "SonnetConfigUI|"
+msgid "Options"
+msgstr "Aiki"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/configui.ui:38
+msgctxt "SonnetConfigUI|"
+msgid "Enable autodetection of &language"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/configui.ui:45
+msgctxt "SonnetConfigUI|"
+msgid "Enable &background spellchecking"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/configui.ui:52
+msgctxt "SonnetConfigUI|"
+msgid "&Automatic spell checking enabled by default"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/configui.ui:59
+msgctxt "SonnetConfigUI|"
+msgid "Skip all &uppercase words"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/configui.ui:66
+msgctxt "SonnetConfigUI|"
+msgid "S&kip run-together words"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/configui.ui:76
+#, fuzzy
+#| msgid "Default language:"
+msgctxt "SonnetConfigUI|"
+msgid "Default language:"
+msgstr "Yaren farko:"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/configui.ui:86
+msgctxt "SonnetConfigUI|"
+msgid "Ignored Words:"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/configui.ui:100
+msgctxt "SonnetConfigUI|"
+msgid "&Add"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/configui.ui:112
+#, fuzzy
+#| msgid "&Remove"
+msgctxt "SonnetConfigUI|"
+msgid "&Remove"
+msgstr "&Cire"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/dialog.cpp:100
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/dialog.cpp:224
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/dialog.cpp:433
+msgctxt "Sonnet::Dialog|@title:window"
+msgid "Check Spelling"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/dialog.cpp:223
+msgctxt "Sonnet::Dialog|progress label"
+msgid "Spell checking in progress..."
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/dialog.cpp:244
+msgctxt "Sonnet::Dialog|"
+msgid "Spell check stopped."
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/dialog.cpp:254
+msgctxt "Sonnet::Dialog|"
+msgid "Spell check canceled."
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/dialog.cpp:430
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/dialog.cpp:433
+msgctxt "Sonnet::Dialog|"
+msgid "Spell check complete."
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/highlighter.cpp:204
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/highlighter.cpp:226
+msgctxt "Sonnet::Highlighter|"
+msgid "As-you-type spell checking enabled."
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/highlighter.cpp:207
+msgctxt "Sonnet::Highlighter|"
+msgid "Too many misspelled words. As-you-type spell checking disabled."
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/highlighter.cpp:228
+msgctxt "Sonnet::Highlighter|"
+msgid "As-you-type spell checking disabled."
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:30
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:46
+msgctxt "SonnetUi|"
+msgid ""
+"<qt><p>This word was considered to be an \"unknown word\" because it does "
+"not match any entry in the dictionary currently in use. It may also be a "
+"word in a foreign language.</p>\n"
+"<p>If the word is not misspelled, you may add it to the dictionary by "
+"clicking <b>Add to Dictionary</b>. If you do not want to add the unknown "
+"word to the dictionary, but you want to leave it unchanged, click <b>Ignore</"
+"b> or <b>Ignore All</b>.</p>\n"
+"<p>However, if the word is misspelled, you can try to find the correct "
+"replacement in the list below. If you cannot find a replacement there, you "
+"may type it in the text box below, and click <b>Replace</b> or <b>Replace "
+"All</b>.</p>\n"
+"</qt>"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:36
+msgctxt "SonnetUi|"
+msgid "Unknown word:"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:43
+msgctxt "SonnetUi|"
+msgid "Unknown word"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:52
+msgctxt "SonnetUi|"
+msgid "<b>misspelled</b>"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:59
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:174
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Select the language of the document you are proofing here.</p>\n"
+"</qt>"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:64
+#, fuzzy
+#| msgid "&Language:"
+msgctxt "SonnetUi|"
+msgid "&Language:"
+msgstr "&Yare:"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:74
+msgctxt "SonnetUi|"
+msgid "Text excerpt showing the unknown word in its context."
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:77
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Here you can see a text excerpt showing the unknown word in its context. "
+"If this information is not sufficient to choose the best replacement for the "
+"unknown word, you can click on the document you are proofing, read a larger "
+"part of the text and then return here to continue proofing.</p>\n"
+"</qt>"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:85
+msgctxt "SonnetUi|"
+msgid "... the <b>misspelled</b> word shown in context ..."
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:95
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>The unknown word was detected and considered unknown because it is not "
+"included in the dictionary.<br>\n"
+"Click here if you consider the unknown word not to be misspelled, and you "
+"want to avoid wrongly detecting it again in the future. If you want to let "
+"it remain as is, but not add it to the dictionary, then click <b>Ignore</b> "
+"or <b>Ignore All</b> instead.</p>\n"
+"</qt>"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:101
+msgctxt "SonnetUi|"
+msgid "<< Add to Dictionary"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:124
+#, fuzzy
+#| msgid "Question"
+msgctxt "SonnetUi|"
+msgid "Suggestion List"
+msgstr "Tambaya"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:127
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>If the unknown word is misspelled, you should check if the correction for "
+"it is available and if it is, click on it. If none of the words in this list "
+"is a good replacement you may type the correct word in the edit box above.</"
+"p>\n"
+"<p>To correct this word click <b>Replace</b> if you want to correct only "
+"this occurrence or <b>Replace All</b> if you want to correct all occurrences."
+"</p>\n"
+"</qt>"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:137
+msgctxt "SonnetUi|"
+msgid "Suggested Words"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:145
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:161
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>If the unknown word is misspelled, you should type the correction for "
+"your misspelled word here or select it from the list below.</p>\n"
+"<p>You can then click <b>Replace</b> if you want to correct only this "
+"occurrence of the word or <b>Replace All</b> if you want to correct all "
+"occurrences.</p>\n"
+"</qt>"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:151
+msgctxt "SonnetUi|"
+msgid "Replace &with:"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:171
+#, fuzzy
+#| msgid "Action"
+msgctxt "SonnetUi|"
+msgid "Language Selection"
+msgstr "Aiki"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:191
+msgctxt "SonnetUi|"
+msgid "S&uggest"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:198
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Click here to replace this occurrence of the unknown text with the text "
+"in the edit box above (to the left).</p>\n"
+"</qt>"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:203
+msgctxt "SonnetUi|"
+msgid "&Replace"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:210
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Click here to replace all occurrences of the unknown text with the text "
+"in the edit box above (to the left).</p>\n"
+"</qt>"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:215
+msgctxt "SonnetUi|"
+msgid "R&eplace All"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:222
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Click here to let this occurrence of the unknown word remain as is.</p>\n"
+"<p>This action is useful when the word is a name, an acronym, a foreign word "
+"or any other unknown word that you want to use but not add to the dictionary."
+"</p>\n"
+"</qt>"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:228
+msgctxt "SonnetUi|"
+msgid "&Ignore"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:235
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:248
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Click here to let all occurrences of the unknown word remain as they are."
+"</p>\n"
+"<p>This action is useful when the word is a name, an acronym, a foreign word "
+"or any other unknown word that you want to use but not add to the dictionary."
+"</p>\n"
+"</qt>"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:241
+msgctxt "SonnetUi|"
+msgid "I&gnore All"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:254
+msgctxt "SonnetUi|"
+msgid "Autocorrect"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/spellcheckdecorator.cpp:137
+#, qt-format
+msgctxt "SpellCheckDecorator::Private|"
+msgid "No suggestions for %1"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/spellcheckdecorator.cpp:148
+msgctxt "SpellCheckDecorator::Private|"
+msgid "Ignore"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/spellcheckdecorator.cpp:149
+msgctxt "SpellCheckDecorator::Private|"
+msgid "Add to Dictionary"
+msgstr ""
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Mustapha Abubakar,Adriaan de Groot,Ibrahim Dasuna"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr ",groot@kde.org,"
+
+#~ msgid "&About"
+#~ msgstr "&Game da"
+
+#~ msgid "A&uthor"
+#~ msgstr "&Mawallafi"
+
+#~ msgid "A&uthors"
+#~ msgstr "&Mawallafa"
+
+#~ msgid ""
+#~ "Please use <a href=\"http://bugs.kde.org\">http://bugs.kde.org</a> to "
+#~ "report bugs.\n"
+#~ msgstr ""
+#~ "Yi amfani da <a href=\"http://bugs.kde.org\">http://bugs.kde.org</a> "
+#~ "domin sanar da matsaloli.\n"
+
+#~ msgid "Please report bugs to <a href=\"mailto:%1\">%2</a>.\n"
+#~ msgstr "Sanar da matsaloli ga <a href=\"mailto:%1\">%2</a>.\n"
+
+#~ msgid "&Thanks To"
+#~ msgstr "G&odiya ga"
+
+#~ msgid "T&ranslation"
+#~ msgstr "Ma&ffassara"
+
+#~ msgid "&License Agreement"
+#~ msgstr "Yarjejeniyar &lasisi"
+
+#~ msgid "Author"
+#~ msgstr "Mawallafi"
+
+#~ msgid "Other Contributors:"
+#~ msgstr "Sauran mataimaka:"
+
+#~ msgid "About %1"
+#~ msgstr "Bayani akan %1"
+
+#~ msgid "am"
+#~ msgstr "safe"
+
+#~ msgid "pm"
+#~ msgstr "yamma"
+
+#~ msgid "Today"
+#~ msgstr "Yau"
+
+#~ msgid "Yesterday"
+#~ msgstr "Jiya"
+
+#~ msgid "KDE Daemon"
+#~ msgstr "KDE Fatalwa"
+
+#~ msgctxt "show help"
+#~ msgid "&Help"
+#~ msgstr "&Agaji"
+
+#, fuzzy
+#~| msgid "Close the current document."
+#~ msgid "Create new document"
+#~ msgstr "Rufe wannan -dokumen-"
+
+#, fuzzy
+#~| msgid "&Close Document"
+#~ msgid "Save document"
+#~ msgstr "&Rufe -dokumen-"
+
+#~ msgid "&Close"
+#~ msgstr "&Rufe"
+
+#, fuzzy
+#~| msgid "&Close Document"
+#~ msgid "Close document"
+#~ msgstr "&Rufe -dokumen-"
+
+#, fuzzy
+#~| msgid "&Close Document"
+#~ msgid "Print document"
+#~ msgstr "&Rufe -dokumen-"
+
+#~ msgid "Configure &Notifications..."
+#~ msgstr "Haɗawa &Sanerwa"
+
+#~ msgid "&About %1"
+#~ msgstr "&Bayani akan %1"
+
+#~ msgid "About &KDE"
+#~ msgstr "Bayani akan &KDE"
+
+#~ msgid "License Agreement"
+#~ msgstr "Yarjejeniyar lasisi"
+
+#, fuzzy
+#~| msgid "Other Contributors:"
+#~ msgctxt "Action to send an email to a contributor"
+#~ msgid "Email contributor"
+#~ msgstr "Sauran mataimaka:"
+
+#, fuzzy
+#~| msgid "Other Contributors:"
+#~ msgctxt "Action to send an email to a contributor"
+#~ msgid ""
+#~ "Email contributor\n"
+#~ "%1"
+#~ msgstr "Sauran mataimaka:"
+
+#~ msgctxt "@item Contributor name in about dialog."
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#~ msgid "About KDE"
+#~ msgstr "Bayani akan KDE"
+
+#~ msgctxt "About KDE"
+#~ msgid "&About"
+#~ msgstr "&Game da"
+
+#~ msgid "&Join KDE"
+#~ msgstr "&Tarayya da KDE"
+
+#~ msgid "&Support KDE"
+#~ msgstr "&Temakama KDE"
+
+#~ msgctxt "Email sender address"
+#~ msgid "From:"
+#~ msgstr "Daga:"
+
+#~ msgid "Configure Email..."
+#~ msgstr "Haɗawa wasikan lantarki"
+
+#~ msgctxt "Email receiver address"
+#~ msgid "To:"
+#~ msgstr "Zuwa:"
+
+#~ msgid "&Send"
+#~ msgstr "&Aika"
+
+#~ msgid "Send bug report."
+#~ msgstr "Aika bayanin matsala."
+
+#~ msgid "Send this bug report to %1."
+#~ msgstr "Aika wannan bayanin matsala zuwa %1."
+
+#~ msgid "OS:"
+#~ msgstr "Tsarin budanarwa:"
+
+#~ msgid "Compiler:"
+#~ msgstr "Mehadawa:"
+
+#~ msgid "Se&verity"
+#~ msgstr "Mahimmanchi"
+
+#~ msgid "Critical"
+#~ msgstr "Tsanani"
+
+#~ msgid "Grave"
+#~ msgstr "Mantikar Tsanani"
+
+#~ msgctxt "normal severity"
+#~ msgid "Normal"
+#~ msgstr "Matsala"
+
+#~ msgid "Wishlist"
+#~ msgstr "Abinda zan so"
+
+#~ msgid "Translation"
+#~ msgstr "Fassara"
+
+#~ msgid "S&ubject: "
+#~ msgstr "Abinda wasika yerkoni tsa"
+
+#~ msgid "Configure"
+#~ msgstr "Haɗawa"
+
+#~ msgid "1"
+#~ msgstr "1"
+
+#~ msgid "2"
+#~ msgstr "2"
+
+#~ msgid "9"
+#~ msgstr "9"
+
+#~ msgid "16"
+#~ msgstr "16"
+
+#~ msgctxt "@action:button filter-yes"
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#~ msgctxt "@action:button filter-no"
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#~ msgctxt "@action:button filter-continue"
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#~ msgctxt "@action:button filter-cancel"
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#~ msgctxt "@action:button post-filter"
+#~ msgid "."
+#~ msgstr "."
+
+#~ msgid "Information"
+#~ msgstr "Bayani"
+
+#~ msgid "Password:"
+#~ msgstr "Harrufan sirri:"
+
+#~ msgid "Username:"
+#~ msgstr "Sunan shiga:"
+
+#~ msgid "Shortcut"
+#~ msgstr "Gajeran hanya"
+
+#~ msgid "Alternate"
+#~ msgstr "Wata gajeran hanya"
+
+#~ msgctxt "@item:intable Action name in shortcuts configuration"
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#~ msgid "Remove"
+#~ msgstr "Cire"
+
+#~ msgid "Stop"
+#~ msgstr "Tsaya"
+
+#~ msgctxt "@action:button"
+#~ msgid "Close"
+#~ msgstr "Rufe"
+
+#~ msgctxt "@action"
+#~ msgid "Close"
+#~ msgstr "Rufe"
+
+#~ msgctxt "@action"
+#~ msgid "Help"
+#~ msgstr "Agaji"
+
+#~ msgctxt "@action"
+#~ msgid "Configure Notifications"
+#~ msgstr "Haɗawa Sanerwa"
+
+#~ msgctxt "@action"
+#~ msgid "About KDE"
+#~ msgstr "Bayani akan KDE"
+
+#~ msgid "&Yes"
+#~ msgstr "&Ee"
+
+#~ msgid "Yes"
+#~ msgstr "Ee"
+
+#~ msgid "&No"
+#~ msgstr "&A'a"
+
+#~ msgid "No"
+#~ msgstr "A'a"
+
+#~ msgid "Close the current window or document"
+#~ msgstr "Rufe wannan tagar"
+
+#~ msgid "&Close Window"
+#~ msgstr "&Rufe taga"
+
+#~ msgid "Close the current window."
+#~ msgstr "Rufe wannan tagar."
+
+#~ msgid "&Close Document"
+#~ msgstr "&Rufe -dokumen-"
+
+#~ msgid "Close the current document."
+#~ msgstr "Rufe wannan -dokumen-"
+
+#, fuzzy
+#~| msgid "Today"
+#~ msgctxt "@option today"
+#~ msgid "Today"
+#~ msgstr "Yau"
+
+#, fuzzy
+#~| msgid "Yesterday"
+#~ msgctxt "@option yesterday"
+#~ msgid "Yesterday"
+#~ msgstr "Jiya"
+
+#~ msgid "&Help"
+#~ msgstr "&Agaji"
+
+#, fuzzy
+#~| msgid "Settings"
+#~ msgctxt "@title:menu"
+#~ msgid "Toolbar Settings"
+#~ msgstr "Tsarawa"
+
+#, fuzzy
+#~| msgid "Translation"
+#~ msgctxt "Toolbar orientation"
+#~ msgid "Orientation"
+#~ msgstr "Fassara"
+
+#~ msgid "&Settings"
+#~ msgstr "&Tsarawa"
+
+#~ msgid "Description:"
+#~ msgstr "ƙwatan tawa:"
+
+#~ msgid "Pause"
+#~ msgstr "Dakata"
+
+#~ msgid "Settings"
+#~ msgstr "Tsarawa"
+
+#~ msgid "Quit"
+#~ msgstr "Kashi"
+
+#~ msgid "Quit application..."
+#~ msgstr "Rufewa -afelikashon-"
+
+#~ msgid "?"
+#~ msgstr "?"
+
+#~ msgid "Author:"
+#~ msgstr "Mawallafi:"
+
+#~ msgid "GPL"
+#~ msgstr "GPL"
+
+#~ msgid "LGPL"
+#~ msgstr "LGPL"
+
+#~ msgid "BSD"
+#~ msgstr "BSD"
+
+#~ msgid "Language:"
+#~ msgstr "Yare:"
+
+#~ msgid "Configure Notifications"
+#~ msgstr "Haɗawa Sanerwa"
+
+#, fuzzy
+#~| msgid "Settings"
+#~ msgid "Apply Settings"
+#~ msgstr "Tsarawa"
+
+#~ msgid "Color for links"
+#~ msgstr "Launin ma'isa"
+
+#~ msgid "What color links should be that have not yet been clicked on"
+#~ msgstr ""
+#~ "Wani launi ma'isa kake so launin ma'isar ya kasance wanda ba a taɓa ba"
+
+#~ msgid "Color for visited links"
+#~ msgstr "Launin ma'isar da aka taɓa"
+
+#~ msgid "What country"
+#~ msgstr "Wacce ƙasa"
+
+#~ msgid ""
+#~ "Used to determine how to display numbers, currency and time/date, for "
+#~ "example"
+#~ msgstr "ƙasarce take zaɓar haruffa, lambobi da lokaci da take amfani dashi"
+
+#~ msgid "Path to the autostart directory"
+#~ msgstr "Hanyan jakar farawa da kai"
+
+#, fuzzy
+#~| msgid "About %1"
+#~ msgctxt "Used only for plugins"
+#~ msgid "About %1"
+#~ msgstr "Bayani akan %1"
+
+#, fuzzy
+#~| msgid "Today"
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Today"
+#~ msgstr "Yau"
+
+#, fuzzy
+#~| msgid "Yesterday"
+#~ msgctxt ""
+#~ "referring to a filter on the modification and usage date of files/"
+#~ "resources"
+#~ msgid "Yesterday"
+#~ msgstr "Jiya"
+
+#, fuzzy
+#~| msgid "A&uthor"
+#~ msgid "Before"
+#~ msgstr "&Mawallafi"
+
+#, fuzzy
+#~| msgid "A&uthor"
+#~ msgctxt ""
+#~ "@option:check An item in a list of resources that allows to query for "
+#~ "more resources to put in the list"
+#~ msgid "More..."
+#~ msgstr "&Mawallafi"
+
+#, fuzzy
+#~| msgid "&Close Document"
+#~ msgctxt "@option:check A filter on file type"
+#~ msgid "Documents"
+#~ msgstr "&Rufe -dokumen-"
+
+#~ msgid "Start"
+#~ msgstr "Tada"
+
+#~ msgid "What time is it? Click to update."
+#~ msgstr "Ƙarfe nawa? Denna don sabuntawa."
+
+#, fuzzy
+#~| msgid "Today"
+#~ msgctxt "@info/plain"
+#~ msgid "today"
+#~ msgstr "Yau"
+
+#~ msgctxt "@item Author name in about dialog"
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#~ msgid "..."
+#~ msgstr "..."
+
+#, fuzzy
+#~| msgid "Question"
+#~ msgid "description"
+#~ msgstr "Tambaya"
+
+#, fuzzy
+#~| msgid "Author"
+#~ msgid "Autor Name"
+#~ msgstr "Mawallafi"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Indian National month 10 - LongNamePossessive"
+#~ msgid "of Paush"
+#~ msgstr "Dakata"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Indian National month 10 - ShortName"
+#~ msgid "Pau"
+#~ msgstr "Dakata"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Indian National month 10 - LongName"
+#~ msgid "Paush"
+#~ msgstr "Dakata"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Coptic month 2 - ShortNamePossessive"
+#~ msgid "of Pao"
+#~ msgstr "Dakata"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Coptic month 7 - ShortNamePossessive"
+#~ msgid "of Par"
+#~ msgstr "Dakata"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Coptic month 8 - ShortNamePossessive"
+#~ msgid "of Pam"
+#~ msgstr "Dakata"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Coptic month 9 - ShortNamePossessive"
+#~ msgid "of Pas"
+#~ msgstr "Dakata"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Coptic month 10 - ShortNamePossessive"
+#~ msgid "of Pan"
+#~ msgstr "Dakata"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Coptic month 2 - LongNamePossessive"
+#~ msgid "of Paope"
+#~ msgstr "Dakata"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Coptic month 4 - LongNamePossessive"
+#~ msgid "of Kiahk"
+#~ msgstr "Dakata"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Coptic month 8 - LongNamePossessive"
+#~ msgid "of Parmoute"
+#~ msgstr "Dakata"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Coptic month 9 - LongNamePossessive"
+#~ msgid "of Pashons"
+#~ msgstr "Dakata"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Coptic month 10 - LongNamePossessive"
+#~ msgid "of Paone"
+#~ msgstr "Dakata"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Coptic month 2 - ShortName"
+#~ msgid "Pao"
+#~ msgstr "Dakata"
+
+#, fuzzy
+#~| msgid "Yes"
+#~ msgctxt "Coptic month 6 - ShortName"
+#~ msgid "Mes"
+#~ msgstr "Ee"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Coptic month 7 - ShortName"
+#~ msgid "Par"
+#~ msgstr "Dakata"
+
+#, fuzzy
+#~| msgid "am"
+#~ msgctxt "Coptic month 8 - ShortName"
+#~ msgid "Pam"
+#~ msgstr "safe"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Coptic month 9 - ShortName"
+#~ msgid "Pas"
+#~ msgstr "Dakata"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Coptic month 10 - ShortName"
+#~ msgid "Pan"
+#~ msgstr "Dakata"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Coptic month 2 - LongName"
+#~ msgid "Paope"
+#~ msgstr "Dakata"
+
+#, fuzzy
+#~| msgid "Author"
+#~ msgctxt "Coptic month 3 - LongName"
+#~ msgid "Hathor"
+#~ msgstr "Mawallafi"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Coptic month 8 - LongName"
+#~ msgid "Parmoute"
+#~ msgstr "Dakata"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Coptic month 9 - LongName"
+#~ msgid "Pashons"
+#~ msgstr "Dakata"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Coptic month 10 - LongName"
+#~ msgid "Paone"
+#~ msgstr "Dakata"
+
+#, fuzzy
+#~| msgid "Yes"
+#~ msgctxt "Coptic weekday 1 - ShortDayName"
+#~ msgid "Pes"
+#~ msgstr "Ee"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Coptic weekday 2 - ShortDayName"
+#~ msgid "Psh"
+#~ msgstr "Dakata"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Coptic weekday 6 - ShortDayName"
+#~ msgid "Psa"
+#~ msgstr "Dakata"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Coptic weekday 1 - LongDayName"
+#~ msgid "Pesnau"
+#~ msgstr "Dakata"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Ethiopian month 4 - ShortNamePossessive"
+#~ msgid "of Tah"
+#~ msgstr "Dakata"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Ethiopian month 13 - ShortNamePossessive"
+#~ msgid "of Pag"
+#~ msgstr "Dakata"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Ethiopian month 13 - LongNamePossessive"
+#~ msgid "of Pagumen"
+#~ msgstr "Dakata"
+
+#, fuzzy
+#~| msgid "Yes"
+#~ msgctxt "Ethiopian month 1 - ShortName"
+#~ msgid "Mes"
+#~ msgstr "Ee"
+
+#, fuzzy
+#~| msgid "am"
+#~ msgctxt "Ethiopian month 11 - ShortName"
+#~ msgid "Ham"
+#~ msgstr "safe"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Ethiopian month 13 - ShortName"
+#~ msgid "Pag"
+#~ msgstr "Dakata"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Ethiopian month 13 - LongName"
+#~ msgid "Pagumen"
+#~ msgstr "Dakata"
+
+#, fuzzy
+#~| msgid "am"
+#~ msgctxt "Ethiopian weekday 4 - ShortDayName"
+#~ msgid "Ham"
+#~ msgstr "safe"
+
+#, fuzzy
+#~| msgid "Pause"
+#~ msgctxt "Ethiopian weekday 4 - LongDayName"
+#~ msgid "Hamus"
+#~ msgstr "Dakata"
+
+#~ msgid "Path for the trash can"
+#~ msgstr "Hanyan zubar da shara"
+
+#~ msgid "Path to documents folder"
+#~ msgstr "Hanyan jakar -dokumen-"

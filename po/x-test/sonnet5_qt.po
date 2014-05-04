@@ -1,0 +1,517 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: sonnet5_qt\n"
+"PO-Revision-Date: 2014-04-28 09:02+0000\n"
+"Last-Translator: transxx.py program <null@kde.org>\n"
+"Language-Team: KDE Test Language <kde-i18n-doc@kde.org>\n"
+"Language: x-test\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Qt-Contexts: true\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:149
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "40"
+msgstr "xx40xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:150
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "60"
+msgstr "xx60xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:151
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "80"
+msgstr "xx80xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:152
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ise suffixes"
+msgstr "xx-ise suffixesxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:153
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ize suffixes"
+msgstr "xx-ize suffixesxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:154
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ise suffixes and with accents"
+msgstr "xx-ise suffixes and with accentsxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:155
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ise suffixes and without accents"
+msgstr "xx-ise suffixes and without accentsxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:156
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ize suffixes and with accents"
+msgstr "xx-ize suffixes and with accentsxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:157
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ize suffixes and without accents"
+msgstr "xx-ize suffixes and without accentsxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:158
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "large"
+msgstr "xxlargexx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:159
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "medium"
+msgstr "xxmediumxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:160
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "small"
+msgstr "xxsmallxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:161
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "variant 0"
+msgstr "xxvariant 0xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:162
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "variant 1"
+msgstr "xxvariant 1xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:163
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "variant 2"
+msgstr "xxvariant 2xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:164
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "without accents"
+msgstr "xxwithout accentsxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:165
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "with accents"
+msgstr "xxwith accentsxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:166
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "with ye, modern russian"
+msgstr "xxwith ye, modern russianxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:167
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "with yeyo, modern and old russian"
+msgstr "xxwith yeyo, modern and old russianxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:168
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "with yo, old russian"
+msgstr "xxwith yo, old russianxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:169
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "extended"
+msgstr "xxextendedxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:203
+#, qt-format
+msgctxt ""
+"Sonnet::Loader|dictionary name; %1 = language name, %2 = country name and %3 "
+"= language variant name"
+msgid "%1 (%2) [%3]"
+msgstr "xx%1 (%2) [%3]xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/core/loader.cpp:206
+#, qt-format
+msgctxt "Sonnet::Loader|dictionary name; %1 = language name, %2 = country name"
+msgid "%1 (%2)"
+msgstr "xx%1 (%2)xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/configdialog.cpp:50
+msgctxt "Sonnet::ConfigDialog|"
+msgid "Spell Checking Configuration"
+msgstr "xxSpell Checking Configurationxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/configui.ui:32
+msgctxt "SonnetConfigUI|"
+msgid "Options"
+msgstr "xxOptionsxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/configui.ui:38
+msgctxt "SonnetConfigUI|"
+msgid "Enable autodetection of &language"
+msgstr "xxEnable autodetection of &languagexx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/configui.ui:45
+msgctxt "SonnetConfigUI|"
+msgid "Enable &background spellchecking"
+msgstr "xxEnable &background spellcheckingxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/configui.ui:52
+msgctxt "SonnetConfigUI|"
+msgid "&Automatic spell checking enabled by default"
+msgstr "xx&Automatic spell checking enabled by defaultxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/configui.ui:59
+msgctxt "SonnetConfigUI|"
+msgid "Skip all &uppercase words"
+msgstr "xxSkip all &uppercase wordsxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/configui.ui:66
+msgctxt "SonnetConfigUI|"
+msgid "S&kip run-together words"
+msgstr "xxS&kip run-together wordsxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/configui.ui:76
+msgctxt "SonnetConfigUI|"
+msgid "Default language:"
+msgstr "xxDefault language:xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/configui.ui:86
+msgctxt "SonnetConfigUI|"
+msgid "Ignored Words:"
+msgstr "xxIgnored Words:xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/configui.ui:100
+msgctxt "SonnetConfigUI|"
+msgid "&Add"
+msgstr "xx&Addxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/configui.ui:112
+msgctxt "SonnetConfigUI|"
+msgid "&Remove"
+msgstr "xx&Removexx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/dialog.cpp:100
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/dialog.cpp:224
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/dialog.cpp:433
+msgctxt "Sonnet::Dialog|@title:window"
+msgid "Check Spelling"
+msgstr "xxCheck Spellingxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/dialog.cpp:223
+msgctxt "Sonnet::Dialog|progress label"
+msgid "Spell checking in progress..."
+msgstr "xxSpell checking in progress...xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/dialog.cpp:244
+msgctxt "Sonnet::Dialog|"
+msgid "Spell check stopped."
+msgstr "xxSpell check stopped.xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/dialog.cpp:254
+msgctxt "Sonnet::Dialog|"
+msgid "Spell check canceled."
+msgstr "xxSpell check canceled.xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/dialog.cpp:430
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/dialog.cpp:433
+msgctxt "Sonnet::Dialog|"
+msgid "Spell check complete."
+msgstr "xxSpell check complete.xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/highlighter.cpp:204
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/highlighter.cpp:226
+msgctxt "Sonnet::Highlighter|"
+msgid "As-you-type spell checking enabled."
+msgstr "xxAs-you-type spell checking enabled.xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/highlighter.cpp:207
+msgctxt "Sonnet::Highlighter|"
+msgid "Too many misspelled words. As-you-type spell checking disabled."
+msgstr "xxToo many misspelled words. As-you-type spell checking disabled.xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/highlighter.cpp:228
+msgctxt "Sonnet::Highlighter|"
+msgid "As-you-type spell checking disabled."
+msgstr "xxAs-you-type spell checking disabled.xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:30
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:46
+msgctxt "SonnetUi|"
+msgid ""
+"<qt><p>This word was considered to be an \"unknown word\" because it does "
+"not match any entry in the dictionary currently in use. It may also be a "
+"word in a foreign language.</p>\n"
+"<p>If the word is not misspelled, you may add it to the dictionary by "
+"clicking <b>Add to Dictionary</b>. If you do not want to add the unknown "
+"word to the dictionary, but you want to leave it unchanged, click <b>Ignore</"
+"b> or <b>Ignore All</b>.</p>\n"
+"<p>However, if the word is misspelled, you can try to find the correct "
+"replacement in the list below. If you cannot find a replacement there, you "
+"may type it in the text box below, and click <b>Replace</b> or <b>Replace "
+"All</b>.</p>\n"
+"</qt>"
+msgstr ""
+"xx<qt><p>This word was considered to be an \"unknown word\" because it does "
+"not match any entry in the dictionary currently in use. It may also be a "
+"word in a foreign language.</p>\n"
+"<p>If the word is not misspelled, you may add it to the dictionary by "
+"clicking <b>Add to Dictionary</b>. If you do not want to add the unknown "
+"word to the dictionary, but you want to leave it unchanged, click <b>Ignore</"
+"b> or <b>Ignore All</b>.</p>\n"
+"<p>However, if the word is misspelled, you can try to find the correct "
+"replacement in the list below. If you cannot find a replacement there, you "
+"may type it in the text box below, and click <b>Replace</b> or <b>Replace "
+"All</b>.</p>\n"
+"</qt>xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:36
+msgctxt "SonnetUi|"
+msgid "Unknown word:"
+msgstr "xxUnknown word:xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:43
+msgctxt "SonnetUi|"
+msgid "Unknown word"
+msgstr "xxUnknown wordxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:52
+msgctxt "SonnetUi|"
+msgid "<b>misspelled</b>"
+msgstr "xx<b>misspelled</b>xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:59
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:174
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Select the language of the document you are proofing here.</p>\n"
+"</qt>"
+msgstr ""
+"xx<qt>\n"
+"<p>Select the language of the document you are proofing here.</p>\n"
+"</qt>xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:64
+msgctxt "SonnetUi|"
+msgid "&Language:"
+msgstr "xx&Language:xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:74
+msgctxt "SonnetUi|"
+msgid "Text excerpt showing the unknown word in its context."
+msgstr "xxText excerpt showing the unknown word in its context.xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:77
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Here you can see a text excerpt showing the unknown word in its context. "
+"If this information is not sufficient to choose the best replacement for the "
+"unknown word, you can click on the document you are proofing, read a larger "
+"part of the text and then return here to continue proofing.</p>\n"
+"</qt>"
+msgstr ""
+"xx<qt>\n"
+"<p>Here you can see a text excerpt showing the unknown word in its context. "
+"If this information is not sufficient to choose the best replacement for the "
+"unknown word, you can click on the document you are proofing, read a larger "
+"part of the text and then return here to continue proofing.</p>\n"
+"</qt>xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:85
+msgctxt "SonnetUi|"
+msgid "... the <b>misspelled</b> word shown in context ..."
+msgstr "xx... the <b>misspelled</b> word shown in context ...xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:95
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>The unknown word was detected and considered unknown because it is not "
+"included in the dictionary.<br>\n"
+"Click here if you consider the unknown word not to be misspelled, and you "
+"want to avoid wrongly detecting it again in the future. If you want to let "
+"it remain as is, but not add it to the dictionary, then click <b>Ignore</b> "
+"or <b>Ignore All</b> instead.</p>\n"
+"</qt>"
+msgstr ""
+"xx<qt>\n"
+"<p>The unknown word was detected and considered unknown because it is not "
+"included in the dictionary.<br>\n"
+"Click here if you consider the unknown word not to be misspelled, and you "
+"want to avoid wrongly detecting it again in the future. If you want to let "
+"it remain as is, but not add it to the dictionary, then click <b>Ignore</b> "
+"or <b>Ignore All</b> instead.</p>\n"
+"</qt>xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:101
+msgctxt "SonnetUi|"
+msgid "<< Add to Dictionary"
+msgstr "xx<< Add to Dictionaryxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:124
+msgctxt "SonnetUi|"
+msgid "Suggestion List"
+msgstr "xxSuggestion Listxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:127
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>If the unknown word is misspelled, you should check if the correction for "
+"it is available and if it is, click on it. If none of the words in this list "
+"is a good replacement you may type the correct word in the edit box above.</"
+"p>\n"
+"<p>To correct this word click <b>Replace</b> if you want to correct only "
+"this occurrence or <b>Replace All</b> if you want to correct all occurrences."
+"</p>\n"
+"</qt>"
+msgstr ""
+"xx<qt>\n"
+"<p>If the unknown word is misspelled, you should check if the correction for "
+"it is available and if it is, click on it. If none of the words in this list "
+"is a good replacement you may type the correct word in the edit box above.</"
+"p>\n"
+"<p>To correct this word click <b>Replace</b> if you want to correct only "
+"this occurrence or <b>Replace All</b> if you want to correct all occurrences."
+"</p>\n"
+"</qt>xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:137
+msgctxt "SonnetUi|"
+msgid "Suggested Words"
+msgstr "xxSuggested Wordsxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:145
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:161
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>If the unknown word is misspelled, you should type the correction for "
+"your misspelled word here or select it from the list below.</p>\n"
+"<p>You can then click <b>Replace</b> if you want to correct only this "
+"occurrence of the word or <b>Replace All</b> if you want to correct all "
+"occurrences.</p>\n"
+"</qt>"
+msgstr ""
+"xx<qt>\n"
+"<p>If the unknown word is misspelled, you should type the correction for "
+"your misspelled word here or select it from the list below.</p>\n"
+"<p>You can then click <b>Replace</b> if you want to correct only this "
+"occurrence of the word or <b>Replace All</b> if you want to correct all "
+"occurrences.</p>\n"
+"</qt>xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:151
+msgctxt "SonnetUi|"
+msgid "Replace &with:"
+msgstr "xxReplace &with:xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:171
+msgctxt "SonnetUi|"
+msgid "Language Selection"
+msgstr "xxLanguage Selectionxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:191
+msgctxt "SonnetUi|"
+msgid "S&uggest"
+msgstr "xxS&uggestxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:198
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Click here to replace this occurrence of the unknown text with the text "
+"in the edit box above (to the left).</p>\n"
+"</qt>"
+msgstr ""
+"xx<qt>\n"
+"<p>Click here to replace this occurrence of the unknown text with the text "
+"in the edit box above (to the left).</p>\n"
+"</qt>xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:203
+msgctxt "SonnetUi|"
+msgid "&Replace"
+msgstr "xx&Replacexx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:210
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Click here to replace all occurrences of the unknown text with the text "
+"in the edit box above (to the left).</p>\n"
+"</qt>"
+msgstr ""
+"xx<qt>\n"
+"<p>Click here to replace all occurrences of the unknown text with the text "
+"in the edit box above (to the left).</p>\n"
+"</qt>xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:215
+msgctxt "SonnetUi|"
+msgid "R&eplace All"
+msgstr "xxR&eplace Allxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:222
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Click here to let this occurrence of the unknown word remain as is.</p>\n"
+"<p>This action is useful when the word is a name, an acronym, a foreign word "
+"or any other unknown word that you want to use but not add to the dictionary."
+"</p>\n"
+"</qt>"
+msgstr ""
+"xx<qt>\n"
+"<p>Click here to let this occurrence of the unknown word remain as is.</p>\n"
+"<p>This action is useful when the word is a name, an acronym, a foreign word "
+"or any other unknown word that you want to use but not add to the dictionary."
+"</p>\n"
+"</qt>xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:228
+msgctxt "SonnetUi|"
+msgid "&Ignore"
+msgstr "xx&Ignorexx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:235
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:248
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Click here to let all occurrences of the unknown word remain as they are."
+"</p>\n"
+"<p>This action is useful when the word is a name, an acronym, a foreign word "
+"or any other unknown word that you want to use but not add to the dictionary."
+"</p>\n"
+"</qt>"
+msgstr ""
+"xx<qt>\n"
+"<p>Click here to let all occurrences of the unknown word remain as they are."
+"</p>\n"
+"<p>This action is useful when the word is a name, an acronym, a foreign word "
+"or any other unknown word that you want to use but not add to the dictionary."
+"</p>\n"
+"</qt>xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:241
+msgctxt "SonnetUi|"
+msgid "I&gnore All"
+msgstr "xxI&gnore Allxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/sonnetui.ui:254
+msgctxt "SonnetUi|"
+msgid "Autocorrect"
+msgstr "xxAutocorrectxx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/spellcheckdecorator.cpp:137
+#, qt-format
+msgctxt "SpellCheckDecorator::Private|"
+msgid "No suggestions for %1"
+msgstr "xxNo suggestions for %1xx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/spellcheckdecorator.cpp:148
+msgctxt "SpellCheckDecorator::Private|"
+msgid "Ignore"
+msgstr "xxIgnorexx"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_sonnet/src/ui/spellcheckdecorator.cpp:149
+msgctxt "SpellCheckDecorator::Private|"
+msgid "Add to Dictionary"
+msgstr "xxAdd to Dictionaryxx"
