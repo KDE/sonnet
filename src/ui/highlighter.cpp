@@ -243,7 +243,7 @@ void Highlighter::contentsChange(int pos, int add, int rem)
         LanguageCache* cache=dynamic_cast<LanguageCache*>(block.userData());
         if (cache) cache->invalidate(pos-block.position());
         block = block.next();
-    } while (block < lastBlock);
+    } while (block.isValid() && block < lastBlock);
 }
 
 void Highlighter::highlightBlock(const QString &text)
