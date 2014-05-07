@@ -7,7 +7,6 @@ set_package_properties(ASPELL PROPERTIES
     URL "http://aspell.net/"
     DESCRIPTION "Spell checking support via Aspell"
     TYPE OPTIONAL
-    PURPOSE "This is not needed for spell checking if Enchant is provided or only Hebrew spell checking is required"
 )
 if (ASPELL_FOUND)
    add_subdirectory( aspell )
@@ -19,7 +18,6 @@ set_package_properties(HSPELL PROPERTIES
     URL "http://ivrix.org.il/projects/spell-checker/"
     DESCRIPTION "Spell checking support for Hebrew"
     TYPE OPTIONAL
-    PURPOSE "Hebrew support can also be provided via Enchant, providing the correct Enchant backends are installed"
 )
 if (HSPELL_FOUND)
    add_subdirectory( hspell )
@@ -42,7 +40,6 @@ set_package_properties(HUNSPELL PROPERTIES
     URL "http://hunspell.sourceforge.net/"
     DESCRIPTION "Spell checking support via Hunspell"
     TYPE OPTIONAL
-    PURPOSE "This is not needed for spell checking if Enchant or Aspell is provided or only Hebrew spell checking is required."
 )
 if (HUNSPELL_FOUND)
    add_subdirectory( hunspell )
