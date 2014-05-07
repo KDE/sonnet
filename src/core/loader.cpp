@@ -238,7 +238,7 @@ Settings *Loader::settings() const
 
 void Loader::loadPlugins()
 {
-    const QStringList libPaths = QCoreApplication::libraryPaths();
+    const QStringList libPaths = QCoreApplication::libraryPaths() << QLatin1String(INSTALLATION_PLUGIN_PATH);
     const QLatin1String pathSuffix("/sonnet/");
     int plugins = 0;
     Q_FOREACH (const QString &libPath, libPaths) {

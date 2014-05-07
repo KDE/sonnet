@@ -13,6 +13,9 @@ set(sonnetcore_SRCS
    languagefilter.cpp
 )
 
+# Dear packagers, this is just used as an extra search paths for plugins. Don't get your panties in a twist.
+add_definitions(-DINSTALLATION_PLUGIN_PATH="${CMAKE_INSTALL_PREFIX}/${PLUGIN_INSTALL_DIR}")
+
 
 add_library(KF5SonnetCore ${sonnetcore_SRCS})
 generate_export_header(KF5SonnetCore BASE_NAME SonnetCore EXPORT_FILE_NAME sonnetcore_export.h)
