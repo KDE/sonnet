@@ -239,7 +239,7 @@ Settings *Loader::settings() const
 void Loader::loadPlugins()
 {
     const QStringList libPaths = QCoreApplication::libraryPaths();
-    const QLatin1String pathSuffix("/kf5/sonnet_clients/");
+    const QLatin1String pathSuffix("/sonnet/");
     int plugins = 0;
     Q_FOREACH (const QString &libPath, libPaths) {
         QDir dir(libPath + pathSuffix);
