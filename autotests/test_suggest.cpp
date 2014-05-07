@@ -21,16 +21,23 @@
  */
 #include "speller.h"
 
-#include <QCoreApplication>
-#include <qdebug.h>
-#include <QtCore/QDate>
+#include <QDebug>
+#include <QObject>
+#include <qtest.h>
 
 using namespace Sonnet;
 
-int main(int argc, char **argv)
+class SuggestTest : public QObject
 {
-    QCoreApplication app(argc, argv);
+    Q_OBJECT;
 
+private Q_SLOTS:
+    void english();
+};
+
+
+void SuggestTest::english()
+{
     Speller dict("en_US");
 
     qDebug() << "Clients are "   << dict.availableBackends();
@@ -79,18 +86,17 @@ int main(int argc, char **argv)
           << "hello" << "helo" << "enviroment" << "guvernment" << "farted"
           << "hello" << "helo" << "enviroment" << "guvernment" << "farted";
 
-    QTime mtime;
-    mtime.start();
-    for (QStringList::Iterator itr = words.begin();
-            itr != words.end(); ++itr) {
-        if (!dict.isCorrect(*itr)) {
-            //qDebug()<<"Word " << *itr <<" is misspelled";
-            QStringList sug = dict.suggest(*itr);
-            //qDebug()<<"Suggestions : "<<sug;
+    QBENCHMARK {
+        for (QStringList::Iterator itr = words.begin();
+                itr != words.end(); ++itr) {
+            if (!dict.isCorrect(*itr)) {
+                //qDebug()<<"Word " << *itr <<" is misspelled";
+                QStringList sug = dict.suggest(*itr);
+                //qDebug()<<"Suggestions : "<<sug;
+            }
         }
     }
-    //mtime.stop();
-    qDebug() << "Elapsed time is " << mtime.elapsed();
-
-    return 0;
 }
+QTEST_MAIN(SuggestTest)
+
+#include "test_suggest.moc"

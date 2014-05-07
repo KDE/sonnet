@@ -18,5 +18,6 @@ endmacro(SONNET_UNIT_TESTS)
 sonnet_unit_tests(
     # test_filter
  test_core
+ test_suggest
 )
 
