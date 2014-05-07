@@ -19,7 +19,7 @@
  * 02110-1301  USA
  */
 #include "highlighter.h"
-#include "test_highlighter.h"
+#include "highlighterexample.h"
 
 #include <qapplication.h>
 #include <QDebug>

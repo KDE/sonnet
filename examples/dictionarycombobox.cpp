@@ -73,4 +73,4 @@ int main(int argc, char **argv)
     return app.exec();
 }
 
-#include "test_dictionarycombobox.moc"
+#include "dictionarycombobox.moc"

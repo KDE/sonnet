@@ -41,6 +41,7 @@ add_subdirectory(src)
 add_subdirectory(autotests)
 add_subdirectory(tests)
 add_subdirectory(data)
+add_subdirectory(examples)
 
 
 # create a Config.cmake and a ConfigVersion.cmake file and install them
