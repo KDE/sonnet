@@ -101,7 +101,7 @@ QHash<QChar::Script, QString> GuessLanguagePrivate::s_singletons;
 
 
 GuessLanguagePrivate::GuessLanguagePrivate()
-        : MIN_LENGTH(20), m_maxItems(1), m_minConfidence(0)
+        : MIN_LENGTH(5), m_maxItems(1), m_minConfidence(0)
 {
     if (!BASIC_LATIN.isEmpty())
         return;
