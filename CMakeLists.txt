@@ -39,7 +39,6 @@ endif()
 
 add_subdirectory(src)
 add_subdirectory(autotests)
-add_subdirectory(tests)
 add_subdirectory(data)
 add_subdirectory(examples)
 
