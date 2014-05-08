@@ -1,6 +1,7 @@
 remove_definitions(-DQT_NO_CAST_FROM_ASCII)
 
 include(ECMMarkAsTest)
+include(ECMAddTests)
 
 find_package(Qt5Test 5.2.0 REQUIRED NO_MODULE)
 
@@ -8,10 +9,7 @@ find_package(Qt5Test 5.2.0 REQUIRED NO_MODULE)
 
 macro(SONNET_UNIT_TESTS)
   foreach(_testname ${ARGN})
-    add_executable(${_testname} ${_testname}.cpp)
-    add_test(sonnet-${_testname} ${_testname})
-    target_link_libraries(${_testname} KF5::SonnetCore Qt5::Test)
-    ecm_mark_as_test(${_testname})
+    ecm_add_test(${_testname}.cpp TEST_NAME sonnet-${_testname} LINK_LIBRARIES KF5::SonnetCore Qt5::Test)
   endforeach()
 endmacro(SONNET_UNIT_TESTS)
 
