@@ -29,10 +29,6 @@ ecm_setup_version(${KF5_VERSION} VARIABLE_PREFIX SONNET
                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5SonnetConfigVersion.cmake"
                         SOVERSION 5)
 
-
-# Enable when kdoctools will be usable from the outside (macros are broken ATM)
-# apol: they are working now, but KDocTools is in a higher tier, I'm unsure if we should enable it back
-#add_subdirectory(docs)
 if (IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/po")
     ecm_install_po_files_as_qm(po)
 endif()
