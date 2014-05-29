@@ -1,7 +1,7 @@
 
 cmake_minimum_required(VERSION 2.8.12)
 
-project(sonnet)
+project(Sonnet)
 
 find_package(ECM 0.0.13 REQUIRED NO_MODULE)
 
