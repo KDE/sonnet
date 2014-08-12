@@ -53,9 +53,9 @@ int main(int argc, char **argv)
 
     QWidget window;
 
-    //@@snippet_begin(simple_textedit_example)
     Sonnet::DictionaryComboBox *comboBox = new Sonnet::DictionaryComboBox;
 
+    //@@snippet_begin(simple_textedit_example)
     QTextEdit *textEdit = new QTextEdit;
     textEdit->setText("This is a sample buffer. Whih this thingg will "
                       "be checkin for misstakes. Whih, Enviroment, govermant. Whih."
