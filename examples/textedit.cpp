@@ -30,6 +30,7 @@
 #include <QTextEdit>
 #include <QVBoxLayout>
 
+//@@snippet_begin(simple_email_example)
 class MailSpellCheckDecorator : public Sonnet::SpellCheckDecorator
 {
 public:
@@ -44,6 +45,7 @@ protected:
         return !blockText.startsWith(QLatin1Char('>'));
     }
 };
+//@@snippet_end
 
 int main(int argc, char **argv)
 {
@@ -51,6 +53,7 @@ int main(int argc, char **argv)
 
     QWidget window;
 
+    //@@snippet_begin(simple_textedit_example)
     Sonnet::DictionaryComboBox *comboBox = new Sonnet::DictionaryComboBox;
 
     QTextEdit *textEdit = new QTextEdit;
@@ -60,6 +63,8 @@ int main(int argc, char **argv)
 
     Sonnet::SpellCheckDecorator *installer = new Sonnet::SpellCheckDecorator(textEdit);
     installer->highlighter()->setCurrentLanguage("en");
+    //@@snippet_end
+
     QObject::connect(comboBox, SIGNAL(dictionaryChanged(QString)), installer->highlighter(), SLOT(setCurrentLanguage(QString)));
 
     QTextEdit *mailTextEdit = new QTextEdit;

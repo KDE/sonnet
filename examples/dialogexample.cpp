@@ -33,6 +33,7 @@ TestDialog::TestDialog()
 
 }
 
+//@@snippet_begin(dictionary_combo_box_example)
 void TestDialog::check(const QString &buffer)
 {
     Sonnet::Dialog *dlg = new Sonnet::Dialog(
@@ -42,6 +43,7 @@ void TestDialog::check(const QString &buffer)
     dlg->setBuffer(buffer);
     dlg->show();
 }
+//@@snippet_end
 
 void TestDialog::doneChecking(const QString &buf)
 {
