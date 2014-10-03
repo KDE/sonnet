@@ -42,7 +42,13 @@ class SONNETUI_EXPORT SpellCheckDecorator : public QObject
 {
     Q_OBJECT
 public:
+    /**
+     * Creates a spell-check decorator.
+     *
+     * @param textEdit the QTextEdit in need of spell-checking. It also is used as the QObject parent for the decorator.
+     */
     explicit SpellCheckDecorator(QTextEdit *textEdit);
+
     ~SpellCheckDecorator();
 
     /**
