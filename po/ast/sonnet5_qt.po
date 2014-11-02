@@ -1,0 +1,741 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kdelibs4-1\n"
+"Report-Msgid-Bugs-To: http://bugs.kde.org\n"
+"POT-Creation-Date: 2014-03-23 01:50+0000\n"
+"PO-Revision-Date: 2012-12-28 17:14+0100\n"
+"Last-Translator: ivarela <ivarela@ubuntu.com>\n"
+"Language-Team: asturian <kde-i18n-doc@kde.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: asturian\n"
+"X-Qt-Contexts: true\n"
+
+#: core/loader.cpp:149
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "40"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "40"
+msgstr "40"
+
+#: core/loader.cpp:150
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "60"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "60"
+msgstr "60"
+
+#: core/loader.cpp:151
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "80"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "80"
+msgstr "80"
+
+#: core/loader.cpp:152
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "-ise suffixes"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ise suffixes"
+msgstr "sufixos -ise"
+
+#: core/loader.cpp:153
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "-ize suffixes"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ize suffixes"
+msgstr "sufixos -ize"
+
+#: core/loader.cpp:154
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "-ise suffixes and with accents"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ise suffixes and with accents"
+msgstr "sufixos -ise y con acentos"
+
+#: core/loader.cpp:155
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "-ise suffixes and without accents"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ise suffixes and without accents"
+msgstr "sufixos -ise y ensin acentos"
+
+#: core/loader.cpp:156
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "-ize suffixes and with accents"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ize suffixes and with accents"
+msgstr "sufixos -ize y con acentos"
+
+#: core/loader.cpp:157
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "-ize suffixes and without accents"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ize suffixes and without accents"
+msgstr "sufixos -ize y ensin acentos"
+
+#: core/loader.cpp:158
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "large"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "large"
+msgstr "grande"
+
+#: core/loader.cpp:159
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "medium"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "medium"
+msgstr "mediu"
+
+#: core/loader.cpp:160
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "small"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "small"
+msgstr "pequeñu"
+
+#: core/loader.cpp:161
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "variant 0"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "variant 0"
+msgstr "variante 0"
+
+#: core/loader.cpp:162
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "variant 1"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "variant 1"
+msgstr "variante 1"
+
+#: core/loader.cpp:163
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "variant 2"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "variant 2"
+msgstr "variante 2"
+
+#: core/loader.cpp:164
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "without accents"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "without accents"
+msgstr "ensin acentos"
+
+#: core/loader.cpp:165
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "with accents"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "with accents"
+msgstr "con acentos"
+
+#: core/loader.cpp:166
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "with ye, modern russian"
+msgstr ""
+
+#: core/loader.cpp:167
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "with yeyo, modern and old russian"
+msgstr ""
+
+#: core/loader.cpp:168
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "with yo, old russian"
+msgstr ""
+
+#: core/loader.cpp:169
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "extended"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "extended"
+msgstr "espardíu"
+
+#: core/loader.cpp:203
+#, fuzzy, qt-format
+#| msgctxt "dictionary name. %1-language, %2-country and %3 variant name"
+#| msgid "%1 (%2) [%3]"
+msgctxt ""
+"Sonnet::Loader|dictionary name; %1 = language name, %2 = country name and %3 "
+"= language variant name"
+msgid "%1 (%2) [%3]"
+msgstr "%1 (%2) [%3]"
+
+#: core/loader.cpp:206
+#, fuzzy, qt-format
+#| msgctxt "name of digit set with digit string, e.g. 'Arabic (0123456789)'"
+#| msgid "%1 (%2)"
+msgctxt "Sonnet::Loader|dictionary name; %1 = language name, %2 = country name"
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+#: ui/configdialog.cpp:50
+#, fuzzy
+#| msgid "Send Confirmation"
+msgctxt "Sonnet::ConfigDialog|"
+msgid "Spell Checking Configuration"
+msgstr "Unviar confirmación"
+
+#: ui/configui.ui:32
+#, fuzzy
+#| msgid "Options"
+msgctxt "SonnetConfigUI|"
+msgid "Options"
+msgstr "Opciones"
+
+#: ui/configui.ui:38
+msgctxt "SonnetConfigUI|"
+msgid "Enable autodetection of &language"
+msgstr ""
+
+#: ui/configui.ui:45
+#, fuzzy
+#| msgid "Enable &background spellchecking"
+msgctxt "SonnetConfigUI|"
+msgid "Enable &background spellchecking"
+msgstr "Activar la igua ortográfica en segun&du planu"
+
+#: ui/configui.ui:52
+#, fuzzy
+#| msgid "As-you-type spell checking enabled."
+msgctxt "SonnetConfigUI|"
+msgid "&Automatic spell checking enabled by default"
+msgstr "Correición ortográfica sobre la marcha activada."
+
+#: ui/configui.ui:59
+#, fuzzy
+#| msgid "Skip all &uppercase words"
+msgctxt "SonnetConfigUI|"
+msgid "Skip all &uppercase words"
+msgstr "Saltar toles pallabres en mayúsc&ulas"
+
+#: ui/configui.ui:66
+#, fuzzy
+#| msgid "S&kip run-together words"
+msgctxt "SonnetConfigUI|"
+msgid "S&kip run-together words"
+msgstr "Saltar toles palla&bres compuestes"
+
+#: ui/configui.ui:76
+#, fuzzy
+#| msgid "Default language:"
+msgctxt "SonnetConfigUI|"
+msgid "Default language:"
+msgstr "Llingua predeterminada:"
+
+#: ui/configui.ui:86
+#, fuzzy
+#| msgid "Ignored Words"
+msgctxt "SonnetConfigUI|"
+msgid "Ignored Words:"
+msgstr "Pallabres inoraes"
+
+#: ui/configui.ui:100
+#, fuzzy
+#| msgid "&Add"
+msgctxt "SonnetConfigUI|"
+msgid "&Add"
+msgstr "&Amestar"
+
+#: ui/configui.ui:112
+#, fuzzy
+#| msgid "&Remove"
+msgctxt "SonnetConfigUI|"
+msgid "&Remove"
+msgstr "&Desaniciar"
+
+#: ui/dialog.cpp:100 ui/dialog.cpp:224 ui/dialog.cpp:433
+#, fuzzy
+#| msgid "Check Spelling"
+msgctxt "Sonnet::Dialog|@title:window"
+msgid "Check Spelling"
+msgstr "Comprobar ortografía"
+
+#: ui/dialog.cpp:223
+#, fuzzy
+#| msgctxt "progress label"
+#| msgid "Spell checking in progress..."
+msgctxt "Sonnet::Dialog|progress label"
+msgid "Spell checking in progress..."
+msgstr "Comprobación d'ortografía en cursu..."
+
+#: ui/dialog.cpp:244
+#, fuzzy
+#| msgid "Spell check stopped."
+msgctxt "Sonnet::Dialog|"
+msgid "Spell check stopped."
+msgstr "Correición ortográfica parada."
+
+#: ui/dialog.cpp:254
+#, fuzzy
+#| msgid "Spell check canceled."
+msgctxt "Sonnet::Dialog|"
+msgid "Spell check canceled."
+msgstr "Correición ortográfica encaboxada."
+
+#: ui/dialog.cpp:430 ui/dialog.cpp:433
+#, fuzzy
+#| msgid "Spell check complete."
+msgctxt "Sonnet::Dialog|"
+msgid "Spell check complete."
+msgstr "Correición ortográfica completada."
+
+#: ui/highlighter.cpp:204 ui/highlighter.cpp:226
+#, fuzzy
+#| msgid "As-you-type spell checking enabled."
+msgctxt "Sonnet::Highlighter|"
+msgid "As-you-type spell checking enabled."
+msgstr "Correición ortográfica sobre la marcha activada."
+
+#: ui/highlighter.cpp:207
+#, fuzzy
+#| msgid "Too many misspelled words. As-you-type spell checking disabled."
+msgctxt "Sonnet::Highlighter|"
+msgid "Too many misspelled words. As-you-type spell checking disabled."
+msgstr ""
+"Abondes pallabres mal escrites. Igua ortográfica sobre la marcha desactivada."
+
+#: ui/highlighter.cpp:228
+#, fuzzy
+#| msgid "As-you-type spell checking disabled."
+msgctxt "Sonnet::Highlighter|"
+msgid "As-you-type spell checking disabled."
+msgstr "Correición ortográfica sobre la marcha desactivada."
+
+#: ui/sonnetui.ui:30 ui/sonnetui.ui:46
+#, fuzzy
+#| msgid ""
+#| "<qt><p>This word was considered to be an \"unknown word\" because it does "
+#| "not match any entry in the dictionary currently in use. It may also be a "
+#| "word in a foreign language.</p>\n"
+#| "<p>If the word is not misspelled, you may add it to the dictionary by "
+#| "clicking <b>Add to Dictionary</b>. If you do not want to add the unknown "
+#| "word to the dictionary, but you want to leave it unchanged, click "
+#| "<b>Ignore</b> or <b>Ignore All</b>.</p>\n"
+#| "<p>However, if the word is misspelled, you can try to find the correct "
+#| "replacement in the list below. If you cannot find a replacement there, "
+#| "you may type it in the text box below, and click <b>Replace</b> or "
+#| "<b>Replace All</b>.</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt><p>This word was considered to be an \"unknown word\" because it does "
+"not match any entry in the dictionary currently in use. It may also be a "
+"word in a foreign language.</p>\n"
+"<p>If the word is not misspelled, you may add it to the dictionary by "
+"clicking <b>Add to Dictionary</b>. If you do not want to add the unknown "
+"word to the dictionary, but you want to leave it unchanged, click <b>Ignore</"
+"b> or <b>Ignore All</b>.</p>\n"
+"<p>However, if the word is misspelled, you can try to find the correct "
+"replacement in the list below. If you cannot find a replacement there, you "
+"may type it in the text box below, and click <b>Replace</b> or <b>Replace "
+"All</b>.</p>\n"
+"</qt>"
+msgstr ""
+"<qt><p>Esta pallabra considérase una «palabra desconocía» porque nun concasa "
+"con denguna entrada del diccionariu que ta usando. Puede que se trate d'una "
+"pallabra extranxera.</p>\n"
+"<p>Si la pallabra escrita correcho, puede amestala al diccionariu calcando "
+"<b>Amestar al diccionariu</b>. Si nun deseya amestar la pallabra al "
+"diccionariu pero quier dexala como ta, calque <b>Inorar</b> o <b>Inorar "
+"toes</b>.</p>\n"
+"<p>Sicasí, si la pallabra ye incorreuta puede tentar alcontrar la forma "
+"correuta na llista d'abaxo. Si nn alcuentra un reemplazu equí, puede "
+"introducilu nel cuadru de testu inferior, y calcar <b>Trocar</b> o <b>Trocar "
+"toes</b>.</p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:36
+#, fuzzy
+#| msgid "Unknown word:"
+msgctxt "SonnetUi|"
+msgid "Unknown word:"
+msgstr "Pallabra desconocida:"
+
+#: ui/sonnetui.ui:43
+#, fuzzy
+#| msgid "Unknown word"
+msgctxt "SonnetUi|"
+msgid "Unknown word"
+msgstr "Pallabra desconocía"
+
+#: ui/sonnetui.ui:52
+#, fuzzy
+#| msgid "<b>misspelled</b>"
+msgctxt "SonnetUi|"
+msgid "<b>misspelled</b>"
+msgstr "<b>fallu ortográficu</b>"
+
+#: ui/sonnetui.ui:59 ui/sonnetui.ui:174
+#, fuzzy
+#| msgid ""
+#| "<qt>\n"
+#| "<p>Select the language of the document you are proofing here.</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Select the language of the document you are proofing here.</p>\n"
+"</qt>"
+msgstr ""
+"<qt>\n"
+"<p>Esbille la llingua del documentu que ta verificando equí.</p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:64
+#, fuzzy
+#| msgid "&Language:"
+msgctxt "SonnetUi|"
+msgid "&Language:"
+msgstr "&Llingua:"
+
+#: ui/sonnetui.ui:74
+#, fuzzy
+#| msgid "Text excerpt showing the unknown word in its context."
+msgctxt "SonnetUi|"
+msgid "Text excerpt showing the unknown word in its context."
+msgstr "Escoyeta de testu qu'amuesa la pallabra desconocida nel so contestu."
+
+#: ui/sonnetui.ui:77
+#, fuzzy
+#| msgid ""
+#| "<qt>\n"
+#| "<p>Here you can see a text excerpt showing the unknown word in its "
+#| "context. If this information is not sufficient to choose the best "
+#| "replacement for the unknown word, you can click on the document you are "
+#| "proofing, read a larger part of the text and then return here to continue "
+#| "proofing.</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Here you can see a text excerpt showing the unknown word in its context. "
+"If this information is not sufficient to choose the best replacement for the "
+"unknown word, you can click on the document you are proofing, read a larger "
+"part of the text and then return here to continue proofing.</p>\n"
+"</qt>"
+msgstr ""
+"<qt>\n"
+"<p>Equí pues ver una escoyeta del testu qu'amuesa la pallabra desconocida "
+"nel so contestu. Si esta información nun basta pa escoyer el meyor reemplazu "
+"pa la pallabra desconocida, pues calcar nel documentu que tas revisando, "
+"lleer una parte mayor del testu y tornar equí pa siguir cola revisión.</p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:85
+#, fuzzy
+#| msgid "... the <b>misspelled</b> word shown in context ..."
+msgctxt "SonnetUi|"
+msgid "... the <b>misspelled</b> word shown in context ..."
+msgstr "... la pallabra <b>tracamundiada</b> amosada nel contestu ..."
+
+#: ui/sonnetui.ui:95
+#, fuzzy
+#| msgid ""
+#| "<qt>\n"
+#| "<p>The unknown word was detected and considered unknown because it is not "
+#| "included in the dictionary.<br>\n"
+#| "Click here if you consider that the unknown word is not misspelled and "
+#| "you want to avoid wrongly detecting it again in the future. If you want "
+#| "to let it remain as is, but not add it to the dictionary, then click "
+#| "<b>Ignore</b> or <b>Ignore All</b> instead.</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>The unknown word was detected and considered unknown because it is not "
+"included in the dictionary.<br>\n"
+"Click here if you consider the unknown word not to be misspelled, and you "
+"want to avoid wrongly detecting it again in the future. If you want to let "
+"it remain as is, but not add it to the dictionary, then click <b>Ignore</b> "
+"or <b>Ignore All</b> instead.</p>\n"
+"</qt>"
+msgstr ""
+"<qt>\n"
+"<p>La pallabra desconocida deteutóse y consideróse desconocida porque nun ta "
+"incluyía nel diccionariu.<br>\n"
+"Calca equí si consideres que la pallabra desconocida nun ta tracamundiada y "
+"quieres torgar que vuelva a deteutase nel futuru. Si quies dexala como ta, "
+"pero non amestala al diccionariu, calca <b>Inorar</b> o <b>Inorar toes</b>.</"
+"p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:101
+#, fuzzy
+#| msgid "<< Add to Dictionary"
+msgctxt "SonnetUi|"
+msgid "<< Add to Dictionary"
+msgstr "<< Amestar al diccionariu"
+
+#: ui/sonnetui.ui:124
+#, fuzzy
+#| msgid "Suggestion List"
+msgctxt "SonnetUi|"
+msgid "Suggestion List"
+msgstr "Llista de suxerencies"
+
+#: ui/sonnetui.ui:127
+#, fuzzy
+#| msgid ""
+#| "<qt>\n"
+#| "<p>If the unknown word is misspelled, you should check if the correction "
+#| "for it is available and if it is, click on it. If none of the words in "
+#| "this list is a good replacement you may type the correct word in the edit "
+#| "box above.</p>\n"
+#| "<p>To correct this word click <b>Replace</b> if you want to correct only "
+#| "this occurrence or <b>Replace All</b> if you want to correct all "
+#| "occurrences.</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>If the unknown word is misspelled, you should check if the correction for "
+"it is available and if it is, click on it. If none of the words in this list "
+"is a good replacement you may type the correct word in the edit box above.</"
+"p>\n"
+"<p>To correct this word click <b>Replace</b> if you want to correct only "
+"this occurrence or <b>Replace All</b> if you want to correct all occurrences."
+"</p>\n"
+"</qt>"
+msgstr ""
+"<qt>\n"
+"<p>Si la pallabra desconocida ta tracamundiada, tendríes que comprobar si "
+"tien una correición disponible y, si la tien, calcar enriba d'ella. Si nun "
+"hai un reemplazu afayadizu na llista, pues escribir la pallabra correuta nel "
+"cuadru de testu d'arriba.</p>\n"
+"<p>Pa iguar la pallabra calce <b>Trocar</b> si pa iguar sólo esta ocurrencia "
+"de la pallabra o <b>Trocar toes</b> si quies iguar toles ocurrencies.</p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:137
+#, fuzzy
+#| msgid "Suggested Words"
+msgctxt "SonnetUi|"
+msgid "Suggested Words"
+msgstr "Pallabras suxeríes"
+
+#: ui/sonnetui.ui:145 ui/sonnetui.ui:161
+#, fuzzy
+#| msgid ""
+#| "<qt>\n"
+#| "<p>If the unknown word is misspelled, you should type the correction for "
+#| "your misspelled word here or select it from the list below.</p>\n"
+#| "<p>You can then click <b>Replace</b> if you want to correct only this "
+#| "occurrence of the word or <b>Replace All</b> if you want to correct all "
+#| "occurrences.</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>If the unknown word is misspelled, you should type the correction for "
+"your misspelled word here or select it from the list below.</p>\n"
+"<p>You can then click <b>Replace</b> if you want to correct only this "
+"occurrence of the word or <b>Replace All</b> if you want to correct all "
+"occurrences.</p>\n"
+"</qt>"
+msgstr ""
+"<qt>\n"
+"<p>Si la pallabra desconocida ta tracamundiada, tendríes de comprobar si "
+"tien una correición disponible y, si la tien, calcar enriba d'ella. Si nun "
+"hai un reemplazu afayadizu na llista, pues escribir la pallabra correuta nel "
+"cuadru de testu d'arriba.</p>\n"
+"<p>Pa iguar la pallabra calque <b>Trocar</b> si pa iguar sólo esta "
+"ocurrencia de la pallabra o <b>Trocar toes</b> si quies iguar toles "
+"ocurrencies.</p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:151
+#, fuzzy
+#| msgid "Replace &with:"
+msgctxt "SonnetUi|"
+msgid "Replace &with:"
+msgstr "Trocar co&n:"
+
+#: ui/sonnetui.ui:171
+#, fuzzy
+#| msgid "Language Selection"
+msgctxt "SonnetUi|"
+msgid "Language Selection"
+msgstr "Escoyeta de Llingua"
+
+#: ui/sonnetui.ui:191
+#, fuzzy
+#| msgid "S&uggest"
+msgctxt "SonnetUi|"
+msgid "S&uggest"
+msgstr "S&uxerir"
+
+#: ui/sonnetui.ui:198
+#, fuzzy
+#| msgid ""
+#| "<qt>\n"
+#| "<p>Click here to replace this occurrence of the unknown text with the "
+#| "text in the edit box above (to the left).</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Click here to replace this occurrence of the unknown text with the text "
+"in the edit box above (to the left).</p>\n"
+"</qt>"
+msgstr ""
+"<qt>\n"
+"<p>Calca equí pa trocar esti resultáu del testu desconocíu col testu del "
+"cuadru d'edición d'arriba (a manzorga).</p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:203
+#, fuzzy
+#| msgid "&Replace"
+msgctxt "SonnetUi|"
+msgid "&Replace"
+msgstr "&Trocar"
+
+#: ui/sonnetui.ui:210
+#, fuzzy
+#| msgid ""
+#| "<qt>\n"
+#| "<p>Click here to replace all occurrences of the unknown text with the "
+#| "text in the edit box above (to the left).</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Click here to replace all occurrences of the unknown text with the text "
+"in the edit box above (to the left).</p>\n"
+"</qt>"
+msgstr ""
+"<qt>\n"
+"<p>Calca equí pa trocar tolos resultaos del testu desconocíu col testu del "
+"cuadru d'edición d'arriba (a manzorga).</p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:215
+#, fuzzy
+#| msgid "R&eplace All"
+msgctxt "SonnetUi|"
+msgid "R&eplace All"
+msgstr "T&rocar Toes"
+
+#: ui/sonnetui.ui:222
+#, fuzzy
+#| msgid ""
+#| "<qt>\n"
+#| "<p>Click here to let this occurrence of the unknown word remain as is.</"
+#| "p>\n"
+#| "<p>This action is useful when the word is a name, an acronym, a foreign "
+#| "word or any other unknown word that you want to use but not add to the "
+#| "dictionary.</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Click here to let this occurrence of the unknown word remain as is.</p>\n"
+"<p>This action is useful when the word is a name, an acronym, a foreign word "
+"or any other unknown word that you want to use but not add to the dictionary."
+"</p>\n"
+"</qt>"
+msgstr ""
+"<qt>\n"
+"<p>Calca equí pa dexar qu'esti resultáu de la pallabra quede como ta.</p>\n"
+"<p>Esta aición ye afayadiza cuando la pallabra ye un nome propiu, un "
+"acrónimu, una pallabra estranxera o cualesquier otra pallabra que quies usar "
+"pero non añader al diccionariu.</p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:228
+#, fuzzy
+#| msgid "&Ignore"
+msgctxt "SonnetUi|"
+msgid "&Ignore"
+msgstr "&Inorar"
+
+#: ui/sonnetui.ui:235 ui/sonnetui.ui:248
+#, fuzzy
+#| msgid ""
+#| "<qt>\n"
+#| "<p>Click here to let all occurrences of the unknown word remain as they "
+#| "are.</p>\n"
+#| "<p>This action is useful when the word is a name, an acronym, a foreign "
+#| "word or any other unknown word that you want to use but not add to the "
+#| "dictionary.</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Click here to let all occurrences of the unknown word remain as they are."
+"</p>\n"
+"<p>This action is useful when the word is a name, an acronym, a foreign word "
+"or any other unknown word that you want to use but not add to the dictionary."
+"</p>\n"
+"</qt>"
+msgstr ""
+"<qt>\n"
+"<p>Calca equí pa dexar que tolos resultaos de la pallabra desconocida queden "
+"como tan.</p>\n"
+"<p>Esta aición ye afayadiza cuando la pallabra ye un nome propiu, un "
+"acrónimu, una pallabra estranxera o cualquier otra pallabra que quieras "
+"utilizar pero non añader al diccionariu.</p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:241
+#, fuzzy
+#| msgid "I&gnore All"
+msgctxt "SonnetUi|"
+msgid "I&gnore All"
+msgstr "I&norar toes"
+
+#: ui/sonnetui.ui:254
+#, fuzzy
+#| msgid "Autocorrect"
+msgctxt "SonnetUi|"
+msgid "Autocorrect"
+msgstr "Autocorrexir"
+
+#: ui/spellcheckdecorator.cpp:137
+#, fuzzy, qt-format
+#| msgid "No suggestions for %1"
+msgctxt "Sonnet::SpellCheckDecorator|"
+msgid "No suggestions for %1"
+msgstr "Nun hai suxerencies pa %1"
+
+#: ui/spellcheckdecorator.cpp:148
+#, fuzzy
+#| msgid "Ignore"
+msgctxt "Sonnet::SpellCheckDecorator|"
+msgid "Ignore"
+msgstr "Inorar"
+
+#: ui/spellcheckdecorator.cpp:149
+#, fuzzy
+#| msgid "Add to Dictionary"
+msgctxt "Sonnet::SpellCheckDecorator|"
+msgid "Add to Dictionary"
+msgstr "Amestar al diccionariu"
