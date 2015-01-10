@@ -11,5 +11,5 @@ add_library(kspell_enchant MODULE ${kspell_enchant_PART_SRCS})
 target_link_libraries(kspell_enchant PRIVATE KF5::SonnetCore ${ENCHANT_LIBRARIES})
 
 set_target_properties(kspell_enchant PROPERTIES OUTPUT_NAME "enchant")
-install(TARGETS kspell_enchant DESTINATION ${PLUGIN_INSTALL_DIR}/kf5/sonnet/)
+install(TARGETS kspell_enchant DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf5/sonnet/)
 

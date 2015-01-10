@@ -14,7 +14,7 @@ set(sonnetcore_SRCS
 )
 
 # Dear packagers, this is just used as an extra search paths for plugins. Don't get your panties in a twist.
-add_definitions(-DINSTALLATION_PLUGIN_PATH="${CMAKE_INSTALL_PREFIX}/${PLUGIN_INSTALL_DIR}")
+add_definitions(-DINSTALLATION_PLUGIN_PATH="${CMAKE_INSTALL_PREFIX}/${KDE_INSTALL_PLUGINDIR}")
 
 
 add_library(KF5SonnetCore ${sonnetcore_SRCS})
@@ -38,18 +38,18 @@ set_target_properties(KF5SonnetCore PROPERTIES VERSION ${SONNET_VERSION_STRING}
 )
 
 # CMAKE_CURRENT_BINARY_DIR: for camelcase headers and lowercase forwarders
-target_include_directories(KF5SonnetCore INTERFACE "$<INSTALL_INTERFACE:${KF5_INCLUDE_INSTALL_DIR}/SonnetCore>")
+target_include_directories(KF5SonnetCore INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/SonnetCore>")
 target_include_directories(KF5SonnetCore PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>")
 
 install(TARGETS KF5SonnetCore EXPORT KF5SonnetTargets ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
 
-install(FILES ${SonnetCore_CamelCase_HEADERS} DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/SonnetCore/Sonnet COMPONENT Devel)
+install(FILES ${SonnetCore_CamelCase_HEADERS} DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/SonnetCore/Sonnet COMPONENT Devel)
 
 install(FILES
    ${SonnetCore_HEADERS}
    ${CMAKE_CURRENT_BINARY_DIR}/sonnetcore_export.h
-   DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/SonnetCore/sonnet COMPONENT Devel)
+   DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/SonnetCore/sonnet COMPONENT Devel)
 
 include(ECMGeneratePriFile)
-ecm_generate_pri_file(BASE_NAME SonnetCore LIB_NAME KF5SonnetCore DEPS "core" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KF5_INCLUDE_INSTALL_DIR}/SonnetCore)
+ecm_generate_pri_file(BASE_NAME SonnetCore LIB_NAME KF5SonnetCore DEPS "core" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF5}/SonnetCore)
 install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})

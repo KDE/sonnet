@@ -57,18 +57,18 @@ set_target_properties(KF5SonnetUi PROPERTIES VERSION ${SONNET_VERSION_STRING}
 
 
 # CMAKE_CURRENT_BINARY_DIR: for camelcase headers and lowercase forwarders
-target_include_directories(KF5SonnetUi INTERFACE "$<INSTALL_INTERFACE:${KF5_INCLUDE_INSTALL_DIR}/SonnetUi>")
+target_include_directories(KF5SonnetUi INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/SonnetUi>")
 target_include_directories(KF5SonnetUi PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>")
 
 install(TARGETS KF5SonnetUi EXPORT KF5SonnetTargets ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
 
-install(FILES ${SonnetUi_CamelCase_HEADERS} DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/SonnetUi/Sonnet COMPONENT Devel)
+install(FILES ${SonnetUi_CamelCase_HEADERS} DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/SonnetUi/Sonnet COMPONENT Devel)
 
 install(FILES
    ${SonnetUi_HEADERS}
    ${CMAKE_CURRENT_BINARY_DIR}/sonnetui_export.h
-   DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/SonnetUi/sonnet COMPONENT Devel)
+   DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/SonnetUi/sonnet COMPONENT Devel)
 
 include(ECMGeneratePriFile)
-ecm_generate_pri_file(BASE_NAME SonnetUi LIB_NAME KF5SonnetUi DEPS "widgets" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KF5_INCLUDE_INSTALL_DIR}/SonnetUi)
+ecm_generate_pri_file(BASE_NAME SonnetUi LIB_NAME KF5SonnetUi DEPS "widgets" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF5}/SonnetUi)
 install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
