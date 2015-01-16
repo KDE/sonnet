@@ -97,6 +97,7 @@ Highlighter::Highlighter(QTextEdit *textEdit,
     d->edit = textEdit;
     d->active = true;
     d->automatic = true;
+    d->connected = false;
     d->wordCount = 0;
     d->errorCount = 0;
     d->intraWordEditing = false;
