@@ -29,6 +29,7 @@
 #include <QtCore/QRegExp>
 #include <QtCore/QStringList>
 #include <QtCore/QDebug>
+#include <QtCore/QDataStream>
 
 int main(int argc, char **argv)
 {

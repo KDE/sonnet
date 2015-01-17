@@ -22,6 +22,7 @@
 
 #include <QtCore/QStringList>
 #include <QtCore/QString>
+#include <QtCore/QMap>
 
 #include "sonnetcore_export.h"
 

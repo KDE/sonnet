@@ -25,6 +25,7 @@
 #include <QtCore/QFileInfo>
 #include <QtCore/QStandardPaths>
 #include <QtCore/QTime>
+#include <QtCore/QDataStream>
 
 #include "guesslanguage.h"
 #include "loader_p.h"
