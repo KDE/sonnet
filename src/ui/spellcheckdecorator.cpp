@@ -98,9 +98,9 @@ bool SpellCheckDecorator::Private::onContextMenuEvent(QContextMenuEvent *event)
                                   QTextCursor::KeepAnchor, selectedWord.size());
 
     const bool wordIsMisspelled = isMouseCursorInsideWord &&
+                                  m_highlighter &&
                                   m_highlighter->isActive() &&
                                   !selectedWord.isEmpty() &&
-                                  m_highlighter &&
                                   m_highlighter->isWordMisspelled(selectedWord);
 
     // If the user clicked a selected word, do nothing.
