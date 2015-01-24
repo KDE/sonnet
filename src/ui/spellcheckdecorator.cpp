@@ -180,7 +180,6 @@ SpellCheckDecorator::SpellCheckDecorator(QTextEdit *textEdit)
     : QObject(textEdit)
     , d(new Private(this, textEdit))
 {
-    d->createDefaultHighlighter();
 }
 
 SpellCheckDecorator::~SpellCheckDecorator()
