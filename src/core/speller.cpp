@@ -36,7 +36,7 @@ namespace Sonnet
 class Speller::Private
 {
 public:
-    Private() : dictCache(MAXLANGUAGES), dict(0)
+    Private() : dictCache(MAXLANGUAGES), dict(0), settings(0)
     {
     }
 

@@ -34,9 +34,13 @@ class BreakTokenizerPrivate
 public:
     enum Type {Words, Sentences};
 
-    BreakTokenizerPrivate(Type s) :
-            breakFinder(new TextBreaks),
-            cacheValid(false), type(s), inAddress(false), ignoreUppercase(false)
+    BreakTokenizerPrivate(Type s)
+     : breakFinder(new TextBreaks)
+     , itemPosition(-1)
+     , cacheValid(false)
+     , type(s)
+     , inAddress(false)
+     , ignoreUppercase(false)
     {}
     ~BreakTokenizerPrivate() { delete breakFinder; }
     TextBreaks::Positions breaks() const;

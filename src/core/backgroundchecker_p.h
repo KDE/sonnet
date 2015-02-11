@@ -33,7 +33,7 @@ class BackgroundChecker::Private : public QObject
 {
 Q_OBJECT
 public:
-    Private() : mainTokenizer(new SentenceTokenizer) {}
+    Private() : mainTokenizer(new SentenceTokenizer), sentenceOffset(-1) {}
     
     void start();
     void continueChecking();
