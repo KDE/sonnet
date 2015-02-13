@@ -34,7 +34,7 @@ public:
 public Q_SLOTS:
     void slotActivate();
 protected:
-    virtual void contextMenuEvent(QContextMenuEvent *);
+    void contextMenuEvent(QContextMenuEvent *) Q_DECL_OVERRIDE;
     Sonnet::Highlighter *hl;
 };
 #endif

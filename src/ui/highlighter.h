@@ -166,11 +166,11 @@ Q_SIGNALS:
     void activeChanged(const QString &description);
 
 protected:
-    virtual void highlightBlock(const QString &text);
+    void highlightBlock(const QString &text) Q_DECL_OVERRIDE;
     virtual void setMisspelled(int start, int count);
     virtual void unsetMisspelled(int start,  int count);
 
-    bool eventFilter(QObject *o, QEvent *e);
+    bool eventFilter(QObject *o, QEvent *e) Q_DECL_OVERRIDE;
     bool intraWordEditing() const;
     void setIntraWordEditing(bool editing);
 

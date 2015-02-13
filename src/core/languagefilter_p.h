@@ -57,11 +57,11 @@ public:
 
     /** Returns true if there is grammar checker installed for last token's language */
 //  bool isGrammarCheckable() const;
-    void setBuffer(const QString& buffer);
-    bool hasNext() const;
-    QStringRef next();
-    QString buffer() const;
-    void replace(int position, int len, const QString& newWord);
+    void setBuffer(const QString& buffer) Q_DECL_OVERRIDE;
+    bool hasNext() const Q_DECL_OVERRIDE;
+    QStringRef next() Q_DECL_OVERRIDE;
+    QString buffer() const Q_DECL_OVERRIDE;
+    void replace(int position, int len, const QString& newWord) Q_DECL_OVERRIDE;
 private:
     LanguageFilterPrivate* const d;
 };

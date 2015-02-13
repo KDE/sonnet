@@ -36,15 +36,15 @@ class HSpellDict : public Sonnet::SpellerPlugin
 public:
     explicit HSpellDict(const QString &lang);
     ~HSpellDict();
-    virtual bool isCorrect(const QString &word) const;
+    bool isCorrect(const QString &word) const Q_DECL_OVERRIDE;
 
-    virtual QStringList suggest(const QString &word) const;
+    QStringList suggest(const QString &word) const Q_DECL_OVERRIDE;
 
     virtual bool storeReplacement(const QString &bad,
-                                  const QString &good);
+                                  const QString &good) Q_DECL_OVERRIDE;
 
-    virtual bool addToPersonal(const QString &word);
-    virtual bool addToSession(const QString &word);
+    bool addToPersonal(const QString &word) Q_DECL_OVERRIDE;
+    bool addToSession(const QString &word) Q_DECL_OVERRIDE;
     inline bool isInitialized() const
     {
         return initialized;
