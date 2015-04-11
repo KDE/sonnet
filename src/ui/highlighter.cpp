@@ -331,7 +331,7 @@ void Highlighter::setCurrentLanguage(const QString &lang)
     d->spellchecker->setAttribute(Speller::AutoDetectLanguage, false);
     d->wordCount = 0;
     d->errorCount = 0;
-    if (d->automatic) {
+    if (d->automatic && d->spellCheckerFound) {
         d->rehighlightRequest->start(0);
     }
 }
