@@ -145,6 +145,7 @@ void ConfigWidget::slotDefault()
     d->ui.m_checkerEnabledByDefaultCB->setChecked(false);
     d->ui.m_bgSpellCB->setChecked(true);
     d->ui.ignoreListWidget->clear();
+    d->ui.m_langCombo->setCurrentByDictionary(d->loader->settings()->defaultLanguage());
 }
 
 void ConfigWidget::setLanguage(const QString &language)
