@@ -66,7 +66,7 @@ Settings::~Settings()
     delete d;
 }
 
-void Settings::setDefaultLanguage(const QString &lang)
+bool Settings::setDefaultLanguage(const QString &lang)
 {
     const QStringList cs = d->loader->languages();
     if (cs.indexOf(lang) != -1 &&
@@ -74,8 +74,9 @@ void Settings::setDefaultLanguage(const QString &lang)
         d->defaultLanguage = lang;
         d->modified = true;
         d->loader->changed();
-        save();
+        return true;
     }
+    return false;
 }
 
 QString Settings::defaultLanguage() const
@@ -83,7 +84,7 @@ QString Settings::defaultLanguage() const
     return d->defaultLanguage;
 }
 
-void Settings::setDefaultClient(const QString &client)
+bool Settings::setDefaultClient(const QString &client)
 {
     //Different from setDefaultLanguage because
     //the number of clients can't be even close
@@ -92,8 +93,9 @@ void Settings::setDefaultClient(const QString &client)
         d->defaultClient = client;
         d->modified = true;
         d->loader->changed();
-        save();
+        return true;
     }
+    return false;
 }
 
 QString Settings::defaultClient() const
@@ -101,13 +103,14 @@ QString Settings::defaultClient() const
     return d->defaultClient;
 }
 
-void Settings::setCheckUppercase(bool check)
+bool Settings::setCheckUppercase(bool check)
 {
     if (d->checkUppercase != check) {
         d->modified = true;
         d->checkUppercase = check;
-        save();
+        return true;
     }
+    return false;
 }
 
 bool Settings::checkUppercase() const
@@ -115,13 +118,14 @@ bool Settings::checkUppercase() const
     return d->checkUppercase;
 }
 
-void Settings::setAutodetectLanguage(bool detect)
+bool Settings::setAutodetectLanguage(bool detect)
 {
     if (d->autodetectLanguage != detect) {
         d->modified=true;
         d->autodetectLanguage=detect;
-        save();
+        return true;
     }
+    return false;
 }
 
 bool Settings::autodetectLanguage() const
@@ -129,13 +133,14 @@ bool Settings::autodetectLanguage() const
     return d->autodetectLanguage;
 }
 
-void Settings::setSkipRunTogether(bool skip)
+bool Settings::setSkipRunTogether(bool skip)
 {
     if (d->skipRunTogether != skip) {
         d->modified = true;
         d->skipRunTogether = skip;
-        save();
+        return true;
     }
+    return false;
 }
 
 bool Settings::skipRunTogether() const
@@ -143,13 +148,14 @@ bool Settings::skipRunTogether() const
     return d->skipRunTogether;
 }
 
-void Settings::setCheckerEnabledByDefault(bool check)
+bool Settings::setCheckerEnabledByDefault(bool check)
 {
     if (d->checkerEnabledByDefault != check) {
         d->modified = true;
         d->checkerEnabledByDefault = check;
-        save();
+        return true;
     }
+    return false;
 }
 
 bool Settings::checkerEnabledByDefault() const
@@ -157,13 +163,14 @@ bool Settings::checkerEnabledByDefault() const
     return d->checkerEnabledByDefault;
 }
 
-void Settings::setBackgroundCheckerEnabled(bool enable)
+bool Settings::setBackgroundCheckerEnabled(bool enable)
 {
     if (d->backgroundCheckerEnabled != enable) {
         d->modified = true;
         d->backgroundCheckerEnabled = enable;
-        save();
+        return true;
     }
+    return false;
 }
 
 bool Settings::backgroundCheckerEnabled() const
@@ -171,21 +178,23 @@ bool Settings::backgroundCheckerEnabled() const
     return d->backgroundCheckerEnabled;
 }
 
-void Settings::setCurrentIgnoreList(const QStringList &ignores)
+bool Settings::setCurrentIgnoreList(const QStringList &ignores)
 {
-    setQuietIgnoreList(ignores);
+    bool changed = setQuietIgnoreList(ignores);
     d->modified = true;
-    save();
+    return changed;
 }
 
-void Settings::setQuietIgnoreList(const QStringList &ignores)
+bool Settings::setQuietIgnoreList(const QStringList &ignores)
 {
+    bool changed = false;
     d->ignore = QMap<QString, bool>();//clear out
     for (QStringList::const_iterator itr = ignores.begin();
             itr != ignores.end(); ++itr) {
         d->ignore.insert(*itr, true);
-        save();
+        changed = true;
     }
+    return changed;
 }
 
 QStringList Settings::currentIgnoreList() const
@@ -193,13 +202,14 @@ QStringList Settings::currentIgnoreList() const
     return d->ignore.keys();
 }
 
-void Settings::addWordToIgnore(const QString &word)
+bool Settings::addWordToIgnore(const QString &word)
 {
     if (!d->ignore.contains(word)) {
         d->modified = true;
         d->ignore.insert(word, true);
-        save();
+        return true;
     }
+    return false;
 }
 
 bool Settings::ignore(const QString &word)

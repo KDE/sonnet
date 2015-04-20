@@ -213,7 +213,9 @@ QStringList Speller::availableLanguageNames() const
 
 void Speller::setDefaultLanguage(const QString &lang)
 {
-    d->settings->setDefaultLanguage(lang);
+    if (d->settings->setDefaultLanguage(lang)) {
+        d->settings->save();
+    }
 }
 
 QString Speller::defaultLanguage() const
@@ -223,7 +225,9 @@ QString Speller::defaultLanguage() const
 
 void Speller::setDefaultClient(const QString &client)
 {
-    d->settings->setDefaultClient(client);
+    if (d->settings->setDefaultClient(client)) {
+        d->settings->save();
+    }
 }
 
 QString Speller::defaultClient() const
@@ -244,6 +248,7 @@ void Speller::setAttribute(Attribute attr, bool b)
         d->settings->setAutodetectLanguage(b);
         break;
     }
+    d->settings->save();
 }
 
 

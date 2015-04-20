@@ -39,29 +39,29 @@ public:
     bool modified() const;
     void setModified(bool modified);
 
-    void setDefaultLanguage(const QString &lang);
+    bool setDefaultLanguage(const QString &lang);
     QString defaultLanguage() const;
 
-    void setDefaultClient(const QString &client);
+    bool setDefaultClient(const QString &client);
     QString defaultClient() const;
 
-    void setCheckUppercase(bool);
+    bool setCheckUppercase(bool);
     bool checkUppercase() const;
 
-    void setAutodetectLanguage(bool);
+    bool setAutodetectLanguage(bool);
     bool autodetectLanguage() const;
 
-    void setSkipRunTogether(bool);
+    bool setSkipRunTogether(bool);
     bool skipRunTogether() const;
 
-    void setBackgroundCheckerEnabled(bool);
+    bool setBackgroundCheckerEnabled(bool);
     bool backgroundCheckerEnabled() const;
 
-    void setCheckerEnabledByDefault(bool);
+    bool setCheckerEnabledByDefault(bool);
     bool checkerEnabledByDefault() const;
 
-    void setCurrentIgnoreList(const QStringList &ignores);
-    void addWordToIgnore(const QString &word);
+    bool setCurrentIgnoreList(const QStringList &ignores);
+    bool addWordToIgnore(const QString &word);
     QStringList currentIgnoreList() const;
     bool ignore(const QString &word);
 
@@ -73,7 +73,7 @@ public:
 
 private:
     void readIgnoreList();
-    void setQuietIgnoreList(const QStringList &ignores);
+    bool setQuietIgnoreList(const QStringList &ignores);
 
 private:
     friend class Loader;

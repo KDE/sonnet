@@ -17,5 +17,6 @@ sonnet_unit_tests(
     # test_filter
  test_core
  test_suggest
+ test_settings
 )
 
