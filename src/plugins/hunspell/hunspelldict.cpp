@@ -19,6 +19,7 @@
  * 02110-1301  USA
  */
 #include "hunspelldict.h"
+#include "hunspelldebug.h"
 
 #include <QFileInfo>
 #include <QDebug>
@@ -29,14 +30,14 @@ using namespace Sonnet;
 HunspellDict::HunspellDict(const QString &lang)
     : SpellerPlugin(lang), m_speller(0)
 {
-    qDebug() << " HunspellDict::HunspellDict( const QString& lang ):" << lang;
+    qCDebug(SONNET_HUNSPELL) << " HunspellDict::HunspellDict( const QString& lang ):" << lang;
     QString dic = QStringLiteral("/usr/share/myspell/dicts/%1.dic").arg(lang);
     if (QFileInfo(dic).exists()) {
         m_speller = new Hunspell(QStringLiteral("/usr/share/myspell/dicts/%1.aff").arg(lang).toUtf8().constData(), dic.toUtf8().constData());
     } else {
         m_speller = 0;
     }
-    qDebug() << " dddddd " << m_speller;
+    qCDebug(SONNET_HUNSPELL) << " dddddd " << m_speller;
 
 }
 
@@ -47,12 +48,12 @@ HunspellDict::~HunspellDict()
 
 bool HunspellDict::isCorrect(const QString &word) const
 {
-    qDebug() << " isCorrect :" << word;
+    qCDebug(SONNET_HUNSPELL) << " isCorrect :" << word;
     if (!m_speller) {
         return false;
     }
     int result = m_speller->spell(word.toUtf8().constData());
-    qDebug() << " result :" << result;
+    qCDebug(SONNET_HUNSPELL) << " result :" << result;
     return (result != 0);
 }
 
@@ -79,7 +80,7 @@ bool HunspellDict::storeReplacement(const QString &bad,
     if (!m_speller) {
         return false;
     }
-    qDebug() << "HunspellDict::storeReplacement not implemented";
+    qCDebug(SONNET_HUNSPELL) << "HunspellDict::storeReplacement not implemented";
     return false;
 }
 
@@ -98,6 +99,6 @@ bool HunspellDict::addToSession(const QString &word)
     if (!m_speller) {
         return false;
     }
-    qDebug() << " bool HunspellDict::addToSession not implemented";
+    qCDebug(SONNET_HUNSPELL) << " bool HunspellDict::addToSession not implemented";
     return false;
 }

@@ -20,6 +20,7 @@
  */
 #include "hunspellclient.h"
 #include "hunspelldict.h"
+#include "hunspelldebug.h"
 
 #include <QDir>
 #include <QDebug>
@@ -29,7 +30,7 @@ using namespace Sonnet;
 HunspellClient::HunspellClient(QObject *parent)
     : Client(parent)
 {
-    qDebug() << " HunspellClient::HunspellClient";
+    qCDebug(SONNET_HUNSPELL) << " HunspellClient::HunspellClient";
 }
 
 HunspellClient::~HunspellClient()
@@ -38,7 +39,7 @@ HunspellClient::~HunspellClient()
 
 SpellerPlugin *HunspellClient::createSpeller(const QString &language)
 {
-    qDebug() << " SpellerPlugin *HunspellClient::createSpeller(const QString &language) ;" << language;
+    qCDebug(SONNET_HUNSPELL) << " SpellerPlugin *HunspellClient::createSpeller(const QString &language) ;" << language;
     HunspellDict *ad = new HunspellDict(language);
     return ad;
 }

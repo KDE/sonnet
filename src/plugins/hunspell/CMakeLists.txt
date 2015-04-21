@@ -2,8 +2,11 @@
 ########### next target ###############
 
 include_directories( ${HUNSPELL_INCLUDE_DIR} )
-set(sonnet_hunspell_PART_SRCS hunspellclient.cpp hunspelldict.cpp )
-
+set(sonnet_hunspell_PART_SRCS
+    hunspellclient.cpp
+    hunspelldict.cpp
+    hunspelldebug.cpp
+)
 
 add_library(sonnet_hunspell MODULE ${sonnet_hunspell_PART_SRCS})
 
