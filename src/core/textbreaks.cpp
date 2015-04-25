@@ -57,7 +57,7 @@ void TextBreaks::setText( const QString & text )
     d->text = text;
 }
 
-static inline bool isWordSeparator(const QChar &character)
+static inline bool isWordSeparator(const QChar character)
 {
     return character.isSpace() || character.isMark() || character.isPunct() || character.isSymbol();
 }
@@ -66,8 +66,9 @@ TextBreaks::Positions TextBreaks::wordBreaks(const QString &text)
 {
     Positions breaks;
 
-    if (text.isEmpty())
+    if (text.isEmpty()) {
         return breaks;
+    }
 
     int i=0;
     do {
@@ -80,14 +81,14 @@ TextBreaks::Positions TextBreaks::wordBreaks(const QString &text)
             }
 
             pos.start = i;
-            do {
+            while (i < text.length() && !isWordSeparator(text[i])) {
                 i++;
-            } while (i < text.length() && !isWordSeparator(text[i]));
+            }
             pos.length = i - pos.start;
 
-            // null-terminated, hence more than 1
-            if (pos.length > 1)
+            if (pos.length > 0) {
                 breaks.append(pos);
+            }
         } else {
             i++;
         }
