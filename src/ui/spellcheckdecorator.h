@@ -54,7 +54,8 @@ public:
     /**
      * Set a custom highlighter on the decorator.
      *
-     * SpellCheckDecorator does not take ownership of the new highlighter.
+     * SpellCheckDecorator does not take ownership of the new highlighter,
+     * and you must manually delete the old highlighter.
      */
     void setHighlighter(Highlighter *highlighter);
 

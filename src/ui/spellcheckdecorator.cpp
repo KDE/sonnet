@@ -39,6 +39,7 @@ public:
         , m_textEdit(textEdit)
         , m_highlighter(0)
     {
+        createDefaultHighlighter();
         // Catch pressing the "menu" key
         m_textEdit->installEventFilter(q);
         // Catch right-click
