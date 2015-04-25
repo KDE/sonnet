@@ -270,7 +270,7 @@ void Settings::restore()
     d->skipRunTogether = settings.value(QStringLiteral("skipRunTogether"), true).toBool();
     d->backgroundCheckerEnabled = settings.value(QStringLiteral("backgroundCheckerEnabled"), true).toBool();
     d->checkerEnabledByDefault = settings.value(QStringLiteral("checkerEnabledByDefault"), false).toBool();
-    d->disablePercentage = settings.value(QStringLiteral("Sonnet_AsYouTypeDisablePercentage"), 42).toInt();
+    d->disablePercentage = settings.value(QStringLiteral("Sonnet_AsYouTypeDisablePercentage"), 90).toInt();
     d->disableWordCount = settings.value(QStringLiteral("Sonnet_AsYouTypeDisableWordCount"), 100).toInt();
     d->autodetectLanguage = settings.value(QStringLiteral("autodetectLanguage"), true).toBool();
 
