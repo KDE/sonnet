@@ -3,7 +3,11 @@ cmake_minimum_required(VERSION 2.8.12)
 
 project(Sonnet)
 
-find_package(ECM 5.10.0 REQUIRED NO_MODULE)
+include(FeatureSummary)
+find_package(ECM 5.10.0  NO_MODULE)
+set_package_properties(ECM PROPERTIES TYPE REQUIRED DESCRIPTION "Extra CMake Modules." URL "https://projects.kde.org/projects/kdesupport/extra-cmake-modules")
+feature_summary(WHAT REQUIRED_PACKAGES_NOT_FOUND FATAL_ON_MISSING_REQUIRED_PACKAGES)
+
 
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/cmake )
 
@@ -14,7 +18,7 @@ include(KDECMakeSettings)
 set(REQUIRED_QT_VERSION 5.2.0)
 find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets)
 
-include(FeatureSummary)
+
 include(GenerateExportHeader)
 
 include(ECMSetupVersion)
