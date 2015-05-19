@@ -108,7 +108,7 @@ Speller::Speller(const Speller &speller)
 Speller &Speller::operator=(const Speller &speller)
 {
     d->language = speller.language();
-    d->recreateDict();
+    d->updateDict();
     return *this;
 }
 
