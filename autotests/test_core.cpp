@@ -104,7 +104,7 @@ void SonnetCoreTest::testCore()
 void SonnetCoreTest::testCore2()
 {
     Speller dict("de_DE");
-    if (!dict.availableDictionaries().contains("German")) {
+    if (!dict.availableLanguages().contains("de_DE")) {
         QSKIP("This test requires a german spelling dictionary");
         return;
     }
