@@ -25,6 +25,7 @@
 #include <QtCore/QObject>
 #include <QtCore/QStringList>
 #include <QtCore/QString>
+#include <QSharedPointer>
 
 namespace Sonnet
 {
@@ -74,6 +75,26 @@ public:
     SpellerPlugin *createSpeller(
         const QString &language = QString(),
         const QString &client = QString()) const;
+
+    /**
+     * Returns a shared, cached, dictionary for the given language.
+     *
+     * @param language specifies the language of the dictionary. If an
+     *        empty string will be passed the default language will
+     *        be used. Has to be one of the values returned by
+     *        \ref languages()
+     */
+    QSharedPointer<SpellerPlugin> cachedSpeller(const QString &language);
+
+    /**
+     * Returns a shared, cached, dictionary for the given language.
+     *
+     * @param language specifies the language of the dictionary. If an
+     *        empty string will be passed the default language will
+     *        be used. Has to be one of the values returned by
+     *        \ref languages()
+     */
+    void clearSpellerCache();
 
     /**
      * Returns names of all supported clients (e.g. ISpell, ASpell)

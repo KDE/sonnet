@@ -28,21 +28,18 @@
 #include <QSet>
 #include <QDebug>
 
-#define MAXLANGUAGES 5
-
 namespace Sonnet
 {
 
 class Speller::Private
 {
 public:
-    Private() : dictCache(MAXLANGUAGES), dict(0), settings(0)
+    Private() : settings(0)
     {
     }
 
     ~Private()
     {
-        // no need to delete dict - dictCache will take care of that
     }
     void init(const QString &lang)
     {
@@ -58,12 +55,7 @@ public:
     }
 
     void updateDict() {
-        if (dictCache.contains(language)) {
-            dict = dictCache.object(language);
-        } else {
-            dict = Loader::openLoader()->createSpeller(language);
-            dictCache.insert(language, dict);
-        }
+        dict = Loader::openLoader()->cachedSpeller(language);
     }
     bool isValid()
     {
@@ -75,15 +67,13 @@ public:
     }
     void recreateDict()
     {
-        dictCache.clear();
+        Loader::openLoader()->clearSpellerCache();
         updateDict();
     }
 
-    QCache<QString,SpellerPlugin> dictCache;
-    SpellerPlugin *dict;
-    Settings      *settings;
-
-    QString        language;
+    QSharedPointer<SpellerPlugin> dict;
+    Settings* settings;
+    QString language;
 };
 
 Speller::Speller(const QString &lang)

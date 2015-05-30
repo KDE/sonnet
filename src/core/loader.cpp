@@ -44,6 +44,7 @@ public:
     QStringList clients;
 
     QStringList languagesNameCache;
+    QHash<QString, QSharedPointer<SpellerPlugin>> spellerCache;
 };
 
 Q_GLOBAL_STATIC(Loader, s_loader)
@@ -106,6 +107,20 @@ SpellerPlugin *Loader::createSpeller(const QString &language,
     }
 
     return 0;
+}
+
+QSharedPointer<SpellerPlugin> Loader::cachedSpeller(const QString& language)
+{
+    auto& speller = d->spellerCache[language];
+    if (!speller) {
+        speller.reset(createSpeller(language));
+    }
+    return speller;
+}
+
+void Loader::clearSpellerCache()
+{
+    d->spellerCache.clear();
 }
 
 QStringList Loader::clients() const
