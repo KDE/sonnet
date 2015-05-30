@@ -24,6 +24,8 @@
 #include "languagefilter_p.h"
 #include "guesslanguage.h"
 #include "speller.h"
+#include "loader_p.h"
+#include "settings_p.h"
 
 namespace Sonnet
 {
@@ -53,7 +55,7 @@ public:
 QString LanguageFilterPrivate::mainLanguage() const
 {
     if (cachedMainLanguage.isNull()) {
-        cachedMainLanguage = gl.identify(source->buffer(), QStringList(Speller().defaultLanguage()));
+        cachedMainLanguage = gl.identify(source->buffer(), QStringList(Loader::openLoader()->settings()->defaultLanguage()));
     }
     return cachedMainLanguage;
 }
@@ -63,7 +65,7 @@ QString LanguageFilterPrivate::mainLanguage() const
 
 LanguageFilter::LanguageFilter(AbstractTokenizer* source) : d(new LanguageFilterPrivate(source))
 {
-    d->prevLanguage = Speller().defaultLanguage();
+    d->prevLanguage = Loader::openLoader()->settings()->defaultLanguage();
 }
 
 LanguageFilter::LanguageFilter(const LanguageFilter &other) : d(new LanguageFilterPrivate(other.d->source))

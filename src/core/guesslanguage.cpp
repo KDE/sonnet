@@ -461,8 +461,7 @@ QString GuessLanguagePrivate::guessFromDictionaries(const QString& sentence, con
     // Try to see how many languages we can get spell checking for
     QList<Speller> spellers;
     Q_FOREACH (const QString& lang, candidates) {
-        Speller speller;
-        speller.setLanguage(lang);
+        Speller speller(lang);
         if (speller.isValid()) {
             spellers << speller;
         }
