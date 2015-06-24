@@ -27,6 +27,7 @@
 #include "sonnetui_export.h"
 
 class QTextEdit;
+class QPlainTextEdit;
 
 namespace Sonnet
 {
@@ -36,6 +37,15 @@ class SONNETUI_EXPORT Highlighter : public QSyntaxHighlighter
     Q_OBJECT
 public:
     explicit Highlighter(QTextEdit *textEdit,
+                         const QColor &col = QColor());
+
+    /**
+     * @brief Highlighter
+     * @param textEdit
+     * @param col define spellchecking color.
+     * @since 5.12
+     */
+    explicit Highlighter(QPlainTextEdit *textEdit,
                          const QColor &col = QColor());
     ~Highlighter();
 

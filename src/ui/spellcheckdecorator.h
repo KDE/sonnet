@@ -26,6 +26,7 @@
 #include "sonnetui_export.h"
 
 class QTextEdit;
+class QPlainTextEdit;
 
 namespace Sonnet
 {
@@ -48,6 +49,14 @@ public:
      * @param textEdit the QTextEdit in need of spell-checking. It also is used as the QObject parent for the decorator.
      */
     explicit SpellCheckDecorator(QTextEdit *textEdit);
+
+    /**
+     * Creates a spell-check decorator.
+     *
+     * @param textEdit the QPlainTextEdit in need of spell-checking. It also is used as the QObject parent for the decorator.
+     * @since 5.12
+     */
+    explicit SpellCheckDecorator(QPlainTextEdit *textEdit);
 
     ~SpellCheckDecorator();
 

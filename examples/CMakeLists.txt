@@ -14,3 +14,7 @@ target_link_libraries(dictionarycombobox KF5::SonnetCore KF5::SonnetUi)
 
 add_executable(textedit textedit.cpp)
 target_link_libraries(textedit KF5::SonnetCore KF5::SonnetUi)
+
+add_executable(plaintextedit plaintextedit.cpp)
+target_link_libraries(plaintextedit KF5::SonnetCore KF5::SonnetUi)
+

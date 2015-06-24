@@ -27,6 +27,8 @@
 #include <QContextMenuEvent>
 #include <QMenu>
 #include <QTextEdit>
+#include <QPlainTextEdit>
+#include <QDebug>
 
 namespace Sonnet
 {
@@ -34,9 +36,23 @@ namespace Sonnet
 class SpellCheckDecorator::Private
 {
 public:
+    Private(SpellCheckDecorator *installer, QPlainTextEdit *textEdit)
+        : q(installer)
+        , m_textEdit(Q_NULLPTR)
+        , m_plainTextEdit(textEdit)
+        , m_highlighter(Q_NULLPTR)
+    {
+        createDefaultHighlighter();
+        // Catch pressing the "menu" key
+        m_plainTextEdit->installEventFilter(q);
+        // Catch right-click
+        m_plainTextEdit->viewport()->installEventFilter(q);
+    }
+
     Private(SpellCheckDecorator *installer, QTextEdit *textEdit)
         : q(installer)
         , m_textEdit(textEdit)
+        , m_plainTextEdit(Q_NULLPTR)
         , m_highlighter(0)
     {
         createDefaultHighlighter();
@@ -52,6 +68,7 @@ public:
 
     SpellCheckDecorator *q;
     QTextEdit *m_textEdit;
+    QPlainTextEdit *m_plainTextEdit;
     Highlighter *m_highlighter;
 };
 
@@ -62,9 +79,19 @@ bool SpellCheckDecorator::Private::onContextMenuEvent(QContextMenuEvent *event)
     }
 
     // Obtain the cursor at the mouse position and the current cursor
-    QTextCursor cursorAtMouse = m_textEdit->cursorForPosition(event->pos());
+    QTextCursor cursorAtMouse;
+    if (m_textEdit) {
+        cursorAtMouse = m_textEdit->cursorForPosition(event->pos());
+    } else {
+        cursorAtMouse = m_plainTextEdit->cursorForPosition(event->pos());
+    }
     const int mousePos = cursorAtMouse.position();
-    QTextCursor cursor = m_textEdit->textCursor();
+    QTextCursor cursor;
+    if (m_textEdit) {
+        cursor = m_textEdit->textCursor();
+    } else {
+        cursor = m_plainTextEdit->textCursor();
+    }
 
     // Check if the user clicked a selected word
     const bool selectedWordClicked = cursor.hasSelection() &&
@@ -111,11 +138,23 @@ bool SpellCheckDecorator::Private::onContextMenuEvent(QContextMenuEvent *event)
     bool checkBlock = q->isSpellCheckingEnabledForBlock(cursorAtMouse.block().text());
     if (!selectedWordClicked) {
         if (wordIsMisspelled && checkBlock) {
-            m_textEdit->setTextCursor(wordSelectCursor);
+            if (m_textEdit) {
+                m_textEdit->setTextCursor(wordSelectCursor);
+            } else {
+                m_plainTextEdit->setTextCursor(wordSelectCursor);
+            }
         } else {
-            m_textEdit->setTextCursor(cursorAtMouse);
+            if (m_textEdit) {
+                m_textEdit->setTextCursor(cursorAtMouse);
+            } else {
+                m_plainTextEdit->setTextCursor(cursorAtMouse);
+            }
         }
-        cursor = m_textEdit->textCursor();
+        if (m_textEdit) {
+            cursor = m_textEdit->textCursor();
+        } else {
+            cursor = m_plainTextEdit->textCursor();
+        }
     }
 
     // Use standard context menu for already selected words, correctly spelled
@@ -167,17 +206,31 @@ void SpellCheckDecorator::Private::execSuggestionMenu(const QPoint &pos, const Q
             const QString replacement = selectedAction->text();
             Q_ASSERT(reps.contains(replacement));
             cursor.insertText(replacement);
-            m_textEdit->setTextCursor(cursor);
+            if (m_textEdit) {
+                m_textEdit->setTextCursor(cursor);
+            } else {
+                m_plainTextEdit->setTextCursor(cursor);
+            }
         }
     }
 }
 
 void SpellCheckDecorator::Private::createDefaultHighlighter()
 {
-    m_highlighter = new Highlighter(m_textEdit);
+    if (m_textEdit) {
+        m_highlighter = new Highlighter(m_textEdit);
+    } else {
+        m_highlighter = new Highlighter(m_plainTextEdit);
+    }
 }
 
 SpellCheckDecorator::SpellCheckDecorator(QTextEdit *textEdit)
+    : QObject(textEdit)
+    , d(new Private(this, textEdit))
+{
+}
+
+SpellCheckDecorator::SpellCheckDecorator(QPlainTextEdit *textEdit)
     : QObject(textEdit)
     , d(new Private(this, textEdit))
 {

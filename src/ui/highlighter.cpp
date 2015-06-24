@@ -40,6 +40,7 @@
 #include <QKeyEvent>
 #include <QApplication>
 #include <QMetaMethod>
+#include <QPlainTextEdit>
 
 namespace Sonnet
 {
@@ -62,12 +63,52 @@ public:
 class Highlighter::Private
 {
 public:
+    Private(Highlighter *qq, const QColor &col)
+        : textEdit(Q_NULLPTR),
+          plainTextEdit(Q_NULLPTR),
+          spellColor(col),
+          q(qq)
+    {
+        tokenizer = new WordTokenizer();
+        active = true;
+        automatic = true;
+        connected = false;
+        wordCount = 0;
+        errorCount = 0;
+        intraWordEditing = false;
+        completeRehighlightRequired = false;
+        spellColor = spellColor.isValid() ? spellColor : Qt::red;
+        languageFilter = new LanguageFilter(new SentenceTokenizer());
+
+        loader = Loader::openLoader();
+        loader->settings()->restore();
+
+        spellchecker = new Sonnet::Speller();
+        spellCheckerFound = spellchecker->isValid();
+        rehighlightRequest = new QTimer(q);
+        q->connect(rehighlightRequest, SIGNAL(timeout()),
+                q, SLOT(slotRehighlight()));
+
+        if (!spellCheckerFound) {
+            return;
+        }
+
+        disablePercentage = loader->settings()->disablePercentageWordError();
+        disableWordCount = loader->settings()->disableWordErrorCount();
+
+        completeRehighlightRequired = true;
+        rehighlightRequest->setInterval(0);
+        rehighlightRequest->setSingleShot(true);
+        rehighlightRequest->start();
+    }
+
     ~Private();
     WordTokenizer *tokenizer;
     LanguageFilter *languageFilter;
     Loader *loader;
     Speller *spellchecker;
-    QTextEdit *edit;
+    QTextEdit *textEdit;
+    QPlainTextEdit *plainTextEdit;
     bool active;
     bool automatic;
     bool completeRehighlightRequired;
@@ -79,6 +120,7 @@ public:
     int wordCount, errorCount;
     QTimer *rehighlightRequest;
     QColor spellColor;
+    Highlighter *q;
 };
 
 Highlighter::Private::~Private()
@@ -88,46 +130,24 @@ Highlighter::Private::~Private()
     delete tokenizer;
 }
 
-Highlighter::Highlighter(QTextEdit *textEdit,
+Highlighter::Highlighter(QTextEdit *edit,
                          const QColor &_col)
-    : QSyntaxHighlighter(textEdit),
-      d(new Private)
+    : QSyntaxHighlighter(edit),
+      d(new Private(this, _col))
 {
-    d->tokenizer = new WordTokenizer();
-    d->edit = textEdit;
-    d->active = true;
-    d->automatic = true;
-    d->connected = false;
-    d->wordCount = 0;
-    d->errorCount = 0;
-    d->intraWordEditing = false;
-    d->completeRehighlightRequired = false;
-    d->spellColor = _col.isValid() ? _col : Qt::red;
-    d->languageFilter = new LanguageFilter(new SentenceTokenizer());
+    d->textEdit = edit;
+    d->textEdit->installEventFilter(this);
+    d->textEdit->viewport()->installEventFilter(this);
+}
 
-    textEdit->installEventFilter(this);
-    textEdit->viewport()->installEventFilter(this);
-
-    d->loader = Loader::openLoader();
-    d->loader->settings()->restore();
-
-    d->spellchecker = new Sonnet::Speller();
-    d->spellCheckerFound = d->spellchecker->isValid();
-    d->rehighlightRequest = new QTimer(this);
-    connect(d->rehighlightRequest, SIGNAL(timeout()),
-            this, SLOT(slotRehighlight()));
-
-    if (!d->spellCheckerFound) {
-        return;
-    }
-
-    d->disablePercentage = d->loader->settings()->disablePercentageWordError();
-    d->disableWordCount = d->loader->settings()->disableWordErrorCount();
-
-    d->completeRehighlightRequired = true;
-    d->rehighlightRequest->setInterval(0);
-    d->rehighlightRequest->setSingleShot(true);
-    d->rehighlightRequest->start();
+Highlighter::Highlighter(QPlainTextEdit *edit, const QColor &col)
+    : QSyntaxHighlighter(edit),
+      d(new Private(this, col))
+{
+    d->plainTextEdit = edit;
+    setDocument(d->plainTextEdit->document());
+    d->plainTextEdit->installEventFilter(this);
+    d->plainTextEdit->viewport()->installEventFilter(this);
 }
 
 Highlighter::~Highlighter()
@@ -149,7 +169,11 @@ void Highlighter::slotRehighlight()
 
     } else {
         //rehighlight the current para only (undo/redo safe)
-        QTextCursor cursor = d->edit->textCursor();
+        QTextCursor cursor;
+        if (d->textEdit)
+            cursor = d->textEdit->textCursor();
+        else
+            cursor = d->plainTextEdit->textCursor();
         cursor.insertText(QString());
     }
     //if (d->checksDone == d->checksRequested)
@@ -258,8 +282,12 @@ void Highlighter::highlightBlock(const QString &text)
                 SLOT(contentsChange(int,int,int)));
         d->connected = true;
     }
-
-    QTextCursor cursor = d->edit->textCursor();
+    QTextCursor cursor;
+    if (d->textEdit) {
+        cursor = d->textEdit->textCursor();
+    } else {
+        cursor = d->plainTextEdit->textCursor();
+    }
     int index = cursor.position();
 
     const int lengthPosition = text.length() - 1;
@@ -355,7 +383,7 @@ bool Highlighter::eventFilter(QObject *o, QEvent *e)
     if (!d->spellCheckerFound) {
         return false;
     }
-    if (o == d->edit  && (e->type() == QEvent::KeyPress)) {
+    if ((o == d->textEdit || o == d->plainTextEdit)  && (e->type() == QEvent::KeyPress)) {
         QKeyEvent *k = static_cast<QKeyEvent *>(e);
         //d->autoReady = true;
         if (d->rehighlightRequest->isActive()) { // try to stay out of the users way
@@ -394,7 +422,7 @@ bool Highlighter::eventFilter(QObject *o, QEvent *e)
         }
     }
 
-    else if (o == d->edit->viewport() &&
+    else if ((( d->textEdit && ( o == d->textEdit->viewport())) || (d->plainTextEdit && (o == d->plainTextEdit->viewport()))) &&
              (e->type() == QEvent::MouseButtonPress)) {
         //d->autoReady = true;
         if (intraWordEditing()) {
