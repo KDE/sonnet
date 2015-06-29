@@ -74,8 +74,8 @@ BackgroundChecker::BackgroundChecker(QObject *parent)
     : QObject(parent),
       d(new Private)
 {
-    connect(d, SIGNAL(misspelling(const QString&, int)),
-            SIGNAL(misspelling(const QString&, int)));
+    connect(d, SIGNAL(misspelling(QString,int)),
+            SIGNAL(misspelling(QString,int)));
     connect(d, SIGNAL(done()),
             SLOT(slotEngineDone()));
 }
@@ -85,8 +85,8 @@ BackgroundChecker::BackgroundChecker(const Speller &speller, QObject *parent)
       d(new Private)
 {
     d->currentDict = speller;
-    connect(d, SIGNAL(misspelling(const QString&, int)),
-            SIGNAL(misspelling(const QString&, int)));
+    connect(d, SIGNAL(misspelling(QString,int)),
+            SIGNAL(misspelling(QString,int)));
     connect(d, SIGNAL(done()),
             SLOT(slotEngineDone()));
 }
