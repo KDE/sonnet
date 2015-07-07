@@ -265,7 +265,11 @@ bool SpellCheckDecorator::eventFilter(QObject * /*obj*/, QEvent *event)
 bool SpellCheckDecorator::isSpellCheckingEnabledForBlock(const QString &textBlock) const
 {
     Q_UNUSED(textBlock);
-    return true;
+    if (d->m_textEdit) {
+        return d->m_textEdit->isEnabled();
+    } else {
+        return d->m_plainTextEdit->isEnabled();
+    }
 }
 
 } // namespace
