@@ -45,3 +45,14 @@ if (HUNSPELL_FOUND)
    add_subdirectory( hunspell )
 endif ()
 
+
+find_package(VOIKKO)
+set_package_properties(VOIKKO PROPERTIES
+    URL "http://voikko.puimula.org/"
+    DESCRIPTION "Spell checking support via Voikko"
+    TYPE OPTIONAL
+)
+if (VOIKKO_FOUND)
+   add_subdirectory( voikko )
+endif ()
+
