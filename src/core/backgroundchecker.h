@@ -26,6 +26,7 @@
 #include "sonnetcore_export.h"
 
 #include <QtCore/QObject>
+class BackgroundCheckerPrivate;
 
 /**
  * The sonnet namespace.
@@ -122,8 +123,7 @@ protected:
 protected Q_SLOTS:
     void slotEngineDone();
 private:
-    class Private;
-    Private *const d;
+    BackgroundCheckerPrivate *const d;
 };
 
 }

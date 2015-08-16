@@ -54,7 +54,7 @@ public:
     }
 };
 
-class Dialog::Private
+class DialogPrivate
 {
 public:
     Ui_SonnetUi ui;
@@ -94,7 +94,7 @@ public:
 Dialog::Dialog(BackgroundChecker *checker,
                QWidget *parent)
     : QDialog(parent),
-      d(new Private)
+      d(new DialogPrivate)
 {
     setModal(true);
     setWindowTitle(tr("Check Spelling", "@title:window"));

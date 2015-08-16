@@ -34,7 +34,7 @@
 namespace Sonnet
 {
 
-class Loader::Private
+class LoaderPrivate
 {
 public:
     Settings *settings;
@@ -59,7 +59,7 @@ Loader *Loader::openLoader()
 }
 
 Loader::Loader()
-    : d(new Private)
+    : d(new LoaderPrivate)
 {
     d->settings = new Settings(this);
     d->settings->restore();

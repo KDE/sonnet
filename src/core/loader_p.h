@@ -31,7 +31,7 @@ namespace Sonnet
 {
 class Settings;
 class SpellerPlugin;
-
+class LoaderPrivate;
 /**
  * \internal
  * @short Class used to deal with dictionaries
@@ -136,8 +136,7 @@ private:
     void loadPlugins();
     void loadPlugin(const QString &pluginPath);
 private:
-    class Private;
-    Private *const d;
+    LoaderPrivate *const d;
 };
 }
 

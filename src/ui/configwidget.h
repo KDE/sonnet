@@ -21,6 +21,7 @@
 #define SONNET_CONFIGWIDGET_H
 
 #include <QWidget>
+class ConfigWidgetPrivate;
 #include "sonnetui_export.h"
 
 namespace Sonnet
@@ -72,9 +73,7 @@ private:
     void setFromGui();
 
 private:
-    class Private;
-    friend class Private;
-    Private *const d;
+    ConfigWidgetPrivate *const d;
 };
 }
 

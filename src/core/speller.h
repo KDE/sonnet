@@ -28,6 +28,7 @@
 
 namespace Sonnet
 {
+class SpellerPrivate;
 /**
  * Spell checker object.
  *
@@ -144,8 +145,7 @@ public: // Configuration API
     void setAttribute(Attribute attr, bool b = true);
     bool testAttribute(Attribute attr) const;
 private:
-    class Private;
-    Private *const d;
+    SpellerPrivate *const d;
 };
 }
 #endif

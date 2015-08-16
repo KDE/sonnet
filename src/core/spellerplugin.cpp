@@ -22,14 +22,14 @@
 namespace Sonnet
 {
 
-class SpellerPlugin::Private
+class SpellerPluginPrivate
 {
 public:
     QString language;
 };
 
 SpellerPlugin::SpellerPlugin(const QString &lang)
-    : d(new Private)
+    : d(new SpellerPluginPrivate)
 {
     d->language = lang;
 }

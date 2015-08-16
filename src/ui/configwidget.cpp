@@ -30,7 +30,7 @@
 
 using namespace Sonnet;
 
-class ConfigWidget::Private
+class ConfigWidgetPrivate
 {
 public:
     Loader *loader;
@@ -40,7 +40,7 @@ public:
 
 ConfigWidget::ConfigWidget(QWidget *parent)
     : QWidget(parent),
-      d(new Private)
+      d(new ConfigWidgetPrivate)
 {
     d->loader = Loader::openLoader();
 

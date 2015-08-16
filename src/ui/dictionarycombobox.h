@@ -27,7 +27,7 @@
 
 namespace Sonnet
 {
-
+class DictionaryComboBoxPrivate;
 /**
  * @short A combo box for selecting the dictionary used for spell checking.
  * @author Ingo Kloecker <kloecker@kde.org>
@@ -92,8 +92,7 @@ Q_SIGNALS:
     void dictionaryNameChanged(const QString &dictionaryName);
 
 private:
-    class Private;
-    Private *const d;
+    DictionaryComboBoxPrivate *const d;
     Q_PRIVATE_SLOT(d, void slotDictionaryChanged(int))
 };
 

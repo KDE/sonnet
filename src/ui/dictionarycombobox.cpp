@@ -27,15 +27,15 @@ namespace Sonnet
 {
 
 //@cond PRIVATE
-class DictionaryComboBox::Private
+class DictionaryComboBoxPrivate
 {
 public:
-    Private(DictionaryComboBox *combo) : q(combo) {};
+    DictionaryComboBoxPrivate(DictionaryComboBox *combo) : q(combo) {};
     DictionaryComboBox *q;
     void slotDictionaryChanged(int idx);
 };
 
-void DictionaryComboBox::Private::slotDictionaryChanged(int idx)
+void DictionaryComboBoxPrivate::slotDictionaryChanged(int idx)
 {
     emit q->dictionaryChanged(q->itemData(idx).toString());
     emit q->dictionaryNameChanged(q->itemText(idx));
@@ -43,7 +43,7 @@ void DictionaryComboBox::Private::slotDictionaryChanged(int idx)
 //@endcon
 
 DictionaryComboBox::DictionaryComboBox(QWidget *parent)
-    : QComboBox(parent), d(new DictionaryComboBox::Private(this))
+    : QComboBox(parent), d(new DictionaryComboBoxPrivate(this))
 {
     reloadCombo();
     connect(this, SIGNAL(activated(int)),

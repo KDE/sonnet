@@ -22,6 +22,7 @@
 #define SONNET_CONFIGDIALOG_H
 
 #include <QDialog>
+class ConfigDialogPrivate;
 #include "sonnetui_export.h"
 
 namespace Sonnet
@@ -71,9 +72,7 @@ Q_SIGNALS:
     void configChanged();
 
 private:
-    class Private;
-    friend class Private;
-    Private *const d;
+    ConfigDialogPrivate *const d;
     Q_DISABLE_COPY(ConfigDialog)
     Q_PRIVATE_SLOT(d, void slotConfigChanged())
 };

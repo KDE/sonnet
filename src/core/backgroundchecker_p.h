@@ -29,11 +29,11 @@
 
 using namespace Sonnet;
 
-class BackgroundChecker::Private : public QObject
+class BackgroundCheckerPrivate : public QObject
 {
 Q_OBJECT
 public:
-    Private() : mainTokenizer(new SentenceTokenizer), sentenceOffset(-1) {}
+    BackgroundCheckerPrivate() : mainTokenizer(new SentenceTokenizer), sentenceOffset(-1) {}
     
     void start();
     void continueChecking();

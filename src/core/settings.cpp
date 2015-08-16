@@ -30,7 +30,7 @@
 
 namespace Sonnet
 {
-class Settings::Private
+class SettingsPrivate
 {
 public:
     Loader  *loader; //can't be a Ptr since we don't want to hold a ref on it
@@ -52,7 +52,7 @@ public:
 };
 
 Settings::Settings(Loader *loader)
-    : d(new Private)
+    : d(new SettingsPrivate)
 {
     d->loader = loader;
 

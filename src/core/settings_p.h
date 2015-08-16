@@ -27,7 +27,7 @@
 namespace Sonnet
 {
 class Loader;
-
+class SettingsPrivate;
 /**
  * Settings class
  */
@@ -79,8 +79,7 @@ private:
     friend class Loader;
     explicit Settings(Loader *loader);
 private:
-    class Private;
-    Private *const d;
+    SettingsPrivate *const d;
 };
 }
 

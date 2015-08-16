@@ -31,14 +31,14 @@
 namespace Sonnet
 {
 
-class Speller::Private
+class SpellerPrivate
 {
 public:
-    Private() : settings(0)
+    SpellerPrivate() : settings(0)
     {
     }
 
-    ~Private()
+    ~SpellerPrivate()
     {
     }
     void init(const QString &lang)
@@ -77,7 +77,7 @@ public:
 };
 
 Speller::Speller(const QString &lang)
-    : d(new Private)
+    : d(new SpellerPrivate)
 {
     d->init(lang);
 }
@@ -89,7 +89,7 @@ Speller::~Speller()
 }
 
 Speller::Speller(const Speller &speller)
-    : d(new Private)
+    : d(new SpellerPrivate)
 {
     d->language = speller.language();
     d->init(d->language);

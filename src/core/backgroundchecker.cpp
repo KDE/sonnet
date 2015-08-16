@@ -25,18 +25,18 @@
 using namespace Sonnet;
 
 
-void BackgroundChecker::Private::start()
+void BackgroundCheckerPrivate::start()
 {
     sentenceOffset=-1;
     continueChecking();
 }
 
-void BackgroundChecker::Private::continueChecking()
+void BackgroundCheckerPrivate::continueChecking()
 {
     metaObject()->invokeMethod(this, "checkNext",Qt::QueuedConnection);
 }
 
-void BackgroundChecker::Private::checkNext()
+void BackgroundCheckerPrivate::checkNext()
 {
     do {
         // go over current sentence
@@ -72,7 +72,7 @@ void BackgroundChecker::Private::checkNext()
 
 BackgroundChecker::BackgroundChecker(QObject *parent)
     : QObject(parent),
-      d(new Private)
+      d(new BackgroundCheckerPrivate)
 {
     connect(d, SIGNAL(misspelling(QString,int)),
             SIGNAL(misspelling(QString,int)));
@@ -82,7 +82,7 @@ BackgroundChecker::BackgroundChecker(QObject *parent)
 
 BackgroundChecker::BackgroundChecker(const Speller &speller, QObject *parent)
     : QObject(parent),
-      d(new Private)
+      d(new BackgroundCheckerPrivate)
 {
     d->currentDict = speller;
     connect(d, SIGNAL(misspelling(QString,int)),

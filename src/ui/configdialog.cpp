@@ -26,24 +26,24 @@
 
 using namespace Sonnet;
 
-class ConfigDialog::Private
+class ConfigDialogPrivate
 {
 public:
-    Private(ConfigDialog *parent)
+    ConfigDialogPrivate(ConfigDialog *parent)
         : q(parent) {}
     ConfigWidget *ui;
     ConfigDialog *q;
     void slotConfigChanged();
 };
 
-void ConfigDialog::Private::slotConfigChanged()
+void ConfigDialogPrivate::slotConfigChanged()
 {
     emit q->languageChanged(ui->language());
 }
 
 ConfigDialog::ConfigDialog(QWidget *parent)
     : QDialog(parent),
-      d(new Private(this))
+      d(new ConfigDialogPrivate(this))
 {
     setObjectName(QStringLiteral("SonnetConfigDialog"));
     setModal(true);

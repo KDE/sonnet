@@ -31,7 +31,7 @@ class QModelIndex;
 namespace Sonnet
 {
 class BackgroundChecker;
-
+class DialogPrivate;
 /**
  * @short Spellcheck dialog
  *
@@ -157,8 +157,7 @@ private:
     void continueChecking();
 
 private:
-    class Private;
-    Private *const d;
+    DialogPrivate *const d;
     Q_DISABLE_COPY(Dialog)
 };
 }

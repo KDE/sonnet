@@ -34,6 +34,7 @@ namespace Sonnet
  * @author Zack Rusin <zack@kde.org>
  * @short class used for actuall spell checking
  */
+class SpellerPluginPrivate;
 class SONNETCORE_EXPORT SpellerPlugin
 {
 public:
@@ -92,8 +93,7 @@ public:
 protected:
     SpellerPlugin(const QString &lang);
 private:
-    class Private;
-    Private *const d;
+    SpellerPluginPrivate *const d;
 };
 }
 

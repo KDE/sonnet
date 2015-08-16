@@ -31,6 +31,7 @@ class QPlainTextEdit;
 
 namespace Sonnet
 {
+class HighlighterPrivate;
 /// The Sonnet Highlighter class, used for drawing pretty red lines in text fields
 class SONNETUI_EXPORT Highlighter : public QSyntaxHighlighter
 {
@@ -207,8 +208,7 @@ private Q_SLOTS:
     void contentsChange(int pos, int added, int removed);
 
 private:
-    class Private;
-    Private *const d;
+    HighlighterPrivate *const d;
     Q_DISABLE_COPY(Highlighter)
 };
 

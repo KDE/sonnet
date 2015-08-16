@@ -60,10 +60,10 @@ public:
 };
 
 
-class Highlighter::Private
+class HighlighterPrivate
 {
 public:
-    Private(Highlighter *qq, const QColor &col)
+    HighlighterPrivate(Highlighter *qq, const QColor &col)
         : textEdit(Q_NULLPTR),
           plainTextEdit(Q_NULLPTR),
           spellColor(col),
@@ -102,7 +102,7 @@ public:
         rehighlightRequest->start();
     }
 
-    ~Private();
+    ~HighlighterPrivate();
     WordTokenizer *tokenizer;
     LanguageFilter *languageFilter;
     Loader *loader;
@@ -123,7 +123,7 @@ public:
     Highlighter *q;
 };
 
-Highlighter::Private::~Private()
+HighlighterPrivate::~HighlighterPrivate()
 {
     delete spellchecker;
     delete languageFilter;
@@ -133,7 +133,7 @@ Highlighter::Private::~Private()
 Highlighter::Highlighter(QTextEdit *edit,
                          const QColor &_col)
     : QSyntaxHighlighter(edit),
-      d(new Private(this, _col))
+      d(new HighlighterPrivate(this, _col))
 {
     d->textEdit = edit;
     d->textEdit->installEventFilter(this);
@@ -142,7 +142,7 @@ Highlighter::Highlighter(QTextEdit *edit,
 
 Highlighter::Highlighter(QPlainTextEdit *edit, const QColor &col)
     : QSyntaxHighlighter(edit),
-      d(new Private(this, col))
+      d(new HighlighterPrivate(this, col))
 {
     d->plainTextEdit = edit;
     setDocument(d->plainTextEdit->document());
