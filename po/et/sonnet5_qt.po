@@ -1,0 +1,744 @@
+# translation of kdelibs4.po to Estonian
+# Copyright (C) 1999-2004, 2005, 2006, 2009 Free Software Foundation, Inc.
+#
+# Hasso Tepper <hasso@kde.org>, 1999-2004, 2005, 2006.
+# Marek Laane <bald@smail.ee>, 2003-2009.
+# Peeter Russak <pezz@tkwcy.ee>, 2005.
+# Marek Laane <bald@smail.ee>, 2009, 2010, 2011, 2012, 2014.
+msgid ""
+msgstr ""
+"Project-Id-Version: kdelibs4\n"
+"Report-Msgid-Bugs-To: http://bugs.kde.org\n"
+"POT-Creation-Date: 2014-03-23 01:50+0000\n"
+"PO-Revision-Date: 2014-03-02 04:37+0200\n"
+"Last-Translator: Marek Laane <bald@smail.ee>\n"
+"Language-Team: Estonian <kde-et@linux.ee>\n"
+"Language: et\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.5\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Qt-Contexts: true\n"
+
+#: core/loader.cpp:164
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "40"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "40"
+msgstr "40"
+
+#: core/loader.cpp:165
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "60"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "60"
+msgstr "60"
+
+#: core/loader.cpp:166
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "80"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "80"
+msgstr "80"
+
+#: core/loader.cpp:167
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "-ise suffixes"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ise suffixes"
+msgstr "-ise sufiksid"
+
+#: core/loader.cpp:168
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "-ize suffixes"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ize suffixes"
+msgstr "-ize sufiksid"
+
+#: core/loader.cpp:169
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "-ise suffixes and with accents"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ise suffixes and with accents"
+msgstr "-ise sufiksid ja rõhumärgid"
+
+#: core/loader.cpp:170
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "-ise suffixes and without accents"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ise suffixes and without accents"
+msgstr "-ise sufiksid ja ilma rõhumärkideta"
+
+#: core/loader.cpp:171
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "-ize suffixes and with accents"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ize suffixes and with accents"
+msgstr "-ize sufiksid ja rõhumärgid"
+
+#: core/loader.cpp:172
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "-ize suffixes and without accents"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ize suffixes and without accents"
+msgstr "-ize sufiksid ja ilma rõhumärkideta"
+
+#: core/loader.cpp:173
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "large"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "large"
+msgstr "suur"
+
+#: core/loader.cpp:174
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "medium"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "medium"
+msgstr "keskmine"
+
+#: core/loader.cpp:175
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "small"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "small"
+msgstr "väike"
+
+#: core/loader.cpp:176
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "variant 0"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "variant 0"
+msgstr "variant 0"
+
+#: core/loader.cpp:177
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "variant 1"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "variant 1"
+msgstr "variant 1"
+
+#: core/loader.cpp:178
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "variant 2"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "variant 2"
+msgstr "variant 2"
+
+#: core/loader.cpp:179
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "without accents"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "without accents"
+msgstr "ilma rõhumärkideta"
+
+#: core/loader.cpp:180
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "with accents"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "with accents"
+msgstr "rõhumärkidega"
+
+#: core/loader.cpp:181
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "with ye, modern russian"
+msgstr ""
+
+#: core/loader.cpp:182
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "with yeyo, modern and old russian"
+msgstr ""
+
+#: core/loader.cpp:183
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "with yo, old russian"
+msgstr ""
+
+#: core/loader.cpp:184
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "extended"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "extended"
+msgstr "laiendatud"
+
+#: core/loader.cpp:218
+#, fuzzy, qt-format
+#| msgctxt "dictionary name. %1-language, %2-country and %3 variant name"
+#| msgid "%1 (%2) [%3]"
+msgctxt ""
+"Sonnet::Loader|dictionary name; %1 = language name, %2 = country name and %3 "
+"= language variant name"
+msgid "%1 (%2) [%3]"
+msgstr "%1 (%2) [%3]"
+
+#: core/loader.cpp:221
+#, fuzzy, qt-format
+#| msgctxt "name of digit set with digit string, e.g. 'Arabic (0123456789)'"
+#| msgid "%1 (%2)"
+msgctxt "Sonnet::Loader|dictionary name; %1 = language name, %2 = country name"
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+#: ui/configdialog.cpp:50
+#, fuzzy
+#| msgid "Spell Checking Configuration"
+msgctxt "Sonnet::ConfigDialog|"
+msgid "Spell Checking Configuration"
+msgstr "Õigekirja kontrolli seadistamine"
+
+#: ui/configui.ui:32
+#, fuzzy
+#| msgid "Options"
+msgctxt "SonnetConfigUI|"
+msgid "Options"
+msgstr "Valikud"
+
+#: ui/configui.ui:38
+msgctxt "SonnetConfigUI|"
+msgid "Enable autodetection of &language"
+msgstr ""
+
+#: ui/configui.ui:45
+#, fuzzy
+#| msgid "Enable &background spellchecking"
+msgctxt "SonnetConfigUI|"
+msgid "Enable &background spellchecking"
+msgstr "Õigekirja kontrollimise lu&bamine taustal"
+
+#: ui/configui.ui:52
+#, fuzzy
+#| msgid "&Automatic spell checking enabled by default"
+msgctxt "SonnetConfigUI|"
+msgid "&Automatic spell checking enabled by default"
+msgstr "Vaikimisi õigekirja &automaatne kontroll"
+
+#: ui/configui.ui:59
+#, fuzzy
+#| msgid "Skip all &uppercase words"
+msgctxt "SonnetConfigUI|"
+msgid "Skip all &uppercase words"
+msgstr "Kõik S&UURTÄHELISED sõnad jäetakse vahele"
+
+#: ui/configui.ui:66
+#, fuzzy
+#| msgid "S&kip run-together words"
+msgctxt "SonnetConfigUI|"
+msgid "S&kip run-together words"
+msgstr "&Kokkujooksnud sõnad jäetakse vahele"
+
+#: ui/configui.ui:76
+#, fuzzy
+#| msgid "Default language:"
+msgctxt "SonnetConfigUI|"
+msgid "Default language:"
+msgstr "Vaikekeel:"
+
+#: ui/configui.ui:86
+#, fuzzy
+#| msgid "Ignored Words"
+msgctxt "SonnetConfigUI|"
+msgid "Ignored Words:"
+msgstr "Eiratavad sõnad"
+
+#: ui/configui.ui:100
+#, fuzzy
+#| msgid "&Add"
+msgctxt "SonnetConfigUI|"
+msgid "&Add"
+msgstr "&Lisa"
+
+#: ui/configui.ui:112
+#, fuzzy
+#| msgid "&Remove"
+msgctxt "SonnetConfigUI|"
+msgid "&Remove"
+msgstr "&Eemalda"
+
+#: ui/dialog.cpp:100 ui/dialog.cpp:224 ui/dialog.cpp:433
+#, fuzzy
+#| msgid "Check Spelling"
+msgctxt "Sonnet::Dialog|@title:window"
+msgid "Check Spelling"
+msgstr "Õigekirja kontroll"
+
+#: ui/dialog.cpp:223
+#, fuzzy
+#| msgctxt "progress label"
+#| msgid "Spell checking in progress..."
+msgctxt "Sonnet::Dialog|progress label"
+msgid "Spell checking in progress..."
+msgstr "Käib õigekirja kontroll..."
+
+#: ui/dialog.cpp:244
+#, fuzzy
+#| msgid "Spell check stopped."
+msgctxt "Sonnet::Dialog|"
+msgid "Spell check stopped."
+msgstr "Õigekirja kontroll peatatud."
+
+#: ui/dialog.cpp:254
+#, fuzzy
+#| msgid "Spell check canceled."
+msgctxt "Sonnet::Dialog|"
+msgid "Spell check canceled."
+msgstr "Õigekirja kontroll katkestatud."
+
+#: ui/dialog.cpp:430 ui/dialog.cpp:433
+#, fuzzy
+#| msgid "Spell check complete."
+msgctxt "Sonnet::Dialog|"
+msgid "Spell check complete."
+msgstr "Õigekirja kontroll valmis."
+
+#: ui/highlighter.cpp:229 ui/highlighter.cpp:251
+#, fuzzy
+#| msgid "As-you-type spell checking enabled."
+msgctxt "Sonnet::Highlighter|"
+msgid "As-you-type spell checking enabled."
+msgstr "Õigekirja kontroll kirjutamise ajal sisse lülitatud."
+
+#: ui/highlighter.cpp:232
+#, fuzzy
+#| msgid "Too many misspelled words. As-you-type spell checking disabled."
+msgctxt "Sonnet::Highlighter|"
+msgid "Too many misspelled words. As-you-type spell checking disabled."
+msgstr ""
+"Liiga palju vigaseid sõnu. Õigekirja kontroll kirjutamise ajal lülitatakse "
+"välja."
+
+#: ui/highlighter.cpp:253
+#, fuzzy
+#| msgid "As-you-type spell checking disabled."
+msgctxt "Sonnet::Highlighter|"
+msgid "As-you-type spell checking disabled."
+msgstr "Õigekirja kontroll kirjutamise ajal välja lülitatud."
+
+#: ui/sonnetui.ui:30 ui/sonnetui.ui:46
+#, fuzzy
+#| msgid ""
+#| "<qt><p>This word was considered to be an \"unknown word\" because it does "
+#| "not match any entry in the dictionary currently in use. It may also be a "
+#| "word in a foreign language.</p>\n"
+#| "<p>If the word is not misspelled, you may add it to the dictionary by "
+#| "clicking <b>Add to Dictionary</b>. If you do not want to add the unknown "
+#| "word to the dictionary, but you want to leave it unchanged, click "
+#| "<b>Ignore</b> or <b>Ignore All</b>.</p>\n"
+#| "<p>However, if the word is misspelled, you can try to find the correct "
+#| "replacement in the list below. If you cannot find a replacement there, "
+#| "you may type it in the text box below, and click <b>Replace</b> or "
+#| "<b>Replace All</b>.</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt><p>This word was considered to be an \"unknown word\" because it does "
+"not match any entry in the dictionary currently in use. It may also be a "
+"word in a foreign language.</p>\n"
+"<p>If the word is not misspelled, you may add it to the dictionary by "
+"clicking <b>Add to Dictionary</b>. If you do not want to add the unknown "
+"word to the dictionary, but you want to leave it unchanged, click <b>Ignore</"
+"b> or <b>Ignore All</b>.</p>\n"
+"<p>However, if the word is misspelled, you can try to find the correct "
+"replacement in the list below. If you cannot find a replacement there, you "
+"may type it in the text box below, and click <b>Replace</b> or <b>Replace "
+"All</b>.</p>\n"
+"</qt>"
+msgstr ""
+"<qt><p>Seda sõna peetakse \"tundmatuks sõnaks\", sest see ei sobi kokku "
+"ühegi praegu kasutatavas sõnaraamatus esineva sõnaga. See võib olla ka "
+"võõrkeelne sõna.</p>\n"
+"<p>Kui see ei ole valesti kirjutatud ehk \"vikane\", võid lisada selle "
+"sõnaraamatusse klõpsuga nupule <b>Lisa sõnaraamatusse</b>. Kui sa ei soovi "
+"tundmatut sõna sõnaraamatusse lisada, kuid tahad, et seda ei muudetaks, "
+"klõpsa <b>Ignoreeri</b> või <b>Ignoreeri kõiki</b>.</p>\n"
+"<p>Kui aga sõna on valesti kirjutatud, võid vaadata, ega alltoodud nimekiri "
+"paku sellele korrektset vastet. Kui sa seda sealt ei leia, võid kirjutada "
+"selle tekstikasti ning klõpsata <b>Asenda</b> või <b>Asenda kõik</b>.</p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:36
+#, fuzzy
+#| msgid "Unknown word:"
+msgctxt "SonnetUi|"
+msgid "Unknown word:"
+msgstr "Tundmatu sõna:"
+
+#: ui/sonnetui.ui:43
+#, fuzzy
+#| msgid "Unknown word"
+msgctxt "SonnetUi|"
+msgid "Unknown word"
+msgstr "Tundmatu sõna"
+
+#: ui/sonnetui.ui:52
+#, fuzzy
+#| msgid "<b>misspelled</b>"
+msgctxt "SonnetUi|"
+msgid "<b>misspelled</b>"
+msgstr "<b>vikane</b>"
+
+#: ui/sonnetui.ui:59 ui/sonnetui.ui:174
+#, fuzzy
+#| msgid ""
+#| "<qt>\n"
+#| "<p>Select the language of the document you are proofing here.</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Select the language of the document you are proofing here.</p>\n"
+"</qt>"
+msgstr ""
+"<qt>\n"
+"<p>Siin saab valida dokumendi õigekirja kontrollimisel kasutatava keele.</"
+"p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:64
+#, fuzzy
+#| msgid "&Language:"
+msgctxt "SonnetUi|"
+msgid "&Language:"
+msgstr "&Keel:"
+
+#: ui/sonnetui.ui:74
+#, fuzzy
+#| msgid "Text excerpt showing the unknown word in its context."
+msgctxt "SonnetUi|"
+msgid "Text excerpt showing the unknown word in its context."
+msgstr "Tekstikatke, mis näitab tundmatut sõna kontekstis."
+
+#: ui/sonnetui.ui:77
+#, fuzzy
+#| msgid ""
+#| "<qt>\n"
+#| "<p>Here you can see a text excerpt showing the unknown word in its "
+#| "context. If this information is not sufficient to choose the best "
+#| "replacement for the unknown word, you can click on the document you are "
+#| "proofing, read a larger part of the text and then return here to continue "
+#| "proofing.</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Here you can see a text excerpt showing the unknown word in its context. "
+"If this information is not sufficient to choose the best replacement for the "
+"unknown word, you can click on the document you are proofing, read a larger "
+"part of the text and then return here to continue proofing.</p>\n"
+"</qt>"
+msgstr ""
+"<qt>\n"
+"<p>Siin näidatakse tekstikatket, kus tundmatu sõna esineb kontekstis. Kui "
+"sellest ei piisa tundmatule sõnale parima asenduse leidmiseks, võib klõpsata "
+"kontrollitaval dokumendil, lugeda pikema lõigu ja siis naasta õigekirja "
+"kontrolli juurde.</p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:85
+#, fuzzy
+#| msgid "... the <b>misspelled</b> word shown in context ..."
+msgctxt "SonnetUi|"
+msgid "... the <b>misspelled</b> word shown in context ..."
+msgstr "... <b>vikane</b> sõna kontekstis ..."
+
+#: ui/sonnetui.ui:95
+#, fuzzy
+#| msgid ""
+#| "<qt>\n"
+#| "<p>The unknown word was detected and considered unknown because it is not "
+#| "included in the dictionary.<br>\n"
+#| "Click here if you consider the unknown word not to be misspelled, and you "
+#| "want to avoid wrongly detecting it again in the future. If you want to "
+#| "let it remain as is, but not add it to the dictionary, then click "
+#| "<b>Ignore</b> or <b>Ignore All</b> instead.</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>The unknown word was detected and considered unknown because it is not "
+"included in the dictionary.<br>\n"
+"Click here if you consider the unknown word not to be misspelled, and you "
+"want to avoid wrongly detecting it again in the future. If you want to let "
+"it remain as is, but not add it to the dictionary, then click <b>Ignore</b> "
+"or <b>Ignore All</b> instead.</p>\n"
+"</qt>"
+msgstr ""
+"<qt>\n"
+"<p>Tuvastati sõna, mida peetakse tundmatuks, sest seda ei esine sõnaraamatus."
+"<br>\n"
+"Klõpsa siia, kui arvad, et sõna ei ole tegelikult valesti kirjutatud. "
+"Sellisel juhul peetakse seda edaspidi igati korralikuks sõnaks. Kui sa "
+"soovid jätta sõna senisele kujule, aga ei soovi seda sõnaraamatusse lisada, "
+"klõpsa <b>Ignoreeri</b> või <b>Ignoreeri kõiki</b>.</p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:101
+#, fuzzy
+#| msgid "<< Add to Dictionary"
+msgctxt "SonnetUi|"
+msgid "<< Add to Dictionary"
+msgstr "<< Lisa sõnaraamatusse"
+
+#: ui/sonnetui.ui:124
+#, fuzzy
+#| msgid "Suggestion List"
+msgctxt "SonnetUi|"
+msgid "Suggestion List"
+msgstr "Soovituste nimekiri"
+
+#: ui/sonnetui.ui:127
+#, fuzzy
+#| msgid ""
+#| "<qt>\n"
+#| "<p>If the unknown word is misspelled, you should check if the correction "
+#| "for it is available and if it is, click on it. If none of the words in "
+#| "this list is a good replacement you may type the correct word in the edit "
+#| "box above.</p>\n"
+#| "<p>To correct this word click <b>Replace</b> if you want to correct only "
+#| "this occurrence or <b>Replace All</b> if you want to correct all "
+#| "occurrences.</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>If the unknown word is misspelled, you should check if the correction for "
+"it is available and if it is, click on it. If none of the words in this list "
+"is a good replacement you may type the correct word in the edit box above.</"
+"p>\n"
+"<p>To correct this word click <b>Replace</b> if you want to correct only "
+"this occurrence or <b>Replace All</b> if you want to correct all occurrences."
+"</p>\n"
+"</qt>"
+msgstr ""
+"<qt>\n"
+"<p>Kui tundmatu sõna on valesti kirjutatud sõna, võiksid kontrollida, kas "
+"sõnaraamat pakub sellele asendust ja kui pakub, klõpsata sellel. Kui ükski "
+"nimekirja sõnadest ei ole korrektne asendus, võid kirjutada õige sõna "
+"ülalasuvasse tekstikasti.</p>\n"
+"<p>Sõna parandamiseks klõpsa nupule <b>Asenda</b>, kui soovid selle asendada "
+"ainult antud juhul, või <b>Asenda kõik</b>, et asendada kõik selle "
+"esinemiskorrad.</p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:137
+#, fuzzy
+#| msgid "Suggested Words"
+msgctxt "SonnetUi|"
+msgid "Suggested Words"
+msgstr "Soovitused"
+
+#: ui/sonnetui.ui:145 ui/sonnetui.ui:161
+#, fuzzy
+#| msgid ""
+#| "<qt>\n"
+#| "<p>If the unknown word is misspelled, you should type the correction for "
+#| "your misspelled word here or select it from the list below.</p>\n"
+#| "<p>You can then click <b>Replace</b> if you want to correct only this "
+#| "occurrence of the word or <b>Replace All</b> if you want to correct all "
+#| "occurrences.</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>If the unknown word is misspelled, you should type the correction for "
+"your misspelled word here or select it from the list below.</p>\n"
+"<p>You can then click <b>Replace</b> if you want to correct only this "
+"occurrence of the word or <b>Replace All</b> if you want to correct all "
+"occurrences.</p>\n"
+"</qt>"
+msgstr ""
+"<qt>\n"
+"<p>Kui tundmatu sõna on valesti kirjutatud sõna, võiksid kirjutada selle "
+"korrektse asenduse siia tekstikasti või valida selle allolevast nimekirjast."
+"</p>\n"
+"<p>Sõna parandamiseks klõpsa nupule <b>Asenda</b>, kui soovid selle asendada "
+"ainult antud juhul, või <b>Asenda kõik</b>, et asendada kõik selle "
+"esinemiskorrad.</p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:151
+#, fuzzy
+#| msgid "Replace &with:"
+msgctxt "SonnetUi|"
+msgid "Replace &with:"
+msgstr "Asendatakse &järgnevaga:"
+
+#: ui/sonnetui.ui:171
+#, fuzzy
+#| msgid "Language Selection"
+msgctxt "SonnetUi|"
+msgid "Language Selection"
+msgstr "Keele valimine"
+
+#: ui/sonnetui.ui:191
+#, fuzzy
+#| msgid "S&uggest"
+msgctxt "SonnetUi|"
+msgid "S&uggest"
+msgstr "S&oovita"
+
+#: ui/sonnetui.ui:198
+#, fuzzy
+#| msgid ""
+#| "<qt>\n"
+#| "<p>Click here to replace this occurrence of the unknown text with the "
+#| "text in the edit box above (to the left).</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Click here to replace this occurrence of the unknown text with the text "
+"in the edit box above (to the left).</p>\n"
+"</qt>"
+msgstr ""
+"<qt>\n"
+"<p>Klõpsa siia, et asendada tundmatu sõna ülal vasakul asuva tekstikasti "
+"sisuga.</p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:203
+#, fuzzy
+#| msgid "&Replace"
+msgctxt "SonnetUi|"
+msgid "&Replace"
+msgstr "&Asenda"
+
+#: ui/sonnetui.ui:210
+#, fuzzy
+#| msgid ""
+#| "<qt>\n"
+#| "<p>Click here to replace all occurrences of the unknown text with the "
+#| "text in the edit box above (to the left).</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Click here to replace all occurrences of the unknown text with the text "
+"in the edit box above (to the left).</p>\n"
+"</qt>"
+msgstr ""
+"<qt>\n"
+"<p>Klõpsa siia, et asendada tundmatu sõna kõik esinemiskorrad vasakul "
+"asuvale tekstiväljale kirjutatud tekstiga.</p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:215
+#, fuzzy
+#| msgid "R&eplace All"
+msgctxt "SonnetUi|"
+msgid "R&eplace All"
+msgstr "Asenda &kõik"
+
+#: ui/sonnetui.ui:222
+#, fuzzy
+#| msgid ""
+#| "<qt>\n"
+#| "<p>Click here to let this occurrence of the unknown word remain as is.</"
+#| "p>\n"
+#| "<p>This action is useful when the word is a name, an acronym, a foreign "
+#| "word or any other unknown word that you want to use but not add to the "
+#| "dictionary.</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Click here to let this occurrence of the unknown word remain as is.</p>\n"
+"<p>This action is useful when the word is a name, an acronym, a foreign word "
+"or any other unknown word that you want to use but not add to the dictionary."
+"</p>\n"
+"</qt>"
+msgstr ""
+"<qt>\n"
+"<p>Klõpsa siia, et tundmatu sõna jääks teksti senisel kujul.</p>\n"
+"<p>See on abiks siis, kui sõna on nimi, lühend, võõrkeelne sõna või mingi "
+"muu selline tundmatu sõna, mida sa soovid kasutada, aga mitte sõnaraamatusse "
+"lisada.</p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:228
+#, fuzzy
+#| msgid "&Ignore"
+msgctxt "SonnetUi|"
+msgid "&Ignore"
+msgstr "&Ignoreeri"
+
+#: ui/sonnetui.ui:235 ui/sonnetui.ui:248
+#, fuzzy
+#| msgid ""
+#| "<qt>\n"
+#| "<p>Click here to let all occurrences of the unknown word remain as they "
+#| "are.</p>\n"
+#| "<p>This action is useful when the word is a name, an acronym, a foreign "
+#| "word or any other unknown word that you want to use but not add to the "
+#| "dictionary.</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Click here to let all occurrences of the unknown word remain as they are."
+"</p>\n"
+"<p>This action is useful when the word is a name, an acronym, a foreign word "
+"or any other unknown word that you want to use but not add to the dictionary."
+"</p>\n"
+"</qt>"
+msgstr ""
+"<qt>\n"
+"<p>Klõpsa siia, et tundmatu sõna jääks kõigil esinemiskordadel teksti "
+"senisel kujul.</p>\n"
+"<p>See on abiks siis, kui sõna on nimi, lühend, võõrkeelne sõna või mingi "
+"muu selline tundmatu sõna, mida sa soovid kasutada, aga mitte sõnaraamatusse "
+"lisada.</p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:241
+#, fuzzy
+#| msgid "I&gnore All"
+msgctxt "SonnetUi|"
+msgid "I&gnore All"
+msgstr "I&gnoreeri kõiki"
+
+#: ui/sonnetui.ui:254
+#, fuzzy
+#| msgid "Autocorrect"
+msgctxt "SonnetUi|"
+msgid "Autocorrect"
+msgstr "Automaatne korrigeerimine"
+
+#: ui/spellcheckdecorator.cpp:177
+#, fuzzy, qt-format
+#| msgid "No suggestions for %1"
+msgctxt "Sonnet::SpellCheckDecorator|"
+msgid "No suggestions for %1"
+msgstr "'%1' jaoks soovitused puuduvad"
+
+#: ui/spellcheckdecorator.cpp:188
+#, fuzzy
+#| msgid "Ignore"
+msgctxt "Sonnet::SpellCheckDecorator|"
+msgid "Ignore"
+msgstr "Ignoreeri"
+
+#: ui/spellcheckdecorator.cpp:189
+#, fuzzy
+#| msgid "Add to Dictionary"
+msgctxt "Sonnet::SpellCheckDecorator|"
+msgid "Add to Dictionary"
+msgstr "Lisa sõnaraamatusse"
