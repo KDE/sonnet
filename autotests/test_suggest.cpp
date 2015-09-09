@@ -29,7 +29,7 @@ using namespace Sonnet;
 
 class SuggestTest : public QObject
 {
-    Q_OBJECT;
+    Q_OBJECT
 
 private Q_SLOTS:
     void english();
