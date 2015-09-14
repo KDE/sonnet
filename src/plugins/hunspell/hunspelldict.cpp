@@ -23,7 +23,8 @@
 
 #include <QFileInfo>
 #include <QDebug>
-#include <QtCore/QTextCodec>
+#include <QTextCodec>
+#include <QStringBuilder>
 
 using namespace Sonnet;
 
@@ -31,11 +32,25 @@ HunspellDict::HunspellDict(const QString &lang)
     : SpellerPlugin(lang), m_speller(0)
 {
     qCDebug(SONNET_HUNSPELL) << " HunspellDict::HunspellDict( const QString& lang ):" << lang;
-    QString dic = QStringLiteral("/usr/share/myspell/dicts/%1.dic").arg(lang);
+#ifdef Q_OS_MAC
+    QByteArray dirPath = QByteArrayLiteral("/System/Library/Spelling/");
+    QString dic = QLatin1String(dirPath) % lang % QLatin1String(".dic");
+    if (!QFileInfo(dic).exists()) {
+        dirPath = QByteArrayLiteral("/Applications/LibreOffice.app/Contents/Resources/extensions/dict-") + lang.leftRef(2).toLatin1() ;
+        dic = QLatin1String(dirPath) % QLatin1Char('/') % lang % QLatin1String(".dic");
+        if (lang.length()==5 && !QFileInfo(dic).exists()) {
+            dirPath += '-' + lang.midRef(3,2).toLatin1();
+            dic = QLatin1String(dirPath) % QLatin1Char('/') % lang % QLatin1String(".dic");
+        }
+        dirPath += '/';
+    }
+#else
+    const QByteArray dirPath = QByteArrayLiteral("/usr/share/myspell/dicts/");
+    QString dic = QLatin1String(dirPath) % lang % QLatin1String(".dic");
+#endif
+
     if (QFileInfo(dic).exists()) {
-        m_speller = new Hunspell(QStringLiteral("/usr/share/myspell/dicts/%1.aff").arg(lang).toUtf8().constData(), dic.toUtf8().constData());
-    } else {
-        m_speller = 0;
+        m_speller = new Hunspell(QByteArray(dirPath + lang.toLatin1() + ".aff").constData(), dic.toLatin1().constData());
     }
     qCDebug(SONNET_HUNSPELL) << " dddddd " << m_speller;
 

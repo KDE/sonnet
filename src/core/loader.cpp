@@ -31,6 +31,15 @@
 #include <QDebug>
 #include <QtCore/QDir>
 
+
+#ifdef SONNET_STATIC
+#ifdef Q_OS_MAC
+#include "../plugins/nsspellchecker/nsspellcheckerclient.h"
+#include "../plugins/hunspell/hunspellclient.h"
+#endif
+#endif
+
+
 namespace Sonnet
 {
 
@@ -253,6 +262,7 @@ Settings *Loader::settings() const
 
 void Loader::loadPlugins()
 {
+#ifndef SONNET_STATIC
     const QStringList libPaths = QCoreApplication::libraryPaths() << QLatin1String(INSTALLATION_PLUGIN_PATH);
     const QLatin1String pathSuffix("/kf5/sonnet/");
     int plugins = 0;
@@ -269,10 +279,17 @@ void Loader::loadPlugins()
     if (plugins == 0) {
         qWarning() << "Sonnet: No speller backends available!";
     }
+#else
+#ifdef Q_OS_MAC
+    loadPlugin(QString());
+    loadPlugin(QStringLiteral("Hunspell"));
+#endif
+#endif
 }
 
 void Loader::loadPlugin(const QString &pluginPath)
 {
+#ifndef SONNET_STATIC
     QPluginLoader plugin(pluginPath);
     if (!plugin.load()) { // We do this separately for better error handling
         qWarning() << "Sonnet: Unable to load plugin" << pluginPath << "Error:" << plugin.errorString();
@@ -285,6 +302,16 @@ void Loader::loadPlugin(const QString &pluginPath)
         plugin.unload(); // don't leave it in memory
         return;
     }
+#else
+    Q_UNUSED(pluginPath)
+#ifdef Q_OS_MAC
+    Client *client = 0;
+    if (pluginPath == QLatin1String("Hunspell"))
+        client = new HunspellClient(this);
+    else
+        client = new NSSpellCheckerClient(this);
+#endif
+#endif
 
     const QStringList languages = client->languages();
     d->clients.append(client->name());
@@ -309,4 +336,3 @@ void Loader::changed()
 
 }
 
-#include "moc_loader_p.cpp"

@@ -47,11 +47,28 @@ SpellerPlugin *HunspellClient::createSpeller(const QString &language)
 QStringList HunspellClient::languages() const
 {
     QStringList lst;
-    QDir dir(QStringLiteral("/usr/share/myspell/dicts/"));
+    const QString DICT_MASK = QStringLiteral("*.dic");
+#ifdef Q_OS_MAC
+    const QString DIR_MASK = QStringLiteral("dict-*");
+    const QString AFF_MASK = QStringLiteral("*.aff");
+
+    QDir lodir(QStringLiteral("/Applications/LibreOffice.app/Contents/Resources/extensions"));
+    if (lodir.exists()) {
+        foreach (const QString &d, lodir.entryList(QStringList(DIR_MASK), QDir::Dirs)) {
+            QDir dictDir(lodir.absoluteFilePath(d));
+            foreach (const QString &dict, dictDir.entryList(QStringList(AFF_MASK), QDir::Files)) {
+                lst << dict.left(dict.length() - 4); // remove ".aff"
+            }
+        }
+    }
+
+    QDir dir(QStringLiteral("/System/Library/Spelling"));
+#else
+    QDir dir(QStringLiteral("/usr/share/myspell/dicts"));
+#endif
     if (dir.exists()) {
-        QStringList lstDic = dir.entryList(QStringList(QStringLiteral("*.dic")), QDir::Files);
-        foreach (const QString &tmp, lstDic) {
-            lst << tmp.left(tmp.length() - 4); // remove ".dic"
+        foreach (const QString &dict, dir.entryList(QStringList(DICT_MASK), QDir::Files)) {
+            lst << dict.left(dict.length() - 4); // remove ".dic"
         }
     }
     return lst;

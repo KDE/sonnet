@@ -23,8 +23,6 @@
 
 #include "client_p.h"
 
-#include "hunspell/hunspell.hxx"
-
 namespace Sonnet
 {
 class SpellerPlugin;

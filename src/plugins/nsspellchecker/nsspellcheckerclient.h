@@ -1,6 +1,7 @@
 /**
+ * nsspellcheckerclient.h
  *
- * Copyright (C)  2003  Zack Rusin <zack@kde.org>
+ * Copyright (C)  2015  Nick Shaforostoff <shaforostoff@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -17,15 +18,37 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
  * 02110-1301  USA
  */
+#ifndef KSPELL_NSSPELLCLIENT_H
+#define KSPELL_NSSPELLCLIENT_H
+
 #include "client_p.h"
 
 namespace Sonnet
 {
+class SpellerPlugin;
+}
+using Sonnet::SpellerPlugin;
 
-Client::Client(QObject *parent)
-    : QObject(parent)
+class NSSpellCheckerClient : public Sonnet::Client
 {
-}
+    Q_OBJECT
+    Q_INTERFACES(Sonnet::Client)
+    Q_PLUGIN_METADATA(IID "org.kde.Sonnet.NSSpellClient")
+public:
+    explicit NSSpellCheckerClient(QObject *parent = 0);
+    ~NSSpellCheckerClient();
 
-}
+    int reliability() const
+    {
+        return 30;
+    }
 
+    SpellerPlugin *createSpeller(const QString &language);
+    QStringList languages() const;
+    QString name() const
+    {
+        return QStringLiteral("NSSpellChecker");
+    }
+};
+
+#endif

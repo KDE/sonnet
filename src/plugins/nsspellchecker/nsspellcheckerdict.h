@@ -1,6 +1,7 @@
 /**
+ * nsspellcheckerdict.h
  *
- * Copyright (C)  2003  Zack Rusin <zack@kde.org>
+ * Copyright (C)  2015  Nick Shaforostoff <shaforostoff@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -17,15 +18,27 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
  * 02110-1301  USA
  */
-#include "client_p.h"
+#ifndef KSPELL_NSSPELLDICT_H
+#define KSPELL_NSSPELLDICT_H
 
-namespace Sonnet
+#include "spellerplugin_p.h"
+
+class NSSpellCheckerDict : public Sonnet::SpellerPlugin
 {
+public:
+    explicit NSSpellCheckerDict(const QString &lang);
+    ~NSSpellCheckerDict();
+    virtual bool isCorrect(const QString &word) const;
 
-Client::Client(QObject *parent)
-    : QObject(parent)
-{
-}
+    virtual QStringList suggest(const QString &word) const;
 
-}
+    virtual bool storeReplacement(const QString &bad,
+                                  const QString &good);
 
+    virtual bool addToPersonal(const QString &word);
+    virtual bool addToSession(const QString &word);
+private:
+    void* m_langCode;
+};
+
+#endif
