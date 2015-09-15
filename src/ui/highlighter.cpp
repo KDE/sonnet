@@ -198,7 +198,7 @@ void Highlighter::setIntraWordEditing(bool editing)
 
 void Highlighter::setAutomatic(bool automatic)
 {
-    if (automatic  == d->automatic) {
+    if (automatic == d->automatic) {
         return;
     }
 
@@ -349,7 +349,8 @@ void Highlighter::setCurrentLanguage(const QString &lang)
 {
     QString prevLang=d->spellchecker->language();
     d->spellchecker->setLanguage(lang);
-    if (!d->spellchecker->isValid()) {
+    d->spellCheckerFound = d->spellchecker->isValid();
+    if (!d->spellCheckerFound) {
         qDebug() << "No dictionary for \""
             << lang
             << "\" staying with the current language.";
@@ -359,7 +360,7 @@ void Highlighter::setCurrentLanguage(const QString &lang)
     d->spellchecker->setAttribute(Speller::AutoDetectLanguage, false);
     d->wordCount = 0;
     d->errorCount = 0;
-    if (d->automatic && d->spellCheckerFound) {
+    if (d->automatic) {
         d->rehighlightRequest->start(0);
     }
 }

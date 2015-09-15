@@ -47,10 +47,10 @@ SpellerPlugin *HunspellClient::createSpeller(const QString &language)
 QStringList HunspellClient::languages() const
 {
     QStringList lst;
-    const QString DICT_MASK = QStringLiteral("*.dic");
+    const QString AFF_MASK = QStringLiteral("*.aff");
+
 #ifdef Q_OS_MAC
     const QString DIR_MASK = QStringLiteral("dict-*");
-    const QString AFF_MASK = QStringLiteral("*.aff");
 
     QDir lodir(QStringLiteral("/Applications/LibreOffice.app/Contents/Resources/extensions"));
     if (lodir.exists()) {
@@ -61,17 +61,13 @@ QStringList HunspellClient::languages() const
             }
         }
     }
-
-    QDir dir(QStringLiteral("/System/Library/Spelling"));
-#else
-    QDir dir(QStringLiteral("/usr/share/myspell/dicts"));
-    if (!dir.exists()) {
-        dir = QDir(QStringLiteral("/usr/share/hunspell"));
-    }
 #endif
+
+    QDir dir(QStringLiteral(HUNSPELL_MAIN_DICT_PATH));
+
     if (dir.exists()) {
-        foreach (const QString &dict, dir.entryList(QStringList(DICT_MASK), QDir::Files)) {
-            lst << dict.left(dict.length() - 4); // remove ".dic"
+        foreach (const QString &dict, dir.entryList(QStringList(AFF_MASK), QDir::Files)) {
+            lst << dict.left(dict.length() - 4); // remove ".aff"
         }
     }
     return lst;

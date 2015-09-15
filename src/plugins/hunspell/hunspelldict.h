@@ -24,20 +24,28 @@
 #include "spellerplugin_p.h"
 #include "hunspell/hunspell.hxx"
 
+#ifndef HUNSPELL_MAIN_DICT_PATH
+#ifdef Q_OS_MAC
+#define HUNSPELL_MAIN_DICT_PATH "/System/Library/Spelling"
+#else
+#define HUNSPELL_MAIN_DICT_PATH "/usr/share/hunspell/"
+#endif
+#endif
+
 class HunspellDict : public Sonnet::SpellerPlugin
 {
 public:
     explicit HunspellDict(const QString &lang);
     ~HunspellDict();
-    virtual bool isCorrect(const QString &word) const;
+    bool isCorrect(const QString &word) const;
 
-    virtual QStringList suggest(const QString &word) const;
+    QStringList suggest(const QString &word) const;
 
-    virtual bool storeReplacement(const QString &bad,
+    bool storeReplacement(const QString &bad,
                                   const QString &good);
 
-    virtual bool addToPersonal(const QString &word);
-    virtual bool addToSession(const QString &word);
+    bool addToPersonal(const QString &word);
+    bool addToSession(const QString &word);
 private:
     Hunspell *m_speller;
 };

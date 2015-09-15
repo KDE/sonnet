@@ -49,7 +49,7 @@ public:
     Settings *settings;
 
     // <language, Clients with that language >
-    QMap<QString, QList<Client *> > languageClients;
+    QMap<QString, QVector<Client *> > languageClients;
     QStringList clients;
 
     QStringList languagesNameCache;
@@ -92,14 +92,14 @@ SpellerPlugin *Loader::createSpeller(const QString &language,
         plang = d->settings->defaultLanguage();
     }
 
-    const QList<Client *> lClients = d->languageClients[plang];
+    const QVector<Client *> lClients = d->languageClients[plang];
 
     if (lClients.isEmpty()) {
         qWarning() << "No language dictionaries for the language:" << plang;
         return 0;
     }
 
-    QListIterator<Client *> itr(lClients);
+    QVectorIterator<Client *> itr(lClients);
     while (itr.hasNext()) {
         Client *item = itr.next();
         if (!pclient.isEmpty()) {
@@ -244,11 +244,8 @@ QStringList Loader::languageNames() const
     }
 
     QStringList allLocalizedDictionaries;
-    const QStringList allDictionaries = languages();
-
-    for (QStringList::ConstIterator it = allDictionaries.begin();
-            it != allDictionaries.end(); ++it) {
-        allLocalizedDictionaries.append(languageNameForCode(*it));
+    Q_FOREACH (const QString& langCode, languages()) {
+        allLocalizedDictionaries.append(languageNameForCode(langCode));
     }
     // cache the list
     d->languagesNameCache = allLocalizedDictionaries;
@@ -317,11 +314,9 @@ void Loader::loadPlugin(const QString &pluginPath)
     d->clients.append(client->name());
 
     Q_FOREACH (const QString &language, languages) {
-        QList<Client *> &languageClients = d->languageClients[language];
+        QVector<Client *> &languageClients = d->languageClients[language];
 
-        if (languageClients.isEmpty()) {
-            languageClients.append(client);    // no clients yet, just add it
-        } else if (client->reliability() < languageClients.first()->reliability()) {
+        if (languageClients.isEmpty() || client->reliability() < languageClients.first()->reliability()) {
             languageClients.append(client);    // less reliable, to the end
         } else {
             languageClients.prepend(client);    // more reliable, to the front

@@ -32,9 +32,11 @@ HunspellDict::HunspellDict(const QString &lang)
     : SpellerPlugin(lang), m_speller(0)
 {
     qCDebug(SONNET_HUNSPELL) << " HunspellDict::HunspellDict( const QString& lang ):" << lang;
-#ifdef Q_OS_MAC
-    QByteArray dirPath = QByteArrayLiteral("/System/Library/Spelling/");
+
+    QByteArray dirPath = QByteArrayLiteral(HUNSPELL_MAIN_DICT_PATH);
     QString dic = QLatin1String(dirPath) % lang % QLatin1String(".dic");
+
+#ifdef Q_OS_MAC
     if (!QFileInfo(dic).exists()) {
         dirPath = QByteArrayLiteral("/Applications/LibreOffice.app/Contents/Resources/extensions/dict-") + lang.leftRef(2).toLatin1() ;
         dic = QLatin1String(dirPath) % QLatin1Char('/') % lang % QLatin1String(".dic");
@@ -44,19 +46,12 @@ HunspellDict::HunspellDict(const QString &lang)
         }
         dirPath += '/';
     }
-#else
-    QByteArray dirPath = QByteArrayLiteral("/usr/share/myspell/dicts/");
-    if (!QFileInfo(QLatin1String(dirPath)).exists()) {
-        dirPath = QByteArrayLiteral("/usr/share/hunspell/");
-    }
-    QString dic = QLatin1String(dirPath) % lang % QLatin1String(".dic");
 #endif
 
     if (QFileInfo(dic).exists()) {
         m_speller = new Hunspell(QByteArray(dirPath + lang.toLatin1() + ".aff").constData(), dic.toLatin1().constData());
     }
     qCDebug(SONNET_HUNSPELL) << " dddddd " << m_speller;
-
 }
 
 HunspellDict::~HunspellDict()
