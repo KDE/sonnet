@@ -65,6 +65,9 @@ QStringList HunspellClient::languages() const
     QDir dir(QStringLiteral("/System/Library/Spelling"));
 #else
     QDir dir(QStringLiteral("/usr/share/myspell/dicts"));
+    if (!dir.exists()) {
+        dir = QDir(QStringLiteral("/usr/share/hunspell"));
+    }
 #endif
     if (dir.exists()) {
         foreach (const QString &dict, dir.entryList(QStringList(DICT_MASK), QDir::Files)) {

@@ -45,7 +45,10 @@ HunspellDict::HunspellDict(const QString &lang)
         dirPath += '/';
     }
 #else
-    const QByteArray dirPath = QByteArrayLiteral("/usr/share/myspell/dicts/");
+    QByteArray dirPath = QByteArrayLiteral("/usr/share/myspell/dicts/");
+    if (!QFileInfo(QLatin1String(dirPath)).exists()) {
+        dirPath = QByteArrayLiteral("/usr/share/hunspell/");
+    }
     QString dic = QLatin1String(dirPath) % lang % QLatin1String(".dic");
 #endif
 
