@@ -46,8 +46,12 @@ public:
 
     bool addToPersonal(const QString &word);
     bool addToSession(const QString &word);
+
 private:
+    QByteArray toDictEncoding(const QString &word) const;
+
     Hunspell *m_speller;
+    QTextCodec *m_codec;
 };
 
 #endif

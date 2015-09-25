@@ -29,7 +29,9 @@
 using namespace Sonnet;
 
 HunspellDict::HunspellDict(const QString &lang)
-    : SpellerPlugin(lang), m_speller(0)
+    : SpellerPlugin(lang)
+    , m_speller(0)
+    , m_codec(0)
 {
     qCDebug(SONNET_HUNSPELL) << " HunspellDict::HunspellDict( const QString& lang ):" << lang;
 
@@ -50,6 +52,12 @@ HunspellDict::HunspellDict(const QString &lang)
 
     if (QFileInfo(dic).exists()) {
         m_speller = new Hunspell(QByteArray(dirPath + lang.toLatin1() + ".aff").constData(), dic.toLatin1().constData());
+        m_codec = QTextCodec::codecForName(m_speller->get_dic_encoding());
+        if (!m_codec) {
+            qWarning() << "Failed to find a text codec for name" << m_speller->get_dic_encoding() << "defaulting to locale text codec";
+            m_codec = QTextCodec::codecForLocale();
+            Q_ASSERT(m_codec);
+        }
     }
     qCDebug(SONNET_HUNSPELL) << " dddddd " << m_speller;
 }
@@ -59,13 +67,18 @@ HunspellDict::~HunspellDict()
     delete m_speller;
 }
 
+QByteArray HunspellDict::toDictEncoding(const QString& word) const
+{
+    return m_codec->fromUnicode(word);
+}
+
 bool HunspellDict::isCorrect(const QString &word) const
 {
     qCDebug(SONNET_HUNSPELL) << " isCorrect :" << word;
     if (!m_speller) {
         return false;
     }
-    int result = m_speller->spell(word.toUtf8().constData());
+    int result = m_speller->spell(toDictEncoding(word).constData());
     qCDebug(SONNET_HUNSPELL) << " result :" << result;
     return (result != 0);
 }
@@ -77,9 +90,9 @@ QStringList HunspellDict::suggest(const QString &word) const
     }
     char **selection;
     QStringList lst;
-    int nbWord = m_speller->suggest(&selection, word.toUtf8().constData());
+    int nbWord = m_speller->suggest(&selection, toDictEncoding(word).constData());
     for (int i = 0; i < nbWord; ++i) {
-        lst << QString::fromUtf8(selection[i]);
+        lst << m_codec->toUnicode(selection[i]);
     }
     m_speller->free_list(&selection, nbWord);
     return lst;
@@ -102,7 +115,7 @@ bool HunspellDict::addToPersonal(const QString &word)
     if (!m_speller) {
         return false;
     }
-    m_speller->add(word.toUtf8().constData());
+    m_speller->add(toDictEncoding(word).constData());
     return false;
 }
 
