@@ -33,9 +33,9 @@
 
 
 #ifdef SONNET_STATIC
+#include "../plugins/hunspell/hunspellclient.h"
 #ifdef Q_OS_MAC
 #include "../plugins/nsspellchecker/nsspellcheckerclient.h"
-#include "../plugins/hunspell/hunspellclient.h"
 #endif
 #endif
 
@@ -279,8 +279,8 @@ void Loader::loadPlugins()
 #else
 #ifdef Q_OS_MAC
     loadPlugin(QString());
-    loadPlugin(QStringLiteral("Hunspell"));
 #endif
+    loadPlugin(QStringLiteral("Hunspell"));
 #endif
 }
 
@@ -300,11 +300,10 @@ void Loader::loadPlugin(const QString &pluginPath)
         return;
     }
 #else
-    Q_UNUSED(pluginPath)
-#ifdef Q_OS_MAC
     Client *client = 0;
     if (pluginPath == QLatin1String("Hunspell"))
         client = new HunspellClient(this);
+#ifdef Q_OS_MAC
     else
         client = new NSSpellCheckerClient(this);
 #endif

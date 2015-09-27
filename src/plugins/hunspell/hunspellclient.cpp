@@ -49,10 +49,14 @@ QStringList HunspellClient::languages() const
     QStringList lst;
     const QString AFF_MASK = QStringLiteral("*.aff");
 
+#if defined(Q_OS_MAC) || defined(Q_OS_WIN)
 #ifdef Q_OS_MAC
-    const QString DIR_MASK = QStringLiteral("dict-*");
-
     QDir lodir(QStringLiteral("/Applications/LibreOffice.app/Contents/Resources/extensions"));
+#endif
+#ifdef Q_OS_WIN
+    QDir lodir(QStringLiteral("C:/Program Files (x86)/LibreOffice 5/share/extensions"));
+#endif
+    const QString DIR_MASK = QStringLiteral("dict-*");
     if (lodir.exists()) {
         foreach (const QString &d, lodir.entryList(QStringList(DIR_MASK), QDir::Dirs)) {
             QDir dictDir(lodir.absoluteFilePath(d));

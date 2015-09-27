@@ -21,5 +21,6 @@ DEFINES += SONNETCORE_EXPORT=""
 DEFINES += INSTALLATION_PLUGIN_PATH=""
 DEFINES += SONNET_STATIC
 
-system("touch sonnetcore_export.h")
+unix:system("touch sonnetcore_export.h")
+win32:system("type nul > sonnetcore_export.h")
 

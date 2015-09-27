@@ -13,5 +13,5 @@ DEFINES += SONNET_STATIC
 
 INCLUDEPATH += ../core
 
-system("touch sonnetui_export.h")
-
+unix:system("touch sonnetui_export.h")
+win32:system("type nul > sonnetui_export.h")
