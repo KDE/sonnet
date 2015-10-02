@@ -33,7 +33,7 @@ class HunspellClient : public Sonnet::Client
 {
     Q_OBJECT
     Q_INTERFACES(Sonnet::Client)
-    Q_PLUGIN_METADATA(IID "org.kde.Sonnet.ASpellClient")
+    Q_PLUGIN_METADATA(IID "org.kde.Sonnet.HunspellClient")
 public:
     explicit HunspellClient(QObject *parent = 0);
     ~HunspellClient();
