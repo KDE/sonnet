@@ -27,6 +27,7 @@
 
 #include <QtCore/QHash>
 #include <QtCore/QSet>
+#include <QtCore/QScopedPointer>
 
 class VoikkoClient;
 class VoikkoDictPrivate;
