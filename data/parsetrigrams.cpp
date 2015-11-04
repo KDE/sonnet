@@ -57,7 +57,7 @@ int main(int argc, char **argv)
         while (!stream.atEnd())
         {
             QString line = stream.readLine();
-            QRegExp rx(QLatin1String("(.{3})\\s+(.*)"));
+            QRegExp rx(QStringLiteral("(.{3})\\s+(.*)"));
             int pos = rx.indexIn(line);
             if ( pos != -1 )
                 models[lname][line.left(3)] = rx.cap(2).toInt();

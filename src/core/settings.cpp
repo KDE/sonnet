@@ -237,7 +237,7 @@ void Settings::save()
     settings.setValue(QStringLiteral("backgroundCheckerEnabled"), d->backgroundCheckerEnabled);
     settings.setValue(QStringLiteral("checkerEnabledByDefault"), d->checkerEnabledByDefault);
     settings.setValue(QStringLiteral("autodetectLanguage"), d->autodetectLanguage);
-    QString defaultLanguage = QString::fromLatin1("ignore_%1").arg(d->defaultLanguage);
+    QString defaultLanguage = QStringLiteral("ignore_%1").arg(d->defaultLanguage);
     if (settings.contains(defaultLanguage) && d->ignore.isEmpty()) {
         settings.remove(defaultLanguage);
     } else if (!d->ignore.isEmpty()) {
@@ -284,7 +284,7 @@ void Settings::restore()
     d->disableWordCount = settings.value(QStringLiteral("Sonnet_AsYouTypeDisableWordCount"), 100).toInt();
     d->autodetectLanguage = settings.value(QStringLiteral("autodetectLanguage"), true).toBool();
 
-    const QString ignoreEntry = QString::fromLatin1("ignore_%1").arg(d->defaultLanguage);
+    const QString ignoreEntry = QStringLiteral("ignore_%1").arg(d->defaultLanguage);
     const QStringList ignores = settings.value(ignoreEntry, kdeWords()).toStringList();
     setQuietIgnoreList(ignores);
 }

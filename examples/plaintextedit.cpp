@@ -57,24 +57,24 @@ int main(int argc, char **argv)
 
     //@@snippet_begin(simple_textedit_example)
     QPlainTextEdit *textEdit = new QPlainTextEdit;
-    textEdit->setPlainText("This is a sample buffer. Whih this thingg will "
-                      "be checkin for misstakes. Whih, Enviroment, govermant. Whih."
+    textEdit->setPlainText(QStringLiteral("This is a sample buffer. Whih this thingg will "
+                      "be checkin for misstakes. Whih, Enviroment, govermant. Whih.")
                      );
 
     Sonnet::SpellCheckDecorator *installer = new Sonnet::SpellCheckDecorator(textEdit);
-    installer->highlighter()->setCurrentLanguage("en");
+    installer->highlighter()->setCurrentLanguage(QStringLiteral("en"));
     //@@snippet_end
 
     QObject::connect(comboBox, SIGNAL(dictionaryChanged(QString)), installer->highlighter(), SLOT(setCurrentLanguage(QString)));
 
     QPlainTextEdit *commentTextEdit = new QPlainTextEdit;
     commentTextEdit->setPlainText(
-        "John Doe said:\n"
+        QStringLiteral("John Doe said:\n"
         "# Hello how aree you?\n"
-        "I am ffine thanks");
+        "I am ffine thanks"));
 
     installer = new CommentCheckDecorator(commentTextEdit);
-    installer->highlighter()->setCurrentLanguage("en");
+    installer->highlighter()->setCurrentLanguage(QStringLiteral("en"));
     QObject::connect(comboBox, SIGNAL(dictionaryChanged(QString)), installer->highlighter(), SLOT(setCurrentLanguage(QString)));
 
     QVBoxLayout *layout = new QVBoxLayout(&window);

@@ -37,7 +37,7 @@ public:
         topLayout->addWidget(dcb);
         connect(dcb, SIGNAL(dictionaryChanged(QString)), SLOT(dictChanged(QString)));
         connect(dcb, SIGNAL(dictionaryNameChanged(QString)), SLOT(dictNameChanged(QString)));
-        QPushButton *btn = new QPushButton("Dump", this);
+        QPushButton *btn = new QPushButton(QStringLiteral("Dump"), this);
         topLayout->addWidget(btn);
         connect(btn, SIGNAL(clicked()), SLOT(dump()));
     }

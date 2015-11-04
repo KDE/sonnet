@@ -39,9 +39,9 @@ void TestSpell::contextMenuEvent(QContextMenuEvent *e)
     qDebug() << "TestSpell::contextMenuEvent";
     QMenu *popup = createStandardContextMenu();
     QMenu *subMenu = new QMenu(popup);
-    subMenu->setTitle("Text highlighting");
+    subMenu->setTitle(QStringLiteral("Text highlighting"));
     connect(subMenu, SIGNAL(triggered(QAction*)), this, SLOT(slotActivate()));
-    QAction *action = new QAction("active or not", popup);
+    QAction *action = new QAction(QStringLiteral("active or not"), popup);
     popup->addSeparator();
     popup->addMenu(subMenu);
     subMenu->addAction(action);

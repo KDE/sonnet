@@ -52,7 +52,7 @@ public:
 
     virtual QString name() const
     {
-        return QString::fromLatin1("ASpell");
+        return QStringLiteral("ASpell");
     }
 private:
     AspellConfig *m_config;
