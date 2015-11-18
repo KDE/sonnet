@@ -60,16 +60,16 @@ ConfigWidget::ConfigWidget(QWidget *parent)
     d->ui.ignoreListWidget->addItems(ignoreList);
     d->ui.m_bgSpellCB->setChecked(d->loader->settings()->backgroundCheckerEnabled());
     d->ui.m_bgSpellCB->hide();//hidden by default
-    connect(d->ui.addButton, SIGNAL(clicked()), SLOT(slotIgnoreWordAdded()));
-    connect(d->ui.removeButton, SIGNAL(clicked()), SLOT(slotIgnoreWordRemoved()));
+    connect(d->ui.addButton, &QAbstractButton::clicked, this, &ConfigWidget::slotIgnoreWordAdded);
+    connect(d->ui.removeButton, &QAbstractButton::clicked, this, &ConfigWidget::slotIgnoreWordRemoved);
 
     layout->addWidget(d->wdg);
-    connect(d->ui.m_langCombo, SIGNAL(dictionaryChanged(QString)), this, SIGNAL(configChanged()));
-    connect(d->ui.m_bgSpellCB, SIGNAL(clicked(bool)), this, SIGNAL(configChanged()));
-    connect(d->ui.m_skipUpperCB, SIGNAL(clicked(bool)), this, SIGNAL(configChanged()));
-    connect(d->ui.m_skipRunTogetherCB, SIGNAL(clicked(bool)), this, SIGNAL(configChanged()));
-    connect(d->ui.m_checkerEnabledByDefaultCB, SIGNAL(clicked(bool)), this, SIGNAL(configChanged()));
-    connect(d->ui.m_autodetectCB, SIGNAL(clicked(bool)), this, SIGNAL(configChanged()));
+    connect(d->ui.m_langCombo, &DictionaryComboBox::dictionaryChanged, this, &ConfigWidget::configChanged);
+    connect(d->ui.m_bgSpellCB, &QAbstractButton::clicked, this, &ConfigWidget::configChanged);
+    connect(d->ui.m_skipUpperCB, &QAbstractButton::clicked, this, &ConfigWidget::configChanged);
+    connect(d->ui.m_skipRunTogetherCB, &QAbstractButton::clicked, this, &ConfigWidget::configChanged);
+    connect(d->ui.m_checkerEnabledByDefaultCB, &QAbstractButton::clicked, this, &ConfigWidget::configChanged);
+    connect(d->ui.m_autodetectCB, &QAbstractButton::clicked, this, &ConfigWidget::configChanged);
     d->ui.nobackendfound->setVisible(d->loader->clients().isEmpty());
 }
 

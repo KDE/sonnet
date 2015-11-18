@@ -85,10 +85,10 @@ BackgroundChecker::BackgroundChecker(const Speller &speller, QObject *parent)
       d(new BackgroundCheckerPrivate)
 {
     d->currentDict = speller;
-    connect(d, SIGNAL(misspelling(QString,int)),
-            SIGNAL(misspelling(QString,int)));
-    connect(d, SIGNAL(done()),
-            SLOT(slotEngineDone()));
+    connect(d, &BackgroundCheckerPrivate::misspelling,
+            this, &BackgroundChecker::misspelling);
+    connect(d, &BackgroundCheckerPrivate::done,
+            this, &BackgroundChecker::slotEngineDone);
 }
 
 BackgroundChecker::~BackgroundChecker()
