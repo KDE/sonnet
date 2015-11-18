@@ -27,6 +27,7 @@
 #include <QCheckBox>
 #include <QLayout>
 #include <QListWidgetItem>
+#include <QDebug>
 
 using namespace Sonnet;
 
@@ -43,7 +44,6 @@ ConfigWidget::ConfigWidget(QWidget *parent)
       d(new ConfigWidgetPrivate)
 {
     d->loader = Loader::openLoader();
-
     QVBoxLayout *layout = new QVBoxLayout(this);
     layout->setMargin(0);
     layout->setObjectName(QStringLiteral("SonnetConfigUILayout"));
@@ -70,6 +70,7 @@ ConfigWidget::ConfigWidget(QWidget *parent)
     connect(d->ui.m_skipRunTogetherCB, SIGNAL(clicked(bool)), this, SIGNAL(configChanged()));
     connect(d->ui.m_checkerEnabledByDefaultCB, SIGNAL(clicked(bool)), this, SIGNAL(configChanged()));
     connect(d->ui.m_autodetectCB, SIGNAL(clicked(bool)), this, SIGNAL(configChanged()));
+    d->ui.nobackendfound->setVisible(d->loader->clients().isEmpty());
 }
 
 ConfigWidget::~ConfigWidget()

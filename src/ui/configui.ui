@@ -13,10 +13,19 @@
    </rect>
   </property>
   <layout class="QGridLayout">
-   <property name="margin">
+   <property name="leftMargin">
     <number>0</number>
    </property>
-   <item row="0" column="1">
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item row="1" column="1">
     <widget class="Sonnet::DictionaryComboBox" name="m_langCombo">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -26,7 +35,7 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="2">
+   <item row="2" column="0" colspan="2">
     <widget class="QGroupBox" name="groupBox1">
      <property name="title">
       <string>Options</string>
@@ -70,7 +79,7 @@
      </layout>
     </widget>
    </item>
-   <item row="0" column="0">
+   <item row="1" column="0">
     <widget class="QLabel" name="textLabel1">
      <property name="text">
       <string>Default language:</string>
@@ -80,7 +89,7 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="2">
+   <item row="3" column="0" colspan="2">
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
       <string>Ignored Words:</string>
@@ -100,7 +109,8 @@
            <string>&amp;Add</string>
           </property>
           <property name="icon">
-           <iconset theme="list-add"/>
+           <iconset theme="list-add">
+            <normaloff>.</normaloff>.</iconset>
           </property>
          </widget>
         </item>
@@ -112,7 +122,8 @@
              <string>&amp;Remove</string>
             </property>
             <property name="icon">
-             <iconset theme="list-remove"/>
+             <iconset theme="list-remove">
+              <normaloff>.</normaloff>.</iconset>
             </property>
            </widget>
           </item>
@@ -136,13 +147,30 @@
      </layout>
     </widget>
    </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QLabel" name="nobackendfound">
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <italic>true</italic>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>No backend found for spell checking</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <customwidgets>
   <customwidget>
    <class>Sonnet::DictionaryComboBox</class>
    <extends>QComboBox</extends>
-   <header>dictionarycombobox.h</header>
+   <header>sonnet/dictionarycombobox.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
