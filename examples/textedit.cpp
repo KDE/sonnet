@@ -57,7 +57,7 @@ int main(int argc, char **argv)
 
     //@@snippet_begin(simple_textedit_example)
     QTextEdit *textEdit = new QTextEdit;
-    textEdit->setText(QStringLiteral("This is a sample buffer. Whih this thingg will "
+    textEdit->setText(QString::fromLatin1("This is a sample buffer. Whih this thingg will "
                       "be checkin for misstakes. Whih, Enviroment, govermant. Whih.")
                      );
 
@@ -69,9 +69,7 @@ int main(int argc, char **argv)
 
     QTextEdit *mailTextEdit = new QTextEdit;
     mailTextEdit->setText(
-        QStringLiteral("John Doe said:\n"
-        "> Hello how aree you?\n"
-        "I am ffine thanks"));
+        QStringLiteral("John Doe said:\n> Hello how aree you?\nI am ffine thanks"));
 
     installer = new MailSpellCheckDecorator(mailTextEdit);
     installer->highlighter()->setCurrentLanguage(QStringLiteral("en"));

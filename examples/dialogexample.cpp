@@ -56,7 +56,7 @@ int main(int argc, char **argv)
     QApplication app(argc, argv);
 
     TestDialog test;
-    test.check(QStringLiteral("This is a sample buffer. Whih this thingg will "
+    test.check(QString::fromLatin1("This is a sample buffer. Whih this thingg will "
                "be checkin for misstakes. Whih, Enviroment, govermant. Whih.")
               );
 
