@@ -26,7 +26,7 @@ include(ECMGenerateHeaders)
 
 include(ECMPoQmTools)
 
-set(KF5_VERSION "5.19.0") # handled by release scripts
+set(KF5_VERSION "5.20.0") # handled by release scripts
 
 ecm_setup_version(${KF5_VERSION} VARIABLE_PREFIX SONNET
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/sonnet_version.h"
