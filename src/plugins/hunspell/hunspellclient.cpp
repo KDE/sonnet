@@ -23,6 +23,8 @@
 #include "hunspelldebug.h"
 
 #include <QDir>
+#include <QString>
+#include <QCoreApplication>
 #include <QDebug>
 
 using namespace Sonnet;
@@ -68,6 +70,9 @@ QStringList HunspellClient::languages() const
 #endif
 
     QDir dir(QStringLiteral(HUNSPELL_MAIN_DICT_PATH));
+    if (!dir.exists()) {
+        dir.setPath(QStringLiteral("%1/../share/hunspell/").arg(QCoreApplication::applicationDirPath()));
+    }
 
     if (dir.exists()) {
         foreach (const QString &dict, dir.entryList(QStringList(AFF_MASK), QDir::Files)) {

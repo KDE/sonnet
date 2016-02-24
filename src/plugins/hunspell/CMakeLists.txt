@@ -2,9 +2,9 @@
 ########### next target ###############
 
 if (EXISTS "/usr/share/hunspell/")
-add_definitions(-DHUNSPELL_MAIN_DICT_PATH="/usr/share/hunspell/")
+add_definitions(-DHUNSPELL_MAIN_DICT_PATH="/usr/share/hunspell")
 elseif (EXISTS "/usr/share/myspell/")
-add_definitions(-DHUNSPELL_MAIN_DICT_PATH="/usr/share/myspell/")
+add_definitions(-DHUNSPELL_MAIN_DICT_PATH="/usr/share/myspell")
 endif (EXISTS "/usr/share/hunspell/")
 
 include_directories( ${HUNSPELL_INCLUDE_DIR} )

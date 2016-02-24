@@ -25,8 +25,14 @@
 #include <QDebug>
 #include <QTextCodec>
 #include <QStringBuilder>
+#include <QCoreApplication>
 
 using namespace Sonnet;
+
+static const QString composeDictName(const QByteArray &dirPath, const QString &lang)
+{
+    return QFile::decodeName(dirPath+'/') + lang + QStringLiteral(".dic");
+}
 
 HunspellDict::HunspellDict(const QString &lang)
     : SpellerPlugin(lang)
@@ -36,26 +42,30 @@ HunspellDict::HunspellDict(const QString &lang)
     qCDebug(SONNET_HUNSPELL) << " HunspellDict::HunspellDict( const QString& lang ):" << lang;
 
     QByteArray dirPath = QByteArrayLiteral(HUNSPELL_MAIN_DICT_PATH);
-    QString dic = QLatin1String(dirPath) % lang % QLatin1String(".dic");
+    QString dic = composeDictName(dirPath, lang);
+
+    if (!QFileInfo::exists(dic)) {
+        dirPath = QFile::encodeName(QCoreApplication::applicationDirPath()) + QByteArrayLiteral("/../share/hunspell");
+        dic = composeDictName(dirPath, lang);
+    }
 
 #if defined(Q_OS_MAC) || defined(Q_OS_WIN)
-    if (!QFileInfo(dic).exists()) {
+    if (!QFileInfo::exists(dic)) {
 #ifdef Q_OS_MAC
         dirPath = QByteArrayLiteral("/Applications/LibreOffice.app/Contents/Resources/extensions/dict-") + lang.leftRef(2).toLatin1();
 #endif
 #ifdef Q_OS_WIN
         dirPath = QByteArrayLiteral("C:/Program Files (x86)/LibreOffice 5/share/extensions/dict-") + lang.leftRef(2).toLatin1();
 #endif
-        dic = QLatin1String(dirPath) % QLatin1Char('/') % lang % QLatin1String(".dic");
-        if (lang.length()==5 && !QFileInfo(dic).exists()) {
+        dic = composeDictName(dirPath, lang);
+        if (lang.length()==5 && !QFileInfo::exists(dic)) {
             dirPath += '-' + lang.midRef(3,2).toLatin1();
-            dic = QLatin1String(dirPath) % QLatin1Char('/') % lang % QLatin1String(".dic");
+            dic = composeDictName(dirPath, lang);
         }
-        dirPath += '/';
     }
 #endif
 
-    if (QFileInfo(dic).exists()) {
+    if (QFileInfo::exists(dic)) {
         m_speller = new Hunspell(QByteArray(dirPath + lang.toLatin1() + ".aff").constData(), dic.toLatin1().constData());
         m_codec = QTextCodec::codecForName(m_speller->get_dic_encoding());
         if (!m_codec) {

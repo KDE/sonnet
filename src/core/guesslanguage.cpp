@@ -278,6 +278,10 @@ void GuessLanguagePrivate::loadModels()
 {
     QString triMapFile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("kf5/sonnet/trigrams.map"));
 
+    if (triMapFile.isEmpty()) {
+        triMapFile = QStringLiteral("%1/../share/kf5/sonnet/trigrams.map").arg(QCoreApplication::applicationDirPath());
+    }
+
     QFile sin(triMapFile);
     if (!sin.open(QIODevice::ReadOnly)) {
         qWarning() << "Sonnet: Unable to load trigram models from file" << triMapFile;

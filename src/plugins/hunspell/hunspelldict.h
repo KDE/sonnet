@@ -28,7 +28,7 @@
 #ifdef Q_OS_MAC
 #define HUNSPELL_MAIN_DICT_PATH "/System/Library/Spelling"
 #else
-#define HUNSPELL_MAIN_DICT_PATH "/usr/share/hunspell/"
+#define HUNSPELL_MAIN_DICT_PATH "/usr/share/hunspell"
 #endif
 #endif
 
