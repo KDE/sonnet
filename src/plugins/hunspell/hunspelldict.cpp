@@ -66,7 +66,7 @@ HunspellDict::HunspellDict(const QString &lang)
 #endif
 
     if (QFileInfo::exists(dic)) {
-        m_speller = new Hunspell(QByteArray(dirPath + lang.toLatin1() + ".aff").constData(), dic.toLatin1().constData());
+        m_speller = new Hunspell(QByteArray(dirPath + "/" + lang.toLatin1() + ".aff").constData(), dic.toLatin1().constData());
         m_codec = QTextCodec::codecForName(m_speller->get_dic_encoding());
         if (!m_codec) {
             qWarning() << "Failed to find a text codec for name" << m_speller->get_dic_encoding() << "defaulting to locale text codec";

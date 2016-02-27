@@ -71,7 +71,7 @@ QStringList HunspellClient::languages() const
 
     QDir dir(QStringLiteral(HUNSPELL_MAIN_DICT_PATH));
     if (!dir.exists()) {
-        dir.setPath(QStringLiteral("%1/../share/hunspell/").arg(QCoreApplication::applicationDirPath()));
+        dir.setPath(QStringLiteral("%1/../share/hunspell").arg(QCoreApplication::applicationDirPath()));
     }
 
     if (dir.exists()) {
