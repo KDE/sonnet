@@ -26,9 +26,9 @@ class SonnetFilterTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
-    void testFilter();
-    void testWordAt();
+    void testLatin();
     void testIndic();
+    void testSentence();
 };
 
 #endif
