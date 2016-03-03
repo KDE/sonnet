@@ -71,7 +71,7 @@ public:
     {
         tokenizer = new WordTokenizer();
         active = true;
-        automatic = true;
+        automatic = false;
         connected = false;
         wordCount = 0;
         errorCount = 0;
