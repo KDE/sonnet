@@ -21,6 +21,7 @@
 #include <QtCore/QHash>
 #include <QtCore/QString>
 #include <QtCore/QDebug>
+#include <QTextBoundaryFinder>
 
 #include "textbreaks_p.h"
 
@@ -57,11 +58,6 @@ void TextBreaks::setText( const QString & text )
     d->text = text;
 }
 
-static inline bool isWordSeparator(const QChar character)
-{
-    return character.isSpace() || character.isMark() || character.isPunct() || character.isSymbol();
-}
-
 TextBreaks::Positions TextBreaks::wordBreaks(const QString &text)
 {
     Positions breaks;
@@ -70,68 +66,58 @@ TextBreaks::Positions TextBreaks::wordBreaks(const QString &text)
         return breaks;
     }
 
-    int i=0;
-    do {
-        if (i == 0 || isWordSeparator(text[i])) {
-            Position pos;
+    QTextBoundaryFinder boundaryFinder(QTextBoundaryFinder::Word, text);
 
-            // Seek past leading separators
-            while (i < text.length() && isWordSeparator(text[i])) {
-                i++;
+    while (boundaryFinder.position() < text.length()) {
+        if (!(boundaryFinder.boundaryReasons().testFlag(QTextBoundaryFinder::StartOfItem))) {
+            if (boundaryFinder.toNextBoundary() == -1) {
+                break;
             }
-
-            pos.start = i;
-            while (i < text.length() && !isWordSeparator(text[i])) {
-                i++;
-            }
-            pos.length = i - pos.start;
-
-            if (pos.length > 0) {
-                breaks.append(pos);
-            }
-        } else {
-            i++;
+            continue;
         }
-    } while (i < text.length());
 
+        Position pos;
+        pos.start = boundaryFinder.position();
+        int end = boundaryFinder.toNextBoundary();
+        if (end == -1) {
+            break;
+        }
+        pos.length = end - pos.start;
+        if (pos.length < 1) {
+            continue;
+        }
+        breaks.append(pos);
+
+        if (boundaryFinder.toNextBoundary() == -1) {
+            break;
+        }
+    }
     return breaks;
-}
-
-static inline bool isSentenceSeparator(const QChar &character)
-{
-    return character.isMark() || character.isPunct() || character.category() == QChar::Separator_Paragraph;
 }
 
 TextBreaks::Positions TextBreaks::sentenceBreaks(const QString & text)
 {
     Positions breaks;
 
-    if (text.isEmpty())
+    if (text.isEmpty()) {
         return breaks;
+    }
 
-    int i=0;
-    do {
-        if (i == 0 || isSentenceSeparator(text[i])) {
-            Position pos;
+    QTextBoundaryFinder boundaryFinder(QTextBoundaryFinder::Sentence, text);
 
-            while (i < text.length() && !text[i].isLetter()) {
-                i++;
-            }
-
-            pos.start = i;
-            do {
-                i++;
-            } while (i < text.length() && !isSentenceSeparator(text[i]));
-            pos.length = i - pos.start;
-
-            // null-terminated, hence more than 1
-            if (pos.length > 1)
-                breaks.append(pos);
-        } else {
-            i++;
+    while (boundaryFinder.position() < text.length()) {
+        Position pos;
+        pos.start = boundaryFinder.position();
+        int end = boundaryFinder.toNextBoundary();
+        if (end == -1) {
+            break;
         }
-    } while (i < text.length());
-
+        pos.length = end - pos.start;
+        if (pos.length < 1) {
+            continue;
+        }
+        breaks.append(pos);
+    }
     return breaks;
 }
 
