@@ -212,26 +212,23 @@ void Highlighter::slotAutoDetection()
 {
     bool savedActive = d->active;
 
-    // tme = Too many errors
-    bool tme = false;
-    if (d->disableWordCount > 0 && d->wordCount > 10) {
-        tme = (d->errorCount >= d->disableWordCount);
-    }
-    if (d->disablePercentage > 0) {
-        tme = tme && (d->errorCount * 100 >= d->disablePercentage * d->wordCount);
-    }
-
-    if (d->active && tme) {
-        qDebug() << "Sonnet: Disabling spell checking, too many errors";
-        d->active = false;
-    } else if (!d->active && !tme) {
-        d->active = true;
+    //don't disable just because 1 of 4 is misspelled.
+    if (d->automatic && d->wordCount >= 10) {
+        // tme = Too many errors
+        bool tme = (d->errorCount >= d->disableWordCount) && (
+                       d->errorCount * 100 >= d->disablePercentage * d->wordCount);
+        if (d->active && tme) {
+            d->active = false;
+        } else if (!d->active && !tme) {
+            d->active = true;
+        }
     }
 
     if (d->active != savedActive) {
         if (d->active) {
             emit activeChanged(tr("As-you-type spell checking enabled."));
         } else {
+            qDebug() << "Sonnet: Disabling spell checking, too many errors";
             emit activeChanged(tr("Too many misspelled words. "
                                   "As-you-type spell checking disabled."));
         }
