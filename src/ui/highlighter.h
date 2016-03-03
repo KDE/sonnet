@@ -188,7 +188,6 @@ protected:
 public Q_SLOTS:
     /**
      * Set language to use for spell checking.
-     * Warning: this disables automatic language detection
      *
      * @param language the language code for the new language to use.
      */

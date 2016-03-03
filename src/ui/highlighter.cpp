@@ -357,7 +357,6 @@ void Highlighter::setCurrentLanguage(const QString &lang)
         d->spellchecker->setLanguage(prevLang);
         return;
     }
-    d->spellchecker->setAttribute(Speller::AutoDetectLanguage, false);
     d->wordCount = 0;
     d->errorCount = 0;
     if (d->automatic) {
