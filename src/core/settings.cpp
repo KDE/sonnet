@@ -194,7 +194,6 @@ bool Settings::setQuietIgnoreList(const QStringList &ignores)
         d->ignore.insert(*itr, true);
         changed = true;
     }
-    save();
     return changed;
 }
 
