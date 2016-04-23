@@ -85,42 +85,20 @@ void ConfigWidget::save()
 
 void ConfigWidget::setFromGui()
 {
-    bool changed = false;
+    Settings *settings = d->loader->settings();
+
     if (d->ui.m_langCombo->count()) {
-        if (d->loader->settings()->setDefaultLanguage(
-            d->ui.m_langCombo->currentDictionary()))
-        {
-            changed = true;
-        }
-    }
-    if (d->loader->settings()->setCheckUppercase(
-        !d->ui.m_skipUpperCB->isChecked()))
-    {
-        changed = true;
-    }
-    if (d->loader->settings()->setSkipRunTogether(
-        d->ui.m_skipRunTogetherCB->isChecked()))
-    {
-        changed = true;
-    }
-    if (d->loader->settings()->setBackgroundCheckerEnabled(
-        d->ui.m_bgSpellCB->isChecked()))
-    {
-        changed = true;
-    }
-    if (d->loader->settings()->setCheckerEnabledByDefault(
-        d->ui.m_checkerEnabledByDefaultCB->isChecked()))
-    {
-        changed = true;
-    }
-    if (d->loader->settings()->setAutodetectLanguage(
-        d->ui.m_autodetectCB->isChecked()))
-    {
-        changed = true;
+        settings->setDefaultLanguage(d->ui.m_langCombo->currentDictionary());
     }
 
-    if (changed) {
-        d->loader->settings()->save();
+    settings->setCheckUppercase(!d->ui.m_skipUpperCB->isChecked());
+    settings->setSkipRunTogether(d->ui.m_skipRunTogetherCB->isChecked());
+    settings->setBackgroundCheckerEnabled(d->ui.m_bgSpellCB->isChecked());
+    settings->setCheckerEnabledByDefault(d->ui.m_checkerEnabledByDefaultCB->isChecked());
+    settings->setAutodetectLanguage(d->ui.m_autodetectCB->isChecked());
+
+    if (settings->modified()) {
+        settings->save();
     }
 }
 
