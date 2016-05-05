@@ -21,9 +21,12 @@
 #include "hunspelldict.h"
 #include "hunspelldebug.h"
 
+#include <QFile>
 #include <QFileInfo>
 #include <QDebug>
+#include <QDir>
 #include <QTextCodec>
+#include <QTextStream>
 #include <QStringBuilder>
 #include <QCoreApplication>
 
@@ -73,6 +76,24 @@ HunspellDict::HunspellDict(const QString &lang)
             m_codec = QTextCodec::codecForLocale();
             Q_ASSERT(m_codec);
         }
+    }
+    QString userDic = QDir::home().filePath(QLatin1String(".hunspell_") % lang);
+    QFile userDicFile(userDic);
+    if (userDicFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qCDebug(SONNET_HUNSPELL) << "Load a user dictionary" << userDic;
+        QTextStream userDicIn(&userDicFile);
+        while (!userDicIn.atEnd()) {
+            QString word = userDicIn.readLine();
+            if (word.contains(QLatin1Char('/'))) {
+                QStringList wordParts = word.split(QLatin1Char('/'));
+                m_speller->add_with_affix(toDictEncoding(wordParts.at(0)).constData(), toDictEncoding(wordParts.at(1)).constData());
+            } if (word.at(0) == QLatin1Char('*')) {
+                m_speller->remove(toDictEncoding(word.mid(1)).constData());
+            } else {
+                m_speller->add(toDictEncoding(word).constData());
+            }
+        }
+        userDicFile.close();
     }
     qCDebug(SONNET_HUNSPELL) << " dddddd " << m_speller;
 }
@@ -131,15 +152,23 @@ bool HunspellDict::addToPersonal(const QString &word)
         return false;
     }
     m_speller->add(toDictEncoding(word).constData());
+    QString userDic = QDir::home().filePath(QLatin1String(".hunspell_") % language());
+    QFile userDicFile(userDic);
+    if (userDicFile.open(QIODevice::Append | QIODevice::Text)) {
+        QTextStream out(&userDicFile);
+        out << word << '\n';
+        userDicFile.close();
+        return true;
+    }
+
     return false;
 }
 
 bool HunspellDict::addToSession(const QString &word)
 {
-    Q_UNUSED(word);
     if (!m_speller) {
         return false;
     }
-    qCDebug(SONNET_HUNSPELL) << " bool HunspellDict::addToSession not implemented";
-    return false;
+    int r = m_speller->add(toDictEncoding(word).constData());
+    return r == 0;
 }
