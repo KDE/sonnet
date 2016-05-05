@@ -3,13 +3,20 @@ project(sonnetdata)
 add_executable(parsetrigrams parsetrigrams.cpp)
 
 TARGET_LINK_LIBRARIES(parsetrigrams PUBLIC Qt5::Core)
-#INSTALL(TARGETS parsetrigrams DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+INSTALL(TARGETS parsetrigrams EXPORT KF5SonnetTargets ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
+
+if(CMAKE_CROSSCOMPILING AND PARSETRIGRAMS_EXECUTABLE)
+    add_executable(KF5::parsetrigrams IMPORTED GLOBAL)
+    set_target_properties(KF5::parsetrigrams PROPERTIES IMPORTED_LOCATION ${PARSETRIGRAMS_EXECUTABLE})
+else()
+    add_executable(KF5::parsetrigrams ALIAS parsetrigrams)
+endif()
 
 macro(create_trigrams_map _target_name _in_DIR _out_FILE)
     get_target_property(PARSETRIGRAMS_EXECUTABLE parsetrigrams LOCATION)
     add_custom_target(trigrams_${_target_name} ALL)
     add_custom_command(TARGET trigrams_${_target_name}
-                       COMMAND "${PARSETRIGRAMS_EXECUTABLE}" "${_in_DIR}" > "${_out_FILE}"
+                       COMMAND $<TARGET_FILE:KF5::parsetrigrams> "${_in_DIR}" > "${_out_FILE}"
                       )
 
     add_dependencies(trigrams_${_target_name} parsetrigrams)
