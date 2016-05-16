@@ -1,6 +1,6 @@
 TARGET = sonnet-core
 TEMPLATE = lib
-CONFIG += staticlib
+CONFIG += staticlib c++11
 QT -= gui
 
 SOURCES += loader.cpp \
