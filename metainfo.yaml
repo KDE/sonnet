@@ -13,3 +13,7 @@ libraries:
  - qmake: SonnetUi
    cmake: "KF5::SonnetUi"
 cmakename: KF5Sonnet
+
+public_lib: true
+group: Frameworks
+subgroup: Tier 1
