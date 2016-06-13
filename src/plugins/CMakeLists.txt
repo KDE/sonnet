@@ -56,3 +56,6 @@ if (VOIKKO_FOUND)
    add_subdirectory( voikko )
 endif ()
 
+if (APPLE)
+    add_subdirectory( nsspellchecker )
+endif ()
