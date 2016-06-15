@@ -1,6 +1,11 @@
 project(sonnetdata)
 
+include(ECMMarkNonGuiExecutable)
+
 add_executable(parsetrigrams parsetrigrams.cpp)
+
+# Mark it as non-gui so we won't create an app bundle on Mac OS X
+ecm_mark_nongui_executable(parsetrigrams)
 
 TARGET_LINK_LIBRARIES(parsetrigrams PUBLIC Qt5::Core)
 INSTALL(TARGETS parsetrigrams EXPORT KF5SonnetTargets ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
