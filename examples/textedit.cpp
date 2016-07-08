@@ -62,7 +62,7 @@ int main(int argc, char **argv)
                      );
 
     Sonnet::SpellCheckDecorator *installer = new Sonnet::SpellCheckDecorator(textEdit);
-    installer->highlighter()->setCurrentLanguage(QStringLiteral("en"));
+    installer->highlighter()->setCurrentLanguage(QStringLiteral("en_US"));
     //@@snippet_end
 
     QObject::connect(comboBox, SIGNAL(dictionaryChanged(QString)), installer->highlighter(), SLOT(setCurrentLanguage(QString)));
@@ -72,7 +72,7 @@ int main(int argc, char **argv)
         QStringLiteral("John Doe said:\n> Hello how aree you?\nI am ffine thanks"));
 
     installer = new MailSpellCheckDecorator(mailTextEdit);
-    installer->highlighter()->setCurrentLanguage(QStringLiteral("en"));
+    installer->highlighter()->setCurrentLanguage(QStringLiteral("en_US"));
     QObject::connect(comboBox, SIGNAL(dictionaryChanged(QString)), installer->highlighter(), SLOT(setCurrentLanguage(QString)));
 
     QVBoxLayout *layout = new QVBoxLayout(&window);
