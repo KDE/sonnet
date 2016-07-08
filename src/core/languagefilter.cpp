@@ -105,6 +105,17 @@ QString LanguageFilter::language() const
     if (d->lastLanguage.isNull()) {
         d->lastLanguage = d->gl.identify(d->lastToken.toString(), QStringList() << d->mainLanguage() << d->prevLanguage);
     }
+    const QStringList available = d->sp.availableLanguages();
+
+    //FIXME: do something a little more smart here
+    if (!available.contains(d->lastLanguage)) {
+        for(const QString& lang : available) {
+            if (lang.startsWith(d->lastLanguage)) {
+                d->lastLanguage = lang;
+                break;
+            }
+        }
+    }
 
     return d->lastLanguage;
 }
@@ -115,12 +126,10 @@ bool LanguageFilter::isSpellcheckable() const {
         return false;
     }
 
-    //FIXME: do something a little more smart here
-    Q_FOREACH(const QString& lang, d->sp.availableLanguages()) {
-        if (lang.startsWith(lastlang)) {
-            return true;
-        }
+    if (d->sp.availableLanguages().contains(lastlang)) {
+        return true;
     }
+
     return false;
 }
 
