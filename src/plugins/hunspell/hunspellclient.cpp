@@ -26,6 +26,7 @@
 #include <QString>
 #include <QCoreApplication>
 #include <QDebug>
+#include <QStandardPaths>
 
 using namespace Sonnet;
 
@@ -33,22 +34,8 @@ HunspellClient::HunspellClient(QObject *parent)
     : Client(parent)
 {
     qCDebug(SONNET_HUNSPELL) << " HunspellClient::HunspellClient";
-}
 
-HunspellClient::~HunspellClient()
-{
-}
-
-SpellerPlugin *HunspellClient::createSpeller(const QString &language)
-{
-    qCDebug(SONNET_HUNSPELL) << " SpellerPlugin *HunspellClient::createSpeller(const QString &language) ;" << language;
-    HunspellDict *ad = new HunspellDict(language);
-    return ad;
-}
-
-QStringList HunspellClient::languages() const
-{
-    QStringList lst;
+    QStringList dirList;
     const QString AFF_MASK = QStringLiteral("*.aff");
 
 #if defined(Q_OS_MAC) || defined(Q_OS_WIN)
@@ -61,24 +48,41 @@ QStringList HunspellClient::languages() const
     const QString DIR_MASK = QStringLiteral("dict-*");
     if (lodir.exists()) {
         foreach (const QString &d, lodir.entryList(QStringList(DIR_MASK), QDir::Dirs)) {
-            QDir dictDir(lodir.absoluteFilePath(d));
-            foreach (const QString &dict, dictDir.entryList(QStringList(AFF_MASK), QDir::Files)) {
-                lst << dict.left(dict.length() - 4); // remove ".aff"
-            }
+            dirList.append(lodir.absoluteFilePath(d));
         }
     }
 #endif
 
-    QDir dir(QStringLiteral(HUNSPELL_MAIN_DICT_PATH));
-    if (!dir.exists()) {
-        dir.setPath(QStringLiteral("%1/../share/hunspell").arg(QCoreApplication::applicationDirPath()));
-    }
+    // search QStandardPaths
+    dirList.append(QStandardPaths::locateAll(
+            QStandardPaths::GenericDataLocation,
+            QStringLiteral("hunspell"),
+            QStandardPaths::LocateDirectory));
 
-    if (dir.exists()) {
-        foreach (const QString &dict, dir.entryList(QStringList(AFF_MASK), QDir::Files)) {
-            lst << dict.left(dict.length() - 4); // remove ".aff"
+    dirList.append(QStringLiteral(HUNSPELL_MAIN_DICT_PATH));
+    dirList.append(QStringLiteral("%1/../share/hunspell").arg(QCoreApplication::applicationDirPath()));
+
+    for (const QString & dirString : dirList) {
+        QDir dir(dirString);
+        for (const QFileInfo &dict : dir.entryInfoList(QStringList(AFF_MASK), QDir::Files)) {
+            m_languagePaths.insert(dict.baseName(), dict.canonicalPath());
         }
     }
-    return lst;
+}
+
+HunspellClient::~HunspellClient()
+{
+}
+
+SpellerPlugin *HunspellClient::createSpeller(const QString &language)
+{
+    qCDebug(SONNET_HUNSPELL) << " SpellerPlugin *HunspellClient::createSpeller(const QString &language) ;" << language;
+    HunspellDict *ad = new HunspellDict(language, m_languagePaths.value(language));
+    return ad;
+}
+
+QStringList HunspellClient::languages() const
+{
+    return m_languagePaths.keys();
 }
 

@@ -35,7 +35,7 @@
 class HunspellDict : public Sonnet::SpellerPlugin
 {
 public:
-    explicit HunspellDict(const QString &lang);
+    explicit HunspellDict(const QString &lang, QString path);
     ~HunspellDict();
     bool isCorrect(const QString &word) const;
 

@@ -22,6 +22,7 @@
 #define KSPELL_HUNSPELLCLIENT_H
 
 #include "client_p.h"
+#include <QMap>
 
 namespace Sonnet
 {
@@ -51,6 +52,9 @@ public:
     {
         return QStringLiteral("Hunspell");
     }
+
+private:
+    QMap<QString, QString> m_languagePaths;
 };
 
 #endif

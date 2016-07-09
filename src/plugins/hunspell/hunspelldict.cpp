@@ -29,54 +29,36 @@
 #include <QTextStream>
 #include <QStringBuilder>
 #include <QCoreApplication>
+#include <QStandardPaths>
 
 using namespace Sonnet;
 
-static const QString composeDictName(const QByteArray &dirPath, const QString &lang)
-{
-    return QFile::decodeName(dirPath+'/') + lang + QStringLiteral(".dic");
-}
-
-HunspellDict::HunspellDict(const QString &lang)
+HunspellDict::HunspellDict(const QString &lang, QString path)
     : SpellerPlugin(lang)
     , m_speller(0)
     , m_codec(0)
 {
-    qCDebug(SONNET_HUNSPELL) << " HunspellDict::HunspellDict( const QString& lang ):" << lang;
+    qCDebug(SONNET_HUNSPELL) << "Loading dictionary for" << lang << "from" << path;
 
-    QByteArray dirPath = QByteArrayLiteral(HUNSPELL_MAIN_DICT_PATH);
-    QString dic = composeDictName(dirPath, lang);
-
-    if (!QFileInfo::exists(dic)) {
-        dirPath = QFile::encodeName(QCoreApplication::applicationDirPath()) + QByteArrayLiteral("/../share/hunspell");
-        dic = composeDictName(dirPath, lang);
+    if (!path.endsWith(QLatin1Char('/'))) {
+        path += QLatin1Char('/');
     }
+    path += lang;
+    QString dictionary = path + QStringLiteral(".dic");
+    QString aff = path + QStringLiteral(".aff");
 
-#if defined(Q_OS_MAC) || defined(Q_OS_WIN)
-    if (!QFileInfo::exists(dic)) {
-#ifdef Q_OS_MAC
-        dirPath = QByteArrayLiteral("/Applications/LibreOffice.app/Contents/Resources/extensions/dict-") + lang.leftRef(2).toLatin1();
-#endif
-#ifdef Q_OS_WIN
-        dirPath = QByteArrayLiteral("C:/Program Files (x86)/LibreOffice 5/share/extensions/dict-") + lang.leftRef(2).toLatin1();
-#endif
-        dic = composeDictName(dirPath, lang);
-        if (lang.length()==5 && !QFileInfo::exists(dic)) {
-            dirPath += '-' + lang.midRef(3,2).toLatin1();
-            dic = composeDictName(dirPath, lang);
-        }
-    }
-#endif
-
-    if (QFileInfo::exists(dic)) {
-        m_speller = new Hunspell(QByteArray(dirPath + "/" + lang.toLatin1() + ".aff").constData(), dic.toLatin1().constData());
+    if (QFileInfo::exists(dictionary) && QFileInfo::exists(aff)) {
+        m_speller = new Hunspell(aff.toLocal8Bit().constData(), dictionary.toLocal8Bit().constData());
         m_codec = QTextCodec::codecForName(m_speller->get_dic_encoding());
         if (!m_codec) {
             qWarning() << "Failed to find a text codec for name" << m_speller->get_dic_encoding() << "defaulting to locale text codec";
             m_codec = QTextCodec::codecForLocale();
             Q_ASSERT(m_codec);
         }
+    } else {
+        qCWarning(SONNET_HUNSPELL) << "Unable to find dictionary for" << lang << "in path" << path;
     }
+
     QString userDic = QDir::home().filePath(QLatin1String(".hunspell_") % lang);
     QFile userDicFile(userDic);
     if (userDicFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -95,7 +77,7 @@ HunspellDict::HunspellDict(const QString &lang)
         }
         userDicFile.close();
     }
-    qCDebug(SONNET_HUNSPELL) << " dddddd " << m_speller;
+    qCDebug(SONNET_HUNSPELL) << "Created " << m_speller;
 }
 
 HunspellDict::~HunspellDict()
