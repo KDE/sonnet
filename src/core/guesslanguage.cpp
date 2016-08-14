@@ -433,9 +433,6 @@ QStringList GuessLanguagePrivate::identify(const QString& sample, const QList<QC
 QStringList GuessLanguagePrivate::guessFromTrigrams(const QString & sample, const QStringList& languages)
 {
     QStringList ret;
-    if (sample.size() < MIN_LENGTH) {
-        return ret;
-    }
 
     QMap<int,QString> scores;
     const QList<QString> sampleTrigrams = createOrderedModel(sample);
