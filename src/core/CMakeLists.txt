@@ -11,6 +11,7 @@ set(sonnetcore_SRCS
    textbreaks.cpp
    tokenizer.cpp
    languagefilter.cpp
+   core_debug.cpp
 )
 
 # Dear packagers, this is just used as an extra search paths for plugins. Don't get your panties in a twist.

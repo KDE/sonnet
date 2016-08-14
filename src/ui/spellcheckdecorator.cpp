@@ -28,7 +28,6 @@
 #include <QMenu>
 #include <QTextEdit>
 #include <QPlainTextEdit>
-#include <QDebug>
 
 namespace Sonnet
 {

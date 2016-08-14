@@ -23,7 +23,6 @@
 
 #include <QFile>
 #include <QFileInfo>
-#include <QDebug>
 #include <QDir>
 #include <QTextCodec>
 #include <QTextStream>

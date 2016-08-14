@@ -23,7 +23,8 @@
 
 #include "hspelldict.h"
 
-#include <QtCore/QDebug>
+#include "hspell_debug.h"
+
 #include <QtCore/QTextCodec>
 #include <QSettings>
 
@@ -34,7 +35,7 @@ HSpellDict::HSpellDict(const QString &lang)
 {
     int int_error = hspell_init(&m_speller, HSPELL_OPT_DEFAULT);
     if (int_error == -1) {
-        qWarning() << "HSpellDict::HSpellDict: Init failed";
+        qCWarning(SONNET_LOG_HSPELL) << "HSpellDict::HSpellDict: Init failed";
         initialized = false;
     } else {
         /* hspell understans only iso8859-8-i            */

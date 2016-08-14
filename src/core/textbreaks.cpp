@@ -20,7 +20,6 @@
 
 #include <QtCore/QHash>
 #include <QtCore/QString>
-#include <QtCore/QDebug>
 #include <QTextBoundaryFinder>
 
 #include "textbreaks_p.h"

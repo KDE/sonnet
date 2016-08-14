@@ -29,7 +29,7 @@
 #include "settings_p.h"
 #include "languagefilter_p.h"
 
-#include <QDebug>
+#include "ui_debug.h"
 #include <QTextEdit>
 #include <QTextCharFormat>
 #include <QTimer>
@@ -228,7 +228,7 @@ void Highlighter::slotAutoDetection()
         if (d->active) {
             emit activeChanged(tr("As-you-type spell checking enabled."));
         } else {
-            qDebug() << "Sonnet: Disabling spell checking, too many errors";
+            qCDebug(SONNET_LOG_UI) << "Sonnet: Disabling spell checking, too many errors";
             emit activeChanged(tr("Too many misspelled words. "
                                   "As-you-type spell checking disabled."));
         }
@@ -351,7 +351,7 @@ void Highlighter::setCurrentLanguage(const QString &lang)
     d->spellchecker->setLanguage(lang);
     d->spellCheckerFound = d->spellchecker->isValid();
     if (!d->spellCheckerFound) {
-        qDebug() << "No dictionary for \""
+        qCDebug(SONNET_LOG_UI) << "No dictionary for \""
             << lang
             << "\" staying with the current language.";
         d->spellchecker->setLanguage(prevLang);

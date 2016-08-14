@@ -21,7 +21,7 @@
 #include "dictionarycombobox.h"
 
 #include <speller.h>
-#include <qdebug.h>
+#include "ui_debug.h"
 
 namespace Sonnet
 {
@@ -73,7 +73,7 @@ void DictionaryComboBox::setCurrentByDictionaryName(const QString &name)
 
     int idx = findText(name);
     if (idx == -1) {
-        //qDebug() << "name not found" << name;
+        qCDebug(SONNET_LOG_UI) << "name not found" << name;
         return;
     }
 
@@ -89,7 +89,7 @@ void DictionaryComboBox::setCurrentByDictionary(const QString &dictionary)
 
     int idx = findData(dictionary);
     if (idx == -1) {
-        qDebug() << "dictionary not found" << dictionary;
+        qCDebug(SONNET_LOG_UI) << "dictionary not found" << dictionary;
         return;
     }
 

@@ -19,7 +19,6 @@
     Boston, MA 02110-1301, USA.
 */
 
-#include <QtCore/QDebug>
 #include <QtCore/QCoreApplication>
 #include <QtCore/QFile>
 #include <QtCore/QFileInfo>
@@ -31,6 +30,7 @@
 #include "loader_p.h"
 #include "speller.h"
 #include "tokenizer_p.h"
+#include "core_debug.h"
 
 /*
 All language tags should be valid according to IETF BCP 47, as codefied in RFC 4646.
@@ -284,7 +284,7 @@ void GuessLanguagePrivate::loadModels()
 
     QFile sin(triMapFile);
     if (!sin.open(QIODevice::ReadOnly)) {
-        qWarning() << "Sonnet: Unable to load trigram models from file" << triMapFile;
+        qCWarning(SONNET_LOG_CORE) << "Sonnet: Unable to load trigram models from file" << triMapFile;
         return;
     }
 

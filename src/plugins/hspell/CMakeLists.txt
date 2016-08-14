@@ -10,7 +10,7 @@ include_directories(${HSPELL_INCLUDE_DIR})
 
 ########### next target ###############
 
-set(sonnet_hspell_PART_SRCS hspellclient.cpp hspelldict.cpp )
+set(sonnet_hspell_PART_SRCS hspellclient.cpp hspelldict.cpp hspell_debug.cpp)
 
 
 add_library(sonnet_hspell MODULE ${sonnet_hspell_PART_SRCS})

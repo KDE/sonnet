@@ -19,7 +19,6 @@
 */
 
 #include <QtCore/QString>
-#include <QtCore/QDebug>
 
 #include "languagefilter_p.h"
 #include "guesslanguage.h"

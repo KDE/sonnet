@@ -26,7 +26,7 @@
 #include <QLocale>
 #include <QCache>
 #include <QSet>
-#include <QDebug>
+#include "core_debug.h"
 
 namespace Sonnet
 {
@@ -84,7 +84,7 @@ Speller::Speller(const QString &lang)
 
 Speller::~Speller()
 {
-    //qDebug()<<"deleting "<<this;
+    qCDebug(SONNET_LOG_CORE) << "deleting" << this << "for" << d->language;
     delete d;
 }
 

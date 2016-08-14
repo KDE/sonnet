@@ -22,7 +22,7 @@
 #include "aspellclient.h"
 #include "aspelldict.h"
 
-#include <QDebug>
+#include "aspell_debug.h"
 #include <QtPlugin>
 
 using namespace Sonnet;

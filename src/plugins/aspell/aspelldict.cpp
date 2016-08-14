@@ -20,7 +20,7 @@
  */
 #include "aspelldict.h"
 
-#include <QDebug>
+#include "aspell_debug.h"
 
 #include <QtCore/QTextCodec>
 
@@ -44,7 +44,7 @@ ASpellDict::ASpellDict(const QString &lang)
     AspellCanHaveError *possible_err = new_aspell_speller(m_config);
 
     if (aspell_error_number(possible_err) != 0) {
-        qDebug() << "Error : " << aspell_error_message(possible_err);
+        qCWarning(SONNET_LOG_ASPELL) << "aspell error: " << aspell_error_message(possible_err);
     } else {
         m_speller = to_aspell_speller(possible_err);
     }
@@ -115,7 +115,7 @@ bool ASpellDict::addToPersonal(const QString &word)
     if (!m_speller) {
         return false;
     }
-    qDebug() << "ASpellDict::addToPersonal: word = " << word;
+    qCDebug(SONNET_LOG_ASPELL) << "Adding" << word << "to aspell personal dictionary";
     /* ASpell is expecting length of a string in char representation */
     /* word.length() != word.toUtf8().length() for nonlatin strings    */
     aspell_speller_add_to_personal(m_speller, word.toUtf8().constData(),

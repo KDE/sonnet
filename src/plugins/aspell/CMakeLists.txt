@@ -4,7 +4,7 @@ include_directories( ${ASPELL_INCLUDE_DIR})
 
 ########### next target ###############
 
-set(sonnet_aspell_PART_SRCS aspellclient.cpp aspelldict.cpp )
+set(sonnet_aspell_PART_SRCS aspellclient.cpp aspelldict.cpp aspell_debug.cpp)
 
 if(WIN32)
 add_definitions(-DCMAKE_INSTALL_PREFIX="${CMAKE_INSTALL_PREFIX}")

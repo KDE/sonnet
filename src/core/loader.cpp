@@ -28,7 +28,7 @@
 #include <QtCore/QLocale>
 #include <QtCore/QCoreApplication>
 #include <QtCore/QPluginLoader>
-#include <QDebug>
+#include "core_debug.h"
 #include <QtCore/QDir>
 
 
@@ -77,7 +77,7 @@ Loader::Loader()
 
 Loader::~Loader()
 {
-    //qDebug()<<"Removing loader : "<< this;
+    qCDebug(SONNET_LOG_CORE) << "Removing loader: " << this;
     delete d->settings; d->settings = 0;
     delete d;
 }
@@ -95,7 +95,7 @@ SpellerPlugin *Loader::createSpeller(const QString &language,
     const QVector<Client *> lClients = d->languageClients[plang];
 
     if (lClients.isEmpty()) {
-        qWarning() << "No language dictionaries for the language:" << plang;
+        qCWarning(SONNET_LOG_CORE) << "No language dictionaries for the language:" << plang;
         return 0;
     }
 
@@ -274,7 +274,7 @@ void Loader::loadPlugins()
         }
     }
     if (plugins == 0) {
-        qWarning() << "Sonnet: No speller backends available!";
+        qCWarning(SONNET_LOG_CORE) << "Sonnet: No speller backends available!";
     }
 #else
 #ifdef Q_OS_MAC
@@ -289,13 +289,13 @@ void Loader::loadPlugin(const QString &pluginPath)
 #ifndef SONNET_STATIC
     QPluginLoader plugin(pluginPath);
     if (!plugin.load()) { // We do this separately for better error handling
-        qWarning() << "Sonnet: Unable to load plugin" << pluginPath << "Error:" << plugin.errorString();
+        qCWarning(SONNET_LOG_CORE) << "Sonnet: Unable to load plugin" << pluginPath << "Error:" << plugin.errorString();
         return;
     }
 
     Client *client = qobject_cast<Client *>(plugin.instance());
     if (!client) {
-        qWarning() << "Sonnet: Invalid plugin loaded" << pluginPath;
+        qCWarning(SONNET_LOG_CORE) << "Sonnet: Invalid plugin loaded" << pluginPath;
         plugin.unload(); // don't leave it in memory
         return;
     }

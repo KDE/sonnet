@@ -22,6 +22,8 @@
 #include "backgroundchecker.h"
 #include "backgroundchecker_p.h"
 
+#include "core_debug.h"
+
 using namespace Sonnet;
 
 
@@ -105,7 +107,6 @@ void BackgroundChecker::setText(const QString &text)
 void BackgroundChecker::start()
 {
     // ## what if d->currentText.isEmpty()?
-    //kDebug()<<"Sonnet BackgroundChecker: starting with : \"" << d->currentText << "\"";
 
     //TODO: carry state from last buffer
     d->mainTokenizer.setBuffer(fetchMoreText());

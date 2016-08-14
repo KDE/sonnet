@@ -83,7 +83,7 @@ Speller sp;
 while (t.hasNext()) {
     QStringRef word=t.next();
     if (!t.isSpellcheckable()) continue;
-    kDebug() << word.toString() << " " << sp.isCorrect(word.toString());
+    qDebug() << word.toString() << " " << sp.isCorrect(word.toString());
 }
 @endcode 
 

@@ -27,7 +27,7 @@
 #include <QCheckBox>
 #include <QLayout>
 #include <QListWidgetItem>
-#include <QDebug>
+#include "ui_debug.h"
 
 using namespace Sonnet;
 
