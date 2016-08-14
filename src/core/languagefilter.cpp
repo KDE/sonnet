@@ -102,7 +102,7 @@ QStringRef LanguageFilter::next()
 QString LanguageFilter::language() const
 {
     if (d->lastLanguage.isNull()) {
-        d->lastLanguage = d->gl.identify(d->lastToken.toString(), QStringList() << d->mainLanguage() << d->prevLanguage);
+        d->lastLanguage = d->gl.identify(d->lastToken.toString(), QStringList() << d->prevLanguage << Loader::openLoader()->settings()->defaultLanguage());
     }
     const QStringList available = d->sp.availableLanguages();
 
