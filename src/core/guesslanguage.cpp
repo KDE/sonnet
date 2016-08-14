@@ -278,47 +278,52 @@ QString GuessLanguage::identify(const QString& text, const QStringList& suggesti
     }
 
     // Load the model on demand
-    if (d->s_knownModels.isEmpty())
+    if (d->s_knownModels.isEmpty()) {
         d->loadModels();
-
-    QStringList candidates = d->identify(text, d->findRuns(text));
-
-    // guesser was sure enough
-    if (candidates.size() == 1) {
-        return candidates.front();
     }
 
-    // guesser was unable to even narrow it down to 3 candidates. In this case try fallbacks too
-    if (candidates.size() == d->m_maxItems || candidates.isEmpty()) {
-        candidates += suggestions;
+    QStringList candidateDictionaries;
+    for (const QString &candidateLanguage : d->identify(text, d->findRuns(text))) {
+        candidateDictionaries.append(d->s_dictionaries.values(candidateLanguage));
     }
-    candidates.removeDuplicates();
 
-    QStringList availableDictionaries = Loader::openLoader()->languages();
-    QStringList toDictDetect;
-
-    // make sure that dictionary-based detection only gets languages with installed dictionaries
-    Q_FOREACH(const QString& candidate, candidates) {
-        if (availableDictionaries.contains(candidate)) {
-            toDictDetect += candidate;
+    // Check if one of the candidates were in the list of suggested languages
+    // We loop over here first, to prefer suggestions, even if ranked lower by trigrams
+    QSet<QString> suggestionsSet(suggestionsList.toSet());
+    for (const QString &candidate : candidateDictionaries) {
+        if (suggestionsSet.contains(candidate)){
+            return candidate;
         }
     }
 
-    QString ret;
-
-    // only one of candidates has dictionary - use it
-    if (toDictDetect.size() == 1) {
-        ret = toDictDetect.front();
-    } else if (!toDictDetect.isEmpty()) {
-        ret = d->guessFromDictionaries(text, toDictDetect);
+    // Check if any of the candidates are available
+    for (const QString &candidate : candidateDictionaries) {
+        if (d->s_knownDictionaries.contains(candidate)) {
+            return candidate;
+        }
     }
 
-    // dictionary-based detection did not work, return best guess from previous step
-    if (ret.isEmpty() && !candidates.isEmpty()) {
-        ret = candidates.front();
+
+    qCDebug(SONNET_LOG_CORE()) << "Unable to identify string with trigrams:" << text;
+
+    // Wasn't able to get a good guess with the trigrams, try checking all
+    // dictionaries for the suggested languages.
+    QString identified = d->guessFromDictionaries(text, suggestionsList);
+    if (!identified.isEmpty()) {
+        return identified;
     }
 
-    return ret;
+    qCDebug(SONNET_LOG_CORE()) << "Unable to identify string with dictionaries:" << text;
+
+    // None of our methods worked, just return the best suggestion
+    if (!suggestionsList.isEmpty()) {
+        return suggestionsList.first();
+    }
+
+    qCWarning(SONNET_LOG_CORE) << "Unable to find any suggestion for" << text;
+
+    // Not even any suggestions, give up
+    return QString();
 }
 
 void GuessLanguage::setLimits(int maxItems, double minConfidence)
