@@ -264,10 +264,18 @@ GuessLanguage::~GuessLanguage()
     delete d;
 }
 
-QString GuessLanguage::identify(const QString& text, const QStringList& suggestions) const
+QString GuessLanguage::identify(const QString& text, const QStringList& suggestionsListIn) const
 {
     if (text.isEmpty())
         return QString();
+
+    // Filter for available dictionaries
+    QStringList suggestionsList;
+    for (const QString &suggestion : suggestionsListIn) {
+        if (d->s_knownDictionaries.contains(suggestion) && !suggestionsList.contains(suggestion)) {
+            suggestionsList.append(suggestion);
+        }
+    }
 
     // Load the model on demand
     if (d->s_knownModels.isEmpty())
