@@ -25,6 +25,7 @@
 #include <QtCore/QStandardPaths>
 #include <QtCore/QTime>
 #include <QtCore/QDataStream>
+#include <QLocale>
 
 #include "guesslanguage.h"
 #include "loader_p.h"
@@ -78,17 +79,9 @@ public:
     QStringList identify(const QString& sample, const QList< QChar::Script >& scripts);
     QString guessFromDictionaries(const QString& sentence, const QStringList& candidates);
 
-    static QStringList BASIC_LATIN;
-    static QStringList EXTENDED_LATIN;
-    static QStringList ALL_LATIN;
-    static QStringList CYRILLIC;
-    static QStringList ARABIC;
-    static QStringList DEVANAGARI;
-    static QStringList PT;
-    static QStringList HAN;
-    static QMultiHash<QChar::Script, QString> s_singletons;
-    static QMultiHash<QString, QString> s_dictionaries;
     static QSet<QString> s_knownDictionaries;
+    static QMultiHash<QChar::Script, QString> s_scriptLanguages;
+    static QMap<QString, QString> s_dictionaryNameMap;
 
     const int MIN_LENGTH;
     int m_maxItems;
@@ -96,161 +89,455 @@ public:
 };
 
 QHash< QString, QHash<QString,int> > GuessLanguagePrivate::s_knownModels;
-QStringList GuessLanguagePrivate::BASIC_LATIN;
-QStringList GuessLanguagePrivate::EXTENDED_LATIN;
-QStringList GuessLanguagePrivate::ALL_LATIN;
-QStringList GuessLanguagePrivate::CYRILLIC;
-QStringList GuessLanguagePrivate::ARABIC;
-QStringList GuessLanguagePrivate::DEVANAGARI;
-QStringList GuessLanguagePrivate::HAN;
-QStringList GuessLanguagePrivate::PT;
-QMultiHash<QChar::Script, QString> GuessLanguagePrivate::s_singletons;
-QMultiHash<QString, QString> GuessLanguagePrivate::s_dictionaries;
 QSet<QString> GuessLanguagePrivate::s_knownDictionaries;
+QMultiHash<QChar::Script, QString> GuessLanguagePrivate::s_scriptLanguages;
+QMap<QString, QString> GuessLanguagePrivate::s_dictionaryNameMap;
 
-static void pruneList(QStringList *list, const QMultiHash<QString, QString> &allowed)
+QStringList getNames(QLocale::Script script)
 {
-    QStringList pruned;
-    for (const QString &language : *list) {
-        if (!allowed.contains(language)) {
-            continue;
-        }
-        pruned.append(language);
+    QStringList locales;
+    for (const QLocale &locale : QLocale::matchingLocales(QLocale::AnyLanguage, script, QLocale::AnyCountry)) {
+        locales << locale.name();
     }
-    *list = pruned;
+    return locales;
 }
 
 GuessLanguagePrivate::GuessLanguagePrivate()
         : MIN_LENGTH(5), m_maxItems(1), m_minConfidence(0)
 {
-    if (!BASIC_LATIN.isEmpty())
+    if (!s_scriptLanguages.isEmpty())
         return;
 
-    for (const QString &language : Loader::openLoader()->languages()) {
-        if (language.contains(QLatin1Char('_'))) {
-            s_dictionaries.insert(language.split(QLatin1Char('_')).first(), language);
-        } else {
-            s_dictionaries.insert(language, language);
+    s_knownDictionaries = Loader::openLoader()->languages().toSet();
+
+    QSet<QString> allLanguages;
+    for (int i=0; i<int(QChar::ScriptCount); i++) {
+        QChar::Script script = (QChar::Script)i;
+        QStringList names;
+        switch(script) {
+        case QChar::Script_Latin:
+            names = getNames(QLocale::LatinScript);
+            break;
+        case QChar::Script_Greek:
+            names = getNames(QLocale::GreekScript);
+            break;
+        case QChar::Script_Cyrillic:
+            names = getNames(QLocale::CyrillicScript);
+            break;
+        case QChar::Script_Armenian:
+            names = getNames(QLocale::ArmenianScript);
+            break;
+        case QChar::Script_Hebrew:
+            names = getNames(QLocale::HebrewScript);
+            break;
+        case QChar::Script_Arabic:
+            names = getNames(QLocale::ArabicScript);
+            break;
+        case QChar::Script_Syriac:
+            names = getNames(QLocale::SyriacScript);
+            break;
+        case QChar::Script_Thaana:
+            names = getNames(QLocale::ThaanaScript);
+            break;
+        case QChar::Script_Devanagari:
+            names = getNames(QLocale::DevanagariScript);
+            break;
+        case QChar::Script_Bengali:
+            names = getNames(QLocale::BengaliScript);
+            break;
+        case QChar::Script_Gurmukhi:
+            names = getNames(QLocale::GurmukhiScript);
+            break;
+        case QChar::Script_Gujarati:
+            names = getNames(QLocale::GujaratiScript);
+            break;
+        case QChar::Script_Oriya:
+            names = getNames(QLocale::OriyaScript);
+            break;
+        case QChar::Script_Tamil:
+            names = getNames(QLocale::TamilScript);
+            break;
+        case QChar::Script_Telugu:
+            names = getNames(QLocale::TeluguScript);
+            break;
+        case QChar::Script_Kannada:
+            names = getNames(QLocale::KannadaScript);
+            break;
+        case QChar::Script_Malayalam:
+            names = getNames(QLocale::MalayalamScript);
+            break;
+        case QChar::Script_Sinhala:
+            names = getNames(QLocale::SinhalaScript);
+            break;
+        case QChar::Script_Thai:
+            names = getNames(QLocale::ThaiScript);
+            break;
+        case QChar::Script_Lao:
+            names = getNames(QLocale::LaoScript);
+            break;
+        case QChar::Script_Tibetan:
+            names = getNames(QLocale::TibetanScript);
+            break;
+        case QChar::Script_Myanmar:
+            names = getNames(QLocale::MyanmarScript);
+            break;
+        case QChar::Script_Georgian:
+            names = getNames(QLocale::GeorgianScript);
+            break;
+        case QChar::Script_Hangul:
+            names = getNames(QLocale::HangulScript);
+            break;
+        case QChar::Script_Ethiopic:
+            names = getNames(QLocale::EthiopicScript);
+            break;
+        case QChar::Script_Cherokee:
+            names = getNames(QLocale::CherokeeScript);
+            break;
+        case QChar::Script_CanadianAboriginal:
+            names = getNames(QLocale::CanadianAboriginalScript);
+            break;
+        case QChar::Script_Ogham:
+            names = getNames(QLocale::OghamScript);
+            break;
+        case QChar::Script_Runic:
+            names = getNames(QLocale::RunicScript);
+            break;
+        case QChar::Script_Khmer:
+            names = getNames(QLocale::KhmerScript);
+            break;
+        case QChar::Script_Mongolian:
+            names = getNames(QLocale::MongolianScript);
+            break;
+        case QChar::Script_Hiragana:
+            names = getNames(QLocale::HiraganaScript);
+            break;
+        case QChar::Script_Katakana:
+            names = getNames(QLocale::KatakanaScript);
+            break;
+        case QChar::Script_Bopomofo:
+            names = getNames(QLocale::BopomofoScript);
+            break;
+        case QChar::Script_Han:
+            names = getNames(QLocale::HanScript);
+            break;
+        case QChar::Script_Yi:
+            names = getNames(QLocale::YiScript);
+            break;
+        case QChar::Script_OldItalic:
+            names = getNames(QLocale::OldItalicScript);
+            break;
+        case QChar::Script_Gothic:
+            names = getNames(QLocale::GothicScript);
+            break;
+        case QChar::Script_Deseret:
+            names = getNames(QLocale::DeseretScript);
+            break;
+        case QChar::Script_Tagalog:
+            names = getNames(QLocale::TagalogScript);
+            break;
+        case QChar::Script_Hanunoo:
+            names = getNames(QLocale::HanunooScript);
+            break;
+        case QChar::Script_Buhid:
+            names = getNames(QLocale::BuhidScript);
+            break;
+        case QChar::Script_Tagbanwa:
+            names = getNames(QLocale::TagbanwaScript);
+            break;
+        case QChar::Script_Coptic:
+            names = getNames(QLocale::CopticScript);
+            break;
+        case QChar::Script_Limbu:
+            names = getNames(QLocale::LimbuScript);
+            break;
+        case QChar::Script_TaiLe:
+            names = getNames(QLocale::TaiLeScript);
+            break;
+        case QChar::Script_LinearB:
+            names = getNames(QLocale::LinearBScript);
+            break;
+        case QChar::Script_Ugaritic:
+            names = getNames(QLocale::UgariticScript);
+            break;
+        case QChar::Script_Shavian:
+            names = getNames(QLocale::ShavianScript);
+            break;
+        case QChar::Script_Osmanya:
+            names = getNames(QLocale::OsmanyaScript);
+            break;
+        case QChar::Script_Cypriot:
+            names = getNames(QLocale::CypriotScript);
+            break;
+        case QChar::Script_Braille:
+            names = getNames(QLocale::BrailleScript);
+            break;
+        case QChar::Script_Buginese:
+            names = getNames(QLocale::BugineseScript);
+            break;
+        case QChar::Script_NewTaiLue:
+            names = getNames(QLocale::NewTaiLueScript);
+            break;
+        case QChar::Script_Glagolitic:
+            names = getNames(QLocale::GlagoliticScript);
+            break;
+        case QChar::Script_Tifinagh:
+            names = getNames(QLocale::TifinaghScript);
+            break;
+        case QChar::Script_SylotiNagri:
+            names = getNames(QLocale::SylotiNagriScript);
+            break;
+        case QChar::Script_OldPersian:
+            names = getNames(QLocale::OldPersianScript);
+            break;
+        case QChar::Script_Kharoshthi:
+            names = getNames(QLocale::KharoshthiScript);
+            break;
+        case QChar::Script_Balinese:
+            names = getNames(QLocale::BalineseScript);
+            break;
+        case QChar::Script_Cuneiform:
+            names = getNames(QLocale::CuneiformScript);
+            break;
+        case QChar::Script_Phoenician:
+            names = getNames(QLocale::PhoenicianScript);
+            break;
+        case QChar::Script_PhagsPa:
+            names = getNames(QLocale::PhagsPaScript);
+            break;
+        case QChar::Script_Nko:
+            names = getNames(QLocale::NkoScript);
+            break;
+        case QChar::Script_Sundanese:
+            names = getNames(QLocale::SundaneseScript);
+            break;
+        case QChar::Script_Lepcha:
+            names = getNames(QLocale::LepchaScript);
+            break;
+        case QChar::Script_OlChiki:
+            names = getNames(QLocale::OlChikiScript);
+            break;
+        case QChar::Script_Vai:
+            names = getNames(QLocale::VaiScript);
+            break;
+        case QChar::Script_Saurashtra:
+            names = getNames(QLocale::SaurashtraScript);
+            break;
+        case QChar::Script_KayahLi:
+            names = getNames(QLocale::KayahLiScript);
+            break;
+        case QChar::Script_Rejang:
+            names = getNames(QLocale::RejangScript);
+            break;
+        case QChar::Script_Lycian:
+            names = getNames(QLocale::LycianScript);
+            break;
+        case QChar::Script_Carian:
+            names = getNames(QLocale::CarianScript);
+            break;
+        case QChar::Script_Lydian:
+            names = getNames(QLocale::LydianScript);
+            break;
+        case QChar::Script_Cham:
+            names = getNames(QLocale::ChamScript);
+            break;
+        case QChar::Script_TaiTham:
+            names = getNames(QLocale::LannaScript);
+            break;
+        case QChar::Script_TaiViet:
+            names = getNames(QLocale::TaiVietScript);
+            break;
+        case QChar::Script_Avestan:
+            names = getNames(QLocale::AvestanScript);
+            break;
+        case QChar::Script_EgyptianHieroglyphs:
+            names = getNames(QLocale::EgyptianHieroglyphsScript);
+            break;
+        case QChar::Script_Samaritan:
+            names = getNames(QLocale::SamaritanScript);
+            break;
+        case QChar::Script_Lisu:
+            names = getNames(QLocale::FraserScript);
+            break;
+        case QChar::Script_Bamum:
+            names = getNames(QLocale::BamumScript);
+            break;
+        case QChar::Script_Javanese:
+            names = getNames(QLocale::JavaneseScript);
+            break;
+        case QChar::Script_MeeteiMayek:
+            names = getNames(QLocale::MeiteiMayekScript);
+            break;
+        case QChar::Script_ImperialAramaic:
+            names = getNames(QLocale::ImperialAramaicScript);
+            break;
+        case QChar::Script_OldSouthArabian:
+            names = getNames(QLocale::OldSouthArabianScript);
+            break;
+        case QChar::Script_InscriptionalParthian:
+            names = getNames(QLocale::InscriptionalParthianScript);
+            break;
+        case QChar::Script_InscriptionalPahlavi:
+            names = getNames(QLocale::InscriptionalPahlaviScript);
+            break;
+        case QChar::Script_Kaithi:
+            names = getNames(QLocale::KaithiScript);
+            break;
+        case QChar::Script_Batak:
+            names = getNames(QLocale::BatakScript);
+            break;
+        case QChar::Script_Brahmi:
+            names = getNames(QLocale::BrahmiScript);
+            break;
+        case QChar::Script_Mandaic:
+            names = getNames(QLocale::MandaeanScript);
+            break;
+        case QChar::Script_Chakma:
+            names = getNames(QLocale::ChakmaScript);
+            break;
+        case QChar::Script_MeroiticCursive:
+        case QChar::Script_MeroiticHieroglyphs:
+            names = getNames(QLocale::MeroiticCursiveScript);
+            names.append(getNames(QLocale::MeroiticScript));
+            break;
+        case QChar::Script_Miao:
+            names = getNames(QLocale::PollardPhoneticScript);
+            break;
+        case QChar::Script_Sharada:
+            names = getNames(QLocale::SharadaScript);
+            break;
+        case QChar::Script_SoraSompeng:
+            names = getNames(QLocale::SoraSompengScript);
+            break;
+        case QChar::Script_Takri:
+            names = getNames(QLocale::TakriScript);
+            break;
+        case QChar::Script_CaucasianAlbanian:
+            names = getNames(QLocale::CaucasianAlbanianScript);
+            break;
+        case QChar::Script_BassaVah:
+            names = getNames(QLocale::BassaVahScript);
+            break;
+        case QChar::Script_Duployan:
+            names = getNames(QLocale::DuployanScript);
+            break;
+        case QChar::Script_Elbasan:
+            names = getNames(QLocale::ElbasanScript);
+            break;
+        case QChar::Script_Grantha:
+            names = getNames(QLocale::GranthaScript);
+            break;
+        case QChar::Script_PahawhHmong:
+            names = getNames(QLocale::PahawhHmongScript);
+            break;
+        case QChar::Script_Khojki:
+            names = getNames(QLocale::KhojkiScript);
+            break;
+        case QChar::Script_LinearA:
+            names = getNames(QLocale::LinearAScript);
+            break;
+        case QChar::Script_Mahajani:
+            names = getNames(QLocale::MahajaniScript);
+            break;
+        case QChar::Script_Manichaean:
+            names = getNames(QLocale::ManichaeanScript);
+            break;
+        case QChar::Script_MendeKikakui:
+            names = getNames(QLocale::MendeKikakuiScript);
+            break;
+        case QChar::Script_Modi:
+            names = getNames(QLocale::ModiScript);
+            break;
+        case QChar::Script_Mro:
+            names = getNames(QLocale::MroScript);
+            break;
+        case QChar::Script_OldNorthArabian:
+            names = getNames(QLocale::OldNorthArabianScript);
+            break;
+        case QChar::Script_Nabataean:
+            names = getNames(QLocale::NabataeanScript);
+            break;
+        case QChar::Script_Palmyrene:
+            names = getNames(QLocale::PalmyreneScript);
+            break;
+        case QChar::Script_PauCinHau:
+            names = getNames(QLocale::PauCinHauScript);
+            break;
+        case QChar::Script_OldPermic:
+            names = getNames(QLocale::OldPermicScript);
+            break;
+        case QChar::Script_PsalterPahlavi:
+            names = getNames(QLocale::PsalterPahlaviScript);
+            break;
+        case QChar::Script_Siddham:
+            names = getNames(QLocale::SiddhamScript);
+            break;
+        case QChar::Script_Khudawadi:
+            names = getNames(QLocale::KhudawadiScript);
+            break;
+        case QChar::Script_Tirhuta:
+            names = getNames(QLocale::TirhutaScript);
+            break;
+        case QChar::Script_WarangCiti:
+            names = getNames(QLocale::VarangKshitiScript);
+            break;
+        case QChar::Script_Ahom:
+            names = getNames(QLocale::AhomScript);
+            break;
+        case QChar::Script_AnatolianHieroglyphs:
+            names = getNames(QLocale::AnatolianHieroglyphsScript);
+            break;
+        case QChar::Script_Hatran:
+            names = getNames(QLocale::HatranScript);
+            break;
+        case QChar::Script_Multani:
+            names = getNames(QLocale::MultaniScript);
+            break;
+        case QChar::Script_OldHungarian:
+            names = getNames(QLocale::OldHungarianScript);
+            break;
+        case QChar::Script_Unknown:
+        case QChar::Script_Inherited:
+        case QChar::Script_Common:
+        case QChar::Script_OldTurkic:
+        case QChar::Script_SignWriting:
+            break;
+        default:
+            qCDebug(SONNET_LOG_CORE) << "Unhandled script" << script;
+            break;
         }
-    }
-    s_knownDictionaries = s_dictionaries.values().toSet();
+        allLanguages.unite(names.toSet());
 
-    BASIC_LATIN << QStringLiteral("en")
-                << QStringLiteral("ha")
-                << QStringLiteral("so")
-                << QStringLiteral("id")
-                << QStringLiteral("la")
-                << QStringLiteral("sw")
-                << QStringLiteral("eu")
-                << QStringLiteral("nr")
-                << QStringLiteral("nso")
-                << QStringLiteral("zu")
-                << QStringLiteral("xh")
-                << QStringLiteral("ss")
-                << QStringLiteral("st")
-                << QStringLiteral("tn")
-                << QStringLiteral("ts");
-    pruneList(&BASIC_LATIN, s_dictionaries);
+        { // Remove unknown languages
+            QStringList pruned;
+            for (const QString &name : names) {
+                if (!s_knownDictionaries.contains(name)) {
+                    continue;
+                }
+                pruned.append(name);
+            }
+            names = pruned;
+        }
 
-    EXTENDED_LATIN << QStringLiteral("cs")
-                   << QStringLiteral("af")
-                   << QStringLiteral("pl")
-                   << QStringLiteral("hr")
-                   << QStringLiteral("ro")
-                   << QStringLiteral("sk")
-                   << QStringLiteral("sl")
-                   << QStringLiteral("tr")
-                   << QStringLiteral("hu")
-                   << QStringLiteral("az")
-                   << QStringLiteral("et")
-                   << QStringLiteral("sq")
-                   << QStringLiteral("ca")
-                   << QStringLiteral("es")
-                   << QStringLiteral("fr")
-                   << QStringLiteral("de")
-                   << QStringLiteral("nl")
-                   << QStringLiteral("it")
-                   << QStringLiteral("da")
-                   << QStringLiteral("is")
-                   << QStringLiteral("nb")
-                   << QStringLiteral("sv")
-                   << QStringLiteral("fi")
-                   << QStringLiteral("lv")
-                   << QStringLiteral("pt")
-                   << QStringLiteral("ve")
-                   << QStringLiteral("lt")
-                   << QStringLiteral("tl")
-                   << QStringLiteral("cy");
-    pruneList(&EXTENDED_LATIN, s_dictionaries);
-
-    ALL_LATIN << BASIC_LATIN << EXTENDED_LATIN;
-
-    CYRILLIC << QStringLiteral("ru")
-             << QStringLiteral("uk")
-             << QStringLiteral("kk")
-             << QStringLiteral("uz")
-             << QStringLiteral("mn")
-             << QStringLiteral("sr")
-             << QStringLiteral("mk")
-             << QStringLiteral("bg")
-             << QStringLiteral("ky");
-    pruneList(&CYRILLIC, s_dictionaries);
-
-    ARABIC << QStringLiteral("ar")
-           << QStringLiteral("fa")
-           << QStringLiteral("ps")
-           << QStringLiteral("ur");
-    pruneList(&ARABIC, s_dictionaries);
-
-    DEVANAGARI << QStringLiteral("hi")
-               << QStringLiteral("ne");
-    pruneList(&DEVANAGARI, s_dictionaries);
-
-    PT << QStringLiteral("pt_BR")
-       << QStringLiteral("pt_PT");
-    pruneList(&PT, s_dictionaries);
-
-    HAN << QStringLiteral("zh")
-        << QStringLiteral("ja");
-    pruneList(&HAN, s_dictionaries);
-
-    QHash<QChar::Script, QString> singletons;
-    // NOTE mn appears twice, once for mongolian script and once for CYRILLIC
-    singletons[QChar::Script_Armenian] = QStringLiteral("hy");
-    singletons[QChar::Script_Hebrew] = QStringLiteral("he");
-    singletons[QChar::Script_Bengali] = QStringLiteral("bn");
-    singletons[QChar::Script_Gurmukhi] = QStringLiteral("pa");
-    singletons[QChar::Script_Greek] = QStringLiteral("el");
-    singletons[QChar::Script_Gujarati] = QStringLiteral("gu");
-    singletons[QChar::Script_Hangul] = QStringLiteral("ko");
-    singletons[QChar::Script_Oriya] = QStringLiteral("or");
-    singletons[QChar::Script_Tamil] = QStringLiteral("ta");
-    singletons[QChar::Script_Telugu] = QStringLiteral("te");
-    singletons[QChar::Script_Kannada] = QStringLiteral("kn");
-    singletons[QChar::Script_Malayalam] = QStringLiteral("ml");
-    singletons[QChar::Script_Sinhala] = QStringLiteral("si");
-    singletons[QChar::Script_Thai] = QStringLiteral("th");
-    singletons[QChar::Script_Lao] = QStringLiteral("lo");
-    singletons[QChar::Script_Tibetan] = QStringLiteral("bo");
-    singletons[QChar::Script_Myanmar] = QStringLiteral("my");
-    singletons[QChar::Script_Georgian] = QStringLiteral("ka");
-    singletons[QChar::Script_Mongolian] = QStringLiteral("mn");
-    singletons[QChar::Script_Khmer] = QStringLiteral("km");
-    singletons[QChar::Script_TaiViet] = QStringLiteral("blt");
-    singletons[QChar::Script_Greek] = QStringLiteral("el");
-    singletons[QChar::Script_Coptic] = QStringLiteral("el");
-    singletons[QChar::Script_Katakana] = QStringLiteral("ja");
-    singletons[QChar::Script_Hiragana] = QStringLiteral("ja");
-    singletons[QChar::Script_Bopomofo] = QStringLiteral("zh");
-    singletons[QChar::Script_Yi] = QStringLiteral("zh");
-
-    for (const QChar::Script script : singletons.keys()) {
-        const QString &language = singletons[script];
-        if (!s_dictionaries.contains(language)) {
+        if (names.isEmpty()) {
             continue;
         }
-        for(const QString &toInsert : s_dictionaries.values(language)) {
-            s_singletons.insert(script, toInsert);
+
+        for (const QString &name : names) {
+            s_scriptLanguages.insert(script, name);
+        }
+    }
+
+    // Try to handle some badly named dictionaries
+    if (!allLanguages.contains(s_knownDictionaries)) {
+        QSet<QString> dicts(s_knownDictionaries);
+        dicts.subtract(allLanguages);
+        for (QString dictName : dicts) {
+            QString languageName = QLocale(dictName).name();
+            if (languageName.isEmpty()) {
+                qCWarning(SONNET_LOG_CORE) << "Unable to parse name for dictionary" << dictName;
+                continue;
+            }
+            s_dictionaryNameMap[languageName] = dictName;
         }
     }
 }
@@ -284,55 +571,28 @@ QString GuessLanguage::identify(const QString& text, const QStringList& suggesti
     }
 
     QStringList candidateLanguages = d->identify(text, d->findRuns(text));
-    QStringList candidateDictionaries;
-    for (const QString &candidateLanguage : candidateLanguages) {
-        candidateDictionaries.append(d->s_dictionaries.values(candidateLanguage));
+
+    // Hack for some bad dictionary names
+    for (int i=0; i<candidateLanguages.count(); i++) {
+        if (d->s_dictionaryNameMap.contains(candidateLanguages[i])) {
+            candidateLanguages[i] = d->s_dictionaryNameMap.value(candidateLanguages[i]);
+        }
     }
 
     if (candidateLanguages.count() == 1) {
-        for (const QString &candidate : candidateDictionaries) {
-            if (suggestionsList.contains(candidate)){
-                return candidate;
-            }
-        }
+        return candidateLanguages.first();
     }
-
-
-    // Unable to get a good guess, now we need to try with dictionaries
-    candidateDictionaries.clear();
-    for (const QString &candidateLanguage : candidateLanguages) {
-        QStringList potentialDictionaries = d->s_dictionaries.values(candidateLanguage);
-        if (potentialDictionaries.isEmpty()) {
-            continue;
-        }
-
-        // FIXME: we need to use full and proper language names, not this hack
-        bool foundDictionary = false;
-        for (const QString &potentialDictionary : potentialDictionaries) {
-            if (suggestionsList.contains(potentialDictionary)) {
-                candidateDictionaries.append(potentialDictionary);
-                foundDictionary = true;
-                break;
-            }
-        }
-
-        if (!foundDictionary) {
-            // Try to limit the amount of dictionaries we look in
-            candidateDictionaries.append(potentialDictionaries.first());
-        }
-    }
-    candidateDictionaries.removeDuplicates();
 
     // Wasn't able to get a good guess with the trigrams, try checking all
     // dictionaries for the suggested languages.
-    candidateDictionaries.append(suggestionsList);
-    candidateDictionaries.removeDuplicates();
-    QString identified = d->guessFromDictionaries(text, candidateDictionaries);
+    candidateLanguages.append(suggestionsList);
+    candidateLanguages.removeDuplicates();
+    QString identified = d->guessFromDictionaries(text, candidateLanguages);
     if (!identified.isEmpty()) {
         return identified;
     }
 
-    qCDebug(SONNET_LOG_CORE()) << "Unable to identify string with dictionaries:" << text << candidateDictionaries;
+    qCDebug(SONNET_LOG_CORE()) << "Unable to identify string with dictionaries:" << text;
 
     // None of our methods worked, just return the best suggestion
     if (!suggestionsList.isEmpty()) {
@@ -423,43 +683,12 @@ QStringList GuessLanguagePrivate::identify(const QString& sample, const QList<QC
         return QStringList();
     }
 
-    if (scripts.contains(QChar::Script_Cyrillic))
-        return guessFromTrigrams(sample, CYRILLIC);
-
-    if (scripts.contains(QChar::Script_Arabic) || scripts.contains(QChar::Script_OldSouthArabian))
-        return guessFromTrigrams(sample, ARABIC);
-
-    if (scripts.contains(QChar::Script_Devanagari))
-        return guessFromTrigrams(sample, DEVANAGARI);
-
-    if (scripts.contains(QChar::Script_Han))
-        return guessFromTrigrams(sample, HAN);
-
-
-    // Try languages with unique scripts
-    foreach(const QChar::Script &script, s_singletons.uniqueKeys()) {
-        if (scripts.contains(script)) {
-            return QStringList(s_singletons.value(script));
-        }
+    QStringList guesses;
+    for (const QChar::Script script : scripts) {
+        guesses.append(guessFromTrigrams(sample, s_scriptLanguages.values(script)));
     }
 
-    //if ( scripts.contains("Latin Extended Additional") )
-    //    return QStringList("vi");
-
-    /*if ( scripts.contains("Extended Latin") )
-    {
-        QStringList latinLang = check( sample, EXTENDED_LATIN );
-        //FIXME
-        if (latinLang.first == "pt")
-            return check(sample, PT);
-        else
-            return latinLang;
-    }*/
-    if (scripts.contains(QChar::Script_Latin)) {
-        return guessFromTrigrams(sample, ALL_LATIN);
-    }
-
-    return QStringList();
+    return guesses;
 }
 
 QStringList GuessLanguagePrivate::guessFromTrigrams(const QString &sample, const QStringList &languages)
