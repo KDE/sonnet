@@ -466,6 +466,9 @@ QStringList GuessLanguagePrivate::guessFromTrigrams(const QString &sample, const
         prevItem=it.value();
         prevScore=it.key();
     }
+    if (counter < m_maxItems && confidence < m_minConfidence) {
+        ret += prevItem;
+    }
 
     return ret;
 }
