@@ -109,6 +109,15 @@ GuessLanguagePrivate::GuessLanguagePrivate()
         return;
 
     s_knownDictionaries = Loader::openLoader()->languages().toSet();
+    QSet<QString> dictionaryLanguages;
+    for (QString dictName : s_knownDictionaries) {
+        QString languageName = QLocale(dictName).name();
+        if (languageName.isEmpty()) {
+            qCWarning(SONNET_LOG_CORE) << "Unable to parse name for dictionary" << dictName;
+            continue;
+        }
+        dictionaryLanguages.insert(languageName);
+    }
 
     QSet<QString> allLanguages;
     for (int i=0; i<int(QChar::ScriptCount); i++) {
@@ -510,7 +519,7 @@ GuessLanguagePrivate::GuessLanguagePrivate()
         { // Remove unknown languages
             QStringList pruned;
             for (const QString &name : names) {
-                if (!s_knownDictionaries.contains(name)) {
+                if (!dictionaryLanguages.contains(name)) {
                     continue;
                 }
                 pruned.append(name);
@@ -531,13 +540,16 @@ GuessLanguagePrivate::GuessLanguagePrivate()
     if (!allLanguages.contains(s_knownDictionaries)) {
         QSet<QString> dicts(s_knownDictionaries);
         dicts.subtract(allLanguages);
-        for (QString dictName : dicts) {
+        for (const QString &dictName : dicts) {
             QString languageName = QLocale(dictName).name();
             if (languageName.isEmpty()) {
-                qCWarning(SONNET_LOG_CORE) << "Unable to parse name for dictionary" << dictName;
+                qCWarning(SONNET_LOG_CORE) << "Unable to parse language name" << dictName;
                 continue;
             }
             s_dictionaryNameMap[languageName] = dictName;
+            if (!s_scriptLanguages.values().contains(languageName)) {
+                qCWarning(SONNET_LOG_CORE) << "Unable to handle language from dictionary" << dictName << languageName;
+            }
         }
     }
 }
@@ -618,6 +630,7 @@ void GuessLanguagePrivate::loadModels()
     if (triMapFile.isEmpty()) {
         triMapFile = QStringLiteral("%1/../share/kf5/sonnet/trigrams.map").arg(QCoreApplication::applicationDirPath());
     }
+    qCDebug(SONNET_LOG_CORE) << "Loading trigrams from" << triMapFile;
 
     QFile sin(triMapFile);
     if (!sin.open(QIODevice::ReadOnly)) {
@@ -629,12 +642,19 @@ void GuessLanguagePrivate::loadModels()
     in >> s_knownModels;
 
     // Sanity check
+    QSet<QString> availableLanguages;
     QHashIterator<QString, QHash<QString, int>> iterator(s_knownModels);
     while (iterator.hasNext()) {
         iterator.next();
         if (iterator.value().count() < MAXGRAMS) {
             qCWarning(SONNET_LOG_CORE) << iterator.key() << "is has only" << iterator.value().count() << "trigrams, expected" << MAXGRAMS;
         }
+        availableLanguages.insert(iterator.key());
+    }
+    QSet<QString> knownLanguages(s_scriptLanguages.values().toSet());
+    knownLanguages.subtract(availableLanguages);
+    if (!knownLanguages.isEmpty()) {
+        qCWarning(SONNET_LOG_CORE) << "Missing trigrams for languages:" << knownLanguages;
     }
 }
 
