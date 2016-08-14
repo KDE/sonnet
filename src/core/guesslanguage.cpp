@@ -430,18 +430,17 @@ QStringList GuessLanguagePrivate::identify(const QString& sample, const QList<QC
     return QStringList();
 }
 
-QStringList GuessLanguagePrivate::guessFromTrigrams(const QString & sample, const QStringList& languages)
+QStringList GuessLanguagePrivate::guessFromTrigrams(const QString &sample, const QStringList &languages)
 {
     QStringList ret;
 
-    QMap<int,QString> scores;
     const QList<QString> sampleTrigrams = createOrderedModel(sample);
 
-    Q_FOREACH (const QString &language, languages) {
-        const QString languageLowercase = language.toLower();
-
-        if (s_knownModels.contains(languageLowercase)) {
-            scores.insert(distance(sampleTrigrams, s_knownModels[languageLowercase]), language);
+    // Sort by score
+    QMultiMap<int,QString> scores;
+    for (const QString &language : languages) {
+        if (s_knownModels.contains(language)) {
+            scores.insert(distance(sampleTrigrams, s_knownModels[language]), language);
         }
     }
 
