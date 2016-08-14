@@ -85,7 +85,9 @@ public:
     static QStringList DEVANAGARI;
     static QStringList PT;
     static QStringList HAN;
-    static QHash<QChar::Script, QString> s_singletons;
+    static QMultiHash<QChar::Script, QString> s_singletons;
+    static QMultiHash<QString, QString> s_dictionaries;
+    static QSet<QString> s_knownDictionaries;
 
     const int MIN_LENGTH;
     int m_maxItems;
@@ -101,14 +103,36 @@ QStringList GuessLanguagePrivate::ARABIC;
 QStringList GuessLanguagePrivate::DEVANAGARI;
 QStringList GuessLanguagePrivate::HAN;
 QStringList GuessLanguagePrivate::PT;
-QHash<QChar::Script, QString> GuessLanguagePrivate::s_singletons;
+QMultiHash<QChar::Script, QString> GuessLanguagePrivate::s_singletons;
+QMultiHash<QString, QString> GuessLanguagePrivate::s_dictionaries;
+QSet<QString> GuessLanguagePrivate::s_knownDictionaries;
 
+static void pruneList(QStringList *list, const QMultiHash<QString, QString> &allowed)
+{
+    QStringList pruned;
+    for (const QString &language : *list) {
+        if (!allowed.contains(language)) {
+            continue;
+        }
+        pruned.append(language);
+    }
+    *list = pruned;
+}
 
 GuessLanguagePrivate::GuessLanguagePrivate()
         : MIN_LENGTH(5), m_maxItems(1), m_minConfidence(0)
 {
     if (!BASIC_LATIN.isEmpty())
         return;
+
+    for (const QString &language : Loader::openLoader()->languages()) {
+        if (language.contains(QLatin1Char('_'))) {
+            s_dictionaries.insert(language.split(QLatin1Char('_')).first(), language);
+        } else {
+            s_dictionaries.insert(language, language);
+        }
+    }
+    s_knownDictionaries = s_dictionaries.values().toSet();
 
     BASIC_LATIN << QStringLiteral("en")
                 << QStringLiteral("ha")
@@ -125,6 +149,7 @@ GuessLanguagePrivate::GuessLanguagePrivate()
                 << QStringLiteral("st")
                 << QStringLiteral("tn")
                 << QStringLiteral("ts");
+    pruneList(&BASIC_LATIN, s_dictionaries);
 
     EXTENDED_LATIN << QStringLiteral("cs")
                    << QStringLiteral("af")
@@ -155,6 +180,7 @@ GuessLanguagePrivate::GuessLanguagePrivate()
                    << QStringLiteral("lt")
                    << QStringLiteral("tl")
                    << QStringLiteral("cy");
+    pruneList(&EXTENDED_LATIN, s_dictionaries);
 
     ALL_LATIN << BASIC_LATIN << EXTENDED_LATIN;
 
@@ -167,49 +193,65 @@ GuessLanguagePrivate::GuessLanguagePrivate()
              << QStringLiteral("mk")
              << QStringLiteral("bg")
              << QStringLiteral("ky");
+    pruneList(&CYRILLIC, s_dictionaries);
 
     ARABIC << QStringLiteral("ar")
            << QStringLiteral("fa")
            << QStringLiteral("ps")
            << QStringLiteral("ur");
+    pruneList(&ARABIC, s_dictionaries);
 
     DEVANAGARI << QStringLiteral("hi")
                << QStringLiteral("ne");
+    pruneList(&DEVANAGARI, s_dictionaries);
 
     PT << QStringLiteral("pt_BR")
        << QStringLiteral("pt_PT");
+    pruneList(&PT, s_dictionaries);
 
     HAN << QStringLiteral("zh")
         << QStringLiteral("ja");
+    pruneList(&HAN, s_dictionaries);
 
+    QHash<QChar::Script, QString> singletons;
     // NOTE mn appears twice, once for mongolian script and once for CYRILLIC
-    s_singletons[QChar::Script_Armenian] = QStringLiteral("hy");
-    s_singletons[QChar::Script_Hebrew] = QStringLiteral("he");
-    s_singletons[QChar::Script_Bengali] = QStringLiteral("bn");
-    s_singletons[QChar::Script_Gurmukhi] = QStringLiteral("pa");
-    s_singletons[QChar::Script_Greek] = QStringLiteral("el");
-    s_singletons[QChar::Script_Gujarati] = QStringLiteral("gu");
-    s_singletons[QChar::Script_Hangul] = QStringLiteral("ko");
-    s_singletons[QChar::Script_Oriya] = QStringLiteral("or");
-    s_singletons[QChar::Script_Tamil] = QStringLiteral("ta");
-    s_singletons[QChar::Script_Telugu] = QStringLiteral("te");
-    s_singletons[QChar::Script_Kannada] = QStringLiteral("kn");
-    s_singletons[QChar::Script_Malayalam] = QStringLiteral("ml");
-    s_singletons[QChar::Script_Sinhala] = QStringLiteral("si");
-    s_singletons[QChar::Script_Thai] = QStringLiteral("th");
-    s_singletons[QChar::Script_Lao] = QStringLiteral("lo");
-    s_singletons[QChar::Script_Tibetan] = QStringLiteral("bo");
-    s_singletons[QChar::Script_Myanmar] = QStringLiteral("my");
-    s_singletons[QChar::Script_Georgian] = QStringLiteral("ka");
-    s_singletons[QChar::Script_Mongolian] = QStringLiteral("mn");
-    s_singletons[QChar::Script_Khmer] = QStringLiteral("km");
-    s_singletons[QChar::Script_TaiViet] = QStringLiteral("blt");
-    s_singletons[QChar::Script_Greek] = QStringLiteral("el");
-    s_singletons[QChar::Script_Coptic] = QStringLiteral("el");
-    s_singletons[QChar::Script_Katakana] = QStringLiteral("ja");
-    s_singletons[QChar::Script_Hiragana] = QStringLiteral("ja");
-    s_singletons[QChar::Script_Bopomofo] = QStringLiteral("zh");
-    s_singletons[QChar::Script_Yi] = QStringLiteral("zh");
+    singletons[QChar::Script_Armenian] = QStringLiteral("hy");
+    singletons[QChar::Script_Hebrew] = QStringLiteral("he");
+    singletons[QChar::Script_Bengali] = QStringLiteral("bn");
+    singletons[QChar::Script_Gurmukhi] = QStringLiteral("pa");
+    singletons[QChar::Script_Greek] = QStringLiteral("el");
+    singletons[QChar::Script_Gujarati] = QStringLiteral("gu");
+    singletons[QChar::Script_Hangul] = QStringLiteral("ko");
+    singletons[QChar::Script_Oriya] = QStringLiteral("or");
+    singletons[QChar::Script_Tamil] = QStringLiteral("ta");
+    singletons[QChar::Script_Telugu] = QStringLiteral("te");
+    singletons[QChar::Script_Kannada] = QStringLiteral("kn");
+    singletons[QChar::Script_Malayalam] = QStringLiteral("ml");
+    singletons[QChar::Script_Sinhala] = QStringLiteral("si");
+    singletons[QChar::Script_Thai] = QStringLiteral("th");
+    singletons[QChar::Script_Lao] = QStringLiteral("lo");
+    singletons[QChar::Script_Tibetan] = QStringLiteral("bo");
+    singletons[QChar::Script_Myanmar] = QStringLiteral("my");
+    singletons[QChar::Script_Georgian] = QStringLiteral("ka");
+    singletons[QChar::Script_Mongolian] = QStringLiteral("mn");
+    singletons[QChar::Script_Khmer] = QStringLiteral("km");
+    singletons[QChar::Script_TaiViet] = QStringLiteral("blt");
+    singletons[QChar::Script_Greek] = QStringLiteral("el");
+    singletons[QChar::Script_Coptic] = QStringLiteral("el");
+    singletons[QChar::Script_Katakana] = QStringLiteral("ja");
+    singletons[QChar::Script_Hiragana] = QStringLiteral("ja");
+    singletons[QChar::Script_Bopomofo] = QStringLiteral("zh");
+    singletons[QChar::Script_Yi] = QStringLiteral("zh");
+
+    for (const QChar::Script script : singletons.keys()) {
+        const QString &language = singletons[script];
+        if (!s_dictionaries.contains(language)) {
+            continue;
+        }
+        for(const QString &toInsert : s_dictionaries.values(language)) {
+            s_singletons.insert(script, toInsert);
+        }
+    }
 }
 
 GuessLanguage::GuessLanguage() :
@@ -363,7 +405,7 @@ QStringList GuessLanguagePrivate::identify(const QString& sample, const QList<QC
 
 
     // Try languages with unique scripts
-    foreach(const QChar::Script &script, s_singletons.keys()) {
+    foreach(const QChar::Script &script, s_singletons.uniqueKeys()) {
         if (scripts.contains(script)) {
             return QStringList(s_singletons.value(script));
         }
