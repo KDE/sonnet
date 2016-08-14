@@ -444,7 +444,9 @@ QStringList GuessLanguagePrivate::guessFromTrigrams(const QString &sample, const
         }
     }
 
-    if (scores.isEmpty()) {
+    // Skip if either no results or best result is completely unknown (distance >= maxdistance)
+    if (scores.isEmpty() || scores.firstKey() >= MAXGRAMS * sampleTrigrams.size()) {
+        qCDebug(SONNET_LOG_CORE) << "No scores for" << sample;
         return ret;
     }
 
