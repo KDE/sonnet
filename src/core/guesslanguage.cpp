@@ -283,38 +283,56 @@ QString GuessLanguage::identify(const QString& text, const QStringList& suggesti
         d->loadModels();
     }
 
+    QStringList candidateLanguages = d->identify(text, d->findRuns(text));
     QStringList candidateDictionaries;
-    for (const QString &candidateLanguage : d->identify(text, d->findRuns(text))) {
+    for (const QString &candidateLanguage : candidateLanguages) {
         candidateDictionaries.append(d->s_dictionaries.values(candidateLanguage));
     }
 
-    // Check if one of the candidates were in the list of suggested languages
-    // We loop over here first, to prefer suggestions, even if ranked lower by trigrams
-    QSet<QString> suggestionsSet(suggestionsList.toSet());
-    for (const QString &candidate : candidateDictionaries) {
-        if (suggestionsSet.contains(candidate)){
-            return candidate;
-        }
-    }
-
-    // Check if any of the candidates are available
-    for (const QString &candidate : candidateDictionaries) {
-        if (d->s_knownDictionaries.contains(candidate)) {
-            return candidate;
+    if (candidateLanguages.count() == 1) {
+        for (const QString &candidate : candidateDictionaries) {
+            if (suggestionsList.contains(candidate)){
+                return candidate;
+            }
         }
     }
 
 
-    qCDebug(SONNET_LOG_CORE()) << "Unable to identify string with trigrams:" << text;
+    // Unable to get a good guess, now we need to try with dictionaries
+    candidateDictionaries.clear();
+    for (const QString &candidateLanguage : candidateLanguages) {
+        QStringList potentialDictionaries = d->s_dictionaries.values(candidateLanguage);
+        if (potentialDictionaries.isEmpty()) {
+            continue;
+        }
+
+        // FIXME: we need to use full and proper language names, not this hack
+        bool foundDictionary = false;
+        for (const QString &potentialDictionary : potentialDictionaries) {
+            if (suggestionsList.contains(potentialDictionary)) {
+                candidateDictionaries.append(potentialDictionary);
+                foundDictionary = true;
+                break;
+            }
+        }
+
+        if (!foundDictionary) {
+            // Try to limit the amount of dictionaries we look in
+            candidateDictionaries.append(potentialDictionaries.first());
+        }
+    }
+    candidateDictionaries.removeDuplicates();
 
     // Wasn't able to get a good guess with the trigrams, try checking all
     // dictionaries for the suggested languages.
-    QString identified = d->guessFromDictionaries(text, suggestionsList);
+    candidateDictionaries.append(suggestionsList);
+    candidateDictionaries.removeDuplicates();
+    QString identified = d->guessFromDictionaries(text, candidateDictionaries);
     if (!identified.isEmpty()) {
         return identified;
     }
 
-    qCDebug(SONNET_LOG_CORE()) << "Unable to identify string with dictionaries:" << text;
+    qCDebug(SONNET_LOG_CORE()) << "Unable to identify string with dictionaries:" << text << candidateDictionaries;
 
     // None of our methods worked, just return the best suggestion
     if (!suggestionsList.isEmpty()) {
