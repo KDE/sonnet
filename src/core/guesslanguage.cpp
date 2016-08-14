@@ -59,6 +59,9 @@ az-Latn    az
 namespace Sonnet
 {
 
+// Amount of trigrams in each file
+static const int MAXGRAMS = 300;
+
 class GuessLanguagePrivate
 {
 public:
@@ -290,6 +293,15 @@ void GuessLanguagePrivate::loadModels()
 
     QDataStream in(&sin);
     in >> s_knownModels;
+
+    // Sanity check
+    QHashIterator<QString, QHash<QString, int>> iterator(s_knownModels);
+    while (iterator.hasNext()) {
+        iterator.next();
+        if (iterator.value().count() < MAXGRAMS) {
+            qCWarning(SONNET_LOG_CORE) << iterator.key() << "is has only" << iterator.value().count() << "trigrams, expected" << MAXGRAMS;
+        }
+    }
 }
 
 QList<QChar::Script> GuessLanguagePrivate::findRuns(const QString & text)
@@ -442,8 +454,6 @@ int GuessLanguagePrivate::distance(const QList<QString>& model, const QHash<QStr
 {
     int counter = -1;
     int dist = 0;
-
-    static const int MAXGRAMS = 300;
 
     Q_FOREACH(const QString& trigram, model) {
         if (knownModel.contains(trigram)) {
