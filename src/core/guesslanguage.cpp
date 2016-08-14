@@ -345,8 +345,9 @@ QList<QChar::Script> GuessLanguagePrivate::findRuns(const QString & text)
 
 QStringList GuessLanguagePrivate::identify(const QString& sample, const QList<QChar::Script>& scripts)
 {
-    if (sample.size() < 3)
+    if (sample.size() < MIN_LENGTH) {
         return QStringList();
+    }
 
     if (scripts.contains(QChar::Script_Cyrillic))
         return guessFromTrigrams(sample, CYRILLIC);
