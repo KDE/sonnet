@@ -31,6 +31,7 @@
 #include "speller.h"
 #include "tokenizer_p.h"
 #include "core_debug.h"
+#include "spellerplugin_p.h"
 
 /*
 All language tags should be valid according to IETF BCP 47, as codefied in RFC 4646.
@@ -530,12 +531,13 @@ int GuessLanguagePrivate::distance(const QList<QString>& model, const QHash<QStr
 QString GuessLanguagePrivate::guessFromDictionaries(const QString& sentence, const QStringList& candidates)
 {
     // Try to see how many languages we can get spell checking for
-    QList<Speller> spellers;
-    Q_FOREACH (const QString& lang, candidates) {
-        Speller speller(lang);
-        if (speller.isValid()) {
-            spellers << speller;
+    QList<QSharedPointer<SpellerPlugin>> spellers;
+    for (const QString& lang : candidates) {
+        if (!Loader::openLoader()->languages().contains(lang)) {
+            qCWarning(SONNET_LOG_CORE) << "Dictionary asked for invalid speller" << lang;
+            continue;
         }
+        spellers.append(Loader::openLoader()->cachedSpeller(lang));
     }
 
     // If there's no spell checkers, give up
@@ -551,8 +553,8 @@ QString GuessLanguagePrivate::guessFromDictionaries(const QString& sentence, con
         if (!tokenizer.isSpellcheckable()) continue;
 
         for (int i = 0; i < spellers.count(); ++i) {
-            if (spellers[i].isValid() && spellers[i].isCorrect(word.toString())) {
-                correctHits[spellers[i].language()]++;
+            if (spellers[i]->isCorrect(word.toString())) {
+                correctHits[spellers[i]->language()]++;
             }
         }
     }
