@@ -489,7 +489,7 @@ GuessLanguagePrivate::GuessLanguagePrivate()
         case QChar::Script_WarangCiti:
             names = getNames(QLocale::VarangKshitiScript);
             break;
-#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 7, 0)
         case QChar::Script_Ahom:
             names = getNames(QLocale::AhomScript);
             break;
