@@ -808,7 +808,9 @@ QString GuessLanguagePrivate::guessFromDictionaries(const QString& sentence, con
             qCWarning(SONNET_LOG_CORE) << "Dictionary asked for invalid speller" << lang;
             continue;
         }
-        spellers.append(Loader::openLoader()->cachedSpeller(lang));
+        QSharedPointer<SpellerPlugin> plugin = Loader::openLoader()->cachedSpeller(lang);
+        if (!plugin.isNull())
+            spellers.append(plugin);
     }
 
     // If there's no spell checkers, give up
