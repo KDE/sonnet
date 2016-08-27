@@ -52,7 +52,6 @@ int main(int argc, char **argv)
         fin.open(QFile::ReadOnly | QFile::Text);
         QTextStream stream(&fin);
         stream.setCodec("UTF-8");
-        QString lname=fname.toLower();
 
         while (!stream.atEnd())
         {
@@ -60,7 +59,7 @@ int main(int argc, char **argv)
             QRegExp rx(QStringLiteral("(.{3})\\s+(.*)"));
             int pos = rx.indexIn(line);
             if ( pos != -1 )
-                models[lname][line.left(3)] = rx.cap(2).toInt();
+                models[fname][line.left(3)] = rx.cap(2).toInt();
         }
     }
 
