@@ -21,9 +21,5 @@
 
 #include "voikkodebug.h"
 
-#if QT_VERSION >= QT_VERSION_CHECK(5, 4, 0)
 // logging category for this framework, default: log stuff >= warning
 Q_LOGGING_CATEGORY(SONNET_VOIKKO, "sonnet.plugins.voikko", QtWarningMsg)
-#else
-Q_LOGGING_CATEGORY(SONNET_VOIKKO, "sonnet.plugins.voikko")
-#endif
