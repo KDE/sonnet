@@ -15,5 +15,5 @@
 
 #include "hunspelldebug.h"
 
-// logging category for this framework, default: log stuff >= warning
-Q_LOGGING_CATEGORY(SONNET_HUNSPELL, "sonnet.plugins.hunspell", QtWarningMsg)
+// logging category for this framework, default: log stuff >= info
+Q_LOGGING_CATEGORY(SONNET_HUNSPELL, "sonnet.plugins.hunspell", QtInfoMsg)

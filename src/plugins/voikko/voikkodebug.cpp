@@ -21,5 +21,5 @@
 
 #include "voikkodebug.h"
 
-// logging category for this framework, default: log stuff >= warning
-Q_LOGGING_CATEGORY(SONNET_VOIKKO, "sonnet.plugins.voikko", QtWarningMsg)
+// logging category for this framework, default: log stuff >= info
+Q_LOGGING_CATEGORY(SONNET_VOIKKO, "sonnet.plugins.voikko", QtInfoMsg)
