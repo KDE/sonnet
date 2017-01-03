@@ -37,15 +37,15 @@ class HunspellDict : public Sonnet::SpellerPlugin
 public:
     explicit HunspellDict(const QString &lang, QString path);
     ~HunspellDict();
-    bool isCorrect(const QString &word) const;
+    bool isCorrect(const QString &word) const Q_DECL_OVERRIDE;
 
-    QStringList suggest(const QString &word) const;
+    QStringList suggest(const QString &word) const Q_DECL_OVERRIDE;
 
     bool storeReplacement(const QString &bad,
-                                  const QString &good);
+                                  const QString &good) Q_DECL_OVERRIDE;
 
-    bool addToPersonal(const QString &word);
-    bool addToSession(const QString &word);
+    bool addToPersonal(const QString &word) Q_DECL_OVERRIDE;
+    bool addToSession(const QString &word) Q_DECL_OVERRIDE;
 
 private:
     QByteArray toDictEncoding(const QString &word) const;

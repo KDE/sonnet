@@ -39,16 +39,16 @@ public:
     explicit HunspellClient(QObject *parent = 0);
     ~HunspellClient();
 
-    virtual int reliability() const
+    int reliability() const Q_DECL_OVERRIDE
     {
         return 40;
     }
 
-    virtual SpellerPlugin *createSpeller(const QString &language);
+    SpellerPlugin *createSpeller(const QString &language) Q_DECL_OVERRIDE;
 
-    virtual QStringList languages() const;
+    QStringList languages() const Q_DECL_OVERRIDE;
 
-    virtual QString name() const
+    QString name() const Q_DECL_OVERRIDE
     {
         return QStringLiteral("Hunspell");
     }

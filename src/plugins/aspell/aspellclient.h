@@ -41,16 +41,16 @@ public:
     explicit ASpellClient(QObject *parent = 0);
     ~ASpellClient();
 
-    virtual int reliability() const
+    int reliability() const Q_DECL_OVERRIDE
     {
         return 20;
     }
 
-    virtual SpellerPlugin *createSpeller(const QString &language);
+    SpellerPlugin *createSpeller(const QString &language) Q_DECL_OVERRIDE;
 
-    virtual QStringList languages() const;
+    QStringList languages() const Q_DECL_OVERRIDE;
 
-    virtual QString name() const
+    QString name() const Q_DECL_OVERRIDE
     {
         return QStringLiteral("ASpell");
     }
