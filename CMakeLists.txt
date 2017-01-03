@@ -1,7 +1,8 @@
 
 cmake_minimum_required(VERSION 3.0)
 
-project(Sonnet)
+set(KF5_VERSION "5.30.0") # handled by release scripts
+project(Sonnet VERSION ${KF5_VERSION})
 
 include(FeatureSummary)
 find_package(ECM 5.29.0  NO_MODULE)
@@ -26,9 +27,7 @@ include(ECMGenerateHeaders)
 
 include(ECMPoQmTools)
 
-set(KF5_VERSION "5.30.0") # handled by release scripts
-
-ecm_setup_version(${KF5_VERSION} VARIABLE_PREFIX SONNET
+ecm_setup_version(PROJECT VARIABLE_PREFIX SONNET
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/sonnet_version.h"
                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5SonnetConfigVersion.cmake"
                         SOVERSION 5)
