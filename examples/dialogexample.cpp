@@ -28,7 +28,7 @@
 using namespace Sonnet;
 
 TestDialog::TestDialog()
-    : QObject(0)
+    : QObject(nullptr)
 {
 
 }
@@ -37,7 +37,7 @@ TestDialog::TestDialog()
 void TestDialog::check(const QString &buffer)
 {
     Sonnet::Dialog *dlg = new Sonnet::Dialog(
-        new BackgroundChecker(this), 0);
+        new BackgroundChecker(this), nullptr);
     connect(dlg, SIGNAL(done(QString)),
             SLOT(doneChecking(QString)));
     dlg->setBuffer(buffer);

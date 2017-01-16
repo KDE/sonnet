@@ -29,7 +29,7 @@ int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
 
-    ConfigDialog *dialog = new ConfigDialog(0);
+    ConfigDialog *dialog = new ConfigDialog(nullptr);
 
     dialog->show();
 

@@ -86,7 +86,7 @@ public:
             } else {
                 progressDialog->deleteLater();
             }
-            progressDialog = NULL;
+            progressDialog = nullptr;
         }
     }
 };
@@ -105,7 +105,7 @@ Dialog::Dialog(BackgroundChecker *checker,
     d->showCompletionMessageBox = false;
     d->spellCheckContinuedAfterReplacement = true;
     d->progressDialogTimeout = -1;
-    d->progressDialog = NULL;
+    d->progressDialog = nullptr;
 
     initGui();
     initConnections();

@@ -56,8 +56,8 @@ class SONNETCORE_EXPORT BackgroundChecker : public QObject
 {
     Q_OBJECT
 public:
-    explicit BackgroundChecker(QObject *parent = 0);
-    explicit BackgroundChecker(const Speller &speller, QObject *parent = 0);
+    explicit BackgroundChecker(QObject *parent = nullptr);
+    explicit BackgroundChecker(const Speller &speller, QObject *parent = nullptr);
     ~BackgroundChecker();
 
     /**

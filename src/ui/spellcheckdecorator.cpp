@@ -52,7 +52,7 @@ public:
         : q(installer)
         , m_textEdit(textEdit)
         , m_plainTextEdit(Q_NULLPTR)
-        , m_highlighter(0)
+        , m_highlighter(nullptr)
     {
         createDefaultHighlighter();
         // Catch pressing the "menu" key

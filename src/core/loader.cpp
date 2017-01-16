@@ -61,7 +61,7 @@ Q_GLOBAL_STATIC(Loader, s_loader)
 Loader *Loader::openLoader()
 {
     if (s_loader.isDestroyed()) {
-        return 0;
+        return nullptr;
     }
 
     return s_loader();
@@ -78,7 +78,7 @@ Loader::Loader()
 Loader::~Loader()
 {
     qCDebug(SONNET_LOG_CORE) << "Removing loader: " << this;
-    delete d->settings; d->settings = 0;
+    delete d->settings; d->settings = nullptr;
     delete d;
 }
 
@@ -96,7 +96,7 @@ SpellerPlugin *Loader::createSpeller(const QString &language,
 
     if (lClients.isEmpty()) {
         qCWarning(SONNET_LOG_CORE) << "No language dictionaries for the language:" << plang;
-        return 0;
+        return nullptr;
     }
 
     QVectorIterator<Client *> itr(lClients);
@@ -115,7 +115,7 @@ SpellerPlugin *Loader::createSpeller(const QString &language,
         }
     }
 
-    return 0;
+    return nullptr;
 }
 
 QSharedPointer<SpellerPlugin> Loader::cachedSpeller(const QString& language)
@@ -191,19 +191,19 @@ QString Loader::languageNameForCode(const QString &langCode) const
         { "yeyo",           QT_TRANSLATE_NOOP3("Sonnet::Loader", "with yeyo, modern and old russian", "dictionary variant") },
         { "yo",             QT_TRANSLATE_NOOP3("Sonnet::Loader", "with yo, old russian", "dictionary variant") },
         { "extended",       QT_TRANSLATE_NOOP3("Sonnet::Loader", "extended", "dictionary variant") },
-        { 0, 0 }
+        { nullptr, nullptr }
     };
 
     minusPos = currentDictionary.indexOf(QLatin1Char('-'));
     if (minusPos != -1) {
         variantName = currentDictionary.right(currentDictionary.length() - minusPos - 1);
-        while (variantList[variantCount].variantShortName != 0)
+        while (variantList[variantCount].variantShortName != nullptr)
             if (QLatin1String(variantList[variantCount].variantShortName) == variantName) {
                 break;
             } else {
                 variantCount++;
             }
-        if (variantList[variantCount].variantShortName != 0) {
+        if (variantList[variantCount].variantShortName != nullptr) {
             variantEnglish = variantList[variantCount].variantEnglishName;
         } else {
             variantEnglish = variantName.toLatin1();

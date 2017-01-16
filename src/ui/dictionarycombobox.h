@@ -43,7 +43,7 @@ public:
     /**
      * Constructor
      */
-    explicit DictionaryComboBox(QWidget *parent = 0);
+    explicit DictionaryComboBox(QWidget *parent = nullptr);
 
     /**
      * Destructor

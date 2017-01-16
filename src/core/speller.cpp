@@ -34,7 +34,7 @@ namespace Sonnet
 class SpellerPrivate
 {
 public:
-    SpellerPrivate() : settings(0)
+    SpellerPrivate() : settings(nullptr)
     {
     }
 
