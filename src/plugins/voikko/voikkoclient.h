@@ -31,7 +31,7 @@ class VoikkoClient : public Sonnet::Client
     Q_PLUGIN_METADATA(IID "org.kde.Sonnet.VoikkoClient")
 
 public:
-    explicit VoikkoClient(QObject *parent = Q_NULLPTR);
+    explicit VoikkoClient(QObject *parent = nullptr);
     ~VoikkoClient();
 
     int reliability() const Q_DECL_OVERRIDE;

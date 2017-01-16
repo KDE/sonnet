@@ -152,7 +152,7 @@ public:
         const char *error;
         m_handle = voikkoInit(&error, language.toUtf8().data(), 0);
 
-        if (error != Q_NULLPTR) {
+        if (error != nullptr) {
             qCWarning(SONNET_VOIKKO) << "Failed to initialize Voikko spelling backend. Reason:"
                                      << error;
         } else { // Continue to load user's own words
@@ -301,7 +301,7 @@ QStringList VoikkoDict::suggest(const QString &word) const
         return suggestions;
     }
 
-    for (int i = 0; voikkoSuggestions[i] != Q_NULLPTR; ++i) {
+    for (int i = 0; voikkoSuggestions[i] != nullptr; ++i) {
         QString suggestion = QString::fromWCharArray(voikkoSuggestions[i]);
         suggestions.append(suggestion);
     }

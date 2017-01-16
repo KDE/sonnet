@@ -64,8 +64,8 @@ class HighlighterPrivate
 {
 public:
     HighlighterPrivate(Highlighter *qq, const QColor &col)
-        : textEdit(Q_NULLPTR),
-          plainTextEdit(Q_NULLPTR),
+        : textEdit(nullptr),
+          plainTextEdit(nullptr),
           spellColor(col),
           q(qq)
     {

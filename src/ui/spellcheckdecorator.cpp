@@ -37,9 +37,9 @@ class SpellCheckDecorator::Private
 public:
     Private(SpellCheckDecorator *installer, QPlainTextEdit *textEdit)
         : q(installer)
-        , m_textEdit(Q_NULLPTR)
+        , m_textEdit(nullptr)
         , m_plainTextEdit(textEdit)
-        , m_highlighter(Q_NULLPTR)
+        , m_highlighter(nullptr)
     {
         createDefaultHighlighter();
         // Catch pressing the "menu" key
@@ -51,7 +51,7 @@ public:
     Private(SpellCheckDecorator *installer, QTextEdit *textEdit)
         : q(installer)
         , m_textEdit(textEdit)
-        , m_plainTextEdit(Q_NULLPTR)
+        , m_plainTextEdit(nullptr)
         , m_highlighter(nullptr)
     {
         createDefaultHighlighter();

@@ -27,13 +27,13 @@ VoikkoClient::VoikkoClient(QObject* parent) : Sonnet::Client(parent)
 {
     qCDebug(SONNET_VOIKKO) << "Initializing Voikko spell checker plugin.";
 
-    char **dictionaries = voikkoListSupportedSpellingLanguages(Q_NULLPTR);
+    char **dictionaries = voikkoListSupportedSpellingLanguages(nullptr);
 
     if (!dictionaries) {
         return;
     }
 
-    for (int i = 0; dictionaries[i] != Q_NULLPTR; ++i) {
+    for (int i = 0; dictionaries[i] != nullptr; ++i) {
         QString language = QString::fromUtf8(dictionaries[i]);
         m_supportedLanguages.append(language);
         qCDebug(SONNET_VOIKKO) << "Found dictionary for langauge:" << language;
@@ -55,7 +55,7 @@ Sonnet::SpellerPlugin* VoikkoClient::createSpeller(const QString &language)
     VoikkoDict *speller = new VoikkoDict(language);
     if (speller->initFailed()) {
         delete speller;
-        return Q_NULLPTR;
+        return nullptr;
     }
 
     return speller;
