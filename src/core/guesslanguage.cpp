@@ -61,9 +61,6 @@ az-Latn    az
 namespace Sonnet
 {
 
-// Amount of trigrams in each file
-static const int MAXGRAMS = 300;
-
 class GuessLanguagePrivate
 {
 public:

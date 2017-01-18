@@ -10,7 +10,7 @@ ecm_mark_nongui_executable(parsetrigrams)
 ecm_mark_nongui_executable(gentrigrams)
 
 TARGET_LINK_LIBRARIES(parsetrigrams PUBLIC Qt5::Core)
-TARGET_LINK_LIBRARIES(gentrigrams PUBLIC Qt5::Core)
+TARGET_LINK_LIBRARIES(gentrigrams PUBLIC Qt5::Core KF5::SonnetCore)
 INSTALL(TARGETS parsetrigrams EXPORT KF5SonnetTargets ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
 INSTALL(TARGETS gentrigrams EXPORT KF5SonnetTargets ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
 

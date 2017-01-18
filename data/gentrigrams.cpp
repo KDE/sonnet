@@ -25,6 +25,7 @@
 #include <QtCore/QHash>
 #include <QtCore/QString>
 #include <QtCore/QDebug>
+#include "guesslanguage.h"
 
 int main(int argc, char *argv[])
 {
@@ -75,9 +76,8 @@ int main(int argc, char *argv[])
 
     qDebug() << "Weeding out...";
     QMap<int, QString>::iterator i = orderedTrigrams.begin();
-    while (orderedTrigrams.size() > 300) {
-        orderedTrigrams.erase(i);
-        i++;
+    while (orderedTrigrams.size() > Sonnet::MAXGRAMS) {
+        i = orderedTrigrams.erase(i);
     }
     qDebug() << "Weeded!";
 
