@@ -171,7 +171,7 @@ void SpellCheckDecorator::Private::execSuggestionMenu(const QPoint &pos, const Q
     QMenu menu; //don't use KMenu here we don't want auto management accelerator
 
     //Add the suggestions to the menu
-    const QStringList reps = m_highlighter->suggestionsForWord(selectedWord);
+    const QStringList reps = m_highlighter->suggestionsForWord(selectedWord, cursor);
     if (reps.isEmpty()) {
         QAction *suggestionsAction = menu.addAction(tr("No suggestions for %1").arg(selectedWord));
         suggestionsAction->setEnabled(false);

@@ -45,9 +45,15 @@
 namespace Sonnet
 {
 
+// Cache of previously-determined languages (when using AutoDetectLanguage)
+// There is one such cache per block (paragraph)
 class LanguageCache : public QTextBlockUserData {
 public:
+    // Key: QPair<start, length>
+    // Value: language name
     QMap<QPair<int,int>, QString> languages;
+
+    // Remove all cached language information after @p pos
     void invalidate(int pos) {
         QMutableMapIterator<QPair<int,int>, QString> it(languages);
         it.toBack();
@@ -56,6 +62,18 @@ public:
             if (it.key().first+it.key().second >=pos) it.remove();
             else break;
         }
+    }
+
+    QString languageAtPos(int pos) const {
+        // The data structure isn't really great for such lookups...
+        QMapIterator<QPair<int,int>, QString> it(languages);
+        while (it.hasNext()) {
+            it.next();
+            if (it.key().first <= pos && it.key().first + it.key().second >= pos) {
+                return it.value();
+            }
+        }
+        return QString();
     }
 };
 
@@ -450,10 +468,24 @@ void Highlighter::ignoreWord(const QString &word)
 QStringList Highlighter::suggestionsForWord(const QString &word, int max)
 {
     QStringList suggestions = d->spellchecker->suggest(word);
-    if (max != -1) {
-        while (suggestions.count() > max) {
-            suggestions.removeLast();
+    if (max >= 0 && suggestions.count() > max) {
+        suggestions = suggestions.mid(0, max);
+    }
+    return suggestions;
+}
+
+QStringList Highlighter::suggestionsForWord(const QString &word, const QTextCursor &cursor, int max)
+{
+    LanguageCache* cache = dynamic_cast<LanguageCache*>(cursor.block().userData());
+    if (cache) {
+        const QString cachedLanguage = cache->languageAtPos(cursor.positionInBlock());
+        if (!cachedLanguage.isEmpty()) {
+            d->spellchecker->setLanguage(cachedLanguage);
         }
+    }
+    QStringList suggestions = d->spellchecker->suggest(word);
+    if (max >= 0 && suggestions.count() > max) {
+        suggestions = suggestions.mid(0, max);
     }
     return suggestions;
 }

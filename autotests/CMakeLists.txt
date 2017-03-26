@@ -6,16 +6,17 @@ find_package(Qt5Test ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE)
 
 ########### unittests ###############
 
-macro(SONNET_UNIT_TESTS)
-  foreach(_testname ${ARGN})
-    ecm_add_test(${_testname}.cpp TEST_NAME sonnet-${_testname} LINK_LIBRARIES KF5::SonnetCore Qt5::Test)
-  endforeach()
-endmacro(SONNET_UNIT_TESTS)
-
-sonnet_unit_tests(
+ecm_add_tests(
  test_filter
  test_core
  test_suggest
  test_settings
+ NAME_PREFIX "sonnet-"
+ LINK_LIBRARIES KF5::SonnetCore Qt5::Test
 )
 
+ecm_add_tests(
+ test_highlighter
+ NAME_PREFIX "sonnet-"
+ LINK_LIBRARIES KF5::SonnetUi KF5::SonnetCore Qt5::Test
+)

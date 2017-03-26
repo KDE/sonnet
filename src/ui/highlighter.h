@@ -139,6 +139,21 @@ public:
     QStringList suggestionsForWord(const QString &word, int max = 10);
 
     /**
+     * Returns a list of suggested replacements for the given misspelled word.
+     * If the word is not misspelled, the list will be empty.
+     *
+     * @param word the misspelled word
+     * @param cursor the cursor pointing to the beginning of that word. This is used
+     *               to determine the language to use, when AutoDetectLanguage is enabled.
+     * @param max at most this many suggestions will be returned. If this is
+     *            -1, as many suggestions as the spell backend supports will
+     *            be returned.
+     * @return a list of suggested replacements for the word
+     * @since 5.42
+     */
+    QStringList suggestionsForWord(const QString &word, const QTextCursor& cursor, int max = 10);
+
+    /**
      * Checks if a given word is marked as misspelled by the highlighter.
      *
      * @param word the word to be checked
