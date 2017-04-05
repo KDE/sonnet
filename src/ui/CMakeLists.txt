@@ -70,6 +70,29 @@ install(FILES
    ${CMAKE_CURRENT_BINARY_DIR}/sonnetui_export.h
    DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/SonnetUi/sonnet COMPONENT Devel)
 
+if (BUILD_QCH)
+    ecm_add_qch(
+        KF5SonnetUi_QCH
+        NAME SonnetUi
+        BASE_NAME KF5SonnetUi
+        VERSION ${KF5_VERSION}
+        ORG_DOMAIN org.kde
+        SOURCES # using only public headers, to cover only public API
+            ${SonnetUi_HEADERS}
+        LINK_QCHS
+            Qt5Core_QCH
+            Qt5Gui_QCH
+            Qt5Widgets_QCH
+        BLANK_MACROS
+            SONNETUI_EXPORT
+            SONNETUI_DEPRECATED_EXPORT
+            SONNETUI_DEPRECATED
+        TAGFILE_INSTALL_DESTINATION ${KDE_INSTALL_QTQCHDIR}
+        QCH_INSTALL_DESTINATION ${KDE_INSTALL_QTQCHDIR}
+        COMPONENT Devel
+    )
+endif()
+
 include(ECMGeneratePriFile)
 ecm_generate_pri_file(BASE_NAME SonnetUi LIB_NAME KF5SonnetUi DEPS "widgets" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF5}/SonnetUi)
 install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
