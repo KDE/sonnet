@@ -1,0 +1,8 @@
+# Logging categories (for kdebugsettings)
+sonnet.plugins.hunspell Sonnet HUnspell plugin
+sonnet.plugins.hspell Sonnet Hspell plugin
+sonnet.plugins.aspell Sonnet Aspell plugin
+sonnet.plugins.voikko Sonnet Voikko plugin
+sonnet.core Sonnet Core
+sonnet.ui Sonnet UI
+
