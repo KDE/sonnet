@@ -36,7 +36,7 @@ class HunspellClient : public Sonnet::Client
     Q_INTERFACES(Sonnet::Client)
     Q_PLUGIN_METADATA(IID "org.kde.Sonnet.HunspellClient")
 public:
-    explicit HunspellClient(QObject *parent = 0);
+    explicit HunspellClient(QObject *parent = nullptr);
     ~HunspellClient();
 
     int reliability() const Q_DECL_OVERRIDE

@@ -35,7 +35,7 @@ class NSSpellCheckerClient : public Sonnet::Client
     Q_INTERFACES(Sonnet::Client)
     Q_PLUGIN_METADATA(IID "org.kde.Sonnet.NSSpellClient")
 public:
-    explicit NSSpellCheckerClient(QObject *parent = 0);
+    explicit NSSpellCheckerClient(QObject *parent = nullptr);
     ~NSSpellCheckerClient();
 
     int reliability() const

@@ -65,7 +65,7 @@ QStringList ASpellClient::languages() const
     AspellDictInfoEnumeration *el = aspell_dict_info_list_elements(l);
 
     QStringList langs;
-    const AspellDictInfo *di = 0;
+    const AspellDictInfo *di = nullptr;
     while ((di = aspell_dict_info_enumeration_next(el))) {
         langs.append(QString::fromLatin1(di->name));
     }

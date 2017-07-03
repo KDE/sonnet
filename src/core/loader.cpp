@@ -300,7 +300,7 @@ void Loader::loadPlugin(const QString &pluginPath)
         return;
     }
 #else
-    Client *client = 0;
+    Client *client = nullptr;
     if (pluginPath == QLatin1String("Hunspell"))
         client = new HunspellClient(this);
 #ifdef Q_OS_MAC

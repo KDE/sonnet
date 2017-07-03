@@ -38,7 +38,7 @@ class ASpellClient : public Sonnet::Client
     Q_PLUGIN_METADATA(IID "org.kde.Sonnet.ASpellClient")
 
 public:
-    explicit ASpellClient(QObject *parent = 0);
+    explicit ASpellClient(QObject *parent = nullptr);
     ~ASpellClient();
 
     int reliability() const Q_DECL_OVERRIDE
