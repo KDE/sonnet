@@ -7,7 +7,7 @@ elseif (EXISTS "/usr/share/myspell/")
 add_definitions(-DHUNSPELL_MAIN_DICT_PATH="/usr/share/myspell")
 endif (EXISTS "/usr/share/hunspell/")
 
-include_directories( ${HUNSPELL_INCLUDE_DIR} )
+include_directories( ${HUNSPELL_INCLUDE_DIRS} )
 set(sonnet_hunspell_PART_SRCS
     hunspellclient.cpp
     hunspelldict.cpp

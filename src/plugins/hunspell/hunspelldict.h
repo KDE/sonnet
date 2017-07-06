@@ -22,7 +22,7 @@
 #define KSPELL_HUNSPELLDICT_H
 
 #include "spellerplugin_p.h"
-#include "hunspell/hunspell.hxx"
+#include "hunspell.hxx"
 
 #ifndef HUNSPELL_MAIN_DICT_PATH
 #ifdef Q_OS_MAC
