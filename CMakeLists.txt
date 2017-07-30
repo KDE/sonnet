@@ -17,7 +17,11 @@ include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
 
 set(REQUIRED_QT_VERSION 5.6.0)
-find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets)
+option(SONNET_USE_WIDGETS "Build components using Qt5Widgets" ON)
+if(SONNET_USE_WIDGETS)
+    find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets)
+endif()
+find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Core)
 
 
 include(GenerateExportHeader)
@@ -43,7 +47,9 @@ endif()
 add_subdirectory(src)
 add_subdirectory(autotests)
 add_subdirectory(data)
-add_subdirectory(examples)
+if(TARGET Qt5::Widgets)
+    add_subdirectory(examples)
+endif()
 
 
 # create a Config.cmake and a ConfigVersion.cmake file and install them
