@@ -16,7 +16,7 @@ include(KDEInstallDirs)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
 
-set(REQUIRED_QT_VERSION 5.6.0)
+set(REQUIRED_QT_VERSION 5.7.0)
 option(SONNET_USE_WIDGETS "Build components using Qt5Widgets" ON)
 if(SONNET_USE_WIDGETS)
     find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets)
