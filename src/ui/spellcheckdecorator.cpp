@@ -32,7 +32,7 @@
 namespace Sonnet
 {
 
-class SpellCheckDecorator::Private
+class Q_DECL_HIDDEN SpellCheckDecorator::Private
 {
 public:
     Private(SpellCheckDecorator *installer, QPlainTextEdit *textEdit)
