@@ -31,7 +31,7 @@ class ConfigDialogPrivate
 public:
     ConfigDialogPrivate(ConfigDialog *parent)
         : q(parent) {}
-    ConfigWidget *ui;
+    ConfigWidget *ui = nullptr;
     ConfigDialog *q;
     void slotConfigChanged();
 };

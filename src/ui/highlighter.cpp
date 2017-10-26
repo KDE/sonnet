@@ -115,10 +115,10 @@ public:
     bool intraWordEditing;
     bool spellCheckerFound; //cached d->dict->isValid() value
     bool connected;
-    int disablePercentage;
-    int disableWordCount;
+    int disablePercentage = 0;
+    int disableWordCount = 0;
     int wordCount, errorCount;
-    QTimer *rehighlightRequest;
+    QTimer *rehighlightRequest = nullptr;
     QColor spellColor;
     Highlighter *q;
 };
