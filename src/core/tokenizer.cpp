@@ -108,12 +108,14 @@ void BreakTokenizerPrivate::regenerateCache() const
     if ( !breakFinder || buffer.isEmpty() )
         cachedBreaks = TextBreaks::Positions();
 
-    breakFinder->setText(buffer);
+    if (breakFinder) {
+        breakFinder->setText(buffer);
 
-    if (type == Sentences) {
-        cachedBreaks = breakFinder->sentenceBreaks();
-    } else if (type == Words) {
-        cachedBreaks = breakFinder->wordBreaks();
+        if (type == Sentences) {
+            cachedBreaks = breakFinder->sentenceBreaks();
+        } else if (type == Words) {
+            cachedBreaks = breakFinder->wordBreaks();
+        }
     }
 
     cacheValid = true;
