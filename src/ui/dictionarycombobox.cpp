@@ -30,7 +30,7 @@ namespace Sonnet
 class DictionaryComboBoxPrivate
 {
 public:
-    DictionaryComboBoxPrivate(DictionaryComboBox *combo) : q(combo) {};
+    explicit DictionaryComboBoxPrivate(DictionaryComboBox *combo) : q(combo) {}
     DictionaryComboBox *q;
     void slotDictionaryChanged(int idx);
 };
