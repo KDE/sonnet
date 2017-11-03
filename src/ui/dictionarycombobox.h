@@ -72,6 +72,14 @@ public:
     void setCurrentByDictionaryName(const QString &dictionaryName);
 
     /**
+     * Sets the current dictionary to the given dictionary
+     * Return true if dictionnary was found.
+     * @since 5.40
+     * TODO merge with previous method in kf6
+     */
+    bool assignByDictionnary(const QString &dictionary);
+
+    /**
      * Sets the current dictionaryName to the given dictionaryName
      * Return true if dictionnary was found.
      * @since 5.40

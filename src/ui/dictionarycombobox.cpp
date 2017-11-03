@@ -87,20 +87,26 @@ void DictionaryComboBox::setCurrentByDictionaryName(const QString &name)
     assignDictionnaryName(name);
 }
 
-void DictionaryComboBox::setCurrentByDictionary(const QString &dictionary)
+bool DictionaryComboBox::assignByDictionnary(const QString &dictionary)
 {
     if (dictionary.isEmpty() || dictionary == itemData(currentIndex()).toString()) {
-        return;
+        return false;
     }
 
     int idx = findData(dictionary);
     if (idx == -1) {
         qCDebug(SONNET_LOG_UI) << "dictionary not found" << dictionary;
-        return;
+        return false;
     }
 
     setCurrentIndex(idx);
     d->slotDictionaryChanged(idx);
+    return true;
+}
+
+void DictionaryComboBox::setCurrentByDictionary(const QString &dictionary)
+{
+    assignByDictionnary(dictionary);
 }
 
 void DictionaryComboBox::reloadCombo()
