@@ -89,8 +89,11 @@ void DictionaryComboBox::setCurrentByDictionaryName(const QString &name)
 
 bool DictionaryComboBox::assignByDictionnary(const QString &dictionary)
 {
-    if (dictionary.isEmpty() || dictionary == itemData(currentIndex()).toString()) {
+    if (dictionary.isEmpty()) {
         return false;
+    }
+    if (dictionary == itemData(currentIndex()).toString()) {
+        return true;
     }
 
     int idx = findData(dictionary);
