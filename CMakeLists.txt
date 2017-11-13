@@ -46,7 +46,10 @@ endif()
 
 add_subdirectory(src)
 add_subdirectory(autotests)
-add_subdirectory(data)
+if (NOT CMAKE_CROSSCOMPILING)
+	add_subdirectory(data)
+endif()
+
 if(TARGET Qt5::Widgets)
     add_subdirectory(examples)
 endif()
