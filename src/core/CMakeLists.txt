@@ -11,8 +11,9 @@ set(sonnetcore_SRCS
    textbreaks.cpp
    tokenizer.cpp
    languagefilter.cpp
-   core_debug.cpp
 )
+
+ecm_qt_declare_logging_category(sonnetcore_SRCS HEADER core_debug.h IDENTIFIER SONNET_LOG_CORE CATEGORY_NAME sonnet.core)
 
 # Dear packagers, this is just used as an extra search paths for plugins. Don't get your panties in a twist.
 add_definitions(-DINSTALLATION_PLUGIN_PATH="${CMAKE_INSTALL_PREFIX}/${KDE_INSTALL_PLUGINDIR}")

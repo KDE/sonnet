@@ -19,9 +19,10 @@ set(sonnetui_SRCS
     dictionarycombobox.cpp
     highlighter.cpp
     spellcheckdecorator.cpp
-    ui_debug.cpp
     ${sonnet_QM_LOADER}
 )
+
+ecm_qt_declare_logging_category(sonnetui_SRCS HEADER ui_debug.h IDENTIFIER SONNET_LOG_UI CATEGORY_NAME sonnet.ui)
 
 set(sonnetui_UI
     configui.ui
