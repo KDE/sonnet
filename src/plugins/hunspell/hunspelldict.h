@@ -50,8 +50,8 @@ public:
 private:
     QByteArray toDictEncoding(const QString &word) const;
 
-    Hunspell *m_speller;
-    QTextCodec *m_codec;
+    Hunspell *m_speller = nullptr;
+    QTextCodec *m_codec = nullptr;
 };
 
 #endif

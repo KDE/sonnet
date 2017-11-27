@@ -33,17 +33,17 @@ namespace Sonnet
 class SettingsPrivate
 {
 public:
-    Loader  *loader; //can't be a Ptr since we don't want to hold a ref on it
-    bool     modified;
+    Loader  *loader = nullptr; //can't be a Ptr since we don't want to hold a ref on it
+    bool     modified = false;
 
     QString defaultLanguage;
     QString defaultClient;
 
-    bool checkUppercase;
-    bool skipRunTogether;
-    bool backgroundCheckerEnabled;
-    bool checkerEnabledByDefault;
-    bool autodetectLanguage;
+    bool checkUppercase = false;
+    bool skipRunTogether = false;
+    bool backgroundCheckerEnabled = false;
+    bool checkerEnabledByDefault = false;
+    bool autodetectLanguage = false;
 
     int disablePercentage;
     int disableWordCount;

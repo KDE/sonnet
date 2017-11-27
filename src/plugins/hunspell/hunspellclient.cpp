@@ -61,7 +61,7 @@ HunspellClient::HunspellClient(QObject *parent)
     dirList.append(QStringLiteral(HUNSPELL_MAIN_DICT_PATH));
     dirList.append(QStringLiteral("%1/../share/hunspell").arg(QCoreApplication::applicationDirPath()));
 
-    for (const QString & dirString : dirList) {
+    for (const QString &dirString : dirList) {
         QDir dir(dirString);
         for (const QFileInfo &dict : dir.entryInfoList(QStringList(AFF_MASK), QDir::Files)) {
             m_languagePaths.insert(dict.baseName(), dict.canonicalPath());

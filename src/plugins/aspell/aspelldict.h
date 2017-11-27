@@ -40,8 +40,8 @@ public:
     bool addToPersonal(const QString &word) Q_DECL_OVERRIDE;
     bool addToSession(const QString &word) Q_DECL_OVERRIDE;
 private:
-    AspellConfig  *m_config;
-    AspellSpeller *m_speller;
+    AspellConfig  *m_config = nullptr;
+    AspellSpeller *m_speller = nullptr;
 };
 
 #endif

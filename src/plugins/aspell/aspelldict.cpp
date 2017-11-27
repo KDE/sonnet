@@ -27,7 +27,7 @@
 using namespace Sonnet;
 
 ASpellDict::ASpellDict(const QString &lang)
-    : SpellerPlugin(lang), m_speller(0)
+    : SpellerPlugin(lang)
 {
     m_config = new_aspell_config();
     aspell_config_replace(m_config, "lang", lang.toLatin1().constData());

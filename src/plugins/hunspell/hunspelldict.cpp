@@ -34,8 +34,6 @@ using namespace Sonnet;
 
 HunspellDict::HunspellDict(const QString &lang, QString path)
     : SpellerPlugin(lang)
-    , m_speller(0)
-    , m_codec(0)
 {
     qCDebug(SONNET_HUNSPELL) << "Loading dictionary for" << lang << "from" << path;
 
@@ -50,7 +48,7 @@ HunspellDict::HunspellDict(const QString &lang, QString path)
         m_speller = new Hunspell(aff.toLocal8Bit().constData(), dictionary.toLocal8Bit().constData());
         m_codec = QTextCodec::codecForName(m_speller->get_dic_encoding());
         if (!m_codec) {
-            qWarning() << "Failed to find a text codec for name" << m_speller->get_dic_encoding() << "defaulting to locale text codec";
+            qCWarning(SONNET_HUNSPELL) << "Failed to find a text codec for name" << m_speller->get_dic_encoding() << "defaulting to locale text codec";
             m_codec = QTextCodec::codecForLocale();
             Q_ASSERT(m_codec);
         }
@@ -86,7 +84,10 @@ HunspellDict::~HunspellDict()
 
 QByteArray HunspellDict::toDictEncoding(const QString& word) const
 {
-    return m_codec->fromUnicode(word);
+    if (m_codec) {
+        return m_codec->fromUnicode(word);
+    }
+    return {};
 }
 
 bool HunspellDict::isCorrect(const QString &word) const

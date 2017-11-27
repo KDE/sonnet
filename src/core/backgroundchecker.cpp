@@ -129,7 +129,7 @@ void BackgroundChecker::finishedCurrentFeed()
 
 void BackgroundChecker::setSpeller(const Speller &speller)
 {
-    d->currentDict=speller;
+    d->currentDict = speller;
 }
 
 Speller BackgroundChecker::speller() const

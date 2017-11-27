@@ -228,7 +228,7 @@ void Dialog::setProgressDialogVisible(bool b)
         d->progressDialog->reset();
         d->progressDialog->setRange(0, 0);
         d->progressDialog->setValue(0);
-        connect(d->progressDialog, SIGNAL(canceled()), this, SLOT(slotCancel()));
+        connect(d->progressDialog, &QProgressDialog::canceled, this, &Dialog::slotCancel);
         d->progressDialog->setMinimumDuration(d->progressDialogTimeout);
     }
 }

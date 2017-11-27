@@ -62,7 +62,7 @@ public:
     
     bool hasNext() const;
     QStringRef next();
-    void setBuffer(const QString& b) { invalidate(); buffer=b; }
+    void setBuffer(const QString& b) { invalidate(); buffer = b; }
 private:
     void regenerateCache() const;
     mutable TextBreaks::Positions cachedBreaks;

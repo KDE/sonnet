@@ -40,7 +40,7 @@ public:
 
     QString mainLanguage() const;
 
-    AbstractTokenizer* source;
+    AbstractTokenizer *source = nullptr;
     QStringRef lastToken;
 
     mutable QString lastLanguage;

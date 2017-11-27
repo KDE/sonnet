@@ -34,9 +34,9 @@ using namespace Sonnet;
 class ConfigWidgetPrivate
 {
 public:
-    Loader *loader;
     Ui_SonnetConfigUI ui;
-    QWidget *wdg;
+    Loader *loader = nullptr;
+    QWidget *wdg = nullptr;
 };
 
 ConfigWidget::ConfigWidget(QWidget *parent)

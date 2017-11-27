@@ -19,13 +19,10 @@
  */
 #include "client_p.h"
 
-namespace Sonnet
-{
+using namespace Sonnet;
 
 Client::Client(QObject *parent)
     : QObject(parent)
 {
-}
-
 }
 

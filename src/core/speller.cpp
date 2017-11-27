@@ -54,9 +54,11 @@ public:
         updateDict();
     }
 
-    void updateDict() {
+    void updateDict()
+    {
         dict = Loader::openLoader()->cachedSpeller(language);
     }
+
     bool isValid()
     {
         if (settings->modified()) {
@@ -72,7 +74,7 @@ public:
     }
 
     QSharedPointer<SpellerPlugin> dict;
-    Settings* settings;
+    Settings *settings = nullptr;
     QString language;
 };
 
@@ -269,7 +271,7 @@ void Speller::setLanguage(const QString &lang)
 QMap<QString, QString> Sonnet::Speller::availableDictionaries() const
 {
     Loader *l = Loader::openLoader();
-    QStringList lst = l->languages();
+    const QStringList lst = l->languages();
     QMap<QString, QString> langs;
 
     Q_FOREACH (const QString &tag, lst) {
