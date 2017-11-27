@@ -103,12 +103,12 @@ public:
     }
 
     ~HighlighterPrivate();
-    WordTokenizer *tokenizer;
-    LanguageFilter *languageFilter;
-    Loader *loader;
-    Speller *spellchecker;
-    QTextEdit *textEdit;
-    QPlainTextEdit *plainTextEdit;
+    WordTokenizer *tokenizer = nullptr;
+    LanguageFilter *languageFilter = nullptr;
+    Loader *loader = nullptr;
+    Speller *spellchecker = nullptr;
+    QTextEdit *textEdit = nullptr;
+    QPlainTextEdit *plainTextEdit = nullptr;
     bool active;
     bool automatic;
     bool completeRehighlightRequired;

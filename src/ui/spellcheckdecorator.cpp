@@ -65,10 +65,10 @@ public:
     void execSuggestionMenu(const QPoint &pos, const QString &word, const QTextCursor &cursor);
     void createDefaultHighlighter();
 
-    SpellCheckDecorator *q;
-    QTextEdit *m_textEdit;
-    QPlainTextEdit *m_plainTextEdit;
-    Highlighter *m_highlighter;
+    SpellCheckDecorator *q = nullptr;
+    QTextEdit *m_textEdit = nullptr;
+    QPlainTextEdit *m_plainTextEdit = nullptr;
+    Highlighter *m_highlighter = nullptr;
 };
 
 bool SpellCheckDecorator::Private::onContextMenuEvent(QContextMenuEvent *event)

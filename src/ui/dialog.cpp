@@ -58,12 +58,12 @@ class DialogPrivate
 {
 public:
     Ui_SonnetUi ui;
-    ReadOnlyStringListModel *suggestionsModel;
-    QWidget *wdg;
-    QDialogButtonBox *buttonBox;
-    QProgressDialog *progressDialog;
+    ReadOnlyStringListModel *suggestionsModel = nullptr;
+    QWidget *wdg = nullptr;
+    QDialogButtonBox *buttonBox = nullptr;
+    QProgressDialog *progressDialog = nullptr;
     QString originalBuffer;
-    BackgroundChecker *checker;
+    BackgroundChecker *checker = nullptr;
 
     QString currentWord;
     int currentPosition;
@@ -118,18 +118,18 @@ Dialog::~Dialog()
 
 void Dialog::initConnections()
 {
-    connect(d->ui.m_addBtn, SIGNAL(clicked()),
-            SLOT(slotAddWord()));
-    connect(d->ui.m_replaceBtn, SIGNAL(clicked()),
-            SLOT(slotReplaceWord()));
-    connect(d->ui.m_replaceAllBtn, SIGNAL(clicked()),
-            SLOT(slotReplaceAll()));
-    connect(d->ui.m_skipBtn, SIGNAL(clicked()),
-            SLOT(slotSkip()));
-    connect(d->ui.m_skipAllBtn, SIGNAL(clicked()),
-            SLOT(slotSkipAll()));
-    connect(d->ui.m_suggestBtn, SIGNAL(clicked()),
-            SLOT(slotSuggest()));
+    connect(d->ui.m_addBtn, &QAbstractButton::clicked,
+            this, &Dialog::slotAddWord);
+    connect(d->ui.m_replaceBtn, &QAbstractButton::clicked,
+            this, &Dialog::slotReplaceWord);
+    connect(d->ui.m_replaceAllBtn, &QAbstractButton::clicked,
+            this, &Dialog::slotReplaceAll);
+    connect(d->ui.m_skipBtn, &QAbstractButton::clicked,
+            this, &Dialog::slotSkip);
+    connect(d->ui.m_skipAllBtn, &QAbstractButton::clicked,
+            this, &Dialog::slotSkipAll);
+    connect(d->ui.m_suggestBtn, &QAbstractButton::clicked,
+            this, &Dialog::slotSuggest);
     connect(d->ui.m_language, SIGNAL(activated(QString)),
             SLOT(slotChangeLanguage(QString)));
     connect(d->ui.m_suggestions, SIGNAL(clicked(QModelIndex)),
@@ -140,8 +140,8 @@ void Dialog::initConnections()
             SLOT(slotDone()));
     connect(d->ui.m_suggestions, SIGNAL(doubleClicked(QModelIndex)),
             SLOT(slotReplaceWord()));
-    connect(d->buttonBox, SIGNAL(accepted()), this, SLOT(slotFinished()));
-    connect(d->buttonBox, SIGNAL(rejected()), this, SLOT(slotCancel()));
+    connect(d->buttonBox, &QDialogButtonBox::accepted, this, &Dialog::slotFinished);
+    connect(d->buttonBox, &QDialogButtonBox::rejected, this, &Dialog::slotCancel);
     connect(d->ui.m_replacement, SIGNAL(returnPressed()), this, SLOT(slotReplaceWord()));
     connect(d->ui.m_autoCorrect, SIGNAL(clicked()),
             SLOT(slotAutocorrect()));
@@ -152,16 +152,14 @@ void Dialog::initConnections()
 
 void Dialog::initGui()
 {
-    QVBoxLayout *layout = new QVBoxLayout;
-    setLayout(layout);
+    QVBoxLayout *layout = new QVBoxLayout(this);
 
     d->wdg = new QWidget(this);
     d->ui.setupUi(d->wdg);
     layout->addWidget(d->wdg);
     setGuiEnabled(false);
 
-    d->buttonBox = new QDialogButtonBox(this);
-    d->buttonBox->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+    d->buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
 
     layout->addWidget(d->wdg);
     layout->addWidget(d->buttonBox);

@@ -49,8 +49,7 @@ ConfigDialog::ConfigDialog(QWidget *parent)
     setModal(true);
     setWindowTitle(tr("Spell Checking Configuration"));
 
-    QVBoxLayout *layout = new QVBoxLayout;
-    setLayout(layout);
+    QVBoxLayout *layout = new QVBoxLayout(this);
 
     d->ui = new ConfigWidget(this);
     layout->addWidget(d->ui);
@@ -60,14 +59,11 @@ ConfigDialog::ConfigDialog(QWidget *parent)
                                   | QDialogButtonBox::Cancel);
     layout->addWidget(buttonBox);
 
-    connect(buttonBox, SIGNAL(accepted()),
-            this, SLOT(slotOk()));
-    connect(buttonBox, SIGNAL(rejected()),
-            this, SLOT(reject()));
-    /*
-    connect(buttonBox->button(QDialogButtonBox::Apply), SIGNAL(clicked()),
-            this, SLOT(slotApply()));
-        */
+    connect(buttonBox, &QDialogButtonBox::accepted,
+            this, &ConfigDialog::slotOk);
+    connect(buttonBox, &QDialogButtonBox::rejected,
+            this, &QDialog::reject);
+
     connect(d->ui, SIGNAL(configChanged()),
             this, SLOT(slotConfigChanged()));
 
