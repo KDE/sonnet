@@ -39,19 +39,19 @@ struct Hit {
 
 void SonnetFilterTest::testLatin()
 {
-    QString buffer("  This is     a sample thing. Please test me ...     He's don't Le'Clerk.");
+    QString buffer(QStringLiteral("  This is     a sample thing. Please test me ...     He's don't Le'Clerk."));
     QList<Hit> hits;
-    hits.append(Hit("This", 2));
-    hits.append(Hit("is", 7));
-    hits.append(Hit("a", 14));
-    hits.append(Hit("sample", 16));
-    hits.append(Hit("thing", 23));
-    hits.append(Hit("Please", 30));
-    hits.append(Hit("test", 37));
-    hits.append(Hit("me", 42));
-    hits.append(Hit("He's", 53));
-    hits.append(Hit("don't", 58));
-    hits.append(Hit("Le'Clerk", 64));
+    hits.append(Hit(QStringLiteral("This"), 2));
+    hits.append(Hit(QStringLiteral("is"), 7));
+    hits.append(Hit(QStringLiteral("a"), 14));
+    hits.append(Hit(QStringLiteral("sample"), 16));
+    hits.append(Hit(QStringLiteral("thing"), 23));
+    hits.append(Hit(QStringLiteral("Please"), 30));
+    hits.append(Hit(QStringLiteral("test"), 37));
+    hits.append(Hit(QStringLiteral("me"), 42));
+    hits.append(Hit(QStringLiteral("He's"), 53));
+    hits.append(Hit(QStringLiteral("don't"), 58));
+    hits.append(Hit(QStringLiteral("Le'Clerk"), 64));
 
     WordTokenizer tokenizer;
     tokenizer.setBuffer(buffer);
@@ -122,11 +122,11 @@ void SonnetFilterTest::testIndic()
 
 void SonnetFilterTest::testSentence()
 {
-    QString buffer("This is     a sample thing. Please test me ...     He's don't Le'Clerk.");
+    QString buffer(QStringLiteral("This is     a sample thing. Please test me ...     He's don't Le'Clerk."));
     QList<Hit> hits;
-    hits.append(Hit("This is     a sample thing. ", 0));
-    hits.append(Hit("Please test me ...     ", 28));
-    hits.append(Hit("He's don't Le'Clerk.", 51));
+    hits.append(Hit(QStringLiteral("This is     a sample thing. "), 0));
+    hits.append(Hit(QStringLiteral("Please test me ...     "), 28));
+    hits.append(Hit(QStringLiteral("He's don't Le'Clerk."), 51));
 
     SentenceTokenizer tokenizer;
     tokenizer.setBuffer(buffer);

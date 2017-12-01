@@ -1,5 +1,3 @@
-remove_definitions(-DQT_NO_CAST_FROM_ASCII)
-
 add_executable(dialog dialogexample.cpp)
 target_link_libraries(dialog KF5::SonnetCore KF5::SonnetUi)
 
