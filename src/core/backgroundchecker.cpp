@@ -56,16 +56,18 @@ void BackgroundCheckerPrivate::checkNext()
         // current sentence done, grab next suitable
 
         sentenceOffset=-1;
+        const bool autodetectLanguage = currentDict.testAttribute(Speller::AutoDetectLanguage);
+        const bool ignoreUpperCase = !currentDict.testAttribute(Speller::CheckUppercase);
         while (mainTokenizer.hasNext()) {
             QStringRef sentence=mainTokenizer.next();
-            if (currentDict.testAttribute(Speller::AutoDetectLanguage))  {
+            if (autodetectLanguage)  {
                 if (!mainTokenizer.isSpellcheckable()) continue;
                 // FIXME: find best from family en -> en_US, en_GB, ... ?
                 currentDict.setLanguage(mainTokenizer.language());
             }
             sentenceOffset=sentence.position();
             words.setBuffer(sentence.toString());
-            words.setIgnoreUppercase(!currentDict.testAttribute(Speller::CheckUppercase));
+            words.setIgnoreUppercase(ignoreUpperCase);
             break;
         }
     } while (sentenceOffset!=-1);

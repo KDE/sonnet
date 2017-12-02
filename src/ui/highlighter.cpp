@@ -302,9 +302,10 @@ void Highlighter::highlightBlock(const QString &text)
             setCurrentBlockUserData(cache);
         }
 
+        const bool autodetectLanguage = d->spellchecker->testAttribute(Speller::AutoDetectLanguage);
         while (d->languageFilter->hasNext()) {
             QStringRef sentence=d->languageFilter->next();
-            if (d->spellchecker->testAttribute(Speller::AutoDetectLanguage)) {
+            if (autodetectLanguage) {
 
                 QString lang;
                 QPair<int,int> spos=QPair<int,int>(sentence.position(),sentence.length());
