@@ -168,7 +168,7 @@ void BackgroundChecker::continueChecking()
 void BackgroundChecker::slotEngineDone()
 {
     finishedCurrentFeed();
-    QString currentText = fetchMoreText();
+    const QString currentText = fetchMoreText();
 
     if ( currentText.isNull() ) {
         emit done();

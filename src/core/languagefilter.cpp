@@ -119,7 +119,8 @@ QString LanguageFilter::language() const
     return d->lastLanguage;
 }
 
-bool LanguageFilter::isSpellcheckable() const {
+bool LanguageFilter::isSpellcheckable() const
+{
     const QString& lastlang=language();
     if (lastlang.isEmpty()) {
         return false;
