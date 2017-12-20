@@ -27,25 +27,10 @@
 
 using namespace Sonnet;
 
-#ifdef Q_OS_WIN
-#define ASPELL_DATA_ROOT "/lib/aspell-0.60/"
-
-QString aspell_data_dir()
-{
-    // TODO: is this still valid on Windows?
-    // A generated config-aspell.h (or config-kspell.h, if shared) should be added then, to define CMAKE_INSTALL_PREFIX
-    return QLatin1String(CMAKE_INSTALL_PREFIX  ASPELL_DATA_ROOT);
-}
-#endif
-
 ASpellClient::ASpellClient(QObject *parent)
     : Client(parent)
 {
     m_config = new_aspell_config();
-#ifdef Q_OS_WIN
-    aspell_config_replace(m_config, "data-dir", aspell_data_dir().toLocal8Bit().data());
-    aspell_config_replace(m_config, "dict-dir", aspell_data_dir().toLocal8Bit().data());
-#endif
 }
 
 ASpellClient::~ASpellClient()
