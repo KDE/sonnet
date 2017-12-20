@@ -18,6 +18,5 @@ add_library(sonnet_hspell MODULE ${sonnet_hspell_PART_SRCS})
 
 target_link_libraries(sonnet_hspell PRIVATE KF5::SonnetCore ${HSPELL_LIBRARIES} ${ZLIB_LIBRARY})
 
-set_target_properties(sonnet_hspell PROPERTIES OUTPUT_NAME "hspell")
 install(TARGETS sonnet_hspell  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf5/sonnet/)
 
