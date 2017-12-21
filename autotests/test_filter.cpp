@@ -26,8 +26,7 @@
 #include <QTextBoundaryFinder>
 #include <QDebug>
 
-// QT5 TODO QTEST_GUILESS_MAIN(SonnetFilterTest)
-QTEST_MAIN(SonnetFilterTest)
+QTEST_GUILESS_MAIN(SonnetFilterTest)
 
 using namespace Sonnet;
 

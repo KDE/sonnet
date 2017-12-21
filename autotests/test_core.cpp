@@ -25,8 +25,7 @@
 #include <qtest.h>
 #include <QDebug>
 
-// QT5 TODO QTEST_GUILESS_MAIN(SonnetCoreTest)
-QTEST_MAIN(SonnetCoreTest)
+QTEST_GUILESS_MAIN(SonnetCoreTest)
 
 using namespace Sonnet;
 
