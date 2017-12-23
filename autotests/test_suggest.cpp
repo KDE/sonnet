@@ -32,11 +32,52 @@ class SuggestTest : public QObject
     Q_OBJECT
 
 private Q_SLOTS:
-    void english();
+    void aspell_english_data();
+    void aspell_english();
+    void performance();
 };
 
 
-void SuggestTest::english()
+void SuggestTest::aspell_english_data()
+{
+    // Input
+    QTest::addColumn<QString>("word");
+    // Expected output
+    QTest::addColumn<bool>("correct");
+    QTest::addColumn<QStringList>("expectedSuggestions");
+
+    QTest::addRow("hello") << QStringLiteral("hello") << true << QStringList();
+    QTest::addRow("helo") << QStringLiteral("helo") << false << QStringList{QStringLiteral("hello"), QStringLiteral("hell"), QStringLiteral("help")};
+    QTest::addRow("enviroment") << QStringLiteral("enviroment") << false << QStringList{QStringLiteral("environment")};
+    QTest::addRow("guvernment") << QStringLiteral("guvernment") << false << QStringList{QStringLiteral("government")};
+}
+
+void SuggestTest::aspell_english()
+{
+    QFETCH(QString, word);
+    QFETCH(bool, correct);
+    QFETCH(QStringList, expectedSuggestions);
+
+    Speller dict(QStringLiteral("en_US"));
+    if (!dict.availableBackends().contains(QLatin1String("ASpell"))) {
+        QSKIP("ASpell not available");
+    }
+    dict.setDefaultClient(QStringLiteral("ASpell"));
+    dict.setDefaultLanguage(QStringLiteral("en"));
+
+    QCOMPARE(dict.isCorrect(word), correct);
+    if (!correct) {
+        const QStringList suggestions = dict.suggest(word);
+        qDebug() << suggestions;
+        // Check that each expectedSuggestions was found, make list of those that were missing
+        QStringList missingSuggestions;
+        std::copy_if(expectedSuggestions.begin(), expectedSuggestions.end(), std::back_inserter(missingSuggestions),
+                [&suggestions](const QString &sugg) { return !suggestions.contains(sugg); });
+        QCOMPARE(missingSuggestions, QStringList()); // not using QVERIFY, to see the list in the output
+    }
+}
+
+void SuggestTest::performance()
 {
     Speller dict(QStringLiteral("en_US"));
 
@@ -44,47 +85,9 @@ void SuggestTest::english()
     qDebug() << "Languages are " << dict.availableLanguages();
 
     QStringList words;
-
-    words << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted")
-          << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted");
+    for (int i = 0; i < 30; ++i) {
+        words << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment") << QStringLiteral("guvernment") << QStringLiteral("farted");
+    }
 
     QBENCHMARK {
         for (QStringList::Iterator itr = words.begin();
