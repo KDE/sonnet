@@ -26,6 +26,7 @@ class SonnetSettingsTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
+    void initTestCase();
     void testRestoreDoesNotSave();
     void testSpellerAPIChangeSaves();
 };

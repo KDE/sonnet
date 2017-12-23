@@ -29,10 +29,16 @@
 #include <QFileInfo>
 #include <QDateTime>
 #include <QDebug>
+#include <QStandardPaths>
 
 QTEST_MAIN(SonnetSettingsTest)
 
 using namespace Sonnet;
+
+void SonnetSettingsTest::initTestCase()
+{
+    QStandardPaths::setTestModeEnabled(true);
+}
 
 void SonnetSettingsTest::testRestoreDoesNotSave()
 {
