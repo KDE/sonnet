@@ -85,9 +85,12 @@ Loader::~Loader()
 SpellerPlugin *Loader::createSpeller(const QString &language,
                                      const QString &clientName) const
 {
-    QString pclient = clientName;
+    QString backend = clientName;
     QString plang   = language;
 
+    if (backend.isEmpty()) {
+        backend = d->settings->defaultClient();
+    }
     if (plang.isEmpty()) {
         plang = d->settings->defaultLanguage();
     }
@@ -102,8 +105,8 @@ SpellerPlugin *Loader::createSpeller(const QString &language,
     QVectorIterator<Client *> itr(lClients);
     while (itr.hasNext()) {
         Client *item = itr.next();
-        if (!pclient.isEmpty()) {
-            if (pclient == item->name()) {
+        if (!backend.isEmpty()) {
+            if (backend == item->name()) {
                 SpellerPlugin *dict = item->createSpeller(plang);
                 return dict;
             }
