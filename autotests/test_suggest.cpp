@@ -62,6 +62,9 @@ void SuggestTest::aspell_english()
     if (!dict.availableBackends().contains(QLatin1String("ASpell"))) {
         QSKIP("ASpell not available");
     }
+    if (!dict.availableLanguages().contains(QLatin1String("en"))) {
+        QSKIP("'en' not available");
+    }
     dict.setDefaultClient(QStringLiteral("ASpell"));
     dict.setDefaultLanguage(QStringLiteral("en"));
 
@@ -73,7 +76,7 @@ void SuggestTest::aspell_english()
         QStringList missingSuggestions;
         std::copy_if(expectedSuggestions.begin(), expectedSuggestions.end(), std::back_inserter(missingSuggestions),
                 [&suggestions](const QString &sugg) { return !suggestions.contains(sugg); });
-        QCOMPARE(missingSuggestions, QStringList()); // not using QVERIFY, to see the list in the output
+        QCOMPARE(missingSuggestions.join(QLatin1Char(',')), QString()); // not using QVERIFY, to see the list in the output
     }
 }
 
