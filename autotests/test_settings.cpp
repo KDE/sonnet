@@ -31,7 +31,7 @@
 #include <QDebug>
 #include <QStandardPaths>
 
-QTEST_MAIN(SonnetSettingsTest)
+QTEST_GUILESS_MAIN(SonnetSettingsTest)
 
 using namespace Sonnet;
 

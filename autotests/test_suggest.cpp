@@ -100,6 +100,6 @@ void SuggestTest::performance()
         }
     }
 }
-QTEST_MAIN(SuggestTest)
+QTEST_GUILESS_MAIN(SuggestTest)
 
 #include "test_suggest.moc"
