@@ -46,10 +46,10 @@ void SuggestTest::aspell_english_data()
     QTest::addColumn<bool>("correct");
     QTest::addColumn<QStringList>("expectedSuggestions");
 
-    QTest::addRow("hello") << QStringLiteral("hello") << true << QStringList();
-    QTest::addRow("helo") << QStringLiteral("helo") << false << QStringList{QStringLiteral("hello"), QStringLiteral("hell"), QStringLiteral("help")};
-    QTest::addRow("enviroment") << QStringLiteral("enviroment") << false << QStringList{QStringLiteral("environment")};
-    QTest::addRow("guvernment") << QStringLiteral("guvernment") << false << QStringList{QStringLiteral("government")};
+    QTest::newRow("hello") << QStringLiteral("hello") << true << QStringList();
+    QTest::newRow("helo") << QStringLiteral("helo") << false << QStringList{QStringLiteral("hello"), QStringLiteral("hell"), QStringLiteral("help")};
+    QTest::newRow("enviroment") << QStringLiteral("enviroment") << false << QStringList{QStringLiteral("environment")};
+    QTest::newRow("guvernment") << QStringLiteral("guvernment") << false << QStringList{QStringLiteral("government")};
 }
 
 void SuggestTest::aspell_english()
