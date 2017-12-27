@@ -19,9 +19,7 @@
  */
 #include "spellerplugin_p.h"
 
-namespace Sonnet
-{
-
+namespace Sonnet {
 class SpellerPluginPrivate
 {
 public:
@@ -49,8 +47,7 @@ bool SpellerPlugin::isMisspelled(const QString &word) const
     return !isCorrect(word);
 }
 
-bool SpellerPlugin::checkAndSuggest(const QString &word,
-                                    QStringList &suggestions) const
+bool SpellerPlugin::checkAndSuggest(const QString &word, QStringList &suggestions) const
 {
     bool c = isCorrect(word);
     if (!c) {
@@ -58,5 +55,4 @@ bool SpellerPlugin::checkAndSuggest(const QString &word,
     }
     return c;
 }
-
 }

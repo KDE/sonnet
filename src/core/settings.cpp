@@ -28,13 +28,12 @@
 #include <QtCore/QLocale>
 #include <QtCore/QSettings>
 
-namespace Sonnet
-{
+namespace Sonnet {
 class SettingsPrivate
 {
 public:
-    Loader  *loader = nullptr; //can't be a Ptr since we don't want to hold a ref on it
-    bool     modified = false;
+    Loader *loader = nullptr;  //can't be a Ptr since we don't want to hold a ref on it
+    bool modified = false;
 
     QString defaultLanguage;
     QString defaultClient;
@@ -69,8 +68,8 @@ Settings::~Settings()
 bool Settings::setDefaultLanguage(const QString &lang)
 {
     const QStringList cs = d->loader->languages();
-    if (cs.indexOf(lang) != -1 &&
-            d->defaultLanguage != lang) {
+    if (cs.indexOf(lang) != -1
+        && d->defaultLanguage != lang) {
         d->defaultLanguage = lang;
         d->modified = true;
         d->loader->changed();
@@ -121,8 +120,8 @@ bool Settings::checkUppercase() const
 bool Settings::setAutodetectLanguage(bool detect)
 {
     if (d->autodetectLanguage != detect) {
-        d->modified=true;
-        d->autodetectLanguage=detect;
+        d->modified = true;
+        d->autodetectLanguage = detect;
         return true;
     }
     return false;
@@ -190,7 +189,7 @@ bool Settings::setQuietIgnoreList(const QStringList &ignores)
     bool changed = false;
     d->ignore = QMap<QString, bool>();//clear out
     for (QStringList::const_iterator itr = ignores.begin();
-            itr != ignores.end(); ++itr) {
+         itr != ignores.end(); ++itr) {
         d->ignore.insert(*itr, true);
         changed = true;
     }
@@ -245,7 +244,6 @@ void Settings::save()
     }
 }
 
-
 // A static list of KDE specific words that we want to recognize
 static QStringList kdeWords()
 {
@@ -268,20 +266,24 @@ static QStringList kdeWords()
     return l;
 }
 
-
 void Settings::restore()
 {
     QSettings settings(QStringLiteral("KDE"), QStringLiteral("Sonnet"));
     d->defaultClient = settings.value(QStringLiteral("defaultClient"), QString()).toString();
-    d->defaultLanguage = settings.value(QStringLiteral("defaultLanguage"), QLocale::system().bcp47Name()).toString();
+    d->defaultLanguage = settings.value(QStringLiteral("defaultLanguage"),
+                                        QLocale::system().bcp47Name()).toString();
 
     //same defaults are in the default filter (filter.cpp)
     d->checkUppercase = settings.value(QStringLiteral("checkUppercase"), true).toBool();
     d->skipRunTogether = settings.value(QStringLiteral("skipRunTogether"), true).toBool();
-    d->backgroundCheckerEnabled = settings.value(QStringLiteral("backgroundCheckerEnabled"), true).toBool();
-    d->checkerEnabledByDefault = settings.value(QStringLiteral("checkerEnabledByDefault"), false).toBool();
-    d->disablePercentage = settings.value(QStringLiteral("Sonnet_AsYouTypeDisablePercentage"), 90).toInt();
-    d->disableWordCount = settings.value(QStringLiteral("Sonnet_AsYouTypeDisableWordCount"), 100).toInt();
+    d->backgroundCheckerEnabled
+        = settings.value(QStringLiteral("backgroundCheckerEnabled"), true).toBool();
+    d->checkerEnabledByDefault
+        = settings.value(QStringLiteral("checkerEnabledByDefault"), false).toBool();
+    d->disablePercentage
+        = settings.value(QStringLiteral("Sonnet_AsYouTypeDisablePercentage"), 90).toInt();
+    d->disableWordCount
+        = settings.value(QStringLiteral("Sonnet_AsYouTypeDisableWordCount"), 100).toInt();
     d->autodetectLanguage = settings.value(QStringLiteral("autodetectLanguage"), true).toBool();
 
     const QString ignoreEntry = QStringLiteral("ignore_%1").arg(d->defaultLanguage);
@@ -298,6 +300,4 @@ void Settings::setModified(bool modified)
 {
     d->modified = modified;
 }
-
 }
-

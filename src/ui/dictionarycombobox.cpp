@@ -23,14 +23,15 @@
 #include <speller.h>
 #include "ui_debug.h"
 
-namespace Sonnet
-{
-
+namespace Sonnet {
 //@cond PRIVATE
 class DictionaryComboBoxPrivate
 {
 public:
-    explicit DictionaryComboBoxPrivate(DictionaryComboBox *combo) : q(combo) {}
+    explicit DictionaryComboBoxPrivate(DictionaryComboBox *combo) : q(combo)
+    {
+    }
+
     DictionaryComboBox *q;
     void slotDictionaryChanged(int idx);
 };
@@ -40,10 +41,12 @@ void DictionaryComboBoxPrivate::slotDictionaryChanged(int idx)
     emit q->dictionaryChanged(q->itemData(idx).toString());
     emit q->dictionaryNameChanged(q->itemText(idx));
 }
+
 //@endcon
 
 DictionaryComboBox::DictionaryComboBox(QWidget *parent)
-    : QComboBox(parent), d(new DictionaryComboBoxPrivate(this))
+    : QComboBox(parent)
+    , d(new DictionaryComboBoxPrivate(this))
 {
     reloadCombo();
     connect(this, SIGNAL(activated(int)),
@@ -124,7 +127,6 @@ void DictionaryComboBox::reloadCombo()
     }
     delete speller;
 }
-
 }
 
 #include "moc_dictionarycombobox.cpp"

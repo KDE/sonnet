@@ -25,8 +25,7 @@
 
 #include "sonnetcore_export.h"
 
-namespace Sonnet
-{
+namespace Sonnet {
 /**
  * Class is returned by from Loader. It acts
  * as the actual spellchecker.
@@ -63,15 +62,13 @@ public:
      * Convience method calling isCorrect() and suggest()
      * if the word isn't correct.
      */
-    virtual bool checkAndSuggest(const QString &word,
-                                 QStringList &suggestions) const;
+    virtual bool checkAndSuggest(const QString &word, QStringList &suggestions) const;
 
     /**
      * Stores user defined good replacement for the bad word.
      * @returns true on success
      */
-    virtual bool storeReplacement(const QString &bad,
-                                  const QString &good) = 0;
+    virtual bool storeReplacement(const QString &bad, const QString &good) = 0;
 
     /**
      * Adds word to the list of of personal words.

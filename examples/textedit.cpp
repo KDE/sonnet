@@ -36,7 +36,8 @@ class MailSpellCheckDecorator : public Sonnet::SpellCheckDecorator
 public:
     MailSpellCheckDecorator(QTextEdit *edit)
         : Sonnet::SpellCheckDecorator(edit)
-    {}
+    {
+    }
 
 protected:
     bool isSpellCheckingEnabledForBlock(const QString &blockText) const Q_DECL_OVERRIDE
@@ -58,14 +59,15 @@ int main(int argc, char **argv)
     //@@snippet_begin(simple_textedit_example)
     QTextEdit *textEdit = new QTextEdit;
     textEdit->setText(QString::fromLatin1("This is a sample buffer. Whih this thingg will "
-                      "be checkin for misstakes. Whih, Enviroment, govermant. Whih.")
-                     );
+                                          "be checkin for misstakes. Whih, Enviroment, govermant. Whih.")
+                      );
 
     Sonnet::SpellCheckDecorator *installer = new Sonnet::SpellCheckDecorator(textEdit);
     installer->highlighter()->setCurrentLanguage(QStringLiteral("en_US"));
     //@@snippet_end
 
-    QObject::connect(comboBox, SIGNAL(dictionaryChanged(QString)), installer->highlighter(), SLOT(setCurrentLanguage(QString)));
+    QObject::connect(comboBox, SIGNAL(dictionaryChanged(QString)), installer->highlighter(),
+                     SLOT(setCurrentLanguage(QString)));
 
     QTextEdit *mailTextEdit = new QTextEdit;
     mailTextEdit->setText(
@@ -73,7 +75,8 @@ int main(int argc, char **argv)
 
     installer = new MailSpellCheckDecorator(mailTextEdit);
     installer->highlighter()->setCurrentLanguage(QStringLiteral("en_US"));
-    QObject::connect(comboBox, SIGNAL(dictionaryChanged(QString)), installer->highlighter(), SLOT(setCurrentLanguage(QString)));
+    QObject::connect(comboBox, SIGNAL(dictionaryChanged(QString)), installer->highlighter(),
+                     SLOT(setCurrentLanguage(QString)));
 
     QVBoxLayout *layout = new QVBoxLayout(&window);
     layout->addWidget(comboBox);

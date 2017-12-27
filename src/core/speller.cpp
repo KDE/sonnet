@@ -28,9 +28,7 @@
 #include <QSet>
 #include "core_debug.h"
 
-namespace Sonnet
-{
-
+namespace Sonnet {
 class SpellerPrivate
 {
 public:
@@ -41,6 +39,7 @@ public:
     ~SpellerPrivate()
     {
     }
+
     void init(const QString &lang)
     {
         Loader *loader = Loader::openLoader();
@@ -67,6 +66,7 @@ public:
         }
         return dict;
     }
+
     void recreateDict()
     {
         Loader::openLoader()->clearSpellerCache();
@@ -128,8 +128,7 @@ QStringList Speller::suggest(const QString &word) const
     return d->dict->suggest(word);
 }
 
-bool Speller::checkAndSuggest(const QString &word,
-                              QStringList &suggestions) const
+bool Speller::checkAndSuggest(const QString &word, QStringList &suggestions) const
 {
     if (!d->isValid()) {
         return true;
@@ -137,8 +136,7 @@ bool Speller::checkAndSuggest(const QString &word,
     return d->dict->checkAndSuggest(word, suggestions);
 }
 
-bool Speller::storeReplacement(const QString &bad,
-                               const QString &good)
+bool Speller::storeReplacement(const QString &bad, const QString &good)
 {
     if (!d->isValid()) {
         return false;
@@ -243,7 +241,6 @@ void Speller::setAttribute(Attribute attr, bool b)
     d->settings->save();
 }
 
-
 bool Speller::testAttribute(Attribute attr) const
 {
     switch (attr) {
@@ -280,5 +277,4 @@ QMap<QString, QString> Sonnet::Speller::availableDictionaries() const
 
     return langs;
 }
-
 }

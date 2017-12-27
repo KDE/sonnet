@@ -31,8 +31,7 @@ class BackgroundCheckerPrivate;
 /**
  * The sonnet namespace.
  */
-namespace Sonnet
-{
+namespace Sonnet {
 class Speller;
 
 /**
@@ -81,8 +80,7 @@ public:
 public Q_SLOTS:
     virtual void start();
     virtual void stop();
-    void replace(int start, const QString &oldText,
-                 const QString &newText);
+    void replace(int start, const QString &oldText, const QString &newText);
     void changeLanguage(const QString &lang);
 
     /**
@@ -125,7 +123,6 @@ protected Q_SLOTS:
 private:
     BackgroundCheckerPrivate *const d;
 };
-
 }
 
 #endif

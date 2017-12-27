@@ -24,8 +24,7 @@
 #include <QtCore/QString>
 #include "sonnetcore_export.h"
 
-namespace Sonnet
-{
+namespace Sonnet {
 class Loader;
 class SettingsPrivate;
 /**

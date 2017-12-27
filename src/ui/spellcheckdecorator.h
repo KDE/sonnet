@@ -28,9 +28,7 @@
 class QTextEdit;
 class QPlainTextEdit;
 
-namespace Sonnet
-{
-
+namespace Sonnet {
 class Highlighter;
 
 /**
@@ -87,7 +85,6 @@ private:
     Private *const d;
     Q_DISABLE_COPY(SpellCheckDecorator)
 };
-
 }
 
 #endif /* SPELLCHECKDECORATOR_H */

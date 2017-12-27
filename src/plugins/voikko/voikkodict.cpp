@@ -33,99 +33,96 @@
 #include <QtCore/QJsonDocument>
 #include <QtCore/QJsonObject>
 
-namespace
+namespace {
+// QString literals used in loading and storing user dictionary
+inline const QString replacement_bad_str() Q_DECL_NOEXCEPT
 {
-    // QString literals used in loading and storing user dictionary
-    inline const QString replacement_bad_str() Q_DECL_NOEXCEPT
-    {
-        return QStringLiteral("bad");
-    }
+    return QStringLiteral("bad");
+}
 
-    inline const QString replacement_good_str() Q_DECL_NOEXCEPT
-    {
-        return QStringLiteral("good");
-    }
+inline const QString replacement_good_str() Q_DECL_NOEXCEPT
+{
+    return QStringLiteral("good");
+}
 
-    inline const QString personal_words_str() Q_DECL_NOEXCEPT
-    {
-        return QStringLiteral("PersonalWords");
-    }
+inline const QString personal_words_str() Q_DECL_NOEXCEPT
+{
+    return QStringLiteral("PersonalWords");
+}
 
-    inline const QString replacements_str() Q_DECL_NOEXCEPT
-    {
-        return QStringLiteral("Replacements");
-    }
+inline const QString replacements_str() Q_DECL_NOEXCEPT
+{
+    return QStringLiteral("Replacements");
+}
 
-    // Set path to: QStandardPaths::GenericDataLocation/Sonnet/Voikko-user-dictionary.json
-    QString getUserDictionaryPath() Q_DECL_NOEXCEPT
-    {
-        QString directory = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
+// Set path to: QStandardPaths::GenericDataLocation/Sonnet/Voikko-user-dictionary.json
+QString getUserDictionaryPath() Q_DECL_NOEXCEPT
+{
+    QString directory = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
 
         #ifdef Q_OS_WIN
-        // Resolve the windows' Roaming directory manually
-        directory = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
-        if (QSysInfo::windowsVersion() == WV_XP || QSysInfo::windowsVersion() == WV_2003) {
-            // In Xp Roaming is "<user>/Application Data"
-            // DataLocation: "<user>/Local Settings/Application Data"
-            directory += QStringLiteral("/../../Application Data");
-        }
-        else {
-            directory += QStringLiteral("/../Roaming");
-        }
+    // Resolve the windows' Roaming directory manually
+    directory = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
+    if (QSysInfo::windowsVersion() == WV_XP || QSysInfo::windowsVersion() == WV_2003) {
+        // In Xp Roaming is "<user>/Application Data"
+        // DataLocation: "<user>/Local Settings/Application Data"
+        directory += QStringLiteral("/../../Application Data");
+    } else {
+        directory += QStringLiteral("/../Roaming");
+    }
         #endif
 
-        directory += QStringLiteral("/Sonnet");
-        QDir path(directory);
-        path.mkpath(path.absolutePath());
+    directory += QStringLiteral("/Sonnet");
+    QDir path(directory);
+    path.mkpath(path.absolutePath());
 
-        return path.absoluteFilePath(QStringLiteral("Voikko-user-dictionary.json"));
+    return path.absoluteFilePath(QStringLiteral("Voikko-user-dictionary.json"));
+}
+
+void addReplacementToNode(QJsonObject &languageNode, const QString &bad,
+                          const QString &good) Q_DECL_NOEXCEPT
+{
+    QJsonObject pair;
+    pair[replacement_bad_str()] = good;
+    pair[replacement_good_str()] = bad;
+
+    auto replaceList = languageNode[replacements_str()].toArray();
+    replaceList.append(pair);
+    languageNode[replacements_str()] = replaceList;
+}
+
+void addPersonalWordToNode(QJsonObject &languageNode, const QString &word) Q_DECL_NOEXCEPT
+{
+    auto arr = languageNode[personal_words_str()].toArray();
+    arr.append(word);
+    languageNode[personal_words_str()] = arr;
+}
+
+/**
+ * Read and return the root json object from fileName.
+ *
+ * Returns an empty node in case of an IO error or the file is empty.
+ */
+QJsonObject readJsonRootObject(const QString &fileName) Q_DECL_NOEXCEPT
+{
+    QFile userDictFile(fileName);
+
+    if (!userDictFile.exists()) {
+        return QJsonObject();     // Nothing has been saved so far.
     }
 
-    void addReplacementToNode(QJsonObject &languageNode,
-                                     const QString &bad, const QString &good) Q_DECL_NOEXCEPT
-    {
-        QJsonObject pair;
-        pair[replacement_bad_str()] = good;
-        pair[replacement_good_str()] = bad;
-
-        auto replaceList = languageNode[replacements_str()].toArray();
-        replaceList.append(pair);
-        languageNode[replacements_str()] = replaceList;
+    if (!userDictFile.open(QIODevice::ReadOnly)) {
+        qCWarning(SONNET_VOIKKO) << "Could not open personal dictionary. Failed to open file"
+                                 << fileName;
+        qCWarning(SONNET_VOIKKO) << "Reason:" << userDictFile.errorString();
+        return QJsonObject();
     }
 
-    void addPersonalWordToNode(QJsonObject &languageNode,
-                                      const QString &word) Q_DECL_NOEXCEPT
-    {
-        auto arr = languageNode[personal_words_str()].toArray();
-        arr.append(word);
-        languageNode[personal_words_str()] = arr;
-    }
+    QJsonDocument dictDoc = QJsonDocument::fromJson(userDictFile.readAll());
+    userDictFile.close();
 
-    /**
-     * Read and return the root json object from fileName.
-     *
-     * Returns an empty node in case of an IO error or the file is empty.
-     */
-    QJsonObject readJsonRootObject(const QString &fileName) Q_DECL_NOEXCEPT
-    {
-        QFile userDictFile(fileName);
-
-        if (!userDictFile.exists()) {
-            return QJsonObject(); // Nothing has been saved so far.
-        }
-
-        if (!userDictFile.open(QIODevice::ReadOnly)) {
-            qCWarning(SONNET_VOIKKO) << "Could not open personal dictionary. Failed to open file"
-                                     << fileName;
-            qCWarning(SONNET_VOIKKO) << "Reason:" << userDictFile.errorString();
-            return QJsonObject();
-        }
-
-        QJsonDocument dictDoc = QJsonDocument::fromJson(userDictFile.readAll());
-        userDictFile.close();
-
-        return dictDoc.object();
-    }
+    return dictDoc.object();
+}
 }
 
 class VoikkoDictPrivate
@@ -143,11 +140,10 @@ public:
     // Used when converting Qstring to wchar_t strings
     QVector<wchar_t> m_conversionBuffer;
 
-
     VoikkoDictPrivate(const QString &language, const VoikkoDict *publicPart) Q_DECL_NOEXCEPT
-            : q(publicPart),
-              m_userDictionaryFilepath(getUserDictionaryPath()),
-              m_conversionBuffer(256)
+        : q(publicPart)
+        , m_userDictionaryFilepath(getUserDictionaryPath())
+        , m_conversionBuffer(256)
     {
         const char *error;
         m_handle = voikkoInit(&error, language.toUtf8().data(), 0);
@@ -158,8 +154,7 @@ public:
         } else { // Continue to load user's own words
             loadUserDictionary();
         }
-    };
-
+    }
 
     /**
      * Store a new ignored/personal word or replacement pair in the user's
@@ -201,7 +196,7 @@ public:
                                << m_userDictionaryFilepath;
 
         return true;
-    };
+    }
 
     /**
      * Load user's own personal words and replacement pairs from
@@ -220,7 +215,7 @@ public:
 
         loadUserWords(languageNode);
         loadUserReplacements(languageNode);
-    };
+    }
 
     /**
      * Convert the given QString to a \0 terminated wchar_t string.
@@ -242,7 +237,7 @@ private:
     inline void loadUserWords(const QJsonObject &languageNode) Q_DECL_NOEXCEPT
     {
         auto words = languageNode[personal_words_str()].toArray();
-        Q_FOREACH(auto word, words) {
+        Q_FOREACH (auto word, words) {
             m_personalWords.insert(word.toString());
         }
         qCDebug(SONNET_VOIKKO)
@@ -255,26 +250,25 @@ private:
     inline void loadUserReplacements(const QJsonObject &languageNode) Q_DECL_NOEXCEPT
     {
         auto words = languageNode[replacements_str()].toArray();
-        Q_FOREACH(auto pair, words) {
-                m_replacements[pair.toObject()[replacement_bad_str()].toString()] =
-                               pair.toObject()[replacement_good_str()].toString();
-            }
+        Q_FOREACH (auto pair, words) {
+            m_replacements[pair.toObject()[replacement_bad_str()].toString()]
+                = pair.toObject()[replacement_good_str()].toString();
+        }
         qCDebug(SONNET_VOIKKO)
             << QStringLiteral("Loaded %1 replacements from the user dictionary.").arg(words.size());
     }
 };
 
-
 VoikkoDict::VoikkoDict(const QString &language) Q_DECL_NOEXCEPT
-        : SpellerPlugin(language),
-          d(new VoikkoDictPrivate(language, this))
+    : SpellerPlugin(language)
+    , d(new VoikkoDictPrivate(language, this))
 {
     qCDebug(SONNET_VOIKKO) << "Loading dictionary for langauge:" << language;
 }
 
 VoikkoDict::~VoikkoDict()
-{}
-
+{
+}
 
 bool VoikkoDict::isCorrect(const QString &word) const
 {
@@ -283,7 +277,7 @@ bool VoikkoDict::isCorrect(const QString &word) const
         return true;
     }
 
-    return (voikkoSpellUcs4(d->m_handle, d->QStringToWchar(word)) == VOIKKO_SPELL_OK);
+    return voikkoSpellUcs4(d->m_handle, d->QStringToWchar(word)) == VOIKKO_SPELL_OK;
 }
 
 QStringList VoikkoDict::suggest(const QString &word) const
@@ -308,12 +302,10 @@ QStringList VoikkoDict::suggest(const QString &word) const
     qCDebug(SONNET_VOIKKO) << "Misspelled:" << word
                            << "|Suggestons:" << suggestions.join(QStringLiteral(", "));
 
-
     voikko_free_suggest_ucs4(voikkoSuggestions);
 
     return suggestions;
 }
-
 
 bool VoikkoDict::storeReplacement(const QString &bad, const QString &good)
 {
@@ -337,8 +329,7 @@ bool VoikkoDict::addToSession(const QString &word)
     return true;
 }
 
-
 bool VoikkoDict::initFailed() const Q_DECL_NOEXCEPT
 {
-    return (!d->m_handle);
+    return !d->m_handle;
 }

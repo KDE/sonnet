@@ -42,21 +42,22 @@ int main(int argc, char *argv[])
     QTextStream stream(&file);
     stream.setCodec("UTF-8");
 
-
     QFile outFile(QString::fromLocal8Bit(argv[2]));
     if (!outFile.open(QIODevice::WriteOnly)) {
         qWarning() << "Unable to open output file" << argv[2];
         return -1;
     }
 
-    QHash<QString,int> model;
+    QHash<QString, int> model;
     qDebug() << "Reading in" << file.size() << "bytes";
     QString trigram = stream.read(3);
     QString contents = stream.readAll();
     qDebug() << "finished reading!";
     qDebug() << "Building model...";
-    for (int i=0; i<contents.size(); i++) {
-        if (!contents[i].isPrint()) continue;
+    for (int i = 0; i < contents.size(); i++) {
+        if (!contents[i].isPrint()) {
+            continue;
+        }
         model[trigram]++;
         trigram[0] = trigram[1];
         trigram[1] = trigram[2];
@@ -67,10 +68,12 @@ int main(int argc, char *argv[])
     qDebug() << "Sorting...";
     QMap<int, QString> orderedTrigrams;
     for (const QString &key : model.keys()) {
-        const QChar* data=key.constData();
-        bool hasTwoSpaces=(data[1].isSpace() && (data[0].isSpace() || data[2].isSpace()));
+        const QChar *data = key.constData();
+        bool hasTwoSpaces = (data[1].isSpace() && (data[0].isSpace() || data[2].isSpace()));
 
-        if (!hasTwoSpaces) orderedTrigrams.insertMulti(model[key], key);
+        if (!hasTwoSpaces) {
+            orderedTrigrams.insertMulti(model[key], key);
+        }
     }
     qDebug() << "Sorted!";
 
@@ -83,7 +86,7 @@ int main(int argc, char *argv[])
 
     qDebug() << "Storing...";
     i = orderedTrigrams.end();
-    int count=0;
+    int count = 0;
     QTextStream outStream(&outFile);
     outStream.setCodec("UTF-8");
     while (i != orderedTrigrams.begin()) {
@@ -91,4 +94,3 @@ int main(int argc, char *argv[])
         outStream << *i << "\t\t\t" << count++ << '\n';
     }
 }
-

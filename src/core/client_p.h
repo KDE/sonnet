@@ -31,8 +31,7 @@
  * I don't really feel like writing my own KLibFactory
  * that would load anything else then QObject derivatives.
  */
-namespace Sonnet
-{
+namespace Sonnet {
 class SpellerPlugin;
 
 /**

@@ -30,7 +30,10 @@ class ConfigDialogPrivate
 {
 public:
     ConfigDialogPrivate(ConfigDialog *parent)
-        : q(parent) {}
+        : q(parent)
+    {
+    }
+
     ConfigWidget *ui = nullptr;
     ConfigDialog *q;
     void slotConfigChanged();
@@ -42,8 +45,8 @@ void ConfigDialogPrivate::slotConfigChanged()
 }
 
 ConfigDialog::ConfigDialog(QWidget *parent)
-    : QDialog(parent),
-      d(new ConfigDialogPrivate(this))
+    : QDialog(parent)
+    , d(new ConfigDialogPrivate(this))
 {
     setObjectName(QStringLiteral("SonnetConfigDialog"));
     setModal(true);

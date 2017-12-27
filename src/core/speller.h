@@ -26,8 +26,7 @@
 
 #include "sonnetcore_export.h"
 
-namespace Sonnet
-{
+namespace Sonnet {
 class SpellerPrivate;
 /**
  * Spell checker object.
@@ -81,15 +80,13 @@ public:
      * Convience method calling isCorrect() and suggest()
      * if the word isn't correct.
      */
-    bool checkAndSuggest(const QString &word,
-                         QStringList &suggestions) const;
+    bool checkAndSuggest(const QString &word, QStringList &suggestions) const;
 
     /**
      * Stores user defined good replacement for the bad word.
      * @returns true on success
      */
-    bool storeReplacement(const QString &bad,
-                          const QString &good);
+    bool storeReplacement(const QString &bad, const QString &good);
 
     /**
      * Adds word to the list of of personal words.

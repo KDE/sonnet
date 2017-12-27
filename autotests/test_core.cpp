@@ -43,7 +43,7 @@ void SonnetCoreTest::testCore()
 
     for (int i = 0; i < 35; ++i) {
         words << QStringLiteral("hello") << QStringLiteral("helo") << QStringLiteral("enviroment")
-            << QStringLiteral("guvernment") << QStringLiteral("farted");
+              << QStringLiteral("guvernment") << QStringLiteral("farted");
     }
 
     QTime mtime;
@@ -81,7 +81,7 @@ void SonnetCoreTest::testCore2()
     words.reserve(5*35);
     for (int i = 0; i < 35; ++i) {
         words << QStringLiteral("Hallo") << QStringLiteral("halo") << QStringLiteral("Umgebunp")
-            << QStringLiteral("Regirung") << QStringLiteral("bet");
+              << QStringLiteral("Regirung") << QStringLiteral("bet");
     }
 
     QTime mtime;

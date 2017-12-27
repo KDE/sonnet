@@ -29,16 +29,14 @@
 class QTextEdit;
 class QPlainTextEdit;
 
-namespace Sonnet
-{
+namespace Sonnet {
 class HighlighterPrivate;
 /// The Sonnet Highlighter class, used for drawing pretty red lines in text fields
 class SONNETUI_EXPORT Highlighter : public QSyntaxHighlighter
 {
     Q_OBJECT
 public:
-    explicit Highlighter(QTextEdit *textEdit,
-                         const QColor &col = QColor());
+    explicit Highlighter(QTextEdit *textEdit, const QColor &col = QColor());
 
     /**
      * @brief Highlighter
@@ -46,8 +44,7 @@ public:
      * @param col define spellchecking color.
      * @since 5.12
      */
-    explicit Highlighter(QPlainTextEdit *textEdit,
-                         const QColor &col = QColor());
+    explicit Highlighter(QPlainTextEdit *textEdit, const QColor &col = QColor());
     ~Highlighter();
 
     /**
@@ -151,7 +148,7 @@ public:
      * @return a list of suggested replacements for the word
      * @since 5.42
      */
-    QStringList suggestionsForWord(const QString &word, const QTextCursor& cursor, int max = 10);
+    QStringList suggestionsForWord(const QString &word, const QTextCursor &cursor, int max = 10);
 
     /**
      * Checks if a given word is marked as misspelled by the highlighter.
@@ -194,7 +191,7 @@ Q_SIGNALS:
 protected:
     void highlightBlock(const QString &text) Q_DECL_OVERRIDE;
     virtual void setMisspelled(int start, int count);
-    virtual void unsetMisspelled(int start,  int count);
+    virtual void unsetMisspelled(int start, int count);
 
     bool eventFilter(QObject *o, QEvent *e) Q_DECL_OVERRIDE;
     bool intraWordEditing() const;
@@ -225,7 +222,6 @@ private:
     HighlighterPrivate *const d;
     Q_DISABLE_COPY(Highlighter)
 };
-
 }
 
 #endif

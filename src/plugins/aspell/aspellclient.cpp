@@ -59,4 +59,3 @@ QStringList ASpellClient::languages() const
 
     return langs;
 }
-

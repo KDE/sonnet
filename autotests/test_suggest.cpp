@@ -37,7 +37,6 @@ private Q_SLOTS:
     void performance();
 };
 
-
 void SuggestTest::aspell_english_data()
 {
     // Input
@@ -74,8 +73,11 @@ void SuggestTest::aspell_english()
         qDebug() << suggestions;
         // Check that each expectedSuggestions was found, make list of those that were missing
         QStringList missingSuggestions;
-        std::copy_if(expectedSuggestions.begin(), expectedSuggestions.end(), std::back_inserter(missingSuggestions),
-                [&suggestions](const QString &sugg) { return !suggestions.contains(sugg); });
+        std::copy_if(expectedSuggestions.begin(), expectedSuggestions.end(),
+                     std::back_inserter(missingSuggestions),
+                     [&suggestions](const QString &sugg) {
+            return !suggestions.contains(sugg);
+        });
         QCOMPARE(missingSuggestions.join(QLatin1Char(',')), QString()); // not using QVERIFY, to see the list in the output
     }
 }
@@ -94,7 +96,7 @@ void SuggestTest::performance()
 
     QBENCHMARK {
         for (QStringList::Iterator itr = words.begin();
-                itr != words.end(); ++itr) {
+             itr != words.end(); ++itr) {
             if (!dict.isCorrect(*itr)) {
                 //qDebug()<<"Word " << *itr <<" is misspelled";
                 QStringList sug = dict.suggest(*itr);
@@ -103,6 +105,7 @@ void SuggestTest::performance()
         }
     }
 }
+
 QTEST_GUILESS_MAIN(SuggestTest)
 
 #include "test_suggest.moc"

@@ -24,20 +24,17 @@
 
 using namespace Sonnet;
 
-static void enchantDictDescribeFn(const char *const lang_tag,
-                                  const char *const provider_name,
-                                  const char *const provider_desc,
-                                  const char *const provider_file,
+static void enchantDictDescribeFn(const char *const lang_tag, const char *const provider_name,
+                                  const char *const provider_desc, const char *const provider_file,
                                   void *user_data)
 {
-    QSpellEnchantClient *client =
-        reinterpret_cast<QSpellEnchantClient *>(user_data);
+    QSpellEnchantClient *client
+        = reinterpret_cast<QSpellEnchantClient *>(user_data);
     //qDebug()<<lang_tag<<provider_name<<provider_desc<<provider_file;
     Q_UNUSED(provider_name);
     Q_UNUSED(provider_desc);
     Q_UNUSED(provider_file);
     client->addLanguage(QString::fromLatin1(lang_tag));
-
 }
 
 QSpellEnchantClient::QSpellEnchantClient(QObject *parent)
@@ -58,7 +55,7 @@ SpellerPlugin *QSpellEnchantClient::createSpeller(
     const QString &language)
 {
     EnchantDict *dict = enchant_broker_request_dict(m_broker,
-                        language.toUtf8().constData());
+                                                    language.toUtf8().constData());
 
     if (!dict) {
 #ifndef NDEBUG
@@ -95,4 +92,3 @@ void QSpellEnchantClient::removeDictRef(EnchantDict *dict)
         enchant_broker_free_dict(m_broker, dict);
     }
 }
-

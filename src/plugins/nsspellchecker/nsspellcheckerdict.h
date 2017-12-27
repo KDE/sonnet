@@ -32,13 +32,12 @@ public:
 
     virtual QStringList suggest(const QString &word) const;
 
-    virtual bool storeReplacement(const QString &bad,
-                                  const QString &good);
+    virtual bool storeReplacement(const QString &bad, const QString &good);
 
     virtual bool addToPersonal(const QString &word);
     virtual bool addToSession(const QString &word);
 private:
-    void* m_langCode;
+    void *m_langCode;
 };
 
 #endif

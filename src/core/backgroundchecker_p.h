@@ -31,10 +31,13 @@ using namespace Sonnet;
 
 class BackgroundCheckerPrivate : public QObject
 {
-Q_OBJECT
+    Q_OBJECT
 public:
-    BackgroundCheckerPrivate() : mainTokenizer(new SentenceTokenizer), sentenceOffset(-1) {}
-    
+    BackgroundCheckerPrivate() : mainTokenizer(new SentenceTokenizer)
+        , sentenceOffset(-1)
+    {
+    }
+
     void start();
     void continueChecking();
 
@@ -45,9 +48,9 @@ public:
     int sentenceOffset;
 
 private Q_SLOTS:
-    void checkNext(); 
+    void checkNext();
 Q_SIGNALS:
-    void misspelling(const QString&, int);
+    void misspelling(const QString &, int);
     void done();
 };
 

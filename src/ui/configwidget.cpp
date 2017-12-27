@@ -40,8 +40,8 @@ public:
 };
 
 ConfigWidget::ConfigWidget(QWidget *parent)
-    : QWidget(parent),
-      d(new ConfigWidgetPrivate)
+    : QWidget(parent)
+    , d(new ConfigWidgetPrivate)
 {
     d->loader = Loader::openLoader();
     QVBoxLayout *layout = new QVBoxLayout(this);
@@ -61,14 +61,18 @@ ConfigWidget::ConfigWidget(QWidget *parent)
     d->ui.m_bgSpellCB->setChecked(d->loader->settings()->backgroundCheckerEnabled());
     d->ui.m_bgSpellCB->hide();//hidden by default
     connect(d->ui.addButton, &QAbstractButton::clicked, this, &ConfigWidget::slotIgnoreWordAdded);
-    connect(d->ui.removeButton, &QAbstractButton::clicked, this, &ConfigWidget::slotIgnoreWordRemoved);
+    connect(d->ui.removeButton, &QAbstractButton::clicked, this,
+            &ConfigWidget::slotIgnoreWordRemoved);
 
     layout->addWidget(d->wdg);
-    connect(d->ui.m_langCombo, &DictionaryComboBox::dictionaryChanged, this, &ConfigWidget::configChanged);
+    connect(d->ui.m_langCombo, &DictionaryComboBox::dictionaryChanged, this,
+            &ConfigWidget::configChanged);
     connect(d->ui.m_bgSpellCB, &QAbstractButton::clicked, this, &ConfigWidget::configChanged);
     connect(d->ui.m_skipUpperCB, &QAbstractButton::clicked, this, &ConfigWidget::configChanged);
-    connect(d->ui.m_skipRunTogetherCB, &QAbstractButton::clicked, this, &ConfigWidget::configChanged);
-    connect(d->ui.m_checkerEnabledByDefaultCB, &QAbstractButton::clicked, this, &ConfigWidget::configChanged);
+    connect(d->ui.m_skipRunTogetherCB, &QAbstractButton::clicked, this,
+            &ConfigWidget::configChanged);
+    connect(d->ui.m_checkerEnabledByDefaultCB, &QAbstractButton::clicked, this,
+            &ConfigWidget::configChanged);
     connect(d->ui.m_autodetectCB, &QAbstractButton::clicked, this, &ConfigWidget::configChanged);
     d->ui.nobackendfound->setVisible(d->loader->clients().isEmpty());
 }
@@ -168,4 +172,3 @@ QString ConfigWidget::language() const
         return QString();
     }
 }
-

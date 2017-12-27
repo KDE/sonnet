@@ -1,17 +1,17 @@
 /*  This file is part of the KDE libraries
- 
+
     Copyright (c) 2009 Jakub Stachowski <qbast@go2.pl>
- 
+
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Library General Public
     License as published by the Free Software Foundation; either
     version 2 of the License, or (at your option) any later version.
- 
+
     This library is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
     Library General Public License for more details.
- 
+
     You should have received a copy of the GNU Library General Public License
     along with this library; see the file COPYING.LIB.  If not, write to
     the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
@@ -24,9 +24,7 @@
 #include <QtCore/QString>
 #include "sonnetcore_export.h"
 
-namespace Sonnet
-{
-
+namespace Sonnet {
 /**
  * @short AbstractTokenizer breaks text into smaller pieces - words, sentences, paragraphs.
  *
@@ -38,32 +36,33 @@ namespace Sonnet
 class AbstractTokenizer
 {
 public:
-    virtual ~AbstractTokenizer() {}
-    
+    virtual ~AbstractTokenizer()
+    {
+    }
+
     /**
      * Sets text to tokenize. It also resets tokenizer state.
      */
-    virtual void setBuffer(const QString& buffer=QString()) = 0;
+    virtual void setBuffer(const QString &buffer = QString()) = 0;
     /**
      * Returns true if the the is another token avaiable.
      * @return true if another token is available, false if not.
      */
-    virtual bool hasNext() const =0;
-    
+    virtual bool hasNext() const = 0;
+
     /**
      * Returns next token or null QString if there is none
      */
-    virtual QStringRef next() =0;
-    
+    virtual QStringRef next() = 0;
+
     /** Returns content of currently tokenized buffer*/
     virtual QString buffer() const = 0;
-    
-    /** 
+
+    /**
      * Replace part of text in current buffer. Always use this function instead of directly
      * changing data in underlying buffer or tokenizer's internal state may become inconsistent.
      */
-    virtual void replace(int position, int len, const QString& newWord) =0;
-
+    virtual void replace(int position, int len, const QString &newWord) = 0;
 };
 
 class BreakTokenizerPrivate;
@@ -85,7 +84,7 @@ while (t.hasNext()) {
     if (!t.isSpellcheckable()) continue;
     qDebug() << word.toString() << " " << sp.isCorrect(word.toString());
 }
-@endcode 
+@endcode
 
 This example checks spelling of given buffer
  * @since 4.3
@@ -95,25 +94,25 @@ class SONNETCORE_EXPORT WordTokenizer : public AbstractTokenizer
 public:
     /**
      * Constructor for word tokenizer
-     * @param buffer  
+     * @param buffer
      */
-    WordTokenizer(const QString& buffer=QString());
+    WordTokenizer(const QString &buffer = QString());
     ~WordTokenizer();
 
-    void setBuffer(const QString& buffer) Q_DECL_OVERRIDE;
+    void setBuffer(const QString &buffer) Q_DECL_OVERRIDE;
     bool hasNext() const Q_DECL_OVERRIDE;
     QStringRef next() Q_DECL_OVERRIDE;
     QString buffer() const Q_DECL_OVERRIDE;
-    void replace(int position, int len, const QString& newWord) Q_DECL_OVERRIDE;
-    
+    void replace(int position, int len, const QString &newWord) Q_DECL_OVERRIDE;
+
     /** Returns true if this word should be spell checked. This ignores email addresses, URLs and other things according to configuration */
     bool isSpellcheckable() const;
-    
+
     /** If ignore uppercase is true, then any word containing only uppercase letters will be considered unsuitable for spell check */
     void setIgnoreUppercase(bool val);
 private:
-    bool isUppercase(const QStringRef& word) const;
-    BreakTokenizerPrivate* const d;
+    bool isUppercase(const QStringRef &word) const;
+    BreakTokenizerPrivate *const d;
 };
 
 /**
@@ -125,16 +124,15 @@ SentenceTokenizer splits buffer into sentences according to rules from Unicode s
 class SONNETCORE_EXPORT SentenceTokenizer : public AbstractTokenizer
 {
 public:
-    SentenceTokenizer(const QString& buffer=QString());
+    SentenceTokenizer(const QString &buffer = QString());
     ~SentenceTokenizer();
-    void setBuffer(const QString& buffer) Q_DECL_OVERRIDE;
+    void setBuffer(const QString &buffer) Q_DECL_OVERRIDE;
     bool hasNext() const Q_DECL_OVERRIDE;
     QStringRef next() Q_DECL_OVERRIDE;
     QString buffer() const Q_DECL_OVERRIDE;
-    void replace(int position, int len, const QString& newWord) Q_DECL_OVERRIDE;
+    void replace(int position, int len, const QString &newWord) Q_DECL_OVERRIDE;
 private:
-    BreakTokenizerPrivate* const d;
+    BreakTokenizerPrivate *const d;
 };
-
 }
 #endif

@@ -23,7 +23,7 @@
 #include "voikkodict.h"
 #include "voikkodebug.h"
 
-VoikkoClient::VoikkoClient(QObject* parent) : Sonnet::Client(parent)
+VoikkoClient::VoikkoClient(QObject *parent) : Sonnet::Client(parent)
 {
     qCDebug(SONNET_VOIKKO) << "Initializing Voikko spell checker plugin.";
 
@@ -43,14 +43,15 @@ VoikkoClient::VoikkoClient(QObject* parent) : Sonnet::Client(parent)
 }
 
 VoikkoClient::~VoikkoClient()
-{}
+{
+}
 
 int VoikkoClient::reliability() const
 {
     return 50;
 }
 
-Sonnet::SpellerPlugin* VoikkoClient::createSpeller(const QString &language)
+Sonnet::SpellerPlugin *VoikkoClient::createSpeller(const QString &language)
 {
     VoikkoDict *speller = new VoikkoDict(language);
     if (speller->initFailed()) {

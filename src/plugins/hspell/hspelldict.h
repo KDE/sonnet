@@ -40,8 +40,7 @@ public:
 
     QStringList suggest(const QString &word) const Q_DECL_OVERRIDE;
 
-    virtual bool storeReplacement(const QString &bad,
-                                  const QString &good) Q_DECL_OVERRIDE;
+    virtual bool storeReplacement(const QString &bad, const QString &good) Q_DECL_OVERRIDE;
 
     bool addToPersonal(const QString &word) Q_DECL_OVERRIDE;
     bool addToSession(const QString &word) Q_DECL_OVERRIDE;
@@ -49,9 +48,10 @@ public:
     {
         return initialized;
     }
+
 private:
     void storePersonalWords();
-   
+
     struct dict_radix *m_speller;
     QTextCodec *codec;
     bool initialized;

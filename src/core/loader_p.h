@@ -27,8 +27,7 @@
 #include <QtCore/QString>
 #include <QSharedPointer>
 
-namespace Sonnet
-{
+namespace Sonnet {
 class Settings;
 class SpellerPlugin;
 class LoaderPrivate;
@@ -73,8 +72,7 @@ public:
      *
      */
     SpellerPlugin *createSpeller(
-        const QString &language = QString(),
-        const QString &client = QString()) const;
+        const QString &language = QString(), const QString &client = QString()) const;
 
     /**
      * Returns a shared, cached, dictionary for the given language.

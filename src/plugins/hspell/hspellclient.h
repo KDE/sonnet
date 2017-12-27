@@ -29,8 +29,7 @@ extern "C" {
 #include "hspell.h"
 }
 
-namespace Sonnet
-{
+namespace Sonnet {
 class SpellerPlugin;
 }
 using Sonnet::SpellerPlugin;
@@ -57,8 +56,8 @@ public:
     {
         return QString::fromLatin1("HSpell");
     }
-private:
 
+private:
 };
 
 #endif

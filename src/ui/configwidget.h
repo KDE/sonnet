@@ -24,8 +24,7 @@
 class ConfigWidgetPrivate;
 #include "sonnetui_export.h"
 
-namespace Sonnet
-{
+namespace Sonnet {
 /// The sonnet ConfigWidget
 class SONNETUI_EXPORT ConfigWidget : public QWidget
 {

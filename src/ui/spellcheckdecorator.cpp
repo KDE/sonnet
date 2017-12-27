@@ -29,9 +29,7 @@
 #include <QTextEdit>
 #include <QPlainTextEdit>
 
-namespace Sonnet
-{
-
+namespace Sonnet {
 class Q_DECL_HIDDEN SpellCheckDecorator::Private
 {
 public:
@@ -93,9 +91,9 @@ bool SpellCheckDecorator::Private::onContextMenuEvent(QContextMenuEvent *event)
     }
 
     // Check if the user clicked a selected word
-    const bool selectedWordClicked = cursor.hasSelection() &&
-                                     mousePos >= cursor.selectionStart() &&
-                                     mousePos <= cursor.selectionEnd();
+    const bool selectedWordClicked = cursor.hasSelection()
+                                     && mousePos >= cursor.selectionStart()
+                                     && mousePos <= cursor.selectionEnd();
 
     // Get the word under the (mouse-)cursor and see if it is misspelled.
     // Don't include apostrophes at the start/end of the word in the selection.
@@ -105,9 +103,9 @@ bool SpellCheckDecorator::Private::onContextMenuEvent(QContextMenuEvent *event)
     QString selectedWord = wordSelectCursor.selectedText();
 
     bool isMouseCursorInsideWord = true;
-    if ((mousePos < wordSelectCursor.selectionStart() ||
-            mousePos >= wordSelectCursor.selectionEnd())
-            && (selectedWord.length() > 1)) {
+    if ((mousePos < wordSelectCursor.selectionStart()
+         || mousePos >= wordSelectCursor.selectionEnd())
+        && (selectedWord.length() > 1)) {
         isMouseCursorInsideWord = false;
     }
 
@@ -124,11 +122,11 @@ bool SpellCheckDecorator::Private::onContextMenuEvent(QContextMenuEvent *event)
     wordSelectCursor.movePosition(QTextCursor::NextCharacter,
                                   QTextCursor::KeepAnchor, selectedWord.size());
 
-    const bool wordIsMisspelled = isMouseCursorInsideWord &&
-                                  m_highlighter &&
-                                  m_highlighter->isActive() &&
-                                  !selectedWord.isEmpty() &&
-                                  m_highlighter->isWordMisspelled(selectedWord);
+    const bool wordIsMisspelled = isMouseCursorInsideWord
+                                  && m_highlighter
+                                  && m_highlighter->isActive()
+                                  && !selectedWord.isEmpty()
+                                  && m_highlighter->isWordMisspelled(selectedWord);
 
     // If the user clicked a selected word, do nothing.
     // If the user clicked somewhere else, move the cursor there.
@@ -165,7 +163,9 @@ bool SpellCheckDecorator::Private::onContextMenuEvent(QContextMenuEvent *event)
     return true;
 }
 
-void SpellCheckDecorator::Private::execSuggestionMenu(const QPoint &pos, const QString &selectedWord, const QTextCursor &_cursor)
+void SpellCheckDecorator::Private::execSuggestionMenu(const QPoint &pos,
+                                                      const QString &selectedWord,
+                                                      const QTextCursor &_cursor)
 {
     QTextCursor cursor = _cursor;
     QMenu menu; //don't use KMenu here we don't want auto management accelerator
@@ -199,7 +199,6 @@ void SpellCheckDecorator::Private::execSuggestionMenu(const QPoint &pos, const Q
             m_highlighter->addWordToDictionary(selectedWord);
             m_highlighter->rehighlight();
         }
-
         // Other actions can only be one of the suggested words
         else {
             const QString replacement = selectedAction->text();
@@ -270,6 +269,4 @@ bool SpellCheckDecorator::isSpellCheckingEnabledForBlock(const QString &textBloc
         return d->m_plainTextEdit->isEnabled();
     }
 }
-
 } // namespace
-

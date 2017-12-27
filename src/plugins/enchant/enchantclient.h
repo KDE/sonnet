@@ -26,8 +26,7 @@
 #include <QtCore/QVariantList>
 #include <enchant.h>
 
-namespace Sonnet
-{
+namespace Sonnet {
 class SpellerPlugin;
 }
 using Sonnet::SpellerPlugin;
@@ -61,7 +60,7 @@ public:
 
 private:
     EnchantBroker *m_broker;
-    QSet<QString>  m_languages;
+    QSet<QString> m_languages;
     QHash<EnchantDict *, int> m_dictRefs;
 };
 

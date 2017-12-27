@@ -54,12 +54,13 @@ HunspellClient::HunspellClient(QObject *parent)
 
     // search QStandardPaths
     dirList.append(QStandardPaths::locateAll(
-            QStandardPaths::GenericDataLocation,
-            QStringLiteral("hunspell"),
-            QStandardPaths::LocateDirectory));
+                       QStandardPaths::GenericDataLocation,
+                       QStringLiteral("hunspell"),
+                       QStandardPaths::LocateDirectory));
 
     dirList.append(QStringLiteral(HUNSPELL_MAIN_DICT_PATH));
-    dirList.append(QStringLiteral("%1/../share/hunspell").arg(QCoreApplication::applicationDirPath()));
+    dirList.append(QStringLiteral("%1/../share/hunspell").arg(
+                       QCoreApplication::applicationDirPath()));
 
     for (const QString &dirString : dirList) {
         QDir dir(dirString);
@@ -75,7 +76,8 @@ HunspellClient::~HunspellClient()
 
 SpellerPlugin *HunspellClient::createSpeller(const QString &language)
 {
-    qCDebug(SONNET_HUNSPELL) << " SpellerPlugin *HunspellClient::createSpeller(const QString &language) ;" << language;
+    qCDebug(SONNET_HUNSPELL)
+    << " SpellerPlugin *HunspellClient::createSpeller(const QString &language) ;" << language;
     HunspellDict *ad = new HunspellDict(language, m_languagePaths.value(language));
     return ad;
 }
@@ -84,4 +86,3 @@ QStringList HunspellClient::languages() const
 {
     return m_languagePaths.keys();
 }
-

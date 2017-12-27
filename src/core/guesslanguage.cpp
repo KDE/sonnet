@@ -2,17 +2,17 @@
     Copyright (c) 2006 Jacob R Rideout <kde@jacobrideout.net>
     Copyright (c) 2009 Jakub Stachowski <qbast@go2.pl>
     Copyright (c) 2013 Martin Sandsmark <martin.sandsmark@kde.org>
- 
+
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Library General Public
     License as published by the Free Software Foundation; either
     version 2 of the License, or (at your option) any later version.
- 
+
     This library is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
     Library General Public License for more details.
- 
+
     You should have received a copy of the GNU Library General Public License
     along with this library; see the file COPYING.LIB.  If not, write to
     the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
@@ -45,7 +45,7 @@ The script tags corresond to ISO 15924
 An overview of the best practices concerning language tagging is available here:
 http://www.w3.org/International/articles/language-tags/Overview.en.php
 
-lang tags should use underscores (_) rather than hypens (-) to sepereate subsections. 
+lang tags should use underscores (_) rather than hypens (-) to sepereate subsections.
 
 EXCEPTIONS:
 For cases of known differences from the above tagging scheme and major
@@ -55,12 +55,9 @@ shall be used. All exception shall be noted here:
 BCP        SPELLCHECK
 az-Latn    az
 
-
 */
 
-namespace Sonnet
-{
-
+namespace Sonnet {
 class GuessLanguagePrivate
 {
 public:
@@ -68,13 +65,13 @@ public:
     //            language       trigram  score
     static QHash< QString, QHash<QString, int> > s_knownModels;
 
-    void loadModels( );
-    QList< QChar::Script > findRuns(const QString& text);
-    QList<QString> createOrderedModel(const QString& content);
-    int distance( const QList<QString>& model, const QHash<QString,int>& knownModel );
-    QStringList guessFromTrigrams(const QString & sample, const QStringList& langs);
-    QStringList identify(const QString& sample, const QList< QChar::Script >& scripts);
-    QString guessFromDictionaries(const QString& sentence, const QStringList& candidates);
+    void loadModels();
+    QList< QChar::Script > findRuns(const QString &text);
+    QList<QString> createOrderedModel(const QString &content);
+    int distance(const QList<QString> &model, const QHash<QString, int> &knownModel);
+    QStringList guessFromTrigrams(const QString &sample, const QStringList &langs);
+    QStringList identify(const QString &sample, const QList< QChar::Script > &scripts);
+    QString guessFromDictionaries(const QString &sentence, const QStringList &candidates);
 
     static QSet<QString> s_knownDictionaries;
     static QMultiHash<QChar::Script, QString> s_scriptLanguages;
@@ -85,7 +82,7 @@ public:
     double m_minConfidence;
 };
 
-QHash< QString, QHash<QString,int> > GuessLanguagePrivate::s_knownModels;
+QHash< QString, QHash<QString, int> > GuessLanguagePrivate::s_knownModels;
 QSet<QString> GuessLanguagePrivate::s_knownDictionaries;
 QMultiHash<QChar::Script, QString> GuessLanguagePrivate::s_scriptLanguages;
 QMap<QString, QString> GuessLanguagePrivate::s_dictionaryNameMap;
@@ -93,17 +90,21 @@ QMap<QString, QString> GuessLanguagePrivate::s_dictionaryNameMap;
 QStringList getNames(QLocale::Script script)
 {
     QStringList locales;
-    for (const QLocale &locale : QLocale::matchingLocales(QLocale::AnyLanguage, script, QLocale::AnyCountry)) {
+    for (const QLocale &locale :
+         QLocale::matchingLocales(QLocale::AnyLanguage, script, QLocale::AnyCountry)) {
         locales << locale.name();
     }
     return locales;
 }
 
 GuessLanguagePrivate::GuessLanguagePrivate()
-        : MIN_LENGTH(5), m_maxItems(1), m_minConfidence(0)
+    : MIN_LENGTH(5)
+    , m_maxItems(1)
+    , m_minConfidence(0)
 {
-    if (!s_scriptLanguages.isEmpty())
+    if (!s_scriptLanguages.isEmpty()) {
         return;
+    }
 
     s_knownDictionaries = Loader::openLoader()->languages().toSet();
     QSet<QString> dictionaryLanguages;
@@ -117,10 +118,10 @@ GuessLanguagePrivate::GuessLanguagePrivate()
     }
 
     QSet<QString> allLanguages;
-    for (int i=0; i<int(QChar::ScriptCount); i++) {
+    for (int i = 0; i < int(QChar::ScriptCount); i++) {
         QChar::Script script = (QChar::Script)i;
         QStringList names;
-        switch(script) {
+        switch (script) {
         case QChar::Script_Latin:
             names = getNames(QLocale::LatinScript);
             break;
@@ -545,14 +546,15 @@ GuessLanguagePrivate::GuessLanguagePrivate()
             }
             s_dictionaryNameMap[languageName] = dictName;
             if (!s_scriptLanguages.values().contains(languageName)) {
-                qCWarning(SONNET_LOG_CORE) << "Unable to handle language from dictionary" << dictName << languageName;
+                qCWarning(SONNET_LOG_CORE) << "Unable to handle language from dictionary"
+                                           << dictName << languageName;
             }
         }
     }
 }
 
-GuessLanguage::GuessLanguage() :
-        d(new GuessLanguagePrivate)
+GuessLanguage::GuessLanguage()
+    : d(new GuessLanguagePrivate)
 {
 }
 
@@ -561,10 +563,11 @@ GuessLanguage::~GuessLanguage()
     delete d;
 }
 
-QString GuessLanguage::identify(const QString& text, const QStringList& suggestionsListIn) const
+QString GuessLanguage::identify(const QString &text, const QStringList &suggestionsListIn) const
 {
-    if (text.isEmpty())
+    if (text.isEmpty()) {
         return QString();
+    }
 
     // Filter for available dictionaries
     QStringList suggestionsList;
@@ -582,7 +585,7 @@ QString GuessLanguage::identify(const QString& text, const QStringList& suggesti
     QStringList candidateLanguages = d->identify(text, d->findRuns(text));
 
     // Hack for some bad dictionary names
-    for (int i=0; i<candidateLanguages.count(); i++) {
+    for (int i = 0; i < candidateLanguages.count(); i++) {
         if (d->s_dictionaryNameMap.contains(candidateLanguages[i])) {
             candidateLanguages[i] = d->s_dictionaryNameMap.value(candidateLanguages[i]);
         }
@@ -622,16 +625,20 @@ void GuessLanguage::setLimits(int maxItems, double minConfidence)
 
 void GuessLanguagePrivate::loadModels()
 {
-    QString triMapFile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("kf5/sonnet/trigrams.map"));
+    QString triMapFile
+        = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral(
+                                     "kf5/sonnet/trigrams.map"));
 
     if (triMapFile.isEmpty()) {
-        triMapFile = QStringLiteral("%1/../share/kf5/sonnet/trigrams.map").arg(QCoreApplication::applicationDirPath());
+        triMapFile = QStringLiteral("%1/../share/kf5/sonnet/trigrams.map").arg(
+            QCoreApplication::applicationDirPath());
     }
     qCDebug(SONNET_LOG_CORE) << "Loading trigrams from" << triMapFile;
 
     QFile sin(triMapFile);
     if (!sin.open(QIODevice::ReadOnly)) {
-        qCWarning(SONNET_LOG_CORE) << "Sonnet: Unable to load trigram models from file" << triMapFile;
+        qCWarning(SONNET_LOG_CORE) << "Sonnet: Unable to load trigram models from file"
+                                   << triMapFile;
         return;
     }
 
@@ -640,11 +647,13 @@ void GuessLanguagePrivate::loadModels()
 
     // Sanity check
     QSet<QString> availableLanguages;
-    QHashIterator<QString, QHash<QString, int>> iterator(s_knownModels);
+    QHashIterator<QString, QHash<QString, int> > iterator(s_knownModels);
     while (iterator.hasNext()) {
         iterator.next();
         if (iterator.value().count() < MAXGRAMS) {
-            qCWarning(SONNET_LOG_CORE) << iterator.key() << "is has only" << iterator.value().count() << "trigrams, expected" << MAXGRAMS;
+            qCWarning(SONNET_LOG_CORE) << iterator.key() << "is has only"
+                                       << iterator.value().count() << "trigrams, expected"
+                                       << MAXGRAMS;
         }
         availableLanguages.insert(iterator.key());
     }
@@ -655,7 +664,7 @@ void GuessLanguagePrivate::loadModels()
     }
 }
 
-QList<QChar::Script> GuessLanguagePrivate::findRuns(const QString & text)
+QList<QChar::Script> GuessLanguagePrivate::findRuns(const QString &text)
 {
     QChar::Script script = QChar::Script_Unknown;
     QHash<QChar::Script, int> scriptCounts;
@@ -679,13 +688,15 @@ QList<QChar::Script> GuessLanguagePrivate::findRuns(const QString & text)
 
     QList<QChar::Script> relevantScripts;
 
-    if (totalCount == 0) return relevantScripts;
+    if (totalCount == 0) {
+        return relevantScripts;
+    }
 
-    foreach(const QChar::Script &script, scriptCounts.keys()) {
+    foreach (const QChar::Script &script, scriptCounts.keys()) {
         // return run types that used for 40% or more of the string
         if (scriptCounts[script] * 100 / totalCount >= 40) {
             relevantScripts << script;
-        // always return basic latin if found more than 15%.
+            // always return basic latin if found more than 15%.
         } else if (script == QChar::Script_Latin && scriptCounts[script] * 100 / totalCount >= 15) {
             relevantScripts << script;
         }
@@ -694,7 +705,8 @@ QList<QChar::Script> GuessLanguagePrivate::findRuns(const QString & text)
     return relevantScripts;
 }
 
-QStringList GuessLanguagePrivate::identify(const QString& sample, const QList<QChar::Script>& scripts)
+QStringList GuessLanguagePrivate::identify(const QString &sample,
+                                           const QList<QChar::Script> &scripts)
 {
     if (sample.size() < MIN_LENGTH) {
         return QStringList();
@@ -708,14 +720,15 @@ QStringList GuessLanguagePrivate::identify(const QString& sample, const QList<QC
     return guesses;
 }
 
-QStringList GuessLanguagePrivate::guessFromTrigrams(const QString &sample, const QStringList &languages)
+QStringList GuessLanguagePrivate::guessFromTrigrams(const QString &sample,
+                                                    const QStringList &languages)
 {
     QStringList ret;
 
     const QList<QString> sampleTrigrams = createOrderedModel(sample);
 
     // Sort by score
-    QMultiMap<int,QString> scores;
+    QMultiMap<int, QString> scores;
     for (const QString &language : languages) {
         if (s_knownModels.contains(language)) {
             scores.insert(distance(sampleTrigrams, s_knownModels[language]), language);
@@ -730,7 +743,7 @@ QStringList GuessLanguagePrivate::guessFromTrigrams(const QString &sample, const
 
     int counter = 0;
     double confidence = 0;
-    QMapIterator<int,QString> it(scores);
+    QMapIterator<int, QString> it(scores);
     it.next();
 
     QString prevItem = it.value();
@@ -741,8 +754,8 @@ QStringList GuessLanguagePrivate::guessFromTrigrams(const QString &sample, const
         counter++;
         confidence += (it.key() - prevScore)/(double)it.key();
         ret += prevItem;
-        prevItem=it.value();
-        prevScore=it.key();
+        prevItem = it.value();
+        prevScore = it.key();
     }
     if (counter < m_maxItems && confidence < m_minConfidence) {
         ret += prevItem;
@@ -751,11 +764,10 @@ QStringList GuessLanguagePrivate::guessFromTrigrams(const QString &sample, const
     return ret;
 }
 
-
-QList<QString> GuessLanguagePrivate::createOrderedModel(const QString& content)
+QList<QString> GuessLanguagePrivate::createOrderedModel(const QString &content)
 {
-    QHash<QString,int> trigramCounts;
-    QMap<int,QString> orderedTrigrams;
+    QHash<QString, int> trigramCounts;
+    QMap<int, QString> orderedTrigrams;
 
     for (int i = 0; i < (content.size() - 2); ++i) {
         QString tri = content.mid(i, 3).toLower();
@@ -763,28 +775,31 @@ QList<QString> GuessLanguagePrivate::createOrderedModel(const QString& content)
     }
 
     foreach (const QString &key, trigramCounts.keys()) {
-        const QChar* data=key.constData();
-        bool hasTwoSpaces=(data[1].isSpace() && (data[0].isSpace() || data[2].isSpace()));
+        const QChar *data = key.constData();
+        bool hasTwoSpaces = (data[1].isSpace() && (data[0].isSpace() || data[2].isSpace()));
 
-        if (!hasTwoSpaces) orderedTrigrams.insertMulti( - trigramCounts[key], key);
+        if (!hasTwoSpaces) {
+            orderedTrigrams.insertMulti(-trigramCounts[key], key);
+        }
     }
 
     return orderedTrigrams.values();
 }
 
-int GuessLanguagePrivate::distance(const QList<QString>& model, const QHash<QString,int>& knownModel)
+int GuessLanguagePrivate::distance(const QList<QString> &model, const QHash<QString,
+                                                                            int> &knownModel)
 {
     int counter = -1;
     int dist = 0;
 
-    Q_FOREACH(const QString& trigram, model) {
+    Q_FOREACH (const QString &trigram, model) {
         if (knownModel.contains(trigram)) {
             dist += qAbs(++counter - knownModel.value(trigram));
         } else {
             dist += MAXGRAMS;
         }
 
-        if (counter==(MAXGRAMS-1)) {
+        if (counter == (MAXGRAMS-1)) {
             break;
         }
     }
@@ -792,18 +807,20 @@ int GuessLanguagePrivate::distance(const QList<QString>& model, const QHash<QStr
     return dist;
 }
 
-QString GuessLanguagePrivate::guessFromDictionaries(const QString& sentence, const QStringList& candidates)
+QString GuessLanguagePrivate::guessFromDictionaries(const QString &sentence,
+                                                    const QStringList &candidates)
 {
     // Try to see how many languages we can get spell checking for
-    QList<QSharedPointer<SpellerPlugin>> spellers;
-    for (const QString& lang : candidates) {
+    QList<QSharedPointer<SpellerPlugin> > spellers;
+    for (const QString &lang : candidates) {
         if (!Loader::openLoader()->languages().contains(lang)) {
             qCWarning(SONNET_LOG_CORE) << "Dictionary asked for invalid speller" << lang;
             continue;
         }
         QSharedPointer<SpellerPlugin> plugin = Loader::openLoader()->cachedSpeller(lang);
-        if (!plugin.isNull())
+        if (!plugin.isNull()) {
             spellers.append(plugin);
+        }
     }
 
     // If there's no spell checkers, give up
@@ -816,7 +833,9 @@ QString GuessLanguagePrivate::guessFromDictionaries(const QString& sentence, con
     WordTokenizer tokenizer(sentence);
     while (tokenizer.hasNext()) {
         QStringRef word = tokenizer.next();
-        if (!tokenizer.isSpellcheckable()) continue;
+        if (!tokenizer.isSpellcheckable()) {
+            continue;
+        }
 
         for (int i = 0; i < spellers.count(); ++i) {
             if (spellers[i]->isCorrect(word.toString())) {
@@ -825,17 +844,17 @@ QString GuessLanguagePrivate::guessFromDictionaries(const QString& sentence, con
         }
     }
 
-    if (correctHits.isEmpty()) return QString();
+    if (correctHits.isEmpty()) {
+        return QString();
+    }
 
     QMap<QString, int>::const_iterator max = correctHits.constBegin();
     for (QMap<QString, int>::const_iterator itr = correctHits.constBegin();
-        itr != correctHits.constEnd(); ++itr) {
+         itr != correctHits.constEnd(); ++itr) {
         if (itr.value() > max.value()) {
             max = itr;
         }
     }
     return max.key();
 }
-
-
 }

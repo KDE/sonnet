@@ -44,9 +44,12 @@ HSpellDict::HSpellDict(const QString &lang)
     }
 
     QSettings settings(QStringLiteral("KDE"), QStringLiteral("SonnetHSpellPlugin"));
-    m_personalWords = QSet<QString>::fromList(settings.value(QStringLiteral("PersonalWords"), QStringList()).toStringList());
-    QVariantHash replacementMap = settings.value(QStringLiteral("Replacements"), QVariant()).toHash();
-    Q_FOREACH(const QString &key, replacementMap.keys()) {
+    m_personalWords
+        = QSet<QString>::fromList(settings.value(QStringLiteral("PersonalWords"),
+                                                 QStringList()).toStringList());
+    QVariantHash replacementMap
+        = settings.value(QStringLiteral("Replacements"), QVariant()).toHash();
+    Q_FOREACH (const QString &key, replacementMap.keys()) {
         m_replacements[key] = replacementMap[key].toString();
     }
 }
@@ -110,8 +113,7 @@ QStringList HSpellDict::suggest(const QString &word) const
     return suggestions;
 }
 
-bool HSpellDict::storeReplacement(const QString &bad,
-                                  const QString &good)
+bool HSpellDict::storeReplacement(const QString &bad, const QString &good)
 {
     m_replacements[bad] = good;
     storePersonalWords();
@@ -136,7 +138,7 @@ void HSpellDict::storePersonalWords()
     QSettings settings(QStringLiteral("KDE"), QStringLiteral("SonnetHSpellPlugin"));
     settings.setValue(QStringLiteral("PersonalWords"), QVariant(m_personalWords.toList()));
     QVariantHash variantHash;
-    Q_FOREACH(const QString &key, m_replacements.keys()) {
+    Q_FOREACH (const QString &key, m_replacements.keys()) {
         variantHash[key] = QVariant(m_replacements[key]);
     }
     settings.setValue(QStringLiteral("Replacements"), variantHash);

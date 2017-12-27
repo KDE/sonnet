@@ -45,10 +45,13 @@ HunspellDict::HunspellDict(const QString &lang, QString path)
     QString aff = path + QStringLiteral(".aff");
 
     if (QFileInfo::exists(dictionary) && QFileInfo::exists(aff)) {
-        m_speller = new Hunspell(aff.toLocal8Bit().constData(), dictionary.toLocal8Bit().constData());
+        m_speller
+            = new Hunspell(aff.toLocal8Bit().constData(), dictionary.toLocal8Bit().constData());
         m_codec = QTextCodec::codecForName(m_speller->get_dic_encoding());
         if (!m_codec) {
-            qCWarning(SONNET_HUNSPELL) << "Failed to find a text codec for name" << m_speller->get_dic_encoding() << "defaulting to locale text codec";
+            qCWarning(SONNET_HUNSPELL) << "Failed to find a text codec for name"
+                                       << m_speller->get_dic_encoding()
+                                       << "defaulting to locale text codec";
             m_codec = QTextCodec::codecForLocale();
             Q_ASSERT(m_codec);
         }
@@ -65,8 +68,11 @@ HunspellDict::HunspellDict(const QString &lang, QString path)
             QString word = userDicIn.readLine();
             if (word.contains(QLatin1Char('/'))) {
                 QStringList wordParts = word.split(QLatin1Char('/'));
-                m_speller->add_with_affix(toDictEncoding(wordParts.at(0)).constData(), toDictEncoding(wordParts.at(1)).constData());
-            } if (word.at(0) == QLatin1Char('*')) {
+                m_speller->add_with_affix(toDictEncoding(wordParts.at(
+                                                             0)).constData(),
+                                          toDictEncoding(wordParts.at(1)).constData());
+            }
+            if (word.at(0) == QLatin1Char('*')) {
                 m_speller->remove(toDictEncoding(word.mid(1)).constData());
             } else {
                 m_speller->add(toDictEncoding(word).constData());
@@ -82,7 +88,7 @@ HunspellDict::~HunspellDict()
     delete m_speller;
 }
 
-QByteArray HunspellDict::toDictEncoding(const QString& word) const
+QByteArray HunspellDict::toDictEncoding(const QString &word) const
 {
     if (m_codec) {
         return m_codec->fromUnicode(word);
@@ -98,7 +104,7 @@ bool HunspellDict::isCorrect(const QString &word) const
     }
     int result = m_speller->spell(toDictEncoding(word).constData());
     qCDebug(SONNET_HUNSPELL) << " result :" << result;
-    return (result != 0);
+    return result != 0;
 }
 
 QStringList HunspellDict::suggest(const QString &word) const
@@ -116,8 +122,7 @@ QStringList HunspellDict::suggest(const QString &word) const
     return lst;
 }
 
-bool HunspellDict::storeReplacement(const QString &bad,
-                                    const QString &good)
+bool HunspellDict::storeReplacement(const QString &bad, const QString &good)
 {
     Q_UNUSED(bad);
     Q_UNUSED(good);

@@ -24,8 +24,7 @@
 #include "client_p.h"
 #include <QMap>
 
-namespace Sonnet
-{
+namespace Sonnet {
 class SpellerPlugin;
 }
 using Sonnet::SpellerPlugin;

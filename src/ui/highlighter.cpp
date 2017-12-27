@@ -42,31 +42,35 @@
 #include <QMetaMethod>
 #include <QPlainTextEdit>
 
-namespace Sonnet
-{
-
+namespace Sonnet {
 // Cache of previously-determined languages (when using AutoDetectLanguage)
 // There is one such cache per block (paragraph)
-class LanguageCache : public QTextBlockUserData {
+class LanguageCache : public QTextBlockUserData
+{
 public:
     // Key: QPair<start, length>
     // Value: language name
-    QMap<QPair<int,int>, QString> languages;
+    QMap<QPair<int, int>, QString> languages;
 
     // Remove all cached language information after @p pos
-    void invalidate(int pos) {
-        QMutableMapIterator<QPair<int,int>, QString> it(languages);
+    void invalidate(int pos)
+    {
+        QMutableMapIterator<QPair<int, int>, QString> it(languages);
         it.toBack();
         while (it.hasPrevious()) {
             it.previous();
-            if (it.key().first+it.key().second >=pos) it.remove();
-            else break;
+            if (it.key().first+it.key().second >= pos) {
+                it.remove();
+            } else {
+                break;
+            }
         }
     }
 
-    QString languageAtPos(int pos) const {
+    QString languageAtPos(int pos) const
+    {
         // The data structure isn't really great for such lookups...
-        QMapIterator<QPair<int,int>, QString> it(languages);
+        QMapIterator<QPair<int, int>, QString> it(languages);
         while (it.hasNext()) {
             it.next();
             if (it.key().first <= pos && it.key().first + it.key().second >= pos) {
@@ -77,15 +81,14 @@ public:
     }
 };
 
-
 class HighlighterPrivate
 {
 public:
     HighlighterPrivate(Highlighter *qq, const QColor &col)
-        : textEdit(nullptr),
-          plainTextEdit(nullptr),
-          spellColor(col),
-          q(qq)
+        : textEdit(nullptr)
+        , plainTextEdit(nullptr)
+        , spellColor(col)
+        , q(qq)
     {
         tokenizer = new WordTokenizer();
         active = true;
@@ -105,7 +108,7 @@ public:
         spellCheckerFound = spellchecker->isValid();
         rehighlightRequest = new QTimer(q);
         q->connect(rehighlightRequest, SIGNAL(timeout()),
-                q, SLOT(slotRehighlight()));
+                   q, SLOT(slotRehighlight()));
 
         if (!spellCheckerFound) {
             return;
@@ -148,10 +151,9 @@ HighlighterPrivate::~HighlighterPrivate()
     delete tokenizer;
 }
 
-Highlighter::Highlighter(QTextEdit *edit,
-                         const QColor &_col)
-    : QSyntaxHighlighter(edit),
-      d(new HighlighterPrivate(this, _col))
+Highlighter::Highlighter(QTextEdit *edit, const QColor &_col)
+    : QSyntaxHighlighter(edit)
+    , d(new HighlighterPrivate(this, _col))
 {
     d->textEdit = edit;
     d->textEdit->installEventFilter(this);
@@ -159,8 +161,8 @@ Highlighter::Highlighter(QTextEdit *edit,
 }
 
 Highlighter::Highlighter(QPlainTextEdit *edit, const QColor &col)
-    : QSyntaxHighlighter(edit),
-      d(new HighlighterPrivate(this, col))
+    : QSyntaxHighlighter(edit)
+    , d(new HighlighterPrivate(this, col))
 {
     d->plainTextEdit = edit;
     setDocument(d->plainTextEdit->document());
@@ -181,17 +183,17 @@ bool Highlighter::spellCheckerFound() const
 void Highlighter::slotRehighlight()
 {
     if (d->completeRehighlightRequired) {
-        d->wordCount  = 0;
+        d->wordCount = 0;
         d->errorCount = 0;
         rehighlight();
-
     } else {
         //rehighlight the current para only (undo/redo safe)
         QTextCursor cursor;
-        if (d->textEdit)
+        if (d->textEdit) {
             cursor = d->textEdit->textCursor();
-        else
+        } else {
             cursor = d->plainTextEdit->textCursor();
+        }
         cursor.insertText(QString());
     }
     //if (d->checksDone == d->checksRequested)
@@ -234,7 +236,7 @@ void Highlighter::slotAutoDetection()
     if (d->automatic && d->wordCount >= 10) {
         // tme = Too many errors
         bool tme = (d->errorCount >= d->disableWordCount) && (
-                       d->errorCount * 100 >= d->disablePercentage * d->wordCount);
+            d->errorCount * 100 >= d->disablePercentage * d->wordCount);
         if (d->active && tme) {
             d->active = false;
         } else if (!d->active && !tme) {
@@ -283,8 +285,10 @@ void Highlighter::contentsChange(int pos, int add, int rem)
     const QTextBlock &lastBlock = document()->findBlock(pos + add - rem);
     QTextBlock block = document()->findBlock(pos);
     do {
-        LanguageCache* cache=dynamic_cast<LanguageCache*>(block.userData());
-        if (cache) cache->invalidate(pos-block.position());
+        LanguageCache *cache = dynamic_cast<LanguageCache *>(block.userData());
+        if (cache) {
+            cache->invalidate(pos-block.position());
+        }
         block = block.next();
     } while (block.isValid() && block < lastBlock);
 }
@@ -310,11 +314,11 @@ void Highlighter::highlightBlock(const QString &text)
 
     const int lengthPosition = text.length() - 1;
 
-    if ( index != lengthPosition ||
-            ( lengthPosition > 0 && !text[lengthPosition-1].isLetter() ) ) {
+    if (index != lengthPosition
+        || (lengthPosition > 0 && !text[lengthPosition-1].isLetter())) {
         d->languageFilter->setBuffer(text);
 
-        LanguageCache* cache=dynamic_cast<LanguageCache*>(currentBlockUserData());
+        LanguageCache *cache = dynamic_cast<LanguageCache *>(currentBlockUserData());
         if (!cache) {
             cache = new LanguageCache;
             setCurrentBlockUserData(cache);
@@ -322,29 +326,33 @@ void Highlighter::highlightBlock(const QString &text)
 
         const bool autodetectLanguage = d->spellchecker->testAttribute(Speller::AutoDetectLanguage);
         while (d->languageFilter->hasNext()) {
-            QStringRef sentence=d->languageFilter->next();
+            QStringRef sentence = d->languageFilter->next();
             if (autodetectLanguage) {
-
                 QString lang;
-                QPair<int,int> spos=QPair<int,int>(sentence.position(),sentence.length());
+                QPair<int, int> spos = QPair<int, int>(sentence.position(), sentence.length());
                 // try cache first
                 if (cache->languages.contains(spos)) {
-                    lang=cache->languages.value(spos);
+                    lang = cache->languages.value(spos);
                 } else {
-                    lang=d->languageFilter->language();
-                    if (!d->languageFilter->isSpellcheckable()) lang.clear();
-                    cache->languages[spos]=lang;
+                    lang = d->languageFilter->language();
+                    if (!d->languageFilter->isSpellcheckable()) {
+                        lang.clear();
+                    }
+                    cache->languages[spos] = lang;
                 }
-                if (lang.isEmpty()) continue;
+                if (lang.isEmpty()) {
+                    continue;
+                }
                 d->spellchecker->setLanguage(lang);
             }
 
-
             d->tokenizer->setBuffer(sentence.toString());
-            int offset=sentence.position();
+            int offset = sentence.position();
             while (d->tokenizer->hasNext()) {
-                QStringRef word=d->tokenizer->next();
-                if (!d->tokenizer->isSpellcheckable()) continue;
+                QStringRef word = d->tokenizer->next();
+                if (!d->tokenizer->isSpellcheckable()) {
+                    continue;
+                }
                 ++d->wordCount;
                 if (d->spellchecker->isMisspelled(word.toString())) {
                     ++d->errorCount;
@@ -366,13 +374,13 @@ QString Highlighter::currentLanguage() const
 
 void Highlighter::setCurrentLanguage(const QString &lang)
 {
-    QString prevLang=d->spellchecker->language();
+    QString prevLang = d->spellchecker->language();
     d->spellchecker->setLanguage(lang);
     d->spellCheckerFound = d->spellchecker->isValid();
     if (!d->spellCheckerFound) {
         qCDebug(SONNET_LOG_UI) << "No dictionary for \""
-            << lang
-            << "\" staying with the current language.";
+                               << lang
+                               << "\" staying with the current language.";
         d->spellchecker->setLanguage(prevLang);
         return;
     }
@@ -402,28 +410,28 @@ bool Highlighter::eventFilter(QObject *o, QEvent *e)
     if (!d->spellCheckerFound) {
         return false;
     }
-    if ((o == d->textEdit || o == d->plainTextEdit)  && (e->type() == QEvent::KeyPress)) {
+    if ((o == d->textEdit || o == d->plainTextEdit) && (e->type() == QEvent::KeyPress)) {
         QKeyEvent *k = static_cast<QKeyEvent *>(e);
         //d->autoReady = true;
         if (d->rehighlightRequest->isActive()) { // try to stay out of the users way
             d->rehighlightRequest->start(500);
         }
-        if (k->key() == Qt::Key_Enter ||
-                k->key() == Qt::Key_Return ||
-                k->key() == Qt::Key_Up ||
-                k->key() == Qt::Key_Down ||
-                k->key() == Qt::Key_Left ||
-                k->key() == Qt::Key_Right ||
-                k->key() == Qt::Key_PageUp ||
-                k->key() == Qt::Key_PageDown ||
-                k->key() == Qt::Key_Home ||
-                k->key() == Qt::Key_End ||
-                ((k->modifiers() == Qt::ControlModifier) &&
-                 ((k->key() == Qt::Key_A) ||
-                  (k->key() == Qt::Key_B) ||
-                  (k->key() == Qt::Key_E) ||
-                  (k->key() == Qt::Key_N) ||
-                  (k->key() == Qt::Key_P)))) {
+        if (k->key() == Qt::Key_Enter
+            || k->key() == Qt::Key_Return
+            || k->key() == Qt::Key_Up
+            || k->key() == Qt::Key_Down
+            || k->key() == Qt::Key_Left
+            || k->key() == Qt::Key_Right
+            || k->key() == Qt::Key_PageUp
+            || k->key() == Qt::Key_PageDown
+            || k->key() == Qt::Key_Home
+            || k->key() == Qt::Key_End
+            || ((k->modifiers() == Qt::ControlModifier)
+                && ((k->key() == Qt::Key_A)
+                    || (k->key() == Qt::Key_B)
+                    || (k->key() == Qt::Key_E)
+                    || (k->key() == Qt::Key_N)
+                    || (k->key() == Qt::Key_P)))) {
             if (intraWordEditing()) {
                 setIntraWordEditing(false);
                 d->completeRehighlightRequired = true;
@@ -434,15 +442,14 @@ bool Highlighter::eventFilter(QObject *o, QEvent *e)
         } else {
             setIntraWordEditing(true);
         }
-        if (k->key() == Qt::Key_Space ||
-                k->key() == Qt::Key_Enter ||
-                k->key() == Qt::Key_Return) {
+        if (k->key() == Qt::Key_Space
+            || k->key() == Qt::Key_Enter
+            || k->key() == Qt::Key_Return) {
             QTimer::singleShot(0, this, SLOT(slotAutoDetection()));
         }
-    }
-
-    else if ((( d->textEdit && ( o == d->textEdit->viewport())) || (d->plainTextEdit && (o == d->plainTextEdit->viewport()))) &&
-             (e->type() == QEvent::MouseButtonPress)) {
+    } else if (((d->textEdit && (o == d->textEdit->viewport()))
+                || (d->plainTextEdit && (o == d->plainTextEdit->viewport())))
+               && (e->type() == QEvent::MouseButtonPress)) {
         //d->autoReady = true;
         if (intraWordEditing()) {
             setIntraWordEditing(false);
@@ -476,7 +483,7 @@ QStringList Highlighter::suggestionsForWord(const QString &word, int max)
 
 QStringList Highlighter::suggestionsForWord(const QString &word, const QTextCursor &cursor, int max)
 {
-    LanguageCache* cache = dynamic_cast<LanguageCache*>(cursor.block().userData());
+    LanguageCache *cache = dynamic_cast<LanguageCache *>(cursor.block().userData());
     if (cache) {
         const QString cachedLanguage = cache->languageAtPos(cursor.positionInBlock());
         if (!cachedLanguage.isEmpty()) {
@@ -505,10 +512,9 @@ bool Highlighter::checkerEnabledByDefault() const
     return d->loader->settings()->checkerEnabledByDefault();
 }
 
-void Highlighter::setDocument(QTextDocument* document)
+void Highlighter::setDocument(QTextDocument *document)
 {
     d->connected = false;
     QSyntaxHighlighter::setDocument(document);
 }
-
 }

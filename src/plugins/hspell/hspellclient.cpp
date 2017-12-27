@@ -49,4 +49,3 @@ QStringList HSpellClient::languages() const
     }
     return langs;
 }
-

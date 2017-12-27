@@ -33,7 +33,9 @@
 
 int main(int argc, char **argv)
 {
-    if (argc<2) return 1;
+    if (argc < 2) {
+        return 1;
+    }
 
     QFile sout;
     sout.open(stdout, QIODevice::WriteOnly);
@@ -42,12 +44,11 @@ int main(int argc, char **argv)
     QString path = QLatin1String(argv[1]);
     QDir td(path);
 
-    QHash< QString, QHash<QString,int> > models;
+    QHash< QString, QHash<QString, int> > models;
 
     QStringList files = td.entryList(QDir::Files);
 
-    Q_FOREACH (const QString& fname, files) {
-
+    Q_FOREACH (const QString &fname, files) {
         QFile fin(td.filePath(fname));
         fin.open(QFile::ReadOnly | QFile::Text);
         QTextStream stream(&fin);
@@ -58,8 +59,9 @@ int main(int argc, char **argv)
             QString line = stream.readLine();
             QRegExp rx(QStringLiteral("(.{3})\\s+(.*)"));
             int pos = rx.indexIn(line);
-            if ( pos != -1 )
+            if (pos != -1) {
                 models[fname][line.left(3)] = rx.cap(2).toInt();
+            }
         }
     }
 

@@ -33,21 +33,18 @@ public:
 
     virtual QStringList suggest(const QString &word) const;
 
-    virtual bool storeReplacement(const QString &bad,
-                                  const QString &good);
+    virtual bool storeReplacement(const QString &bad, const QString &good);
 
     virtual bool addToPersonal(const QString &word);
     virtual bool addToSession(const QString &word);
 protected:
     friend class QSpellEnchantClient;
-    QSpellEnchantDict(QSpellEnchantClient *client,
-                      EnchantBroker *broker,
-                      EnchantDict *dict,
+    QSpellEnchantDict(QSpellEnchantClient *client, EnchantBroker *broker, EnchantDict *dict,
                       const QString &language);
 
 private:
     EnchantBroker *m_broker;
-    EnchantDict   *m_dict;
+    EnchantDict *m_dict;
     QSpellEnchantClient *m_client;
 };
 

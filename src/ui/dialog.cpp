@@ -37,16 +37,17 @@
 #include <QtCore/QTimer>
 #include <QtWidgets/QMessageBox>
 
-namespace Sonnet
-{
-
+namespace Sonnet {
 //to initially disable sorting in the suggestions listview
 #define NONSORTINGCOLUMN 2
 
-class ReadOnlyStringListModel: public QStringListModel
+class ReadOnlyStringListModel : public QStringListModel
 {
 public:
-    ReadOnlyStringListModel(QObject *parent): QStringListModel(parent) {}
+    ReadOnlyStringListModel(QObject *parent) : QStringListModel(parent)
+    {
+    }
+
     Qt::ItemFlags flags(const QModelIndex &index) const Q_DECL_OVERRIDE
     {
         Q_UNUSED(index);
@@ -91,10 +92,9 @@ public:
     }
 };
 
-Dialog::Dialog(BackgroundChecker *checker,
-               QWidget *parent)
-    : QDialog(parent),
-      d(new DialogPrivate)
+Dialog::Dialog(BackgroundChecker *checker, QWidget *parent)
+    : QDialog(parent)
+    , d(new DialogPrivate)
 {
     setModal(true);
     setWindowTitle(tr("Check Spelling", "@title:window"));
@@ -404,8 +404,8 @@ void Dialog::slotMisspelling(const QString &word, int start)
         return;
     }
 
-    d->currentWord =  word;
-    d->currentPosition =  start;
+    d->currentWord = word;
+    d->currentPosition = start;
     if (d->replaceAllMap.contains(word)) {
         d->ui.m_replacement->setText(d->replaceAllMap[ word ]);
         slotReplaceWord();
@@ -428,10 +428,9 @@ void Dialog::slotDone()
         emit spellCheckStatus(tr("Spell check complete."));
         accept();
         if (!d->canceled && d->showCompletionMessageBox) {
-            QMessageBox::information(this, tr("Spell check complete."), tr("Check Spelling", "@title:window"));
+            QMessageBox::information(this, tr("Spell check complete."),
+                                     tr("Check Spelling", "@title:window"));
         }
     }
 }
-
 }
-

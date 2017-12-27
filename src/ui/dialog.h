@@ -28,8 +28,7 @@
 class QListWidgetItem;
 class QModelIndex;
 
-namespace Sonnet
-{
+namespace Sonnet {
 class BackgroundChecker;
 class DialogPrivate;
 /**
@@ -51,8 +50,7 @@ class SONNETUI_EXPORT Dialog : public QDialog
 {
     Q_OBJECT
 public:
-    Dialog(BackgroundChecker *checker,
-           QWidget *parent);
+    Dialog(BackgroundChecker *checker, QWidget *parent);
     ~Dialog();
 
     QString originalBuffer() const;
@@ -105,8 +103,7 @@ Q_SIGNALS:
      */
     void done(const QString &newBuffer);
     void misspelling(const QString &word, int start);
-    void replace(const QString &oldWord, int start,
-                 const QString &newWord);
+    void replace(const QString &oldWord, int start, const QString &newWord);
 
     void stop();
     void cancel();

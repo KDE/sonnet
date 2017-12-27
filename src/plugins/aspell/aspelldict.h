@@ -34,13 +34,12 @@ public:
 
     QStringList suggest(const QString &word) const Q_DECL_OVERRIDE;
 
-    bool storeReplacement(const QString &bad,
-                                  const QString &good) Q_DECL_OVERRIDE;
+    bool storeReplacement(const QString &bad, const QString &good) Q_DECL_OVERRIDE;
 
     bool addToPersonal(const QString &word) Q_DECL_OVERRIDE;
     bool addToSession(const QString &word) Q_DECL_OVERRIDE;
 private:
-    AspellConfig  *m_config = nullptr;
+    AspellConfig *m_config = nullptr;
     AspellSpeller *m_speller = nullptr;
 };
 

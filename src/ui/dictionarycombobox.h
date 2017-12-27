@@ -25,8 +25,7 @@
 
 #include <QtWidgets/QComboBox>
 
-namespace Sonnet
-{
+namespace Sonnet {
 class DictionaryComboBoxPrivate;
 /**
  * @short A combo box for selecting the dictionary used for spell checking.
@@ -92,7 +91,6 @@ public:
      */
     void setCurrentByDictionary(const QString &dictionary);
 
-
 Q_SIGNALS:
     /**
      * @em Emitted whenever the current dictionary changes. Either
@@ -112,7 +110,6 @@ private:
     DictionaryComboBoxPrivate *const d;
     Q_PRIVATE_SLOT(d, void slotDictionaryChanged(int))
 };
-
 }
 
 #endif

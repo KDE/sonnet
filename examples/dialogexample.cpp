@@ -30,7 +30,6 @@ using namespace Sonnet;
 TestDialog::TestDialog()
     : QObject(nullptr)
 {
-
 }
 
 //@@snippet_begin(dictionary_combo_box_example)
@@ -43,6 +42,7 @@ void TestDialog::check(const QString &buffer)
     dlg->setBuffer(buffer);
     dlg->show();
 }
+
 //@@snippet_end
 
 void TestDialog::doneChecking(const QString &buf)
@@ -57,8 +57,8 @@ int main(int argc, char **argv)
 
     TestDialog test;
     test.check(QString::fromLatin1("This is a sample buffer. Whih this thingg will "
-               "be checkin for misstakes. Whih, Enviroment, govermant. Whih.")
-              );
+                                   "be checkin for misstakes. Whih, Enviroment, govermant. Whih.")
+               );
 
     return app.exec();
 }

@@ -24,14 +24,12 @@
 
 using namespace Sonnet;
 
-QSpellEnchantDict::QSpellEnchantDict(QSpellEnchantClient *client,
-                                     EnchantBroker *broker,
-                                     EnchantDict *dict,
-                                     const QString &language)
-    : SpellerPlugin(language),
-      m_broker(broker),
-      m_dict(dict),
-      m_client(client)
+QSpellEnchantDict::QSpellEnchantDict(QSpellEnchantClient *client, EnchantBroker *broker,
+                                     EnchantDict *dict, const QString &language)
+    : SpellerPlugin(language)
+    , m_broker(broker)
+    , m_dict(dict)
+    , m_client(client)
 {
     qDebug() << "Enchant dict for" << language << dict;
 }
@@ -57,9 +55,9 @@ QStringList QSpellEnchantDict::suggest(const QString &word) const
     QTextCodec *codec = QTextCodec::codecForName("utf8");
 
     size_t number = 0;
-    char **suggestions =
-        enchant_dict_suggest(m_dict, word.toUtf8().constData(), word.toUtf8().length(),
-                             &number);
+    char **suggestions
+        = enchant_dict_suggest(m_dict, word.toUtf8().constData(), word.toUtf8().length(),
+                               &number);
 
     QStringList qsug;
     for (size_t i = 0; i < number; ++i) {
@@ -72,8 +70,7 @@ QStringList QSpellEnchantDict::suggest(const QString &word) const
     return qsug;
 }
 
-bool QSpellEnchantDict::storeReplacement(const QString &bad,
-        const QString &good)
+bool QSpellEnchantDict::storeReplacement(const QString &bad, const QString &good)
 {
     enchant_dict_store_replacement(m_dict,
                                    bad.toUtf8().constData(), bad.toUtf8().length(),
