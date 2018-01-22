@@ -23,6 +23,9 @@
 #include "aspell_debug.h"
 
 #include <QtCore/QTextCodec>
+#ifdef Q_OS_WIN
+#include <QCoreApplication>
+#endif
 
 using namespace Sonnet;
 
@@ -34,6 +37,11 @@ ASpellDict::ASpellDict(const QString &lang)
     /* All communication with Aspell is done in UTF-8 */
     /* For reference, please look at BR#87250         */
     aspell_config_replace(m_config, "encoding", "utf-8");
+
+#ifdef Q_OS_WIN
+	aspell_config_replace(m_config, "data-dir", QString::fromLatin1("%1/data/aspell").arg(QCoreApplication::applicationDirPath()).toLatin1().constData());
+	aspell_config_replace(m_config, "dict-dir", QString::fromLatin1("%1/data/aspell").arg(QCoreApplication::applicationDirPath()).toLatin1().constData());
+#endif
 
     AspellCanHaveError *possible_err = new_aspell_speller(m_config);
 

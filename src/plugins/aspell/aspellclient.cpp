@@ -24,6 +24,9 @@
 
 #include "aspell_debug.h"
 #include <QtPlugin>
+#ifdef Q_OS_WIN
+#include <QCoreApplication>
+#endif
 
 using namespace Sonnet;
 
@@ -31,6 +34,10 @@ ASpellClient::ASpellClient(QObject *parent)
     : Client(parent)
 {
     m_config = new_aspell_config();
+#ifdef Q_OS_WIN
+	aspell_config_replace(m_config, "data-dir", QString::fromLatin1("%1/data/aspell").arg(QCoreApplication::applicationDirPath()).toLatin1().constData());
+	aspell_config_replace(m_config, "dict-dir", QString::fromLatin1("%1/data/aspell").arg(QCoreApplication::applicationDirPath()).toLatin1().constData());
+#endif
 }
 
 ASpellClient::~ASpellClient()
