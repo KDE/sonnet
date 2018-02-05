@@ -1,0 +1,743 @@
+# translation of kdelibs4.po to Tajik Language
+# 2004, 2005, 2006, 2007 infoDev, a World Bank organization.
+# 2004, 2005, 2006, 2007 Khujand Computer Technologies, Inc.
+# 2004, 2005, 2006, 2007 Youth Opportunities, NGO, 2005.
+# Roger Kovacs <rkovacs@khujand.org>, 2003.
+# Thomas Diehl <thd@kde.org>, 2003.
+# Akmal Vatanshoev <akmalvatanshoev@yahoo.com>, 2004.
+# Victor Ibragimov <youth_opportunities@tajikngo.org>, 2003, 2004, 2005, 2006, 2007, 2008.
+# Copyright (C) 2004, 2002, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
+msgid ""
+msgstr ""
+"Project-Id-Version: kdelibs4\n"
+"Report-Msgid-Bugs-To: http://bugs.kde.org\n"
+"POT-Creation-Date: 2014-03-23 01:50+0000\n"
+"PO-Revision-Date: 2013-06-04 17:36+0500\n"
+"Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
+"Language-Team: Tajik Language\n"
+"Language: tg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Qt-Contexts: true\n"
+
+#: core/loader.cpp:172
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "40"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "40"
+msgstr "40"
+
+#: core/loader.cpp:173
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "60"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "60"
+msgstr "60"
+
+#: core/loader.cpp:174
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "80"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "80"
+msgstr "80"
+
+#: core/loader.cpp:175
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "-ise suffixes"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ise suffixes"
+msgstr "суффиксҳои -ise"
+
+#: core/loader.cpp:176
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "-ize suffixes"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ize suffixes"
+msgstr "суффиксҳои -ize"
+
+#: core/loader.cpp:177
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "-ise suffixes and with accents"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ise suffixes and with accents"
+msgstr "суффиксҳо -ise суффиксҳо бо зада"
+
+#: core/loader.cpp:179
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "-ise suffixes and without accents"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ise suffixes and without accents"
+msgstr "суффиксҳо -ise суффиксҳо бе зада"
+
+#: core/loader.cpp:182
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "-ize suffixes and with accents"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ize suffixes and with accents"
+msgstr "суффиксҳо -ize суффиксҳо бо зада"
+
+#: core/loader.cpp:184
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "-ize suffixes and without accents"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "-ize suffixes and without accents"
+msgstr "суффиксҳо -ize суффиксҳо бе зада"
+
+#: core/loader.cpp:187
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "large"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "large"
+msgstr "калон"
+
+#: core/loader.cpp:188
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "medium"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "medium"
+msgstr "миёна"
+
+#: core/loader.cpp:189
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "small"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "small"
+msgstr "хурд"
+
+#: core/loader.cpp:190
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "variant 0"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "variant 0"
+msgstr "варианти 0"
+
+#: core/loader.cpp:191
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "variant 1"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "variant 1"
+msgstr "варианти 1"
+
+#: core/loader.cpp:192
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "variant 2"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "variant 2"
+msgstr "варианти 2"
+
+#: core/loader.cpp:194
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "without accents"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "without accents"
+msgstr "бе зада"
+
+#: core/loader.cpp:195
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "with accents"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "with accents"
+msgstr "аломатҳои зада"
+
+#: core/loader.cpp:197
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "with ye, modern russian"
+msgstr ""
+
+#: core/loader.cpp:199
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "with yeyo, modern and old russian"
+msgstr ""
+
+#: core/loader.cpp:202
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "with yo, old russian"
+msgstr ""
+
+#: core/loader.cpp:203
+#, fuzzy
+#| msgctxt "dictionary variant"
+#| msgid "extended"
+msgctxt "Sonnet::Loader|dictionary variant"
+msgid "extended"
+msgstr "васеъшуда"
+
+#: core/loader.cpp:238
+#, fuzzy, qt-format
+#| msgctxt "dictionary name. %1-language, %2-country and %3 variant name"
+#| msgid "%1 (%2) [%3]"
+msgctxt ""
+"Sonnet::Loader|dictionary name; %1 = language name, %2 = country name and %3 "
+"= language variant name"
+msgid "%1 (%2) [%3]"
+msgstr "%1 (%2) [%3]"
+
+#: core/loader.cpp:241
+#, fuzzy, qt-format
+#| msgctxt "name of digit set with digit string, e.g. 'Arabic (0123456789)'"
+#| msgid "%1 (%2)"
+msgctxt "Sonnet::Loader|dictionary name; %1 = language name, %2 = country name"
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+#: ui/configdialog.cpp:53
+#, fuzzy
+#| msgid "Send Confirmation"
+msgctxt "Sonnet::ConfigDialog|"
+msgid "Spell Checking Configuration"
+msgstr "Тасдиқи ирсол"
+
+#: ui/configui.ui:41
+#, fuzzy
+#| msgid "Options"
+msgctxt "SonnetConfigUI|"
+msgid "Options"
+msgstr "Параметрҳо"
+
+#: ui/configui.ui:47
+msgctxt "SonnetConfigUI|"
+msgid "Enable autodetection of &language"
+msgstr ""
+
+#: ui/configui.ui:54
+#, fuzzy
+#| msgid "Enable &background spellchecking"
+msgctxt "SonnetConfigUI|"
+msgid "Enable &background spellchecking"
+msgstr "Фаъоли &пуштибонии санҷиши имло"
+
+#: ui/configui.ui:61
+#, fuzzy
+#| msgid "&Automatic spell checking enabled by default"
+msgctxt "SonnetConfigUI|"
+msgid "&Automatic spell checking enabled by default"
+msgstr "&Санҷиши имло ба худкор фаъол шудааст"
+
+#: ui/configui.ui:68
+#, fuzzy
+#| msgid "Skip all &uppercase words"
+msgctxt "SonnetConfigUI|"
+msgid "Skip all &uppercase words"
+msgstr "Гузарондани ҳамаи &ҳарфҳои калон"
+
+#: ui/configui.ui:75
+#, fuzzy
+#| msgid "S&kip run-together words"
+msgctxt "SonnetConfigUI|"
+msgid "S&kip run-together words"
+msgstr "Гузарондани &калимаҳои якҷояшуда"
+
+#: ui/configui.ui:85
+#, fuzzy
+#| msgid "Default language:"
+msgctxt "SonnetConfigUI|"
+msgid "Default language:"
+msgstr "Забони стандартӣ:"
+
+#: ui/configui.ui:95
+#, fuzzy
+#| msgid "Suggested Words"
+msgctxt "SonnetConfigUI|"
+msgid "Ignored Words:"
+msgstr "Калимаҳои санҷишӣ"
+
+#: ui/configui.ui:109
+#, fuzzy
+#| msgid "&Add"
+msgctxt "SonnetConfigUI|"
+msgid "&Add"
+msgstr "&Илова"
+
+#: ui/configui.ui:122
+#, fuzzy
+#| msgid "&Remove"
+msgctxt "SonnetConfigUI|"
+msgid "&Remove"
+msgstr "&Нобуд кардан"
+
+#: ui/configui.ui:160
+#, fuzzy
+#| msgid "Enable &background spellchecking"
+msgctxt "SonnetConfigUI|"
+msgid "No backend found for spell checking"
+msgstr "Фаъоли &пуштибонии санҷиши имло"
+
+#: ui/dialog.cpp:100 ui/dialog.cpp:222 ui/dialog.cpp:432
+#, fuzzy
+#| msgid "Check Spelling"
+msgctxt "Sonnet::Dialog|@title:window"
+msgid "Check Spelling"
+msgstr "Тафтиши Имло"
+
+#: ui/dialog.cpp:221
+#, fuzzy
+#| msgctxt "progress label"
+#| msgid "Spell checking in progress..."
+msgctxt "Sonnet::Dialog|progress label"
+msgid "Spell checking in progress..."
+msgstr "Выполняется проверка орфографии..."
+
+#: ui/dialog.cpp:242
+#, fuzzy
+#| msgid "Spell check stopped."
+msgctxt "Sonnet::Dialog|"
+msgid "Spell check stopped."
+msgstr "Санҷиши имло қатъ карда шуд."
+
+#: ui/dialog.cpp:252
+#, fuzzy
+#| msgid "Spell check canceled."
+msgctxt "Sonnet::Dialog|"
+msgid "Spell check canceled."
+msgstr "Санҷиши имло бекор карда шуд."
+
+#: ui/dialog.cpp:428 ui/dialog.cpp:431
+#, fuzzy
+#| msgid "Spell check complete."
+msgctxt "Sonnet::Dialog|"
+msgid "Spell check complete."
+msgstr "Санҷиши имло ба анҷом расид."
+
+#: ui/highlighter.cpp:249 ui/highlighter.cpp:271
+#, fuzzy
+#| msgid "As-you-type spell checking enabled."
+msgctxt "Sonnet::Highlighter|"
+msgid "As-you-type spell checking enabled."
+msgstr "Вақте ки шумо менависед, санҷиши имло ислоҳ мекунад."
+
+#: ui/highlighter.cpp:252
+#, fuzzy
+#| msgid "Too many misspelled words. As-you-type spell checking disabled."
+msgctxt "Sonnet::Highlighter|"
+msgid "Too many misspelled words. As-you-type spell checking disabled."
+msgstr "Слишком много ошибочных слов. Проверка правописания на лету выключена."
+
+#: ui/highlighter.cpp:273
+#, fuzzy
+#| msgid "As-you-type spell checking disabled."
+msgctxt "Sonnet::Highlighter|"
+msgid "As-you-type spell checking disabled."
+msgstr "Вақте ки шумо менависед, санҷиши имло хомӯш аст."
+
+#: ui/sonnetui.ui:41 ui/sonnetui.ui:57
+#, fuzzy
+#| msgid ""
+#| "<qt><p>This word was considered to be an \"unknown word\" because it does "
+#| "not match any entry in the dictionary currently in use. It may also be a "
+#| "word in a foreign language.</p>\n"
+#| "<p>If the word is not misspelled, you may add it to the dictionary by "
+#| "clicking <b>Add to Dictionary</b>. If you do not want to add the unknown "
+#| "word to the dictionary, but you want to leave it unchanged, click "
+#| "<b>Ignore</b> or <b>Ignore All</b>.</p>\n"
+#| "<p>However, if the word is misspelled, you can try to find the correct "
+#| "replacement in the list below. If you cannot find a replacement there, "
+#| "you may type it in the text box below, and click <b>Replace</b> or "
+#| "<b>Replace All</b>.</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt><p>This word was considered to be an \"unknown word\" because it does "
+"not match any entry in the dictionary currently in use. It may also be a "
+"word in a foreign language.</p>\n"
+"<p>If the word is not misspelled, you may add it to the dictionary by "
+"clicking <b>Add to Dictionary</b>. If you do not want to add the unknown "
+"word to the dictionary, but you want to leave it unchanged, click <b>Ignore</"
+"b> or <b>Ignore All</b>.</p>\n"
+"<p>However, if the word is misspelled, you can try to find the correct "
+"replacement in the list below. If you cannot find a replacement there, you "
+"may type it in the text box below, and click <b>Replace</b> or <b>Replace "
+"All</b>.</p>\n"
+"</qt>"
+msgstr ""
+"<qt><p>Ин калима ҳамчун \"калимаи нодуруст\" муайян карда шуд, барои он ки "
+"ин калима дар луғати ҷорӣ мавҷуд нест. Мумкин аст, ки ин калимаи хориҷӣ "
+"бошад.</p>\n"
+"<p>Агар ин калима дуруст бошад, шумо метавонед ин калимаро ба луғат илова "
+"кунед бо зеркунии тугмаи <b>Илова ба луғат</b>. Агар шумо намехоҳед калимаи "
+"номуайянро ба луғат илова кунед, лекин шумо мехоҳед ин калимаро дар матн "
+"истифода баред. ин тавр тугмаи <b>Гузарондан</b> ё <b>Гузарондани ҳама</b> "
+"зер кунед.</p>\n"
+"<p>Вале, агар ин калима нодуруст бошад, шумо метавонед ин калимаро бо "
+"калимаи дуруст аз рӯйхати поёнбуда ҷойгузор кунед. Агар ягон калимаи дуруст "
+"дар рӯйхат ёфт нашуда бошад, ин тавр шумо метавонед калимаи лозимиро дар "
+"қуттии матни поёнбуда ворид кунед, ва ба тугмаи <b>Ҷойгузорӣ</b> ё "
+"<b>Ҷойгузории ҳама</b> зер кунед.</p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:47
+#, fuzzy
+#| msgid "Unknown word:"
+msgctxt "SonnetUi|"
+msgid "Unknown word:"
+msgstr "Калимаи номуайян:"
+
+#: ui/sonnetui.ui:54
+#, fuzzy
+#| msgid "Unknown word"
+msgctxt "SonnetUi|"
+msgid "Unknown word"
+msgstr "Калимаи номуайян"
+
+#: ui/sonnetui.ui:63
+#, fuzzy
+#| msgid "<b>misspelled</b>"
+msgctxt "SonnetUi|"
+msgid "<b>misspelled</b>"
+msgstr "<b>хатоӣ</b>"
+
+#: ui/sonnetui.ui:70 ui/sonnetui.ui:180
+#, fuzzy
+#| msgid ""
+#| "<qt>\n"
+#| "<p>Select the language of the document you are proofing here.</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Select the language of the document you are proofing here.</p>\n"
+"</qt>"
+msgstr ""
+"<qt>\n"
+"<p>Забони матни ҳуҷҷатро, барои санҷиши имло, интихоб кунед.</p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:75
+#, fuzzy
+#| msgid "&Language:"
+msgctxt "SonnetUi|"
+msgid "&Language:"
+msgstr "&Забон:"
+
+#: ui/sonnetui.ui:85
+#, fuzzy
+#| msgid "Text excerpt showing the unknown word in its context."
+msgctxt "SonnetUi|"
+msgid "Text excerpt showing the unknown word in its context."
+msgstr "Намоиши қисми матн дорои калимаи хатоӣ."
+
+#: ui/sonnetui.ui:88
+#, fuzzy
+#| msgid ""
+#| "<qt>\n"
+#| "<p>Here you can see a text excerpt showing the unknown word in its "
+#| "context. If this information is not sufficient to choose the best "
+#| "replacement for the unknown word, you can click on the document you are "
+#| "proofing, read a larger part of the text and then return here to continue "
+#| "proofing.</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Here you can see a text excerpt showing the unknown word in its context. "
+"If this information is not sufficient to choose the best replacement for the "
+"unknown word, you can click on the document you are proofing, read a larger "
+"part of the text and then return here to continue proofing.</p>\n"
+"</qt>"
+msgstr ""
+"<qt>\n"
+"<p>Дар ин ҷо шумо метавонет қисми матнро дорои калимаи хатоӣ нигоҳ доред. "
+"Агар ин қимсми матн барои санҷиши имло хеле кӯтоҳ бошад, болои ҳуҷҷатро зер "
+"кунед, қисми калонтаририн матнро хонед ва дар ин ҷо санҷиши имлоро аз нав "
+"давом диҳед.</p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:96
+#, fuzzy
+#| msgid "... the <b>misspelled</b> word shown in context ..."
+msgctxt "SonnetUi|"
+msgid "... the <b>misspelled</b> word shown in context ..."
+msgstr "... калимаи <b>хатоӣ</b> дар матн нишон дода истодааст ..."
+
+#: ui/sonnetui.ui:106
+#, fuzzy
+#| msgid ""
+#| "<qt>\n"
+#| "<p>The unknown word was detected and considered unknown because it is not "
+#| "included in the dictionary.<br>\n"
+#| "Click here if you consider the unknown word not to be misspelled, and you "
+#| "want to avoid wrongly detecting it again in the future. If you want to "
+#| "let it remain as is, but not add it to the dictionary, then click "
+#| "<b>Ignore</b> or <b>Ignore All</b> instead.</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>The unknown word was detected and considered unknown because it is not "
+"included in the dictionary.<br>\n"
+"Click here if you consider the unknown word not to be misspelled, and you "
+"want to avoid wrongly detecting it again in the future. If you want to let "
+"it remain as is, but not add it to the dictionary, then click <b>Ignore</b> "
+"or <b>Ignore All</b> instead.</p>\n"
+"</qt>"
+msgstr ""
+"<qt>\n"
+"<p>Калимаи номуайян пайдо шуд ва ҳамчун номуайян ҳисоб карда мешавад, барои "
+"он ки ин калима дар луғат мавҷуд нест.<br>\n"
+"Агар ин калима дуруст бошад ва шумо мехоҳед, ки ин калима дар оянда ҳамчун "
+"калимаи дуруст ҳисоб карда шавад, дар ин ҷо зер кунед. Агар шумо мехоҳед ин "
+"калимаро дар матн истифода баред, лекин намехоҳед ба луғат илова кунед, "
+"тугмаи <b>Гузарондан</b> ё <b>Гузарондани ҳама</b>-ашро зер кунед.</p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:112
+#, fuzzy
+#| msgid "<< Add to Dictionary"
+msgctxt "SonnetUi|"
+msgid "<< Add to Dictionary"
+msgstr "<< Илова кардан ба луғат"
+
+#: ui/sonnetui.ui:135
+#, fuzzy
+#| msgid "Suggestion List"
+msgctxt "SonnetUi|"
+msgid "Suggestion List"
+msgstr "Рӯйхати калимаҳои санҷишӣ"
+
+#: ui/sonnetui.ui:138
+#, fuzzy
+#| msgid ""
+#| "<qt>\n"
+#| "<p>If the unknown word is misspelled, you should check if the correction "
+#| "for it is available and if it is, click on it. If none of the words in "
+#| "this list is a good replacement you may type the correct word in the edit "
+#| "box above.</p>\n"
+#| "<p>To correct this word click <b>Replace</b> if you want to correct only "
+#| "this occurrence or <b>Replace All</b> if you want to correct all "
+#| "occurrences.</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>If the unknown word is misspelled, you should check if the correction for "
+"it is available and if it is, click on it. If none of the words in this list "
+"is a good replacement you may type the correct word in the edit box above.</"
+"p>\n"
+"<p>To correct this word click <b>Replace</b> if you want to correct only "
+"this occurrence or <b>Replace All</b> if you want to correct all occurrences."
+"</p>\n"
+"</qt>"
+msgstr ""
+"<qt>\n"
+"<p>Агар калима номуайян хатоӣ бошад, шумо метавонед инро аз рӯйхати "
+"калимаҳои санҷишӣ санҷида ҷойгузор кунед. Агар ягон калимаи санҷишӣ дар "
+"рӯйхат ёфт нашуда бошад, шумо метавонед ин калимаро бо таври дастӣ, дар "
+"қуттии таҳриргари болобуда, илсоҳ кунед.</p>\n"
+"<p>Барои ислоҳ кардани ин калима, тугмаи <b>Ҷойгузорӣ</b>-ро зер кунед. "
+"Барои ислоҳ кардани ин калима дар тамоми ҳуҷҷат, тугмаи <b>Ҷойгузории ҳама</"
+"b>-ашро истифода баред.</p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:151 ui/sonnetui.ui:167
+#, fuzzy
+#| msgid ""
+#| "<qt>\n"
+#| "<p>If the unknown word is misspelled, you should type the correction for "
+#| "your misspelled word here or select it from the list below.</p>\n"
+#| "<p>You can then click <b>Replace</b> if you want to correct only this "
+#| "occurrence of the word or <b>Replace All</b> if you want to correct all "
+#| "occurrences.</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>If the unknown word is misspelled, you should type the correction for "
+"your misspelled word here or select it from the list below.</p>\n"
+"<p>You can then click <b>Replace</b> if you want to correct only this "
+"occurrence of the word or <b>Replace All</b> if you want to correct all "
+"occurrences.</p>\n"
+"</qt>"
+msgstr ""
+"<qt>\n"
+"<p>Калимаи дурустро дар ин ҷо ворид кунед ё, ки аз рйхати калимоҳои "
+"санҷиширо интихоб кунед.</p>\n"
+"<p>Баъд аз ин тугмаи <b>Ҷойгузорӣ</b> -ро зер кунед. Агар мехоҳед ин "
+"калимаро дар тамоми ҳуҷҷат ислоҳ кунед, тугмаи <b>Ҷойгузории ҳама</b>-ашро "
+"истифода баред.</p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:157
+#, fuzzy
+#| msgid "Replace &with:"
+msgctxt "SonnetUi|"
+msgid "Replace &with:"
+msgstr "&Ҷойгузорӣ бо:"
+
+#: ui/sonnetui.ui:177
+#, fuzzy
+#| msgid "Language Selection"
+msgctxt "SonnetUi|"
+msgid "Language Selection"
+msgstr "Интихоби забон"
+
+#: ui/sonnetui.ui:206
+#, fuzzy
+#| msgid "S&uggest"
+msgctxt "SonnetUi|"
+msgid "S&uggest"
+msgstr "&Калимаи санҷишӣ"
+
+#: ui/sonnetui.ui:213
+#, fuzzy
+#| msgid ""
+#| "<qt>\n"
+#| "<p>Click here to replace this occurrence of the unknown text with the "
+#| "text in the edit box above (to the left).</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Click here to replace this occurrence of the unknown text with the text "
+"in the edit box above (to the left).</p>\n"
+"</qt>"
+msgstr ""
+"<qt>\n"
+"<p>Барои ислоҳ кардани калимаҳои хатоӣ дар ин ҷо зер кунед.</p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:218
+#, fuzzy
+#| msgid "&Replace"
+msgctxt "SonnetUi|"
+msgid "&Replace"
+msgstr "&Ҷойгузорӣ"
+
+#: ui/sonnetui.ui:225
+#, fuzzy
+#| msgid ""
+#| "<qt>\n"
+#| "<p>Click here to replace all occurrences of the unknown text with the "
+#| "text in the edit box above (to the left).</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Click here to replace all occurrences of the unknown text with the text "
+"in the edit box above (to the left).</p>\n"
+"</qt>"
+msgstr ""
+"<qt>\n"
+"<p>Барои ислоҳ кардани калимаҳои хатоӣ дар тамоми ҳуҷҷат дар ин ҷо зер кунед."
+"</p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:230
+#, fuzzy
+#| msgid "R&eplace All"
+msgctxt "SonnetUi|"
+msgid "R&eplace All"
+msgstr "Ҷойгузории &ҳама"
+
+#: ui/sonnetui.ui:237
+#, fuzzy
+#| msgid ""
+#| "<qt>\n"
+#| "<p>Click here to let this occurrence of the unknown word remain as is.</"
+#| "p>\n"
+#| "<p>This action is useful when the word is a name, an acronym, a foreign "
+#| "word or any other unknown word that you want to use but not add to the "
+#| "dictionary.</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Click here to let this occurrence of the unknown word remain as is.</p>\n"
+"<p>This action is useful when the word is a name, an acronym, a foreign word "
+"or any other unknown word that you want to use but not add to the dictionary."
+"</p>\n"
+"</qt>"
+msgstr ""
+"<qt>\n"
+"<p>Барои мондани калимаи номуайян дар матн чӣ тавр бошад, дар ин ҷо зер "
+"кунед.</p>\n"
+"<p>Ин амал хеле фоиданок аст барои калимаҳои монанди ном, калимаи мухтасар ё "
+"калимаи хориҷӣ, ки шумо намехоҳед ба луғат илова кунед.</p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:243
+#, fuzzy
+#| msgid "&Ignore"
+msgctxt "SonnetUi|"
+msgid "&Ignore"
+msgstr "&Гузарондан"
+
+#: ui/sonnetui.ui:250 ui/sonnetui.ui:263
+#, fuzzy
+#| msgid ""
+#| "<qt>\n"
+#| "<p>Click here to let all occurrences of the unknown word remain as they "
+#| "are.</p>\n"
+#| "<p>This action is useful when the word is a name, an acronym, a foreign "
+#| "word or any other unknown word that you want to use but not add to the "
+#| "dictionary.</p>\n"
+#| "</qt>"
+msgctxt "SonnetUi|"
+msgid ""
+"<qt>\n"
+"<p>Click here to let all occurrences of the unknown word remain as they are."
+"</p>\n"
+"<p>This action is useful when the word is a name, an acronym, a foreign word "
+"or any other unknown word that you want to use but not add to the dictionary."
+"</p>\n"
+"</qt>"
+msgstr ""
+"<qt>\n"
+"<p>Барои мондани ҳамаи калимаҳои номуайян дар матн чӣ тавр бошанд, дар ин ҷо "
+"зер кунед.</p>\n"
+"<p>Ин амал хеле фоиданок аст барои калимаҳои монанди ном, калимаи мухтасар ё "
+"калимаи хориҷӣ, ки шумо намехоҳед ба луғат илова кунед.</p>\n"
+"</qt>"
+
+#: ui/sonnetui.ui:256
+#, fuzzy
+#| msgid "I&gnore All"
+msgctxt "SonnetUi|"
+msgid "I&gnore All"
+msgstr "&Гузарондани ҳама"
+
+#: ui/sonnetui.ui:269
+#, fuzzy
+#| msgid "Autocorrect"
+msgctxt "SonnetUi|"
+msgid "Autocorrect"
+msgstr "Худислоҳкунӣ"
+
+#: ui/spellcheckdecorator.cpp:176
+#, fuzzy, qt-format
+#| msgid "No suggestions for %1"
+msgctxt "Sonnet::SpellCheckDecorator|"
+msgid "No suggestions for %1"
+msgstr "Ягон тавсия барои %1 нест"
+
+#: ui/spellcheckdecorator.cpp:187
+#, fuzzy
+#| msgid "Ignore"
+msgctxt "Sonnet::SpellCheckDecorator|"
+msgid "Ignore"
+msgstr "Рад кардан"
+
+#: ui/spellcheckdecorator.cpp:188
+#, fuzzy
+#| msgid "Add to Dictionary"
+msgctxt "Sonnet::SpellCheckDecorator|"
+msgid "Add to Dictionary"
+msgstr "Илова ба луғат"
