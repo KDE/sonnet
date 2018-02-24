@@ -82,7 +82,7 @@ void SonnetSettingsTest::testSpellerAPIChangeSaves()
     // Default Language
     QString defLang = speller.defaultLanguage();
     QString settingsLang = settings.value(QStringLiteral("defaultLanguage"),
-                                          QLocale::system().bcp47Name()).toString();
+                                          QLocale::system().name()).toString();
     QCOMPARE(defLang, settingsLang);
 
     QStringList langs = speller.availableLanguages();
@@ -90,7 +90,7 @@ void SonnetSettingsTest::testSpellerAPIChangeSaves()
         if (langs[i] != defLang) {
             speller.setDefaultLanguage(langs[i]);
             settingsLang = settings.value(QStringLiteral("defaultLanguage"),
-                                          QLocale::system().bcp47Name()).toString();
+                                          QLocale::system().name()).toString();
             QCOMPARE(settingsLang, langs[i]);
             QCOMPARE(speller.defaultLanguage(), langs[i]);
             break;
@@ -100,7 +100,7 @@ void SonnetSettingsTest::testSpellerAPIChangeSaves()
     speller.setDefaultLanguage(defLang);
     settingsLang
         = settings.value(QStringLiteral("defaultLanguage"),
-                         QLocale::system().bcp47Name()).toString();
+                         QLocale::system().name()).toString();
     QCOMPARE(settingsLang, defLang);
     QCOMPARE(speller.defaultLanguage(), defLang);
 

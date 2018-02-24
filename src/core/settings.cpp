@@ -271,7 +271,7 @@ void Settings::restore()
     QSettings settings(QStringLiteral("KDE"), QStringLiteral("Sonnet"));
     d->defaultClient = settings.value(QStringLiteral("defaultClient"), QString()).toString();
     d->defaultLanguage = settings.value(QStringLiteral("defaultLanguage"),
-                                        QLocale::system().bcp47Name()).toString();
+                                        QLocale::system().name()).toString();
 
     //same defaults are in the default filter (filter.cpp)
     d->checkUppercase = settings.value(QStringLiteral("checkUppercase"), true).toBool();
