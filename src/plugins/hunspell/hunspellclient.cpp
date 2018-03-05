@@ -35,36 +35,29 @@ HunspellClient::HunspellClient(QObject *parent)
     qCDebug(SONNET_HUNSPELL) << " HunspellClient::HunspellClient";
 
     QStringList dirList;
-    const QString AFF_MASK = QStringLiteral("*.aff");
-
-#if defined(Q_OS_MAC) || defined(Q_OS_WIN)
-#ifdef Q_OS_MAC
-    QDir lodir(QStringLiteral("/Applications/LibreOffice.app/Contents/Resources/extensions"));
-#endif
-#ifdef Q_OS_WIN
-    QDir lodir(QStringLiteral("C:/Program Files (x86)/LibreOffice 5/share/extensions"));
-#endif
-    const QString DIR_MASK = QStringLiteral("dict-*");
-    if (lodir.exists()) {
-        foreach (const QString &d, lodir.entryList(QStringList(DIR_MASK), QDir::Dirs)) {
-            dirList.append(lodir.absoluteFilePath(d));
-        }
-    }
-#endif
-
     // search QStandardPaths
     dirList.append(QStandardPaths::locateAll(
                        QStandardPaths::GenericDataLocation,
                        QStringLiteral("hunspell"),
                        QStandardPaths::LocateDirectory));
 
-    dirList.append(QStringLiteral(HUNSPELL_MAIN_DICT_PATH));
-    dirList.append(QStringLiteral("%1/../share/hunspell").arg(
-                       QCoreApplication::applicationDirPath()));
+    auto maybeAddPath = [&dirList](const QString &path)
+    {
+        if (QFileInfo::exists(path)) {
+            dirList.append(path);
+        }
+    };
+#ifdef Q_OS_WIN
+    maybeAddPath(QStringLiteral(SONNET_INSTALL_PREFIX "/bin/data/hunspell/"));
+#else
+    maybeAddPath(QStringLiteral("/System/Library/Spelling"));
+    maybeAddPath(QStringLiteral("/usr/share/hunspell/"));
+    maybeAddPath(QStringLiteral("/usr/share/myspell/"));
+#endif
 
     for (const QString &dirString : dirList) {
         QDir dir(dirString);
-        for (const QFileInfo &dict : dir.entryInfoList(QStringList(AFF_MASK), QDir::Files)) {
+        for (const QFileInfo &dict : dir.entryInfoList({QStringLiteral("*.aff")}, QDir::Files)) {
             m_languagePaths.insert(dict.baseName(), dict.canonicalPath());
         }
     }

@@ -630,8 +630,13 @@ void GuessLanguagePrivate::loadModels()
                                      "kf5/sonnet/trigrams.map"));
 
     if (triMapFile.isEmpty()) {
+#ifdef Q_OS_WIN
+        triMapFile = QStringLiteral("%1/data/kf5/sonnet/trigrams.map").arg(
+                    QCoreApplication::applicationDirPath());
+#else
         triMapFile = QStringLiteral("%1/../share/kf5/sonnet/trigrams.map").arg(
             QCoreApplication::applicationDirPath());
+#endif
     }
     qCDebug(SONNET_LOG_CORE) << "Loading trigrams from" << triMapFile;
 
