@@ -29,6 +29,12 @@ NSSpellCheckerDict::NSSpellCheckerDict(const QString &lang)
     : SpellerPlugin(lang)
     , m_langCode(lang.toNSString())
 {
+    if ([[NSSpellChecker sharedSpellChecker] setLanguage:reinterpret_cast<NSString*>(m_langCode)]) {
+        qCDebug(SONNET_NSSPELLCHECKER) << "Loading dictionary for" << lang;
+        [[NSSpellChecker sharedSpellChecker] updatePanels];
+    } else {
+        qCWarning(SONNET_NSSPELLCHECKER) << "Loading dictionary for unsupported language" << lang;
+    }
 }
 
 NSSpellCheckerDict::~NSSpellCheckerDict()
