@@ -19,6 +19,7 @@
  * 02110-1301  USA
  */
 #include "nsspellcheckerdict.h"
+#include "nsspellcheckerdebug.h"
 
 #import <AppKit/AppKit.h>
 
@@ -36,13 +37,16 @@ NSSpellCheckerDict::~NSSpellCheckerDict()
 
 bool NSSpellCheckerDict::isCorrect(const QString &word) const
 {
-    NSRange range = [[NSSpellChecker sharedSpellChecker] checkSpellingOfString:word.toNSString() startingAt:0 language:reinterpret_cast<NSString*>(m_langCode) wrap:NO inSpellDocumentWithTag:0 wordCount:0];
+    NSRange range = [[NSSpellChecker sharedSpellChecker] checkSpellingOfString:word.toNSString()
+        startingAt:0 language:reinterpret_cast<NSString*>(m_langCode)
+        wrap:NO inSpellDocumentWithTag:0 wordCount:nullptr];
     return range.length==0;
 }
 
 QStringList NSSpellCheckerDict::suggest(const QString &word) const
 {
-    NSString* correction = [[NSSpellChecker sharedSpellChecker] correctionForWordRange:NSMakeRange(0, word.length()) inString:word.toNSString() language:reinterpret_cast<NSString*>(m_langCode) inSpellDocumentWithTag:0];
+    NSString* correction = [[NSSpellChecker sharedSpellChecker] correctionForWordRange:NSMakeRange(0, word.length())
+        inString:word.toNSString() language:reinterpret_cast<NSString*>(m_langCode) inSpellDocumentWithTag:0];
     return QStringList(QString::fromNSString(correction));
 }
 
