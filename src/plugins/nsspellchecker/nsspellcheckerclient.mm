@@ -34,6 +34,11 @@ NSSpellCheckerClient::~NSSpellCheckerClient()
 {
 }
 
+int NSSpellCheckerClient::reliability() const
+{
+    return qEnvironmentVariableIsSet("SONNET_PREFER_NSSPELLCHECKER") ? 9999 : 30;
+}
+
 SpellerPlugin *NSSpellCheckerClient::createSpeller(const QString &language)
 {
     return new NSSpellCheckerDict(language);

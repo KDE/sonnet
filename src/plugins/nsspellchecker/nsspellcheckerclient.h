@@ -37,10 +37,7 @@ public:
     explicit NSSpellCheckerClient(QObject *parent = nullptr);
     ~NSSpellCheckerClient();
 
-    int reliability() const
-    {
-        return 30;
-    }
+    int reliability() const;
 
     SpellerPlugin *createSpeller(const QString &language);
     QStringList languages() const;
