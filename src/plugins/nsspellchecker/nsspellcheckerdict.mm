@@ -51,9 +51,13 @@ bool NSSpellCheckerDict::isCorrect(const QString &word) const
 
 QStringList NSSpellCheckerDict::suggest(const QString &word) const
 {
-    NSString* correction = [[NSSpellChecker sharedSpellChecker] correctionForWordRange:NSMakeRange(0, word.length())
+    NSArray *suggestions = [[NSSpellChecker sharedSpellChecker] guessesForWordRange:NSMakeRange(0, word.length())
         inString:word.toNSString() language:reinterpret_cast<NSString*>(m_langCode) inSpellDocumentWithTag:0];
-    return QStringList(QString::fromNSString(correction));
+    QStringList lst;
+    for (NSString *suggestion in suggestions) {
+        lst << QString::fromNSString(suggestion);
+    }
+    return lst;
 }
 
 bool NSSpellCheckerDict::storeReplacement(const QString &bad,
