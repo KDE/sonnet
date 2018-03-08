@@ -20,7 +20,7 @@
  */
 #include "nsspellcheckerdict.h"
 
-#import <Cocoa/Cocoa.h>
+#import <AppKit/AppKit.h>
 
 using namespace Sonnet;
 
