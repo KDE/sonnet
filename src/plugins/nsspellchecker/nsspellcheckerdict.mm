@@ -63,15 +63,22 @@ QStringList NSSpellCheckerDict::suggest(const QString &word) const
 bool NSSpellCheckerDict::storeReplacement(const QString &bad,
                                     const QString &good)
 {
+    qCDebug(SONNET_NSSPELLCHECKER) << "Not storing replacement" << good << "for" << bad;
     return false;
 }
 
 bool NSSpellCheckerDict::addToPersonal(const QString &word)
 {
-    return false;
+    NSString *nsWord = word.toNSString();
+    if (![[NSSpellChecker sharedSpellChecker] hasLearnedWord:nsWord]) {
+        [[NSSpellChecker sharedSpellChecker] learnWord:nsWord];
+        [[NSSpellChecker sharedSpellChecker] updatePanels];
+    }
+    return true;
 }
 
 bool NSSpellCheckerDict::addToSession(const QString &word)
 {
+    qCDebug(SONNET_NSSPELLCHECKER) << "Not storing" << word << "in the session dictionary";
     return false;
 }
