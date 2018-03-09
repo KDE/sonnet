@@ -33,7 +33,7 @@
 
 #ifdef SONNET_STATIC
 #include "../plugins/hunspell/hunspellclient.h"
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
 #include "../plugins/nsspellchecker/nsspellcheckerclient.h"
 #endif
 #endif
@@ -289,7 +289,7 @@ void Loader::loadPlugins()
         qCWarning(SONNET_LOG_CORE) << "Sonnet: No speller backends available!";
     }
 #else
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
     loadPlugin(QString());
 #endif
     loadPlugin(QStringLiteral("Hunspell"));
@@ -317,7 +317,7 @@ void Loader::loadPlugin(const QString &pluginPath)
     if (pluginPath == QLatin1String("Hunspell")) {
         client = new HunspellClient(this);
     }
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
     else {
         client = new NSSpellCheckerClient(this);
     }
