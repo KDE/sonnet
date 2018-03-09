@@ -27,11 +27,12 @@ using namespace Sonnet;
 
 NSSpellCheckerDict::NSSpellCheckerDict(const QString &lang)
     : SpellerPlugin(lang)
-    , m_langCode(lang.toNSString())
+    , m_langCode([lang.toNSString() retain])
 {
-    if ([[NSSpellChecker sharedSpellChecker] setLanguage:reinterpret_cast<NSString*>(m_langCode)]) {
+    NSSpellChecker *checker = [NSSpellChecker sharedSpellChecker];
+    if ([checker setLanguage:m_langCode]) {
         qCDebug(SONNET_NSSPELLCHECKER) << "Loading dictionary for" << lang;
-        [[NSSpellChecker sharedSpellChecker] updatePanels];
+        [checker updatePanels];
     } else {
         qCWarning(SONNET_NSSPELLCHECKER) << "Loading dictionary for unsupported language" << lang;
     }
@@ -39,20 +40,25 @@ NSSpellCheckerDict::NSSpellCheckerDict(const QString &lang)
 
 NSSpellCheckerDict::~NSSpellCheckerDict()
 {
+    [m_langCode release];
 }
 
 bool NSSpellCheckerDict::isCorrect(const QString &word) const
 {
     NSString *nsWord = word.toNSString();
-    NSRange range = [[NSSpellChecker sharedSpellChecker] checkSpellingOfString:nsWord
-        startingAt:0 language:reinterpret_cast<NSString*>(m_langCode)
+    NSSpellChecker *checker = [NSSpellChecker sharedSpellChecker];
+    NSRange range = [checker checkSpellingOfString:nsWord
+        startingAt:0 language:m_langCode
         wrap:NO inSpellDocumentWithTag:0 wordCount:nullptr];
     if (range.length == 0) {
         // Check if the user configured a replacement text for this string. Sadly
         // we can only signal an error if that's the case, Sonnet has no other way
         // to take such substitutions into account.
-        NSDictionary *replacements = [[NSSpellChecker sharedSpellChecker] userReplacementsDictionary];
-        return [replacements objectForKey:nsWord] == nil;
+        if (NSDictionary *replacements = [checker userReplacementsDictionary]) {
+            return [replacements objectForKey:nsWord] == nil;
+        } else {
+            return true;
+        }
     }
     return false;
 }
@@ -60,10 +66,11 @@ bool NSSpellCheckerDict::isCorrect(const QString &word) const
 QStringList NSSpellCheckerDict::suggest(const QString &word) const
 {
     NSString *nsWord = word.toNSString();
-    NSArray *suggestions = [[NSSpellChecker sharedSpellChecker] guessesForWordRange:NSMakeRange(0, word.length())
-        inString:nsWord language:reinterpret_cast<NSString*>(m_langCode) inSpellDocumentWithTag:0];
+    NSSpellChecker *checker = [NSSpellChecker sharedSpellChecker];
+    NSArray *suggestions = [checker guessesForWordRange:NSMakeRange(0, word.length())
+        inString:nsWord language:m_langCode inSpellDocumentWithTag:0];
     QStringList lst;
-    NSDictionary *replacements = [[NSSpellChecker sharedSpellChecker] userReplacementsDictionary];
+    NSDictionary *replacements = [checker userReplacementsDictionary];
     QString replacement;
     if ([replacements objectForKey:nsWord]) {
         // return the replacement text from the userReplacementsDictionary first.
@@ -91,9 +98,10 @@ bool NSSpellCheckerDict::storeReplacement(const QString &bad,
 bool NSSpellCheckerDict::addToPersonal(const QString &word)
 {
     NSString *nsWord = word.toNSString();
-    if (![[NSSpellChecker sharedSpellChecker] hasLearnedWord:nsWord]) {
-        [[NSSpellChecker sharedSpellChecker] learnWord:nsWord];
-        [[NSSpellChecker sharedSpellChecker] updatePanels];
+    NSSpellChecker *checker = [NSSpellChecker sharedSpellChecker];
+    if (![checker hasLearnedWord:nsWord]) {
+        [checker learnWord:nsWord];
+        [checker updatePanels];
     }
     return true;
 }
