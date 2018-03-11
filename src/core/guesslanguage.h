@@ -20,8 +20,8 @@
 #ifndef GUESSLANGUAGE_H
 #define GUESSLANGUAGE_H
 
-#include <QtCore/QString>
-#include <QtCore/QLocale>
+#include <QString>
+#include <QLocale>
 
 #include "sonnetcore_export.h"
 

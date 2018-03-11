@@ -23,7 +23,7 @@
 
 #include "dialog.h"
 
-#include <QtCore/QObject>
+#include <QObject>
 
 class TestDialog : public QObject
 {

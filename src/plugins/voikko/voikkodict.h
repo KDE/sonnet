@@ -25,9 +25,9 @@
 #include "spellerplugin_p.h"
 #include <libvoikko/voikko.h>
 
-#include <QtCore/QHash>
-#include <QtCore/QSet>
-#include <QtCore/QScopedPointer>
+#include <QHash>
+#include <QSet>
+#include <QScopedPointer>
 
 class VoikkoClient;
 class VoikkoDictPrivate;

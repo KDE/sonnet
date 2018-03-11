@@ -21,15 +21,15 @@
  * 02110-1301  USA
  */
 
-#include <QtCore/QString>
-#include <QtCore/QTextStream>
-#include <QtCore/QDir>
-#include <QtCore/QFile>
-#include <QtCore/QHash>
-#include <QtCore/QRegExp>
-#include <QtCore/QStringList>
-#include <QtCore/QDebug>
-#include <QtCore/QDataStream>
+#include <QString>
+#include <QTextStream>
+#include <QDir>
+#include <QFile>
+#include <QHash>
+#include <QRegExp>
+#include <QStringList>
+#include <QDebug>
+#include <QDataStream>
 
 int main(int argc, char **argv)
 {

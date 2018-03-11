@@ -25,7 +25,7 @@
 
 #include "hspell_debug.h"
 
-#include <QtCore/QTextCodec>
+#include <QTextCodec>
 #include <QSettings>
 
 using namespace Sonnet;

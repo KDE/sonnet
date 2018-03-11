@@ -22,8 +22,8 @@
 #include "spellerplugin_p.h"
 #include "client_p.h"
 
-#include <QtCore/QSet>
-#include <QtCore/QVariantList>
+#include <QSet>
+#include <QVariantList>
 #include <enchant.h>
 
 namespace Sonnet {

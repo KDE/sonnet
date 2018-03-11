@@ -21,7 +21,7 @@
 #ifndef SPELLCHECKDECORATOR_H
 #define SPELLCHECKDECORATOR_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 #include "sonnetui_export.h"
 

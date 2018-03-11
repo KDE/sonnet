@@ -19,8 +19,8 @@
 #include "enchantdict.h"
 #include "enchantclient.h"
 
-#include <QtCore/QTextCodec>
-#include <QtCore/QDebug>
+#include <QTextCodec>
+#include <QDebug>
 
 using namespace Sonnet;
 

@@ -22,16 +22,16 @@
 #include "voikkodict.h"
 #include "voikkodebug.h"
 
-#include <QtCore/QDir>
-#include <QtCore/QStandardPaths>
-#include <QtCore/QVector>
+#include <QDir>
+#include <QStandardPaths>
+#include <QVector>
 #ifdef Q_IS_WIN
-    #include <QtCore/QSysInfo>
+    #include <QSysInfo>
 #endif
 
-#include <QtCore/QJsonArray>
-#include <QtCore/QJsonDocument>
-#include <QtCore/QJsonObject>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
 
 namespace {
 // QString literals used in loading and storing user dictionary

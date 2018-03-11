@@ -22,8 +22,8 @@
 #ifndef KSPELL_HSPELLDICT_H
 #define KSPELL_HSPELLDICT_H
 
-#include <QtCore/QMap>
-#include <QtCore/QSet>
+#include <QMap>
+#include <QSet>
 
 #include "spellerplugin_p.h"
 /* libhspell is a C library and it does not have #ifdef __cplusplus */

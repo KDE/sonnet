@@ -20,7 +20,7 @@
 #include "enchantdict.h"
 
 #include <QtPlugin>
-#include <QtCore/QDebug>
+#include <QDebug>
 
 using namespace Sonnet;
 

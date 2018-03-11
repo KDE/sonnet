@@ -20,8 +20,8 @@
 #ifndef SONNET_SPELLERPLUGIN_P_H
 #define SONNET_SPELLERPLUGIN_P_H
 
-#include <QtCore/QStringList>
-#include <QtCore/QString>
+#include <QStringList>
+#include <QString>
 
 #include "sonnetcore_export.h"
 

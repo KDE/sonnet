@@ -23,7 +23,7 @@
 
 #include "sonnetui_export.h"
 
-#include <QtWidgets/QComboBox>
+#include <QComboBox>
 
 namespace Sonnet {
 class DictionaryComboBoxPrivate;

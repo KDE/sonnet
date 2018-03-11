@@ -19,12 +19,12 @@
     Boston, MA 02110-1301, USA.
 */
 
-#include <QtCore/QCoreApplication>
-#include <QtCore/QFile>
-#include <QtCore/QFileInfo>
-#include <QtCore/QStandardPaths>
-#include <QtCore/QTime>
-#include <QtCore/QDataStream>
+#include <QCoreApplication>
+#include <QFile>
+#include <QFileInfo>
+#include <QStandardPaths>
+#include <QTime>
+#include <QDataStream>
 #include <QLocale>
 
 #include "guesslanguage.h"

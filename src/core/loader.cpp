@@ -23,13 +23,13 @@
 #include "client_p.h"
 #include "spellerplugin_p.h"
 
-#include <QtCore/QHash>
-#include <QtCore/QMap>
-#include <QtCore/QLocale>
-#include <QtCore/QCoreApplication>
-#include <QtCore/QPluginLoader>
+#include <QHash>
+#include <QMap>
+#include <QLocale>
+#include <QCoreApplication>
+#include <QPluginLoader>
 #include "core_debug.h"
-#include <QtCore/QDir>
+#include <QDir>
 
 #ifdef SONNET_STATIC
 #include "../plugins/hunspell/hunspellclient.h"

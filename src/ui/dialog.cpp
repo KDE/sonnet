@@ -34,8 +34,8 @@
 #include <QPushButton>
 #include <QComboBox>
 #include <QLabel>
-#include <QtCore/QTimer>
-#include <QtWidgets/QMessageBox>
+#include <QTimer>
+#include <QMessageBox>
 
 namespace Sonnet {
 //to initially disable sorting in the suggestions listview

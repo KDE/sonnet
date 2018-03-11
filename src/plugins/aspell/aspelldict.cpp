@@ -22,7 +22,7 @@
 
 #include "aspell_debug.h"
 
-#include <QtCore/QTextCodec>
+#include <QTextCodec>
 #ifdef Q_OS_WIN
 #include <QCoreApplication>
 #endif

@@ -23,7 +23,7 @@
 #define SONNET_HIGHLIGHTER_H
 
 #include <QSyntaxHighlighter>
-#include <QtCore/QStringList>
+#include <QStringList>
 #include "sonnetui_export.h"
 
 class QTextEdit;

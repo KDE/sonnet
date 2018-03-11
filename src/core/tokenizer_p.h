@@ -21,7 +21,7 @@
 #ifndef ABSTRACTTOKENIZER_H
 #define ABSTRACTTOKENIZER_H
 
-#include <QtCore/QString>
+#include <QString>
 #include "sonnetcore_export.h"
 
 namespace Sonnet {

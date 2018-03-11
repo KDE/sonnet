@@ -25,7 +25,7 @@
 
 #include "sonnetcore_export.h"
 
-#include <QtCore/QObject>
+#include <QObject>
 class BackgroundCheckerPrivate;
 
 /**

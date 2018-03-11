@@ -21,10 +21,10 @@
  * 02110-1301  USA
  */
 
-#include <QtCore/QFile>
-#include <QtCore/QHash>
-#include <QtCore/QString>
-#include <QtCore/QDebug>
+#include <QFile>
+#include <QHash>
+#include <QString>
+#include <QDebug>
 #include "guesslanguage.h"
 
 int main(int argc, char *argv[])

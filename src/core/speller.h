@@ -20,9 +20,9 @@
 #ifndef SONNET_SPELLER_H
 #define SONNET_SPELLER_H
 
-#include <QtCore/QStringList>
-#include <QtCore/QString>
-#include <QtCore/QMap>
+#include <QStringList>
+#include <QString>
+#include <QMap>
 
 #include "sonnetcore_export.h"
 

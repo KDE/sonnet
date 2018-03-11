@@ -21,8 +21,8 @@
 #ifndef BACKGROUNDTEST_H
 #define BACKGROUNDTEST_H
 
-#include <QtCore/QObject>
-#include <QtCore/QDate>
+#include <QObject>
+#include <QDate>
 
 #include "backgroundchecker.h"
 

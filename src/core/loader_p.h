@@ -22,9 +22,9 @@
 
 #include "sonnetcore_export.h"
 
-#include <QtCore/QObject>
-#include <QtCore/QStringList>
-#include <QtCore/QString>
+#include <QObject>
+#include <QStringList>
+#include <QString>
 #include <QSharedPointer>
 
 namespace Sonnet {

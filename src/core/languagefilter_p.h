@@ -21,7 +21,7 @@
 #ifndef LANGUAGEFILTER_H
 #define LANGUAGEFILTER_H
 
-#include <QtCore/QString>
+#include <QString>
 #include <tokenizer_p.h>
 #include "sonnetcore_export.h"
 

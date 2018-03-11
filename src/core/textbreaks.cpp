@@ -18,8 +18,8 @@
     Boston, MA 02110-1301, USA.
 */
 
-#include <QtCore/QHash>
-#include <QtCore/QString>
+#include <QHash>
+#include <QString>
 #include <QTextBoundaryFinder>
 
 #include "textbreaks_p.h"
