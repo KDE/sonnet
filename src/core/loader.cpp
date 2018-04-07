@@ -31,6 +31,8 @@
 #include "core_debug.h"
 #include <QDir>
 
+#include <algorithm>
+
 #ifdef SONNET_STATIC
 #include "../plugins/hunspell/hunspellclient.h"
 #ifdef Q_OS_MACOS
@@ -84,18 +86,28 @@ SpellerPlugin *Loader::createSpeller(const QString &language, const QString &cli
     QString backend = clientName;
     QString plang = language;
 
-    if (backend.isEmpty()) {
-        backend = d->settings->defaultClient();
-    }
     if (plang.isEmpty()) {
         plang = d->settings->defaultLanguage();
     }
-
     const QVector<Client *> lClients = d->languageClients[plang];
 
     if (lClients.isEmpty()) {
         qCWarning(SONNET_LOG_CORE) << "No language dictionaries for the language:" << plang;
         return nullptr;
+    }
+
+    if (backend.isEmpty()) {
+        backend = d->settings->defaultClient();
+        if (!backend.isEmpty()) {
+            // check if the default client supports the requested language;
+            // if it does it will be an element of lClients.
+            bool unknown = !std::any_of(lClients.constBegin(), lClients.constEnd(), [backend] (const Client *client) {
+                    return client->name() == backend; });
+            if (unknown) {
+                qCWarning(SONNET_LOG_CORE) << "Default client" << backend << "doesn't support language:" << plang;
+                backend = QString();
+            }
+        }
     }
 
     QVectorIterator<Client *> itr(lClients);
@@ -104,16 +116,19 @@ SpellerPlugin *Loader::createSpeller(const QString &language, const QString &cli
         if (!backend.isEmpty()) {
             if (backend == item->name()) {
                 SpellerPlugin *dict = item->createSpeller(plang);
+                qCDebug(SONNET_LOG_CORE) << "Using the" << item->name() << "plugin for language" << plang;
                 return dict;
             }
         } else {
             //the first one is the one with the highest
             //reliability
             SpellerPlugin *dict = item->createSpeller(plang);
+            qCDebug(SONNET_LOG_CORE) << "Using the" << item->name() << "plugin for language" << plang;
             return dict;
         }
     }
 
+    qCWarning(SONNET_LOG_CORE) << "The default client" << backend << "has no language dictionaries for the language:" << plang;
     return nullptr;
 }
 
