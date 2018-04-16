@@ -29,7 +29,7 @@ class ASpellDict : public Sonnet::SpellerPlugin
 {
 public:
     explicit ASpellDict(const QString &lang);
-    ~ASpellDict();
+    ~ASpellDict() Q_DECL_OVERRIDE;
     bool isCorrect(const QString &word) const Q_DECL_OVERRIDE;
 
     QStringList suggest(const QString &word) const Q_DECL_OVERRIDE;

@@ -119,7 +119,7 @@ GuessLanguagePrivate::GuessLanguagePrivate()
 
     QSet<QString> allLanguages;
     for (int i = 0; i < int(QChar::ScriptCount); i++) {
-        QChar::Script script = (QChar::Script)i;
+        QChar::Script script = static_cast<QChar::Script>(i);
         QStringList names;
         switch (script) {
         case QChar::Script_Latin:

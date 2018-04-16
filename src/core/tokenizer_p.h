@@ -97,7 +97,7 @@ public:
      * @param buffer
      */
     WordTokenizer(const QString &buffer = QString());
-    ~WordTokenizer();
+    ~WordTokenizer() Q_DECL_OVERRIDE;
 
     void setBuffer(const QString &buffer) Q_DECL_OVERRIDE;
     bool hasNext() const Q_DECL_OVERRIDE;
@@ -125,7 +125,7 @@ class SONNETCORE_EXPORT SentenceTokenizer : public AbstractTokenizer
 {
 public:
     SentenceTokenizer(const QString &buffer = QString());
-    ~SentenceTokenizer();
+    ~SentenceTokenizer() Q_DECL_OVERRIDE;
     void setBuffer(const QString &buffer) Q_DECL_OVERRIDE;
     bool hasNext() const Q_DECL_OVERRIDE;
     QStringRef next() Q_DECL_OVERRIDE;

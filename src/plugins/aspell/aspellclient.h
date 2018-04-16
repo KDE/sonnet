@@ -38,7 +38,7 @@ class ASpellClient : public Sonnet::Client
 
 public:
     explicit ASpellClient(QObject *parent = nullptr);
-    ~ASpellClient();
+    ~ASpellClient() Q_DECL_OVERRIDE;
 
     int reliability() const Q_DECL_OVERRIDE
     {

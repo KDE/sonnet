@@ -28,7 +28,7 @@ class HunspellDict : public Sonnet::SpellerPlugin
 {
 public:
     explicit HunspellDict(const QString &lang, QString path);
-    ~HunspellDict();
+    ~HunspellDict() Q_DECL_OVERRIDE;
     bool isCorrect(const QString &word) const Q_DECL_OVERRIDE;
 
     QStringList suggest(const QString &word) const Q_DECL_OVERRIDE;

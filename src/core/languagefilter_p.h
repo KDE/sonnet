@@ -44,7 +44,7 @@ public:
     LanguageFilter(AbstractTokenizer *source);
     LanguageFilter(const LanguageFilter &other);
 
-    ~LanguageFilter();
+    ~LanguageFilter() Q_DECL_OVERRIDE;
 
     /** Language for token last returned by next() */
     QString language() const;
