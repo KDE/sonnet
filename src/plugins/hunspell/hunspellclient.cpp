@@ -45,6 +45,12 @@ HunspellClient::HunspellClient(QObject *parent)
     {
         if (QFileInfo::exists(path)) {
             dirList.append(path);
+
+            QDir dir(path);
+            foreach (const QString &subDir, dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot)) {
+                dirList.append(dir.absoluteFilePath(subDir));
+            }
+
         }
     };
 #ifdef Q_OS_WIN
