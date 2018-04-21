@@ -26,6 +26,7 @@
 
 #include <QCheckBox>
 #include <QLayout>
+#include <QLineEdit>
 #include <QListWidgetItem>
 #include "ui_debug.h"
 
@@ -74,12 +75,19 @@ ConfigWidget::ConfigWidget(QWidget *parent)
     connect(d->ui.m_checkerEnabledByDefaultCB, &QAbstractButton::clicked, this,
             &ConfigWidget::configChanged);
     connect(d->ui.m_autodetectCB, &QAbstractButton::clicked, this, &ConfigWidget::configChanged);
+    connect(d->ui.newIgnoreEdit, &QLineEdit::textChanged, this, &ConfigWidget::slotUpdateButton);
     d->ui.nobackendfound->setVisible(d->loader->clients().isEmpty());
+    d->ui.addButton->setEnabled(false);
 }
 
 ConfigWidget::~ConfigWidget()
 {
     delete d;
+}
+
+void ConfigWidget::slotUpdateButton(const QString &text)
+{
+    d->ui.addButton->setEnabled(!text.isEmpty());
 }
 
 void ConfigWidget::save()
