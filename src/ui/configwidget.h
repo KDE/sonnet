@@ -62,6 +62,7 @@ protected Q_SLOTS:
     void slotIgnoreWordAdded();
 private Q_SLOTS:
     void slotUpdateButton(const QString &text);
+    void slotSelectionChanged();
 
 Q_SIGNALS:
     /**

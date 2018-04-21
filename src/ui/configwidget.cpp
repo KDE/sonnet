@@ -26,6 +26,7 @@
 
 #include <QCheckBox>
 #include <QLayout>
+#include <QListWidget>
 #include <QLineEdit>
 #include <QListWidgetItem>
 #include "ui_debug.h"
@@ -76,8 +77,10 @@ ConfigWidget::ConfigWidget(QWidget *parent)
             &ConfigWidget::configChanged);
     connect(d->ui.m_autodetectCB, &QAbstractButton::clicked, this, &ConfigWidget::configChanged);
     connect(d->ui.newIgnoreEdit, &QLineEdit::textChanged, this, &ConfigWidget::slotUpdateButton);
+    connect(d->ui.ignoreListWidget, &QListWidget::itemSelectionChanged, this, &ConfigWidget::slotSelectionChanged);
     d->ui.nobackendfound->setVisible(d->loader->clients().isEmpty());
     d->ui.addButton->setEnabled(false);
+    d->ui.removeButton->setEnabled(false);
 }
 
 ConfigWidget::~ConfigWidget()
@@ -88,6 +91,11 @@ ConfigWidget::~ConfigWidget()
 void ConfigWidget::slotUpdateButton(const QString &text)
 {
     d->ui.addButton->setEnabled(!text.isEmpty());
+}
+
+void ConfigWidget::slotSelectionChanged()
+{
+    d->ui.removeButton->setEnabled(!d->ui.ignoreListWidget->selectedItems().isEmpty());
 }
 
 void ConfigWidget::save()
