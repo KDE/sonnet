@@ -32,7 +32,7 @@ namespace Sonnet {
 class SpellerPrivate
 {
 public:
-    SpellerPrivate() : settings(nullptr)
+    SpellerPrivate()
     {
     }
 

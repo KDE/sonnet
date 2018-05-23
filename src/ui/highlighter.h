@@ -45,7 +45,7 @@ public:
      * @since 5.12
      */
     explicit Highlighter(QPlainTextEdit *textEdit, const QColor &col = QColor());
-    ~Highlighter();
+    ~Highlighter() override;
 
     /**
      * Returns whether a spell checking backend with support for the

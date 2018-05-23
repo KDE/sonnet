@@ -56,7 +56,7 @@ public:
      */
     explicit SpellCheckDecorator(QPlainTextEdit *textEdit);
 
-    ~SpellCheckDecorator();
+    ~SpellCheckDecorator() override;
 
     /**
      * Set a custom highlighter on the decorator.
