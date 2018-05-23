@@ -38,18 +38,18 @@ class ASpellClient : public Sonnet::Client
 
 public:
     explicit ASpellClient(QObject *parent = nullptr);
-    ~ASpellClient() Q_DECL_OVERRIDE;
+    ~ASpellClient() override;
 
-    int reliability() const Q_DECL_OVERRIDE
+    int reliability() const override
     {
         return 20;
     }
 
-    SpellerPlugin *createSpeller(const QString &language) Q_DECL_OVERRIDE;
+    SpellerPlugin *createSpeller(const QString &language) override;
 
-    QStringList languages() const Q_DECL_OVERRIDE;
+    QStringList languages() const override;
 
-    QString name() const Q_DECL_OVERRIDE
+    QString name() const override
     {
         return QStringLiteral("ASpell");
     }

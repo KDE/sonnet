@@ -34,13 +34,13 @@ public:
     explicit VoikkoClient(QObject *parent = nullptr);
     ~VoikkoClient();
 
-    int reliability() const Q_DECL_OVERRIDE;
+    int reliability() const override;
 
-    Sonnet::SpellerPlugin *createSpeller(const QString &language) Q_DECL_OVERRIDE;
+    Sonnet::SpellerPlugin *createSpeller(const QString &language) override;
 
-    QStringList languages() const Q_DECL_OVERRIDE;
+    QStringList languages() const override;
 
-    QString name() const Q_DECL_OVERRIDE;
+    QString name() const override;
 
 private:
     QStringList m_supportedLanguages;

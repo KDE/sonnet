@@ -36,18 +36,18 @@ class HunspellClient : public Sonnet::Client
     Q_PLUGIN_METADATA(IID "org.kde.Sonnet.HunspellClient")
 public:
     explicit HunspellClient(QObject *parent = nullptr);
-    ~HunspellClient() Q_DECL_OVERRIDE;
+    ~HunspellClient() override;
 
-    int reliability() const Q_DECL_OVERRIDE
+    int reliability() const override
     {
         return 40;
     }
 
-    SpellerPlugin *createSpeller(const QString &language) Q_DECL_OVERRIDE;
+    SpellerPlugin *createSpeller(const QString &language) override;
 
-    QStringList languages() const Q_DECL_OVERRIDE;
+    QStringList languages() const override;
 
-    QString name() const Q_DECL_OVERRIDE
+    QString name() const override
     {
         return QStringLiteral("Hunspell");
     }

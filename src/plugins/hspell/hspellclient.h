@@ -43,16 +43,16 @@ public:
     explicit HSpellClient(QObject *parent = nullptr);
     ~HSpellClient();
 
-    int reliability() const Q_DECL_OVERRIDE
+    int reliability() const override
     {
         return 20;
     }
 
-    SpellerPlugin *createSpeller(const QString &language) Q_DECL_OVERRIDE;
+    SpellerPlugin *createSpeller(const QString &language) override;
 
-    QStringList languages() const Q_DECL_OVERRIDE;
+    QStringList languages() const override;
 
-    QString name() const Q_DECL_OVERRIDE
+    QString name() const override
     {
         return QString::fromLatin1("HSpell");
     }

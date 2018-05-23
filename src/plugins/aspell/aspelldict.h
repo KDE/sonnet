@@ -29,15 +29,15 @@ class ASpellDict : public Sonnet::SpellerPlugin
 {
 public:
     explicit ASpellDict(const QString &lang);
-    ~ASpellDict() Q_DECL_OVERRIDE;
-    bool isCorrect(const QString &word) const Q_DECL_OVERRIDE;
+    ~ASpellDict() override;
+    bool isCorrect(const QString &word) const override;
 
-    QStringList suggest(const QString &word) const Q_DECL_OVERRIDE;
+    QStringList suggest(const QString &word) const override;
 
-    bool storeReplacement(const QString &bad, const QString &good) Q_DECL_OVERRIDE;
+    bool storeReplacement(const QString &bad, const QString &good) override;
 
-    bool addToPersonal(const QString &word) Q_DECL_OVERRIDE;
-    bool addToSession(const QString &word) Q_DECL_OVERRIDE;
+    bool addToPersonal(const QString &word) override;
+    bool addToSession(const QString &word) override;
 private:
     AspellConfig *m_config = nullptr;
     AspellSpeller *m_speller = nullptr;

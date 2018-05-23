@@ -42,12 +42,12 @@ public:
 
     ~VoikkoDict();
 
-    bool isCorrect(const QString &word) const Q_DECL_OVERRIDE;
-    QStringList suggest(const QString &word) const Q_DECL_OVERRIDE;
+    bool isCorrect(const QString &word) const override;
+    QStringList suggest(const QString &word) const override;
 
-    bool storeReplacement(const QString &bad, const QString &good) Q_DECL_OVERRIDE;
-    bool addToPersonal(const QString &word) Q_DECL_OVERRIDE;
-    bool addToSession(const QString &word) Q_DECL_OVERRIDE;
+    bool storeReplacement(const QString &bad, const QString &good) override;
+    bool addToPersonal(const QString &word) override;
+    bool addToSession(const QString &word) override;
 
     /**
      * @returns true if initializing Voikko backend failed.

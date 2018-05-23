@@ -189,11 +189,11 @@ Q_SIGNALS:
     void activeChanged(const QString &description);
 
 protected:
-    void highlightBlock(const QString &text) Q_DECL_OVERRIDE;
+    void highlightBlock(const QString &text) override;
     virtual void setMisspelled(int start, int count);
     virtual void unsetMisspelled(int start, int count);
 
-    bool eventFilter(QObject *o, QEvent *e) Q_DECL_OVERRIDE;
+    bool eventFilter(QObject *o, QEvent *e) override;
     bool intraWordEditing() const;
     void setIntraWordEditing(bool editing);
 

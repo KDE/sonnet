@@ -48,7 +48,7 @@ public:
     {
     }
 
-    Qt::ItemFlags flags(const QModelIndex &index) const Q_DECL_OVERRIDE
+    Qt::ItemFlags flags(const QModelIndex &index) const override
     {
         Q_UNUSED(index);
         return Qt::ItemIsEnabled | Qt::ItemIsSelectable;

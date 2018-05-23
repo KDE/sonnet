@@ -44,7 +44,7 @@ public:
     LanguageFilter(AbstractTokenizer *source);
     LanguageFilter(const LanguageFilter &other);
 
-    ~LanguageFilter() Q_DECL_OVERRIDE;
+    ~LanguageFilter() override;
 
     /** Language for token last returned by next() */
     QString language() const;
@@ -54,11 +54,11 @@ public:
 
     /** Returns true if there is grammar checker installed for last token's language */
 //  bool isGrammarCheckable() const;
-    void setBuffer(const QString &buffer) Q_DECL_OVERRIDE;
-    bool hasNext() const Q_DECL_OVERRIDE;
-    QStringRef next() Q_DECL_OVERRIDE;
-    QString buffer() const Q_DECL_OVERRIDE;
-    void replace(int position, int len, const QString &newWord) Q_DECL_OVERRIDE;
+    void setBuffer(const QString &buffer) override;
+    bool hasNext() const override;
+    QStringRef next() override;
+    QString buffer() const override;
+    void replace(int position, int len, const QString &newWord) override;
 private:
     LanguageFilterPrivate *const d;
 };

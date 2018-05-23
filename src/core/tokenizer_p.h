@@ -97,13 +97,13 @@ public:
      * @param buffer
      */
     WordTokenizer(const QString &buffer = QString());
-    ~WordTokenizer() Q_DECL_OVERRIDE;
+    ~WordTokenizer() override;
 
-    void setBuffer(const QString &buffer) Q_DECL_OVERRIDE;
-    bool hasNext() const Q_DECL_OVERRIDE;
-    QStringRef next() Q_DECL_OVERRIDE;
-    QString buffer() const Q_DECL_OVERRIDE;
-    void replace(int position, int len, const QString &newWord) Q_DECL_OVERRIDE;
+    void setBuffer(const QString &buffer) override;
+    bool hasNext() const override;
+    QStringRef next() override;
+    QString buffer() const override;
+    void replace(int position, int len, const QString &newWord) override;
 
     /** Returns true if this word should be spell checked. This ignores email addresses, URLs and other things according to configuration */
     bool isSpellcheckable() const;
@@ -125,12 +125,12 @@ class SONNETCORE_EXPORT SentenceTokenizer : public AbstractTokenizer
 {
 public:
     SentenceTokenizer(const QString &buffer = QString());
-    ~SentenceTokenizer() Q_DECL_OVERRIDE;
-    void setBuffer(const QString &buffer) Q_DECL_OVERRIDE;
-    bool hasNext() const Q_DECL_OVERRIDE;
-    QStringRef next() Q_DECL_OVERRIDE;
-    QString buffer() const Q_DECL_OVERRIDE;
-    void replace(int position, int len, const QString &newWord) Q_DECL_OVERRIDE;
+    ~SentenceTokenizer() override;
+    void setBuffer(const QString &buffer) override;
+    bool hasNext() const override;
+    QStringRef next() override;
+    QString buffer() const override;
+    void replace(int position, int len, const QString &newWord) override;
 private:
     BreakTokenizerPrivate *const d;
 };
