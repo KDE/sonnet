@@ -386,7 +386,7 @@ void Highlighter::setCurrentLanguage(const QString &lang)
     }
     d->wordCount = 0;
     d->errorCount = 0;
-    if (d->automatic) {
+    if (d->automatic || d->active) {
         d->rehighlightRequest->start(0);
     }
 }
