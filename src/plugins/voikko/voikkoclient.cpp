@@ -36,7 +36,7 @@ VoikkoClient::VoikkoClient(QObject *parent) : Sonnet::Client(parent)
     for (int i = 0; dictionaries[i] != nullptr; ++i) {
         QString language = QString::fromUtf8(dictionaries[i]);
         m_supportedLanguages.append(language);
-        qCDebug(SONNET_VOIKKO) << "Found dictionary for langauge:" << language;
+        qCDebug(SONNET_VOIKKO) << "Found dictionary for language:" << language;
     }
 
     voikkoFreeCstrArray(dictionaries);

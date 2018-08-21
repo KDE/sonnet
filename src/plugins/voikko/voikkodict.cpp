@@ -263,7 +263,7 @@ VoikkoDict::VoikkoDict(const QString &language) Q_DECL_NOEXCEPT
     : SpellerPlugin(language)
     , d(new VoikkoDictPrivate(language, this))
 {
-    qCDebug(SONNET_VOIKKO) << "Loading dictionary for langauge:" << language;
+    qCDebug(SONNET_VOIKKO) << "Loading dictionary for language:" << language;
 }
 
 VoikkoDict::~VoikkoDict()
