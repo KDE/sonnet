@@ -18,7 +18,10 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
  * 02110-1301  USA
  */
+
 #include "hunspelldict.h"
+
+#include "config-hunspell.h"
 #include "hunspelldebug.h"
 
 #include <QFile>
@@ -102,9 +105,16 @@ bool HunspellDict::isCorrect(const QString &word) const
     if (!m_speller) {
         return false;
     }
+
+#if USE_OLD_HUNSPELL_API
+    int result = m_speller->spell(toDictEncoding(word).constData());
+    qCDebug(SONNET_HUNSPELL) << " result :" << result;
+    return result != 0;
+#else
     bool result = m_speller->spell(toDictEncoding(word).toStdString());
     qCDebug(SONNET_HUNSPELL) << " result :" << result;
     return result;
+#endif
 }
 
 QStringList HunspellDict::suggest(const QString &word) const
@@ -112,10 +122,21 @@ QStringList HunspellDict::suggest(const QString &word) const
     if (!m_speller) {
         return QStringList();
     }
+
     QStringList lst;
+#if USE_OLD_HUNSPELL_API
+    char **selection;
+    int nbWord = m_speller->suggest(&selection, toDictEncoding(word).constData());
+    for (int i = 0; i < nbWord; ++i) {
+        lst << m_codec->toUnicode(selection[i]);
+    }
+    m_speller->free_list(&selection, nbWord);
+#else
     const auto suggestions = m_speller->suggest(toDictEncoding(word).toStdString());
     for_each (suggestions.begin(), suggestions.end(), [this, &lst](const std::string &suggestion) {
             lst << m_codec->toUnicode(suggestion.c_str()); });
+#endif
+
     return lst;
 }
 
