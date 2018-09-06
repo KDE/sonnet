@@ -47,7 +47,7 @@ void BackgroundCheckerPrivate::checkNext()
                 continue;
             }
 
-            // ok, this is valid word, do somehting
+            // ok, this is valid word, do something
             if (currentDict.isMisspelled(word.toString())) {
                 lastMisspelled = word;
                 emit misspelling(word.toString(), word.position()+sentenceOffset);

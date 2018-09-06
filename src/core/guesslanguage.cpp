@@ -35,17 +35,17 @@
 #include "spellerplugin_p.h"
 
 /*
-All language tags should be valid according to IETF BCP 47, as codefied in RFC 4646.
+All language tags should be valid according to IETF BCP 47, as codified in RFC 4646.
 ISO 639-1 codes should be used for the language part except for cases where there
 exists no code, then 639-3 codes should be used. Country codes should only be used
-in special cases. Scripts can be differentiated by IANA subtags, availble here:
+in special cases. Scripts can be differentiated by IANA subtags, available here:
 http://www.iana.org/assignments/language-subtag-registry
-The script tags corresond to ISO 15924
+The script tags correspond to ISO 15924
 
 An overview of the best practices concerning language tagging is available here:
 http://www.w3.org/International/articles/language-tags/Overview.en.php
 
-lang tags should use underscores (_) rather than hypens (-) to sepereate subsections.
+lang tags should use underscores (_) rather than hyphens (-) to separate subsections.
 
 EXCEPTIONS:
 For cases of known differences from the above tagging scheme and major
