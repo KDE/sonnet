@@ -90,8 +90,8 @@ QMap<QString, QString> GuessLanguagePrivate::s_dictionaryNameMap;
 QStringList getNames(QLocale::Script script)
 {
     QStringList locales;
-    for (const QLocale &locale :
-         QLocale::matchingLocales(QLocale::AnyLanguage, script, QLocale::AnyCountry)) {
+    const auto matchingLocales = QLocale::matchingLocales(QLocale::AnyLanguage, script, QLocale::AnyCountry);
+    for (const QLocale &locale : locales) {
         locales << locale.name();
     }
     return locales;
@@ -108,7 +108,7 @@ GuessLanguagePrivate::GuessLanguagePrivate()
 
     s_knownDictionaries = Loader::openLoader()->languages().toSet();
     QSet<QString> dictionaryLanguages;
-    for (QString dictName : s_knownDictionaries) {
+    for (const QString &dictName : qAsConst(s_knownDictionaries)) {
         QString languageName = QLocale(dictName).name();
         if (languageName.isEmpty()) {
             qCWarning(SONNET_LOG_CORE) << "Unable to parse name for dictionary" << dictName;
@@ -516,7 +516,7 @@ GuessLanguagePrivate::GuessLanguagePrivate()
 
         { // Remove unknown languages
             QStringList pruned;
-            for (const QString &name : names) {
+            for (const QString &name : qAsConst(names)) {
                 if (!dictionaryLanguages.contains(name)) {
                     continue;
                 }
@@ -529,7 +529,7 @@ GuessLanguagePrivate::GuessLanguagePrivate()
             continue;
         }
 
-        for (const QString &name : names) {
+        for (const QString &name : qAsConst(names)) {
             s_scriptLanguages.insert(script, name);
         }
     }

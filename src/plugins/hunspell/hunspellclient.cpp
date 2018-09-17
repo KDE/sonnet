@@ -63,7 +63,8 @@ HunspellClient::HunspellClient(QObject *parent)
 
     for (const QString &dirString : dirList) {
         QDir dir(dirString);
-        for (const QFileInfo &dict : dir.entryInfoList({QStringLiteral("*.aff")}, QDir::Files)) {
+        const auto dicts = dir.entryInfoList({QStringLiteral("*.aff")}, QDir::Files);
+        for (const QFileInfo &dict : dicts) {
             m_languagePaths.insert(dict.baseName(), dict.canonicalPath());
         }
     }
