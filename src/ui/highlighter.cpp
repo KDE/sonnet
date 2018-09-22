@@ -194,6 +194,9 @@ void Highlighter::slotRehighlight()
         } else {
             cursor = d->plainTextEdit->textCursor();
         }
+        if (cursor.hasSelection()) {
+            cursor.clearSelection();
+        }
         cursor.insertText(QString());
     }
     //if (d->checksDone == d->checksRequested)
