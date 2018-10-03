@@ -63,7 +63,7 @@ QString getUserDictionaryPath() Q_DECL_NOEXCEPT
         #ifdef Q_OS_WIN
     // Resolve the windows' Roaming directory manually
     directory = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
-    if (QSysInfo::windowsVersion() == WV_XP || QSysInfo::windowsVersion() == WV_2003) {
+    if (QSysInfo::windowsVersion() == QSysInfo::WV_XP || QSysInfo::windowsVersion() == QSysInfo::WV_2003) {
         // In Xp Roaming is "<user>/Application Data"
         // DataLocation: "<user>/Local Settings/Application Data"
         directory += QStringLiteral("/../../Application Data");
