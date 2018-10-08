@@ -146,7 +146,7 @@ public:
         , m_conversionBuffer(256)
     {
         const char *error;
-        m_handle = voikkoInit(&error, language.toUtf8().data(), 0);
+        m_handle = voikkoInit(&error, language.toUtf8().data(), nullptr);
 
         if (error != nullptr) {
             qCWarning(SONNET_VOIKKO) << "Failed to initialize Voikko spelling backend. Reason:"
