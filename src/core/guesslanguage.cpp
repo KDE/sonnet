@@ -91,7 +91,7 @@ QStringList getNames(QLocale::Script script)
 {
     QStringList locales;
     const auto matchingLocales = QLocale::matchingLocales(QLocale::AnyLanguage, script, QLocale::AnyCountry);
-    for (const QLocale &locale : locales) {
+    for (const QLocale &locale : matchingLocales) {
         locales << locale.name();
     }
     return locales;
