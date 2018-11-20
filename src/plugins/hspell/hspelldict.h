@@ -40,7 +40,7 @@ public:
 
     QStringList suggest(const QString &word) const override;
 
-    virtual bool storeReplacement(const QString &bad, const QString &good) override;
+    bool storeReplacement(const QString &bad, const QString &good) override;
 
     bool addToPersonal(const QString &word) override;
     bool addToSession(const QString &word) override;
