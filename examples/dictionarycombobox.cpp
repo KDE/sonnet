@@ -34,7 +34,7 @@ public:
     {
         QHBoxLayout *topLayout = new QHBoxLayout(this);
         dcb = new DictionaryComboBox(this);
-        topLayout->addWidget(dcb);
+        topLayout->addWidget(dcb, 1);
         connect(dcb, SIGNAL(dictionaryChanged(QString)), SLOT(dictChanged(QString)));
         connect(dcb, SIGNAL(dictionaryNameChanged(QString)), SLOT(dictNameChanged(QString)));
         QPushButton *btn = new QPushButton(QStringLiteral("Dump"), this);
