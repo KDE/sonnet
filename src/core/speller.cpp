@@ -277,4 +277,17 @@ QMap<QString, QString> Sonnet::Speller::availableDictionaries() const
 
     return langs;
 }
+
+QMap<QString, QString> Speller::preferredDictionaries() const
+{
+    Loader *l = Loader::openLoader();
+    QMap<QString, QString> langs;
+
+    for (const QString &tag : l->settings()->preferredLanguages()) {
+        langs.insert(l->languageNameForCode(tag), tag);
+    }
+
+    return langs;
 }
+
+} // namespace Sonnet

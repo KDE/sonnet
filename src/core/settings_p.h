@@ -41,6 +41,9 @@ public:
     bool setDefaultLanguage(const QString &lang);
     QString defaultLanguage() const;
 
+    bool setPreferredLanguages(const QStringList &lang);
+    QStringList preferredLanguages() const;
+
     bool setDefaultClient(const QString &client);
     QString defaultClient() const;
 

@@ -118,15 +118,28 @@ void DictionaryComboBox::setCurrentByDictionary(const QString &dictionary)
 void DictionaryComboBox::reloadCombo()
 {
     clear();
-    Sonnet::Speller *speller = new Sonnet::Speller();
-    QMap<QString, QString> dictionaries = speller->availableDictionaries();
-    QMapIterator<QString, QString> i(dictionaries);
+    Sonnet::Speller speller;
+    QMap<QString, QString> preferredDictionaries = speller.preferredDictionaries();
+    QMapIterator<QString, QString> i(preferredDictionaries);
     while (i.hasNext()) {
         i.next();
         addItem(i.key(), i.value());
     }
-    delete speller;
+    if (count()) {
+        insertSeparator(count());
+    }
+
+    QMap<QString, QString> dictionaries = speller.availableDictionaries();
+    i = dictionaries;
+    while (i.hasNext()) {
+        i.next();
+        if (preferredDictionaries.contains(i.key())) {
+            continue;
+        }
+        addItem(i.key(), i.value());
+    }
 }
-}
+
+} // namespace Sonnet
 
 #include "moc_dictionarycombobox.cpp"

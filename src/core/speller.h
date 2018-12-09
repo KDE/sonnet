@@ -52,6 +52,7 @@ public:
      * Sets the language supported by this speller.
      */
     void setLanguage(const QString &lang);
+
     /**
      * Returns language supported by this speller.
      */
@@ -120,6 +121,7 @@ public: // Configuration API
      * Note: use availableDictionaries
      */
     QStringList availableLanguages() const;
+
     /**
      * Returns a localized list of names of supported languages.
      *
@@ -128,10 +130,17 @@ public: // Configuration API
     QStringList availableLanguageNames() const;
 
     /**
-     * Returns a map of all available language descriptions and their
-     * codes
+     * Returns a map of all available dictionaies with language descriptions and
+     * their codes. The key is the description, the code the value.
      */
     QMap<QString, QString> availableDictionaries() const;
+
+    /**
+     * Returns a map of user preferred dictionaies with language descriptions and
+     * their codes. The key is the description, the code the value.
+     * @since 5.54
+     */
+    QMap<QString, QString> preferredDictionaries() const;
 
     void setDefaultLanguage(const QString &lang);
     QString defaultLanguage() const;

@@ -53,6 +53,23 @@ ConfigWidget::ConfigWidget(QWidget *parent)
     d->ui.setupUi(d->wdg);
 
     d->ui.m_langCombo->setCurrentByDictionary(d->loader->settings()->defaultLanguage());
+
+    QStringList preferredLanguages = d->loader->settings()->preferredLanguages();
+    for (int i = 0; i < d->ui.m_langCombo->count(); i++) {
+        const QString tag = d->ui.m_langCombo->itemData(i).toString();
+        if (tag.isEmpty()) { // skip separator
+            continue;
+        }
+
+        QListWidgetItem *item = new QListWidgetItem(d->ui.m_langCombo->itemText(i), d->ui.languageList);
+        item->setData(Qt::UserRole, tag);
+        if (preferredLanguages.contains(tag)) {
+            item->setCheckState(Qt::Checked);
+        } else {
+            item->setCheckState(Qt::Unchecked);
+        }
+    }
+
     d->ui.m_skipUpperCB->setChecked(!d->loader->settings()->checkUppercase());
     d->ui.m_skipRunTogetherCB->setChecked(d->loader->settings()->skipRunTogether());
     d->ui.m_checkerEnabledByDefaultCB->setChecked(d->loader->settings()->checkerEnabledByDefault());
@@ -69,6 +86,8 @@ ConfigWidget::ConfigWidget(QWidget *parent)
     layout->addWidget(d->wdg);
     connect(d->ui.m_langCombo, &DictionaryComboBox::dictionaryChanged, this,
             &ConfigWidget::configChanged);
+    connect(d->ui.languageList, &QListWidget::itemChanged, this, &ConfigWidget::configChanged);
+
     connect(d->ui.m_bgSpellCB, &QAbstractButton::clicked, this, &ConfigWidget::configChanged);
     connect(d->ui.m_skipUpperCB, &QAbstractButton::clicked, this, &ConfigWidget::configChanged);
     connect(d->ui.m_skipRunTogetherCB, &QAbstractButton::clicked, this,
@@ -110,6 +129,15 @@ void ConfigWidget::setFromGui()
     if (d->ui.m_langCombo->count()) {
         settings->setDefaultLanguage(d->ui.m_langCombo->currentDictionary());
     }
+
+    QStringList preferredLanguages;
+    for (int i = 0; i < d->ui.languageList->count(); i++) {
+        if (d->ui.languageList->item(i)->checkState() == Qt::Unchecked) {
+            continue;
+        }
+        preferredLanguages << d->ui.languageList->item(i)->data(Qt::UserRole).toString();
+    }
+    settings->setPreferredLanguages(preferredLanguages);
 
     settings->setCheckUppercase(!d->ui.m_skipUpperCB->isChecked());
     settings->setSkipRunTogether(d->ui.m_skipRunTogetherCB->isChecked());

@@ -36,6 +36,7 @@ public:
     bool modified = false;
 
     QString defaultLanguage;
+    QStringList preferredLanguages;
     QString defaultClient;
 
     bool checkUppercase = false;
@@ -81,6 +82,22 @@ bool Settings::setDefaultLanguage(const QString &lang)
 QString Settings::defaultLanguage() const
 {
     return d->defaultLanguage;
+}
+
+bool Settings::setPreferredLanguages(const QStringList &lang)
+{
+    if (d->preferredLanguages != lang) {
+        d->modified = true;
+        d->preferredLanguages = lang;
+        return true;
+    }
+
+    return false;
+}
+
+QStringList Settings::preferredLanguages() const
+{
+    return d->preferredLanguages;
 }
 
 bool Settings::setDefaultClient(const QString &client)
@@ -231,6 +248,7 @@ void Settings::save()
     QSettings settings(QStringLiteral("KDE"), QStringLiteral("Sonnet"));
     settings.setValue(QStringLiteral("defaultClient"), d->defaultClient);
     settings.setValue(QStringLiteral("defaultLanguage"), d->defaultLanguage);
+    settings.setValue(QStringLiteral("preferredLanguages"), d->preferredLanguages);
     settings.setValue(QStringLiteral("checkUppercase"), d->checkUppercase);
     settings.setValue(QStringLiteral("skipRunTogether"), d->skipRunTogether);
     settings.setValue(QStringLiteral("backgroundCheckerEnabled"), d->backgroundCheckerEnabled);
@@ -272,6 +290,7 @@ void Settings::restore()
     d->defaultClient = settings.value(QStringLiteral("defaultClient"), QString()).toString();
     d->defaultLanguage = settings.value(QStringLiteral("defaultLanguage"),
                                         QLocale::system().name()).toString();
+    d->preferredLanguages = settings.value(QStringLiteral("preferredLanguages")).toStringList();
 
     //same defaults are in the default filter (filter.cpp)
     d->checkUppercase = settings.value(QStringLiteral("checkUppercase"), true).toBool();
@@ -300,4 +319,5 @@ void Settings::setModified(bool modified)
 {
     d->modified = modified;
 }
-}
+
+} // namespace Sonnet
