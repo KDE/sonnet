@@ -172,7 +172,7 @@ Click here if you consider the unknown word not to be misspelled, and you want t
     </widget>
    </item>
    <item row="4" column="1" colspan="4">
-    <widget class="QComboBox" name="m_language">
+    <widget class="Sonnet::DictionaryComboBox" name="m_language">
      <property name="toolTip">
       <string>Language Selection</string>
      </property>
@@ -290,6 +290,13 @@ Click here if you consider the unknown word not to be misspelled, and you want t
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Sonnet::DictionaryComboBox</class>
+   <extends>QComboBox</extends>
+   <header>sonnet/dictionarycombobox.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>m_addBtn</tabstop>
   <tabstop>m_replacement</tabstop>

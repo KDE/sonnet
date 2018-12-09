@@ -272,18 +272,19 @@ void Dialog::setBuffer(const QString &buf)
 
 void Dialog::fillDictionaryComboBox()
 {
+    // Since m_language is changed to DictionaryComboBox most code here is gone,
+    // So fillDictionaryComboBox() could be removed and code moved to initGui()
+    // because the call in show() looks obsolete
     Speller speller = d->checker->speller();
     d->dictsMap = speller.availableDictionaries();
-    QStringList langs = d->dictsMap.keys();
-    d->ui.m_language->clear();
-    d->ui.m_language->addItems(langs);
+
     updateDictionaryComboBox();
 }
 
 void Dialog::updateDictionaryComboBox()
 {
     const Speller &speller = d->checker->speller();
-    d->ui.m_language->setCurrentIndex(d->dictsMap.values().indexOf(speller.language()));
+    d->ui.m_language->setCurrentByDictionary(speller.language());
 }
 
 void Dialog::updateDialog(const QString &word)
