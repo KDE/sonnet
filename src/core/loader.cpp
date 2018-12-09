@@ -270,7 +270,7 @@ QStringList Loader::languageNames() const
     }
 
     QStringList allLocalizedDictionaries;
-    Q_FOREACH (const QString &langCode, languages()) {
+    for (const QString &langCode : languages()) {
         allLocalizedDictionaries.append(languageNameForCode(langCode));
     }
     // cache the list
@@ -286,16 +286,15 @@ Settings *Loader::settings() const
 void Loader::loadPlugins()
 {
 #ifndef SONNET_STATIC
-    const QStringList libPaths = QCoreApplication::libraryPaths() << QStringLiteral(
-        INSTALLATION_PLUGIN_PATH);
+    const QStringList libPaths = QCoreApplication::libraryPaths() << QStringLiteral(INSTALLATION_PLUGIN_PATH);
     const QLatin1String pathSuffix("/kf5/sonnet/");
     int plugins = 0;
-    Q_FOREACH (const QString &libPath, libPaths) {
+    for (const QString &libPath : libPaths) {
         QDir dir(libPath + pathSuffix);
         if (!dir.exists()) {
             continue;
         }
-        Q_FOREACH (const QString &fileName, dir.entryList(QDir::Files)) {
+        for (const QString &fileName : dir.entryList(QDir::Files)) {
             loadPlugin(dir.absoluteFilePath(fileName));
             plugins++;
         }
@@ -342,7 +341,7 @@ void Loader::loadPlugin(const QString &pluginPath)
     const QStringList languages = client->languages();
     d->clients.append(client->name());
 
-    Q_FOREACH (const QString &language, languages) {
+    for (const QString &language : languages) {
         QVector<Client *> &languageClients = d->languageClients[language];
 
         if (languageClients.isEmpty()
