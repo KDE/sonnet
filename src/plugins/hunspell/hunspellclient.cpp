@@ -47,7 +47,7 @@ HunspellClient::HunspellClient(QObject *parent)
             dirList.append(path);
 
             QDir dir(path);
-            foreach (const QString &subDir, dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot)) {
+            for (const QString &subDir : dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot)) {
                 dirList.append(dir.absoluteFilePath(subDir));
             }
 

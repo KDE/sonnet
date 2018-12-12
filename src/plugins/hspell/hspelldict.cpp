@@ -49,7 +49,7 @@ HSpellDict::HSpellDict(const QString &lang)
                                                  QStringList()).toStringList());
     QVariantHash replacementMap
         = settings.value(QStringLiteral("Replacements"), QVariant()).toHash();
-    Q_FOREACH (const QString &key, replacementMap.keys()) {
+    for (const QString &key : replacementMap.keys()) {
         m_replacements[key] = replacementMap[key].toString();
     }
 }
@@ -138,7 +138,7 @@ void HSpellDict::storePersonalWords()
     QSettings settings(QStringLiteral("KDE"), QStringLiteral("SonnetHSpellPlugin"));
     settings.setValue(QStringLiteral("PersonalWords"), QVariant(m_personalWords.toList()));
     QVariantHash variantHash;
-    Q_FOREACH (const QString &key, m_replacements.keys()) {
+    for (const QString &key : m_replacements.keys()) {
         variantHash[key] = QVariant(m_replacements[key]);
     }
     settings.setValue(QStringLiteral("Replacements"), variantHash);

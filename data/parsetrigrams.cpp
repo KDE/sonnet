@@ -46,9 +46,7 @@ int main(int argc, char **argv)
 
     QHash< QString, QHash<QString, int> > models;
 
-    QStringList files = td.entryList(QDir::Files);
-
-    Q_FOREACH (const QString &fname, files) {
+    for (const QString &fname : td.entryList(QDir::Files)) {
         QFile fin(td.filePath(fname));
         fin.open(QFile::ReadOnly | QFile::Text);
         QTextStream stream(&fin);

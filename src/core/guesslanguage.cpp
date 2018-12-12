@@ -677,7 +677,7 @@ QList<QChar::Script> GuessLanguagePrivate::findRuns(const QString &text)
 
     int totalCount = 0;
 
-    foreach (const QChar c, text) {
+    for (const QChar c : text) {
         script = c.script();
 
         if (script == QChar::Script_Common || script == QChar::Script_Inherited) {
@@ -698,7 +698,7 @@ QList<QChar::Script> GuessLanguagePrivate::findRuns(const QString &text)
         return relevantScripts;
     }
 
-    foreach (const QChar::Script &script, scriptCounts.keys()) {
+    for (const QChar::Script &script : scriptCounts.keys()) {
         // return run types that used for 40% or more of the string
         if (scriptCounts[script] * 100 / totalCount >= 40) {
             relevantScripts << script;
@@ -780,7 +780,7 @@ QList<QString> GuessLanguagePrivate::createOrderedModel(const QString &content)
         trigramCounts[tri]++;
     }
 
-    foreach (const QString &key, trigramCounts.keys()) {
+    for (const QString &key : trigramCounts.keys()) {
         const QChar *data = key.constData();
         bool hasTwoSpaces = (data[1].isSpace() && (data[0].isSpace() || data[2].isSpace()));
 
@@ -798,7 +798,7 @@ int GuessLanguagePrivate::distance(const QList<QString> &model, const QHash<QStr
     int counter = -1;
     int dist = 0;
 
-    Q_FOREACH (const QString &trigram, model) {
+    for (const QString &trigram : model) {
         if (knownModel.contains(trigram)) {
             dist += qAbs(++counter - knownModel.value(trigram));
         } else {

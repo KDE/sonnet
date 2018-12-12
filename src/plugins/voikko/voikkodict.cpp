@@ -236,8 +236,8 @@ private:
      */
     inline void loadUserWords(const QJsonObject &languageNode) Q_DECL_NOEXCEPT
     {
-        auto words = languageNode[personal_words_str()].toArray();
-        Q_FOREACH (auto word, words) {
+        const auto words = languageNode[personal_words_str()].toArray();
+        for (auto word : words) {
             m_personalWords.insert(word.toString());
         }
         qCDebug(SONNET_VOIKKO)
@@ -249,8 +249,8 @@ private:
      */
     inline void loadUserReplacements(const QJsonObject &languageNode) Q_DECL_NOEXCEPT
     {
-        auto words = languageNode[replacements_str()].toArray();
-        Q_FOREACH (auto pair, words) {
+        const auto words = languageNode[replacements_str()].toArray();
+        for (auto pair : words) {
             m_replacements[pair.toObject()[replacement_bad_str()].toString()]
                 = pair.toObject()[replacement_good_str()].toString();
         }
