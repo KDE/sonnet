@@ -152,6 +152,11 @@ bool BackgroundChecker::addWordToPersonal(const QString &word)
     return d->currentDict.addToPersonal(word);
 }
 
+bool BackgroundChecker::addWordToSession(const QString &word)
+{
+    return d->currentDict.addToSession(word);
+}
+
 QStringList BackgroundChecker::suggest(const QString &word) const
 {
     return d->currentDict.suggest(word);

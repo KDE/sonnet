@@ -77,6 +77,14 @@ public:
     QStringList suggest(const QString &word) const;
     bool addWordToPersonal(const QString &word);
 
+    /**
+     * This method is used to add a word to the session of the
+     * speller currently set in BackgroundChecker.
+     *
+     * @since 5.55
+     */
+    bool addWordToSession(const QString &word);
+
 public Q_SLOTS:
     virtual void start();
     virtual void stop();
