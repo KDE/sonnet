@@ -35,6 +35,9 @@ class SONNETCORE_EXPORT Settings
 public:
     ~Settings();
 
+    Settings(const Settings &) = delete;
+    Settings &operator=(const Settings &) = delete;
+
     bool modified() const;
     void setModified(bool modified);
 
