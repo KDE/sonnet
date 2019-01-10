@@ -61,6 +61,9 @@ public:
      */
     ~GuessLanguage();
 
+    GuessLanguage(const GuessLanguage &) = delete;
+    GuessLanguage &operator=(const GuessLanguage &) = delete;
+
     /**
      * Sets limits to number of languages returned by identify(). The confidence for each language is computed
      * as difference between this and next language on the list normalized to 0-1 range. Reasonable value to get
