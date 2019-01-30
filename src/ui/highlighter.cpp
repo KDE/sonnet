@@ -298,7 +298,7 @@ void Highlighter::contentsChange(int pos, int add, int rem)
 
 void Highlighter::highlightBlock(const QString &text)
 {
-    if (text.isEmpty() || !d->active || !d->spellCheckerFound) {
+    if (text.trimmed().isEmpty() || !d->active || !d->spellCheckerFound) {
         return;
     }
 
