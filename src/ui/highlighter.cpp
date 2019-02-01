@@ -296,9 +296,19 @@ void Highlighter::contentsChange(int pos, int add, int rem)
     } while (block.isValid() && block < lastBlock);
 }
 
+static bool hasNotEmptyText(const QString &text)
+{
+    for (int i = 0; i < text.length(); ++i) {
+        if (!text.at(i).isSpace()) {
+            return true;
+        }
+    }
+    return false;
+}
+
 void Highlighter::highlightBlock(const QString &text)
 {
-    if (text.trimmed().isEmpty() || !d->active || !d->spellCheckerFound) {
+    if (!hasNotEmptyText(text) || !d->active || !d->spellCheckerFound) {
         return;
     }
 
