@@ -1,7 +1,7 @@
 
 cmake_minimum_required(VERSION 3.5)
 
-set(KF5_VERSION "5.54.0") # handled by release scripts
+set(KF5_VERSION "5.55.0") # handled by release scripts
 project(Sonnet VERSION ${KF5_VERSION})
 
 include(FeatureSummary)
