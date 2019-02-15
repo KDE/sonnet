@@ -127,6 +127,15 @@ Q_SIGNALS:
      */
     void configurationChanged();
 
+    /**
+     * Emitted when loading a dictionary fails, so that Ui parts can
+     * display an appropriate error message informing the user about
+     * the issue.
+     * @param language the name of the dictionary that failed to be loaded
+     * @since 5.56
+     */
+    void loadingDictionaryFailed(const QString &language) const;
+
 protected:
     friend class Settings;
     void changed();

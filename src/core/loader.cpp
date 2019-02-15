@@ -89,12 +89,15 @@ SpellerPlugin *Loader::createSpeller(const QString &language, const QString &cli
     if (plang.isEmpty()) {
         plang = d->settings->defaultLanguage();
     }
-    const QVector<Client *> lClients = d->languageClients[plang];
 
-    if (lClients.isEmpty()) {
+    auto clientsItr = d->languageClients.constFind(plang);
+    if (clientsItr == d->languageClients.constEnd()) {
         qCWarning(SONNET_LOG_CORE) << "No language dictionaries for the language:" << plang;
+        emit loadingDictionaryFailed(plang);
         return nullptr;
     }
+
+    const QVector<Client *> lClients = *clientsItr;
 
     if (backend.isEmpty()) {
         backend = d->settings->defaultClient();
