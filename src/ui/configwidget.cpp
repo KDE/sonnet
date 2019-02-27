@@ -47,7 +47,7 @@ ConfigWidget::ConfigWidget(QWidget *parent)
 {
     d->loader = Loader::openLoader();
     QVBoxLayout *layout = new QVBoxLayout(this);
-    layout->setMargin(0);
+    layout->setContentsMargins(0, 0, 0, 0);
     layout->setObjectName(QStringLiteral("SonnetConfigUILayout"));
     d->wdg = new QWidget(this);
     d->ui.setupUi(d->wdg);
