@@ -271,7 +271,7 @@ QMap<QString, QString> Sonnet::Speller::availableDictionaries() const
     const QStringList lst = l->languages();
     QMap<QString, QString> langs;
 
-    Q_FOREACH (const QString &tag, lst) {
+    for (const QString &tag : lst) {
         langs.insert(l->languageNameForCode(tag), tag);
     }
 

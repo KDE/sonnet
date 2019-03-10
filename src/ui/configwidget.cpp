@@ -171,7 +171,7 @@ void ConfigWidget::slotIgnoreWordRemoved()
 {
     QStringList ignoreList = d->loader->settings()->currentIgnoreList();
     const QList<QListWidgetItem *> selectedItems = d->ui.ignoreListWidget->selectedItems();
-    Q_FOREACH (const QListWidgetItem *item, selectedItems) {
+    for (const QListWidgetItem *item : selectedItems) {
         ignoreList.removeAll(item->text());
     }
     d->loader->settings()->setCurrentIgnoreList(ignoreList);
