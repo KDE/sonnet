@@ -71,6 +71,10 @@ install(FILES
    ${CMAKE_CURRENT_BINARY_DIR}/sonnetui_export.h
    DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/SonnetUi/sonnet COMPONENT Devel)
 
+if(BUILD_DESIGNERPLUGIN)
+    add_subdirectory(designer)
+endif()
+
 if (BUILD_QCH)
     ecm_add_qch(
         KF5SonnetUi_QCH
