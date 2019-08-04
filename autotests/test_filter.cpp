@@ -21,7 +21,7 @@
 
 #include "test_filter.h"
 #include "tokenizer_p.h"
-
+#include <QVector>
 #include <qtest.h>
 
 QTEST_GUILESS_MAIN(SonnetFilterTest)
