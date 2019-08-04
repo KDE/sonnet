@@ -22,7 +22,6 @@
 #define BACKGROUNDTEST_H
 
 #include <QObject>
-#include <QDate>
 
 #include "backgroundchecker.h"
 

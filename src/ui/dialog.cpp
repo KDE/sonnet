@@ -29,12 +29,8 @@
 #include <qprogressdialog.h>
 
 #include <QDialogButtonBox>
-#include <QListView>
 #include <QStringListModel>
 #include <QPushButton>
-#include <QComboBox>
-#include <QLabel>
-#include <QTimer>
 #include <QMessageBox>
 
 namespace Sonnet {

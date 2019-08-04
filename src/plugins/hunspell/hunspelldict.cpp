@@ -29,8 +29,6 @@
 #include <QDir>
 #include <QTextCodec>
 #include <QTextStream>
-#include <QStringBuilder>
-#include <QCoreApplication>
 #include <QStandardPaths>
 
 using namespace Sonnet;

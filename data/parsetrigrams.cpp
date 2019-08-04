@@ -27,8 +27,6 @@
 #include <QFile>
 #include <QHash>
 #include <QRegExp>
-#include <QStringList>
-#include <QDebug>
 #include <QDataStream>
 
 int main(int argc, char **argv)

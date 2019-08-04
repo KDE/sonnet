@@ -23,8 +23,6 @@
 #include "tokenizer_p.h"
 
 #include <qtest.h>
-#include <QTextBoundaryFinder>
-#include <QDebug>
 
 QTEST_GUILESS_MAIN(SonnetFilterTest)
 

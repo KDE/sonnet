@@ -23,7 +23,6 @@
 #include "aspelldict.h"
 
 #include "aspell_debug.h"
-#include <QtPlugin>
 #ifdef Q_OS_WIN
 #include <QCoreApplication>
 #endif

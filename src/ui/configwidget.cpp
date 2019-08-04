@@ -25,7 +25,6 @@
 #include "settings_p.h"
 
 #include <QCheckBox>
-#include <QLayout>
 #include <QListWidget>
 #include <QLineEdit>
 #include <QListWidgetItem>

@@ -26,7 +26,6 @@
 #include <libvoikko/voikko.h>
 
 #include <QHash>
-#include <QSet>
 #include <QScopedPointer>
 
 class VoikkoClient;

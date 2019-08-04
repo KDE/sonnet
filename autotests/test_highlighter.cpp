@@ -23,7 +23,6 @@
 
 #include <QPlainTextEdit>
 #include <QStandardPaths>
-#include <QDebug>
 #include <QObject>
 #include <qtest.h>
 

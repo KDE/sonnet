@@ -23,7 +23,6 @@
 #include "client_p.h"
 
 #include <QSet>
-#include <QVariantList>
 #include <enchant.h>
 
 namespace Sonnet {

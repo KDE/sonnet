@@ -21,7 +21,7 @@
 #define GUESSLANGUAGE_H
 
 #include <QString>
-#include <QLocale>
+#include <QStringList>
 
 #include "sonnetcore_export.h"
 

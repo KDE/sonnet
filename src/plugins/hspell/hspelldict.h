@@ -22,7 +22,6 @@
 #ifndef KSPELL_HSPELLDICT_H
 #define KSPELL_HSPELLDICT_H
 
-#include <QMap>
 #include <QSet>
 
 #include "spellerplugin_p.h"

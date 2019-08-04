@@ -24,7 +24,6 @@
 
 #include <QDir>
 #include <QString>
-#include <QCoreApplication>
 #include <QStandardPaths>
 
 using namespace Sonnet;

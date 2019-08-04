@@ -29,7 +29,6 @@
     #include <QSysInfo>
 #endif
 
-#include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
 

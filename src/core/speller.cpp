@@ -23,9 +23,7 @@
 #include "settings_p.h"
 #include "spellerplugin_p.h"
 
-#include <QLocale>
 #include <QCache>
-#include <QSet>
 #include "core_debug.h"
 
 namespace Sonnet {

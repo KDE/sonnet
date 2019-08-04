@@ -38,7 +38,6 @@
 #include <QTextCursor>
 #include <QEvent>
 #include <QKeyEvent>
-#include <QApplication>
 #include <QMetaMethod>
 #include <QPlainTextEdit>
 

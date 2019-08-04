@@ -19,7 +19,6 @@
 #include "enchantclient.h"
 #include "enchantdict.h"
 
-#include <QtPlugin>
 #include <QDebug>
 
 using namespace Sonnet;
