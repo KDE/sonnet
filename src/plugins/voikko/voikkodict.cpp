@@ -300,7 +300,7 @@ QStringList VoikkoDict::suggest(const QString &word) const
         suggestions.append(suggestion);
     }
     qCDebug(SONNET_VOIKKO) << "Misspelled:" << word
-                           << "|Suggestons:" << suggestions.join(QStringLiteral(", "));
+                           << "|Suggestons:" << suggestions.join(QLatin1String(", "));
 
     voikko_free_suggest_ucs4(voikkoSuggestions);
 

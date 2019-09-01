@@ -68,7 +68,7 @@ void SonnetCoreTest::testCore()
 void SonnetCoreTest::testCore2()
 {
     Speller dict(QStringLiteral("de_DE"));
-    if (!dict.availableLanguages().contains(QStringLiteral("de_DE"))) {
+    if (!dict.availableLanguages().contains(QLatin1String("de_DE"))) {
         QSKIP("This test requires a german spelling dictionary");
         return;
     }

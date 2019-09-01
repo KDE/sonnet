@@ -79,8 +79,8 @@ void HighlighterTest::testEnglish()
 
     // THEN
     QCOMPARE(suggestionsForHelo.count(), 10);
-    QVERIFY2(suggestionsForHelo.contains(QStringLiteral("hello")), qPrintable(suggestionsForHelo.join(QLatin1Char(','))));
-    QVERIFY2(suggestionsForEnviroment.contains(QStringLiteral("environment")), qPrintable(suggestionsForEnviroment.join(QLatin1Char(','))));
+    QVERIFY2(suggestionsForHelo.contains(QLatin1String("hello")), qPrintable(suggestionsForHelo.join(QLatin1Char(','))));
+    QVERIFY2(suggestionsForEnviroment.contains(QLatin1String("environment")), qPrintable(suggestionsForEnviroment.join(QLatin1Char(','))));
     QVERIFY(unlimitedSuggestions.count() > 10);
 }
 
@@ -104,8 +104,8 @@ void HighlighterTest::testFrench()
     const QStringList suggestionsForDict = highlighter.suggestionsForWord(QStringLiteral("dictionnare"), cursor);
 
     // THEN
-    QVERIFY2(suggestionsForBnjour.contains(QStringLiteral("Bonjour")), qPrintable(suggestionsForBnjour.join(QLatin1Char(','))));
-    QVERIFY2(suggestionsForDict.contains(QStringLiteral("dictionnaire")), qPrintable(suggestionsForDict.join(QLatin1Char(','))));
+    QVERIFY2(suggestionsForBnjour.contains(QLatin1String("Bonjour")), qPrintable(suggestionsForBnjour.join(QLatin1Char(','))));
+    QVERIFY2(suggestionsForDict.contains(QLatin1String("dictionnaire")), qPrintable(suggestionsForDict.join(QLatin1Char(','))));
 }
 
 void HighlighterTest::testMultipleLanguages()
@@ -129,10 +129,10 @@ void HighlighterTest::testMultipleLanguages()
     const QStringList suggestionsForDict = highlighter.suggestionsForWord(QStringLiteral("dictionnare"), cursor);
 
     // THEN
-    QVERIFY2(suggestionsForHelo.contains(QStringLiteral("hello")), qPrintable(suggestionsForHelo.join(QLatin1Char(','))));
-    QVERIFY2(suggestionsForEnviroment.contains(QStringLiteral("environment")), qPrintable(suggestionsForEnviroment.join(QLatin1Char(','))));
-    QVERIFY2(suggestionsForBnjour.contains(QStringLiteral("Bonjour")), qPrintable(suggestionsForBnjour.join(QLatin1Char(','))));
-    QVERIFY2(suggestionsForDict.contains(QStringLiteral("dictionnaire")), qPrintable(suggestionsForDict.join(QLatin1Char(','))));
+    QVERIFY2(suggestionsForHelo.contains(QLatin1String("hello")), qPrintable(suggestionsForHelo.join(QLatin1Char(','))));
+    QVERIFY2(suggestionsForEnviroment.contains(QLatin1String("environment")), qPrintable(suggestionsForEnviroment.join(QLatin1Char(','))));
+    QVERIFY2(suggestionsForBnjour.contains(QLatin1String("Bonjour")), qPrintable(suggestionsForBnjour.join(QLatin1Char(','))));
+    QVERIFY2(suggestionsForDict.contains(QLatin1String("dictionnaire")), qPrintable(suggestionsForDict.join(QLatin1Char(','))));
 }
 
 QTEST_MAIN(HighlighterTest)
