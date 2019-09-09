@@ -21,7 +21,7 @@
 
 #include "test_core.h"
 #include "speller.h"
-
+#include <QElapsedTimer>
 #include <qtest.h>
 #include <QDebug>
 
@@ -46,7 +46,7 @@ void SonnetCoreTest::testCore()
               << QStringLiteral("guvernment") << QStringLiteral("farted");
     }
 
-    QTime mtime;
+    QElapsedTimer mtime;
     mtime.start();
     for (QStringList::Iterator itr = words.begin();
          itr != words.end(); ++itr) {
@@ -84,7 +84,7 @@ void SonnetCoreTest::testCore2()
               << QStringLiteral("Regirung") << QStringLiteral("bet");
     }
 
-    QTime mtime;
+    QElapsedTimer mtime;
     mtime.start();
     for (QStringList::Iterator itr = words.begin();
          itr != words.end(); ++itr) {
