@@ -1,15 +1,5 @@
 project(sonnetui)
 
-include_directories(
-  ${QT_INCLUDES}
-  ${CMAKE_CURRENT_BINARY_DIR}
-)
-
-include_directories(
-    ${CMAKE_CURRENT_SOURCE_DIR}/../core
-    ${CMAKE_CURRENT_BINARY_DIR}/../core
-)
-
 ecm_create_qm_loader(sonnet_QM_LOADER sonnet5_qt)
 
 set(sonnetui_SRCS
