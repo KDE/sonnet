@@ -63,6 +63,8 @@ if (BUILD_QCH)
             ${SonnetCore_HEADERS}
         LINK_QCHS
             Qt5Core_QCH
+        INCLUDE_DIRS
+            ${CMAKE_CURRENT_BINARY_DIR}
         BLANK_MACROS
             SONNETCORE_EXPORT
             SONNETCORE_DEPRECATED_EXPORT
