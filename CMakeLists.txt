@@ -1,4 +1,3 @@
-
 cmake_minimum_required(VERSION 3.5)
 
 set(KF5_VERSION "5.63.0") # handled by release scripts
