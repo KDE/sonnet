@@ -20,18 +20,3 @@ if(CMAKE_CROSSCOMPILING AND PARSETRIGRAMS_EXECUTABLE)
 else()
     add_executable(KF5::parsetrigrams ALIAS parsetrigrams)
 endif()
-
-function(create_trigrams_map _target_name _in_DIR _out_FILE)
-    add_custom_target(trigrams_${_target_name} ALL)
-    add_custom_command(TARGET trigrams_${_target_name}
-                       COMMAND $<TARGET_FILE:KF5::parsetrigrams> "${_in_DIR}" > "${_out_FILE}"
-                      )
-
-    add_dependencies(trigrams_${_target_name} parsetrigrams)
-endfunction(create_trigrams_map)
-
-create_trigrams_map(sonnet
-                    ${CMAKE_SOURCE_DIR}/data/trigrams
-                    ${CMAKE_CURRENT_BINARY_DIR}/trigrams.map
-                   )
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/trigrams.map DESTINATION ${KDE_INSTALL_DATADIR_KF5}/sonnet/)

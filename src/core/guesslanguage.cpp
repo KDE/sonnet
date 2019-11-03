@@ -624,19 +624,8 @@ void GuessLanguage::setLimits(int maxItems, double minConfidence)
 
 void GuessLanguagePrivate::loadModels()
 {
-    QString triMapFile
-        = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral(
-                                     "kf5/sonnet/trigrams.map"));
-
-    if (triMapFile.isEmpty()) {
-#ifdef Q_OS_WIN
-        triMapFile = QStringLiteral("%1/data/kf5/sonnet/trigrams.map").arg(
-                    QCoreApplication::applicationDirPath());
-#else
-        triMapFile = QStringLiteral("%1/../share/kf5/sonnet/trigrams.map").arg(
-            QCoreApplication::applicationDirPath());
-#endif
-    }
+    // use trigrams from resource file, easy to deploy on all platforms
+    const QString triMapFile = QStringLiteral(":/org.kde.sonnet/trigrams.map");
     qCDebug(SONNET_LOG_CORE) << "Loading trigrams from" << triMapFile;
 
     QFile sin(triMapFile);

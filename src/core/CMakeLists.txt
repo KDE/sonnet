@@ -13,6 +13,13 @@ set(sonnetcore_SRCS
    languagefilter.cpp
 )
 
+# create trigrams file + add trigrams resource
+add_custom_command(OUTPUT "${CMAKE_BINARY_DIR}/data/trigrams.map"
+                   DEPENDS parsetrigrams
+                   COMMAND $<TARGET_FILE:KF5::parsetrigrams> "${CMAKE_SOURCE_DIR}/data/trigrams" > "${CMAKE_BINARY_DIR}/data/trigrams.map")
+configure_file(${CMAKE_SOURCE_DIR}/data/trigrams.qrc.in ${CMAKE_BINARY_DIR}/data/trigrams.qrc @ONLY)
+qt5_add_resources(sonnetcore_SRCS "${CMAKE_BINARY_DIR}/data/trigrams.qrc")
+
 ecm_qt_declare_logging_category(sonnetcore_SRCS HEADER core_debug.h IDENTIFIER SONNET_LOG_CORE CATEGORY_NAME sonnet.core)
 
 # Dear packagers, this is just used as an extra search paths for plugins. Don't get your panties in a twist.
