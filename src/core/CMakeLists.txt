@@ -13,11 +13,10 @@ set(sonnetcore_SRCS
    languagefilter.cpp
 )
 
-if (NOT CMAKE_CROSSCOMPILING)
-    # create trigrams file + add trigrams resource
+# create trigrams file + add trigrams resource
+if (TARGET KF5::parsetrigrams)
     add_custom_command(OUTPUT "${CMAKE_BINARY_DIR}/data/trigrams.map"
-                       DEPENDS parsetrigrams
-                       COMMAND $<TARGET_FILE:KF5::parsetrigrams> "${CMAKE_SOURCE_DIR}/data/trigrams" > "${CMAKE_BINARY_DIR}/data/trigrams.map")
+                       COMMAND KF5::parsetrigrams "${CMAKE_SOURCE_DIR}/data/trigrams" > "${CMAKE_BINARY_DIR}/data/trigrams.map")
     configure_file(${CMAKE_SOURCE_DIR}/data/trigrams.qrc.in ${CMAKE_BINARY_DIR}/data/trigrams.qrc @ONLY)
     qt5_add_resources(sonnetcore_SRCS "${CMAKE_BINARY_DIR}/data/trigrams.qrc")
 endif()
