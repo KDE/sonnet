@@ -59,3 +59,7 @@ endif ()
 if (APPLE)
     add_subdirectory( nsspellchecker )
 endif ()
+
+if (WIN32)
+    add_subdirectory( ispellchecker )
+endif ()
