@@ -60,6 +60,6 @@ if (APPLE)
     add_subdirectory( nsspellchecker )
 endif ()
 
-if (WIN32)
+if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
     add_subdirectory( ispellchecker )
 endif ()
