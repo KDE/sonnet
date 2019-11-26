@@ -34,7 +34,15 @@ ecm_generate_headers(SonnetUi_CamelCase_HEADERS
 qt5_wrap_ui(sonnetui_SRCS ${sonnetui_UI})
 
 add_library(KF5SonnetUi ${sonnetui_SRCS})
-generate_export_header(KF5SonnetUi BASE_NAME SonnetUi EXPORT_FILE_NAME sonnetui_export.h)
+ecm_generate_export_header(KF5SonnetUi
+    BASE_NAME SonnetUi
+    GROUP_BASE_NAME KF
+    VERSION ${KF5_VERSION}
+    DEPRECATED_BASE_VERSION 0
+    DEPRECATION_VERSIONS 5.65
+    EXCLUDE_DEPRECATED_BEFORE_AND_AT ${EXCLUDE_DEPRECATED_BEFORE_AND_AT}
+)
+
 add_library(KF5::SonnetUi ALIAS KF5SonnetUi)
 
 target_link_libraries(KF5SonnetUi
@@ -84,6 +92,7 @@ if (BUILD_QCH)
             SONNETUI_EXPORT
             SONNETUI_DEPRECATED_EXPORT
             SONNETUI_DEPRECATED
+            "SONNETUI_DEPRECATED_VERSION(x, y, t)"
         TAGFILE_INSTALL_DESTINATION ${KDE_INSTALL_QTQCHDIR}
         QCH_INSTALL_DESTINATION ${KDE_INSTALL_QTQCHDIR}
         COMPONENT Devel

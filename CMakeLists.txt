@@ -15,6 +15,14 @@ include(KDEInstallDirs)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
 include(ECMQtDeclareLoggingCategory)
+include(ECMGenerateExportHeader)
+include(ECMSetupVersion)
+include(ECMGenerateHeaders)
+
+include(ECMAddQch)
+include(ECMPoQmTools)
+
+set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprecated API excluded from the build [default=0].")
 
 set(REQUIRED_QT_VERSION 5.11.0)
 option(SONNET_USE_WIDGETS "Build components using Qt5Widgets" ON)
@@ -23,14 +31,6 @@ if(SONNET_USE_WIDGETS)
 endif()
 find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Core)
 
-
-include(GenerateExportHeader)
-
-include(ECMSetupVersion)
-include(ECMGenerateHeaders)
-
-include(ECMAddQch)
-include(ECMPoQmTools)
 
 ecm_setup_version(PROJECT VARIABLE_PREFIX SONNET
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/sonnet_version.h"

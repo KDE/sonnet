@@ -234,7 +234,10 @@ void Dialog::slotFinished()
     setProgressDialogVisible(false);
     emit stop();
     //FIXME: should we emit done here?
+#if SONNETUI_BUILD_DEPRECATED_SINCE(5, 65)
     emit done(d->checker->text());
+#endif
+    emit spellCheckDone(d->checker->text());
     emit spellCheckStatus(tr("Spell check stopped."));
     accept();
 }

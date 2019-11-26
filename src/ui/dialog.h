@@ -96,12 +96,21 @@ public Q_SLOTS:
     void setBuffer(const QString &);
 
 Q_SIGNALS:
+#if SONNETUI_ENABLE_DEPRECATED_SINCE(5, 65)
     /**
      * The dialog won't be closed if you setBuffer() in slot connected to this signal
-     *
      * Also emitted after stop() signal
+     * @deprecated Since 5.65, use spellCheckDone
      */
+    SONNETUI_DEPRECATED_VERSION(5, 65, "Use Dialog::spellCheckDone()")
     void done(const QString &newBuffer);
+#endif
+    /**
+     * The dialog won't be closed if you setBuffer() in slot connected to this signal
+     * Also emitted after stop() signal
+     * @Since 5.65
+     */
+    void spellCheckDone(const QString &newBuffer);
     void misspelling(const QString &word, int start);
     void replace(const QString &oldWord, int start, const QString &newWord);
 

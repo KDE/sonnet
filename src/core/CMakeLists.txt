@@ -28,7 +28,16 @@ add_definitions(-DINSTALLATION_PLUGIN_PATH="${CMAKE_INSTALL_PREFIX}/${KDE_INSTAL
 
 
 add_library(KF5SonnetCore ${sonnetcore_SRCS})
-generate_export_header(KF5SonnetCore BASE_NAME SonnetCore EXPORT_FILE_NAME sonnetcore_export.h)
+ecm_generate_export_header(KF5SonnetCore
+    BASE_NAME SonnetCore
+    GROUP_BASE_NAME KF
+    VERSION ${KF5_VERSION}
+    DEPRECATED_BASE_VERSION 0
+    #DEPRECATION_VERSIONS 5.65
+    EXCLUDE_DEPRECATED_BEFORE_AND_AT ${EXCLUDE_DEPRECATED_BEFORE_AND_AT}
+)
+
+
 add_library(KF5::SonnetCore ALIAS KF5SonnetCore)
 
 ecm_generate_headers(SonnetCore_CamelCase_HEADERS
@@ -77,6 +86,7 @@ if (BUILD_QCH)
             SONNETCORE_EXPORT
             SONNETCORE_DEPRECATED_EXPORT
             SONNETCORE_DEPRECATED
+            "SONNETCORE_DEPRECATED_VERSION(x, y, t)"
         TAGFILE_INSTALL_DESTINATION ${KDE_INSTALL_QTQCHDIR}
         QCH_INSTALL_DESTINATION ${KDE_INSTALL_QTQCHDIR}
         COMPONENT Devel
