@@ -34,10 +34,10 @@ class GuessLanguagePrivate;
 /**
  * @short GuessLanguage determines the language of a given text.
  *
- * GuessLanguage can determine the differnce between ~75 languages for a given string. It is
- * based off a perl script originally written by Maciej Ceglowski <maciej@ceglowski.com>
+ * GuessLanguage can determine the difference between ~75 languages for a given string. It is
+ * based off a Perl script originally written by Maciej Ceglowski <maciej@ceglowski.com>
  * called Languid. His script used a 2 part huristic to determine language. First the text
- * is is checked for the scripts it contains, then for each set of languages useing those
+ * is checked for the scripts it contains, then for each set of languages using those
  * scripts a n-gram frequency model of a given language is compared to a model of the text.
  * The most similar language model is assumed to be the language. If no language is found
  * an empty string is returned.
