@@ -367,14 +367,13 @@ void Dialog::slotSkipAll()
 
 void Dialog::slotSuggest()
 {
-    QStringList suggs = d->checker->suggest(d->ui.m_replacement->text());
+    const QStringList suggs = d->checker->suggest(d->ui.m_replacement->text());
     fillSuggestions(suggs);
 }
 
 void Dialog::slotChangeLanguage(const QString &lang)
 {
-    Speller speller = d->checker->speller();
-    QString languageCode = d->dictsMap[lang];
+    const QString languageCode = d->dictsMap[lang];
     if (!languageCode.isEmpty()) {
         d->checker->changeLanguage(languageCode);
         slotSuggest();
