@@ -417,7 +417,10 @@ void Dialog::slotMisspelling(const QString &word, int start)
 void Dialog::slotDone()
 {
     d->restart = false;
+#if SONNETUI_BUILD_DEPRECATED_SINCE(5, 65)
     emit done(d->checker->text());
+#endif
+    emit spellCheckDone(d->checker->text());
     if (d->restart) {
         updateDictionaryComboBox();
         d->checker->setText(d->originalBuffer);
