@@ -13,7 +13,7 @@
 #include <QDir>
 #include <QFile>
 #include <QHash>
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QDataStream>
 
 int main(int argc, char **argv)
@@ -31,19 +31,17 @@ int main(int argc, char **argv)
 
     QHash< QString, QHash<QString, int> > models;
 
+    const QRegularExpression rx(QStringLiteral("(?:.{3})\\s+(.*)"));
     for (const QString &fname : td.entryList(QDir::Files)) {
         QFile fin(td.filePath(fname));
         fin.open(QFile::ReadOnly | QFile::Text);
         QTextStream stream(&fin);
         stream.setCodec("UTF-8");
-
-        while (!stream.atEnd())
-        {
+        while (!stream.atEnd()) {
             QString line = stream.readLine();
-            QRegExp rx(QStringLiteral("(.{3})\\s+(.*)"));
-            int pos = rx.indexIn(line);
-            if (pos != -1) {
-                models[fname][line.left(3)] = rx.cap(2).toInt();
+            const QRegularExpressionMatch match = rx.match(line);
+            if (match.hasMatch()) {
+                models[fname][line.left(3)] = match.capturedRef(1).toInt();
             }
         }
     }
