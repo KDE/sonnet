@@ -1,22 +1,8 @@
 // krazy:excludeall=spelling
 /**
+ * SPDX-FileCopyrightText: 2007 Zack Rusin <zack@kde.org>
  *
- * Copyright 2007  Zack Rusin <zack@kde.org>
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
- * 02110-1301  USA
+ * SPDX-License-Identifier: LGPL-2.1-or-later
  */
 
 #include "test_core.h"
@@ -99,6 +85,6 @@ void SonnetCoreTest::testCore2()
 
     qDebug() << "Detecting language ...";
     //FIXME
-    //QString sentence = QString::fromLatin1("Die K Desktop Environment (KDE; auf Deutsch K-Arbeitsumgebung; früher: Kool Desktop Environment) ist eine frei verfügbare Arbeitsumgebung, das heißt eine grafische Benutzeroberfläche mit vielen Zusatzprogrammen für den täglichen Gebrauch.");
+    //QString sentence = QString::fromLatin1("Die K Desktop Environment (KDE; auf Deutsch K-Arbeitsumgebung; frÃ¼her: Kool Desktop Environment) ist eine frei verfÃ¼gbare Arbeitsumgebung, das heiÃŸt eine grafische BenutzeroberflÃ¤che mit vielen Zusatzprogrammen fÃ¼r den tÃ¤glichen Gebrauch.");
     //qDebug() << "\tlang is " << Sonnet::detectLanguage(sentence);
 }
