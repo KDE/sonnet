@@ -5,7 +5,13 @@ set(sonnet_ispellchecker_PART_SRCS
     ispellcheckerclient.cpp
     ispellcheckerdict.cpp
 )
-ecm_qt_declare_logging_category(sonnet_ispellchecker_PART_SRCS HEADER ispellcheckerdebug.h IDENTIFIER SONNET_ISPELLCHECKER CATEGORY_NAME sonnet.plugins.ispellchecker)
+ecm_qt_declare_logging_category(sonnet_ispellchecker_PART_SRCS
+    HEADER ispellcheckerdebug.h
+    IDENTIFIER SONNET_ISPELLCHECKER
+    CATEGORY_NAME sonnet.plugins.ispellchecker
+    DESCRIPTION "Sonnet ISpellChecker plugin"
+    EXPORT SONNET
+)
 
 add_library(sonnet_ispellchecker MODULE ${sonnet_ispellchecker_PART_SRCS})
 target_link_libraries(sonnet_ispellchecker PRIVATE KF5::SonnetCore)

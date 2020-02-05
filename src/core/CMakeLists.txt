@@ -21,7 +21,13 @@ if (TARGET KF5::parsetrigrams)
     qt5_add_resources(sonnetcore_SRCS "${CMAKE_BINARY_DIR}/data/trigrams.qrc")
 endif()
 
-ecm_qt_declare_logging_category(sonnetcore_SRCS HEADER core_debug.h IDENTIFIER SONNET_LOG_CORE CATEGORY_NAME sonnet.core)
+ecm_qt_declare_logging_category(sonnetcore_SRCS
+    HEADER core_debug.h
+    IDENTIFIER SONNET_LOG_CORE
+    CATEGORY_NAME sonnet.core
+    DESCRIPTION "Sonnet Core"
+    EXPORT SONNET
+)
 
 # Dear packagers, this is just used as an extra search paths for plugins. Don't get your panties in a twist.
 add_definitions(-DINSTALLATION_PLUGIN_PATH="${CMAKE_INSTALL_PREFIX}/${KDE_INSTALL_PLUGINDIR}")

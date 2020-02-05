@@ -12,7 +12,13 @@ set(sonnetui_SRCS
     ${sonnet_QM_LOADER}
 )
 
-ecm_qt_declare_logging_category(sonnetui_SRCS HEADER ui_debug.h IDENTIFIER SONNET_LOG_UI CATEGORY_NAME sonnet.ui)
+ecm_qt_declare_logging_category(sonnetui_SRCS
+    HEADER ui_debug.h
+    IDENTIFIER SONNET_LOG_UI
+    CATEGORY_NAME sonnet.ui
+    DESCRIPTION "Sonnet UI"
+    EXPORT SONNET
+)
 
 set(sonnetui_UI
     configui.ui

@@ -5,7 +5,13 @@ include_directories( ${ASPELL_INCLUDE_DIR})
 ########### next target ###############
 
 set(sonnet_aspell_PART_SRCS aspellclient.cpp aspelldict.cpp)
-ecm_qt_declare_logging_category(sonnet_aspell_PART_SRCS HEADER aspell_debug.h IDENTIFIER SONNET_LOG_ASPELL CATEGORY_NAME sonnet.plugins.aspell)
+ecm_qt_declare_logging_category(sonnet_aspell_PART_SRCS
+    HEADER aspell_debug.h
+    IDENTIFIER SONNET_LOG_ASPELL
+    CATEGORY_NAME sonnet.plugins.aspell
+    DESCRIPTION "Sonnet Aspell plugin"
+    EXPORT SONNET
+)
 
 add_library(sonnet_aspell MODULE ${sonnet_aspell_PART_SRCS})
 

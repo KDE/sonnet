@@ -2,7 +2,13 @@ set(sonnet_hunspell_PART_SRCS
     hunspellclient.cpp
     hunspelldict.cpp
 )
-ecm_qt_declare_logging_category(sonnet_hunspell_PART_SRCS HEADER hunspelldebug.h IDENTIFIER SONNET_HUNSPELL CATEGORY_NAME sonnet.plugins.hunspell)
+ecm_qt_declare_logging_category(sonnet_hunspell_PART_SRCS
+    HEADER hunspelldebug.h
+    IDENTIFIER SONNET_HUNSPELL
+    CATEGORY_NAME sonnet.plugins.hunspell
+    DESCRIPTION "Sonnet HUnspell plugin"
+    EXPORT SONNET
+)
 
 # see: https://phabricator.kde.org/R246:0a96acf251baa5c9dd042d093ab2bf8fcee10502
 set(USE_OLD_HUNSPELL_API TRUE)

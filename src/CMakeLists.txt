@@ -3,3 +3,9 @@ add_subdirectory(plugins)
 if(TARGET Qt5::Widgets)
     add_subdirectory(ui)
 endif()
+
+ecm_qt_install_logging_categories(
+    EXPORT SONNET
+    FILE sonnet.categories
+    DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
+)
