@@ -12,6 +12,8 @@
 #include <windows.h>
 #include <spellcheck.h>
 
+#include <QMap>
+
 namespace Sonnet {
 class SpellerPlugin;
 }
@@ -41,9 +43,8 @@ public:
     }
 
 private:
-    bool m_wasCOMInitialized = false;
-    ISpellCheckerFactory* m_spellCheckerFactory = nullptr;
-    QStringList m_languages;
+    // we internally keep all spell checker interfaces alive
+    QMap<QString, ISpellChecker *> m_languages;
 };
 
 #endif

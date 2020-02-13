@@ -15,52 +15,50 @@ ISpellCheckerClient::ISpellCheckerClient(QObject *parent)
 {
     qCDebug(SONNET_ISPELLCHECKER) << " ISpellCheckerClient::ISpellCheckerClient";
 
-    // init com if needed
-    m_wasCOMInitialized = SUCCEEDED(CoInitializeEx(nullptr, COINIT_MULTITHREADED));
+    // init com if needed, use same variant as e.g. Qt in qtbase/src/corelib/io/qfilesystemengine_win.cpp
+    CoInitialize(nullptr);
 
-    // get factory
-    if (SUCCEEDED(CoCreateInstance(__uuidof(SpellCheckerFactory), nullptr, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&m_spellCheckerFactory)))) {
+    // get factory & collect all known languages + instantiate the spell checkers for them
+    ISpellCheckerFactory *spellCheckerFactory = nullptr;
+    if (SUCCEEDED(CoCreateInstance(__uuidof(SpellCheckerFactory), nullptr, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&spellCheckerFactory))) && spellCheckerFactory) {
         // if we have a factory, cache the language names
         IEnumString* enumLanguages = nullptr;
-        if (SUCCEEDED(m_spellCheckerFactory->get_SupportedLanguages(&enumLanguages))) {
+        if (SUCCEEDED(spellCheckerFactory->get_SupportedLanguages(&enumLanguages))) {
             HRESULT hr = S_OK;
             while (S_OK == hr) {
                 LPOLESTR string = nullptr;
                 hr = enumLanguages->Next(1, &string, nullptr);
                 if (S_OK == hr) {
-                    m_languages.push_back(QString::fromWCharArray(string));
+                    ISpellChecker *spellChecker = nullptr;
+                    if (SUCCEEDED(spellCheckerFactory->CreateSpellChecker(string, &spellChecker)) && spellChecker) {
+                        m_languages.insert(QString::fromWCharArray(string), spellChecker);
+                    }
                     CoTaskMemFree(string);
                 }
             }
             enumLanguages->Release();
         }
-    } else {
-        m_spellCheckerFactory = nullptr;
+        spellCheckerFactory->Release();
     }
 }
 
 ISpellCheckerClient::~ISpellCheckerClient()
 {
-    // de-init com if needed
-    if (m_wasCOMInitialized) {
-        CoUninitialize();
-    }
-
-    // release factory
-    if (m_spellCheckerFactory) {
-        m_spellCheckerFactory->Release();
-    }
+    // FIXME: we at the moment leak all checkers as sonnet does the cleanup to late for proper com cleanup :/
 }
 
 SpellerPlugin *ISpellCheckerClient::createSpeller(const QString &language)
 {
-    // create requested spellchecker, might internally fail to create instance
+    // create requested spellchecker if we know the language
     qCDebug(SONNET_ISPELLCHECKER) << " SpellerPlugin *ISpellCheckerClient::createSpeller(const QString &language) ;" << language;
-    ISpellCheckerDict *ad = new ISpellCheckerDict(m_spellCheckerFactory, language);
-    return ad;
+    const auto it = m_languages.find(language);
+    if (it != m_languages.end()) {
+        return new ISpellCheckerDict(it.value(), language);
+    }
+    return nullptr;
 }
 
 QStringList ISpellCheckerClient::languages() const
 {
-    return m_languages;
+    return m_languages.keys();
 }
