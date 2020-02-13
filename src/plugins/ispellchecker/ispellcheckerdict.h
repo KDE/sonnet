@@ -14,7 +14,7 @@
 class ISpellCheckerDict : public Sonnet::SpellerPlugin
 {
 public:
-    explicit ISpellCheckerDict(ISpellCheckerFactory *spellCheckerFactory, const QString &language);
+    explicit ISpellCheckerDict(ISpellChecker *spellChecker, const QString &language);
     ~ISpellCheckerDict() override;
     bool isCorrect(const QString &word) const override;
 
@@ -26,8 +26,8 @@ public:
     bool addToSession(const QString &word) override;
 
 private:
-    // spell checker com object
-    ISpellChecker *m_spellChecker = nullptr;
+    // spell checker com object, we don't own this
+    ISpellChecker * const m_spellChecker;
 };
 
 #endif
