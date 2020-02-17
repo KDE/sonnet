@@ -1,4 +1,4 @@
-/**
+/*
  * voikkoclient.h
  *
  * SPDX-FileCopyrightText: 2015 Jesse Jaara <jesse.jaara@gmail.com>

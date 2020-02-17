@@ -1,4 +1,4 @@
-/**
+/*
  * voikkodict.cpp
  *
  * SPDX-FileCopyrightText: 2015 Jesse Jaara <jesse.jaara@gmail.com>

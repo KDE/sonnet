@@ -1,4 +1,4 @@
-/**
+/*
  * backgroundchecker_p.h
  *
  * SPDX-FileCopyrightText: 2009 Jakub Stachowski <qbast@go2.pl>

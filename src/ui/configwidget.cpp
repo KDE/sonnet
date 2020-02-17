@@ -1,4 +1,4 @@
-/**
+/*
  * configwidget.cpp
  *
  * SPDX-FileCopyrightText: 2004 Zack Rusin <zack@kde.org>

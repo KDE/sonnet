@@ -1,4 +1,4 @@
-/**
+/*
  * kspell_hspelldict.cpp
  *
  * SPDX-FileCopyrightText: 2003 Zack Rusin <zack@kde.org>

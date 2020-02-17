@@ -1,4 +1,4 @@
-/**
+/*
  * kspell_hunspellclient.cpp
  *
  * SPDX-FileCopyrightText: 2009 Montel Laurent <montel@kde.org>

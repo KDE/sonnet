@@ -1,4 +1,4 @@
-/**
+/*
  * nsspellcheckerclient.h
  *
  * SPDX-FileCopyrightText: 2015 Nick Shaforostoff <shaforostoff@gmail.com>

@@ -1,4 +1,4 @@
-/**
+/*
  * kspell_aspellclient.cpp
  *
  * SPDX-FileCopyrightText: 2003 Zack Rusin <zack@kde.org>
