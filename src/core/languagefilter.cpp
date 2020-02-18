@@ -11,7 +11,7 @@
 #include "guesslanguage.h"
 #include "speller.h"
 #include "loader_p.h"
-#include "settings_p.h"
+#include "settingsimpl_p.h"
 
 namespace Sonnet {
 #define MIN_RELIABILITY 0.1

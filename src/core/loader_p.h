@@ -14,7 +14,7 @@
 #include <QSharedPointer>
 
 namespace Sonnet {
-class Settings;
+class SettingsImpl;
 class SpellerPlugin;
 class LoaderPrivate;
 /**
@@ -103,12 +103,12 @@ public:
     QString languageNameForCode(const QString &langCode) const;
 
     /**
-     * Returns the Settings object used by the loader.
+     * Returns the SettingsImpl object used by the loader.
      */
-    Settings *settings() const;
+    SettingsImpl *settings() const;
 Q_SIGNALS:
     /**
-     * Signal is emitted whenever the Settings object
+     * Signal is emitted whenever the SettingsImpl object
      * associated with this Loader changes.
      */
     void configurationChanged();
@@ -123,7 +123,7 @@ Q_SIGNALS:
     void loadingDictionaryFailed(const QString &language) const;
 
 protected:
-    friend class Settings;
+    friend class SettingsImpl;
     void changed();
 private:
     void loadPlugins();

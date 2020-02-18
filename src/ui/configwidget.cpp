@@ -9,7 +9,8 @@
 #include "ui_configui.h"
 
 #include "loader_p.h"
-#include "settings_p.h"
+#include "settingsimpl_p.h"
+#include "settings.h"
 
 #include <QCheckBox>
 #include <QListWidget>
@@ -23,7 +24,7 @@ class ConfigWidgetPrivate
 {
 public:
     Ui_SonnetConfigUI ui;
-    Loader *loader = nullptr;
+    Settings *settings = nullptr;
     QWidget *wdg = nullptr;
 };
 
@@ -31,16 +32,16 @@ ConfigWidget::ConfigWidget(QWidget *parent)
     : QWidget(parent)
     , d(new ConfigWidgetPrivate)
 {
-    d->loader = Loader::openLoader();
+    d->settings = new Settings(this);
     QVBoxLayout *layout = new QVBoxLayout(this);
     layout->setContentsMargins(0, 0, 0, 0);
     layout->setObjectName(QStringLiteral("SonnetConfigUILayout"));
     d->wdg = new QWidget(this);
     d->ui.setupUi(d->wdg);
 
-    d->ui.m_langCombo->setCurrentByDictionary(d->loader->settings()->defaultLanguage());
+    d->ui.m_langCombo->setCurrentByDictionary(d->settings->defaultLanguage());
 
-    QStringList preferredLanguages = d->loader->settings()->preferredLanguages();
+    QStringList preferredLanguages = d->settings->preferredLanguages();
     for (int i = 0; i < d->ui.m_langCombo->count(); i++) {
         const QString tag = d->ui.m_langCombo->itemData(i).toString();
         if (tag.isEmpty()) { // skip separator
@@ -56,15 +57,15 @@ ConfigWidget::ConfigWidget(QWidget *parent)
         }
     }
 
-    d->ui.m_skipUpperCB->setChecked(!d->loader->settings()->checkUppercase());
-    d->ui.m_skipRunTogetherCB->setChecked(d->loader->settings()->skipRunTogether());
-    d->ui.m_checkerEnabledByDefaultCB->setChecked(d->loader->settings()->checkerEnabledByDefault());
-    d->ui.m_autodetectCB->setChecked(d->loader->settings()->autodetectLanguage());
-    QStringList ignoreList = d->loader->settings()->currentIgnoreList();
+    d->ui.kcfg_skipUppercase->setChecked(d->settings->skipUppercase());
+    d->ui.kcfg_skipRunTogether->setChecked(d->settings->skipRunTogether());
+    d->ui.kcfg_checkerEnabledByDefault->setChecked(d->settings->checkerEnabledByDefault());
+    d->ui.kcfg_autodetectLanguage->setChecked(d->settings->autodetectLanguage());
+    QStringList ignoreList = d->settings->currentIgnoreList();
     ignoreList.sort();
     d->ui.ignoreListWidget->addItems(ignoreList);
-    d->ui.m_bgSpellCB->setChecked(d->loader->settings()->backgroundCheckerEnabled());
-    d->ui.m_bgSpellCB->hide();//hidden by default
+    d->ui.kcfg_backgroundCheckerEnabled->setChecked(d->settings->backgroundCheckerEnabled());
+    d->ui.kcfg_backgroundCheckerEnabled->hide();//hidden by default
     connect(d->ui.addButton, &QAbstractButton::clicked, this, &ConfigWidget::slotIgnoreWordAdded);
     connect(d->ui.removeButton, &QAbstractButton::clicked, this,
             &ConfigWidget::slotIgnoreWordRemoved);
@@ -74,16 +75,16 @@ ConfigWidget::ConfigWidget(QWidget *parent)
             &ConfigWidget::configChanged);
     connect(d->ui.languageList, &QListWidget::itemChanged, this, &ConfigWidget::configChanged);
 
-    connect(d->ui.m_bgSpellCB, &QAbstractButton::clicked, this, &ConfigWidget::configChanged);
-    connect(d->ui.m_skipUpperCB, &QAbstractButton::clicked, this, &ConfigWidget::configChanged);
-    connect(d->ui.m_skipRunTogetherCB, &QAbstractButton::clicked, this,
+    connect(d->ui.kcfg_backgroundCheckerEnabled, &QAbstractButton::clicked, this, &ConfigWidget::configChanged);
+    connect(d->ui.kcfg_skipUppercase, &QAbstractButton::clicked, this, &ConfigWidget::configChanged);
+    connect(d->ui.kcfg_skipRunTogether, &QAbstractButton::clicked, this,
             &ConfigWidget::configChanged);
-    connect(d->ui.m_checkerEnabledByDefaultCB, &QAbstractButton::clicked, this,
+    connect(d->ui.kcfg_checkerEnabledByDefault, &QAbstractButton::clicked, this,
             &ConfigWidget::configChanged);
-    connect(d->ui.m_autodetectCB, &QAbstractButton::clicked, this, &ConfigWidget::configChanged);
+    connect(d->ui.kcfg_autodetectLanguage, &QAbstractButton::clicked, this, &ConfigWidget::configChanged);
     connect(d->ui.newIgnoreEdit, &QLineEdit::textChanged, this, &ConfigWidget::slotUpdateButton);
     connect(d->ui.ignoreListWidget, &QListWidget::itemSelectionChanged, this, &ConfigWidget::slotSelectionChanged);
-    d->ui.nobackendfound->setVisible(d->loader->clients().isEmpty());
+    d->ui.nobackendfound->setVisible(d->settings->clients().isEmpty());
     d->ui.addButton->setEnabled(false);
     d->ui.removeButton->setEnabled(false);
 }
@@ -110,10 +111,8 @@ void ConfigWidget::save()
 
 void ConfigWidget::setFromGui()
 {
-    Settings *settings = d->loader->settings();
-
     if (d->ui.m_langCombo->count()) {
-        settings->setDefaultLanguage(d->ui.m_langCombo->currentDictionary());
+        d->settings->setDefaultLanguage(d->ui.m_langCombo->currentDictionary());
     }
 
     QStringList preferredLanguages;
@@ -123,29 +122,29 @@ void ConfigWidget::setFromGui()
         }
         preferredLanguages << d->ui.languageList->item(i)->data(Qt::UserRole).toString();
     }
-    settings->setPreferredLanguages(preferredLanguages);
+    d->settings->setPreferredLanguages(preferredLanguages);
 
-    settings->setCheckUppercase(!d->ui.m_skipUpperCB->isChecked());
-    settings->setSkipRunTogether(d->ui.m_skipRunTogetherCB->isChecked());
-    settings->setBackgroundCheckerEnabled(d->ui.m_bgSpellCB->isChecked());
-    settings->setCheckerEnabledByDefault(d->ui.m_checkerEnabledByDefaultCB->isChecked());
-    settings->setAutodetectLanguage(d->ui.m_autodetectCB->isChecked());
+    d->settings->setSkipUppercase(d->ui.kcfg_skipUppercase->isChecked());
+    d->settings->setSkipRunTogether(d->ui.kcfg_skipRunTogether->isChecked());
+    d->settings->setBackgroundCheckerEnabled(d->ui.kcfg_backgroundCheckerEnabled->isChecked());
+    d->settings->setCheckerEnabledByDefault(d->ui.kcfg_checkerEnabledByDefault->isChecked());
+    d->settings->setAutodetectLanguage(d->ui.kcfg_autodetectLanguage->isChecked());
 
-    if (settings->modified()) {
-        settings->save();
+    if (d->settings->modified()) {
+        d->settings->save();
     }
 }
 
 void ConfigWidget::slotIgnoreWordAdded()
 {
-    QStringList ignoreList = d->loader->settings()->currentIgnoreList();
+    QStringList ignoreList = d->settings->currentIgnoreList();
     QString newWord = d->ui.newIgnoreEdit->text();
     d->ui.newIgnoreEdit->clear();
     if (newWord.isEmpty() || ignoreList.contains(newWord)) {
         return;
     }
     ignoreList.append(newWord);
-    d->loader->settings()->setCurrentIgnoreList(ignoreList);
+    d->settings->setCurrentIgnoreList(ignoreList);
 
     d->ui.ignoreListWidget->clear();
     d->ui.ignoreListWidget->addItems(ignoreList);
@@ -155,12 +154,12 @@ void ConfigWidget::slotIgnoreWordAdded()
 
 void ConfigWidget::slotIgnoreWordRemoved()
 {
-    QStringList ignoreList = d->loader->settings()->currentIgnoreList();
+    QStringList ignoreList = d->settings->currentIgnoreList();
     const QList<QListWidgetItem *> selectedItems = d->ui.ignoreListWidget->selectedItems();
     for (const QListWidgetItem *item : selectedItems) {
         ignoreList.removeAll(item->text());
     }
-    d->loader->settings()->setCurrentIgnoreList(ignoreList);
+    d->settings->setCurrentIgnoreList(ignoreList);
 
     d->ui.ignoreListWidget->clear();
     d->ui.ignoreListWidget->addItems(ignoreList);
@@ -170,23 +169,23 @@ void ConfigWidget::slotIgnoreWordRemoved()
 
 void ConfigWidget::setBackgroundCheckingButtonShown(bool b)
 {
-    d->ui.m_bgSpellCB->setVisible(b);
+    d->ui.kcfg_backgroundCheckerEnabled->setVisible(b);
 }
 
 bool ConfigWidget::backgroundCheckingButtonShown() const
 {
-    return !d->ui.m_bgSpellCB->isHidden();
+    return !d->ui.kcfg_backgroundCheckerEnabled->isHidden();
 }
 
 void ConfigWidget::slotDefault()
 {
-    d->ui.m_autodetectCB->setChecked(true);
-    d->ui.m_skipUpperCB->setChecked(false);
-    d->ui.m_skipRunTogetherCB->setChecked(false);
-    d->ui.m_checkerEnabledByDefaultCB->setChecked(false);
-    d->ui.m_bgSpellCB->setChecked(true);
+    d->ui.kcfg_autodetectLanguage->setChecked(Settings::defaultAutodetectLanguage());
+    d->ui.kcfg_skipUppercase->setChecked(Settings::defaultSkipUppercase());
+    d->ui.kcfg_skipRunTogether->setChecked(Settings::defauktSkipRunTogether());
+    d->ui.kcfg_checkerEnabledByDefault->setChecked(Settings::defaultCheckerEnabledByDefault());
+    d->ui.kcfg_backgroundCheckerEnabled->setChecked(Settings::defaultBackgroundCheckerEnabled());
     d->ui.ignoreListWidget->clear();
-    d->ui.m_langCombo->setCurrentByDictionary(d->loader->settings()->defaultLanguage());
+    d->ui.m_langCombo->setCurrentByDictionary(d->settings->defaultLanguage());
 }
 
 void ConfigWidget::setLanguage(const QString &language)

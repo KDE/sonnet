@@ -5,6 +5,7 @@ set(sonnetcore_SRCS
    client.cpp
    spellerplugin.cpp
    speller.cpp
+   settingsimpl.cpp
    settings.cpp
    backgroundchecker.cpp
    guesslanguage.cpp
@@ -51,6 +52,7 @@ ecm_generate_headers(SonnetCore_CamelCase_HEADERS
     BackgroundChecker
     Speller
     GuessLanguage
+    Settings
   PREFIX Sonnet
   REQUIRED_HEADERS SonnetCore_HEADERS
 )

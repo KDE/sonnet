@@ -13,7 +13,7 @@
 #include "speller.h"
 #include "loader_p.h"
 #include "tokenizer_p.h"
-#include "settings_p.h"
+#include "settingsimpl_p.h"
 #include "languagefilter_p.h"
 
 #include "ui_debug.h"

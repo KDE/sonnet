@@ -9,7 +9,7 @@
 #include "test_settings.h"
 
 #include "speller.h"
-#include "settings_p.h"
+#include "settingsimpl_p.h"
 
 #include <QTest>
 #include <QSettings>

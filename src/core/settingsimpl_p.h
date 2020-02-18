@@ -3,26 +3,27 @@
  *
  * SPDX-License-Identifier: LGPL-2.1-or-later
  */
-#ifndef SONNET_SETTINGS_P_H
-#define SONNET_SETTINGS_P_H
+#ifndef SONNET_SETTINGS_IMPL_P_H
+#define SONNET_SETTINGS_IMPL_P_H
+
+#include "sonnetcore_export.h"
 
 #include <QStringList>
 #include <QString>
-#include "sonnetcore_export.h"
 
 namespace Sonnet {
 class Loader;
-class SettingsPrivate;
+class SettingsImplPrivate;
 /**
- * Settings class
+ * SettingsImpl class
  */
-class SONNETCORE_EXPORT Settings
+class SONNETCORE_EXPORT SettingsImpl
 {
 public:
-    ~Settings();
+    ~SettingsImpl();
 
-    Settings(const Settings &) = delete;
-    Settings &operator=(const Settings &) = delete;
+    SettingsImpl(const SettingsImpl &) = delete;
+    SettingsImpl &operator=(const SettingsImpl &) = delete;
 
     bool modified() const;
     void setModified(bool modified);
@@ -63,15 +64,14 @@ public:
     int disableWordErrorCount() const;
 
 private:
-    void readIgnoreList();
     bool setQuietIgnoreList(const QStringList &ignores);
 
 private:
     friend class Loader;
-    explicit Settings(Loader *loader);
+    explicit SettingsImpl(Loader *loader);
 private:
-    SettingsPrivate *const d;
+    SettingsImplPrivate *const d;
 };
 }
 
-#endif // SONNET_SETTINGS_P_H
+#endif // SONNET_SETTINGS_IMPL_P_H

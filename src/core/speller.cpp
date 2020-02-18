@@ -6,7 +6,7 @@
 #include "speller.h"
 
 #include "loader_p.h"
-#include "settings_p.h"
+#include "settingsimpl_p.h"
 #include "spellerplugin_p.h"
 
 #include <QCache>
@@ -58,7 +58,7 @@ public:
     }
 
     QSharedPointer<SpellerPlugin> dict;
-    Settings *settings = nullptr;
+    SettingsImpl *settings = nullptr;
     QString language;
 };
 

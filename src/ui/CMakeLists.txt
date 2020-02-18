@@ -4,6 +4,7 @@ ecm_create_qm_loader(sonnet_QM_LOADER sonnet5_qt)
 
 set(sonnetui_SRCS
     configdialog.cpp
+    configview.cpp
     configwidget.cpp
     dialog.cpp
     dictionarycombobox.cpp
@@ -30,6 +31,7 @@ ecm_generate_headers(SonnetUi_CamelCase_HEADERS
     Dialog
     Highlighter
     ConfigDialog
+    ConfigView
     ConfigWidget
     DictionaryComboBox
     SpellCheckDecorator

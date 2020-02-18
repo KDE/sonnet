@@ -11,7 +11,7 @@
 
 #include "backgroundchecker.h"
 #include "speller.h"
-#include "settings_p.h"
+#include "settingsimpl_p.h"
 
 #include <qprogressdialog.h>
 

@@ -5,7 +5,7 @@
  * SPDX-License-Identifier: LGPL-2.1-or-later
  */
 #include "loader_p.h"
-#include "settings_p.h"
+#include "settingsimpl_p.h"
 #include "client_p.h"
 #include "spellerplugin_p.h"
 
@@ -30,7 +30,7 @@ namespace Sonnet {
 class LoaderPrivate
 {
 public:
-    Settings *settings;
+    SettingsImpl *settings;
 
     // <language, Clients with that language >
     QMap<QString, QVector<Client *> > languageClients;
@@ -54,7 +54,7 @@ Loader *Loader::openLoader()
 Loader::Loader()
     : d(new LoaderPrivate)
 {
-    d->settings = new Settings(this);
+    d->settings = new SettingsImpl(this);
     d->settings->restore();
     loadPlugins();
 }
@@ -267,7 +267,7 @@ QStringList Loader::languageNames() const
     return allLocalizedDictionaries;
 }
 
-Settings *Loader::settings() const
+SettingsImpl *Loader::settings() const
 {
     return d->settings;
 }
