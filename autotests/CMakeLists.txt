@@ -11,6 +11,7 @@ ecm_add_tests(
  test_core
  test_suggest
  test_settings
+ test_autodetect
  NAME_PREFIX "sonnet-"
  LINK_LIBRARIES KF5::SonnetCore Qt5::Test
 )

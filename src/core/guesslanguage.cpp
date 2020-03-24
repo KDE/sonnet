@@ -568,7 +568,18 @@ QString GuessLanguage::identify(const QString &text, const QStringList &suggesti
         d->loadModels();
     }
 
-    QStringList candidateLanguages = d->identify(text, d->findRuns(text));
+    const QList<QChar::Script> scriptsList = d->findRuns(text);
+
+    QStringList candidateLanguages = d->identify(text, scriptsList);
+
+    //if guessing from trigrams fail
+    for (const QChar::Script script : scriptsList) {
+        const auto languagesList = d->s_scriptLanguages.values(script);
+        for (const QString &lang : languagesList) {
+            if (!d->s_knownModels.contains(lang))
+                candidateLanguages.append(lang);
+        }
+    }
 
     // Hack for some bad dictionary names
     for (int i = 0; i < candidateLanguages.count(); i++) {
