@@ -79,6 +79,7 @@ public:
         tokenizer = new WordTokenizer();
         active = true;
         automatic = false;
+        autoDetectLanguageDisabled = false;
         connected = false;
         wordCount = 0;
         errorCount = 0;
@@ -118,6 +119,7 @@ public:
     QPlainTextEdit *plainTextEdit = nullptr;
     bool active;
     bool automatic;
+    bool autoDetectLanguageDisabled;
     bool completeRehighlightRequired;
     bool intraWordEditing;
     bool spellCheckerFound; //cached d->dict->isValid() value
@@ -195,6 +197,11 @@ bool Highlighter::automatic() const
     return d->automatic;
 }
 
+bool Highlighter::autoDetectLanguageDisabled() const
+{
+    return d->autoDetectLanguageDisabled;
+}
+
 bool Highlighter::intraWordEditing() const
 {
     return d->intraWordEditing;
@@ -215,6 +222,11 @@ void Highlighter::setAutomatic(bool automatic)
     if (d->automatic) {
         slotAutoDetection();
     }
+}
+
+void Highlighter::setAutoDetectLanguageDisabled(bool autoDetectDisabled)
+{
+    d->autoDetectLanguageDisabled = autoDetectDisabled;
 }
 
 void Highlighter::slotAutoDetection()
@@ -326,7 +338,7 @@ void Highlighter::highlightBlock(const QString &text)
         const bool autodetectLanguage = d->spellchecker->testAttribute(Speller::AutoDetectLanguage);
         while (d->languageFilter->hasNext()) {
             QStringRef sentence = d->languageFilter->next();
-            if (autodetectLanguage) {
+            if (autodetectLanguage && !d->autoDetectLanguageDisabled) {
                 QString lang;
                 QPair<int, int> spos = QPair<int, int>(sentence.position(), sentence.length());
                 // try cache first
@@ -383,6 +395,7 @@ void Highlighter::setCurrentLanguage(const QString &lang)
         d->spellchecker->setLanguage(prevLang);
         return;
     }
+    d->autoDetectLanguageDisabled = true;
     d->wordCount = 0;
     d->errorCount = 0;
     if (d->automatic || d->active) {

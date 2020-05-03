@@ -48,7 +48,7 @@ void BackgroundCheckerPrivate::checkNext()
         const bool ignoreUpperCase = !currentDict.testAttribute(Speller::CheckUppercase);
         while (mainTokenizer.hasNext()) {
             QStringRef sentence = mainTokenizer.next();
-            if (autodetectLanguage) {
+            if (autodetectLanguage && !autoDetectLanguageDisabled) {
                 if (!mainTokenizer.isSpellcheckable()) {
                     continue;
                 }
@@ -119,8 +119,19 @@ void BackgroundChecker::finishedCurrentFeed()
 {
 }
 
+bool BackgroundChecker::autoDetectLanguageDisabled() const
+{
+    return d->autoDetectLanguageDisabled;
+}
+
+void BackgroundChecker::setAutoDetectLanguageDisabled(bool autoDetectDisabled)
+{
+    d->autoDetectLanguageDisabled = autoDetectDisabled;
+}
+
 void BackgroundChecker::setSpeller(const Speller &speller)
 {
+    d->autoDetectLanguageDisabled = true;
     d->currentDict = speller;
 }
 
@@ -152,6 +163,7 @@ QStringList BackgroundChecker::suggest(const QString &word) const
 void BackgroundChecker::changeLanguage(const QString &lang)
 {
     // this sets language only for current sentence
+    d->autoDetectLanguageDisabled = true;
     d->currentDict.setLanguage(lang);
 }
 

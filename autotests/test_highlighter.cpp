@@ -24,6 +24,7 @@ private Q_SLOTS:
     void testEnglish();
     void testFrench();
     void testMultipleLanguages();
+    void testForceLanguage();
 };
 
 void HighlighterTest::initTestCase()
@@ -93,6 +94,30 @@ void HighlighterTest::testFrench()
     // THEN
     QVERIFY2(suggestionsForBnjour.contains(QLatin1String("Bonjour")), qPrintable(suggestionsForBnjour.join(QLatin1Char(','))));
     QVERIFY2(suggestionsForDict.contains(QLatin1String("dictionnaire")), qPrintable(suggestionsForDict.join(QLatin1Char(','))));
+}
+
+void HighlighterTest::testForceLanguage()
+{
+    // GIVEN
+    QPlainTextEdit textEdit;
+    textEdit.setPlainText(QString::fromLatin1(s_frenchSentence));
+    Sonnet::Highlighter highlighter(&textEdit);
+    highlighter.setCurrentLanguage(QStringLiteral("en"));
+    QVERIFY(highlighter.spellCheckerFound());
+    QVERIFY(highlighter.autoDetectLanguageDisabled());
+    highlighter.rehighlight();
+    QCOMPARE(highlighter.currentLanguage(), QStringLiteral("en"));
+    QTextCursor cursor(textEdit.document());
+
+    // WHEN
+    cursor.setPosition(0);
+    const QStringList suggestionsForBnjour = highlighter.suggestionsForWord(QStringLiteral("Bnjour"), cursor);
+    cursor.setPosition(37);
+    const QStringList suggestionsForDict = highlighter.suggestionsForWord(QStringLiteral("dictionnare"), cursor);
+
+    // THEN
+    QVERIFY2(!suggestionsForBnjour.contains(QLatin1String("Bonjour")), qPrintable(suggestionsForBnjour.join(QLatin1Char(','))));
+    QVERIFY2(!suggestionsForDict.contains(QLatin1String("dictionnaire")), qPrintable(suggestionsForDict.join(QLatin1Char(','))));
 }
 
 void HighlighterTest::testMultipleLanguages()

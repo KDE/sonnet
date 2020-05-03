@@ -23,6 +23,7 @@ public:
     BackgroundCheckerPrivate() : mainTokenizer(new SentenceTokenizer)
         , sentenceOffset(-1)
     {
+        autoDetectLanguageDisabled = false;
     }
 
     void start();
@@ -33,6 +34,7 @@ public:
     QStringRef lastMisspelled;
     Speller currentDict;
     int sentenceOffset;
+    bool autoDetectLanguageDisabled;
 
 private Q_SLOTS:
     void checkNext();

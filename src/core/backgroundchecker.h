@@ -72,6 +72,25 @@ public:
      */
     bool addWordToSession(const QString &word);
 
+    /**
+     * Returns whether the automatic language detection is disabled,
+     * overriding the Sonnet settings.
+     *
+     * @return true if the automatic language detection is disabled
+     * @since 5.71
+     */
+    bool autoDetectLanguageDisabled() const;
+
+    /**
+     * Sets whether to disable the automatic language detection.
+     *
+     * @param autoDetectDisabled if true, the language will not be
+     * detected automatically by the spell checker, even if the option
+     * is enabled in the Sonnet settings.
+     * @since 5.71
+     */
+    void setAutoDetectLanguageDisabled(bool autoDetectDisabled);
+
 public Q_SLOTS:
     virtual void start();
     virtual void stop();
