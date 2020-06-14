@@ -383,7 +383,7 @@ QString Highlighter::currentLanguage() const
     return d->spellchecker->language();
 }
 
-void Highlighter::setCurrentLanguage(const QString &lang, const bool disableAutoDetect)
+void Highlighter::setCurrentLanguage(const QString &lang, bool disableAutoDetect)
 {
     QString prevLang = d->spellchecker->language();
     d->spellchecker->setLanguage(lang);

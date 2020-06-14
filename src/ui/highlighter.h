@@ -209,7 +209,7 @@ public Q_SLOTS:
      *
      * @param language the language code for the new language to use.
      */
-    void setCurrentLanguage(const QString &language, const bool disableAutoDetect = false);
+    void setCurrentLanguage(const QString &language, bool disableAutoDetect = false);
 
     /**
      * Run auto detection, disabling spell checking if too many errors are found.

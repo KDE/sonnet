@@ -58,7 +58,7 @@ public:
     QString currentContext() const;
 
     Speller speller() const;
-    void setSpeller(const Speller &speller, const bool disableAutoDetect = false);
+    void setSpeller(const Speller &speller, bool disableAutoDetect = false);
 
     bool checkWord(const QString &word);
     QStringList suggest(const QString &word) const;
@@ -95,7 +95,7 @@ public Q_SLOTS:
     virtual void start();
     virtual void stop();
     void replace(int start, const QString &oldText, const QString &newText);
-    void changeLanguage(const QString &lang, const bool disableAutoDetect = false);
+    void changeLanguage(const QString &lang, bool disableAutoDetect = false);
 
     /**
      * After emitting misspelling signal the background
