@@ -129,7 +129,7 @@ void BackgroundChecker::setAutoDetectLanguageDisabled(bool autoDetectDisabled)
     d->autoDetectLanguageDisabled = autoDetectDisabled;
 }
 
-void BackgroundChecker::setSpeller(const Speller &speller, const bool disableAutoDetect = false)
+void BackgroundChecker::setSpeller(const Speller &speller, const bool disableAutoDetect)
 {
     d->autoDetectLanguageDisabled = disableAutoDetect;
     d->currentDict = speller;
@@ -160,7 +160,7 @@ QStringList BackgroundChecker::suggest(const QString &word) const
     return d->currentDict.suggest(word);
 }
 
-void BackgroundChecker::changeLanguage(const QString &lang, const bool disableAutoDetect = false)
+void BackgroundChecker::changeLanguage(const QString &lang, const bool disableAutoDetect)
 {
     // this sets language only for current sentence
     d->autoDetectLanguageDisabled = disableAutoDetect;
