@@ -103,6 +103,7 @@ void HighlighterTest::testForceLanguage()
     textEdit.setPlainText(QString::fromLatin1(s_frenchSentence));
     Sonnet::Highlighter highlighter(&textEdit);
     highlighter.setCurrentLanguage(QStringLiteral("en"));
+    highlighter.setAutoDetectLanguageDisabled(true);
     QVERIFY(highlighter.spellCheckerFound());
     QVERIFY(highlighter.autoDetectLanguageDisabled());
     highlighter.rehighlight();
