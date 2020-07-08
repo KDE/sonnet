@@ -8,7 +8,7 @@
 #include "configdialog.h"
 #include "speller.h"
 
-#include <qapplication.h>
+#include <QApplication>
 
 using namespace Sonnet;
 

@@ -6,7 +6,7 @@
 
 #include "dictionarycombobox.h"
 
-#include <qapplication.h>
+#include <QApplication>
 #include <QDebug>
 #include <QHBoxLayout>
 #include <QPushButton>

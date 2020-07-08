@@ -8,7 +8,7 @@
 #include "test_core.h"
 #include "speller.h"
 #include <QElapsedTimer>
-#include <qtest.h>
+#include <QTest>
 #include <QDebug>
 
 QTEST_GUILESS_MAIN(SonnetCoreTest)

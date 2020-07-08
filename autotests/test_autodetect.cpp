@@ -20,7 +20,7 @@
 #include "speller.h"
 
 #include <QObject>
-#include <qtest.h>
+#include <QTest>
 #include <QStandardPaths>
 
 class SonnetAutoDetectTest : public QObject

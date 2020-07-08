@@ -13,7 +13,7 @@
 #include "speller.h"
 #include "settingsimpl_p.h"
 
-#include <qprogressdialog.h>
+#include <QProgressDialog>
 
 #include <QDialogButtonBox>
 #include <QStringListModel>

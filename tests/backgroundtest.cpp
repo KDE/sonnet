@@ -10,8 +10,8 @@
 #include "speller.h"
 using namespace Sonnet;
 
-#include <qapplication.h>
-#include <qdebug.h>
+#include <QApplication>
+#include <QDebug>
 
 const char *text
     =

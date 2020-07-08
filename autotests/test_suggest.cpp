@@ -10,7 +10,7 @@
 
 #include <QDebug>
 #include <QObject>
-#include <qtest.h>
+#include <QTest>
 
 using namespace Sonnet;
 

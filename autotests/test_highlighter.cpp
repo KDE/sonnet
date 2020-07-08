@@ -11,7 +11,7 @@
 #include <QPlainTextEdit>
 #include <QStandardPaths>
 #include <QObject>
-#include <qtest.h>
+#include <QTest>
 
 using namespace Sonnet;
 

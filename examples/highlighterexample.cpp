@@ -8,7 +8,7 @@
 #include "highlighter.h"
 #include "highlighterexample.h"
 
-#include <qapplication.h>
+#include <QApplication>
 #include <QDebug>
 #include <QTextEdit>
 #include <QAction>

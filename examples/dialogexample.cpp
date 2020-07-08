@@ -10,8 +10,8 @@
 
 #include "backgroundchecker.h"
 
-#include <qapplication.h>
-#include <qdebug.h>
+#include <QApplication>
+#include <QDebug>
 using namespace Sonnet;
 
 TestDialog::TestDialog()
