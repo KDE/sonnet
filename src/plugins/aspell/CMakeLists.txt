@@ -8,7 +8,8 @@ set(sonnet_aspell_PART_SRCS aspellclient.cpp aspelldict.cpp)
 ecm_qt_declare_logging_category(sonnet_aspell_PART_SRCS
     HEADER aspell_debug.h
     IDENTIFIER SONNET_LOG_ASPELL
-    CATEGORY_NAME sonnet.plugins.aspell
+    CATEGORY_NAME kf.sonnet.clients.aspell
+    OLD_CATEGORY_NAMES sonnet.plugins.aspell
     DESCRIPTION "Sonnet Aspell plugin"
     EXPORT SONNET
 )

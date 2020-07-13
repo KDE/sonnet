@@ -5,7 +5,8 @@ set(sonnet_nsspellchecker_PART_SRCS
 ecm_qt_declare_logging_category(sonnet_nsspellchecker_PART_SRCS
     HEADER nsspellcheckerdebug.h
     IDENTIFIER SONNET_NSSPELLCHECKER
-    CATEGORY_NAME sonnet.plugins.nsspellchecker
+    CATEGORY_NAME kf.sonnet.clients.nsspellchecker
+    OLD_CATEGORY_NAMES sonnet.plugins.nsspellchecker
     DESCRIPTION "Sonnet NSSpellChecker plugin"
     EXPORT SONNET
 )

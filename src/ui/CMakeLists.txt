@@ -16,7 +16,8 @@ set(sonnetui_SRCS
 ecm_qt_declare_logging_category(sonnetui_SRCS
     HEADER ui_debug.h
     IDENTIFIER SONNET_LOG_UI
-    CATEGORY_NAME sonnet.ui
+    CATEGORY_NAME kf.sonnet.ui
+    OLD_CATEGORY_NAMES sonnet.ui
     DESCRIPTION "Sonnet UI"
     EXPORT SONNET
 )

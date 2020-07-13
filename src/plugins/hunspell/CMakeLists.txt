@@ -5,7 +5,8 @@ set(sonnet_hunspell_PART_SRCS
 ecm_qt_declare_logging_category(sonnet_hunspell_PART_SRCS
     HEADER hunspelldebug.h
     IDENTIFIER SONNET_HUNSPELL
-    CATEGORY_NAME sonnet.plugins.hunspell
+    CATEGORY_NAME kf.sonnet.clients.hunspell
+    OLD_CATEGORY_NAMES sonnet.plugins.hunspell
     DESCRIPTION "Sonnet HUnspell plugin"
     EXPORT SONNET
 )

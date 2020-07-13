@@ -8,7 +8,8 @@ set(sonnet_ispellchecker_PART_SRCS
 ecm_qt_declare_logging_category(sonnet_ispellchecker_PART_SRCS
     HEADER ispellcheckerdebug.h
     IDENTIFIER SONNET_ISPELLCHECKER
-    CATEGORY_NAME sonnet.plugins.ispellchecker
+    CATEGORY_NAME kf.sonnet.clients.ispellchecker
+    OLD_CATEGORY_NAMES sonnet.plugins.ispellchecker
     DESCRIPTION "Sonnet ISpellChecker plugin"
     EXPORT SONNET
 )

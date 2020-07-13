@@ -25,7 +25,8 @@ endif()
 ecm_qt_declare_logging_category(sonnetcore_SRCS
     HEADER core_debug.h
     IDENTIFIER SONNET_LOG_CORE
-    CATEGORY_NAME sonnet.core
+    CATEGORY_NAME kf.sonnet.core
+    OLD_CATEGORY_NAMES sonnet.core
     DESCRIPTION "Sonnet Core"
     EXPORT SONNET
 )

@@ -15,7 +15,8 @@ set(sonnet_hspell_PART_SRCS hspellclient.cpp hspelldict.cpp)
 ecm_qt_declare_logging_category(sonnet_hspell_PART_SRCS
     HEADER hspell_debug.h
     IDENTIFIER SONNET_LOG_HSPELL
-    CATEGORY_NAME sonnet.plugins.hspell
+    CATEGORY_NAME kf.sonnet.clients.hspell
+    OLD_CATEGORY_NAMES sonnet.plugins.hspell
     DESCRIPTION "Sonnet Hspell plugin"
     EXPORT SONNET
 )
