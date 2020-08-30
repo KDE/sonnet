@@ -14,7 +14,6 @@
 
 namespace Sonnet {
 class Loader;
-class SettingsImpl;
 class SettingsPrivate;
 
 class SONNETCORE_EXPORT Settings : public QObject

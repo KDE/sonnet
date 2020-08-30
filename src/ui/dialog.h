@@ -12,7 +12,6 @@
 #include <QDialog>
 #include "sonnetui_export.h"
 
-class QListWidgetItem;
 class QModelIndex;
 
 namespace Sonnet {
