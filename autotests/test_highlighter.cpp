@@ -12,6 +12,7 @@
 #include <QStandardPaths>
 #include <QObject>
 #include <QTest>
+#include <QRegularExpression>
 
 using namespace Sonnet;
 
@@ -54,7 +55,8 @@ void HighlighterTest::testEnglish()
     textEdit.setPlainText(QString::fromLatin1(s_englishSentence));
     Sonnet::Highlighter highlighter(&textEdit);
     highlighter.setCurrentLanguage(QStringLiteral("en"));
-    QVERIFY(highlighter.spellCheckerFound());
+    if(!highlighter.spellCheckerFound())
+        QSKIP("'en' not available");
     highlighter.rehighlight();
     QTextCursor cursor(textEdit.document());
 
@@ -81,7 +83,9 @@ void HighlighterTest::testFrench()
     textEdit.setPlainText(QString::fromLatin1(s_frenchSentence));
     Sonnet::Highlighter highlighter(&textEdit);
     highlighter.setCurrentLanguage(QStringLiteral("fr_FR"));
-    QVERIFY(highlighter.spellCheckerFound());
+    if (!highlighter.spellCheckerFound()) {
+        QSKIP("'fr_FR' not available");
+    }
     highlighter.rehighlight();
     QTextCursor cursor(textEdit.document());
 
@@ -131,6 +135,13 @@ void HighlighterTest::testMultipleLanguages()
     highlighter.rehighlight();
     QTextCursor cursor(textEdit.document());
 
+    //create Speller to check if we have the language dictionaries available otherwise
+    //this will just keep failing
+    Sonnet::Speller speller;
+    const auto availableLangs = speller.availableLanguages();
+    bool isFrAvailable = availableLangs.indexOf(QStringLiteral("fr_FR")) != -1;
+    bool isEnAvailable = availableLangs.indexOf(QRegularExpression(QStringLiteral("en"))) != -1;
+
     // WHEN
     cursor.setPosition(6);
     const QStringList suggestionsForHelo = highlighter.suggestionsForWord(QStringLiteral("helo"), cursor);
@@ -142,10 +153,14 @@ void HighlighterTest::testMultipleLanguages()
     const QStringList suggestionsForDict = highlighter.suggestionsForWord(QStringLiteral("dictionnare"), cursor);
 
     // THEN
-    QVERIFY2(suggestionsForHelo.contains(QLatin1String("hello")), qPrintable(suggestionsForHelo.join(QLatin1Char(','))));
-    QVERIFY2(suggestionsForEnviroment.contains(QLatin1String("environment")), qPrintable(suggestionsForEnviroment.join(QLatin1Char(','))));
-    QVERIFY2(suggestionsForBnjour.contains(QLatin1String("Bonjour")), qPrintable(suggestionsForBnjour.join(QLatin1Char(','))));
-    QVERIFY2(suggestionsForDict.contains(QLatin1String("dictionnaire")), qPrintable(suggestionsForDict.join(QLatin1Char(','))));
+    if (isEnAvailable) {
+        QVERIFY2(suggestionsForHelo.contains(QLatin1String("hello")), qPrintable(suggestionsForHelo.join(QLatin1Char(','))));
+        QVERIFY2(suggestionsForEnviroment.contains(QLatin1String("environment")), qPrintable(suggestionsForEnviroment.join(QLatin1Char(','))));
+    }
+    if (isFrAvailable) {
+        QVERIFY2(suggestionsForBnjour.contains(QLatin1String("Bonjour")), qPrintable(suggestionsForBnjour.join(QLatin1Char(','))));
+        QVERIFY2(suggestionsForDict.contains(QLatin1String("dictionnaire")), qPrintable(suggestionsForDict.join(QLatin1Char(','))));
+    }
 }
 
 QTEST_MAIN(HighlighterTest)
