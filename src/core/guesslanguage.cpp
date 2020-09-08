@@ -771,7 +771,7 @@ QStringList GuessLanguagePrivate::guessFromTrigrams(const QString &sample,
 QList<QString> GuessLanguagePrivate::createOrderedModel(const QString &content)
 {
     QHash<QString, int> trigramCounts;
-    QMap<int, QString> orderedTrigrams;
+    QMultiMap<int, QString> orderedTrigrams;
 
     for (int i = 0; i < (content.size() - 2); ++i) {
         QString tri = content.mid(i, 3).toLower();
@@ -783,7 +783,7 @@ QList<QString> GuessLanguagePrivate::createOrderedModel(const QString &content)
         bool hasTwoSpaces = (data[1].isSpace() && (data[0].isSpace() || data[2].isSpace()));
 
         if (!hasTwoSpaces) {
-            orderedTrigrams.insertMulti(-trigramCounts[key], key);
+            orderedTrigrams.insert(-trigramCounts[key], key);
         }
     }
 
