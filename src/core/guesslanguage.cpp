@@ -533,14 +533,15 @@ GuessLanguagePrivate::GuessLanguagePrivate()
     if (!allLanguages.contains(s_knownDictionaries)) {
         QSet<QString> dicts(s_knownDictionaries);
         dicts.subtract(allLanguages);
-        for (const QString &dictName : dicts) {
+        for (const QString &dictName : qAsConst(dicts)) {
             QString languageName = QLocale(dictName).name();
             if (languageName.isEmpty()) {
                 qCWarning(SONNET_LOG_CORE) << "Unable to parse language name" << dictName;
                 continue;
             }
             s_dictionaryNameMap[languageName] = dictName;
-            if (!s_scriptLanguages.values().contains(languageName)) {
+            if (std::find(s_scriptLanguages.cbegin(), s_scriptLanguages.cend(), languageName)
+                    == s_scriptLanguages.cend()) {
                 qCWarning(SONNET_LOG_CORE) << "Unable to handle language from dictionary"
                                            << dictName << languageName;
             }
