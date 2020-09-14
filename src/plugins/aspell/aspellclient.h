@@ -42,7 +42,7 @@ public:
     }
 
 private:
-    AspellConfig *m_config;
+    AspellConfig *const m_config;
 };
 
 #endif

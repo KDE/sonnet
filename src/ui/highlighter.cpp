@@ -129,7 +129,7 @@ public:
     int wordCount, errorCount;
     QTimer *rehighlightRequest = nullptr;
     QColor spellColor;
-    Highlighter *q;
+    Highlighter *const q;
 };
 
 HighlighterPrivate::~HighlighterPrivate()

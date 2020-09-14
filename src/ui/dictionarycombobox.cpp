@@ -19,7 +19,7 @@ public:
     {
     }
 
-    DictionaryComboBox *q;
+    DictionaryComboBox *const q;
     void slotDictionaryChanged(int idx);
 };
 

@@ -22,7 +22,7 @@ public:
     }
 
     ConfigWidget *ui = nullptr;
-    ConfigDialog *q;
+    ConfigDialog *const q;
     void slotConfigChanged();
 };
 

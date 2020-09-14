@@ -26,8 +26,6 @@ public:
         , itemPosition(-1)
         , cacheValid(false)
         , type(s)
-        , inAddress(false)
-        , ignoreUppercase(false)
     {
     }
 
@@ -43,15 +41,15 @@ public:
 
     QStringRef currentItem() const;
 
-    TextBreaks *breakFinder;
+    TextBreaks *const breakFinder;
     QString buffer;
 
-    int itemPosition;
+    int itemPosition = -1;
     mutable bool cacheValid;
     QStringRef last;
-    Type type;
-    bool inAddress;
-    bool ignoreUppercase;
+    const Type type;
+    bool inAddress = false;
+    bool ignoreUppercase = false;
 
     bool hasNext() const;
     QStringRef next();

@@ -46,7 +46,7 @@ public:
     void execSuggestionMenu(const QPoint &pos, const QString &word, const QTextCursor &cursor);
     void createDefaultHighlighter();
 
-    SpellCheckDecorator *q = nullptr;
+    SpellCheckDecorator *const q;
     QTextEdit *m_textEdit = nullptr;
     QPlainTextEdit *m_plainTextEdit = nullptr;
     Highlighter *m_highlighter = nullptr;

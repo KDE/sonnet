@@ -14,7 +14,7 @@ namespace Sonnet {
 class SettingsPrivate
 {
 public:
-    Loader *loader;
+    Loader *loader = nullptr;
 };
 
 Settings::Settings(QObject *parent)
