@@ -94,8 +94,7 @@ public:
         spellchecker = new Sonnet::Speller();
         spellCheckerFound = spellchecker->isValid();
         rehighlightRequest = new QTimer(q);
-        q->connect(rehighlightRequest, SIGNAL(timeout()),
-                   q, SLOT(slotRehighlight()));
+        q->connect(rehighlightRequest, &QTimer::timeout, q, &Highlighter::slotRehighlight);
 
         if (!spellCheckerFound) {
             return;
@@ -311,8 +310,8 @@ void Highlighter::highlightBlock(const QString &text)
     }
 
     if (!d->connected) {
-        connect(document(), SIGNAL(contentsChange(int,int,int)),
-                SLOT(contentsChange(int,int,int)));
+        connect(document(), &QTextDocument::contentsChange,
+                this, &Highlighter::contentsChange);
         d->connected = true;
     }
     QTextCursor cursor;

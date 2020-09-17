@@ -53,12 +53,11 @@ ConfigDialog::ConfigDialog(QWidget *parent)
             this, &ConfigDialog::slotOk);
     connect(buttonBox, &QDialogButtonBox::rejected,
             this, &QDialog::reject);
-
     connect(d->ui, SIGNAL(configChanged()),
             this, SLOT(slotConfigChanged()));
 
-    connect(d->ui, SIGNAL(configChanged()),
-            this, SIGNAL(configChanged()));
+    connect(d->ui, &ConfigWidget::configChanged,
+            this, &ConfigDialog::configChanged);
 }
 
 ConfigDialog::~ConfigDialog()

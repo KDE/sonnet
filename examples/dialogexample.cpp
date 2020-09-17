@@ -24,8 +24,7 @@ void TestDialog::check(const QString &buffer)
 {
     Sonnet::Dialog *dlg = new Sonnet::Dialog(
         new BackgroundChecker(this), nullptr);
-    connect(dlg, SIGNAL(done(QString)),
-            SLOT(doneChecking(QString)));
+    connect(dlg, &Dialog::spellCheckDone, this, &TestDialog::doneChecking);
     dlg->setBuffer(buffer);
     dlg->show();
 }

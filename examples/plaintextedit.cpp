@@ -53,8 +53,8 @@ int main(int argc, char **argv)
     installer->highlighter()->setCurrentLanguage(QStringLiteral("en"));
     //@@snippet_end
 
-    QObject::connect(comboBox, SIGNAL(dictionaryChanged(QString)), installer->highlighter(),
-                     SLOT(setCurrentLanguage(QString)));
+    QObject::connect(comboBox, &Sonnet::DictionaryComboBox::dictionaryChanged,
+            installer->highlighter(), &Sonnet::Highlighter::setCurrentLanguage);
 
     QPlainTextEdit *commentTextEdit = new QPlainTextEdit;
     commentTextEdit->setPlainText(
@@ -62,8 +62,8 @@ int main(int argc, char **argv)
 
     installer = new CommentCheckDecorator(commentTextEdit);
     installer->highlighter()->setCurrentLanguage(QStringLiteral("en"));
-    QObject::connect(comboBox, SIGNAL(dictionaryChanged(QString)), installer->highlighter(),
-                     SLOT(setCurrentLanguage(QString)));
+    QObject::connect(comboBox, &Sonnet::DictionaryComboBox::dictionaryChanged,
+            installer->highlighter(), &Sonnet::Highlighter::setCurrentLanguage);
 
     QVBoxLayout *layout = new QVBoxLayout(&window);
     layout->addWidget(comboBox);

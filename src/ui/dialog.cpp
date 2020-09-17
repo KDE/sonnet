@@ -113,21 +113,25 @@ void Dialog::initConnections()
             this, &Dialog::slotSkipAll);
     connect(d->ui.m_suggestBtn, &QAbstractButton::clicked,
             this, &Dialog::slotSuggest);
-    connect(d->ui.m_language, SIGNAL(activated(QString)),
-            SLOT(slotChangeLanguage(QString)));
-    connect(d->ui.m_suggestions, SIGNAL(clicked(QModelIndex)),
-            SLOT(slotSelectionChanged(QModelIndex)));
-    connect(d->checker, SIGNAL(misspelling(QString,int)),
-            SLOT(slotMisspelling(QString,int)));
-    connect(d->checker, SIGNAL(done()),
-            SLOT(slotDone()));
-    connect(d->ui.m_suggestions, SIGNAL(doubleClicked(QModelIndex)),
-            SLOT(slotReplaceWord()));
+#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
+    connect(d->ui.m_language, &DictionaryComboBox::textActivated,
+            this, &Dialog::slotChangeLanguage);
+#else
+    connect(d->ui.m_language, QOverload<const QString&>::of(&QComboBox::activated),
+            this, &Dialog::slotChangeLanguage);
+#endif
+    connect(d->ui.m_suggestions, &QListView::clicked,
+            this, &Dialog::slotSelectionChanged);
+    connect(d->checker, &BackgroundChecker::misspelling,
+            this, &Dialog::slotMisspelling);
+    connect(d->checker, &BackgroundChecker::done,
+            this, &Dialog::slotDone);
+    connect(d->ui.m_suggestions, &QListView::doubleClicked,
+            this, [this](const QModelIndex&){ slotReplaceWord(); });
     connect(d->buttonBox, &QDialogButtonBox::accepted, this, &Dialog::slotFinished);
     connect(d->buttonBox, &QDialogButtonBox::rejected, this, &Dialog::slotCancel);
-    connect(d->ui.m_replacement, SIGNAL(returnPressed()), this, SLOT(slotReplaceWord()));
-    connect(d->ui.m_autoCorrect, SIGNAL(clicked()),
-            SLOT(slotAutocorrect()));
+    connect(d->ui.m_replacement, &QLineEdit::returnPressed, this, &Dialog::slotReplaceWord);
+    connect(d->ui.m_autoCorrect, &QPushButton::clicked, this, &Dialog::slotAutocorrect);
     // button use by kword/kpresenter
     // hide by default
     d->ui.m_autoCorrect->hide();

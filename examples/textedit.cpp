@@ -53,8 +53,8 @@ int main(int argc, char **argv)
     installer->highlighter()->setCurrentLanguage(QStringLiteral("en_US"));
     //@@snippet_end
 
-    QObject::connect(comboBox, SIGNAL(dictionaryChanged(QString)), installer->highlighter(),
-                     SLOT(setCurrentLanguage(QString)));
+    QObject::connect(comboBox, &Sonnet::DictionaryComboBox::dictionaryChanged,
+            installer->highlighter(), &Sonnet::Highlighter::setCurrentLanguage);
 
     QTextEdit *mailTextEdit = new QTextEdit;
     mailTextEdit->setText(
@@ -62,8 +62,8 @@ int main(int argc, char **argv)
 
     installer = new MailSpellCheckDecorator(mailTextEdit);
     installer->highlighter()->setCurrentLanguage(QStringLiteral("en_US"));
-    QObject::connect(comboBox, SIGNAL(dictionaryChanged(QString)), installer->highlighter(),
-                     SLOT(setCurrentLanguage(QString)));
+    QObject::connect(comboBox, &Sonnet::DictionaryComboBox::dictionaryChanged,
+            installer->highlighter(), &Sonnet::Highlighter::setCurrentLanguage);
 
     QVBoxLayout *layout = new QVBoxLayout(&window);
     layout->addWidget(comboBox);
