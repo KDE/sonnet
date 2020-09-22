@@ -665,7 +665,7 @@ void GuessLanguagePrivate::loadModels()
 #endif
     knownLanguages.subtract(availableLanguages);
     if (!knownLanguages.isEmpty()) {
-        qCWarning(SONNET_LOG_CORE) << "Missing trigrams for languages:" << knownLanguages;
+        qCDebug(SONNET_LOG_CORE) << "Missing trigrams for languages:" << knownLanguages;
     }
 }
 
