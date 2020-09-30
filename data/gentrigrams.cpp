@@ -53,13 +53,13 @@ int main(int argc, char *argv[])
     qDebug() << "model built!";
 
     qDebug() << "Sorting...";
-    QMap<int, QString> orderedTrigrams;
+    QMultiMap<int, QString> orderedTrigrams;
     for (const QString &key : model.keys()) {
         const QChar *data = key.constData();
         bool hasTwoSpaces = (data[1].isSpace() && (data[0].isSpace() || data[2].isSpace()));
 
         if (!hasTwoSpaces) {
-            orderedTrigrams.insertMulti(model[key], key);
+            orderedTrigrams.insert(model[key], key);
         }
     }
     qDebug() << "Sorted!";
