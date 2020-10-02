@@ -21,7 +21,7 @@
 class CommentCheckDecorator : public Sonnet::SpellCheckDecorator
 {
 public:
-    CommentCheckDecorator(QPlainTextEdit *edit)
+    explicit CommentCheckDecorator(QPlainTextEdit *edit)
         : Sonnet::SpellCheckDecorator(edit)
     {
     }

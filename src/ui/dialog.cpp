@@ -27,7 +27,7 @@ namespace Sonnet {
 class ReadOnlyStringListModel : public QStringListModel
 {
 public:
-    ReadOnlyStringListModel(QObject *parent) : QStringListModel(parent)
+    explicit ReadOnlyStringListModel(QObject *parent) : QStringListModel(parent)
     {
     }
 

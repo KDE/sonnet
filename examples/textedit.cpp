@@ -21,7 +21,7 @@
 class MailSpellCheckDecorator : public Sonnet::SpellCheckDecorator
 {
 public:
-    MailSpellCheckDecorator(QTextEdit *edit)
+    explicit MailSpellCheckDecorator(QTextEdit *edit)
         : Sonnet::SpellCheckDecorator(edit)
     {
     }
