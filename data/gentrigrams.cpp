@@ -54,14 +54,17 @@ int main(int argc, char *argv[])
 
     qDebug() << "Sorting...";
     QMultiMap<int, QString> orderedTrigrams;
-    for (const QString &key : model.keys()) {
-        const QChar *data = key.constData();
-        bool hasTwoSpaces = (data[1].isSpace() && (data[0].isSpace() || data[2].isSpace()));
+
+    for (auto it = model.cbegin(); it != model.cend(); ++it) {
+        const QString data = it.key();
+        bool hasTwoSpaces = ((data.size() > 1 && data[0].isSpace() && data[1].isSpace())
+                             || (data.size() > 2 && data[1].isSpace() && data[2].isSpace()));
 
         if (!hasTwoSpaces) {
-            orderedTrigrams.insert(model[key], key);
+            orderedTrigrams.insert(it.value(), data);
         }
     }
+
     qDebug() << "Sorted!";
 
     qDebug() << "Weeding out...";
