@@ -57,7 +57,6 @@ public:
     bool checkerEnabledByDefault() const;
 
     void setCurrentIgnoreList(const QStringList &ignores);
-    bool addWordToIgnore(const QString &word);
     QStringList currentIgnoreList() const;
     bool ignore(const QString &word);
 
