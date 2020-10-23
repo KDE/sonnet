@@ -5,12 +5,10 @@
  *
  * SPDX-License-Identifier: LGPL-2.1-or-later
  */
-#include "highlighter.h"
 #include "highlighterexample.h"
 
 #include <QApplication>
 #include <QDebug>
-#include <QTextEdit>
 #include <QAction>
 #include <QMenu>
 #include <QContextMenuEvent>
