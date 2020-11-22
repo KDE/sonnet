@@ -55,8 +55,9 @@ void HighlighterTest::testEnglish()
     textEdit.setPlainText(QString::fromLatin1(s_englishSentence));
     Sonnet::Highlighter highlighter(&textEdit);
     highlighter.setCurrentLanguage(QStringLiteral("en"));
-    if(!highlighter.spellCheckerFound())
+    if (!highlighter.spellCheckerFound()){
         QSKIP("'en' not available");
+    }
     highlighter.rehighlight();
     QTextCursor cursor(textEdit.document());
 
@@ -139,7 +140,7 @@ void HighlighterTest::testMultipleLanguages()
     //this will just keep failing
     Sonnet::Speller speller;
     const auto availableLangs = speller.availableLanguages();
-    bool isFrAvailable = availableLangs.indexOf(QStringLiteral("fr_FR")) != -1;
+    bool isFrAvailable = availableLangs.indexOf(QRegularExpression(QStringLiteral("fr"))) != -1;
     bool isEnAvailable = availableLangs.indexOf(QRegularExpression(QStringLiteral("en"))) != -1;
 
     // WHEN
