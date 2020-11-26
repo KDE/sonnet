@@ -24,7 +24,7 @@ include(ECMPoQmTools)
 
 set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprecated API excluded from the build [default=0].")
 
-set(REQUIRED_QT_VERSION 5.12.0)
+set(REQUIRED_QT_VERSION 5.13.0)
 option(SONNET_USE_WIDGETS "Build components using Qt5Widgets" ON)
 if(SONNET_USE_WIDGETS)
     find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets)
