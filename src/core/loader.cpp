@@ -279,6 +279,14 @@ SettingsImpl *Loader::settings() const
 void Loader::loadPlugins()
 {
 #ifndef SONNET_STATIC
+    // In case it is running from the build directory
+    for (const QFileInfo &info : QDir::current().entryInfoList(QDir::Files)) {
+        if (!info.isExecutable()) {
+            continue;
+        }
+        loadPlugin(info.absoluteFilePath());
+    }
+
     const QStringList libPaths = QCoreApplication::libraryPaths() << QStringLiteral(INSTALLATION_PLUGIN_PATH);
     const QLatin1String pathSuffix("/kf5/sonnet/");
     int plugins = 0;
