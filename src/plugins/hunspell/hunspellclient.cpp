@@ -49,9 +49,20 @@ HunspellClient::HunspellClient(QObject *parent)
 
     for (const QString &dirString : dirList) {
         QDir dir(dirString);
-        const auto dicts = dir.entryInfoList({QStringLiteral("*.aff")}, QDir::Files);
+        const QList<QFileInfo> dicts = dir.entryInfoList({QStringLiteral("*.aff")}, QDir::Files);
         for (const QFileInfo &dict : dicts) {
-            m_languagePaths.insert(dict.baseName(), dict.canonicalPath());
+            const QString language = dict.baseName();
+            if (dict.isSymbolicLink()) {
+                QFileInfo actualDict(dict.symLinkTarget());
+                if (dict.baseName() != actualDict.baseName()) {
+                    qCDebug(SONNET_HUNSPELL)
+                        << "Found alias" << language << "->" << actualDict.baseName();
+                    m_languageAliases.insert(language, actualDict.baseName());
+                    continue;
+                }
+            } else {
+                m_languagePaths.insert(language, dict.canonicalPath());
+            }
         }
     }
 }
@@ -60,11 +71,23 @@ HunspellClient::~HunspellClient()
 {
 }
 
-SpellerPlugin *HunspellClient::createSpeller(const QString &language)
+SpellerPlugin *HunspellClient::createSpeller(const QString &inputLang)
 {
+    QString language = inputLang;
+    if (m_languageAliases.contains(language)) {
+        qCDebug(SONNET_HUNSPELL)
+            << "Using alias" << m_languageAliases.value(language)
+            << "for" << language;
+        language = m_languageAliases.value(language);
+    }
+    std::shared_ptr<Hunspell> hunspell = m_hunspellCache.value(language).lock();
+    if (!hunspell) {
+        hunspell = HunspellDict::createHunspell(language, m_languagePaths.value(language));
+        m_hunspellCache.insert(language, hunspell);
+    }
     qCDebug(SONNET_HUNSPELL)
-    << " SpellerPlugin *HunspellClient::createSpeller(const QString &language) ;" << language;
-    HunspellDict *ad = new HunspellDict(language, m_languagePaths.value(language));
+        << " SpellerPlugin *HunspellClient::createSpeller(const QString &language) ;" << language;
+    HunspellDict *ad = new HunspellDict(inputLang, hunspell);
     return ad;
 }
 

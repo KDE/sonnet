@@ -20,32 +20,22 @@
 
 using namespace Sonnet;
 
-HunspellDict::HunspellDict(const QString &lang, QString path)
+HunspellDict::HunspellDict(const QString &lang, const std::shared_ptr<Hunspell> &speller)
     : SpellerPlugin(lang)
 {
-    qCDebug(SONNET_HUNSPELL) << "Loading dictionary for" << lang << "from" << path;
-
-    if (!path.endsWith(QLatin1Char('/'))) {
-        path += QLatin1Char('/');
+    if (!speller) {
+        qCWarning(SONNET_HUNSPELL) << "Can't create a client without a speller";
+        return;
     }
-    path += lang;
-    QString dictionary = path + QStringLiteral(".dic");
-    QString aff = path + QStringLiteral(".aff");
-
-    if (QFileInfo::exists(dictionary) && QFileInfo::exists(aff)) {
-        m_speller
-            = new Hunspell(aff.toLocal8Bit().constData(), dictionary.toLocal8Bit().constData());
-        m_codec = QTextCodec::codecForName(m_speller->get_dic_encoding());
-        if (!m_codec) {
-            qCWarning(SONNET_HUNSPELL) << "Failed to find a text codec for name"
-                                       << m_speller->get_dic_encoding()
-                                       << "defaulting to locale text codec";
-            m_codec = QTextCodec::codecForLocale();
-            Q_ASSERT(m_codec);
-        }
-    } else {
-        qCWarning(SONNET_HUNSPELL) << "Unable to find dictionary for" << lang << "in path" << path;
+    m_codec = QTextCodec::codecForName(speller->get_dic_encoding());
+    if (!m_codec) {
+        qCWarning(SONNET_HUNSPELL) << "Failed to find a text codec for name"
+            << speller->get_dic_encoding()
+            << "defaulting to locale text codec";
+        m_codec = QTextCodec::codecForLocale();
+        Q_ASSERT(m_codec);
     }
+    m_speller = speller;
 
     QString userDic = QDir::home().filePath(QLatin1String(".hunspell_") % lang);
     QFile userDicFile(userDic);
@@ -56,24 +46,45 @@ HunspellDict::HunspellDict(const QString &lang, QString path)
             QString word = userDicIn.readLine();
             if (word.contains(QLatin1Char('/'))) {
                 QStringList wordParts = word.split(QLatin1Char('/'));
-                m_speller->add_with_affix(toDictEncoding(wordParts.at(
+                speller->add_with_affix(toDictEncoding(wordParts.at(
                                                              0)).constData(),
                                           toDictEncoding(wordParts.at(1)).constData());
             }
             if (word.at(0) == QLatin1Char('*')) {
-                m_speller->remove(toDictEncoding(word.mid(1)).constData());
+                speller->remove(toDictEncoding(word.mid(1)).constData());
             } else {
-                m_speller->add(toDictEncoding(word).constData());
+                speller->add(toDictEncoding(word).constData());
             }
         }
         userDicFile.close();
     }
-    qCDebug(SONNET_HUNSPELL) << "Created " << m_speller;
+}
+
+std::shared_ptr<Hunspell> HunspellDict::createHunspell(const QString &lang, QString path)
+{
+    qCDebug(SONNET_HUNSPELL) << "Loading dictionary for" << lang << "from" << path;
+
+    if (!path.endsWith(QLatin1Char('/'))) {
+        path += QLatin1Char('/');
+    }
+    path += lang;
+    QString dictionary = path + QStringLiteral(".dic");
+    QString aff = path + QStringLiteral(".aff");
+
+    if (!QFileInfo::exists(dictionary) || !QFileInfo::exists(aff)) {
+        qCWarning(SONNET_HUNSPELL) << "Unable to find dictionary for" << lang << "in path" << path;
+        return nullptr;
+    }
+
+    std::shared_ptr<Hunspell> speller
+        = std::make_shared<Hunspell>(aff.toLocal8Bit().constData(), dictionary.toLocal8Bit().constData());
+    qCDebug(SONNET_HUNSPELL) << "Created " << speller.get();
+
+    return speller;
 }
 
 HunspellDict::~HunspellDict()
 {
-    delete m_speller;
 }
 
 QByteArray HunspellDict::toDictEncoding(const QString &word) const

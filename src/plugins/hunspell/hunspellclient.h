@@ -10,7 +10,9 @@
 
 #include "client_p.h"
 #include <QMap>
+#include <memory>
 
+class Hunspell;
 namespace Sonnet {
 class SpellerPlugin;
 }
@@ -41,6 +43,8 @@ public:
 
 private:
     QMap<QString, QString> m_languagePaths;
+    QMap<QString, std::weak_ptr<Hunspell>> m_hunspellCache;
+    QMap<QString, QString> m_languageAliases;
 };
 
 #endif
