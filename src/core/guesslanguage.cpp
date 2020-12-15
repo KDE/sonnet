@@ -52,8 +52,8 @@ public:
 
     void loadModels();
     QList< QChar::Script > findRuns(const QString &text);
-    QList<QString> createOrderedModel(const QString &content);
-    int distance(const QList<QString> &model, const QHash<QString, int> &knownModel);
+    QVector<QString> createOrderedModel(const QString &content);
+    int distance(const QVector<QString> &model, const QHash<QString, int> &knownModel);
     QStringList guessFromTrigrams(const QString &sample, const QStringList &langs);
     QStringList identify(const QString &sample, const QList< QChar::Script > &scripts);
     QString guessFromDictionaries(const QString &sentence, const QStringList &candidates);
@@ -730,7 +730,7 @@ QStringList GuessLanguagePrivate::guessFromTrigrams(const QString &sample,
 {
     QStringList ret;
 
-    const QList<QString> sampleTrigrams = createOrderedModel(sample);
+    const QVector<QString> sampleTrigrams = createOrderedModel(sample);
 
     // Sort by score
     QMultiMap<int, QString> scores;
@@ -769,29 +769,49 @@ QStringList GuessLanguagePrivate::guessFromTrigrams(const QString &sample,
     return ret;
 }
 
-QList<QString> GuessLanguagePrivate::createOrderedModel(const QString &content)
+QVector<QString> GuessLanguagePrivate::createOrderedModel(const QString &content)
 {
     QHash<QString, int> trigramCounts;
-    QMultiMap<int, QString> orderedTrigrams;
 
+    //collect trigrams
+    trigramCounts.reserve(content.size() - 2);
     for (int i = 0; i < (content.size() - 2); ++i) {
         QString tri = content.mid(i, 3).toLower();
         trigramCounts[tri]++;
     }
 
-    for (const QString &key : trigramCounts.keys()) {
-        const QChar *data = key.constData();
+    //invert the map <freq, trigram>
+    QVector<QPair<int, QString>> trigramFrequencyList;
+    trigramFrequencyList.reserve(trigramCounts.size());
+
+    auto it = trigramCounts.constBegin();
+    for (; it != trigramCounts.constEnd(); ++it) {
+        const QChar *data = it.key().constData();
         bool hasTwoSpaces = (data[1].isSpace() && (data[0].isSpace() || data[2].isSpace()));
 
         if (!hasTwoSpaces) {
-            orderedTrigrams.insert(-trigramCounts[key], key);
+            const int freq = it.value();
+            const QString& trigram = it.key();
+            trigramFrequencyList.append({freq, trigram});
         }
     }
 
-    return orderedTrigrams.values();
+    //sort descending by frequency
+    std::sort(trigramFrequencyList.begin(), trigramFrequencyList.end(), [](const QPair<int, QString>& a, const QPair<int, QString>& b) {
+        return a.first > b.first;
+    });
+
+
+    QVector<QString> orderedTrigrams;
+    orderedTrigrams.reserve(trigramFrequencyList.size());
+    for (const auto& tri : qAsConst(trigramFrequencyList)) {
+        orderedTrigrams.append(tri.second);
+    }
+
+    return orderedTrigrams;
 }
 
-int GuessLanguagePrivate::distance(const QList<QString> &model, const QHash<QString,
+int GuessLanguagePrivate::distance(const QVector<QString> &model, const QHash<QString,
                                                                             int> &knownModel)
 {
     int counter = -1;
