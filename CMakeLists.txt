@@ -24,7 +24,7 @@ include(ECMPoQmTools)
 
 set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprecated API excluded from the build [default=0].")
 
-set(REQUIRED_QT_VERSION 5.13.0)
+set(REQUIRED_QT_VERSION 5.14.0)
 option(SONNET_USE_WIDGETS "Build components using Qt5Widgets" ON)
 if(SONNET_USE_WIDGETS)
     find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets)
@@ -45,7 +45,7 @@ if(SONNET_USE_WIDGETS)
     add_feature_info(DESIGNERPLUGIN ${BUILD_DESIGNERPLUGIN} "Build plugin for Qt Designer")
 endif()
 
-add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050d00)
+add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050e00)
 if (IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/po")
     ecm_install_po_files_as_qm(po)
 endif()
