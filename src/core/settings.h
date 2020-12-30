@@ -58,7 +58,6 @@ public:
 
     void setCurrentIgnoreList(const QStringList &ignores);
     QStringList currentIgnoreList() const;
-    bool ignore(const QString &word);
 
     QStringList clients() const;
     bool modified() const;
