@@ -30,6 +30,8 @@ private Q_SLOTS:
     void initTestCase();
     void autodetect_data();
     void autodetect();
+    void benchDistance_data();
+    void benchDistance();
 };
 
 using namespace Sonnet;
@@ -90,6 +92,30 @@ void SonnetAutoDetectTest::autodetect()
     qDebug() << "Expected: " << correct_lang;
 
     QCOMPARE(actualLangCode, correctLangCode);
+}
+
+void SonnetAutoDetectTest::benchDistance_data()
+{
+    QTest::addColumn<QString>("sentence");
+    QTest::addColumn<QString>("correct_lang");
+    QTest::addColumn<QStringList>("suggested_langs");
+
+    QTest::newRow("English") << QStringLiteral("This is an English sentence.") << QStringLiteral("en_US") << QStringList{QLatin1String("en_US"), QLatin1String("de_DE")};
+    QTest::newRow("German") << QStringLiteral("Dies ist ein deutscher Satz.") << QStringLiteral("de_DE") << QStringList{QLatin1String("pl_PL"), QLatin1String("de_DE_frami")};
+    QTest::newRow("Malayam") << QStringLiteral("ഇന്ത്യയുടെ തെക്കു ഭാഗത്തു സ്ഥിതി ചെയ്യുന്ന ഒരു സംസ്ഥാനമാണ് കേരളം.") << QStringLiteral("ml_IN") << QStringList{QLatin1String("ml_IN"), QLatin1String("en_US-large")};
+}
+
+void SonnetAutoDetectTest::benchDistance()
+{
+    QFETCH(QString, sentence);
+    QFETCH(QString, correct_lang);
+    QFETCH(QStringList, suggested_langs);
+
+    Sonnet::GuessLanguage gl;
+
+    QBENCHMARK {
+        QString actual_lang = gl.identify(sentence, suggested_langs);
+    }
 }
 
 QTEST_GUILESS_MAIN(SonnetAutoDetectTest)

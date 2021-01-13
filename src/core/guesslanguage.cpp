@@ -685,13 +685,19 @@ QList<QChar::Script> GuessLanguagePrivate::findRuns(const QString &text)
         return relevantScripts;
     }
 
-    for (const QChar::Script &script : scriptCounts.keys()) {
+    if (scriptCounts.size() == 1) {
+        return {script};
+    }
+
+    for (auto it = scriptCounts.cbegin(); it != scriptCounts.cend(); ++it) {
         // return run types that used for 40% or more of the string
-        if (scriptCounts[script] * 100 / totalCount >= 40) {
-            relevantScripts << script;
+        const int scriptCount = it.value();
+        const auto currentScript = it.key();
+        if (scriptCount * 100 / totalCount >= 40) {
+            relevantScripts << currentScript;
             // always return basic latin if found more than 15%.
-        } else if (script == QChar::Script_Latin && scriptCounts[script] * 100 / totalCount >= 15) {
-            relevantScripts << script;
+        } else if (currentScript == QChar::Script_Latin && scriptCount * 100 / totalCount >= 15) {
+            relevantScripts << currentScript;
         }
     }
 
@@ -806,8 +812,9 @@ int GuessLanguagePrivate::distance(const QVector<QString> &model, const QHash<QS
     int dist = 0;
 
     for (const QString &trigram : model) {
-        if (knownModel.contains(trigram)) {
-            dist += qAbs(++counter - knownModel.value(trigram));
+        const int val = knownModel.value(trigram, -1);
+        if (val != -1) {
+            dist += qAbs(++counter - val);
         } else {
             dist += MAXGRAMS;
         }
