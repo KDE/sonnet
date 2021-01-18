@@ -37,7 +37,7 @@ void BackgroundCheckerPrivate::checkNext()
             // ok, this is valid word, do something
             if (currentDict.isMisspelled(word.toString())) {
                 lastMisspelled = word;
-                emit misspelling(word.toString(), word.position()+sentenceOffset);
+                Q_EMIT misspelling(word.toString(), word.position()+sentenceOffset);
                 return;
             }
         }
@@ -61,7 +61,7 @@ void BackgroundCheckerPrivate::checkNext()
             break;
         }
     } while (sentenceOffset != -1);
-    emit done();
+    Q_EMIT done();
 }
 
 BackgroundChecker::BackgroundChecker(QObject *parent)
@@ -176,7 +176,7 @@ void BackgroundChecker::slotEngineDone()
     const QString currentText = fetchMoreText();
 
     if (currentText.isNull()) {
-        emit done();
+        Q_EMIT done();
     } else {
         d->mainTokenizer.setBuffer(currentText);
         d->start();

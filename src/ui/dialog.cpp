@@ -187,7 +187,7 @@ void Dialog::slotAutocorrect()
 {
     setGuiEnabled(false);
     setProgressDialogVisible(true);
-    emit autoCorrect(d->currentWord, d->ui.m_replacement->text());
+    Q_EMIT autoCorrect(d->currentWord, d->ui.m_replacement->text());
     slotReplaceWord();
 }
 
@@ -223,13 +223,13 @@ void Dialog::setProgressDialogVisible(bool b)
 void Dialog::slotFinished()
 {
     setProgressDialogVisible(false);
-    emit stop();
+    Q_EMIT stop();
     //FIXME: should we emit done here?
 #if SONNETUI_BUILD_DEPRECATED_SINCE(5, 65)
-    emit done(d->checker->text());
+    Q_EMIT done(d->checker->text());
 #endif
-    emit spellCheckDone(d->checker->text());
-    emit spellCheckStatus(tr("Spell check stopped."));
+    Q_EMIT spellCheckDone(d->checker->text());
+    Q_EMIT spellCheckStatus(tr("Spell check stopped."));
     accept();
 }
 
@@ -238,8 +238,8 @@ void Dialog::slotCancel()
     d->canceled = true;
     d->deleteProgressDialog(false); // this method can be called in response to
     // pressing 'Cancel' on the dialog
-    emit cancel();
-    emit spellCheckStatus(tr("Spell check canceled."));
+    Q_EMIT cancel();
+    Q_EMIT spellCheckStatus(tr("Spell check canceled."));
     reject();
 }
 
@@ -316,7 +316,7 @@ void Dialog::slotReplaceWord()
     setGuiEnabled(false);
     setProgressDialogVisible(true);
     QString replacementText = d->ui.m_replacement->text();
-    emit replace(d->currentWord, d->currentPosition,
+    Q_EMIT replace(d->currentWord, d->currentPosition,
                  replacementText);
 
     if (d->spellCheckContinuedAfterReplacement) {
@@ -368,7 +368,7 @@ void Dialog::slotChangeLanguage(const QString &lang)
     if (!languageCode.isEmpty()) {
         d->checker->changeLanguage(languageCode);
         slotSuggest();
-        emit languageChanged(languageCode);
+        Q_EMIT languageChanged(languageCode);
     }
 }
 
@@ -386,7 +386,7 @@ void Dialog::slotMisspelling(const QString &word, int start)
 {
     setGuiEnabled(true);
     setProgressDialogVisible(false);
-    emit misspelling(word, start);
+    Q_EMIT misspelling(word, start);
     //NOTE this is HACK I had to introduce because BackgroundChecker lacks 'virtual' marks on methods
     //this dramatically reduces spellchecking time in Lokalize
     //as this doesn't fetch suggestions for words that are present in msgid
@@ -409,16 +409,16 @@ void Dialog::slotDone()
 {
     d->restart = false;
 #if SONNETUI_BUILD_DEPRECATED_SINCE(5, 65)
-    emit done(d->checker->text());
+    Q_EMIT done(d->checker->text());
 #endif
-    emit spellCheckDone(d->checker->text());
+    Q_EMIT spellCheckDone(d->checker->text());
     if (d->restart) {
         updateDictionaryComboBox();
         d->checker->setText(d->originalBuffer);
         d->restart = false;
     } else {
         setProgressDialogVisible(false);
-        emit spellCheckStatus(tr("Spell check complete."));
+        Q_EMIT spellCheckStatus(tr("Spell check complete."));
         accept();
         if (!d->canceled && d->showCompletionMessageBox) {
             QMessageBox::information(this, tr("Spell check complete."),

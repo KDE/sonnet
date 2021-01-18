@@ -83,7 +83,7 @@ SpellerPlugin *Loader::createSpeller(const QString &language, const QString &cli
             return createSpeller(QStringLiteral("en_US"), clientName);
         }
         qCWarning(SONNET_LOG_CORE) << "No language dictionaries for the language:" << plang;
-        emit loadingDictionaryFailed(plang);
+        Q_EMIT loadingDictionaryFailed(plang);
         return nullptr;
     }
 
@@ -348,6 +348,6 @@ void Loader::loadPlugin(const QString &pluginPath)
 
 void Loader::changed()
 {
-    emit configurationChanged();
+    Q_EMIT configurationChanged();
 }
 }

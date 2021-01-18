@@ -57,7 +57,7 @@ void ConfigViewPrivate::slotIgnoreWordAdded()
     ui.ignoreListWidget->clear();
     ui.ignoreListWidget->addItems(ignoreList);
 
-    emit q->configChanged();
+    Q_EMIT q->configChanged();
 }
 
 void ConfigViewPrivate::slotIgnoreWordRemoved()
@@ -70,7 +70,7 @@ void ConfigViewPrivate::slotIgnoreWordRemoved()
     ui.ignoreListWidget->clear();
     ui.ignoreListWidget->addItems(ignoreList);
 
-    emit q->configChanged();
+    Q_EMIT q->configChanged();
 }
 
 ConfigView::ConfigView(QWidget *parent)
@@ -167,7 +167,7 @@ void ConfigView::setPreferredLanguages(const QStringList& preferredLanguages)
             item->setCheckState(Qt::Unchecked);
         }
     }
-    emit configChanged();
+    Q_EMIT configChanged();
 }
 
 
@@ -189,7 +189,7 @@ void ConfigView::setIgnoreList(const QStringList& ignoreList)
     d->ignoreList.sort();
     d->ui.ignoreListWidget->clear();
     d->ui.ignoreListWidget->addItems(d->ignoreList);
-    emit configChanged();
+    Q_EMIT configChanged();
 }
 
 QStringList ConfigView::ignoreList() const

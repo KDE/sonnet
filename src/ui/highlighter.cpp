@@ -246,10 +246,10 @@ void Highlighter::slotAutoDetection()
 
     if (d->active != savedActive) {
         if (d->active) {
-            emit activeChanged(tr("As-you-type spell checking enabled."));
+            Q_EMIT activeChanged(tr("As-you-type spell checking enabled."));
         } else {
             qCDebug(SONNET_LOG_UI) << "Sonnet: Disabling spell checking, too many errors";
-            emit activeChanged(tr("Too many misspelled words. "
+            Q_EMIT activeChanged(tr("Too many misspelled words. "
                                   "As-you-type spell checking disabled."));
         }
 
@@ -268,9 +268,9 @@ void Highlighter::setActive(bool active)
     rehighlight();
 
     if (d->active) {
-        emit activeChanged(tr("As-you-type spell checking enabled."));
+        Q_EMIT activeChanged(tr("As-you-type spell checking enabled."));
     } else {
-        emit activeChanged(tr("As-you-type spell checking disabled."));
+        Q_EMIT activeChanged(tr("As-you-type spell checking disabled."));
     }
 }
 

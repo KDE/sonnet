@@ -149,7 +149,7 @@ void ConfigWidget::slotIgnoreWordAdded()
     d->ui.ignoreListWidget->clear();
     d->ui.ignoreListWidget->addItems(ignoreList);
 
-    emit configChanged();
+    Q_EMIT configChanged();
 }
 
 void ConfigWidget::slotIgnoreWordRemoved()
@@ -164,7 +164,7 @@ void ConfigWidget::slotIgnoreWordRemoved()
     d->ui.ignoreListWidget->clear();
     d->ui.ignoreListWidget->addItems(ignoreList);
 
-    emit configChanged();
+    Q_EMIT configChanged();
 }
 
 void ConfigWidget::setBackgroundCheckingButtonShown(bool b)
