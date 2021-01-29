@@ -39,7 +39,7 @@ add_library(KF5SonnetCore ${sonnetcore_SRCS})
 ecm_generate_export_header(KF5SonnetCore
     BASE_NAME SonnetCore
     GROUP_BASE_NAME KF
-    VERSION ${KF5_VERSION}
+    VERSION ${KF_VERSION}
     DEPRECATED_BASE_VERSION 0
     #DEPRECATION_VERSIONS 5.65
     EXCLUDE_DEPRECATED_BEFORE_AND_AT ${EXCLUDE_DEPRECATED_BEFORE_AND_AT}
@@ -83,7 +83,7 @@ if (BUILD_QCH)
         KF5SonnetCore_QCH
         NAME SonnetCore
         BASE_NAME KF5SonnetCore
-        VERSION ${KF5_VERSION}
+        VERSION ${KF_VERSION}
         ORG_DOMAIN org.kde
         SOURCES # using only public headers, to cover only public API
             ${SonnetCore_HEADERS}

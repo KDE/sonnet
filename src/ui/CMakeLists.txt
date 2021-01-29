@@ -46,7 +46,7 @@ add_library(KF5SonnetUi ${sonnetui_SRCS})
 ecm_generate_export_header(KF5SonnetUi
     BASE_NAME SonnetUi
     GROUP_BASE_NAME KF
-    VERSION ${KF5_VERSION}
+    VERSION ${KF_VERSION}
     DEPRECATED_BASE_VERSION 0
     DEPRECATION_VERSIONS 5.65
     EXCLUDE_DEPRECATED_BEFORE_AND_AT ${EXCLUDE_DEPRECATED_BEFORE_AND_AT}
@@ -87,7 +87,7 @@ if (BUILD_QCH)
         KF5SonnetUi_QCH
         NAME SonnetUi
         BASE_NAME KF5SonnetUi
-        VERSION ${KF5_VERSION}
+        VERSION ${KF_VERSION}
         ORG_DOMAIN org.kde
         SOURCES # using only public headers, to cover only public API
             ${SonnetUi_HEADERS}
