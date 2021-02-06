@@ -89,7 +89,7 @@ Q_SIGNALS:
      * @deprecated Since 5.65, use spellCheckDone
      */
     SONNETUI_DEPRECATED_VERSION(5, 65, "Use Dialog::spellCheckDone()")
-    void done(const QString &newBuffer);
+    void done(const QString &newBuffer); // clazy:exclude=overloaded-signal
 #endif
     /**
      * The dialog won't be closed if you setBuffer() in slot connected to this signal
