@@ -23,18 +23,6 @@ if (HSPELL_FOUND)
    add_subdirectory( hspell )
 endif ()
 
-
-#find_package(ENCHANT)
-#set_package_properties(ENCHANT PROPERTIES
-#    URL "http://www.abisource.com/projects/enchant/"
-#    DESCRIPTION "Spell checking support via Enchant"
-#    TYPE OPTIONAL
-#    PURPOSE ""
-#)
-#if (ENCHANT_FOUND)
-#   add_subdirectory( enchant )
-#endif ()
-
 find_package(HUNSPELL)
 set_package_properties(HUNSPELL PROPERTIES
     URL "http://hunspell.sourceforge.net/"
