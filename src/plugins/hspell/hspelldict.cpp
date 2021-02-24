@@ -25,7 +25,7 @@ HSpellDict::HSpellDict(const QString &lang)
         qCWarning(SONNET_LOG_HSPELL) << "HSpellDict::HSpellDict: Init failed";
         initialized = false;
     } else {
-        /* hspell understans only iso8859-8-i            */
+        /* hspell understands only iso8859-8-i */
         codec = QTextCodec::codecForName("iso8859-8-i");
         initialized = true;
     }
