@@ -18,7 +18,7 @@ class BreakTokenizerPrivate
 {
 public:
     enum Type {
-        Words, Sentences
+        Words, Sentences,
     };
 
     BreakTokenizerPrivate(Type s)

@@ -91,7 +91,7 @@ public: // Configuration API
     enum Attribute {
         CheckUppercase,
         SkipRunTogether,
-        AutoDetectLanguage
+        AutoDetectLanguage,
     };
     void save();
     void restore();
