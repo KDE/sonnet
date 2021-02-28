@@ -9,10 +9,11 @@
 #include "settingsimpl_p.h"
 #include "spellerplugin_p.h"
 
-#include <QCache>
 #include "core_debug.h"
+#include <QCache>
 
-namespace Sonnet {
+namespace Sonnet
+{
 class SpellerPrivate
 {
 public:

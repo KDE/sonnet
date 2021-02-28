@@ -3,7 +3,7 @@
  *  SPDX-FileCopyrightText: 2008 Tom Albers <tomalbers@kde.nl>
  *
  * SPDX-License-Identifier: LGPL-2.1-or-later
-*/
+ */
 
 #ifndef SONNET_DICTIONARYCOMBOBOX_H
 #define SONNET_DICTIONARYCOMBOBOX_H
@@ -12,7 +12,8 @@
 
 #include <QComboBox>
 
-namespace Sonnet {
+namespace Sonnet
+{
 class DictionaryComboBoxPrivate;
 /**
  * @short A combo box for selecting the dictionary used for spell checking.
@@ -25,7 +26,6 @@ class SONNETUI_EXPORT DictionaryComboBox : public QComboBox
 {
     Q_OBJECT
 public:
-
     /**
      * Constructor
      */

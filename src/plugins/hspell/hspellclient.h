@@ -16,7 +16,8 @@ extern "C" {
 #include "hspell.h"
 }
 
-namespace Sonnet {
+namespace Sonnet
+{
 class SpellerPlugin;
 }
 using Sonnet::SpellerPlugin;

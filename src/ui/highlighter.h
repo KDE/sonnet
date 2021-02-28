@@ -9,14 +9,15 @@
 #ifndef SONNET_HIGHLIGHTER_H
 #define SONNET_HIGHLIGHTER_H
 
-#include <QSyntaxHighlighter>
-#include <QStringList>
 #include "sonnetui_export.h"
+#include <QStringList>
+#include <QSyntaxHighlighter>
 
 class QTextEdit;
 class QPlainTextEdit;
 
-namespace Sonnet {
+namespace Sonnet
+{
 class HighlighterPrivate;
 /// The Sonnet Highlighter class, used for drawing pretty red lines in text fields
 class SONNETUI_EXPORT Highlighter : public QSyntaxHighlighter

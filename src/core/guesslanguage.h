@@ -12,7 +12,8 @@
 
 #include "sonnetcore_export.h"
 
-namespace Sonnet {
+namespace Sonnet
+{
 // Amount of trigrams in each file
 static const int MAXGRAMS = 300;
 
@@ -36,7 +37,6 @@ class GuessLanguagePrivate;
 class SONNETCORE_EXPORT GuessLanguage
 {
 public:
-
     /** Constructor
      * Creates a new GuessLanguage instance. If @p text is specified,
      * it sets the text to be checked.
@@ -59,7 +59,7 @@ public:
      * @param maxItems The list returned by identify() will never have more than maxItems item
      * @param minConfidence The list will have only enough items for their summary confidence equal
      * or exceed minConfidence.
-    */
+     */
     void setLimits(int maxItems, double minConfidence);
 
     /**

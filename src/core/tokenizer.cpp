@@ -10,15 +10,17 @@
 #include <QList>
 #include <QString>
 
-#include "tokenizer_p.h"
 #include "textbreaks_p.h"
+#include "tokenizer_p.h"
 
-namespace Sonnet {
+namespace Sonnet
+{
 class BreakTokenizerPrivate
 {
 public:
     enum Type {
-        Words, Sentences,
+        Words,
+        Sentences,
     };
 
     BreakTokenizerPrivate(Type s)
@@ -72,7 +74,7 @@ void BreakTokenizerPrivate::invalidate()
 
 bool BreakTokenizerPrivate::hasNext() const
 {
-    if (itemPosition >= (breaks().size()-1)) {
+    if (itemPosition >= (breaks().size() - 1)) {
         return false;
     }
 
@@ -133,7 +135,7 @@ QStringRef BreakTokenizerPrivate::next()
 void BreakTokenizerPrivate::replace(int pos, int len, const QString &newWord)
 {
     buffer.replace(pos, len, newWord);
-    int offset = len-newWord.length();
+    int offset = len - newWord.length();
     if (cacheValid) {
         shiftBreaks(pos, offset);
     }
@@ -167,18 +169,18 @@ QStringRef WordTokenizer::next()
     QStringRef n = d->next();
 
     // end of address of url?
-    if (d->inAddress && n.position() > 0 && d->buffer[n.position()-1].isSpace()) {
+    if (d->inAddress && n.position() > 0 && d->buffer[n.position() - 1].isSpace()) {
         d->inAddress = false;
     }
 
     // check if this word starts an email address of url
     if (!d->inAddress || hasNext()) {
-        const int pos = n.position()+n.length();
+        const int pos = n.position() + n.length();
         if ((pos < d->buffer.length()) && d->buffer[pos] == QLatin1Char('@')) {
             d->inAddress = true;
         }
-        if ((pos + 2 < d->buffer.length()) && d->buffer[pos] == QLatin1Char(':') && d->buffer[pos+1] == QLatin1Char('/')
-            && d->buffer[pos+2] == QLatin1Char('/')) {
+        if ((pos + 2 < d->buffer.length()) && d->buffer[pos] == QLatin1Char(':') && d->buffer[pos + 1] == QLatin1Char('/')
+            && d->buffer[pos + 2] == QLatin1Char('/')) {
             d->inAddress = true;
         }
     }

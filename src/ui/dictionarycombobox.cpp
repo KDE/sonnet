@@ -3,19 +3,21 @@
  * SPDX-FileCopyrightText: 2008 Tom Albers <tomalbers@kde.nl>
  *
  * SPDX-License-Identifier: LGPL-2.1-or-later
-*/
+ */
 
 #include "dictionarycombobox.h"
 
-#include <speller.h>
 #include "ui_debug.h"
+#include <speller.h>
 
-namespace Sonnet {
+namespace Sonnet
+{
 //@cond PRIVATE
 class DictionaryComboBoxPrivate
 {
 public:
-    explicit DictionaryComboBoxPrivate(DictionaryComboBox *combo) : q(combo)
+    explicit DictionaryComboBoxPrivate(DictionaryComboBox *combo)
+        : q(combo)
     {
     }
 
@@ -36,8 +38,7 @@ DictionaryComboBox::DictionaryComboBox(QWidget *parent)
     , d(new DictionaryComboBoxPrivate(this))
 {
     reloadCombo();
-    connect(this, SIGNAL(activated(int)),
-            SLOT(slotDictionaryChanged(int)));
+    connect(this, SIGNAL(activated(int)), SLOT(slotDictionaryChanged(int)));
 }
 
 DictionaryComboBox::~DictionaryComboBox()

@@ -10,24 +10,26 @@
 #include "ui_sonnetui.h"
 
 #include "backgroundchecker.h"
-#include "speller.h"
 #include "settingsimpl_p.h"
+#include "speller.h"
 
 #include <QProgressDialog>
 
 #include <QDialogButtonBox>
-#include <QStringListModel>
-#include <QPushButton>
 #include <QMessageBox>
+#include <QPushButton>
+#include <QStringListModel>
 
-namespace Sonnet {
-//to initially disable sorting in the suggestions listview
+namespace Sonnet
+{
+// to initially disable sorting in the suggestions listview
 #define NONSORTINGCOLUMN 2
 
 class ReadOnlyStringListModel : public QStringListModel
 {
 public:
-    explicit ReadOnlyStringListModel(QObject *parent) : QStringListModel(parent)
+    explicit ReadOnlyStringListModel(QObject *parent)
+        : QStringListModel(parent)
     {
     }
 
@@ -52,7 +54,7 @@ public:
     QString currentWord;
     int currentPosition;
     QMap<QString, QString> replaceAllMap;
-    bool restart;//used when text is distributed across several qtextedits, eg in KAider
+    bool restart; // used when text is distributed across several qtextedits, eg in KAider
 
     QMap<QString, QString> dictsMap;
 
@@ -101,33 +103,23 @@ Dialog::~Dialog()
 
 void Dialog::initConnections()
 {
-    connect(d->ui.m_addBtn, &QAbstractButton::clicked,
-            this, &Dialog::slotAddWord);
-    connect(d->ui.m_replaceBtn, &QAbstractButton::clicked,
-            this, &Dialog::slotReplaceWord);
-    connect(d->ui.m_replaceAllBtn, &QAbstractButton::clicked,
-            this, &Dialog::slotReplaceAll);
-    connect(d->ui.m_skipBtn, &QAbstractButton::clicked,
-            this, &Dialog::slotSkip);
-    connect(d->ui.m_skipAllBtn, &QAbstractButton::clicked,
-            this, &Dialog::slotSkipAll);
-    connect(d->ui.m_suggestBtn, &QAbstractButton::clicked,
-            this, &Dialog::slotSuggest);
+    connect(d->ui.m_addBtn, &QAbstractButton::clicked, this, &Dialog::slotAddWord);
+    connect(d->ui.m_replaceBtn, &QAbstractButton::clicked, this, &Dialog::slotReplaceWord);
+    connect(d->ui.m_replaceAllBtn, &QAbstractButton::clicked, this, &Dialog::slotReplaceAll);
+    connect(d->ui.m_skipBtn, &QAbstractButton::clicked, this, &Dialog::slotSkip);
+    connect(d->ui.m_skipAllBtn, &QAbstractButton::clicked, this, &Dialog::slotSkipAll);
+    connect(d->ui.m_suggestBtn, &QAbstractButton::clicked, this, &Dialog::slotSuggest);
 #if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
-    connect(d->ui.m_language, &DictionaryComboBox::textActivated,
-            this, &Dialog::slotChangeLanguage);
+    connect(d->ui.m_language, &DictionaryComboBox::textActivated, this, &Dialog::slotChangeLanguage);
 #else
-    connect(d->ui.m_language, QOverload<const QString&>::of(&QComboBox::activated),
-            this, &Dialog::slotChangeLanguage);
+    connect(d->ui.m_language, QOverload<const QString &>::of(&QComboBox::activated), this, &Dialog::slotChangeLanguage);
 #endif
-    connect(d->ui.m_suggestions, &QListView::clicked,
-            this, &Dialog::slotSelectionChanged);
-    connect(d->checker, &BackgroundChecker::misspelling,
-            this, &Dialog::slotMisspelling);
-    connect(d->checker, &BackgroundChecker::done,
-            this, &Dialog::slotDone);
-    connect(d->ui.m_suggestions, &QListView::doubleClicked,
-            this, [this](const QModelIndex&){ slotReplaceWord(); });
+    connect(d->ui.m_suggestions, &QListView::clicked, this, &Dialog::slotSelectionChanged);
+    connect(d->checker, &BackgroundChecker::misspelling, this, &Dialog::slotMisspelling);
+    connect(d->checker, &BackgroundChecker::done, this, &Dialog::slotDone);
+    connect(d->ui.m_suggestions, &QListView::doubleClicked, this, [this](const QModelIndex &) {
+        slotReplaceWord();
+    });
     connect(d->buttonBox, &QDialogButtonBox::accepted, this, &Dialog::slotFinished);
     connect(d->buttonBox, &QDialogButtonBox::rejected, this, &Dialog::slotCancel);
     connect(d->ui.m_replacement, &QLineEdit::returnPressed, this, &Dialog::slotReplaceWord);
@@ -151,7 +143,7 @@ void Dialog::initGui()
     layout->addWidget(d->wdg);
     layout->addWidget(d->buttonBox);
 
-    //d->ui.m_suggestions->setSorting( NONSORTINGCOLUMN );
+    // d->ui.m_suggestions->setSorting( NONSORTINGCOLUMN );
     fillDictionaryComboBox();
     d->restart = false;
 
@@ -224,7 +216,7 @@ void Dialog::slotFinished()
 {
     setProgressDialogVisible(false);
     Q_EMIT stop();
-    //FIXME: should we emit done here?
+    // FIXME: should we emit done here?
 #if SONNETUI_BUILD_DEPRECATED_SINCE(5, 65)
     Q_EMIT done(d->checker->text());
 #endif
@@ -256,7 +248,7 @@ QString Dialog::buffer() const
 void Dialog::setBuffer(const QString &buf)
 {
     d->originalBuffer = buf;
-    //it is possible to change buffer inside slot connected to done() signal
+    // it is possible to change buffer inside slot connected to done() signal
     d->restart = true;
 }
 
@@ -316,13 +308,10 @@ void Dialog::slotReplaceWord()
     setGuiEnabled(false);
     setProgressDialogVisible(true);
     QString replacementText = d->ui.m_replacement->text();
-    Q_EMIT replace(d->currentWord, d->currentPosition,
-                 replacementText);
+    Q_EMIT replace(d->currentWord, d->currentPosition, replacementText);
 
     if (d->spellCheckContinuedAfterReplacement) {
-        d->checker->replace(d->currentPosition,
-                            d->currentWord,
-                            replacementText);
+        d->checker->replace(d->currentPosition, d->currentWord, replacementText);
         d->checker->continueChecking();
     } else {
         d->checker->stop();
@@ -333,8 +322,7 @@ void Dialog::slotReplaceAll()
 {
     setGuiEnabled(false);
     setProgressDialogVisible(true);
-    d->replaceAllMap.insert(d->currentWord,
-                            d->ui.m_replacement->text());
+    d->replaceAllMap.insert(d->currentWord, d->ui.m_replacement->text());
     slotReplaceWord();
 }
 
@@ -387,9 +375,9 @@ void Dialog::slotMisspelling(const QString &word, int start)
     setGuiEnabled(true);
     setProgressDialogVisible(false);
     Q_EMIT misspelling(word, start);
-    //NOTE this is HACK I had to introduce because BackgroundChecker lacks 'virtual' marks on methods
-    //this dramatically reduces spellchecking time in Lokalize
-    //as this doesn't fetch suggestions for words that are present in msgid
+    // NOTE this is HACK I had to introduce because BackgroundChecker lacks 'virtual' marks on methods
+    // this dramatically reduces spellchecking time in Lokalize
+    // as this doesn't fetch suggestions for words that are present in msgid
     if (!updatesEnabled()) {
         return;
     }
@@ -397,7 +385,7 @@ void Dialog::slotMisspelling(const QString &word, int start)
     d->currentWord = word;
     d->currentPosition = start;
     if (d->replaceAllMap.contains(word)) {
-        d->ui.m_replacement->setText(d->replaceAllMap[ word ]);
+        d->ui.m_replacement->setText(d->replaceAllMap[word]);
         slotReplaceWord();
     } else {
         updateDialog(word);
@@ -421,8 +409,7 @@ void Dialog::slotDone()
         Q_EMIT spellCheckStatus(tr("Spell check complete."));
         accept();
         if (!d->canceled && d->showCompletionMessageBox) {
-            QMessageBox::information(this, tr("Spell check complete."),
-                                     tr("Check Spelling", "@title:window"));
+            QMessageBox::information(this, tr("Spell check complete."), tr("Check Spelling", "@title:window"));
         }
     }
 }

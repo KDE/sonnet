@@ -22,10 +22,8 @@ public:
         QHBoxLayout *topLayout = new QHBoxLayout(this);
         dcb = new DictionaryComboBox(this);
         topLayout->addWidget(dcb, 1);
-        connect(dcb, &DictionaryComboBox::dictionaryChanged,
-                this, &DictionaryComboBoxTest::dictChanged);
-        connect(dcb, &DictionaryComboBox::dictionaryNameChanged,
-                this, &DictionaryComboBoxTest::dictNameChanged);
+        connect(dcb, &DictionaryComboBox::dictionaryChanged, this, &DictionaryComboBoxTest::dictChanged);
+        connect(dcb, &DictionaryComboBox::dictionaryNameChanged, this, &DictionaryComboBoxTest::dictNameChanged);
         QPushButton *btn = new QPushButton(QStringLiteral("Dump"), this);
         topLayout->addWidget(btn);
         connect(btn, &QPushButton::clicked, this, &DictionaryComboBoxTest::dump);

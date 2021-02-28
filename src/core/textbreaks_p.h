@@ -11,7 +11,8 @@ class QString;
 
 #include "sonnetcore_export.h"
 
-namespace Sonnet {
+namespace Sonnet
+{
 class TextBreaksPrivate;
 
 /**
@@ -28,7 +29,6 @@ class TextBreaksPrivate;
 class SONNETCORE_EXPORT TextBreaks
 {
 public:
-
     struct Position {
         int start, length;
     };

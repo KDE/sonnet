@@ -11,7 +11,8 @@
 
 #include "textbreaks_p.h"
 
-namespace Sonnet {
+namespace Sonnet
+{
 class TextBreaksPrivate
 {
 public:

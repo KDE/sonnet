@@ -15,7 +15,8 @@
 class QTextEdit;
 class QPlainTextEdit;
 
-namespace Sonnet {
+namespace Sonnet
+{
 class Highlighter;
 
 /**

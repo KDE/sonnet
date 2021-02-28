@@ -25,7 +25,7 @@ bool ISpellCheckerDict::isCorrect(const QString &word) const
 {
     // check if we are incorrect, we only need to check one enum entry for that, only empty enum means OK
     bool ok = true;
-    IEnumSpellingError* enumSpellingError = nullptr;
+    IEnumSpellingError *enumSpellingError = nullptr;
     if (SUCCEEDED(m_spellChecker->Check(word.toStdWString().c_str(), &enumSpellingError))) {
         ISpellingError *spellingError = nullptr;
         if (S_OK == enumSpellingError->Next(&spellingError)) {
@@ -41,7 +41,7 @@ QStringList ISpellCheckerDict::suggest(const QString &word) const
 {
     // query suggestions
     QStringList replacements;
-    IEnumString* words = nullptr;
+    IEnumString *words = nullptr;
     if (SUCCEEDED(m_spellChecker->Suggest(word.toStdWString().c_str(), &words))) {
         HRESULT hr = S_OK;
         while (S_OK == hr) {

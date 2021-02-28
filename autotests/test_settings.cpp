@@ -8,15 +8,15 @@
 
 #include "test_settings.h"
 
-#include "speller.h"
 #include "settingsimpl_p.h"
+#include "speller.h"
 
-#include <QTest>
-#include <QSettings>
-#include <QFileInfo>
 #include <QDateTime>
 #include <QDebug>
+#include <QFileInfo>
+#include <QSettings>
 #include <QStandardPaths>
+#include <QTest>
 
 QTEST_GUILESS_MAIN(SonnetSettingsTest)
 
@@ -68,16 +68,14 @@ void SonnetSettingsTest::testSpellerAPIChangeSaves()
 
     // Default Language
     QString defLang = speller.defaultLanguage();
-    QString settingsLang = settings.value(QStringLiteral("defaultLanguage"),
-                                          QLocale::system().name()).toString();
+    QString settingsLang = settings.value(QStringLiteral("defaultLanguage"), QLocale::system().name()).toString();
     QCOMPARE(defLang, settingsLang);
 
     QStringList langs = speller.availableLanguages();
     for (int i = 0; i < langs.count(); ++i) {
         if (langs[i] != defLang) {
             speller.setDefaultLanguage(langs[i]);
-            settingsLang = settings.value(QStringLiteral("defaultLanguage"),
-                                          QLocale::system().name()).toString();
+            settingsLang = settings.value(QStringLiteral("defaultLanguage"), QLocale::system().name()).toString();
             QCOMPARE(settingsLang, langs[i]);
             QCOMPARE(speller.defaultLanguage(), langs[i]);
             break;
@@ -85,9 +83,7 @@ void SonnetSettingsTest::testSpellerAPIChangeSaves()
     }
     // set the original value
     speller.setDefaultLanguage(defLang);
-    settingsLang
-        = settings.value(QStringLiteral("defaultLanguage"),
-                         QLocale::system().name()).toString();
+    settingsLang = settings.value(QStringLiteral("defaultLanguage"), QLocale::system().name()).toString();
     QCOMPARE(settingsLang, defLang);
     QCOMPARE(speller.defaultLanguage(), defLang);
 
@@ -129,7 +125,7 @@ void SonnetSettingsTest::testSpellerAPIChangeSaves()
     settingsUppercase = settings.value(QStringLiteral("checkUppercase"), true).toBool();
     QCOMPARE(!checkUppercase, settingsUppercase);
     QCOMPARE(!checkUppercase, speller.testAttribute(Speller::CheckUppercase));
-    //now set it back to what it was
+    // now set it back to what it was
     speller.setAttribute(Speller::CheckUppercase, checkUppercase);
     settingsUppercase = settings.value(QStringLiteral("checkUppercase"), true).toBool();
     QCOMPARE(checkUppercase, settingsUppercase);
@@ -144,7 +140,7 @@ void SonnetSettingsTest::testSpellerAPIChangeSaves()
     settingsSkipRunTogether = settings.value(QStringLiteral("skipRunTogether"), true).toBool();
     QCOMPARE(!skipRunTogether, settingsSkipRunTogether);
     QCOMPARE(!skipRunTogether, speller.testAttribute(Speller::SkipRunTogether));
-    //now set it back to what it was
+    // now set it back to what it was
     speller.setAttribute(Speller::SkipRunTogether, skipRunTogether);
     settingsSkipRunTogether = settings.value(QStringLiteral("skipRunTogether"), true).toBool();
     QCOMPARE(skipRunTogether, settingsSkipRunTogether);
@@ -159,7 +155,7 @@ void SonnetSettingsTest::testSpellerAPIChangeSaves()
     settingsAutoDetectLanguage = settings.value(QStringLiteral("autodetectLanguage"), true).toBool();
     QCOMPARE(!autodetectLanguage, settingsAutoDetectLanguage);
     QCOMPARE(!autodetectLanguage, speller.testAttribute(Speller::AutoDetectLanguage));
-    //now set it back to what it was
+    // now set it back to what it was
     speller.setAttribute(Speller::AutoDetectLanguage, autodetectLanguage);
     settingsAutoDetectLanguage = settings.value(QStringLiteral("autodetectLanguage"), true).toBool();
     QCOMPARE(autodetectLanguage, settingsAutoDetectLanguage);

@@ -23,6 +23,7 @@ public:
 
     virtual bool addToPersonal(const QString &word);
     virtual bool addToSession(const QString &word);
+
 private:
 #ifdef __OBJC__
     NSString *m_langCode;

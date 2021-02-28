@@ -8,15 +8,19 @@
 
 #include "test_filter.h"
 #include "tokenizer_p.h"
-#include <QVector>
 #include <QTest>
+#include <QVector>
 
 QTEST_GUILESS_MAIN(SonnetFilterTest)
 
 using namespace Sonnet;
 
 struct Hit {
-    Hit(const QString &w, int s) : word(w), start(s) {}
+    Hit(const QString &w, int s)
+        : word(w)
+        , start(s)
+    {
+    }
     QString word;
     int start;
 };
@@ -51,8 +55,7 @@ void SonnetFilterTest::testLatin()
     QCOMPARE(hitNumber, hits.count());
 }
 
-static QVector<ushort>
-convertToUnicode(const QString &str)
+static QVector<ushort> convertToUnicode(const QString &str)
 {
     QVector<ushort> unicode;
     for (int i = 0; i < str.length(); ++i) {
@@ -74,7 +77,7 @@ void SonnetFilterTest::testIndic()
     hits.append(Hit(QString::fromUtf8("राजभाषा"), 38));
     hits.append(Hit(QString::fromUtf8("असून"), 46));
     hits.append(Hit(QString::fromUtf8("सुमारे"), 51));
-    hits.append(Hit( QString::fromUtf8("९"), 58 ) ); // This is the number 9, so we don't spell-check it
+    hits.append(Hit(QString::fromUtf8("९"), 58)); // This is the number 9, so we don't spell-check it
     hits.append(Hit(QString::fromUtf8("कोटी"), 60));
     hits.append(Hit(QString::fromUtf8("लोकांची"), 65));
     hits.append(Hit(QString::fromUtf8("मातृभाषा"), 73));
@@ -83,7 +86,7 @@ void SonnetFilterTest::testIndic()
     hits.append(Hit(QString::fromUtf8("भाषा"), 93));
     hits.append(Hit(QString::fromUtf8("कमीत"), 98));
     hits.append(Hit(QString::fromUtf8("कमी"), 103));
-    hits.append( Hit( QString::fromUtf8("१०००"), 107 ) ); // just a number
+    hits.append(Hit(QString::fromUtf8("१०००"), 107)); // just a number
     hits.append(Hit(QString::fromUtf8("वर्षापासून"), 112));
     hits.append(Hit(QString::fromUtf8("अस्तित्वात"), 123));
     hits.append(Hit(QString::fromUtf8("आहे"), 134));
@@ -96,7 +99,7 @@ void SonnetFilterTest::testIndic()
     int hitNumber = 0;
     while (tokenizer.hasNext()) {
         w = tokenizer.next();
-         QVector<ushort> unicode = convertToUnicode(w.toString());
+        QVector<ushort> unicode = convertToUnicode(w.toString());
         QCOMPARE(w.toString(), hits[hitNumber].word);
         QCOMPARE(w.position(), hits[hitNumber].start);
         ++hitNumber;
@@ -125,4 +128,3 @@ void SonnetFilterTest::testSentence()
     }
     QCOMPARE(hitNumber, hits.count());
 }
-

@@ -6,13 +6,14 @@
 #ifndef SONNET_SETTINGS_H
 #define SONNET_SETTINGS_H
 
-#include <QStringList>
 #include <QString>
+#include <QStringList>
 #include <QtCore/QObject>
 
 #include "sonnetcore_export.h"
 
-namespace Sonnet {
+namespace Sonnet
+{
 class Loader;
 class SettingsPrivate;
 
@@ -79,4 +80,4 @@ private:
 };
 }
 
-#endif //SONNET_SETTINGS_H
+#endif // SONNET_SETTINGS_H

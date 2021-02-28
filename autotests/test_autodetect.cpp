@@ -20,8 +20,8 @@
 #include "speller.h"
 
 #include <QObject>
-#include <QTest>
 #include <QStandardPaths>
+#include <QTest>
 
 class SonnetAutoDetectTest : public QObject
 {
@@ -60,9 +60,12 @@ void SonnetAutoDetectTest::autodetect_data()
     QTest::addColumn<QString>("correct_lang");
     QTest::addColumn<QStringList>("suggested_langs");
 
-    QTest::newRow("English") << QStringLiteral("This is an English sentence.") << QStringLiteral("en_US") << QStringList{QLatin1String("en_US"), QLatin1String("de_DE"), QLatin1String("ur_PK")};
-    QTest::newRow("German") << QStringLiteral("Dies ist ein deutscher Satz.") << QStringLiteral("de_DE") << QStringList{QLatin1String("hi_IN"), QLatin1String("pl_PL"), QLatin1String("de_DE_frami")};
-    QTest::newRow("Malayam") << QStringLiteral("ഇന്ത്യയുടെ തെക്കു ഭാഗത്തു സ്ഥിതി ചെയ്യുന്ന ഒരു സംസ്ഥാനമാണ് കേരളം.") << QStringLiteral("ml_IN") << QStringList{QLatin1String("ml_IN"), QLatin1String("ur_PK"), QLatin1String("en_US-large")};
+    QTest::newRow("English") << QStringLiteral("This is an English sentence.") << QStringLiteral("en_US")
+                             << QStringList{QLatin1String("en_US"), QLatin1String("de_DE"), QLatin1String("ur_PK")};
+    QTest::newRow("German") << QStringLiteral("Dies ist ein deutscher Satz.") << QStringLiteral("de_DE")
+                            << QStringList{QLatin1String("hi_IN"), QLatin1String("pl_PL"), QLatin1String("de_DE_frami")};
+    QTest::newRow("Malayam") << QStringLiteral("ഇന്ത്യയുടെ തെക്കു ഭാഗത്തു സ്ഥിതി ചെയ്യുന്ന ഒരു സംസ്ഥാനമാണ് കേരളം.") << QStringLiteral("ml_IN")
+                             << QStringList{QLatin1String("ml_IN"), QLatin1String("ur_PK"), QLatin1String("en_US-large")};
 }
 
 void SonnetAutoDetectTest::autodetect()
@@ -71,7 +74,7 @@ void SonnetAutoDetectTest::autodetect()
     QFETCH(QString, correct_lang);
     QFETCH(QStringList, suggested_langs);
 
-    //skip if the language is not available
+    // skip if the language is not available
     Speller speller;
     if (!speller.availableLanguages().contains(correct_lang)) {
         const QString msg = correct_lang + QStringLiteral(" not available");
@@ -81,7 +84,7 @@ void SonnetAutoDetectTest::autodetect()
     Sonnet::GuessLanguage gl;
     QString actual_lang = gl.identify(sentence, suggested_langs);
 
-    //get chars till _, get the language code
+    // get chars till _, get the language code
     int us = correct_lang.indexOf(QLatin1Char('_'));
     const QStringRef correctLangCode = correct_lang.leftRef(us);
 
@@ -100,9 +103,12 @@ void SonnetAutoDetectTest::benchDistance_data()
     QTest::addColumn<QString>("correct_lang");
     QTest::addColumn<QStringList>("suggested_langs");
 
-    QTest::newRow("English") << QStringLiteral("This is an English sentence.") << QStringLiteral("en_US") << QStringList{QLatin1String("en_US"), QLatin1String("de_DE")};
-    QTest::newRow("German") << QStringLiteral("Dies ist ein deutscher Satz.") << QStringLiteral("de_DE") << QStringList{QLatin1String("pl_PL"), QLatin1String("de_DE_frami")};
-    QTest::newRow("Malayam") << QStringLiteral("ഇന്ത്യയുടെ തെക്കു ഭാഗത്തു സ്ഥിതി ചെയ്യുന്ന ഒരു സംസ്ഥാനമാണ് കേരളം.") << QStringLiteral("ml_IN") << QStringList{QLatin1String("ml_IN"), QLatin1String("en_US-large")};
+    QTest::newRow("English") << QStringLiteral("This is an English sentence.") << QStringLiteral("en_US")
+                             << QStringList{QLatin1String("en_US"), QLatin1String("de_DE")};
+    QTest::newRow("German") << QStringLiteral("Dies ist ein deutscher Satz.") << QStringLiteral("de_DE")
+                            << QStringList{QLatin1String("pl_PL"), QLatin1String("de_DE_frami")};
+    QTest::newRow("Malayam") << QStringLiteral("ഇന്ത്യയുടെ തെക്കു ഭാഗത്തു സ്ഥിതി ചെയ്യുന്ന ഒരു സംസ്ഥാനമാണ് കേരളം.") << QStringLiteral("ml_IN")
+                             << QStringList{QLatin1String("ml_IN"), QLatin1String("en_US-large")};
 }
 
 void SonnetAutoDetectTest::benchDistance()

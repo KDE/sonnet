@@ -8,11 +8,12 @@
 #ifndef LANGUAGEFILTER_H
 #define LANGUAGEFILTER_H
 
+#include "sonnetcore_export.h"
 #include <QString>
 #include <tokenizer_p.h>
-#include "sonnetcore_export.h"
 
-namespace Sonnet {
+namespace Sonnet
+{
 class LanguageFilterPrivate;
 
 /**
@@ -40,12 +41,13 @@ public:
     bool isSpellcheckable() const;
 
     /** Returns true if there is grammar checker installed for last token's language */
-//  bool isGrammarCheckable() const;
+    //  bool isGrammarCheckable() const;
     void setBuffer(const QString &buffer) override;
     bool hasNext() const override;
     QStringRef next() override;
     QString buffer() const override;
     void replace(int position, int len, const QString &newWord) override;
+
 private:
     LanguageFilterPrivate *const d;
 };

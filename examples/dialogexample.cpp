@@ -22,8 +22,7 @@ TestDialog::TestDialog()
 //@@snippet_begin(dictionary_combo_box_example)
 void TestDialog::check(const QString &buffer)
 {
-    Sonnet::Dialog *dlg = new Sonnet::Dialog(
-        new BackgroundChecker(this), nullptr);
+    Sonnet::Dialog *dlg = new Sonnet::Dialog(new BackgroundChecker(this), nullptr);
     connect(dlg, &Dialog::spellCheckDone, this, &TestDialog::doneChecking);
     dlg->setBuffer(buffer);
     dlg->show();
@@ -42,9 +41,9 @@ int main(int argc, char **argv)
     QApplication app(argc, argv);
 
     TestDialog test;
-    test.check(QString::fromLatin1("This is a sample buffer. Whih this thingg will "
-                                   "be checkin for misstakes. Whih, Enviroment, govermant. Whih.")
-               );
+    test.check(
+        QString::fromLatin1("This is a sample buffer. Whih this thingg will "
+                            "be checkin for misstakes. Whih, Enviroment, govermant. Whih."));
 
     return app.exec();
 }

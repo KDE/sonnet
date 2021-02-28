@@ -51,4 +51,4 @@ private:
     QScopedPointer<VoikkoDictPrivate> d;
 };
 
-#endif //SONNET_VOIKKODICT_H
+#endif // SONNET_VOIKKODICT_H

@@ -9,10 +9,10 @@
 #include "configview.h"
 #include "ui_configui.h"
 
-#include <QCheckBox>
-#include <QListWidget>
-#include <QLineEdit>
 #include "ui_debug.h"
+#include <QCheckBox>
+#include <QLineEdit>
+#include <QListWidget>
 
 using namespace Sonnet;
 
@@ -92,27 +92,32 @@ ConfigView::ConfigView(QWidget *parent)
         item->setData(Qt::UserRole, tag);
     }
 
-    d->ui.kcfg_backgroundCheckerEnabled->hide();//hidden by default
+    d->ui.kcfg_backgroundCheckerEnabled->hide(); // hidden by default
 
-    connect(d->ui.addButton, &QAbstractButton::clicked, this, [this]{ d->slotIgnoreWordAdded(); });
-    connect(d->ui.removeButton, &QAbstractButton::clicked, this, [this]{ d->slotIgnoreWordRemoved(); });
+    connect(d->ui.addButton, &QAbstractButton::clicked, this, [this] {
+        d->slotIgnoreWordAdded();
+    });
+    connect(d->ui.removeButton, &QAbstractButton::clicked, this, [this] {
+        d->slotIgnoreWordRemoved();
+    });
 
     layout->addWidget(d->wdg);
-    connect(d->ui.newIgnoreEdit, &QLineEdit::textChanged, this, [this](const QString &text){ d->slotUpdateButton(text); });
-    connect(d->ui.ignoreListWidget, &QListWidget::itemSelectionChanged, this, [this]{ d->slotSelectionChanged(); });
+    connect(d->ui.newIgnoreEdit, &QLineEdit::textChanged, this, [this](const QString &text) {
+        d->slotUpdateButton(text);
+    });
+    connect(d->ui.ignoreListWidget, &QListWidget::itemSelectionChanged, this, [this] {
+        d->slotSelectionChanged();
+    });
     d->ui.addButton->setEnabled(false);
     d->ui.removeButton->setEnabled(false);
 
-    connect(d->ui.m_langCombo, &DictionaryComboBox::dictionaryChanged, this,
-            &ConfigView::configChanged);
+    connect(d->ui.m_langCombo, &DictionaryComboBox::dictionaryChanged, this, &ConfigView::configChanged);
     connect(d->ui.languageList, &QListWidget::itemChanged, this, &ConfigView::configChanged);
 
     connect(d->ui.kcfg_backgroundCheckerEnabled, &QAbstractButton::clicked, this, &ConfigView::configChanged);
     connect(d->ui.kcfg_skipUppercase, &QAbstractButton::clicked, this, &ConfigView::configChanged);
-    connect(d->ui.kcfg_skipRunTogether, &QAbstractButton::clicked, this,
-            &ConfigView::configChanged);
-    connect(d->ui.kcfg_checkerEnabledByDefault, &QAbstractButton::clicked, this,
-            &ConfigView::configChanged);
+    connect(d->ui.kcfg_skipRunTogether, &QAbstractButton::clicked, this, &ConfigView::configChanged);
+    connect(d->ui.kcfg_checkerEnabledByDefault, &QAbstractButton::clicked, this, &ConfigView::configChanged);
     connect(d->ui.kcfg_autodetectLanguage, &QAbstractButton::clicked, this, &ConfigView::configChanged);
 }
 
@@ -125,7 +130,6 @@ void ConfigView::setNoBackendFoundVisible(bool show)
 {
     d->ui.nobackendfound->setVisible(show);
 }
-
 
 bool ConfigView::noBackendFoundVisible() const
 {
@@ -156,10 +160,10 @@ QString ConfigView::language() const
     }
 }
 
-void ConfigView::setPreferredLanguages(const QStringList& preferredLanguages)
+void ConfigView::setPreferredLanguages(const QStringList &preferredLanguages)
 {
-    for(int i = 0; i < d->ui.languageList->count(); ++i) {
-        QListWidgetItem* item = d->ui.languageList->item(i);
+    for (int i = 0; i < d->ui.languageList->count(); ++i) {
+        QListWidgetItem *item = d->ui.languageList->item(i);
         QString tag = item->data(Qt::UserRole).toString();
         if (preferredLanguages.contains(tag)) {
             item->setCheckState(Qt::Checked);
@@ -169,7 +173,6 @@ void ConfigView::setPreferredLanguages(const QStringList& preferredLanguages)
     }
     Q_EMIT configChanged();
 }
-
 
 QStringList ConfigView::preferredLanguages() const
 {
@@ -183,7 +186,7 @@ QStringList ConfigView::preferredLanguages() const
     return preferredLanguages;
 }
 
-void ConfigView::setIgnoreList(const QStringList& ignoreList)
+void ConfigView::setIgnoreList(const QStringList &ignoreList)
 {
     d->ignoreList = ignoreList;
     d->ignoreList.sort();

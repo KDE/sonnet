@@ -7,11 +7,11 @@
  */
 #include "highlighterexample.h"
 
-#include <QApplication>
-#include <QDebug>
 #include <QAction>
-#include <QMenu>
+#include <QApplication>
 #include <QContextMenuEvent>
+#include <QDebug>
+#include <QMenu>
 
 TestSpell::TestSpell()
     : QTextEdit()
@@ -25,7 +25,7 @@ void TestSpell::contextMenuEvent(QContextMenuEvent *e)
     QMenu *popup = createStandardContextMenu();
     QMenu *subMenu = new QMenu(popup);
     subMenu->setTitle(QStringLiteral("Text highlighting"));
-    connect(subMenu, SIGNAL(triggered(QAction*)), this, SLOT(slotActivate()));
+    connect(subMenu, SIGNAL(triggered(QAction *)), this, SLOT(slotActivate()));
     QAction *action = new QAction(QStringLiteral("active or not"), popup);
     popup->addSeparator();
     popup->addMenu(subMenu);

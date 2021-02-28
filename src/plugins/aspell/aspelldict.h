@@ -25,6 +25,7 @@ public:
 
     bool addToPersonal(const QString &word) override;
     bool addToSession(const QString &word) override;
+
 private:
     AspellConfig *m_config = nullptr;
     AspellSpeller *m_speller = nullptr;

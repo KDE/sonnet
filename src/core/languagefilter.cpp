@@ -7,20 +7,22 @@
 
 #include <QString>
 
-#include "languagefilter_p.h"
 #include "guesslanguage.h"
-#include "speller.h"
+#include "languagefilter_p.h"
 #include "loader_p.h"
 #include "settingsimpl_p.h"
+#include "speller.h"
 
-namespace Sonnet {
+namespace Sonnet
+{
 #define MIN_RELIABILITY 0.1
 #define MAX_ITEMS 5
 
 class LanguageFilterPrivate
 {
 public:
-    LanguageFilterPrivate(AbstractTokenizer *s) : source(s)
+    LanguageFilterPrivate(AbstractTokenizer *s)
+        : source(s)
     {
         gl.setLimits(MAX_ITEMS, MIN_RELIABILITY);
     }
@@ -46,22 +48,21 @@ public:
 QString LanguageFilterPrivate::mainLanguage() const
 {
     if (cachedMainLanguage.isNull()) {
-        cachedMainLanguage
-            = gl.identify(source->buffer(),
-                          QStringList(Loader::openLoader()->settings()->defaultLanguage()));
+        cachedMainLanguage = gl.identify(source->buffer(), QStringList(Loader::openLoader()->settings()->defaultLanguage()));
     }
     return cachedMainLanguage;
 }
 
 /* -----------------------------------------------------------------*/
 
-LanguageFilter::LanguageFilter(AbstractTokenizer *source) : d(new LanguageFilterPrivate(source))
+LanguageFilter::LanguageFilter(AbstractTokenizer *source)
+    : d(new LanguageFilterPrivate(source))
 {
     d->prevLanguage = Loader::openLoader()->settings()->defaultLanguage();
 }
 
-LanguageFilter::LanguageFilter(const LanguageFilter &other) : d(new LanguageFilterPrivate(other.d->
-                                                                                          source))
+LanguageFilter::LanguageFilter(const LanguageFilter &other)
+    : d(new LanguageFilterPrivate(other.d->source))
 {
     d->lastToken = other.d->lastToken;
     d->lastLanguage = other.d->lastLanguage;
@@ -96,13 +97,11 @@ QStringRef LanguageFilter::next()
 QString LanguageFilter::language() const
 {
     if (d->lastLanguage.isNull()) {
-        d->lastLanguage = d->gl.identify(d->lastToken.toString(),
-                                         QStringList() << d->prevLanguage
-                                                       << Loader::openLoader()->settings()->defaultLanguage());
+        d->lastLanguage = d->gl.identify(d->lastToken.toString(), QStringList() << d->prevLanguage << Loader::openLoader()->settings()->defaultLanguage());
     }
     const QStringList available = d->sp.availableLanguages();
 
-    //FIXME: do something a little more smart here
+    // FIXME: do something a little more smart here
     if (!available.contains(d->lastLanguage)) {
         for (const QString &lang : available) {
             if (lang.startsWith(d->lastLanguage)) {
@@ -137,7 +136,7 @@ QString LanguageFilter::buffer() const
 void LanguageFilter::replace(int position, int len, const QString &newWord)
 {
     d->source->replace(position, len, newWord);
-    //FIXME: fix lastToken
+    // FIXME: fix lastToken
     // uncache language for current token - it may have changed
     d->lastLanguage = QString();
 }

@@ -10,25 +10,26 @@
 
 #include "highlighter.h"
 
-#include "speller.h"
-#include "loader_p.h"
-#include "tokenizer_p.h"
-#include "settingsimpl_p.h"
 #include "languagefilter_p.h"
+#include "loader_p.h"
+#include "settingsimpl_p.h"
+#include "speller.h"
+#include "tokenizer_p.h"
 
 #include "ui_debug.h"
-#include <QTextEdit>
-#include <QTextCharFormat>
-#include <QTimer>
 #include <QColor>
-#include <QHash>
-#include <QTextCursor>
 #include <QEvent>
+#include <QHash>
 #include <QKeyEvent>
 #include <QMetaMethod>
 #include <QPlainTextEdit>
+#include <QTextCharFormat>
+#include <QTextCursor>
+#include <QTextEdit>
+#include <QTimer>
 
-namespace Sonnet {
+namespace Sonnet
+{
 // Cache of previously-determined languages (when using AutoDetectLanguage)
 // There is one such cache per block (paragraph)
 class LanguageCache : public QTextBlockUserData
@@ -45,7 +46,7 @@ public:
         it.toBack();
         while (it.hasPrevious()) {
             it.previous();
-            if (it.key().first+it.key().second >= pos) {
+            if (it.key().first + it.key().second >= pos) {
                 it.remove();
             } else {
                 break;
@@ -121,7 +122,7 @@ public:
     bool autoDetectLanguageDisabled;
     bool completeRehighlightRequired;
     bool intraWordEditing;
-    bool spellCheckerFound; //cached d->dict->isValid() value
+    bool spellCheckerFound; // cached d->dict->isValid() value
     bool connected;
     int disablePercentage = 0;
     int disableWordCount = 0;
@@ -174,7 +175,7 @@ void Highlighter::slotRehighlight()
         d->errorCount = 0;
         rehighlight();
     } else {
-        //rehighlight the current para only (undo/redo safe)
+        // rehighlight the current para only (undo/redo safe)
         QTextCursor cursor;
         if (d->textEdit) {
             cursor = d->textEdit->textCursor();
@@ -186,8 +187,8 @@ void Highlighter::slotRehighlight()
         }
         cursor.insertText(QString());
     }
-    //if (d->checksDone == d->checksRequested)
-    //d->completeRehighlightRequired = false;
+    // if (d->checksDone == d->checksRequested)
+    // d->completeRehighlightRequired = false;
     QTimer::singleShot(0, this, SLOT(slotAutoDetection()));
 }
 
@@ -232,11 +233,10 @@ void Highlighter::slotAutoDetection()
 {
     bool savedActive = d->active;
 
-    //don't disable just because 1 of 4 is misspelled.
+    // don't disable just because 1 of 4 is misspelled.
     if (d->automatic && d->wordCount >= 10) {
         // tme = Too many errors
-        bool tme = (d->errorCount >= d->disableWordCount) && (
-            d->errorCount * 100 >= d->disablePercentage * d->wordCount);
+        bool tme = (d->errorCount >= d->disableWordCount) && (d->errorCount * 100 >= d->disablePercentage * d->wordCount);
         if (d->active && tme) {
             d->active = false;
         } else if (!d->active && !tme) {
@@ -249,8 +249,9 @@ void Highlighter::slotAutoDetection()
             Q_EMIT activeChanged(tr("As-you-type spell checking enabled."));
         } else {
             qCDebug(SONNET_LOG_UI) << "Sonnet: Disabling spell checking, too many errors";
-            Q_EMIT activeChanged(tr("Too many misspelled words. "
-                                  "As-you-type spell checking disabled."));
+            Q_EMIT activeChanged(
+                tr("Too many misspelled words. "
+                   "As-you-type spell checking disabled."));
         }
 
         d->completeRehighlightRequired = true;
@@ -287,7 +288,7 @@ void Highlighter::contentsChange(int pos, int add, int rem)
     do {
         LanguageCache *cache = dynamic_cast<LanguageCache *>(block.userData());
         if (cache) {
-            cache->invalidate(pos-block.position());
+            cache->invalidate(pos - block.position());
         }
         block = block.next();
     } while (block.isValid() && block < lastBlock);
@@ -310,8 +311,7 @@ void Highlighter::highlightBlock(const QString &text)
     }
 
     if (!d->connected) {
-        connect(document(), &QTextDocument::contentsChange,
-                this, &Highlighter::contentsChange);
+        connect(document(), &QTextDocument::contentsChange, this, &Highlighter::contentsChange);
         d->connected = true;
     }
     QTextCursor cursor;
@@ -324,8 +324,7 @@ void Highlighter::highlightBlock(const QString &text)
 
     const int lengthPosition = text.length() - 1;
 
-    if (index != lengthPosition
-        || (lengthPosition > 0 && !text[lengthPosition-1].isLetter())) {
+    if (index != lengthPosition || (lengthPosition > 0 && !text[lengthPosition - 1].isLetter())) {
         d->languageFilter->setBuffer(text);
 
         LanguageCache *cache = dynamic_cast<LanguageCache *>(currentBlockUserData());
@@ -366,14 +365,14 @@ void Highlighter::highlightBlock(const QString &text)
                 ++d->wordCount;
                 if (d->spellchecker->isMisspelled(word.toString())) {
                     ++d->errorCount;
-                    setMisspelled(word.position()+offset, word.length());
+                    setMisspelled(word.position() + offset, word.length());
                 } else {
-                    unsetMisspelled(word.position()+offset, word.length());
+                    unsetMisspelled(word.position() + offset, word.length());
                 }
             }
         }
     }
-    //QTimer::singleShot( 0, this, SLOT(checkWords()) );
+    // QTimer::singleShot( 0, this, SLOT(checkWords()) );
     setCurrentBlockState(0);
 }
 
@@ -388,9 +387,7 @@ void Highlighter::setCurrentLanguage(const QString &lang)
     d->spellchecker->setLanguage(lang);
     d->spellCheckerFound = d->spellchecker->isValid();
     if (!d->spellCheckerFound) {
-        qCDebug(SONNET_LOG_UI) << "No dictionary for \""
-                               << lang
-                               << "\" staying with the current language.";
+        qCDebug(SONNET_LOG_UI) << "No dictionary for \"" << lang << "\" staying with the current language.";
         d->spellchecker->setLanguage(prevLang);
         return;
     }
@@ -422,26 +419,14 @@ bool Highlighter::eventFilter(QObject *o, QEvent *e)
     }
     if ((o == d->textEdit || o == d->plainTextEdit) && (e->type() == QEvent::KeyPress)) {
         QKeyEvent *k = static_cast<QKeyEvent *>(e);
-        //d->autoReady = true;
+        // d->autoReady = true;
         if (d->rehighlightRequest->isActive()) { // try to stay out of the users way
             d->rehighlightRequest->start(500);
         }
-        if (k->key() == Qt::Key_Enter
-            || k->key() == Qt::Key_Return
-            || k->key() == Qt::Key_Up
-            || k->key() == Qt::Key_Down
-            || k->key() == Qt::Key_Left
-            || k->key() == Qt::Key_Right
-            || k->key() == Qt::Key_PageUp
-            || k->key() == Qt::Key_PageDown
-            || k->key() == Qt::Key_Home
-            || k->key() == Qt::Key_End
+        if (k->key() == Qt::Key_Enter || k->key() == Qt::Key_Return || k->key() == Qt::Key_Up || k->key() == Qt::Key_Down || k->key() == Qt::Key_Left
+            || k->key() == Qt::Key_Right || k->key() == Qt::Key_PageUp || k->key() == Qt::Key_PageDown || k->key() == Qt::Key_Home || k->key() == Qt::Key_End
             || ((k->modifiers() == Qt::ControlModifier)
-                && ((k->key() == Qt::Key_A)
-                    || (k->key() == Qt::Key_B)
-                    || (k->key() == Qt::Key_E)
-                    || (k->key() == Qt::Key_N)
-                    || (k->key() == Qt::Key_P)))) {
+                && ((k->key() == Qt::Key_A) || (k->key() == Qt::Key_B) || (k->key() == Qt::Key_E) || (k->key() == Qt::Key_N) || (k->key() == Qt::Key_P)))) {
             if (intraWordEditing()) {
                 setIntraWordEditing(false);
                 d->completeRehighlightRequired = true;
@@ -452,15 +437,12 @@ bool Highlighter::eventFilter(QObject *o, QEvent *e)
         } else {
             setIntraWordEditing(true);
         }
-        if (k->key() == Qt::Key_Space
-            || k->key() == Qt::Key_Enter
-            || k->key() == Qt::Key_Return) {
+        if (k->key() == Qt::Key_Space || k->key() == Qt::Key_Enter || k->key() == Qt::Key_Return) {
             QTimer::singleShot(0, this, SLOT(slotAutoDetection()));
         }
-    } else if (((d->textEdit && (o == d->textEdit->viewport()))
-                || (d->plainTextEdit && (o == d->plainTextEdit->viewport())))
+    } else if (((d->textEdit && (o == d->textEdit->viewport())) || (d->plainTextEdit && (o == d->plainTextEdit->viewport())))
                && (e->type() == QEvent::MouseButtonPress)) {
-        //d->autoReady = true;
+        // d->autoReady = true;
         if (intraWordEditing()) {
             setIntraWordEditing(false);
             d->completeRehighlightRequired = true;

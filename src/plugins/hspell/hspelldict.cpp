@@ -12,8 +12,8 @@
 
 #include "hspell_debug.h"
 
-#include <QTextCodec>
 #include <QSettings>
+#include <QTextCodec>
 
 using namespace Sonnet;
 
@@ -33,8 +33,7 @@ HSpellDict::HSpellDict(const QString &lang)
     QSettings settings(QStringLiteral("KDE"), QStringLiteral("SonnetHSpellPlugin"));
     const QStringList personalWordsList = settings.value(QStringLiteral("PersonalWords"), QStringList()).toStringList();
     m_personalWords = QSet<QString>(personalWordsList.begin(), personalWordsList.end());
-    QVariantHash replacementMap
-        = settings.value(QStringLiteral("Replacements"), QVariant()).toHash();
+    QVariantHash replacementMap = settings.value(QStringLiteral("Replacements"), QVariant()).toHash();
     for (const QString &key : replacementMap.keys()) {
         m_replacements[key] = replacementMap[key].toString();
     }
@@ -67,9 +66,8 @@ bool HSpellDict::isCorrect(const QString &word) const
     QByteArray wordISO = codec->fromUnicode(word);
 
     // returns 1 if the word is correct, 0 otherwise
-    int correct = hspell_check_word(m_speller,
-                                    wordISO.constData(),
-                                    &preflen); //this argument might be removed, it isn't useful
+    int correct = hspell_check_word(m_speller, wordISO.constData(),
+                                    &preflen); // this argument might be removed, it isn't useful
 
     // gimatria is a representation of numbers with hebrew letters, we accept these
     if (correct != 1) {

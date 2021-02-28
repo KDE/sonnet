@@ -45,25 +45,22 @@ int main(int argc, char **argv)
 
     //@@snippet_begin(simple_textedit_example)
     QTextEdit *textEdit = new QTextEdit;
-    textEdit->setText(QString::fromLatin1("This is a sample buffer. Whih this thingg will "
-                                          "be checkin for misstakes. Whih, Enviroment, govermant. Whih.")
-                      );
+    textEdit->setText(
+        QString::fromLatin1("This is a sample buffer. Whih this thingg will "
+                            "be checkin for misstakes. Whih, Enviroment, govermant. Whih."));
 
     Sonnet::SpellCheckDecorator *installer = new Sonnet::SpellCheckDecorator(textEdit);
     installer->highlighter()->setCurrentLanguage(QStringLiteral("en_US"));
     //@@snippet_end
 
-    QObject::connect(comboBox, &Sonnet::DictionaryComboBox::dictionaryChanged,
-            installer->highlighter(), &Sonnet::Highlighter::setCurrentLanguage);
+    QObject::connect(comboBox, &Sonnet::DictionaryComboBox::dictionaryChanged, installer->highlighter(), &Sonnet::Highlighter::setCurrentLanguage);
 
     QTextEdit *mailTextEdit = new QTextEdit;
-    mailTextEdit->setText(
-        QStringLiteral("John Doe said:\n> Hello how aree you?\nI am ffine thanks"));
+    mailTextEdit->setText(QStringLiteral("John Doe said:\n> Hello how aree you?\nI am ffine thanks"));
 
     installer = new MailSpellCheckDecorator(mailTextEdit);
     installer->highlighter()->setCurrentLanguage(QStringLiteral("en_US"));
-    QObject::connect(comboBox, &Sonnet::DictionaryComboBox::dictionaryChanged,
-            installer->highlighter(), &Sonnet::Highlighter::setCurrentLanguage);
+    QObject::connect(comboBox, &Sonnet::DictionaryComboBox::dictionaryChanged, installer->highlighter(), &Sonnet::Highlighter::setCurrentLanguage);
 
     QVBoxLayout *layout = new QVBoxLayout(&window);
     layout->addWidget(comboBox);

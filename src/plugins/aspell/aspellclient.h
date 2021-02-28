@@ -12,7 +12,8 @@
 
 #include "aspell.h"
 
-namespace Sonnet {
+namespace Sonnet
+{
 class SpellerPlugin;
 }
 using Sonnet::SpellerPlugin;

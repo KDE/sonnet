@@ -33,4 +33,4 @@ private:
     QStringList m_supportedLanguages;
 };
 
-#endif //SONNET_VOIKKOCLIENT_H
+#endif // SONNET_VOIKKOCLIENT_H

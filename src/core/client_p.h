@@ -7,8 +7,8 @@
 #define SONNET_CLIENT_P_H
 
 #include <QObject>
-#include <QStringList>
 #include <QString>
+#include <QStringList>
 
 #include "sonnetcore_export.h"
 /*
@@ -17,7 +17,8 @@
  * I don't really feel like writing my own KLibFactory
  * that would load anything else then QObject derivatives.
  */
-namespace Sonnet {
+namespace Sonnet
+{
 class SpellerPlugin;
 
 /**

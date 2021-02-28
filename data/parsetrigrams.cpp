@@ -8,13 +8,13 @@
  * SPDX-License-Identifier: LGPL-2.1-or-later
  */
 
-#include <QString>
-#include <QTextStream>
+#include <QDataStream>
 #include <QDir>
 #include <QFile>
 #include <QHash>
 #include <QRegularExpression>
-#include <QDataStream>
+#include <QString>
+#include <QTextStream>
 
 int main(int argc, char **argv)
 {
@@ -29,7 +29,7 @@ int main(int argc, char **argv)
     QString path = QLatin1String(argv[1]);
     QDir td(path);
 
-    QHash< QString, QHash<QString, int> > models;
+    QHash<QString, QHash<QString, int>> models;
 
     const QRegularExpression rx(QStringLiteral("(?:.{3})\\s+(.*)"));
     for (const QString &fname : td.entryList(QDir::Files)) {

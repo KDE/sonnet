@@ -8,8 +8,8 @@
 #ifndef KSPELL_HUNSPELLDICT_H
 #define KSPELL_HUNSPELLDICT_H
 
-#include "spellerplugin_p.h"
 #include "hunspell.hxx"
+#include "spellerplugin_p.h"
 
 class HunspellDict : public Sonnet::SpellerPlugin
 {

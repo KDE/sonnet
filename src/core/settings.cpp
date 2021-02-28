@@ -10,7 +10,8 @@
 #include "loader_p.h"
 #include "settings.h"
 
-namespace Sonnet {
+namespace Sonnet
+{
 class SettingsPrivate
 {
 public:

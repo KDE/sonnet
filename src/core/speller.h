@@ -6,13 +6,14 @@
 #ifndef SONNET_SPELLER_H
 #define SONNET_SPELLER_H
 
-#include <QStringList>
-#include <QString>
 #include <QMap>
+#include <QString>
+#include <QStringList>
 
 #include "sonnetcore_export.h"
 
-namespace Sonnet {
+namespace Sonnet
+{
 class SpellerPrivate;
 /**
  * Spell checker object.
@@ -136,6 +137,7 @@ public: // Configuration API
 
     void setAttribute(Attribute attr, bool b = true);
     bool testAttribute(Attribute attr) const;
+
 private:
     SpellerPrivate *const d;
 };

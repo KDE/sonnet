@@ -8,10 +8,11 @@
 
 #include "sonnetcore_export.h"
 
-#include <QStringList>
 #include <QString>
+#include <QStringList>
 
-namespace Sonnet {
+namespace Sonnet
+{
 class Loader;
 class SettingsImplPrivate;
 /**
@@ -69,6 +70,7 @@ private:
 private:
     friend class Loader;
     explicit SettingsImpl(Loader *loader);
+
 private:
     SettingsImplPrivate *const d;
 };

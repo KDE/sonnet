@@ -12,7 +12,8 @@
 class ConfigDialogPrivate;
 #include "sonnetui_export.h"
 
-namespace Sonnet {
+namespace Sonnet
+{
 /// The sonnet ConfigDialog
 class SONNETUI_EXPORT ConfigDialog : public QDialog
 {

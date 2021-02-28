@@ -6,12 +6,13 @@
 #ifndef SONNET_SPELLERPLUGIN_P_H
 #define SONNET_SPELLERPLUGIN_P_H
 
-#include <QStringList>
 #include <QString>
+#include <QStringList>
 
 #include "sonnetcore_export.h"
 
-namespace Sonnet {
+namespace Sonnet
+{
 /**
  * Class is returned by from Loader. It acts
  * as the actual spellchecker.
@@ -75,6 +76,7 @@ public:
 
 protected:
     SpellerPlugin(const QString &lang);
+
 private:
     SpellerPluginPrivate *const d;
 };

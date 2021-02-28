@@ -45,19 +45,14 @@ ConfigDialog::ConfigDialog(QWidget *parent)
     layout->addWidget(d->ui);
 
     QDialogButtonBox *buttonBox = new QDialogButtonBox(this);
-    buttonBox->setStandardButtons(QDialogButtonBox::Ok
-                                  | QDialogButtonBox::Cancel);
+    buttonBox->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
     layout->addWidget(buttonBox);
 
-    connect(buttonBox, &QDialogButtonBox::accepted,
-            this, &ConfigDialog::slotOk);
-    connect(buttonBox, &QDialogButtonBox::rejected,
-            this, &QDialog::reject);
-    connect(d->ui, SIGNAL(configChanged()),
-            this, SLOT(slotConfigChanged()));
+    connect(buttonBox, &QDialogButtonBox::accepted, this, &ConfigDialog::slotOk);
+    connect(buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
+    connect(d->ui, SIGNAL(configChanged()), this, SLOT(slotConfigChanged()));
 
-    connect(d->ui, &ConfigWidget::configChanged,
-            this, &ConfigDialog::configChanged);
+    connect(d->ui, &ConfigWidget::configChanged, this, &ConfigDialog::configChanged);
 }
 
 ConfigDialog::~ConfigDialog()

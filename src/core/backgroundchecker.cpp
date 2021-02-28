@@ -37,7 +37,7 @@ void BackgroundCheckerPrivate::checkNext()
             // ok, this is valid word, do something
             if (currentDict.isMisspelled(word.toString())) {
                 lastMisspelled = word;
-                Q_EMIT misspelling(word.toString(), word.position()+sentenceOffset);
+                Q_EMIT misspelling(word.toString(), word.position() + sentenceOffset);
                 return;
             }
         }
@@ -68,10 +68,8 @@ BackgroundChecker::BackgroundChecker(QObject *parent)
     : QObject(parent)
     , d(new BackgroundCheckerPrivate)
 {
-    connect(d, &BackgroundCheckerPrivate::misspelling,
-            this, &BackgroundChecker::misspelling);
-    connect(d, &BackgroundCheckerPrivate::done,
-            this, &BackgroundChecker::slotEngineDone);
+    connect(d, &BackgroundCheckerPrivate::misspelling, this, &BackgroundChecker::misspelling);
+    connect(d, &BackgroundCheckerPrivate::done, this, &BackgroundChecker::slotEngineDone);
 }
 
 BackgroundChecker::BackgroundChecker(const Speller &speller, QObject *parent)
@@ -79,10 +77,8 @@ BackgroundChecker::BackgroundChecker(const Speller &speller, QObject *parent)
     , d(new BackgroundCheckerPrivate)
 {
     d->currentDict = speller;
-    connect(d, &BackgroundCheckerPrivate::misspelling,
-            this, &BackgroundChecker::misspelling);
-    connect(d, &BackgroundCheckerPrivate::done,
-            this, &BackgroundChecker::slotEngineDone);
+    connect(d, &BackgroundCheckerPrivate::misspelling, this, &BackgroundChecker::misspelling);
+    connect(d, &BackgroundCheckerPrivate::done, this, &BackgroundChecker::slotEngineDone);
 }
 
 BackgroundChecker::~BackgroundChecker()
@@ -100,7 +96,7 @@ void BackgroundChecker::start()
 {
     // ## what if d->currentText.isEmpty()?
 
-    //TODO: carry state from last buffer
+    // TODO: carry state from last buffer
     d->mainTokenizer.setBuffer(fetchMoreText());
     d->start();
 }
@@ -191,22 +187,19 @@ QString BackgroundChecker::text() const
 QString BackgroundChecker::currentContext() const
 {
     int len = 60;
-    //we don't want the expression underneath casted to an unsigned int
-    //which would cause it to always evaluate to false
-    int currentPosition = d->lastMisspelled.position()+d->sentenceOffset;
-    bool begin = ((currentPosition - len/2) <= 0) ? true : false;
+    // we don't want the expression underneath casted to an unsigned int
+    // which would cause it to always evaluate to false
+    int currentPosition = d->lastMisspelled.position() + d->sentenceOffset;
+    bool begin = ((currentPosition - len / 2) <= 0) ? true : false;
 
     QString buffer = d->mainTokenizer.buffer();
-    buffer.replace(currentPosition, d->lastMisspelled.length(),
-                            QStringLiteral("<b>%1</b>").arg(d->lastMisspelled.toString()));
+    buffer.replace(currentPosition, d->lastMisspelled.length(), QStringLiteral("<b>%1</b>").arg(d->lastMisspelled.toString()));
 
     QString context;
     if (begin) {
-        context = QStringLiteral("%1...")
-                  .arg(buffer.mid(0, len));
+        context = QStringLiteral("%1...").arg(buffer.mid(0, len));
     } else {
-        context = QStringLiteral("...%1...")
-                  .arg(buffer.mid(currentPosition - 20, len));
+        context = QStringLiteral("...%1...").arg(buffer.mid(currentPosition - 20, len));
     }
 
     context.replace(QLatin1Char('\n'), QLatin1Char(' '));
@@ -216,8 +209,8 @@ QString BackgroundChecker::currentContext() const
 
 void Sonnet::BackgroundChecker::replace(int start, const QString &oldText, const QString &newText)
 {
-    //FIXME: here we assume that replacement is in current fragment. So 'words' has
-    //to be adjusted and sentenceOffset does not
-    d->words.replace(start-(d->sentenceOffset), oldText.length(), newText);
+    // FIXME: here we assume that replacement is in current fragment. So 'words' has
+    // to be adjusted and sentenceOffset does not
+    d->words.replace(start - (d->sentenceOffset), oldText.length(), newText);
     d->mainTokenizer.replace(start, oldText.length(), newText);
 }

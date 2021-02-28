@@ -7,10 +7,11 @@
  */
 
 #include "voikkoclient.h"
-#include "voikkodict.h"
 #include "voikkodebug.h"
+#include "voikkodict.h"
 
-VoikkoClient::VoikkoClient(QObject *parent) : Sonnet::Client(parent)
+VoikkoClient::VoikkoClient(QObject *parent)
+    : Sonnet::Client(parent)
 {
     qCDebug(SONNET_VOIKKO) << "Initializing Voikko spell checker plugin.";
 

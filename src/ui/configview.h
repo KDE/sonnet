@@ -14,8 +14,8 @@
 
 class ConfigViewPrivate;
 
-namespace Sonnet {
-
+namespace Sonnet
+{
 class SONNETUI_EXPORT ConfigView : public QWidget
 {
     Q_OBJECT

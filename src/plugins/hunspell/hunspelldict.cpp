@@ -11,12 +11,12 @@
 #include "config-hunspell.h"
 #include "hunspelldebug.h"
 
+#include <QDir>
 #include <QFile>
 #include <QFileInfo>
-#include <QDir>
+#include <QStandardPaths>
 #include <QTextCodec>
 #include <QTextStream>
-#include <QStandardPaths>
 
 using namespace Sonnet;
 
@@ -33,13 +33,10 @@ HunspellDict::HunspellDict(const QString &lang, QString path)
     QString aff = path + QStringLiteral(".aff");
 
     if (QFileInfo::exists(dictionary) && QFileInfo::exists(aff)) {
-        m_speller
-            = new Hunspell(aff.toLocal8Bit().constData(), dictionary.toLocal8Bit().constData());
+        m_speller = new Hunspell(aff.toLocal8Bit().constData(), dictionary.toLocal8Bit().constData());
         m_codec = QTextCodec::codecForName(m_speller->get_dic_encoding());
         if (!m_codec) {
-            qCWarning(SONNET_HUNSPELL) << "Failed to find a text codec for name"
-                                       << m_speller->get_dic_encoding()
-                                       << "defaulting to locale text codec";
+            qCWarning(SONNET_HUNSPELL) << "Failed to find a text codec for name" << m_speller->get_dic_encoding() << "defaulting to locale text codec";
             m_codec = QTextCodec::codecForLocale();
             Q_ASSERT(m_codec);
         }
@@ -56,9 +53,7 @@ HunspellDict::HunspellDict(const QString &lang, QString path)
             QString word = userDicIn.readLine();
             if (word.contains(QLatin1Char('/'))) {
                 QStringList wordParts = word.split(QLatin1Char('/'));
-                m_speller->add_with_affix(toDictEncoding(wordParts.at(
-                                                             0)).constData(),
-                                          toDictEncoding(wordParts.at(1)).constData());
+                m_speller->add_with_affix(toDictEncoding(wordParts.at(0)).constData(), toDictEncoding(wordParts.at(1)).constData());
             }
             if (word.at(0) == QLatin1Char('*')) {
                 m_speller->remove(toDictEncoding(word.mid(1)).constData());
@@ -118,8 +113,9 @@ QStringList HunspellDict::suggest(const QString &word) const
     m_speller->free_list(&selection, nbWord);
 #else
     const auto suggestions = m_speller->suggest(toDictEncoding(word).toStdString());
-    for_each (suggestions.begin(), suggestions.end(), [this, &lst](const std::string &suggestion) {
-            lst << m_codec->toUnicode(suggestion.c_str()); });
+    for_each(suggestions.begin(), suggestions.end(), [this, &lst](const std::string &suggestion) {
+        lst << m_codec->toUnicode(suggestion.c_str());
+    });
 #endif
 
     return lst;

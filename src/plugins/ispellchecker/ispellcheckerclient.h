@@ -9,12 +9,13 @@
 
 #include "client_p.h"
 
-#include <windows.h>
 #include <spellcheck.h>
+#include <windows.h>
 
 #include <QMap>
 
-namespace Sonnet {
+namespace Sonnet
+{
 class SpellerPlugin;
 }
 using Sonnet::SpellerPlugin;

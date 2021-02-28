@@ -18,7 +18,8 @@ class BackgroundCheckerPrivate;
 /**
  * The sonnet namespace.
  */
-namespace Sonnet {
+namespace Sonnet
+{
 class Speller;
 
 /**
@@ -134,6 +135,7 @@ protected:
 
 protected Q_SLOTS:
     void slotEngineDone();
+
 private:
     BackgroundCheckerPrivate *const d;
 };

@@ -5,8 +5,8 @@
 */
 
 #include "ispellcheckerclient.h"
-#include "ispellcheckerdict.h"
 #include "ispellcheckerdebug.h"
+#include "ispellcheckerdict.h"
 
 using namespace Sonnet;
 
@@ -22,7 +22,7 @@ ISpellCheckerClient::ISpellCheckerClient(QObject *parent)
     ISpellCheckerFactory *spellCheckerFactory = nullptr;
     if (SUCCEEDED(CoCreateInstance(__uuidof(SpellCheckerFactory), nullptr, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&spellCheckerFactory))) && spellCheckerFactory) {
         // if we have a factory, cache the language names
-        IEnumString* enumLanguages = nullptr;
+        IEnumString *enumLanguages = nullptr;
         if (SUCCEEDED(spellCheckerFactory->get_SupportedLanguages(&enumLanguages))) {
             HRESULT hr = S_OK;
             while (S_OK == hr) {

@@ -27,7 +27,7 @@ public:
 
 private:
     // spell checker com object, we don't own this
-    ISpellChecker * const m_spellChecker;
+    ISpellChecker *const m_spellChecker;
 };
 
 #endif

@@ -8,11 +8,11 @@
 #include "highlighter.h"
 #include "speller.h"
 
-#include <QPlainTextEdit>
-#include <QStandardPaths>
 #include <QObject>
-#include <QTest>
+#include <QPlainTextEdit>
 #include <QRegularExpression>
+#include <QStandardPaths>
+#include <QTest>
 
 using namespace Sonnet;
 
@@ -55,7 +55,7 @@ void HighlighterTest::testEnglish()
     textEdit.setPlainText(QString::fromLatin1(s_englishSentence));
     Sonnet::Highlighter highlighter(&textEdit);
     highlighter.setCurrentLanguage(QStringLiteral("en"));
-    if (!highlighter.spellCheckerFound()){
+    if (!highlighter.spellCheckerFound()) {
         QSKIP("'en' not available");
     }
     highlighter.rehighlight();
@@ -136,8 +136,8 @@ void HighlighterTest::testMultipleLanguages()
     highlighter.rehighlight();
     QTextCursor cursor(textEdit.document());
 
-    //create Speller to check if we have the language dictionaries available otherwise
-    //this will just keep failing
+    // create Speller to check if we have the language dictionaries available otherwise
+    // this will just keep failing
     Sonnet::Speller speller;
     const auto availableLangs = speller.availableLanguages();
     bool isFrAvailable = availableLangs.indexOf(QRegularExpression(QStringLiteral("fr"))) != -1;

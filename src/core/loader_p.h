@@ -9,11 +9,12 @@
 #include "sonnetcore_export.h"
 
 #include <QObject>
-#include <QStringList>
-#include <QString>
 #include <QSharedPointer>
+#include <QString>
+#include <QStringList>
 
-namespace Sonnet {
+namespace Sonnet
+{
 class SettingsImpl;
 class SpellerPlugin;
 class LoaderPrivate;
@@ -57,8 +58,7 @@ public:
      *               reliability value is returned.
      *
      */
-    SpellerPlugin *createSpeller(
-        const QString &language = QString(), const QString &client = QString()) const;
+    SpellerPlugin *createSpeller(const QString &language = QString(), const QString &client = QString()) const;
 
     /**
      * Returns a shared, cached, dictionary for the given language.
@@ -125,9 +125,11 @@ Q_SIGNALS:
 protected:
     friend class SettingsImpl;
     void changed();
+
 private:
     void loadPlugins();
     void loadPlugin(const QString &pluginPath);
+
 private:
     LoaderPrivate *const d;
 };

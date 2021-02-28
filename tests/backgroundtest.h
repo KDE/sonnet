@@ -8,9 +8,9 @@
 #ifndef BACKGROUNDTEST_H
 #define BACKGROUNDTEST_H
 
-#include <QObject>
-#include <QElapsedTimer>
 #include "backgroundchecker.h"
+#include <QElapsedTimer>
+#include <QObject>
 
 class BackgroundTest : public QObject
 {

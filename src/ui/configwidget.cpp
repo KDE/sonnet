@@ -9,14 +9,14 @@
 #include "ui_configui.h"
 
 #include "loader_p.h"
-#include "settingsimpl_p.h"
 #include "settings.h"
+#include "settingsimpl_p.h"
 
-#include <QCheckBox>
-#include <QListWidget>
-#include <QLineEdit>
-#include <QListWidgetItem>
 #include "ui_debug.h"
+#include <QCheckBox>
+#include <QLineEdit>
+#include <QListWidget>
+#include <QListWidgetItem>
 
 using namespace Sonnet;
 
@@ -65,22 +65,18 @@ ConfigWidget::ConfigWidget(QWidget *parent)
     ignoreList.sort();
     d->ui.ignoreListWidget->addItems(ignoreList);
     d->ui.kcfg_backgroundCheckerEnabled->setChecked(d->settings->backgroundCheckerEnabled());
-    d->ui.kcfg_backgroundCheckerEnabled->hide();//hidden by default
+    d->ui.kcfg_backgroundCheckerEnabled->hide(); // hidden by default
     connect(d->ui.addButton, &QAbstractButton::clicked, this, &ConfigWidget::slotIgnoreWordAdded);
-    connect(d->ui.removeButton, &QAbstractButton::clicked, this,
-            &ConfigWidget::slotIgnoreWordRemoved);
+    connect(d->ui.removeButton, &QAbstractButton::clicked, this, &ConfigWidget::slotIgnoreWordRemoved);
 
     layout->addWidget(d->wdg);
-    connect(d->ui.m_langCombo, &DictionaryComboBox::dictionaryChanged, this,
-            &ConfigWidget::configChanged);
+    connect(d->ui.m_langCombo, &DictionaryComboBox::dictionaryChanged, this, &ConfigWidget::configChanged);
     connect(d->ui.languageList, &QListWidget::itemChanged, this, &ConfigWidget::configChanged);
 
     connect(d->ui.kcfg_backgroundCheckerEnabled, &QAbstractButton::clicked, this, &ConfigWidget::configChanged);
     connect(d->ui.kcfg_skipUppercase, &QAbstractButton::clicked, this, &ConfigWidget::configChanged);
-    connect(d->ui.kcfg_skipRunTogether, &QAbstractButton::clicked, this,
-            &ConfigWidget::configChanged);
-    connect(d->ui.kcfg_checkerEnabledByDefault, &QAbstractButton::clicked, this,
-            &ConfigWidget::configChanged);
+    connect(d->ui.kcfg_skipRunTogether, &QAbstractButton::clicked, this, &ConfigWidget::configChanged);
+    connect(d->ui.kcfg_checkerEnabledByDefault, &QAbstractButton::clicked, this, &ConfigWidget::configChanged);
     connect(d->ui.kcfg_autodetectLanguage, &QAbstractButton::clicked, this, &ConfigWidget::configChanged);
     connect(d->ui.newIgnoreEdit, &QLineEdit::textChanged, this, &ConfigWidget::slotUpdateButton);
     connect(d->ui.ignoreListWidget, &QListWidget::itemSelectionChanged, this, &ConfigWidget::slotSelectionChanged);

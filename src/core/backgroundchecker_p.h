@@ -8,11 +8,11 @@
 #ifndef SONNET_BACKGROUNDCHECKER_P_H
 #define SONNET_BACKGROUNDCHECKER_P_H
 
-#include <QObject>
 #include "backgroundchecker.h"
 #include "languagefilter_p.h"
-#include "tokenizer_p.h"
 #include "speller.h"
+#include "tokenizer_p.h"
+#include <QObject>
 
 using namespace Sonnet;
 
@@ -20,7 +20,8 @@ class BackgroundCheckerPrivate : public QObject
 {
     Q_OBJECT
 public:
-    BackgroundCheckerPrivate() : mainTokenizer(new SentenceTokenizer)
+    BackgroundCheckerPrivate()
+        : mainTokenizer(new SentenceTokenizer)
         , sentenceOffset(-1)
     {
         autoDetectLanguageDisabled = false;

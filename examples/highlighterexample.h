@@ -20,6 +20,7 @@ public:
     TestSpell();
 public Q_SLOTS:
     void slotActivate();
+
 protected:
     void contextMenuEvent(QContextMenuEvent *) override;
     Sonnet::Highlighter *hl;

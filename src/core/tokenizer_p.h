@@ -8,10 +8,11 @@
 #ifndef ABSTRACTTOKENIZER_H
 #define ABSTRACTTOKENIZER_H
 
-#include <QString>
 #include "sonnetcore_export.h"
+#include <QString>
 
-namespace Sonnet {
+namespace Sonnet
+{
 /**
  * @short AbstractTokenizer breaks text into smaller pieces - words, sentences, paragraphs.
  *
@@ -19,7 +20,7 @@ namespace Sonnet {
  * after Java-style iterators. During tokenization buffer can be modified using provided replace() method.
  *
  * @since 4.3
-*/
+ */
 class AbstractTokenizer
 {
 public:
@@ -97,6 +98,7 @@ public:
 
     /** If ignore uppercase is true, then any word containing only uppercase letters will be considered unsuitable for spell check */
     void setIgnoreUppercase(bool val);
+
 private:
     bool isUppercase(const QStringRef &word) const;
     BreakTokenizerPrivate *const d;
@@ -118,6 +120,7 @@ public:
     QStringRef next() override;
     QString buffer() const override;
     void replace(int position, int len, const QString &newWord) override;
+
 private:
     BreakTokenizerPrivate *const d;
 };

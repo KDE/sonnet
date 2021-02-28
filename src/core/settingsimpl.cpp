@@ -14,11 +14,12 @@
 
 #include "settings.h"
 
-namespace Sonnet {
+namespace Sonnet
+{
 class SettingsImplPrivate
 {
 public:
-    Loader *loader = nullptr;  //can't be a Ptr since we don't want to hold a ref on it
+    Loader *loader = nullptr; // can't be a Ptr since we don't want to hold a ref on it
     bool modified = false;
 
     QString defaultLanguage;
@@ -55,8 +56,7 @@ SettingsImpl::~SettingsImpl()
 bool SettingsImpl::setDefaultLanguage(const QString &lang)
 {
     const QStringList cs = d->loader->languages();
-    if (cs.indexOf(lang) != -1
-        && d->defaultLanguage != lang) {
+    if (cs.indexOf(lang) != -1 && d->defaultLanguage != lang) {
         d->defaultLanguage = lang;
         d->modified = true;
         d->loader->changed();
@@ -88,9 +88,9 @@ QStringList SettingsImpl::preferredLanguages() const
 
 bool SettingsImpl::setDefaultClient(const QString &client)
 {
-    //Different from setDefaultLanguage because
-    //the number of clients can't be even close
-    //as big as the number of languages
+    // Different from setDefaultLanguage because
+    // the number of clients can't be even close
+    // as big as the number of languages
     if (d->loader->clients().contains(client)) {
         d->defaultClient = client;
         d->modified = true;
@@ -190,9 +190,8 @@ bool SettingsImpl::setCurrentIgnoreList(const QStringList &ignores)
 bool SettingsImpl::setQuietIgnoreList(const QStringList &ignores)
 {
     bool changed = false;
-    d->ignore = QMap<QString, bool>();//clear out
-    for (QStringList::const_iterator itr = ignores.begin();
-         itr != ignores.end(); ++itr) {
+    d->ignore = QMap<QString, bool>(); // clear out
+    for (QStringList::const_iterator itr = ignores.begin(); itr != ignores.end(); ++itr) {
         d->ignore.insert(*itr, true);
         changed = true;
     }
@@ -252,21 +251,16 @@ void SettingsImpl::restore()
 {
     QSettings settings(QStringLiteral("KDE"), QStringLiteral("Sonnet"));
     d->defaultClient = settings.value(QStringLiteral("defaultClient"), QString()).toString();
-    d->defaultLanguage = settings.value(QStringLiteral("defaultLanguage"),
-                                        Settings::defaultDefaultLanguage()).toString();
+    d->defaultLanguage = settings.value(QStringLiteral("defaultLanguage"), Settings::defaultDefaultLanguage()).toString();
     d->preferredLanguages = settings.value(QStringLiteral("preferredLanguages"), Settings::defaultPreferredLanguages()).toStringList();
 
-    //same defaults are in the default filter (filter.cpp)
+    // same defaults are in the default filter (filter.cpp)
     d->checkUppercase = settings.value(QStringLiteral("checkUppercase"), !Settings::defaultSkipUppercase()).toBool();
     d->skipRunTogether = settings.value(QStringLiteral("skipRunTogether"), Settings::defauktSkipRunTogether()).toBool();
-    d->backgroundCheckerEnabled
-        = settings.value(QStringLiteral("backgroundCheckerEnabled"), Settings::defaultBackgroundCheckerEnabled()).toBool();
-    d->checkerEnabledByDefault
-        = settings.value(QStringLiteral("checkerEnabledByDefault"), Settings::defaultCheckerEnabledByDefault()).toBool();
-    d->disablePercentage
-        = settings.value(QStringLiteral("Sonnet_AsYouTypeDisablePercentage"), 90).toInt();
-    d->disableWordCount
-        = settings.value(QStringLiteral("Sonnet_AsYouTypeDisableWordCount"), 100).toInt();
+    d->backgroundCheckerEnabled = settings.value(QStringLiteral("backgroundCheckerEnabled"), Settings::defaultBackgroundCheckerEnabled()).toBool();
+    d->checkerEnabledByDefault = settings.value(QStringLiteral("checkerEnabledByDefault"), Settings::defaultCheckerEnabledByDefault()).toBool();
+    d->disablePercentage = settings.value(QStringLiteral("Sonnet_AsYouTypeDisablePercentage"), 90).toInt();
+    d->disableWordCount = settings.value(QStringLiteral("Sonnet_AsYouTypeDisableWordCount"), 100).toInt();
     d->autodetectLanguage = settings.value(QStringLiteral("autodetectLanguage"), Settings::defaultAutodetectLanguage()).toBool();
 
     const QString ignoreEntry = QStringLiteral("ignore_%1").arg(d->defaultLanguage);
