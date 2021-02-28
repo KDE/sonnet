@@ -7,6 +7,7 @@
 
 #include "test_core.h"
 #include "speller.h"
+
 #include <QDebug>
 #include <QElapsedTimer>
 #include <QTest>
@@ -46,8 +47,9 @@ void SonnetCoreTest::testCore()
     qDebug() << "Detecting language ...";
     // FIXME
     //    QString sentence = QString::fromLatin1("QClipboard features some convenience functions to access common data types: setText() allows the exchange of
-    //    Unicode text and setPixmap() and setImage() allows the exchange of QPixmaps and QImages between applications."); qDebug() << "\tlang is " <<
-    //    Sonnet::detectLanguage(sentence);
+    //    Unicode text and setPixmap() and setImage() allows the exchange of QPixmaps and QImages between applications.");
+
+    //    qDebug() << "\tlang is" << Sonnet::detectLanguage(sentence);
 }
 
 void SonnetCoreTest::testCore2()
@@ -83,6 +85,7 @@ void SonnetCoreTest::testCore2()
     qDebug() << "Detecting language ...";
     // FIXME
     // QString sentence = QString::fromLatin1("Die K Desktop Environment (KDE; auf Deutsch K-Arbeitsumgebung; früher: Kool Desktop Environment) ist eine frei
-    // verfügbare Arbeitsumgebung, das heißt eine grafische Benutzeroberfläche mit vielen Zusatzprogrammen für den täglichen Gebrauch."); qDebug() << "\tlang is
-    // " << Sonnet::detectLanguage(sentence);
+    // verfügbare Arbeitsumgebung, das heißt eine grafische Benutzeroberfläche mit vielen Zusatzprogrammen für den täglichen Gebrauch.");
+
+    // qDebug() << "\tlang is" << Sonnet::detectLanguage(sentence);
 }

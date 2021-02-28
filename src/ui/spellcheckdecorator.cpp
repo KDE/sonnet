@@ -75,7 +75,11 @@ bool SpellCheckDecorator::Private::onContextMenuEvent(QContextMenuEvent *event)
     }
 
     // Check if the user clicked a selected word
-    const bool selectedWordClicked = cursor.hasSelection() && mousePos >= cursor.selectionStart() && mousePos <= cursor.selectionEnd();
+    /* clang-format off */
+    const bool selectedWordClicked = cursor.hasSelection()
+                                     && mousePos >= cursor.selectionStart()
+                                     && mousePos <= cursor.selectionEnd();
+    /* clang-format on */
 
     // Get the word under the (mouse-)cursor and see if it is misspelled.
     // Don't include apostrophes at the start/end of the word in the selection.
@@ -85,7 +89,8 @@ bool SpellCheckDecorator::Private::onContextMenuEvent(QContextMenuEvent *event)
     QString selectedWord = wordSelectCursor.selectedText();
 
     bool isMouseCursorInsideWord = true;
-    if ((mousePos < wordSelectCursor.selectionStart() || mousePos >= wordSelectCursor.selectionEnd()) && (selectedWord.length() > 1)) {
+    if ((mousePos < wordSelectCursor.selectionStart() || mousePos >= wordSelectCursor.selectionEnd()) //
+        && (selectedWord.length() > 1)) {
         isMouseCursorInsideWord = false;
     }
 
@@ -101,8 +106,13 @@ bool SpellCheckDecorator::Private::onContextMenuEvent(QContextMenuEvent *event)
 
     wordSelectCursor.movePosition(QTextCursor::NextCharacter, QTextCursor::KeepAnchor, selectedWord.size());
 
-    const bool wordIsMisspelled =
-        isMouseCursorInsideWord && m_highlighter && m_highlighter->isActive() && !selectedWord.isEmpty() && m_highlighter->isWordMisspelled(selectedWord);
+    /* clang-format off */
+    const bool wordIsMisspelled = isMouseCursorInsideWord
+                                  && m_highlighter
+                                  && m_highlighter->isActive()
+                                  && !selectedWord.isEmpty()
+                                  && m_highlighter->isWordMisspelled(selectedWord);
+    /* clang-format on */
 
     // If the user clicked a selected word, do nothing.
     // If the user clicked somewhere else, move the cursor there.

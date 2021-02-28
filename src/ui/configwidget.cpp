@@ -13,6 +13,7 @@
 #include "settingsimpl_p.h"
 
 #include "ui_debug.h"
+
 #include <QCheckBox>
 #include <QLineEdit>
 #include <QListWidget>

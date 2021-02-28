@@ -10,6 +10,7 @@
 #include "spellerplugin_p.h"
 
 #include "core_debug.h"
+
 #include <QCoreApplication>
 #include <QDir>
 #include <QHash>
@@ -324,7 +325,8 @@ void Loader::loadPlugin(const QString &pluginPath)
     for (const QString &language : languages) {
         QVector<Client *> &languageClients = d->languageClients[language];
 
-        if (languageClients.isEmpty() || client->reliability() < languageClients.first()->reliability()) {
+        if (languageClients.isEmpty() //
+            || client->reliability() < languageClients.first()->reliability()) {
             languageClients.append(client); // less reliable, to the end
         } else {
             languageClients.prepend(client); // more reliable, to the front

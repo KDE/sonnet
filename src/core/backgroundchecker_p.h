@@ -12,6 +12,7 @@
 #include "languagefilter_p.h"
 #include "speller.h"
 #include "tokenizer_p.h"
+
 #include <QObject>
 
 using namespace Sonnet;

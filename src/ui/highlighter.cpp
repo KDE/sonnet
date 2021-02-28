@@ -17,6 +17,7 @@
 #include "tokenizer_p.h"
 
 #include "ui_debug.h"
+
 #include <QColor>
 #include <QEvent>
 #include <QHash>
@@ -236,7 +237,11 @@ void Highlighter::slotAutoDetection()
     // don't disable just because 1 of 4 is misspelled.
     if (d->automatic && d->wordCount >= 10) {
         // tme = Too many errors
-        bool tme = (d->errorCount >= d->disableWordCount) && (d->errorCount * 100 >= d->disablePercentage * d->wordCount);
+        /* clang-format off */
+        bool tme = (d->errorCount >= d->disableWordCount)
+                   && (d->errorCount * 100 >= d->disablePercentage * d->wordCount);
+        /* clang-format on */
+
         if (d->active && tme) {
             d->active = false;
         } else if (!d->active && !tme) {
@@ -324,7 +329,8 @@ void Highlighter::highlightBlock(const QString &text)
 
     const int lengthPosition = text.length() - 1;
 
-    if (index != lengthPosition || (lengthPosition > 0 && !text[lengthPosition - 1].isLetter())) {
+    if (index != lengthPosition //
+        || (lengthPosition > 0 && !text[lengthPosition - 1].isLetter())) {
         d->languageFilter->setBuffer(text);
 
         LanguageCache *cache = dynamic_cast<LanguageCache *>(currentBlockUserData());
@@ -423,10 +429,23 @@ bool Highlighter::eventFilter(QObject *o, QEvent *e)
         if (d->rehighlightRequest->isActive()) { // try to stay out of the users way
             d->rehighlightRequest->start(500);
         }
-        if (k->key() == Qt::Key_Enter || k->key() == Qt::Key_Return || k->key() == Qt::Key_Up || k->key() == Qt::Key_Down || k->key() == Qt::Key_Left
-            || k->key() == Qt::Key_Right || k->key() == Qt::Key_PageUp || k->key() == Qt::Key_PageDown || k->key() == Qt::Key_Home || k->key() == Qt::Key_End
-            || ((k->modifiers() == Qt::ControlModifier)
-                && ((k->key() == Qt::Key_A) || (k->key() == Qt::Key_B) || (k->key() == Qt::Key_E) || (k->key() == Qt::Key_N) || (k->key() == Qt::Key_P)))) {
+        /* clang-format off */
+        if (k->key() == Qt::Key_Enter
+            || k->key() == Qt::Key_Return
+            || k->key() == Qt::Key_Up
+            || k->key() == Qt::Key_Down
+            || k->key() == Qt::Key_Left
+            || k->key() == Qt::Key_Right
+            || k->key() == Qt::Key_PageUp
+            || k->key() == Qt::Key_PageDown
+            || k->key() == Qt::Key_Home
+            || k->key() == Qt::Key_End
+            || (k->modifiers() == Qt::ControlModifier
+                && (k->key() == Qt::Key_A
+                    || k->key() == Qt::Key_B
+                    || k->key() == Qt::Key_E
+                    || k->key() == Qt::Key_N
+                    || k->key() == Qt::Key_P))) { /* clang-format on */
             if (intraWordEditing()) {
                 setIntraWordEditing(false);
                 d->completeRehighlightRequired = true;
@@ -437,10 +456,13 @@ bool Highlighter::eventFilter(QObject *o, QEvent *e)
         } else {
             setIntraWordEditing(true);
         }
-        if (k->key() == Qt::Key_Space || k->key() == Qt::Key_Enter || k->key() == Qt::Key_Return) {
+        if (k->key() == Qt::Key_Space //
+            || k->key() == Qt::Key_Enter //
+            || k->key() == Qt::Key_Return) {
             QTimer::singleShot(0, this, SLOT(slotAutoDetection()));
         }
-    } else if (((d->textEdit && (o == d->textEdit->viewport())) || (d->plainTextEdit && (o == d->plainTextEdit->viewport())))
+    } else if (((d->textEdit && (o == d->textEdit->viewport())) //
+                || (d->plainTextEdit && (o == d->plainTextEdit->viewport()))) //
                && (e->type() == QEvent::MouseButtonPress)) {
         // d->autoReady = true;
         if (intraWordEditing()) {

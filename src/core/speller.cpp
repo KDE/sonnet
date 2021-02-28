@@ -10,6 +10,7 @@
 #include "spellerplugin_p.h"
 
 #include "core_debug.h"
+
 #include <QCache>
 
 namespace Sonnet

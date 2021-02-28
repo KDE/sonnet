@@ -9,6 +9,7 @@
  */
 
 #include "guesslanguage.h"
+
 #include <QDebug>
 #include <QFile>
 #include <QHash>
@@ -57,7 +58,8 @@ int main(int argc, char *argv[])
 
     for (auto it = model.cbegin(); it != model.cend(); ++it) {
         const QString data = it.key();
-        bool hasTwoSpaces = ((data.size() > 1 && data[0].isSpace() && data[1].isSpace()) || (data.size() > 2 && data[1].isSpace() && data[2].isSpace()));
+        bool hasTwoSpaces = ((data.size() > 1 && data[0].isSpace() && data[1].isSpace()) //
+                             || (data.size() > 2 && data[1].isSpace() && data[2].isSpace()));
 
         if (!hasTwoSpaces) {
             orderedTrigrams.insert(it.value(), data);

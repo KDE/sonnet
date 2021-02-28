@@ -8,6 +8,7 @@
 
 #include "test_filter.h"
 #include "tokenizer_p.h"
+
 #include <QTest>
 #include <QVector>
 

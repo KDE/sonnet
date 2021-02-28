@@ -9,8 +9,9 @@
 #define LANGUAGEFILTER_H
 
 #include "sonnetcore_export.h"
-#include <QString>
 #include <tokenizer_p.h>
+
+#include <QString>
 
 namespace Sonnet
 {
