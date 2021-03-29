@@ -13,6 +13,47 @@
 
 namespace Sonnet
 {
+struct Token {
+    QStringView token = nullptr;
+    int positionInBuffer = -1;
+
+    QString toString() const
+    {
+        return token.toString();
+    }
+
+    /**
+     * @brief length of this token
+     */
+    Q_DECL_CONSTEXPR int length() const
+    {
+        return token.size();
+    }
+
+    /**
+     * @brief position in buffer of which the @ref token is a view
+     */
+    Q_DECL_CONSTEXPR int position() const
+    {
+        return positionInBuffer;
+    }
+
+    Q_DECL_CONSTEXPR bool isNull() const
+    {
+        return token.isNull();
+    }
+
+    Q_DECL_CONSTEXPR bool isEmpty() const
+    {
+        return token.isEmpty();
+    }
+
+    Q_DECL_CONSTEXPR QChar at(qsizetype n) const
+    {
+        return token.at(n);
+    }
+};
+
 /**
  * @short AbstractTokenizer breaks text into smaller pieces - words, sentences, paragraphs.
  *
@@ -41,7 +82,7 @@ public:
     /**
      * Returns next token or null QString if there is none
      */
-    virtual QStringRef next() = 0;
+    virtual Token next() = 0;
 
     /** Returns content of currently tokenized buffer*/
     virtual QString buffer() const = 0;
@@ -68,7 +109,7 @@ Usage example:
 WordTokenizer t(buffer);
 Speller sp;
 while (t.hasNext()) {
-    QStringRef word=t.next();
+    Token word=t.next();
     if (!t.isSpellcheckable()) continue;
     qDebug() << word.toString() << " " << sp.isCorrect(word.toString());
 }
@@ -89,7 +130,7 @@ public:
 
     void setBuffer(const QString &buffer) override;
     bool hasNext() const override;
-    QStringRef next() override;
+    Token next() override;
     QString buffer() const override;
     void replace(int position, int len, const QString &newWord) override;
 
@@ -100,7 +141,7 @@ public:
     void setIgnoreUppercase(bool val);
 
 private:
-    bool isUppercase(const QStringRef &word) const;
+    bool isUppercase(QStringView word) const;
     BreakTokenizerPrivate *const d;
 };
 
@@ -117,7 +158,7 @@ public:
     ~SentenceTokenizer() override;
     void setBuffer(const QString &buffer) override;
     bool hasNext() const override;
-    QStringRef next() override;
+    Token next() override;
     QString buffer() const override;
     void replace(int position, int len, const QString &newWord) override;
 

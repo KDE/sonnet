@@ -86,10 +86,10 @@ void SonnetAutoDetectTest::autodetect()
 
     // get chars till _, get the language code
     int us = correct_lang.indexOf(QLatin1Char('_'));
-    const QStringRef correctLangCode = correct_lang.leftRef(us);
+    const QString correctLangCode = correct_lang.left(us);
 
     us = actual_lang.indexOf(QLatin1Char('_'));
-    const QStringRef actualLangCode = actual_lang.leftRef(us);
+    const QString actualLangCode = actual_lang.left(us);
 
     qDebug() << "Actual: " << actual_lang;
     qDebug() << "Expected: " << correct_lang;

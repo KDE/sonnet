@@ -341,7 +341,7 @@ void Highlighter::highlightBlock(const QString &text)
 
         const bool autodetectLanguage = d->spellchecker->testAttribute(Speller::AutoDetectLanguage);
         while (d->languageFilter->hasNext()) {
-            QStringRef sentence = d->languageFilter->next();
+            Token sentence = d->languageFilter->next();
             if (autodetectLanguage && !d->autoDetectLanguageDisabled) {
                 QString lang;
                 QPair<int, int> spos = QPair<int, int>(sentence.position(), sentence.length());
@@ -364,7 +364,7 @@ void Highlighter::highlightBlock(const QString &text)
             d->tokenizer->setBuffer(sentence.toString());
             int offset = sentence.position();
             while (d->tokenizer->hasNext()) {
-                QStringRef word = d->tokenizer->next();
+                Token word = d->tokenizer->next();
                 if (!d->tokenizer->isSpellcheckable()) {
                     continue;
                 }

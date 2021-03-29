@@ -33,7 +33,7 @@ public:
 
     LanguageFilter mainTokenizer;
     WordTokenizer words;
-    QStringRef lastMisspelled;
+    Token lastMisspelled;
     Speller currentDict;
     int sentenceOffset;
     bool autoDetectLanguageDisabled;

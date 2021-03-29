@@ -29,7 +29,7 @@ void BackgroundCheckerPrivate::checkNext()
     do {
         // go over current sentence
         while (sentenceOffset != -1 && words.hasNext()) {
-            QStringRef word = words.next();
+            Token word = words.next();
             if (!words.isSpellcheckable()) {
                 continue;
             }
@@ -47,7 +47,7 @@ void BackgroundCheckerPrivate::checkNext()
         const bool autodetectLanguage = currentDict.testAttribute(Speller::AutoDetectLanguage);
         const bool ignoreUpperCase = !currentDict.testAttribute(Speller::CheckUppercase);
         while (mainTokenizer.hasNext()) {
-            QStringRef sentence = mainTokenizer.next();
+            Token sentence = mainTokenizer.next();
             if (autodetectLanguage && !autoDetectLanguageDisabled) {
                 if (!mainTokenizer.isSpellcheckable()) {
                     continue;

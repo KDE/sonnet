@@ -843,7 +843,7 @@ QString GuessLanguagePrivate::guessFromDictionaries(const QString &sentence, con
 
     WordTokenizer tokenizer(sentence);
     while (tokenizer.hasNext()) {
-        QStringRef word = tokenizer.next();
+        Token word = tokenizer.next();
         if (!tokenizer.isSpellcheckable()) {
             continue;
         }

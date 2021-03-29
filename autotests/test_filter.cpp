@@ -45,7 +45,7 @@ void SonnetFilterTest::testLatin()
     WordTokenizer tokenizer;
     tokenizer.setBuffer(buffer);
 
-    QStringRef w;
+    Token w;
     int hitNumber = 0;
     while (tokenizer.hasNext()) {
         w = tokenizer.next();
@@ -96,7 +96,7 @@ void SonnetFilterTest::testIndic()
 
     WordTokenizer tokenizer;
     tokenizer.setBuffer(buffer);
-    QStringRef w;
+    Token w;
     int hitNumber = 0;
     while (tokenizer.hasNext()) {
         w = tokenizer.next();
@@ -119,7 +119,7 @@ void SonnetFilterTest::testSentence()
     SentenceTokenizer tokenizer;
     tokenizer.setBuffer(buffer);
 
-    QStringRef w;
+    Token w;
     int hitNumber = 0;
     while (tokenizer.hasNext()) {
         w = tokenizer.next();

@@ -41,20 +41,18 @@ public:
     void shiftBreaks(int from, int offset);
     void replace(int pos, int len, const QString &newWord);
 
-    QStringRef currentItem() const;
-
     TextBreaks *const breakFinder;
     QString buffer;
 
     int itemPosition = -1;
     mutable bool cacheValid;
-    QStringRef last;
+    Token last;
     const Type type;
     bool inAddress = false;
     bool ignoreUppercase = false;
 
     bool hasNext() const;
-    QStringRef next();
+    Token next();
     void setBuffer(const QString &b)
     {
         invalidate();
@@ -118,9 +116,9 @@ void BreakTokenizerPrivate::regenerateCache() const
     cacheValid = true;
 }
 
-QStringRef BreakTokenizerPrivate::next()
+Token BreakTokenizerPrivate::next()
 {
-    QStringRef block;
+    Token block;
 
     if (!hasNext()) {
         last = block;
@@ -128,7 +126,10 @@ QStringRef BreakTokenizerPrivate::next()
     }
 
     itemPosition++;
-    last = QStringRef(&buffer, breaks().at(itemPosition).start, breaks().at(itemPosition).length);
+
+    const TextBreaks::Position &textBreak = this->breaks().at(itemPosition);
+    QStringView token = QStringView(buffer).mid(textBreak.start, textBreak.length);
+    last = {token, textBreak.start};
     return last;
 }
 
@@ -164,9 +165,9 @@ void WordTokenizer::setBuffer(const QString &buffer)
     d->setBuffer(buffer);
 }
 
-QStringRef WordTokenizer::next()
+Token WordTokenizer::next()
 {
-    QStringRef n = d->next();
+    Token n = d->next();
 
     // end of address of url?
     if (d->inAddress && n.position() > 0 && d->buffer[n.position() - 1].isSpace()) {
@@ -192,7 +193,7 @@ QString WordTokenizer::buffer() const
     return d->buffer;
 }
 
-bool WordTokenizer::isUppercase(const QStringRef &word) const
+bool WordTokenizer::isUppercase(QStringView word) const
 {
     for (int i = 0; i < word.length(); ++i) {
         if (word.at(i).isLetter() && !word.at(i).isUpper()) {
@@ -223,7 +224,7 @@ bool WordTokenizer::isSpellcheckable() const
     if (d->inAddress) {
         return false;
     }
-    if (d->ignoreUppercase && isUppercase(d->last)) {
+    if (d->ignoreUppercase && isUppercase(d->last.token)) {
         return false;
     }
     return true;
@@ -252,7 +253,7 @@ void SentenceTokenizer::setBuffer(const QString &buffer)
     d->setBuffer(buffer);
 }
 
-QStringRef SentenceTokenizer::next()
+Token SentenceTokenizer::next()
 {
     return d->next();
 }
