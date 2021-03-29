@@ -58,6 +58,7 @@ int main(int argc, char *argv[])
 
     for (auto it = model.cbegin(); it != model.cend(); ++it) {
         const QString data = it.key();
+        Q_ASSERT(data.size() >= 3);
         bool hasTwoSpaces = ((data.size() > 1 && data[0].isSpace() && data[1].isSpace()) //
                              || (data.size() > 2 && data[1].isSpace() && data[2].isSpace()));
 
