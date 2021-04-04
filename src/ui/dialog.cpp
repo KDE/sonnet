@@ -109,11 +109,7 @@ void Dialog::initConnections()
     connect(d->ui.m_skipBtn, &QAbstractButton::clicked, this, &Dialog::slotSkip);
     connect(d->ui.m_skipAllBtn, &QAbstractButton::clicked, this, &Dialog::slotSkipAll);
     connect(d->ui.m_suggestBtn, &QAbstractButton::clicked, this, &Dialog::slotSuggest);
-#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
     connect(d->ui.m_language, &DictionaryComboBox::textActivated, this, &Dialog::slotChangeLanguage);
-#else
-    connect(d->ui.m_language, QOverload<const QString &>::of(&QComboBox::activated), this, &Dialog::slotChangeLanguage);
-#endif
     connect(d->ui.m_suggestions, &QListView::clicked, this, &Dialog::slotSelectionChanged);
     connect(d->checker, &BackgroundChecker::misspelling, this, &Dialog::slotMisspelling);
     connect(d->checker, &BackgroundChecker::done, this, &Dialog::slotDone);
