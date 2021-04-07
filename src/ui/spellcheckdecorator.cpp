@@ -174,7 +174,8 @@ void SpellCheckDecorator::Private::execSuggestionMenu(const QPoint &pos, const Q
     const QAction *selectedAction = menu.exec(pos);
 
     if (selectedAction) {
-        Q_ASSERT(cursor.selectedText() == selectedWord);
+        // Fails when we're in the middle of a compose-key sequence
+        // Q_ASSERT(cursor.selectedText() == selectedWord);
 
         if (selectedAction == ignoreAction) {
             m_highlighter->ignoreWord(selectedWord);
