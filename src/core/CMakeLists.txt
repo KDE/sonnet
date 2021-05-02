@@ -60,7 +60,7 @@ ecm_generate_headers(SonnetCore_CamelCase_HEADERS
 
 target_link_libraries(KF5SonnetCore PUBLIC Qt5::Core)
 
-set_target_properties(KF5SonnetCore PROPERTIES VERSION ${SONNET_VERSION_STRING}
+set_target_properties(KF5SonnetCore PROPERTIES VERSION ${SONNET_VERSION}
                                                SOVERSION ${SONNET_SOVERSION}
                                                EXPORT_NAME SonnetCore
 )

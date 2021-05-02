@@ -59,7 +59,7 @@ target_link_libraries(KF5SonnetUi
     PRIVATE KF5::SonnetCore
 )
 
-set_target_properties(KF5SonnetUi PROPERTIES VERSION ${SONNET_VERSION_STRING}
+set_target_properties(KF5SonnetUi PROPERTIES VERSION ${SONNET_VERSION}
                                              SOVERSION ${SONNET_SOVERSION}
                                              EXPORT_NAME SonnetUi
 )
