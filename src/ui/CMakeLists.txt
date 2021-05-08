@@ -40,7 +40,7 @@ ecm_generate_headers(SonnetUi_CamelCase_HEADERS
   REQUIRED_HEADERS SonnetUi_HEADERS
 )
 
-qt5_wrap_ui(sonnetui_SRCS ${sonnetui_UI})
+qt_wrap_ui(sonnetui_SRCS ${sonnetui_UI})
 
 add_library(KF5SonnetUi ${sonnetui_SRCS})
 ecm_generate_export_header(KF5SonnetUi
