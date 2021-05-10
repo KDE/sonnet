@@ -1,5 +1,3 @@
-project(sonnetcore)
-
 set(sonnetcore_SRCS
    loader.cpp
    client.cpp

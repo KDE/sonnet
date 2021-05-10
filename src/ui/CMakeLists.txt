@@ -1,5 +1,3 @@
-project(sonnetui)
-
 ecm_create_qm_loader(sonnet_QM_LOADER sonnet5_qt)
 
 set(sonnetui_SRCS
