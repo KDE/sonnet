@@ -23,7 +23,7 @@ ecm_qt_declare_logging_category(sonnet_hspell_PART_SRCS
 
 add_library(sonnet_hspell MODULE ${sonnet_hspell_PART_SRCS})
 
-target_link_libraries(sonnet_hspell PRIVATE KF5::SonnetCore ZLIB::ZLIB ${HSPELL_LIBRARIES})
+target_link_libraries(sonnet_hspell PRIVATE KF5::SonnetCore ${HSPELL_LIBRARIES} ZLIB::ZLIB)
 
 install(TARGETS sonnet_hspell  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf5/sonnet/)
 
