@@ -29,8 +29,8 @@ HunspellDict::HunspellDict(const QString &lang, QString path)
         path += QLatin1Char('/');
     }
     path += lang;
-    QString dictionary = path + QStringLiteral(".dic");
-    QString aff = path + QStringLiteral(".aff");
+    const QString dictionary = path + QStringLiteral(".dic");
+    const QString aff = path + QStringLiteral(".aff");
 
     if (QFileInfo::exists(dictionary) && QFileInfo::exists(aff)) {
         m_speller = new Hunspell(aff.toLocal8Bit().constData(), dictionary.toLocal8Bit().constData());
@@ -42,9 +42,10 @@ HunspellDict::HunspellDict(const QString &lang, QString path)
         }
     } else {
         qCWarning(SONNET_HUNSPELL) << "Unable to find dictionary for" << lang << "in path" << path;
+        return; // OTherwise it will crash as m_speller is null
     }
 
-    QString userDic = QDir::home().filePath(QLatin1String(".hunspell_") % lang);
+    const QString userDic = QDir::home().filePath(QLatin1String(".hunspell_") % lang);
     QFile userDicFile(userDic);
     if (userDicFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qCDebug(SONNET_HUNSPELL) << "Load a user dictionary" << userDic;
@@ -138,7 +139,7 @@ bool HunspellDict::addToPersonal(const QString &word)
         return false;
     }
     m_speller->add(toDictEncoding(word).constData());
-    QString userDic = QDir::home().filePath(QLatin1String(".hunspell_") % language());
+    const QString userDic = QDir::home().filePath(QLatin1String(".hunspell_") % language());
     QFile userDicFile(userDic);
     if (userDicFile.open(QIODevice::Append | QIODevice::Text)) {
         QTextStream out(&userDicFile);
