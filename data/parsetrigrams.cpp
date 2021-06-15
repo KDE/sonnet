@@ -32,7 +32,8 @@ int main(int argc, char **argv)
     QHash<QString, QHash<QString, int>> models;
 
     const QRegularExpression rx(QStringLiteral("(?:.{3})\\s+(.*)"));
-    for (const QString &fname : td.entryList(QDir::Files)) {
+    const QStringList files = td.entryList(QDir::Files);
+    for (const QString &fname : files) {
         QFile fin(td.filePath(fname));
         fin.open(QFile::ReadOnly | QFile::Text);
         QTextStream stream(&fin);
