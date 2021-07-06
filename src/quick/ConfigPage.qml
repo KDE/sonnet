@@ -47,9 +47,9 @@ Kirigami.Page {
 
     QQC2.Dialog {
         id: applyDialog
-        title: i18n("Apply Settings")
+        title: tr("Apply Settings")
         contentItem: QQC2.Label {
-            text: i18n("The settings of the current module have changed.<br /> Do you want to apply the changes or discard them?")
+            text: tr("The settings of the current module have changed.<br /> Do you want to apply the changes or discard them?")
         }
         standardButtons: QQC2.Dialog.Ok | QQC2.Dialog.Cancel | QQC2.Dialog.Discard
 
@@ -85,7 +85,7 @@ Kirigami.Page {
             Layout.rightMargin: wideMode ? 0 : Kirigami.Units.largeSpacing
 
             QQC2.ComboBox {
-                Kirigami.FormData.label: i18n("Selected default language:")
+                Kirigami.FormData.label: tr("Selected default language:")
                 model: settings.dictionaryModel
                 textRole: "display"
                 valueRole: "languageCode"
@@ -96,14 +96,14 @@ Kirigami.Page {
             }
 
             QQC2.Button {
-                text: i18n("Open Personal Dictionary")
+                text: tr("Open Personal Dictionary")
                 onClicked: dictionarySheet.open()
             }
 
             QQC2.CheckBox {
-                Kirigami.FormData.label: i18n("Options:")
+                Kirigami.FormData.label: tr("Options:")
                 checked: settings.checkerEnabledByDefault
-                text: i18n("Enable automatic spell checking")
+                text: tr("Enable automatic spell checking")
                 onCheckedChanged: {
                     settings.checkerEnabledByDefault = checked;
                     if (instantApply) {
@@ -114,7 +114,7 @@ Kirigami.Page {
 
             QQC2.CheckBox {
                 checked: settings.skipUppercase
-                text: i18n("Ignore uppercase words")
+                text: tr("Ignore uppercase words")
                 onCheckedChanged: {
                     settings.skipUppercase = checked;
                     if (instantApply) {
@@ -125,7 +125,7 @@ Kirigami.Page {
 
             QQC2.CheckBox {
                 checked: settings.skipRunTogether
-                text: i18n("Ignore hyphenated words")
+                text: tr("Ignore hyphenated words")
                 onCheckedChanged: {
                     settings.skipRunTogether = checked;
                     if (instantApply) {
@@ -137,7 +137,7 @@ Kirigami.Page {
             QQC2.CheckBox {
                 id: autodetectLanguageCheckbox
                 checked: settings.autodetectLanguage
-                text: i18n("Detect language automatically")
+                text: tr("Detect language automatically")
                 onCheckedChanged: {
                     settings.autodetectLanguage = checked;
                     if (instantApply) {
@@ -149,7 +149,7 @@ Kirigami.Page {
 
         Kirigami.Heading {
             level: 2
-            text: i18n("Spell checking languages")
+            text: tr("Spell checking languages")
             wrapMode: Text.WordWrap
             Layout.fillWidth: true
             Layout.topMargin: Kirigami.Units.largeSpacing
@@ -157,7 +157,7 @@ Kirigami.Page {
             Layout.rightMargin: wideMode ? 0 : Kirigami.Units.largeSpacing
         }
         QQC2.Label {
-            text: i18n("%1 will provide spell checking and suggestions for the languages listed here when autodetection is enabled.", Qt.application.displayName)
+            text: tr("%1 will provide spell checking and suggestions for the languages listed here when autodetection is enabled.").arg(Qt.application.displayName)
             wrapMode: Text.WordWrap
             Layout.fillWidth: true
             Layout.leftMargin: wideMode ? 0 : Kirigami.Units.largeSpacing
@@ -187,7 +187,7 @@ Kirigami.Page {
                         }
                         QQC2.ToolTip {
                             visible: hover.hovered
-                            text: i18n("Default Language")
+                            text: tr("Default Language")
                         }
                     }
                 }
@@ -214,10 +214,10 @@ Kirigami.Page {
             QQC2.TextField {
                 id: dictionaryField
                 Layout.fillWidth: true
-                placeholderText: i18n("Add new words to your personal dictionary...")
+                placeholderText: tr("Add new words to your personal dictionary...")
             }
             QQC2.Button {
-                text: i18n("Add")
+                text: tr("Add")
                 icon.name: "list-add"
                 enabled: dictionaryField.text.length > 0
                 onClicked: {
@@ -245,7 +245,7 @@ Kirigami.Page {
                         }
                     }
                     QQC2.ToolTip {
-                        text: i18n("Delete word")
+                        text: tr("Delete word")
                     }
                 }
             }
@@ -261,7 +261,7 @@ Kirigami.Page {
             }
 
             QQC2.Button  {
-                text: i18nc("@action:button", "Apply")
+                text: tr("Apply")
                 enabled: settings.modified
                 onClicked: settings.save();
             }
