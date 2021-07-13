@@ -54,7 +54,7 @@ public:
     virtual QStringList languages() const = 0;
 
     /**
-     * @returns the name of the implementating class.
+     * @returns the name of the implementing class.
      */
     virtual QString name() const = 0;
 };

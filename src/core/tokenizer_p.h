@@ -33,7 +33,7 @@ public:
      */
     virtual void setBuffer(const QString &buffer = QString()) = 0;
     /**
-     * Returns true if there is another token avaiable.
+     * Returns true if there is another token available.
      * @return true if another token is available, false if not.
      */
     virtual bool hasNext() const = 0;

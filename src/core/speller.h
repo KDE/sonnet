@@ -18,7 +18,7 @@ class SpellerPrivate;
 /**
  * Spell checker object.
  *
- * @short class used for actuall spell checking
+ * @short class used for actual spell checking
  */
 class SONNETCORE_EXPORT Speller
 {
@@ -65,7 +65,7 @@ public:
     QStringList suggest(const QString &word) const;
 
     /**
-     * Convience method calling isCorrect() and suggest()
+     * Convenience method calling isCorrect() and suggest()
      * if the word isn't correct.
      */
     bool checkAndSuggest(const QString &word, QStringList &suggestions) const;

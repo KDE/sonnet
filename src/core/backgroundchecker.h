@@ -121,7 +121,7 @@ protected:
      * This function is called to get the text to spell check.
      * It will be called continuesly until it returns QString()
      * in which case the done() signal is emitted.
-     * Note: the start parameter in mispelling() is not a combined
+     * Note: the start parameter in misspelling() is not a combined
      * position but a position in the last string returned
      * by fetchMoreText. You need to store the state in the derivatives.
      */
