@@ -655,13 +655,12 @@ void GuessLanguagePrivate::loadModels()
 
 QList<QChar::Script> GuessLanguagePrivate::findRuns(const QString &text)
 {
-    QChar::Script script = QChar::Script_Unknown;
     QHash<QChar::Script, int> scriptCounts;
 
     int totalCount = 0;
 
     for (const QChar c : text) {
-        script = c.script();
+        const QChar::Script script = c.script();
 
         if (script == QChar::Script_Common || script == QChar::Script_Inherited) {
             continue;
@@ -682,7 +681,7 @@ QList<QChar::Script> GuessLanguagePrivate::findRuns(const QString &text)
     }
 
     if (scriptCounts.size() == 1) {
-        return {script};
+        return {scriptCounts.cbegin().key()};
     }
 
     for (auto it = scriptCounts.cbegin(); it != scriptCounts.cend(); ++it) {
