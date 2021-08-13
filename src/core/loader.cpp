@@ -154,16 +154,16 @@ QStringList Loader::languages() const
 
 QString Loader::languageNameForCode(const QString &langCode) const
 {
-    QString currentDictionary = langCode, // e.g. en_GB-ize-wo_accents
-        isoCode, // locale ISO name
-        variantName, // dictionary variant name e.g. w_accents
-        localizedLang, // localized language
-        localizedCountry, // localized country
-        localizedVariant;
+    QString currentDictionary = langCode; // e.g. en_GB-ize-wo_accents
+    QString isoCode; // locale ISO name
+    QString variantName; // dictionary variant name e.g. w_accents
+    QString localizedLang; // localized language
+    QString localizedCountry; // localized country
+    QString localizedVariant;
     QByteArray variantEnglish; // dictionary variant in English
 
-    int minusPos, // position of "-" char
-        variantCount = 0; // used to iterate over variantList
+    int minusPos; // position of "-" char
+    int variantCount = 0; // used to iterate over variantList
 
     struct variantListType {
         const char *variantShortName;
