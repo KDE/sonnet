@@ -245,6 +245,7 @@ void SettingsImpl::save()
     } else if (!d->ignore.isEmpty()) {
         settings.setValue(defaultLanguage, QStringList(d->ignore.keys()));
     }
+    d->modified = false;
 }
 
 void SettingsImpl::restore()

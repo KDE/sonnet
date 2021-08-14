@@ -1,0 +1,5 @@
+<!DOCTYPE RCC><RCC version="1.0">
+ <qresource prefix="/org/kde/sonnet/">
+    <file>ConfigPage.qml</file>
+ </qresource>
+</RCC>
