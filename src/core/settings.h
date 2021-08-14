@@ -6,6 +6,7 @@
 #ifndef SONNET_SETTINGS_H
 #define SONNET_SETTINGS_H
 
+#include <QAbstractListModel>
 #include <QString>
 #include <QStringList>
 #include <QtCore/QObject>
@@ -20,16 +21,40 @@ class SettingsPrivate;
 class SONNETCORE_EXPORT Settings : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(bool skipUppercase READ skipUppercase WRITE setSkipUppercase)
-    Q_PROPERTY(bool autodetectLanguage READ autodetectLanguage WRITE setAutodetectLanguage)
-    Q_PROPERTY(bool backgroundCheckerEnabled READ backgroundCheckerEnabled WRITE setBackgroundCheckerEnabled)
-    Q_PROPERTY(bool checkerEnabledByDefault READ checkerEnabledByDefault WRITE setCheckerEnabledByDefault)
-    Q_PROPERTY(bool skipRunTogether READ skipRunTogether WRITE setSkipRunTogether)
-    Q_PROPERTY(QStringList currentIgnoreList READ currentIgnoreList WRITE setCurrentIgnoreList)
-    Q_PROPERTY(QStringList preferredLanguages READ preferredLanguages WRITE setPreferredLanguages)
-    Q_PROPERTY(QString defaultLanguage READ defaultLanguage WRITE setDefaultLanguage)
+    /// This property holds whether Sonnet should skip checkign words starting with an uppercase letter.
+    Q_PROPERTY(bool skipUppercase READ skipUppercase WRITE setSkipUppercase NOTIFY skipUppercaseChanged)
+    /// This property holds whether Sonnet should autodetect language.
+    Q_PROPERTY(bool autodetectLanguage READ autodetectLanguage WRITE setAutodetectLanguage NOTIFY autodetectLanguageChanged)
+    /// This property holds whether Sonnet should run spellchecking checks in the background.
+    Q_PROPERTY(bool backgroundCheckerEnabled READ backgroundCheckerEnabled WRITE setBackgroundCheckerEnabled NOTIFY backgroundCheckerEnabledChanged)
+    /// This property holds whether Sonnet should be enabled by default.
+    Q_PROPERTY(bool checkerEnabledByDefault READ checkerEnabledByDefault WRITE setCheckerEnabledByDefault NOTIFY checkerEnabledByDefaultChanged)
+    /// This property holds whether Sonnet sould skip checking compounds words.
+    Q_PROPERTY(bool skipRunTogether READ skipRunTogether WRITE setSkipRunTogether NOTIFY skipRunTogetherChanged)
+    /// This property holds the list of ignored words.
+    Q_PROPERTY(QStringList currentIgnoreList READ currentIgnoreList WRITE setCurrentIgnoreList NOTIFY currentIgnoreListChanged)
+    /// This property holds the list of preferred languages.
+    Q_PROPERTY(QStringList preferredLanguages READ preferredLanguages WRITE setPreferredLanguages NOTIFY preferredLanguagesChanged)
+    /// This property holds the default language for spell checking.
+    Q_PROPERTY(QString defaultLanguage READ defaultLanguage WRITE setDefaultLanguage NOTIFY defaultLanguageChanged)
+
+    /// This property holds a Qt Model containing all the preferred dictionaries
+    /// with language description and theirs codes. This model makes the
+    /// Qt::DisplayRole as well as the roles defined in \ref DictionaryRoles
+    /// available.
+    /// \since 5.88
+    Q_PROPERTY(QAbstractListModel *dictionaryModel READ dictionaryModel CONSTANT)
+
+    Q_PROPERTY(bool modified READ modified NOTIFY modifiedChanged)
 
 public:
+    /// Roles for \ref dictionaryModel
+    enum DictionaryRoles {
+        LanguageCodeRole = Qt::UserRole + 1, //< Language code of the language. This uses "languageCode" as roleNames.
+        PreferredRole, //< This role holds whether the language is one of the preferred languages. This uses "isPreferred" as roleNames.
+        DefaultRole //< This role holds whether the language is the default language. This uses "isDefault" as roleNames.
+    };
+
     explicit Settings(QObject *parent = nullptr);
     ~Settings() override;
 
@@ -63,7 +88,9 @@ public:
     QStringList clients() const;
     bool modified() const;
 
-    void save();
+    QAbstractListModel *dictionaryModel();
+
+    Q_INVOKABLE void save();
 
     static QStringList defaultIgnoreList();
     static bool defaultSkipUppercase();
@@ -74,10 +101,23 @@ public:
     static QString defaultDefaultLanguage();
     static QStringList defaultPreferredLanguages();
 
+Q_SIGNALS:
+    void skipUppercaseChanged();
+    void autodetectLanguageChanged();
+    void backgroundCheckerEnabledChanged();
+    void defaultClientChanged();
+    void defaultLanguageChanged();
+    void preferredLanguagesChanged();
+    void skipRunTogetherChanged();
+    void checkerEnabledByDefaultChanged();
+    void currentIgnoreListChanged();
+    void modifiedChanged();
+
 private:
     friend class Loader;
     SettingsPrivate *const d;
 };
 }
+Q_DECLARE_METATYPE(QAbstractListModel *)
 
 #endif // SONNET_SETTINGS_H
