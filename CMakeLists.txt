@@ -19,8 +19,6 @@ include(ECMQtDeclareLoggingCategory)
 include(ECMGenerateExportHeader)
 include(ECMSetupVersion)
 include(ECMGenerateHeaders)
-include(ECMGenerateQmlTypes)
-include(ECMQMLModules)
 
 include(ECMAddQch)
 include(ECMPoQmTools)
@@ -29,16 +27,9 @@ set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprec
 
 set(REQUIRED_QT_VERSION 5.15.0)
 option(SONNET_USE_WIDGETS "Build components using Qt5Widgets" ON)
-option(SONNET_USE_QML "Build components using Qt5Quick" ON)
-
 if(SONNET_USE_WIDGETS)
     find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets)
 endif()
-
-if(SONNET_USE_QML)
-    find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Quick)
-endif()
-
 find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Core)
 
 
