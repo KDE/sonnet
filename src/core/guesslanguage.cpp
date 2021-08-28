@@ -96,7 +96,7 @@ GuessLanguagePrivate::GuessLanguagePrivate()
     const QStringList languages = Loader::openLoader()->languages();
     s_knownDictionaries = QSet<QString>(languages.begin(), languages.end());
     QSet<QString> dictionaryLanguages;
-    for (const QString &dictName : qAsConst(s_knownDictionaries)) {
+    for (const QString &dictName : std::as_const(s_knownDictionaries)) {
         QString languageName = QLocale(dictName).name();
         if (languageName.isEmpty()) {
             qCWarning(SONNET_LOG_CORE) << "Unable to parse name for dictionary" << dictName;
@@ -504,7 +504,7 @@ GuessLanguagePrivate::GuessLanguagePrivate()
 
         { // Remove unknown languages
             QStringList pruned;
-            for (const QString &name : qAsConst(names)) {
+            for (const QString &name : std::as_const(names)) {
                 if (!dictionaryLanguages.contains(name)) {
                     continue;
                 }
@@ -517,7 +517,7 @@ GuessLanguagePrivate::GuessLanguagePrivate()
             continue;
         }
 
-        for (const QString &name : qAsConst(names)) {
+        for (const QString &name : std::as_const(names)) {
             s_scriptLanguages.insert(script, name);
         }
     }
@@ -526,7 +526,7 @@ GuessLanguagePrivate::GuessLanguagePrivate()
     if (!allLanguages.contains(s_knownDictionaries)) {
         QSet<QString> dicts(s_knownDictionaries);
         dicts.subtract(allLanguages);
-        for (const QString &dictName : qAsConst(dicts)) {
+        for (const QString &dictName : std::as_const(dicts)) {
             QString languageName = QLocale(dictName).name();
             if (languageName.isEmpty()) {
                 qCWarning(SONNET_LOG_CORE) << "Unable to parse language name" << dictName;
@@ -791,7 +791,7 @@ QVector<QString> GuessLanguagePrivate::createOrderedModel(const QString &content
 
     QVector<QString> orderedTrigrams;
     orderedTrigrams.reserve(trigramFrequencyList.size());
-    for (const auto &tri : qAsConst(trigramFrequencyList)) {
+    for (const auto &tri : std::as_const(trigramFrequencyList)) {
         orderedTrigrams.append(tri.second);
     }
 
