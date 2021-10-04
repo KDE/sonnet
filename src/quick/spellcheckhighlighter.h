@@ -100,6 +100,16 @@ class SpellcheckHighlighter : public QSyntaxHighlighter
     /// \since 5.88
     Q_PROPERTY(bool active READ active WRITE setActive NOTIFY activeChanged)
 
+    /// \brief This property holds whether the text document is formatted to reflect spelling.
+    ///
+    /// If \p formattingActive is true, then the spell checker will format the given \p document
+    /// when it is \p active and there are spelling errors. This is useful for when you have
+    /// more than one SpellcheckHighlighter per text area or wish to apply custom formatting
+    /// yourself.
+    ///
+    /// \since 5.88
+    Q_PROPERTY(bool formattingActive READ formattingActive WRITE setFormattingActive NOTIFY formattingActiveChanged)
+
     /// This property holds whether spell checking is automatically disabled
     /// if there's too many errors.
     /// \since 5.88
@@ -173,6 +183,9 @@ public:
     void setQuoteColor(const QColor &color);
     Q_REQUIRED_RESULT QColor quoteColor() const;
 
+    Q_REQUIRED_RESULT bool formattingActive() const;
+    void setFormattingActive(bool active);
+
     /// Return true if checker is enabled by default
     /// \since 5.88
     bool checkerEnabledByDefault() const;
@@ -195,7 +208,7 @@ Q_SIGNALS:
     void autoDetectLanguageDisabledChanged();
     void automaticChanged();
     void currentLanguageChanged();
-
+    void formattingActiveChanged();
     /// Emitted when as-you-type spell checking is enabled or disabled.
     ///
     /// \param description is a i18n description of the new state,

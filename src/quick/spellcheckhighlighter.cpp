@@ -71,6 +71,7 @@ public:
     {
         tokenizer = std::make_unique<WordTokenizer>();
         active = true;
+        formattingActive = true;
         automatic = false;
         autoDetectLanguageDisabled = false;
         connected = false;
@@ -128,6 +129,7 @@ public:
     int autoCompleteEndPosition = -1;
     int wordIsMisspelled = false;
     bool active;
+    bool formattingActive;
     bool automatic;
     bool autoDetectLanguageDisabled;
     bool completeRehighlightRequired;
@@ -264,6 +266,22 @@ void SpellcheckHighlighter::setActive(bool active)
     }
 }
 
+void SpellcheckHighlighter::setFormattingActive(bool active)
+{
+    if (d->formattingActive == active) {
+        return;
+    }
+
+    d->formattingActive = active;
+    Q_EMIT formattingActiveChanged();
+    rehighlight();
+}
+
+bool SpellcheckHighlighter::formattingActive() const
+{
+    return d->formattingActive;
+}
+
 bool SpellcheckHighlighter::active() const
 {
     return d->active;
@@ -301,7 +319,9 @@ void SpellcheckHighlighter::highlightBlock(const QString &text)
 
     // Avoid spellchecking quotes
     if (text.isEmpty() || text.at(0) == QLatin1Char('>')) {
-        setFormat(0, text.length(), d->quoteFormat);
+        if (d->formattingActive) {
+            setFormat(0, text.length(), d->quoteFormat);
+        }
         return;
     }
 
@@ -457,11 +477,17 @@ void SpellcheckHighlighter::setCurrentLanguage(const QString &lang)
 
 void SpellcheckHighlighter::setMisspelled(int start, int count)
 {
+    if (!d->formattingActive) {
+        return;
+    }
     setFormat(start, count, d->errorFormat);
 }
 
 void SpellcheckHighlighter::unsetMisspelled(int start, int count)
 {
+    if (!d->formattingActive) {
+        return;
+    }
     setFormat(start, count, QTextCharFormat());
 }
 
