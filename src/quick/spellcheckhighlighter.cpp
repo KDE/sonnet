@@ -369,6 +369,10 @@ void SpellcheckHighlighter::highlightBlock(const QString &text)
 
 QStringList SpellcheckHighlighter::suggestions(int mousePosition, int max)
 {
+    if (!textDocument()) {
+        return {};
+    }
+
     QTextCursor cursor = textCursor();
 
     QTextCursor cursorAtMouse(textDocument());
