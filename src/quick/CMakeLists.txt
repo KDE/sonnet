@@ -18,5 +18,6 @@ set(bindest "${CMAKE_BINARY_DIR}/bin/qml/org/kde/sonnet/")
 set_target_properties(sonnetquickplugin PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${bindest}")
 
 install(TARGETS sonnetquickplugin DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/sonnet)
+install(FILES qmldir DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/sonnet)
 
 ecm_generate_qmltypes(org.kde.sonnet 1.0 DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/sonnet)
