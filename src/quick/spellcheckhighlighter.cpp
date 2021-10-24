@@ -113,7 +113,6 @@ public:
     std::unique_ptr<LanguageFilter> languageFilter;
     Loader *loader = nullptr;
     std::unique_ptr<Speller> spellchecker;
-    QQuickTextDocument *textDocument = nullptr;
 
     QTextCharFormat errorFormat;
     QTextCharFormat quoteFormat;
@@ -310,7 +309,7 @@ void SpellcheckHighlighter::highlightBlock(const QString &text)
         d->connected = true;
     }
     QTextCursor cursor = textCursor();
-    int index = cursor.position();
+    const int index = cursor.position() + 1;
 
     const int lengthPosition = text.length() - 1;
 
@@ -498,9 +497,11 @@ void SpellcheckHighlighter::setQuickDocument(QQuickTextDocument *document)
     }
 
     if (d->document) {
+        d->document->parent()->removeEventFilter(this);
         d->document->textDocument()->disconnect(this);
     }
     d->document = document;
+    document->parent()->installEventFilter(this);
     setDocument(document->textDocument());
     Q_EMIT documentChanged();
 }
@@ -609,4 +610,44 @@ void SpellcheckHighlighter::setMisspelledColor(const QColor &color)
 bool SpellcheckHighlighter::isWordMisspelled(const QString &word)
 {
     return d->spellchecker->isMisspelled(word);
+}
+
+bool SpellcheckHighlighter::eventFilter(QObject *o, QEvent *e)
+{
+    if (!d->spellCheckerFound) {
+        return false;
+    }
+    if (o == d->document->parent() && (e->type() == QEvent::KeyPress)) {
+        QKeyEvent *k = static_cast<QKeyEvent *>(e);
+
+        if (k->key() == Qt::Key_Enter || k->key() == Qt::Key_Return || k->key() == Qt::Key_Up || k->key() == Qt::Key_Down || k->key() == Qt::Key_Left
+            || k->key() == Qt::Key_Right || k->key() == Qt::Key_PageUp || k->key() == Qt::Key_PageDown || k->key() == Qt::Key_Home || k->key() == Qt::Key_End
+            || (k->modifiers() == Qt::ControlModifier
+                && (k->key() == Qt::Key_A || k->key() == Qt::Key_B || k->key() == Qt::Key_E || k->key() == Qt::Key_N
+                    || k->key() == Qt::Key_P))) { /* clang-format on */
+            if (intraWordEditing()) {
+                setIntraWordEditing(false);
+                d->completeRehighlightRequired = true;
+                d->rehighlightRequest->setInterval(500);
+                d->rehighlightRequest->setSingleShot(true);
+                d->rehighlightRequest->start();
+            }
+        } else {
+            setIntraWordEditing(true);
+        }
+        if (k->key() == Qt::Key_Space //
+            || k->key() == Qt::Key_Enter //
+            || k->key() == Qt::Key_Return) {
+            QTimer::singleShot(0, this, SLOT(slotAutoDetection()));
+        }
+    } else if (d->document && e->type() == QEvent::MouseButtonPress) {
+        if (intraWordEditing()) {
+            setIntraWordEditing(false);
+            d->completeRehighlightRequired = true;
+            d->rehighlightRequest->setInterval(0);
+            d->rehighlightRequest->setSingleShot(true);
+            d->rehighlightRequest->start();
+        }
+    }
+    return false;
 }

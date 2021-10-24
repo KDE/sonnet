@@ -207,6 +207,7 @@ protected:
     void highlightBlock(const QString &text) override;
     virtual void setMisspelled(int start, int count);
     virtual void unsetMisspelled(int start, int count);
+    bool eventFilter(QObject *o, QEvent *e) override;
 
     bool intraWordEditing() const;
     void setIntraWordEditing(bool editing);
