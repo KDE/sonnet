@@ -42,7 +42,7 @@ public:
 
 public:
     Loader();
-    ~Loader();
+    ~Loader() override;
 
     /**
      * Returns dictionary for the given language and preferred client.

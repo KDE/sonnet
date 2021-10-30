@@ -20,7 +20,7 @@ class SONNETUI_EXPORT ConfigDialog : public QDialog
     Q_OBJECT
 public:
     explicit ConfigDialog(QWidget *parent);
-    ~ConfigDialog();
+    ~ConfigDialog() override;
 
     /**
      * Sets the language/dictionary that will be selected by default

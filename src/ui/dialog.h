@@ -38,7 +38,7 @@ class SONNETUI_EXPORT Dialog : public QDialog
     Q_OBJECT
 public:
     Dialog(BackgroundChecker *checker, QWidget *parent);
-    ~Dialog();
+    ~Dialog() override;
 
     QString originalBuffer() const;
     QString buffer() const;

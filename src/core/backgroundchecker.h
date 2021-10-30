@@ -45,7 +45,7 @@ class SONNETCORE_EXPORT BackgroundChecker : public QObject
 public:
     explicit BackgroundChecker(QObject *parent = nullptr);
     explicit BackgroundChecker(const Speller &speller, QObject *parent = nullptr);
-    ~BackgroundChecker();
+    ~BackgroundChecker() override;
 
     /**
      * This method is used to spell check static text.

@@ -25,7 +25,7 @@ public:
         reload();
     }
 
-    ~DictionaryModel()
+    ~DictionaryModel() override
     {
     }
 

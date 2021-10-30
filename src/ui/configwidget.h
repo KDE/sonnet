@@ -19,7 +19,7 @@ class SONNETUI_EXPORT ConfigWidget : public QWidget
     Q_OBJECT
 public:
     explicit ConfigWidget(QWidget *parent);
-    ~ConfigWidget();
+    ~ConfigWidget() override;
 
     bool backgroundCheckingButtonShown() const;
 

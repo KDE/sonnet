@@ -34,7 +34,7 @@ public:
     /**
      * Destructor
      */
-    ~DictionaryComboBox();
+    ~DictionaryComboBox() override;
 
     /**
      * Clears the widget and reloads the dictionaries from Sonnet.
