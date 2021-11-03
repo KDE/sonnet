@@ -5,7 +5,6 @@
  */
 #include "settingsimpl_p.h"
 
-#include <QAbstractListModel>
 #include <QLocale>
 
 #include "loader_p.h"
