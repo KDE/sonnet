@@ -4,6 +4,7 @@ set(KF_VERSION "5.88.0") # handled by release scripts
 project(Sonnet VERSION ${KF_VERSION})
 
 include(FeatureSummary)
+include(CMakeDependentOption)
 find_package(ECM 5.87.0  NO_MODULE)
 set_package_properties(ECM PROPERTIES TYPE REQUIRED DESCRIPTION "Extra CMake Modules." URL "https://commits.kde.org/extra-cmake-modules")
 feature_summary(WHAT REQUIRED_PACKAGES_NOT_FOUND FATAL_ON_MISSING_REQUIRED_PACKAGES)
@@ -63,10 +64,10 @@ if (BUILD_TESTING)
      add_subdirectory(autotests)
 endif()
 
-if(TARGET Qt5::Widgets)
+cmake_dependent_option(BUILD_EXAMPLES "Whether to build the examples" OFF "SONNET_USE_WIDGETS" OFF)
+if (BUILD_EXAMPLES)
     add_subdirectory(examples)
 endif()
-
 
 # create a Config.cmake and a ConfigVersion.cmake file and install them
 set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF5Sonnet")
