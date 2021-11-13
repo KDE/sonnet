@@ -29,9 +29,7 @@ HunspellDict::HunspellDict(const QString &lang, const std::shared_ptr<Hunspell> 
     }
     m_codec = QTextCodec::codecForName(speller->get_dic_encoding());
     if (!m_codec) {
-        qCWarning(SONNET_HUNSPELL) << "Failed to find a text codec for name"
-            << speller->get_dic_encoding()
-            << "defaulting to locale text codec";
+        qCWarning(SONNET_HUNSPELL) << "Failed to find a text codec for name" << speller->get_dic_encoding() << "defaulting to locale text codec";
         m_codec = QTextCodec::codecForLocale();
         Q_ASSERT(m_codec);
     }
@@ -46,9 +44,7 @@ HunspellDict::HunspellDict(const QString &lang, const std::shared_ptr<Hunspell> 
             QString word = userDicIn.readLine();
             if (word.contains(QLatin1Char('/'))) {
                 QStringList wordParts = word.split(QLatin1Char('/'));
-                speller->add_with_affix(toDictEncoding(wordParts.at(
-                                                             0)).constData(),
-                                          toDictEncoding(wordParts.at(1)).constData());
+                speller->add_with_affix(toDictEncoding(wordParts.at(0)).constData(), toDictEncoding(wordParts.at(1)).constData());
             }
             if (word.at(0) == QLatin1Char('*')) {
                 speller->remove(toDictEncoding(word.mid(1)).constData());
@@ -76,8 +72,7 @@ std::shared_ptr<Hunspell> HunspellDict::createHunspell(const QString &lang, QStr
         return nullptr;
     }
 
-    std::shared_ptr<Hunspell> speller
-        = std::make_shared<Hunspell>(aff.toLocal8Bit().constData(), dictionary.toLocal8Bit().constData());
+    std::shared_ptr<Hunspell> speller = std::make_shared<Hunspell>(aff.toLocal8Bit().constData(), dictionary.toLocal8Bit().constData());
     qCDebug(SONNET_HUNSPELL) << "Created " << speller.get();
 
     return speller;

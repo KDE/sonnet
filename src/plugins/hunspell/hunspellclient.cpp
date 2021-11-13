@@ -50,8 +50,7 @@ HunspellClient::HunspellClient(QObject *parent)
             if (dict.isSymbolicLink()) {
                 QFileInfo actualDict(dict.symLinkTarget());
                 if (dict.baseName() != actualDict.baseName()) {
-                    qCDebug(SONNET_HUNSPELL)
-                        << "Found alias" << language << "->" << actualDict.baseName();
+                    qCDebug(SONNET_HUNSPELL) << "Found alias" << language << "->" << actualDict.baseName();
                     m_languageAliases.insert(language, actualDict.baseName());
                     continue;
                 }
@@ -70,9 +69,7 @@ SpellerPlugin *HunspellClient::createSpeller(const QString &inputLang)
 {
     QString language = inputLang;
     if (m_languageAliases.contains(language)) {
-        qCDebug(SONNET_HUNSPELL)
-            << "Using alias" << m_languageAliases.value(language)
-            << "for" << language;
+        qCDebug(SONNET_HUNSPELL) << "Using alias" << m_languageAliases.value(language) << "for" << language;
         language = m_languageAliases.value(language);
     }
     std::shared_ptr<Hunspell> hunspell = m_hunspellCache.value(language).lock();
@@ -80,8 +77,7 @@ SpellerPlugin *HunspellClient::createSpeller(const QString &inputLang)
         hunspell = HunspellDict::createHunspell(language, m_languagePaths.value(language));
         m_hunspellCache.insert(language, hunspell);
     }
-    qCDebug(SONNET_HUNSPELL)
-        << " SpellerPlugin *HunspellClient::createSpeller(const QString &language) ;" << language;
+    qCDebug(SONNET_HUNSPELL) << " SpellerPlugin *HunspellClient::createSpeller(const QString &language) ;" << language;
     HunspellDict *ad = new HunspellDict(inputLang, hunspell);
     return ad;
 }

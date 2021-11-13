@@ -14,7 +14,8 @@
 
 class Hunspell;
 
-namespace Sonnet {
+namespace Sonnet
+{
 class SpellerPlugin;
 }
 
