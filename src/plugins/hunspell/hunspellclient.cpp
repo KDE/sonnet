@@ -84,5 +84,5 @@ SpellerPlugin *HunspellClient::createSpeller(const QString &inputLang)
 
 QStringList HunspellClient::languages() const
 {
-    return m_languagePaths.keys();
+    return m_languagePaths.keys() + m_languageAliases.keys();
 }
