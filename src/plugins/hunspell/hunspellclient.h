@@ -10,11 +10,14 @@
 
 #include "client_p.h"
 #include <QMap>
+#include <memory>
 
-namespace Sonnet
-{
+class Hunspell;
+
+namespace Sonnet {
 class SpellerPlugin;
 }
+
 using Sonnet::SpellerPlugin;
 
 class HunspellClient : public Sonnet::Client
@@ -42,6 +45,8 @@ public:
 
 private:
     QMap<QString, QString> m_languagePaths;
+    QMap<QString, std::weak_ptr<Hunspell>> m_hunspellCache;
+    QMap<QString, QString> m_languageAliases;
 };
 
 #endif

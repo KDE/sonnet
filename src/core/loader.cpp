@@ -38,6 +38,8 @@ public:
     QMap<QString, QVector<Client *>> languageClients;
     QStringList clients;
 
+    QSet<QString> loadedPlugins;
+
     QStringList languagesNameCache;
     QHash<QString, QSharedPointer<SpellerPlugin>> spellerCache;
 };
@@ -268,9 +270,16 @@ SettingsImpl *Loader::settings() const
 void Loader::loadPlugins()
 {
 #ifndef SONNET_STATIC
+    // In case it is running from the build directory
+    for (const QFileInfo &info : QDir::current().entryInfoList(QDir::Files)) {
+        if (!info.isExecutable()) {
+            continue;
+        }
+        loadPlugin(info.absoluteFilePath());
+    }
+
     const QStringList libPaths = QCoreApplication::libraryPaths() << QStringLiteral(INSTALLATION_PLUGIN_PATH);
     const QLatin1String pathSuffix("/kf5/sonnet/");
-    int plugins = 0;
     for (const QString &libPath : libPaths) {
         QDir dir(libPath + pathSuffix);
         if (!dir.exists()) {
@@ -278,10 +287,10 @@ void Loader::loadPlugins()
         }
         for (const QString &fileName : dir.entryList(QDir::Files)) {
             loadPlugin(dir.absoluteFilePath(fileName));
-            plugins++;
         }
     }
-    if (plugins == 0) {
+
+    if (d->loadedPlugins.isEmpty()) {
         qCWarning(SONNET_LOG_CORE) << "Sonnet: No speller backends available!";
     }
 #else
@@ -299,6 +308,14 @@ void Loader::loadPlugin(const QString &pluginPath)
     if (!plugin.load()) { // We do this separately for better error handling
         qCWarning(SONNET_LOG_CORE) << "Sonnet: Unable to load plugin" << pluginPath << "Error:" << plugin.errorString();
         return;
+    }
+    const QString pluginIID = plugin.metaData()[QStringLiteral("IID")].toString();
+    if (!pluginIID.isEmpty()) {
+        if (d->loadedPlugins.contains(pluginIID)) {
+            qCDebug(SONNET_LOG_CORE) << "Skipping already loaded" << pluginPath;
+            return;
+        }
+        d->loadedPlugins.insert(pluginIID);
     }
 
     Client *client = qobject_cast<Client *>(plugin.instance());
