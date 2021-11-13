@@ -139,9 +139,10 @@ public:
     /// \since 5.88
     Q_INVOKABLE void addWordToDictionary(const QString &word);
 
-    /// Replace word at the current cursor position.
+    /// Replace word at the current cursor position, or @param at if
+    /// @param at is not -1.
     /// \since 5.88
-    Q_INVOKABLE void replaceWord(const QString &word);
+    Q_INVOKABLE void replaceWord(const QString &word, int at = -1);
 
     /// Checks if a given word is marked as misspelled by the highlighter.
     ///
@@ -206,6 +207,7 @@ Q_SIGNALS:
 protected:
     void highlightBlock(const QString &text) override;
     virtual void setMisspelled(int start, int count);
+    virtual void setMisspelledSelected(int start, int count);
     virtual void unsetMisspelled(int start, int count);
     bool eventFilter(QObject *o, QEvent *e) override;
 

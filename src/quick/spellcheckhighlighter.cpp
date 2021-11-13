@@ -105,6 +105,14 @@ public:
         errorFormat.setForeground(spellColor);
         errorFormat.setUnderlineColor(spellColor);
         errorFormat.setUnderlineStyle(QTextCharFormat::SingleUnderline);
+
+        selectedErrorFormat.setForeground(spellColor);
+        auto bg = spellColor;
+        bg.setAlphaF(0.1);
+        selectedErrorFormat.setBackground(bg);
+        selectedErrorFormat.setUnderlineColor(spellColor);
+        selectedErrorFormat.setUnderlineStyle(QTextCharFormat::SingleUnderline);
+
         quoteFormat.setForeground(QColor{"#7f8c8d"});
     }
 
@@ -115,6 +123,7 @@ public:
     std::unique_ptr<Speller> spellchecker;
 
     QTextCharFormat errorFormat;
+    QTextCharFormat selectedErrorFormat;
     QTextCharFormat quoteFormat;
     std::unique_ptr<Sonnet::GuessLanguage> languageGuesser;
     QString selectedWord;
@@ -355,7 +364,11 @@ void SpellcheckHighlighter::highlightBlock(const QString &text)
                 ++d->wordCount;
                 if (d->spellchecker->isMisspelled(word.toString())) {
                     ++d->errorCount;
-                    setMisspelled(word.position() + offset, word.length());
+                    if (word.position() + offset <= cursor.position() && cursor.position() <= word.position() + offset + word.length()) {
+                        setMisspelledSelected(word.position() + offset, word.length());
+                    } else {
+                        setMisspelled(word.position() + offset, word.length());
+                    }
                 } else {
                     unsetMisspelled(word.position() + offset, word.length());
                 }
@@ -371,6 +384,8 @@ QStringList SpellcheckHighlighter::suggestions(int mousePosition, int max)
     if (!textDocument()) {
         return {};
     }
+
+    Q_EMIT changeCursorPosition(mousePosition, mousePosition);
 
     QTextCursor cursor = textCursor();
 
@@ -417,10 +432,6 @@ QStringList SpellcheckHighlighter::suggestions(int mousePosition, int max)
         return QStringList{};
     }
 
-    if (!selectedWordClicked) {
-        Q_EMIT changeCursorPosition(wordSelectCursor.selectionStart(), endSelection);
-    }
-
     LanguageCache *cache = dynamic_cast<LanguageCache *>(cursor.block().userData());
     if (cache) {
         const QString cachedLanguage = cache->languageAtPos(cursor.positionInBlock());
@@ -463,6 +474,11 @@ void SpellcheckHighlighter::setMisspelled(int start, int count)
     setFormat(start, count, d->errorFormat);
 }
 
+void SpellcheckHighlighter::setMisspelledSelected(int start, int count)
+{
+    setFormat(start, count, d->selectedErrorFormat);
+}
+
 void SpellcheckHighlighter::unsetMisspelled(int start, int count)
 {
     setFormat(start, count, QTextCharFormat());
@@ -480,9 +496,31 @@ void SpellcheckHighlighter::ignoreWord(const QString &word)
     rehighlight();
 }
 
-void SpellcheckHighlighter::replaceWord(const QString &replacement)
+void SpellcheckHighlighter::replaceWord(const QString &replacement, int at)
 {
-    textCursor().insertText(replacement);
+    QTextCursor textCursorUnderUserCursor(textDocument());
+    textCursorUnderUserCursor.setPosition(at == -1 ? d->cursorPosition : at);
+
+    // Get the word under the cursor
+    QTextCursor wordSelectCursor(textCursorUnderUserCursor);
+    wordSelectCursor.clearSelection();
+    wordSelectCursor.select(QTextCursor::WordUnderCursor);
+
+    auto selectedWord = wordSelectCursor.selectedText();
+
+    // Trim leading and trailing apostrophes
+    wordSelectCursor.setPosition(wordSelectCursor.position() - selectedWord.size());
+    if (selectedWord.startsWith(QLatin1Char('\'')) || selectedWord.startsWith(QLatin1Char('\"'))) {
+        selectedWord = selectedWord.right(selectedWord.size() - 1);
+        wordSelectCursor.movePosition(QTextCursor::NextCharacter, QTextCursor::MoveAnchor);
+    }
+    if (selectedWord.endsWith(QLatin1Char('\'')) || d->selectedWord.endsWith(QLatin1Char('\"'))) {
+        selectedWord.chop(1);
+    }
+
+    wordSelectCursor.movePosition(QTextCursor::NextCharacter, QTextCursor::KeepAnchor, d->selectedWord.size());
+
+    wordSelectCursor.insertText(replacement);
 }
 
 QQuickTextDocument *SpellcheckHighlighter::quickDocument() const
@@ -524,6 +562,7 @@ void SpellcheckHighlighter::setCursorPosition(int position)
     }
 
     d->cursorPosition = position;
+    d->rehighlightRequest->start(0);
     Q_EMIT cursorPositionChanged();
 }
 
