@@ -1,4 +1,10 @@
-ecm_qt_declare_logging_category(sonnetquick_SRCS
+
+add_library(sonnetquickplugin sonnetquickplugin.cpp
+    sonnetquickplugin.h
+    spellcheckhighlighter.cpp
+    spellcheckhighlighter.h )
+
+ecm_qt_declare_logging_category(sonnetquickplugin
     HEADER quick_debug.h
     IDENTIFIER SONNET_LOG_QUICK
     CATEGORY_NAME kf.sonnet.quick
@@ -6,9 +12,6 @@ ecm_qt_declare_logging_category(sonnetquick_SRCS
     DESCRIPTION "Sonnet Quick bindings"
     EXPORT SONNET
 )
-
-add_library(sonnetquickplugin sonnetquickplugin.cpp spellcheckhighlighter.cpp ${sonnetquick_SRCS})
-
 target_link_libraries(sonnetquickplugin
     PUBLIC Qt5::Quick
     PRIVATE KF5SonnetCore
