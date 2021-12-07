@@ -8,8 +8,8 @@ if(NOT CMAKE_CROSSCOMPILING)
     ecm_mark_nongui_executable(parsetrigrams)
     ecm_mark_nongui_executable(gentrigrams)
 
-    TARGET_LINK_LIBRARIES(parsetrigrams PUBLIC Qt5::Core)
-    TARGET_LINK_LIBRARIES(gentrigrams PUBLIC Qt5::Core KF5::SonnetCore)
+    TARGET_LINK_LIBRARIES(parsetrigrams PUBLIC Qt${QT_MAJOR_VERSION}::Core)
+    TARGET_LINK_LIBRARIES(gentrigrams PUBLIC Qt${QT_MAJOR_VERSION}::Core KF5::SonnetCore)
     INSTALL(TARGETS parsetrigrams ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
     INSTALL(TARGETS gentrigrams ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
 

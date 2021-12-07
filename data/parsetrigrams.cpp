@@ -43,12 +43,20 @@ int main(int argc, char **argv)
         QFile fin(td.filePath(fname));
         fin.open(QFile::ReadOnly | QFile::Text);
         QTextStream stream(&fin);
+
+        // Not needed with Qt6, UTF-8 is the default
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         stream.setCodec("UTF-8");
+#endif
         while (!stream.atEnd()) {
             QString line = stream.readLine();
             const QRegularExpressionMatch match = rx.match(line);
             if (match.hasMatch()) {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+                models[fname][line.left(3)] = match.capturedView(1).toInt();
+#else
                 models[fname][line.left(3)] = match.capturedRef(1).toInt();
+#endif
             }
         }
     }

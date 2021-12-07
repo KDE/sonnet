@@ -17,6 +17,7 @@
 #include <QLocale>
 #include <QMap>
 #include <QPluginLoader>
+#include <QVector>
 
 #include <algorithm>
 

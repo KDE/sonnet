@@ -13,6 +13,8 @@
 
 #include <memory>
 
+class QTextCodec;
+
 class HunspellDict : public Sonnet::SpellerPlugin
 {
 public:
