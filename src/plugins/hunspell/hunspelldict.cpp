@@ -41,7 +41,11 @@ HunspellDict::HunspellDict(const QString &lang, const std::shared_ptr<Hunspell> 
         qCDebug(SONNET_HUNSPELL) << "Load a user dictionary" << userDic;
         QTextStream userDicIn(&userDicFile);
         while (!userDicIn.atEnd()) {
-            QString word = userDicIn.readLine();
+            const QString word = userDicIn.readLine();
+            if (word.isEmpty()) {
+                continue;
+            }
+
             if (word.contains(QLatin1Char('/'))) {
                 QStringList wordParts = word.split(QLatin1Char('/'));
                 speller->add_with_affix(toDictEncoding(wordParts.at(0)).constData(), toDictEncoding(wordParts.at(1)).constData());
