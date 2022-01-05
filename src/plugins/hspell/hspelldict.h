@@ -17,6 +17,8 @@ extern "C" {
 #include "hspell.h"
 }
 
+class QTextCodec;
+
 class HSpellDict : public Sonnet::SpellerPlugin
 {
 public:

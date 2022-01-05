@@ -25,5 +25,9 @@ add_library(sonnet_hspell MODULE ${sonnet_hspell_PART_SRCS})
 
 target_link_libraries(sonnet_hspell PRIVATE KF5::SonnetCore ${HSPELL_LIBRARIES} ZLIB::ZLIB)
 
+if (TARGET Qt6::Core5Compat)
+    target_link_libraries(sonnet_hspell PRIVATE Qt6::Core5Compat) # QTextCodec
+endif()
+
 install(TARGETS sonnet_hspell  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf5/sonnet/)
 
