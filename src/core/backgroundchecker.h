@@ -23,6 +23,7 @@ namespace Sonnet
 class Speller;
 
 /**
+ * @class Sonnet::BackgroundChecker backgroundchecker.h <Sonnet/BackgroundChecker>
  *
  * BackgroundChecker is used to perform spell checking without
  * blocking the application. You can use it as is by calling

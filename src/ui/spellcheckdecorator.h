@@ -20,6 +20,8 @@ namespace Sonnet
 class Highlighter;
 
 /**
+ * @class Sonnet::SpellCheckDecorator spellcheckdecorator.h <Sonnet/SpellCheckDecorator>
+ *
  * @short Connects a Sonnet::Highlighter to a QTextEdit extending the context menu of the text edit with spell check suggestions
  * @author Aurélien Gâteau <agateau@kde.org>
  * @since 5.0

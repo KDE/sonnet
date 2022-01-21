@@ -19,6 +19,8 @@ namespace Sonnet
 class BackgroundChecker;
 class DialogPrivate;
 /**
+ * @class Sonnet::Dialog dialog.h <Sonnet/Dialog>
+ *
  * @short Spellcheck dialog
  *
  * \code

@@ -16,6 +16,8 @@ namespace Sonnet
 {
 class SpellerPrivate;
 /**
+ * @class Sonnet::Speller speller.h <Sonnet/Speller>
+ *
  * Spell checker object.
  *
  * @short class used for actual spell checking

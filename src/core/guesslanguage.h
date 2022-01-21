@@ -20,6 +20,8 @@ static const int MAXGRAMS = 300;
 class GuessLanguagePrivate;
 
 /**
+ * @class Sonnet::GuessLanguage guesslanguage.h <Sonnet/GuessLanguage>
+ *
  * @short GuessLanguage determines the language of a given text.
  *
  * GuessLanguage can determine the difference between ~75 languages for a given string. It is
