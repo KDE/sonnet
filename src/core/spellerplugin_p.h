@@ -18,7 +18,7 @@ namespace Sonnet
  * as the actual spellchecker.
  *
  * @author Zack Rusin <zack@kde.org>
- * @short class used for actuall spell checking
+ * @short class used for actual spell checking
  */
 class SpellerPluginPrivate;
 class SONNETCORE_EXPORT SpellerPlugin
@@ -46,7 +46,7 @@ public:
     virtual QStringList suggest(const QString &word) const = 0;
 
     /**
-     * Convience method calling isCorrect() and suggest()
+     * Convenient method calling isCorrect() and suggest()
      * if the word isn't correct.
      */
     virtual bool checkAndSuggest(const QString &word, QStringList &suggestions) const;

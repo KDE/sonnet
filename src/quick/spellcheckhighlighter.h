@@ -44,7 +44,7 @@ class HighlighterPrivate;
 /// }
 /// \endcode
 ///
-/// Additionally SpellcheckHighlighter provides some conveninent methods to create
+/// Additionally SpellcheckHighlighter provides some convenient methods to create
 /// a context menu with suggestions. \see suggestions
 ///
 /// \since 5.88

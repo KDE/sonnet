@@ -29,7 +29,7 @@ class SONNETCORE_EXPORT Settings : public QObject
     Q_PROPERTY(bool backgroundCheckerEnabled READ backgroundCheckerEnabled WRITE setBackgroundCheckerEnabled NOTIFY backgroundCheckerEnabledChanged)
     /// This property holds whether Sonnet should be enabled by default.
     Q_PROPERTY(bool checkerEnabledByDefault READ checkerEnabledByDefault WRITE setCheckerEnabledByDefault NOTIFY checkerEnabledByDefaultChanged)
-    /// This property holds whether Sonnet sould skip checking compounds words.
+    /// This property holds whether Sonnet should skip checking compounds words.
     Q_PROPERTY(bool skipRunTogether READ skipRunTogether WRITE setSkipRunTogether NOTIFY skipRunTogetherChanged)
     /// This property holds the list of ignored words.
     Q_PROPERTY(QStringList currentIgnoreList READ currentIgnoreList WRITE setCurrentIgnoreList NOTIFY currentIgnoreListChanged)

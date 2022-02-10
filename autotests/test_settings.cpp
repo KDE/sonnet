@@ -120,7 +120,7 @@ void SonnetSettingsTest::testSpellerAPIChangeSaves()
     bool checkUppercase = speller.testAttribute(Speller::CheckUppercase);
     bool settingsUppercase = settings.value(QStringLiteral("checkUppercase"), true).toBool();
     QCOMPARE(checkUppercase, settingsUppercase);
-    // Change the atribute
+    // Change the attribute
     speller.setAttribute(Speller::CheckUppercase, !checkUppercase);
     settingsUppercase = settings.value(QStringLiteral("checkUppercase"), true).toBool();
     QCOMPARE(!checkUppercase, settingsUppercase);
@@ -135,7 +135,7 @@ void SonnetSettingsTest::testSpellerAPIChangeSaves()
     bool skipRunTogether = speller.testAttribute(Speller::SkipRunTogether);
     bool settingsSkipRunTogether = settings.value(QStringLiteral("skipRunTogether"), true).toBool();
     QCOMPARE(skipRunTogether, settingsSkipRunTogether);
-    // Change the atribute
+    // Change the attribute
     speller.setAttribute(Speller::SkipRunTogether, !skipRunTogether);
     settingsSkipRunTogether = settings.value(QStringLiteral("skipRunTogether"), true).toBool();
     QCOMPARE(!skipRunTogether, settingsSkipRunTogether);
@@ -150,7 +150,7 @@ void SonnetSettingsTest::testSpellerAPIChangeSaves()
     bool autodetectLanguage = speller.testAttribute(Speller::AutoDetectLanguage);
     bool settingsAutoDetectLanguage = settings.value(QStringLiteral("autodetectLanguage"), true).toBool();
     QCOMPARE(autodetectLanguage, settingsAutoDetectLanguage);
-    // Change the atribute
+    // Change the attribute
     speller.setAttribute(Speller::AutoDetectLanguage, !autodetectLanguage);
     settingsAutoDetectLanguage = settings.value(QStringLiteral("autodetectLanguage"), true).toBool();
     QCOMPARE(!autodetectLanguage, settingsAutoDetectLanguage);
