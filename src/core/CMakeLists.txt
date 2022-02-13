@@ -116,5 +116,13 @@ if (BUILD_QCH)
 endif()
 
 include(ECMGeneratePriFile)
-ecm_generate_pri_file(BASE_NAME SonnetCore LIB_NAME KF5SonnetCore DEPS "core" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF}/SonnetCore)
+ecm_generate_pri_file(
+    BASE_NAME SonnetCore
+    LIB_NAME KF5SonnetCore
+    DEPS "core"
+    FILENAME_VAR PRI_FILENAME
+    INCLUDE_INSTALL_DIRS
+        ${KDE_INSTALL_INCLUDEDIR_KF}/Sonnet
+        ${KDE_INSTALL_INCLUDEDIR_KF}/SonnetCore
+)
 install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
