@@ -190,7 +190,7 @@ void Settings::setAutodetectLanguage(bool detect)
     if (!d->loader->settings()->setAutodetectLanguage(detect)) {
         return;
     }
-    Q_EMIT autodetectLanguage();
+    Q_EMIT autodetectLanguageChanged();
     Q_EMIT modifiedChanged();
 }
 
