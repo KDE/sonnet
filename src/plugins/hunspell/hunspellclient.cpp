@@ -48,10 +48,11 @@ HunspellClient::HunspellClient(QObject *parent)
         for (const QFileInfo &dict : dicts) {
             const QString language = dict.baseName();
             if (dict.isSymbolicLink()) {
-                QFileInfo actualDict(dict.symLinkTarget());
-                if (dict.baseName() != actualDict.baseName()) {
-                    qCDebug(SONNET_HUNSPELL) << "Found alias" << language << "->" << actualDict.baseName();
-                    m_languageAliases.insert(language, actualDict.baseName());
+                const QFileInfo actualDict(dict.canonicalFilePath());
+                const QString alias = actualDict.baseName();
+                if (language != alias) {
+                    qCDebug(SONNET_HUNSPELL) << "Found alias" << language << "->" << alias;
+                    m_languageAliases.insert(language, alias);
                     continue;
                 }
             } else {
