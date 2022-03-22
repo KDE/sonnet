@@ -48,6 +48,6 @@ if (APPLE)
     add_subdirectory( nsspellchecker )
 endif ()
 
-if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+if (WIN32)
     add_subdirectory( ispellchecker )
 endif ()
