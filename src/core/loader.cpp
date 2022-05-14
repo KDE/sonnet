@@ -298,18 +298,18 @@ void Loader::loadPlugin(const QString &pluginPath)
 {
 #ifndef SONNET_STATIC
     QPluginLoader plugin(pluginPath);
-    if (!plugin.load()) { // We do this separately for better error handling
-        qCDebug(SONNET_LOG_CORE) << "Sonnet: Unable to load plugin" << pluginPath << "Error:" << plugin.errorString();
-        return;
-    }
     const QString pluginIID = plugin.metaData()[QStringLiteral("IID")].toString();
     if (!pluginIID.isEmpty()) {
         if (d->loadedPlugins.contains(pluginIID)) {
             qCDebug(SONNET_LOG_CORE) << "Skipping already loaded" << pluginPath;
-            plugin.unload();
             return;
         }
         d->loadedPlugins.insert(pluginIID);
+    }
+
+    if (!plugin.load()) { // We do this separately for better error handling
+        qCDebug(SONNET_LOG_CORE) << "Sonnet: Unable to load plugin" << pluginPath << "Error:" << plugin.errorString();
+        return;
     }
 
     Client *client = qobject_cast<Client *>(plugin.instance());
