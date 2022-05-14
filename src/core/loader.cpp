@@ -299,7 +299,7 @@ void Loader::loadPlugin(const QString &pluginPath)
 #ifndef SONNET_STATIC
     QPluginLoader plugin(pluginPath);
     if (!plugin.load()) { // We do this separately for better error handling
-        qCWarning(SONNET_LOG_CORE) << "Sonnet: Unable to load plugin" << pluginPath << "Error:" << plugin.errorString();
+        qCDebug(SONNET_LOG_CORE) << "Sonnet: Unable to load plugin" << pluginPath << "Error:" << plugin.errorString();
         return;
     }
     const QString pluginIID = plugin.metaData()[QStringLiteral("IID")].toString();
