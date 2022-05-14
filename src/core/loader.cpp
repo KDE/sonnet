@@ -306,6 +306,7 @@ void Loader::loadPlugin(const QString &pluginPath)
     if (!pluginIID.isEmpty()) {
         if (d->loadedPlugins.contains(pluginIID)) {
             qCDebug(SONNET_LOG_CORE) << "Skipping already loaded" << pluginPath;
+            plugin.unload();
             return;
         }
         d->loadedPlugins.insert(pluginIID);
