@@ -309,6 +309,7 @@ void Loader::loadPlugin(const QString &pluginPath)
 
     if (!plugin.load()) { // We do this separately for better error handling
         qCDebug(SONNET_LOG_CORE) << "Sonnet: Unable to load plugin" << pluginPath << "Error:" << plugin.errorString();
+        d->loadedPlugins.remove(pluginIID);
         return;
     }
 
