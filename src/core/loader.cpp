@@ -83,8 +83,8 @@ SpellerPlugin *Loader::createSpeller(const QString &language, const QString &cli
 
     auto clientsItr = d->languageClients.constFind(plang);
     if (clientsItr == d->languageClients.constEnd()) {
-        if (language.isEmpty()) {
-            qCWarning(SONNET_LOG_CORE) << "No language dictionaries for the language:" << plang << "trying to load en_US as default";
+        if (language.isEmpty() || language == QStringLiteral("C")) {
+            qCDebug(SONNET_LOG_CORE) << "No language dictionaries for the language:" << plang << "trying to load en_US as default";
             return createSpeller(QStringLiteral("en_US"), clientName);
         }
         qCWarning(SONNET_LOG_CORE) << "No language dictionaries for the language:" << plang;
