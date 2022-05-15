@@ -88,6 +88,10 @@ public:
     QStringList clients() const;
     bool modified() const;
 
+    const QHash<QString, int> &loadedPlugins() const;
+    const QHash<QString, QString> &failedPlugins() const;
+    const QSet<QString> &deselectedPlugins() const;
+
     QAbstractListModel *dictionaryModel();
 
     Q_INVOKABLE void save();

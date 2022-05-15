@@ -39,7 +39,10 @@ public:
     QMap<QString, QVector<Client *>> languageClients;
     QStringList clients;
 
-    QSet<QString> loadedPlugins;
+    // <pluginIID, something to remember>
+    QHash<QString, int> loadedPlugins;
+    QHash<QString, QString> failedPlugins;
+    QSet<QString> deselectedPlugins;
 
     QStringList languagesNameCache;
     QHash<QString, QSharedPointer<SpellerPlugin>> spellerCache;
@@ -61,6 +64,7 @@ Loader::Loader()
 {
     d->settings = new SettingsImpl(this);
     d->settings->restore();
+    d->deselectedPlugins.insert(QStringLiteral("org.kde.Sonnet.VoikkoClient")); // Demo only
     loadPlugins();
 }
 
@@ -268,6 +272,21 @@ SettingsImpl *Loader::settings() const
     return d->settings;
 }
 
+const QHash<QString, int> &Loader::loadedPlugins() const
+{
+    return d->loadedPlugins;
+}
+
+const QHash<QString, QString> &Loader::failedPlugins() const
+{
+    return d->failedPlugins;
+}
+
+const QSet<QString> &Loader::deselectedPlugins() const
+{
+    return d->deselectedPlugins;
+}
+
 void Loader::loadPlugins()
 {
 #ifndef SONNET_STATIC
@@ -299,17 +318,20 @@ void Loader::loadPlugin(const QString &pluginPath)
 #ifndef SONNET_STATIC
     QPluginLoader plugin(pluginPath);
     const QString pluginIID = plugin.metaData()[QStringLiteral("IID")].toString();
+    if (d->deselectedPlugins.contains(pluginIID)) {
+        return;
+    }
+
     if (!pluginIID.isEmpty()) {
         if (d->loadedPlugins.contains(pluginIID)) {
             qCDebug(SONNET_LOG_CORE) << "Skipping already loaded" << pluginPath;
             return;
         }
-        d->loadedPlugins.insert(pluginIID);
     }
 
     if (!plugin.load()) { // We do this separately for better error handling
         qCDebug(SONNET_LOG_CORE) << "Sonnet: Unable to load plugin" << pluginPath << "Error:" << plugin.errorString();
-        d->loadedPlugins.remove(pluginIID);
+        d->failedPlugins.insert(pluginIID, plugin.errorString());
         return;
     }
 
@@ -317,15 +339,20 @@ void Loader::loadPlugin(const QString &pluginPath)
     if (!client) {
         qCWarning(SONNET_LOG_CORE) << "Sonnet: Invalid plugin loaded" << pluginPath;
         plugin.unload(); // don't leave it in memory
+        d->failedPlugins.insert(pluginIID, QStringLiteral("Invalid plugin"));
         return;
     }
+
 #else
     Client *client = nullptr;
+    QString pluginIID;
     if (pluginPath == QLatin1String("Hunspell")) {
+        pluginIID = QLatin1String("Hunspell");
         client = new HunspellClient(this);
     }
 #ifdef Q_OS_MACOS
     else {
+        pluginIID = QLatin1String("NSSpellChecker");
         client = new NSSpellCheckerClient(this);
     }
 #endif
@@ -343,6 +370,10 @@ void Loader::loadPlugin(const QString &pluginPath)
         } else {
             languageClients.prepend(client); // more reliable, to the front
         }
+    }
+
+    if (!pluginIID.isEmpty()) {
+        d->loadedPlugins.insert(pluginIID, client->languages().size());
     }
 }
 

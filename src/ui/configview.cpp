@@ -129,12 +129,12 @@ ConfigView::~ConfigView()
 
 void ConfigView::setNoBackendFoundVisible(bool show)
 {
-    d->ui.nobackendfound->setVisible(show);
+    d->ui.m_nobackendLabel->setVisible(show);
 }
 
 bool ConfigView::noBackendFoundVisible() const
 {
-    return d->ui.nobackendfound->isVisible();
+    return d->ui.m_nobackendLabel->isVisible();
 }
 
 void ConfigView::setBackgroundCheckingButtonShown(bool b)

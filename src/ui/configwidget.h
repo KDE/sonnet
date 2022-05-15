@@ -60,6 +60,7 @@ Q_SIGNALS:
     void configChanged();
 
 private:
+    void updatePluginPage();
     void setFromGui();
 
 private:

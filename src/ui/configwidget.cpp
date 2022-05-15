@@ -81,9 +81,18 @@ ConfigWidget::ConfigWidget(QWidget *parent)
     connect(d->ui.kcfg_autodetectLanguage, &QAbstractButton::clicked, this, &ConfigWidget::configChanged);
     connect(d->ui.newIgnoreEdit, &QLineEdit::textChanged, this, &ConfigWidget::slotUpdateButton);
     connect(d->ui.ignoreListWidget, &QListWidget::itemSelectionChanged, this, &ConfigWidget::slotSelectionChanged);
-    d->ui.nobackendfound->setVisible(d->settings->clients().isEmpty());
+    d->ui.m_nobackendLabel->setVisible(d->settings->clients().isEmpty());
     d->ui.addButton->setEnabled(false);
     d->ui.removeButton->setEnabled(false);
+
+    // Setup Plugin Page
+    updatePluginPage();
+    connect(d->ui.m_pluginList, &QListWidget::itemChanged, this, &ConfigWidget::configChanged);
+
+    // Switch to the important tab in case of some install issue
+    if (d->settings->clients().isEmpty()) {
+        d->ui.m_tabWidget->setCurrentWidget(d->ui.m_pluginsPage);
+    }
 }
 
 ConfigWidget::~ConfigWidget()
@@ -99,6 +108,67 @@ void ConfigWidget::slotUpdateButton(const QString &text)
 void ConfigWidget::slotSelectionChanged()
 {
     d->ui.removeButton->setEnabled(!d->ui.ignoreListWidget->selectedItems().isEmpty());
+}
+
+void ConfigWidget::updatePluginPage()
+{
+    auto addSectionToPluginList = [this](const QString &title) {
+        QListWidgetItem *item = new QListWidgetItem(title, d->ui.m_pluginList);
+        QFont f;
+        f.setBold(true);
+        item->setFont(f);
+        item->setTextAlignment(Qt::AlignHCenter);
+    };
+
+    // When we in the future on-the-fly plugins load/unload by user interaction we need a clean settings
+    d->ui.m_pluginList->clear();
+    d->ui.m_noDictLabel->setVisible(false);
+    d->ui.m_failLoadLabel->setVisible(false);
+
+    // Let's start filling the list, first The Good..
+    if (d->settings->loadedPlugins().size() > 0) {
+#ifndef SONNET_STATIC
+        addSectionToPluginList(tr("Loaded Plugins"));
+#else
+        addSectionToPluginList(tr("Available Spell Checker"));
+#endif
+    }
+    QHash<QString, int>::const_iterator i = d->settings->loadedPlugins().constBegin();
+    while (i != d->settings->loadedPlugins().constEnd()) {
+        QListWidgetItem *item = new QListWidgetItem(i.key() + tr("  Available dictionaries: %1").arg(i.value()), d->ui.m_pluginList);
+#ifndef SONNET_STATIC
+        item->setCheckState(Qt::Checked);
+#endif
+        if (!i.value()) {
+            d->ui.m_noDictLabel->setVisible(true);
+        }
+        ++i;
+    }
+
+    // ...second The Bad...
+    if (d->settings->failedPlugins().size() > 0) {
+        addSectionToPluginList(tr("Failed Plugins"));
+        d->ui.m_failLoadLabel->setVisible(true);
+        d->ui.m_deselectTipLabel->setVisible(d->settings->loadedPlugins().size());
+    }
+    QHash<QString, QString>::const_iterator j = d->settings->failedPlugins().constBegin();
+    while (j != d->settings->failedPlugins().constEnd()) {
+        QListWidgetItem *item = new QListWidgetItem(j.key() + tr("  [Error on load]"), d->ui.m_pluginList);
+        item->setToolTip(j.value());
+        item->setCheckState(Qt::Checked);
+        ++j;
+    }
+
+    // ...and third The Ugly, the not wanted one by the user
+    if (d->settings->deselectedPlugins().size() > 0) {
+        addSectionToPluginList(tr("Deselected Plugins"));
+    }
+    QSet<QString>::const_iterator k = d->settings->deselectedPlugins().constBegin();
+    while (k != d->settings->deselectedPlugins().constEnd()) {
+        QListWidgetItem *item = new QListWidgetItem(*k, d->ui.m_pluginList);
+        item->setCheckState(Qt::Unchecked);
+        ++k;
+    }
 }
 
 void ConfigWidget::save()

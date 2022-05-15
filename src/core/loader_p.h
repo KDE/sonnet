@@ -106,6 +106,30 @@ public:
      * Returns the SettingsImpl object used by the loader.
      */
     SettingsImpl *settings() const;
+
+    /**
+     * Returns group of loaded plugins.
+     * @return key=plugin id, val=number of available dictionaries
+     * \ref deselectedPlugins()
+     * @since ???
+     */
+    const QHash<QString, int> &loadedPlugins() const;
+
+    /**
+     * Returns group of plugins which has failed to load.
+     * @return key=plugin-id, val=error message
+     * \ref deselectedPlugins()
+     * @since ???
+     */
+    const QHash<QString, QString> &failedPlugins() const;
+
+    /**
+     * Returns group of plugins which has the user deselected.
+     * @return key=plugin-id, e.g. "org.kde.Sonnet.ASpellClient"
+     * @since ???
+     */
+    const QSet<QString> &deselectedPlugins() const;
+
 Q_SIGNALS:
     /**
      * Signal is emitted whenever the SettingsImpl object

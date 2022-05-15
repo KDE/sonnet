@@ -264,6 +264,21 @@ QStringList Settings::clients() const
     return d->loader->clients();
 }
 
+const QHash<QString, int> &Settings::loadedPlugins() const
+{
+    return d->loader->loadedPlugins();
+}
+
+const QHash<QString, QString> &Settings::failedPlugins() const
+{
+    return d->loader->failedPlugins();
+}
+
+const QSet<QString> &Settings::deselectedPlugins() const
+{
+    return d->loader->deselectedPlugins();
+}
+
 void Settings::save()
 {
     d->loader->settings()->save();
