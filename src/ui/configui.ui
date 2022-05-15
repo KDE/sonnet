@@ -23,7 +23,7 @@
       </font>
      </property>
      <property name="text">
-      <string>No backend found for spell checking</string>
+      <string>No backend like hunspell/aspell/myspell installed</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
