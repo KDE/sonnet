@@ -45,6 +45,8 @@ public:
 
     bool setData(const QModelIndex &idx, const QVariant &value, int role = Qt::EditRole) override
     {
+        Q_UNUSED(value)
+
         if (!checkIndex(idx) || role != Qt::CheckStateRole) {
             return false;
         }
