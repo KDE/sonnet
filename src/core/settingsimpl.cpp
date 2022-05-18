@@ -10,6 +10,7 @@
 #include "loader_p.h"
 
 #include <QMap>
+#include <QSet>
 #include <QSettings>
 
 #include "settings.h"
@@ -36,6 +37,7 @@ public:
     int disableWordCount;
 
     QMap<QString, bool> ignore;
+    QSet<QString> deselectedPlugins;
 };
 
 SettingsImpl::SettingsImpl(Loader *loader)
@@ -51,6 +53,28 @@ SettingsImpl::SettingsImpl(Loader *loader)
 SettingsImpl::~SettingsImpl()
 {
     delete d;
+}
+
+bool SettingsImpl::setPluginDeselected(const QString &pluginId, bool deselect)
+{
+    if (d->deselectedPlugins.contains(pluginId) == deselect) {
+        return false;
+    }
+
+    if (deselect) {
+        d->deselectedPlugins.insert(pluginId);
+        d->loader->pluginDeselected(pluginId);
+    } else {
+        d->deselectedPlugins.remove(pluginId);
+    }
+
+    d->modified = true;
+    return true;
+}
+
+const QSet<QString> &SettingsImpl::deselectedPlugins() const
+{
+    return d->deselectedPlugins;
 }
 
 bool SettingsImpl::setDefaultLanguage(const QString &lang)
@@ -245,6 +269,14 @@ void SettingsImpl::save()
     } else if (!d->ignore.isEmpty()) {
         settings.setValue(defaultLanguage, QStringList(d->ignore.keys()));
     }
+    settings.setValue(QStringLiteral("autodetectLanguage"), d->autodetectLanguage);
+
+    QStringList sl;
+    for (QSet<QString>::const_iterator i = d->deselectedPlugins.constBegin(); i != d->deselectedPlugins.constEnd(); ++i) {
+        sl << *i;
+    }
+    settings.setValue(QStringLiteral("deselectedPlugins"), sl);
+
     d->modified = false;
 }
 
@@ -267,6 +299,11 @@ void SettingsImpl::restore()
     const QString ignoreEntry = QStringLiteral("ignore_%1").arg(d->defaultLanguage);
     const QStringList ignores = settings.value(ignoreEntry, Settings::defaultIgnoreList()).toStringList();
     setQuietIgnoreList(ignores);
+
+    const QStringList sl = settings.value(QStringLiteral("deselectedPlugins"), QStringList()).toStringList();
+    for (QStringList::const_iterator i = sl.constBegin(); i != sl.constEnd(); ++i) {
+        d->deselectedPlugins.insert(*i);
+    }
 }
 
 bool SettingsImpl::modified() const

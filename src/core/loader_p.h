@@ -149,6 +149,7 @@ Q_SIGNALS:
 protected:
     friend class SettingsImpl;
     void changed();
+    void pluginDeselected(const QString &pluginId);
 
 private:
     void loadPlugins();

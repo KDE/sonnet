@@ -64,6 +64,9 @@ public:
     int disablePercentageWordError() const;
     int disableWordErrorCount() const;
 
+    bool setPluginDeselected(const QString &pluginId, bool deselect);
+    const QSet<QString> &deselectedPlugins() const;
+
 private:
     bool setQuietIgnoreList(const QStringList &ignores);
 

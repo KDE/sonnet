@@ -42,7 +42,6 @@ public:
     // <pluginIID, something to remember>
     QHash<QString, int> loadedPlugins;
     QHash<QString, QString> failedPlugins;
-    QSet<QString> deselectedPlugins;
 
     QStringList languagesNameCache;
     QHash<QString, QSharedPointer<SpellerPlugin>> spellerCache;
@@ -64,7 +63,6 @@ Loader::Loader()
 {
     d->settings = new SettingsImpl(this);
     d->settings->restore();
-    d->deselectedPlugins.insert(QStringLiteral("org.kde.Sonnet.VoikkoClient")); // Demo only
     loadPlugins();
 }
 
@@ -284,7 +282,16 @@ const QHash<QString, QString> &Loader::failedPlugins() const
 
 const QSet<QString> &Loader::deselectedPlugins() const
 {
-    return d->deselectedPlugins;
+    return d->settings->deselectedPlugins();
+}
+
+void Loader::pluginDeselected(const QString &pluginId)
+{
+    // TODO This function is only a stopgap measure to become the GUI somewhat reasonable looking
+    // between successive calls of the settings dialog without application restart. What we need is
+    // a "reset/reload" of plugins after "apply/save" of the configuration
+    d->loadedPlugins.remove(pluginId);
+    d->failedPlugins.remove(pluginId);
 }
 
 void Loader::loadPlugins()
@@ -318,7 +325,7 @@ void Loader::loadPlugin(const QString &pluginPath)
 #ifndef SONNET_STATIC
     QPluginLoader plugin(pluginPath);
     const QString pluginIID = plugin.metaData()[QStringLiteral("IID")].toString();
-    if (d->deselectedPlugins.contains(pluginIID)) {
+    if (deselectedPlugins().contains(pluginIID)) {
         return;
     }
 

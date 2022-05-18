@@ -279,6 +279,32 @@ const QSet<QString> &Settings::deselectedPlugins() const
     return d->loader->deselectedPlugins();
 }
 
+void Settings::setDeselectedPlugins(const QSet<QString> &newSet)
+{
+    bool differ = newSet == d->loader->deselectedPlugins();
+
+    if (!differ) {
+        return;
+    }
+
+    // TODO update to new set
+
+    Q_EMIT deselectedPluginsChanged();
+    Q_EMIT modifiedChanged();
+}
+
+bool Settings::setPluginDeselected(const QString &pluginId, bool deselect)
+{
+    if (!d->loader->settings()->setPluginDeselected(pluginId, deselect)) {
+        return false;
+    }
+
+    Q_EMIT deselectedPluginsChanged();
+    Q_EMIT modifiedChanged();
+
+    return true;
+}
+
 void Settings::save()
 {
     d->loader->settings()->save();

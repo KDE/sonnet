@@ -118,6 +118,7 @@ void ConfigWidget::updatePluginPage()
         f.setBold(true);
         item->setFont(f);
         item->setTextAlignment(Qt::AlignHCenter);
+        item->setFlags(item->flags().setFlag(Qt::ItemIsUserCheckable, false));
     };
 
     // When we in the future on-the-fly plugins load/unload by user interaction we need a clean settings
@@ -133,16 +134,15 @@ void ConfigWidget::updatePluginPage()
         addSectionToPluginList(tr("Available Spell Checker"));
 #endif
     }
-    QHash<QString, int>::const_iterator i = d->settings->loadedPlugins().constBegin();
-    while (i != d->settings->loadedPlugins().constEnd()) {
+    for (QHash<QString, int>::const_iterator i = d->settings->loadedPlugins().constBegin(); i != d->settings->loadedPlugins().constEnd(); ++i) {
         QListWidgetItem *item = new QListWidgetItem(i.key() + tr("  Available dictionaries: %1").arg(i.value()), d->ui.m_pluginList);
+        item->setData(Qt::UserRole, i.key());
 #ifndef SONNET_STATIC
         item->setCheckState(Qt::Checked);
 #endif
         if (!i.value()) {
             d->ui.m_noDictLabel->setVisible(true);
         }
-        ++i;
     }
 
     // ...second The Bad...
@@ -151,23 +151,21 @@ void ConfigWidget::updatePluginPage()
         d->ui.m_failLoadLabel->setVisible(true);
         d->ui.m_deselectTipLabel->setVisible(d->settings->loadedPlugins().size());
     }
-    QHash<QString, QString>::const_iterator j = d->settings->failedPlugins().constBegin();
-    while (j != d->settings->failedPlugins().constEnd()) {
-        QListWidgetItem *item = new QListWidgetItem(j.key() + tr("  [Error on load]"), d->ui.m_pluginList);
-        item->setToolTip(j.value());
+    for (QHash<QString, QString>::const_iterator i = d->settings->failedPlugins().constBegin(); i != d->settings->failedPlugins().constEnd(); ++i) {
+        QListWidgetItem *item = new QListWidgetItem(i.key() + tr("  [Error on load]"), d->ui.m_pluginList);
+        item->setData(Qt::UserRole, i.key());
+        item->setToolTip(i.value());
         item->setCheckState(Qt::Checked);
-        ++j;
     }
 
     // ...and third The Ugly, the not wanted one by the user
     if (d->settings->deselectedPlugins().size() > 0) {
         addSectionToPluginList(tr("Deselected Plugins"));
     }
-    QSet<QString>::const_iterator k = d->settings->deselectedPlugins().constBegin();
-    while (k != d->settings->deselectedPlugins().constEnd()) {
-        QListWidgetItem *item = new QListWidgetItem(*k, d->ui.m_pluginList);
+    for (QSet<QString>::const_iterator i = d->settings->deselectedPlugins().constBegin(); i != d->settings->deselectedPlugins().constEnd(); ++i) {
+        QListWidgetItem *item = new QListWidgetItem(*i, d->ui.m_pluginList);
+        item->setData(Qt::UserRole, *i);
         item->setCheckState(Qt::Unchecked);
-        ++k;
     }
 }
 
@@ -196,6 +194,15 @@ void ConfigWidget::setFromGui()
     d->settings->setBackgroundCheckerEnabled(d->ui.kcfg_backgroundCheckerEnabled->isChecked());
     d->settings->setCheckerEnabledByDefault(d->ui.kcfg_checkerEnabledByDefault->isChecked());
     d->settings->setAutodetectLanguage(d->ui.kcfg_autodetectLanguage->isChecked());
+
+    for (int i = 0; i < d->ui.m_pluginList->count(); i++) {
+        const QListWidgetItem *item = d->ui.m_pluginList->item(i);
+        if (!item->flags().testFlag(Qt::ItemIsUserCheckable)) {
+            // Skip section header
+            continue;
+        }
+        d->settings->setPluginDeselected(item->data(Qt::UserRole).toString(), item->checkState() == Qt::Unchecked);
+    }
 
     if (d->settings->modified()) {
         d->settings->save();
@@ -253,6 +260,7 @@ void ConfigWidget::slotDefault()
     d->ui.kcfg_backgroundCheckerEnabled->setChecked(Settings::defaultBackgroundCheckerEnabled());
     d->ui.ignoreListWidget->clear();
     d->ui.m_langCombo->setCurrentByDictionary(d->settings->defaultLanguage());
+    // TODO Clear deselected plugin list (and call updatePluginPage ? ATM not sufficient)
 }
 
 void ConfigWidget::setLanguage(const QString &language)

@@ -37,6 +37,8 @@ class SONNETCORE_EXPORT Settings : public QObject
     Q_PROPERTY(QStringList preferredLanguages READ preferredLanguages WRITE setPreferredLanguages NOTIFY preferredLanguagesChanged)
     /// This property holds the default language for spell checking.
     Q_PROPERTY(QString defaultLanguage READ defaultLanguage WRITE setDefaultLanguage NOTIFY defaultLanguageChanged)
+    /// This property holds the list of deselected spell checker plugins
+    Q_PROPERTY(QSet<QString> deselectedPlugins READ deselectedPlugins WRITE setDeselectedPlugins NOTIFY deselectedPluginsChanged)
 
     /// This property holds a Qt Model containing all the preferred dictionaries
     /// with language description and theirs codes. This model makes the
@@ -91,6 +93,9 @@ public:
     const QHash<QString, int> &loadedPlugins() const;
     const QHash<QString, QString> &failedPlugins() const;
     const QSet<QString> &deselectedPlugins() const;
+    bool setPluginDeselected(const QString &pluginId, bool deselect);
+    // Not used, only added to fit above Q_PROPERTY stuff
+    void setDeselectedPlugins(const QSet<QString> &newSet);
 
     QAbstractListModel *dictionaryModel();
 
@@ -115,6 +120,7 @@ Q_SIGNALS:
     void skipRunTogetherChanged();
     void checkerEnabledByDefaultChanged();
     void currentIgnoreListChanged();
+    void deselectedPluginsChanged();
     void modifiedChanged();
 
 private:
