@@ -26,6 +26,7 @@ private Q_SLOTS:
     void testFrench();
     void testMultipleLanguages();
     void testForceLanguage();
+    void testBug339651();
 };
 
 void HighlighterTest::initTestCase()
@@ -164,6 +165,32 @@ void HighlighterTest::testMultipleLanguages()
     }
 }
 
+void HighlighterTest::testBug339651()
+{
+    // Description is: if you right click on the last word in the first sentence
+    // in a qtextedit it clears the red squigglies.
+    QPlainTextEdit textEdit;
+    Sonnet::Highlighter highlighter(&textEdit);
+    highlighter.setCurrentLanguage(QStringLiteral("en_US"));
+    if (!highlighter.spellCheckerFound()) {
+        QSKIP("'en_US' not available");
+    }
+    textEdit.setPlainText(QStringLiteral("abc hello abc."));
+    // just to debug, show the window
+    textEdit.show();
+    qDebug() << QTest::qWaitForWindowExposed(&textEdit);
+    // try to fetch highlight status...
+    QTextCursor cursor(highlighter.document());
+    for (; !cursor.atEnd(); cursor.movePosition(QTextCursor::NextCharacter)) {
+        // ...but don't work, ideas?
+        qDebug() << textEdit.document()->characterAt(cursor.position()) << cursor.charFormat().fontUnderline()
+                 << (cursor.charFormat().underlineStyle() == QTextCharFormat::SpellCheckUnderline);
+    }
+    QTest::qWait(2000);
+    QTest::keyClick(&textEdit, Qt::Key_End);
+    QTest::keyClick(&textEdit, Qt::Key_X);
+    qDebug() << textEdit.toPlainText();
+}
 QTEST_MAIN(HighlighterTest)
 
 #include "test_highlighter.moc"
