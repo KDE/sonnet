@@ -22,7 +22,7 @@ include(ECMSetupVersion)
 include(ECMGenerateHeaders)
 include(ECMGenerateQmlTypes)
 include(ECMQMLModules)
-
+include(ECMDeprecationSettings)
 include(ECMAddQch)
 include(ECMPoQmTools)
 include(CMakeDependentOption)
@@ -60,8 +60,12 @@ if(SONNET_USE_WIDGETS)
     add_feature_info(DESIGNERPLUGIN ${BUILD_DESIGNERPLUGIN} "Build plugin for Qt Designer")
 endif()
 
-add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f02)
 ecm_install_po_files_as_qm(po)
+
+ecm_set_disabled_deprecation_versions(
+    QT 5.15.2
+)
+
 add_subdirectory(data)
 add_subdirectory(src)
 if (BUILD_TESTING)
