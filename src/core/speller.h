@@ -32,7 +32,7 @@ public:
     Speller &operator=(const Speller &speller);
 
     /**
-     * Returns true if the speller supports currently selected
+     * @return @c true if the speller supports currently selected
      * language.
      */
     bool isValid() const;
@@ -43,7 +43,7 @@ public:
     void setLanguage(const QString &lang);
 
     /**
-     * Returns language supported by this speller.
+     * @return language supported by this speller.
      */
     QString language() const;
 
@@ -74,7 +74,7 @@ public:
 
     /**
      * Stores user defined good replacement for the bad word.
-     * @returns true on success
+     * @return @c true on success
      */
     bool storeReplacement(const QString &bad, const QString &good);
 
@@ -100,32 +100,32 @@ public: // Configuration API
     void restore();
 
     /**
-     * Returns names of all supported backends (e.g. ISpell, ASpell)
+     * @return names of all supported backends (e.g. ISpell, ASpell)
      */
     QStringList availableBackends() const;
 
     /**
-     * Returns a list of supported languages.
+     * @return a list of supported languages.
      *
      * Note: use availableDictionaries
      */
     QStringList availableLanguages() const;
 
     /**
-     * Returns a localized list of names of supported languages.
+     * @return a localized list of names of supported languages.
      *
      * Note: use availableDictionaries
      */
     QStringList availableLanguageNames() const;
 
     /**
-     * Returns a map of all available dictionaries with language descriptions and
+     * @return a map of all available dictionaries with language descriptions and
      * their codes. The key is the description, the code the value.
      */
     QMap<QString, QString> availableDictionaries() const;
 
     /**
-     * Returns a map of user preferred dictionaries with language descriptions and
+     * @return a map of user preferred dictionaries with language descriptions and
      * their codes. The key is the description, the code the value.
      * @since 5.54
      */
