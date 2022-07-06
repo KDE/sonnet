@@ -119,13 +119,13 @@ public: // Configuration API
     QStringList availableLanguageNames() const;
 
     /**
-     * Returns a map of all available dictionaies with language descriptions and
+     * Returns a map of all available dictionaries with language descriptions and
      * their codes. The key is the description, the code the value.
      */
     QMap<QString, QString> availableDictionaries() const;
 
     /**
-     * Returns a map of user preferred dictionaies with language descriptions and
+     * Returns a map of user preferred dictionaries with language descriptions and
      * their codes. The key is the description, the code the value.
      * @since 5.54
      */
