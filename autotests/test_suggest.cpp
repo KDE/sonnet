@@ -36,6 +36,7 @@ void SuggestTest::aspell_english_data()
     QTest::newRow("helo") << QStringLiteral("helo") << false << QStringList{QStringLiteral("hello"), QStringLiteral("hell"), QStringLiteral("help")};
     QTest::newRow("enviroment") << QStringLiteral("enviroment") << false << QStringList{QStringLiteral("environment")};
     QTest::newRow("guvernment") << QStringLiteral("guvernment") << false << QStringList{QStringLiteral("government")};
+    QTest::newRow("dictionaies") << QStringLiteral("dictionaies") << false << QStringList{QStringLiteral("dictionaries")};
 }
 
 void SuggestTest::aspell_english()
