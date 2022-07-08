@@ -20,6 +20,10 @@ target_link_libraries(sonnetquickplugin
 set(bindest "${CMAKE_BINARY_DIR}/bin/qml/org/kde/sonnet/")
 set_target_properties(sonnetquickplugin PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${bindest}")
 
+if(MINGW)
+    set_target_properties(sonnetquickplugin PROPERTIES PREFIX "")
+endif()
+
 install(TARGETS sonnetquickplugin DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/sonnet)
 install(FILES qmldir DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/sonnet)
 
