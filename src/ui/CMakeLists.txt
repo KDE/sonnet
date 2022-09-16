@@ -70,7 +70,7 @@ target_include_directories(KF5SonnetUi INTERFACE
 )
 target_include_directories(KF5SonnetUi PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>")
 
-install(TARGETS KF5SonnetUi EXPORT KF5SonnetTargets ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS KF5SonnetUi EXPORT KF5SonnetTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES ${SonnetUi_CamelCase_HEADERS} DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/SonnetUi/Sonnet COMPONENT Devel)
 

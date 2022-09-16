@@ -82,7 +82,7 @@ target_include_directories(KF5SonnetCore INTERFACE
 )
 target_include_directories(KF5SonnetCore PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>")
 
-install(TARGETS KF5SonnetCore EXPORT KF5SonnetTargets ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS KF5SonnetCore EXPORT KF5SonnetTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES ${SonnetCore_CamelCase_HEADERS} DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/SonnetCore/Sonnet COMPONENT Devel)
 
