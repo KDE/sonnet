@@ -61,7 +61,7 @@ if(SONNET_USE_WIDGETS)
     add_feature_info(DESIGNERPLUGIN ${BUILD_DESIGNERPLUGIN} "Build plugin for Qt Designer")
 endif()
 
-ecm_install_po_files_as_qm(po)
+ecm_install_po_files_as_qm(poqm)
 
 ecm_set_disabled_deprecation_versions(
     QT 5.15.2
