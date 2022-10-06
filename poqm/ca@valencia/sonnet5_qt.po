@@ -221,7 +221,7 @@ msgstr "Paraules ignorades:"
 #: ui/configui.ui:129
 msgctxt "SonnetConfigUI|"
 msgid "&Add"
-msgstr "&Afig"
+msgstr "Afi&g"
 
 #: ui/configui.ui:142
 msgctxt "SonnetConfigUI|"
@@ -463,7 +463,7 @@ msgstr ""
 #: ui/sonnetui.ui:218
 msgctxt "SonnetUi|"
 msgid "&Replace"
-msgstr "&Substituïx"
+msgstr "Su&bstituïx"
 
 #: ui/sonnetui.ui:225
 msgctxt "SonnetUi|"
