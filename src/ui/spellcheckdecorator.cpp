@@ -43,6 +43,18 @@ public:
         m_textEdit->viewport()->installEventFilter(q);
     }
 
+    ~SpellCheckDecoratorPrivate()
+    {
+        if (m_plainTextEdit) {
+            m_plainTextEdit->removeEventFilter(q);
+            m_plainTextEdit->removeEventFilter(q);
+        }
+        if (m_textEdit) {
+            m_textEdit->removeEventFilter(q);
+            m_textEdit->viewport()->removeEventFilter(q);
+        }
+    }
+
     bool onContextMenuEvent(QContextMenuEvent *event);
     void execSuggestionMenu(const QPoint &pos, const QString &word, const QTextCursor &cursor);
     void createDefaultHighlighter();
