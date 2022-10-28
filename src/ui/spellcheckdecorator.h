@@ -10,6 +10,8 @@
 
 #include <QObject>
 
+#include <memory>
+
 #include "sonnetui_export.h"
 
 class QTextEdit;
@@ -23,7 +25,8 @@ class Highlighter;
 /**
  * @class Sonnet::SpellCheckDecorator spellcheckdecorator.h <Sonnet/SpellCheckDecorator>
  *
- * @short Connects a Sonnet::Highlighter to a QTextEdit extending the context menu of the text edit with spell check suggestions
+ * @short Connects a Sonnet::Highlighter to a QTextEdit extending the context menu
+ * of the text edit with spell check suggestions
  * @author Aurélien Gâteau <agateau@kde.org>
  * @since 5.0
  **/
@@ -73,7 +76,8 @@ protected:
 
 private:
     friend SpellCheckDecoratorPrivate;
-    SpellCheckDecoratorPrivate *const d;
+    const std::unique_ptr<SpellCheckDecoratorPrivate> d;
+
     Q_DISABLE_COPY(SpellCheckDecorator)
 };
 }

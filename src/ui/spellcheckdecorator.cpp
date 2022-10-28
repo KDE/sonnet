@@ -221,20 +221,17 @@ void SpellCheckDecoratorPrivate::createDefaultHighlighter()
 
 SpellCheckDecorator::SpellCheckDecorator(QTextEdit *textEdit)
     : QObject(textEdit)
-    , d(new SpellCheckDecoratorPrivate(this, textEdit))
+    , d(std::make_unique<SpellCheckDecoratorPrivate>(this, textEdit))
 {
 }
 
 SpellCheckDecorator::SpellCheckDecorator(QPlainTextEdit *textEdit)
     : QObject(textEdit)
-    , d(new SpellCheckDecoratorPrivate(this, textEdit))
+    , d(std::make_unique<SpellCheckDecoratorPrivate>(this, textEdit))
 {
 }
 
-SpellCheckDecorator::~SpellCheckDecorator()
-{
-    delete d;
-}
+SpellCheckDecorator::~SpellCheckDecorator() = default;
 
 void SpellCheckDecorator::setHighlighter(Highlighter *highlighter)
 {
