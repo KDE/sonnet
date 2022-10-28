@@ -17,6 +17,7 @@ class QPlainTextEdit;
 
 namespace Sonnet
 {
+class SpellCheckDecoratorPrivate;
 class Highlighter;
 
 /**
@@ -71,8 +72,8 @@ protected:
     virtual bool isSpellCheckingEnabledForBlock(const QString &textBlock) const;
 
 private:
-    class Private;
-    Private *const d;
+    friend SpellCheckDecoratorPrivate;
+    SpellCheckDecoratorPrivate *const d;
     Q_DISABLE_COPY(SpellCheckDecorator)
 };
 }
