@@ -16,12 +16,13 @@ SpellCheckDecorator class on your QTextEdit.
 
 ## Example
 
-    #include <QTextEdit>
-    #include <spellcheckdecorator.h>
+```cpp
+#include <QTextEdit>
+#include <spellcheckdecorator.h>
 
-    MyFoo::MyFoo(QWidget *parent) : QWidget(parent)
-    {
-        QTextEdit *textEdit = new QTextEdit(this);
-        Sonnet::SpellCheckDecorator *decorator = new Sonnet::SpellCheckDecorator(textEdit);
-    }
-
+MyFoo::MyFoo(QWidget *parent) : QWidget(parent)
+{
+    QTextEdit *textEdit = new QTextEdit(this);
+    Sonnet::SpellCheckDecorator *decorator = new Sonnet::SpellCheckDecorator(textEdit);
+}
+```
