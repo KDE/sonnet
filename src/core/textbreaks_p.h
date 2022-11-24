@@ -20,7 +20,7 @@ class TextBreaksPrivate;
  *
  * TextBreaks is a class that determines the boundaries between graphemes
  * (characters as per the unicode definition,) words and sentences. The
- * default implementation conforms to Unicode Standard Annex #29 http://unicode.org/reports/tr29/.
+ * default implementation conforms to Unicode Standard Annex #29 https://unicode.org/reports/tr29/.
  * You can subclass TextBreaks to create the correct behaviour for languages that require it.
  *
  * @author Jacob Rideout <kde@jacobrideout.net>
