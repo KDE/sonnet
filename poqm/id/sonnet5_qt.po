@@ -535,18 +535,18 @@ msgctxt "SonnetUi|"
 msgid "Autocorrect"
 msgstr "Koreksi otomatis"
 
-#: ui/spellcheckdecorator.cpp:160
+#: ui/spellcheckdecorator.cpp:172
 #, qt-format
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "No suggestions for %1"
 msgstr "Tak ada saran untuk %1"
 
-#: ui/spellcheckdecorator.cpp:171
+#: ui/spellcheckdecorator.cpp:183
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Ignore"
 msgstr "Abaikan"
 
-#: ui/spellcheckdecorator.cpp:172
+#: ui/spellcheckdecorator.cpp:184
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Tambah ke Kamus"

@@ -731,21 +731,21 @@ msgctxt "SonnetUi|"
 msgid "Autocorrect"
 msgstr "Awtokorektura"
 
-#: ui/spellcheckdecorator.cpp:160
+#: ui/spellcheckdecorator.cpp:172
 #, fuzzy, qt-format
 #| msgid "Suggestions"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "No suggestions for %1"
 msgstr "Namjety"
 
-#: ui/spellcheckdecorator.cpp:171
+#: ui/spellcheckdecorator.cpp:183
 #, fuzzy
 #| msgid "Ignore"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Ignore"
 msgstr "ignorować"
 
-#: ui/spellcheckdecorator.cpp:172
+#: ui/spellcheckdecorator.cpp:184
 #, fuzzy
 #| msgid "Add to Dictionary"
 msgctxt "Sonnet::SpellCheckDecorator|"

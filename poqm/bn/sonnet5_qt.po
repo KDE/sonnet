@@ -708,21 +708,21 @@ msgctxt "SonnetUi|"
 msgid "Autocorrect"
 msgstr "স্বয়ংক্রিয় সংশোধন"
 
-#: ui/spellcheckdecorator.cpp:160
+#: ui/spellcheckdecorator.cpp:172
 #, fuzzy, qt-format
 #| msgid "No suggestions for %1"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "No suggestions for %1"
 msgstr "%1-এর জন্য কোন প্রস্তাব নেই"
 
-#: ui/spellcheckdecorator.cpp:171
+#: ui/spellcheckdecorator.cpp:183
 #, fuzzy
 #| msgid "Ignore"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Ignore"
 msgstr "পাত্তা দিও না"
 
-#: ui/spellcheckdecorator.cpp:172
+#: ui/spellcheckdecorator.cpp:184
 #, fuzzy
 #| msgid "Add to Dictionary"
 msgctxt "Sonnet::SpellCheckDecorator|"

@@ -525,18 +525,18 @@ msgctxt "SonnetUi|"
 msgid "Autocorrect"
 msgstr "Автоматичне виправлення"
 
-#: ui/spellcheckdecorator.cpp:160
+#: ui/spellcheckdecorator.cpp:172
 #, qt-format
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "No suggestions for %1"
 msgstr "Немає пропозицій щодо %1"
 
-#: ui/spellcheckdecorator.cpp:171
+#: ui/spellcheckdecorator.cpp:183
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Ignore"
 msgstr "Ігнорувати"
 
-#: ui/spellcheckdecorator.cpp:172
+#: ui/spellcheckdecorator.cpp:184
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Додати до словника"

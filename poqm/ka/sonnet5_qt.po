@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Qt-Contexts: true\n"
-"X-Generator: Poedit 3.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: core/loader.cpp:185
 msgctxt "Sonnet::Loader|dictionary variant"
@@ -295,6 +295,9 @@ msgid ""
 "<p>Select the language of the document you are proofing here.</p>\n"
 "</qt>"
 msgstr ""
+"<qt>\n"
+"<p>აირჩიეთ ენა, რომელზეც ამ დოკუმენტის გადამოწმება გნებავთ.</p>\n"
+"</qt>"
 
 #: ui/sonnetui.ui:75
 msgctxt "SonnetUi|"
@@ -304,7 +307,7 @@ msgstr "&ენა:"
 #: ui/sonnetui.ui:85
 msgctxt "SonnetUi|"
 msgid "Text excerpt showing the unknown word in its context."
-msgstr ""
+msgstr "ტექსტის ამონარიდი, რომელიც უცნობ სიტყვას კონტექსტითურთ შეიცავს."
 
 #: ui/sonnetui.ui:88
 msgctxt "SonnetUi|"
@@ -320,7 +323,7 @@ msgstr ""
 #: ui/sonnetui.ui:96
 msgctxt "SonnetUi|"
 msgid "... the <b>misspelled</b> word shown in context ..."
-msgstr ""
+msgstr "... კონტექსტში ნაჩვენები <b>მართლწერის შეცდომის მქონე</b> სიტყვა ..."
 
 #: ui/sonnetui.ui:106
 msgctxt "SonnetUi|"
@@ -452,18 +455,18 @@ msgctxt "SonnetUi|"
 msgid "Autocorrect"
 msgstr "ავტომატური შეცვლა"
 
-#: ui/spellcheckdecorator.cpp:160
+#: ui/spellcheckdecorator.cpp:172
 #, qt-format
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "No suggestions for %1"
 msgstr "%1-ისთვის რჩევა არ არსებობს"
 
-#: ui/spellcheckdecorator.cpp:171
+#: ui/spellcheckdecorator.cpp:183
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Ignore"
 msgstr "იგნორი"
 
-#: ui/spellcheckdecorator.cpp:172
+#: ui/spellcheckdecorator.cpp:184
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "სიტყვის ლექსიკონში ჩამატება"
