@@ -166,7 +166,7 @@ msgstr "Verificació ortogràfica mentre s'escriu desactivada."
 #: ui/configdialog.cpp:40
 msgctxt "Sonnet::ConfigDialog|"
 msgid "Spell Checking Configuration"
-msgstr "Configuració de la verificació ortogràfica"
+msgstr "Configureu la verificació ortogràfica"
 
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
