@@ -30,7 +30,7 @@ include(CMakeDependentOption)
 
 set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprecated API excluded from the build [default=0].")
 
-set(REQUIRED_QT_VERSION 5.15.2)
+set(REQUIRED_QT_VERSION 6.4.0)
 option(SONNET_USE_WIDGETS "Build components using Qt${QT_MAJOR_VERSION}Widgets" ON)
 option(SONNET_USE_QML "Build components using Qt${QT_MAJOR_VERSION}Quick" ON)
 
