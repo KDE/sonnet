@@ -22,7 +22,7 @@ configure_file(config-hunspell.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-hunspe
 
 add_library(sonnet_hunspell MODULE ${sonnet_hunspell_PART_SRCS})
 target_include_directories(sonnet_hunspell SYSTEM PUBLIC ${HUNSPELL_INCLUDE_DIRS})
-target_link_libraries(sonnet_hunspell PRIVATE KF5::SonnetCore ${HUNSPELL_LIBRARIES})
+target_link_libraries(sonnet_hunspell PRIVATE KF6::SonnetCore ${HUNSPELL_LIBRARIES})
 
 if (TARGET Qt6::Core5Compat)
     target_link_libraries(sonnet_hunspell PRIVATE Qt6::Core5Compat) # QTextCodec

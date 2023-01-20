@@ -25,9 +25,9 @@ set(sonnetcore_SRCS
 )
 
 # create trigrams file + add trigrams resource
-if (TARGET KF5::parsetrigrams)
+if (TARGET KF6::parsetrigrams)
     add_custom_command(OUTPUT "${CMAKE_BINARY_DIR}/data/trigrams.map"
-                       COMMAND KF5::parsetrigrams "${CMAKE_SOURCE_DIR}/data/trigrams" > "${CMAKE_BINARY_DIR}/data/trigrams.map")
+                       COMMAND KF6::parsetrigrams "${CMAKE_SOURCE_DIR}/data/trigrams" > "${CMAKE_BINARY_DIR}/data/trigrams.map")
     configure_file(${CMAKE_SOURCE_DIR}/data/trigrams.qrc.in ${CMAKE_BINARY_DIR}/data/trigrams.qrc @ONLY)
     qt_add_resources(sonnetcore_SRCS "${CMAKE_BINARY_DIR}/data/trigrams.qrc")
 endif()
@@ -45,8 +45,8 @@ ecm_qt_declare_logging_category(sonnetcore_SRCS
 add_definitions(-DINSTALLATION_PLUGIN_PATH="${CMAKE_INSTALL_PREFIX}/${KDE_INSTALL_PLUGINDIR}")
 
 
-add_library(KF5SonnetCore ${sonnetcore_SRCS})
-ecm_generate_export_header(KF5SonnetCore
+add_library(KF6SonnetCore ${sonnetcore_SRCS})
+ecm_generate_export_header(KF6SonnetCore
     BASE_NAME SonnetCore
     GROUP_BASE_NAME KF
     VERSION ${KF_VERSION}
@@ -56,7 +56,7 @@ ecm_generate_export_header(KF5SonnetCore
 )
 
 
-add_library(KF5::SonnetCore ALIAS KF5SonnetCore)
+add_library(KF6::SonnetCore ALIAS KF6SonnetCore)
 
 ecm_generate_headers(SonnetCore_CamelCase_HEADERS
   HEADER_NAMES
@@ -68,21 +68,21 @@ ecm_generate_headers(SonnetCore_CamelCase_HEADERS
   REQUIRED_HEADERS SonnetCore_HEADERS
 )
 
-target_link_libraries(KF5SonnetCore PUBLIC Qt${QT_MAJOR_VERSION}::Core)
+target_link_libraries(KF6SonnetCore PUBLIC Qt${QT_MAJOR_VERSION}::Core)
 
-set_target_properties(KF5SonnetCore PROPERTIES VERSION ${SONNET_VERSION}
+set_target_properties(KF6SonnetCore PROPERTIES VERSION ${SONNET_VERSION}
                                                SOVERSION ${SONNET_SOVERSION}
                                                EXPORT_NAME SonnetCore
 )
 
 # CMAKE_CURRENT_BINARY_DIR: for camelcase headers and lowercase forwarders
-target_include_directories(KF5SonnetCore INTERFACE
+target_include_directories(KF6SonnetCore INTERFACE
     "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/SonnetCore>"
     "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/Sonnet>"
 )
-target_include_directories(KF5SonnetCore PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>")
+target_include_directories(KF6SonnetCore PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>")
 
-install(TARGETS KF5SonnetCore EXPORT KF5SonnetTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS KF6SonnetCore EXPORT KF6SonnetTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES ${SonnetCore_CamelCase_HEADERS} DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/SonnetCore/Sonnet COMPONENT Devel)
 
@@ -93,9 +93,9 @@ install(FILES
 
 if (BUILD_QCH)
     ecm_add_qch(
-        KF5SonnetCore_QCH
+        KF6SonnetCore_QCH
         NAME SonnetCore
-        BASE_NAME KF5SonnetCore
+        BASE_NAME KF6SonnetCore
         VERSION ${KF_VERSION}
         ORG_DOMAIN org.kde
         SOURCES # using only public headers, to cover only public API
@@ -118,7 +118,7 @@ endif()
 include(ECMGeneratePriFile)
 ecm_generate_pri_file(
     BASE_NAME SonnetCore
-    LIB_NAME KF5SonnetCore
+    LIB_NAME KF6SonnetCore
     DEPS "core"
     FILENAME_VAR PRI_FILENAME
     INCLUDE_INSTALL_DIRS

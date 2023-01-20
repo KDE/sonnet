@@ -13,11 +13,11 @@ ecm_add_tests(
  test_settings.cpp
  test_autodetect.cpp
  NAME_PREFIX "sonnet-"
- LINK_LIBRARIES KF5::SonnetCore Qt${QT_MAJOR_VERSION}::Test
+ LINK_LIBRARIES KF6::SonnetCore Qt${QT_MAJOR_VERSION}::Test
 )
 
 ecm_add_tests(
  test_highlighter.cpp
  NAME_PREFIX "sonnet-"
- LINK_LIBRARIES KF5::SonnetUi KF5::SonnetCore Qt${QT_MAJOR_VERSION}::Test
+ LINK_LIBRARIES KF6::SonnetUi KF6::SonnetCore Qt${QT_MAJOR_VERSION}::Test
 )

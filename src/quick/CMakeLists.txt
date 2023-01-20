@@ -16,7 +16,7 @@ ecm_qt_declare_logging_category(sonnetquickplugin
 )
 target_link_libraries(sonnetquickplugin
     PUBLIC Qt${QT_MAJOR_VERSION}::Quick
-    PRIVATE KF5SonnetCore
+    PRIVATE KF6SonnetCore
 )
 
 set(bindest "${CMAKE_BINARY_DIR}/bin/qml/org/kde/sonnet/")

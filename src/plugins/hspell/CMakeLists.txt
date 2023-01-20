@@ -23,7 +23,7 @@ ecm_qt_declare_logging_category(sonnet_hspell_PART_SRCS
 
 add_library(sonnet_hspell MODULE ${sonnet_hspell_PART_SRCS})
 
-target_link_libraries(sonnet_hspell PRIVATE KF5::SonnetCore ${HSPELL_LIBRARIES} ZLIB::ZLIB)
+target_link_libraries(sonnet_hspell PRIVATE KF6::SonnetCore ${HSPELL_LIBRARIES} ZLIB::ZLIB)
 
 if (TARGET Qt6::Core5Compat)
     target_link_libraries(sonnet_hspell PRIVATE Qt6::Core5Compat) # QTextCodec

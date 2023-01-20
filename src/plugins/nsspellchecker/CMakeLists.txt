@@ -13,7 +13,7 @@ ecm_qt_declare_logging_category(sonnet_nsspellchecker_PART_SRCS
 
 add_library(sonnet_nsspellchecker MODULE ${sonnet_nsspellchecker_PART_SRCS})
 
-target_link_libraries(sonnet_nsspellchecker PRIVATE KF5::SonnetCore "-framework AppKit")
+target_link_libraries(sonnet_nsspellchecker PRIVATE KF6::SonnetCore "-framework AppKit")
 
 install(TARGETS sonnet_nsspellchecker  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf${QT_MAJOR_VERSION}/sonnet/)
 

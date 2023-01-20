@@ -50,7 +50,7 @@ endif()
 
 ecm_setup_version(PROJECT VARIABLE_PREFIX SONNET
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/sonnet_version.h"
-                        PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5SonnetConfigVersion.cmake"
+                        PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF6SonnetConfigVersion.cmake"
                         SOVERSION 5)
 
 option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
@@ -79,29 +79,29 @@ if (BUILD_EXAMPLES)
 endif()
 
 # create a Config.cmake and a ConfigVersion.cmake file and install them
-set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF5Sonnet")
+set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF6Sonnet")
 
 if (BUILD_QCH)
     ecm_install_qch_export(
-        TARGETS KF5SonnetCore_QCH KF5SonnetUi_QCH
-        FILE KF5SonnetQchTargets.cmake
+        TARGETS KF6SonnetCore_QCH KF6SonnetUi_QCH
+        FILE KF6SonnetQchTargets.cmake
         DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
         COMPONENT Devel
     )
-    set(PACKAGE_INCLUDE_QCHTARGETS "include(\"\${CMAKE_CURRENT_LIST_DIR}/KF5SonnetQchTargets.cmake\")")
+    set(PACKAGE_INCLUDE_QCHTARGETS "include(\"\${CMAKE_CURRENT_LIST_DIR}/KF6SonnetQchTargets.cmake\")")
 endif()
 
 include(CMakePackageConfigHelpers)
 
-configure_package_config_file("${CMAKE_CURRENT_SOURCE_DIR}/KF5SonnetConfig.cmake.in" "${CMAKE_CURRENT_BINARY_DIR}/KF5SonnetConfig.cmake"
+configure_package_config_file("${CMAKE_CURRENT_SOURCE_DIR}/KF6SonnetConfig.cmake.in" "${CMAKE_CURRENT_BINARY_DIR}/KF6SonnetConfig.cmake"
                               INSTALL_DESTINATION  ${CMAKECONFIG_INSTALL_DIR}
                               )
 
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/KF5SonnetConfig.cmake"
-              "${CMAKE_CURRENT_BINARY_DIR}/KF5SonnetConfigVersion.cmake"
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/KF6SonnetConfig.cmake"
+              "${CMAKE_CURRENT_BINARY_DIR}/KF6SonnetConfigVersion.cmake"
         DESTINATION "${CMAKECONFIG_INSTALL_DIR}"  COMPONENT Devel )
 
-install(EXPORT KF5SonnetTargets DESTINATION "${CMAKECONFIG_INSTALL_DIR}" FILE KF5SonnetTargets.cmake NAMESPACE KF5:: )
+install(EXPORT KF6SonnetTargets DESTINATION "${CMAKECONFIG_INSTALL_DIR}" FILE KF6SonnetTargets.cmake NAMESPACE KF6:: )
 
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/sonnet_version.h
         DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/Sonnet COMPONENT Devel)

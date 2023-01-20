@@ -40,8 +40,8 @@ ecm_generate_headers(SonnetUi_CamelCase_HEADERS
 
 qt_wrap_ui(sonnetui_SRCS ${sonnetui_UI})
 
-add_library(KF5SonnetUi ${sonnetui_SRCS})
-ecm_generate_export_header(KF5SonnetUi
+add_library(KF6SonnetUi ${sonnetui_SRCS})
+ecm_generate_export_header(KF6SonnetUi
     BASE_NAME SonnetUi
     GROUP_BASE_NAME KF
     VERSION ${KF_VERSION}
@@ -50,27 +50,27 @@ ecm_generate_export_header(KF5SonnetUi
     EXCLUDE_DEPRECATED_BEFORE_AND_AT ${EXCLUDE_DEPRECATED_BEFORE_AND_AT}
 )
 
-add_library(KF5::SonnetUi ALIAS KF5SonnetUi)
+add_library(KF6::SonnetUi ALIAS KF6SonnetUi)
 
-target_link_libraries(KF5SonnetUi
+target_link_libraries(KF6SonnetUi
     PUBLIC Qt${QT_MAJOR_VERSION}::Widgets
-    PRIVATE KF5::SonnetCore
+    PRIVATE KF6::SonnetCore
 )
 
-set_target_properties(KF5SonnetUi PROPERTIES VERSION ${SONNET_VERSION}
+set_target_properties(KF6SonnetUi PROPERTIES VERSION ${SONNET_VERSION}
                                              SOVERSION ${SONNET_SOVERSION}
                                              EXPORT_NAME SonnetUi
 )
 
 
 # CMAKE_CURRENT_BINARY_DIR: for camelcase headers and lowercase forwarders
-target_include_directories(KF5SonnetUi INTERFACE
+target_include_directories(KF6SonnetUi INTERFACE
     "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/SonnetUi>"
     "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/Sonnet>"
 )
-target_include_directories(KF5SonnetUi PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>")
+target_include_directories(KF6SonnetUi PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>")
 
-install(TARGETS KF5SonnetUi EXPORT KF5SonnetTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS KF6SonnetUi EXPORT KF6SonnetTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES ${SonnetUi_CamelCase_HEADERS} DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/SonnetUi/Sonnet COMPONENT Devel)
 
@@ -85,9 +85,9 @@ endif()
 
 if (BUILD_QCH)
     ecm_add_qch(
-        KF5SonnetUi_QCH
+        KF6SonnetUi_QCH
         NAME SonnetUi
-        BASE_NAME KF5SonnetUi
+        BASE_NAME KF6SonnetUi
         VERSION ${KF_VERSION}
         ORG_DOMAIN org.kde
         SOURCES # using only public headers, to cover only public API
@@ -112,7 +112,7 @@ endif()
 include(ECMGeneratePriFile)
 ecm_generate_pri_file(
     BASE_NAME SonnetUi
-    LIB_NAME KF5SonnetUi
+    LIB_NAME KF6SonnetUi
     DEPS "widgets"
     FILENAME_VAR PRI_FILENAME
     INCLUDE_INSTALL_DIRS

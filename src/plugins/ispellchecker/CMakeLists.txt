@@ -20,7 +20,7 @@ if (HAS_SPELLCHECK_H)
     )
 
     add_library(sonnet_ispellchecker MODULE ${sonnet_ispellchecker_PART_SRCS})
-    target_link_libraries(sonnet_ispellchecker PRIVATE KF5::SonnetCore)
+    target_link_libraries(sonnet_ispellchecker PRIVATE KF6::SonnetCore)
     target_compile_definitions(sonnet_ispellchecker PRIVATE DEFINITIONS SONNET_INSTALL_PREFIX="${CMAKE_INSTALL_PREFIX}")
 
     install(TARGETS sonnet_ispellchecker  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf${QT_MAJOR_VERSION}/sonnet/)

@@ -16,6 +16,6 @@ ecm_qt_declare_logging_category(sonnet_aspell_PART_SRCS
 
 add_library(sonnet_aspell MODULE ${sonnet_aspell_PART_SRCS})
 
-target_link_libraries(sonnet_aspell PRIVATE KF5::SonnetCore ${ASPELL_LIBRARIES})
+target_link_libraries(sonnet_aspell PRIVATE KF6::SonnetCore ${ASPELL_LIBRARIES})
 
 install(TARGETS sonnet_aspell  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf${QT_MAJOR_VERSION}/sonnet/)
