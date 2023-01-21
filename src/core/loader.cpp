@@ -228,7 +228,7 @@ QString Loader::languageNameForCode(const QString &langCode) const
     }
 
     QLocale locale(isoCode);
-    localizedCountry = locale.nativeCountryName();
+    localizedCountry = locale.nativeTerritoryName();
     localizedLang = locale.nativeLanguageName();
 
     if (localizedLang.isEmpty() && localizedCountry.isEmpty()) {
