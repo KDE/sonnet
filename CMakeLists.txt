@@ -31,22 +31,19 @@ include(CMakeDependentOption)
 set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprecated API excluded from the build [default=0].")
 
 set(REQUIRED_QT_VERSION 6.4.0)
-option(SONNET_USE_WIDGETS "Build components using Qt${QT_MAJOR_VERSION}Widgets" ON)
-option(SONNET_USE_QML "Build components using Qt${QT_MAJOR_VERSION}Quick" ON)
+option(SONNET_USE_WIDGETS "Build components using Qt6Widgets" ON)
+option(SONNET_USE_QML "Build components using Qt6Quick" ON)
 
 if(SONNET_USE_WIDGETS)
-    find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets)
+    find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets)
 endif()
 
 if(SONNET_USE_QML)
-    find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} CONFIG REQUIRED Quick)
+    find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Quick)
 endif()
 
-find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} CONFIG REQUIRED Core)
-
-if (QT_MAJOR_VERSION STREQUAL "6")
-    find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Core5Compat) # QTextCodec
-endif()
+find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Core)
+find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Core5Compat) # QTextCodec
 
 ecm_setup_version(PROJECT VARIABLE_PREFIX SONNET
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/sonnet_version.h"

@@ -737,11 +737,7 @@ QStringList GuessLanguagePrivate::guessFromTrigrams(const QString &sample, const
     int counter = 0;
     double confidence = 0;
 
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     QMultiMapIterator<int, QString> it(scores);
-#else
-    QMapIterator<int, QString> it(scores);
-#endif
     it.next();
 
     QString prevItem = it.value();

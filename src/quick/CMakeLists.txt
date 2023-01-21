@@ -15,7 +15,7 @@ ecm_qt_declare_logging_category(sonnetquickplugin
     EXPORT SONNET
 )
 target_link_libraries(sonnetquickplugin
-    PUBLIC Qt${QT_MAJOR_VERSION}::Quick
+    PUBLIC Qt6::Quick
     PRIVATE KF6SonnetCore
 )
 

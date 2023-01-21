@@ -53,7 +53,7 @@ ecm_generate_export_header(KF6SonnetUi
 add_library(KF6::SonnetUi ALIAS KF6SonnetUi)
 
 target_link_libraries(KF6SonnetUi
-    PUBLIC Qt${QT_MAJOR_VERSION}::Widgets
+    PUBLIC Qt6::Widgets
     PRIVATE KF6::SonnetCore
 )
 

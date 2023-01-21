@@ -17,4 +17,4 @@ add_library(sonnet_voikko MODULE ${sonnet_voikko_PART_SRCS})
 
 target_link_libraries(sonnet_voikko PRIVATE KF6::SonnetCore ${VOIKKO_LIBRARIES})
 
-install(TARGETS sonnet_voikko  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf${QT_MAJOR_VERSION}/sonnet/)
+install(TARGETS sonnet_voikko  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf6/sonnet/)

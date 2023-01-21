@@ -29,5 +29,5 @@ if (TARGET Qt6::Core5Compat)
     target_link_libraries(sonnet_hspell PRIVATE Qt6::Core5Compat) # QTextCodec
 endif()
 
-install(TARGETS sonnet_hspell  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf${QT_MAJOR_VERSION}/sonnet/)
+install(TARGETS sonnet_hspell  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf6/sonnet/)
 

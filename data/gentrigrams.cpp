@@ -28,10 +28,6 @@ int main(int argc, char *argv[])
         return -1;
     }
     QTextStream stream(&file);
-    // Not needed with Qt6, UTF-8 is the default
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    stream.setCodec("UTF-8");
-#endif
 
     QFile outFile(QString::fromLocal8Bit(argv[2]));
     if (!outFile.open(QIODevice::WriteOnly)) {
@@ -84,10 +80,6 @@ int main(int argc, char *argv[])
     i = orderedTrigrams.end();
     int count = 0;
     QTextStream outStream(&outFile);
-    // Not needed with Qt6, UTF-8 is the default
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    outStream.setCodec("UTF-8");
-#endif
 
     while (i != orderedTrigrams.begin()) {
         --i;

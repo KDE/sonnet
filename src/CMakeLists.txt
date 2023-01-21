@@ -1,11 +1,11 @@
 add_subdirectory(core)
 add_subdirectory(plugins)
 
-if(TARGET Qt${QT_MAJOR_VERSION}::Widgets)
+if(TARGET Qt6::Widgets)
     add_subdirectory(ui)
 endif()
 
-if(TARGET Qt${QT_MAJOR_VERSION}::Quick)
+if(TARGET Qt6::Quick)
     add_subdirectory(quick)
 endif()
 

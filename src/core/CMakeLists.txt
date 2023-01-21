@@ -68,7 +68,7 @@ ecm_generate_headers(SonnetCore_CamelCase_HEADERS
   REQUIRED_HEADERS SonnetCore_HEADERS
 )
 
-target_link_libraries(KF6SonnetCore PUBLIC Qt${QT_MAJOR_VERSION}::Core)
+target_link_libraries(KF6SonnetCore PUBLIC Qt6::Core)
 
 set_target_properties(KF6SonnetCore PROPERTIES VERSION ${SONNET_VERSION}
                                                SOVERSION ${SONNET_SOVERSION}
