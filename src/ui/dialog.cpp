@@ -213,9 +213,6 @@ void Dialog::slotFinished()
     setProgressDialogVisible(false);
     Q_EMIT stop();
     // FIXME: should we emit done here?
-#if SONNETUI_BUILD_DEPRECATED_SINCE(5, 65)
-    Q_EMIT done(d->checker->text());
-#endif
     Q_EMIT spellCheckDone(d->checker->text());
     Q_EMIT spellCheckStatus(tr("Spell check stopped."));
     accept();
@@ -392,9 +389,6 @@ void Dialog::slotMisspelling(const QString &word, int start)
 void Dialog::slotDone()
 {
     d->restart = false;
-#if SONNETUI_BUILD_DEPRECATED_SINCE(5, 65)
-    Q_EMIT done(d->checker->text());
-#endif
     Q_EMIT spellCheckDone(d->checker->text());
     if (d->restart) {
         updateDictionaryComboBox();

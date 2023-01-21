@@ -85,15 +85,6 @@ public Q_SLOTS:
     void setBuffer(const QString &);
 
 Q_SIGNALS:
-#if SONNETUI_ENABLE_DEPRECATED_SINCE(5, 65)
-    /**
-     * The dialog won't be closed if you setBuffer() in slot connected to this signal
-     * Also emitted after stop() signal
-     * @deprecated Since 5.65, use spellCheckDone
-     */
-    SONNETUI_DEPRECATED_VERSION(5, 65, "Use Dialog::spellCheckDone()")
-    void done(const QString &newBuffer); // clazy:exclude=overloaded-signal
-#endif
     /**
      * The dialog won't be closed if you setBuffer() in slot connected to this signal
      * Also emitted after stop() signal
