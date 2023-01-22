@@ -8,7 +8,7 @@ ecm_qtdesignerplugin_widget(Sonnet::DictionaryComboBox
 
 ecm_add_qtdesignerplugin(sonnetuiwidgets
     NAME SonnetUiWidgets
-    OUTPUT_NAME sonnetui5widgets
+    OUTPUT_NAME sonnet6widgets
     WIDGETS
         Sonnet::DictionaryComboBox
     LINK_LIBRARIES
