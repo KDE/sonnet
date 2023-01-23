@@ -93,9 +93,9 @@ if (BUILD_QCH)
         SOURCES # using only public headers, to cover only public API
             ${SonnetUi_HEADERS}
         LINK_QCHS
-            Qt5Core_QCH
-            Qt5Gui_QCH
-            Qt5Widgets_QCH
+            Qt6Core_QCH
+            Qt6Gui_QCH
+            Qt6Widgets_QCH
         INCLUDE_DIRS
             ${CMAKE_CURRENT_BINARY_DIR}
         BLANK_MACROS
