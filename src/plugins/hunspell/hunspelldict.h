@@ -11,9 +11,10 @@
 #include "hunspell.hxx"
 #include "spellerplugin_p.h"
 
-#include <memory>
+#include <QStringDecoder>
+#include <QStringEncoder>
 
-class QTextCodec;
+#include <memory>
 
 class HunspellDict : public Sonnet::SpellerPlugin
 {
@@ -35,7 +36,8 @@ private:
     QByteArray toDictEncoding(const QString &word) const;
 
     std::shared_ptr<Hunspell> m_speller;
-    QTextCodec *m_codec = nullptr;
+    mutable QStringEncoder m_encoder;
+    mutable QStringDecoder m_decoder;
 };
 
 #endif

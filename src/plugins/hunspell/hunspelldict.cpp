@@ -15,7 +15,6 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QStandardPaths>
-#include <QTextCodec>
 #include <QTextStream>
 
 using namespace Sonnet;
@@ -27,11 +26,17 @@ HunspellDict::HunspellDict(const QString &lang, const std::shared_ptr<Hunspell> 
         qCWarning(SONNET_HUNSPELL) << "Can't create a client without a speller";
         return;
     }
-    m_codec = QTextCodec::codecForName(speller->get_dic_encoding());
-    if (!m_codec) {
+    m_decoder = QStringDecoder(speller->get_dic_encoding());
+    if (!m_decoder.isValid()) {
         qCWarning(SONNET_HUNSPELL) << "Failed to find a text codec for name" << speller->get_dic_encoding() << "defaulting to locale text codec";
-        m_codec = QTextCodec::codecForLocale();
-        Q_ASSERT(m_codec);
+        m_decoder = QStringDecoder(QStringDecoder::System);
+        Q_ASSERT(m_decoder.isValid());
+    }
+    m_encoder = QStringEncoder(speller->get_dic_encoding());
+    if (!m_encoder.isValid()) {
+        qCWarning(SONNET_HUNSPELL) << "Failed to find a text codec for name" << speller->get_dic_encoding() << "defaulting to locale text codec";
+        m_encoder = QStringEncoder(QStringEncoder::System);
+        Q_ASSERT(m_encoder.isValid());
     }
     m_speller = speller;
 
@@ -88,8 +93,8 @@ HunspellDict::~HunspellDict()
 
 QByteArray HunspellDict::toDictEncoding(const QString &word) const
 {
-    if (m_codec) {
-        return m_codec->fromUnicode(word);
+    if (m_encoder.isValid()) {
+        return m_encoder.encode(word);
     }
     return {};
 }
@@ -123,13 +128,13 @@ QStringList HunspellDict::suggest(const QString &word) const
     char **selection;
     int nbWord = m_speller->suggest(&selection, toDictEncoding(word).constData());
     for (int i = 0; i < nbWord; ++i) {
-        lst << m_codec->toUnicode(selection[i]);
+        lst << m_decoder.decode(selection[i]);
     }
     m_speller->free_list(&selection, nbWord);
 #else
     const auto suggestions = m_speller->suggest(toDictEncoding(word).toStdString());
     for_each(suggestions.begin(), suggestions.end(), [this, &lst](const std::string &suggestion) {
-        lst << m_codec->toUnicode(suggestion.c_str());
+        lst << m_decoder.decode(suggestion.c_str());
     });
 #endif
 

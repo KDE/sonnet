@@ -24,10 +24,6 @@ add_library(sonnet_hunspell MODULE ${sonnet_hunspell_PART_SRCS})
 target_include_directories(sonnet_hunspell SYSTEM PUBLIC ${HUNSPELL_INCLUDE_DIRS})
 target_link_libraries(sonnet_hunspell PRIVATE KF6::SonnetCore ${HUNSPELL_LIBRARIES})
 
-if (TARGET Qt6::Core5Compat)
-    target_link_libraries(sonnet_hunspell PRIVATE Qt6::Core5Compat) # QTextCodec
-endif()
-
 target_compile_definitions(sonnet_hunspell PRIVATE DEFINITIONS SONNET_INSTALL_PREFIX="${CMAKE_INSTALL_PREFIX}")
 
 install(TARGETS sonnet_hunspell  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf6/sonnet/)
