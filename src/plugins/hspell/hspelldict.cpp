@@ -13,7 +13,6 @@
 #include "hspell_debug.h"
 
 #include <QSettings>
-#include <QTextCodec>
 
 using namespace Sonnet;
 
@@ -26,7 +25,8 @@ HSpellDict::HSpellDict(const QString &lang)
         initialized = false;
     } else {
         /* hspell understands only iso8859-8-i */
-        codec = QTextCodec::codecForName("iso8859-8-i");
+        m_decoder = QStringDecoder("iso8859-8-i");
+        m_encoder = QStringEncoder("iso8859-8-i");
         initialized = true;
     }
 
@@ -63,7 +63,7 @@ bool HSpellDict::isCorrect(const QString &word) const
     }
 
     int preflen;
-    QByteArray wordISO = codec->fromUnicode(word);
+    QByteArray wordISO = m_encoder.encode(word);
 
     // returns 1 if the word is correct, 0 otherwise
     int correct = hspell_check_word(m_speller, wordISO.constData(),
@@ -89,9 +89,10 @@ QStringList HSpellDict::suggest(const QString &word) const
     struct corlist correctionList;
     int suggestionCount;
     corlist_init(&correctionList);
-    hspell_trycorrect(m_speller, codec->fromUnicode(word).constData(), &correctionList);
+    const QByteArray encodedWord = m_encoder.encode(word);
+    hspell_trycorrect(m_speller, encodedWord.constData(), &correctionList);
     for (suggestionCount = 0; suggestionCount < corlist_n(&correctionList); suggestionCount++) {
-        suggestions.append(codec->toUnicode(corlist_str(&correctionList, suggestionCount)));
+        suggestions.append(m_decoder.decode(corlist_str(&correctionList, suggestionCount)));
     }
     corlist_free(&correctionList);
     return suggestions;

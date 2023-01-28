@@ -43,7 +43,6 @@ if(SONNET_USE_QML)
 endif()
 
 find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Core)
-find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Core5Compat) # QTextCodec
 
 ecm_setup_version(PROJECT VARIABLE_PREFIX SONNET
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/sonnet_version.h"

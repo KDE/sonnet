@@ -10,14 +10,14 @@
 #define KSPELL_HSPELLDICT_H
 
 #include <QSet>
+#include <QStringDecoder>
+#include <QStringEncoder>
 
 #include "spellerplugin_p.h"
 /* libhspell is a C library and it does not have #ifdef __cplusplus */
 extern "C" {
 #include "hspell.h"
 }
-
-class QTextCodec;
 
 class HSpellDict : public Sonnet::SpellerPlugin
 {
@@ -41,7 +41,8 @@ private:
     void storePersonalWords();
 
     struct dict_radix *m_speller;
-    QTextCodec *codec;
+    mutable QStringDecoder m_decoder;
+    mutable QStringEncoder m_encoder;
     bool initialized;
     QSet<QString> m_sessionWords;
     QSet<QString> m_personalWords;
