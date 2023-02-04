@@ -182,7 +182,7 @@ msgstr "&ენის ავტომატური გამოცნობა
 #: ui/configui.ui:84
 msgctxt "SonnetConfigUI|"
 msgid "Enable &background spellchecking"
-msgstr "მართლწერის _ფონური შემოწმება"
+msgstr "მართლწერის &ფონური შემოწმება"
 
 #: ui/configui.ui:91
 msgctxt "SonnetConfigUI|"
