@@ -305,7 +305,7 @@ msgctxt "SonnetConfigUI|"
 msgid "&Remove"
 msgstr "&நீக்குக"
 
-#: ui/dialog.cpp:85 ui/dialog.cpp:197 ui/dialog.cpp:408
+#: ui/dialog.cpp:85 ui/dialog.cpp:197 ui/dialog.cpp:402
 #, fuzzy
 #| msgid "Check Spelling"
 msgctxt "Sonnet::Dialog|@title:window"
@@ -320,21 +320,21 @@ msgctxt "Sonnet::Dialog|progress label"
 msgid "Spell checking in progress..."
 msgstr "எழுத்துப் பிழை பார்ப்பு நடைபெறுகிறது..."
 
-#: ui/dialog.cpp:220
+#: ui/dialog.cpp:217
 #, fuzzy
 #| msgid "Spell check stopped."
 msgctxt "Sonnet::Dialog|"
 msgid "Spell check stopped."
 msgstr "சொல் திருத்தம் நிறுத்தப்பட்டது."
 
-#: ui/dialog.cpp:230
+#: ui/dialog.cpp:227
 #, fuzzy
 #| msgid "Spell check canceled."
 msgctxt "Sonnet::Dialog|"
 msgid "Spell check canceled."
 msgstr "சொல் திருத்தம் இரத்து செய்யப்பட்டது."
 
-#: ui/dialog.cpp:405 ui/dialog.cpp:408
+#: ui/dialog.cpp:399 ui/dialog.cpp:402
 #, fuzzy
 #| msgid "Spell check complete."
 msgctxt "Sonnet::Dialog|"

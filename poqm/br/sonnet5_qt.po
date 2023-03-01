@@ -257,7 +257,7 @@ msgctxt "SonnetConfigUI|"
 msgid "&Remove"
 msgstr "&Lemel"
 
-#: ui/dialog.cpp:85 ui/dialog.cpp:197 ui/dialog.cpp:408
+#: ui/dialog.cpp:85 ui/dialog.cpp:197 ui/dialog.cpp:402
 #, fuzzy
 #| msgid "Check Spelling"
 msgctxt "Sonnet::Dialog|@title:window"
@@ -271,21 +271,21 @@ msgctxt "Sonnet::Dialog|progress label"
 msgid "Spell checking in progress..."
 msgstr "Gwirieker ar skritur"
 
-#: ui/dialog.cpp:220
+#: ui/dialog.cpp:217
 #, fuzzy
 #| msgid "Spell Checker"
 msgctxt "Sonnet::Dialog|"
 msgid "Spell check stopped."
 msgstr "Gwirieker ar skritur"
 
-#: ui/dialog.cpp:230
+#: ui/dialog.cpp:227
 #, fuzzy
 #| msgid "Spell Checker"
 msgctxt "Sonnet::Dialog|"
 msgid "Spell check canceled."
 msgstr "Gwirieker ar skritur"
 
-#: ui/dialog.cpp:405 ui/dialog.cpp:408
+#: ui/dialog.cpp:399 ui/dialog.cpp:402
 #, fuzzy
 #| msgid "Spell Checker"
 msgctxt "Sonnet::Dialog|"

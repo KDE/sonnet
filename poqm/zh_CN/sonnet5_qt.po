@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
-"PO-Revision-Date: 2023-01-02 07:12\n"
+"PO-Revision-Date: 2023-02-24 12:44\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -214,7 +214,7 @@ msgctxt "SonnetConfigUI|"
 msgid "&Remove"
 msgstr "删除(&R)"
 
-#: ui/dialog.cpp:85 ui/dialog.cpp:197 ui/dialog.cpp:408
+#: ui/dialog.cpp:85 ui/dialog.cpp:197 ui/dialog.cpp:402
 msgctxt "Sonnet::Dialog|@title:window"
 msgid "Check Spelling"
 msgstr "检查拼写"
@@ -224,17 +224,17 @@ msgctxt "Sonnet::Dialog|progress label"
 msgid "Spell checking in progress..."
 msgstr "正在进行拼写检查..."
 
-#: ui/dialog.cpp:220
+#: ui/dialog.cpp:217
 msgctxt "Sonnet::Dialog|"
 msgid "Spell check stopped."
 msgstr "拼写检查已停止。"
 
-#: ui/dialog.cpp:230
+#: ui/dialog.cpp:227
 msgctxt "Sonnet::Dialog|"
 msgid "Spell check canceled."
 msgstr "拼写检查已取消。"
 
-#: ui/dialog.cpp:405 ui/dialog.cpp:408
+#: ui/dialog.cpp:399 ui/dialog.cpp:402
 msgctxt "Sonnet::Dialog|"
 msgid "Spell check complete."
 msgstr "拼写检查已完成。"

@@ -182,7 +182,7 @@ msgstr "&ენის ავტომატური გამოცნობა
 #: ui/configui.ui:84
 msgctxt "SonnetConfigUI|"
 msgid "Enable &background spellchecking"
-msgstr "მართლწერის _ფონური შემოწმება"
+msgstr "მართლწერის &ფონური შემოწმება"
 
 #: ui/configui.ui:91
 msgctxt "SonnetConfigUI|"
@@ -214,7 +214,7 @@ msgctxt "SonnetConfigUI|"
 msgid "&Remove"
 msgstr "&წაშლა"
 
-#: ui/dialog.cpp:85 ui/dialog.cpp:197 ui/dialog.cpp:408
+#: ui/dialog.cpp:85 ui/dialog.cpp:197 ui/dialog.cpp:402
 msgctxt "Sonnet::Dialog|@title:window"
 msgid "Check Spelling"
 msgstr "მართლწერის შემოწმება"
@@ -224,17 +224,17 @@ msgctxt "Sonnet::Dialog|progress label"
 msgid "Spell checking in progress..."
 msgstr "მიმდინარეობს მართლწერის შემოწმება..."
 
-#: ui/dialog.cpp:220
+#: ui/dialog.cpp:217
 msgctxt "Sonnet::Dialog|"
 msgid "Spell check stopped."
 msgstr "მართლწერის შემოწმება გაჩერდა."
 
-#: ui/dialog.cpp:230
+#: ui/dialog.cpp:227
 msgctxt "Sonnet::Dialog|"
 msgid "Spell check canceled."
 msgstr "მართლწერის შემოწმება გაუქმდა."
 
-#: ui/dialog.cpp:405 ui/dialog.cpp:408
+#: ui/dialog.cpp:399 ui/dialog.cpp:402
 msgctxt "Sonnet::Dialog|"
 msgid "Spell check complete."
 msgstr "მართლწერის შემოწმება დასრულდა."

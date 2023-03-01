@@ -230,7 +230,7 @@ msgctxt "SonnetConfigUI|"
 msgid "&Remove"
 msgstr "हटाएँ (&R)"
 
-#: ui/dialog.cpp:85 ui/dialog.cpp:197 ui/dialog.cpp:408
+#: ui/dialog.cpp:85 ui/dialog.cpp:197 ui/dialog.cpp:402
 msgctxt "Sonnet::Dialog|@title:window"
 msgid "Check Spelling"
 msgstr "वर्तनी जांचें"
@@ -240,17 +240,17 @@ msgctxt "Sonnet::Dialog|progress label"
 msgid "Spell checking in progress..."
 msgstr "वर्तनी जांच जारी है..."
 
-#: ui/dialog.cpp:220
+#: ui/dialog.cpp:217
 msgctxt "Sonnet::Dialog|"
 msgid "Spell check stopped."
 msgstr "वर्तनी जांच बंद कर दी गई है।"
 
-#: ui/dialog.cpp:230
+#: ui/dialog.cpp:227
 msgctxt "Sonnet::Dialog|"
 msgid "Spell check canceled."
 msgstr "वर्तनी जाँच रद्द कर दी गई है।"
 
-#: ui/dialog.cpp:405 ui/dialog.cpp:408
+#: ui/dialog.cpp:399 ui/dialog.cpp:402
 msgctxt "Sonnet::Dialog|"
 msgid "Spell check complete."
 msgstr "वर्तनी जांच सम्पन्न हुइ।"

@@ -13,13 +13,13 @@
 # Kristof Bal <kristof.bal@gmail.com>, 2008, 2009.
 # Freek de Kruijf <freekdekruijf@kde.nl>, 2009, 2010.
 # Freek de Kruijf <freekdekruijf@kde.nl>, 2010, 2011, 2012.
-# Freek de Kruijf <freekdekruijf@kde.nl>, 2010, 2011, 2013, 2014, 2015, 2018, 2021.
+# Freek de Kruijf <freekdekruijf@kde.nl>, 2010, 2011, 2013, 2014, 2015, 2018, 2021, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-03-23 01:50+0000\n"
-"PO-Revision-Date: 2021-10-05 13:24+0200\n"
+"PO-Revision-Date: 2023-02-26 17:01+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Files: kfarch.cpp kfdird.cpp kfind.cpp kfindtop.cpp kfoptions.cpp kfsave.cpp "
 "kftabdlg.cpp kftypes.cpp kfwin.cpp main.cpp mkfdird.cpp mkfind.cpp\n"
-"X-Generator: Lokalize 21.08.1\n"
+"X-Generator: Lokalize 22.12.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Qt-Contexts: true\n"
 
@@ -186,7 +186,7 @@ msgstr "Standaardtaal:"
 #: ui/configui.ui:63
 msgctxt "SonnetConfigUI|"
 msgid "Choose your preferred languages"
-msgstr "Kies uw voorkeurtalen"
+msgstr "Kies uw talen met voorkeur"
 
 #: ui/configui.ui:71
 msgctxt "SonnetConfigUI|"
@@ -233,7 +233,7 @@ msgctxt "SonnetConfigUI|"
 msgid "&Remove"
 msgstr "&Verwijderen"
 
-#: ui/dialog.cpp:85 ui/dialog.cpp:197 ui/dialog.cpp:408
+#: ui/dialog.cpp:85 ui/dialog.cpp:197 ui/dialog.cpp:402
 msgctxt "Sonnet::Dialog|@title:window"
 msgid "Check Spelling"
 msgstr "Spelling controleren"
@@ -243,17 +243,17 @@ msgctxt "Sonnet::Dialog|progress label"
 msgid "Spell checking in progress..."
 msgstr "Spellingcontrole is bezig..."
 
-#: ui/dialog.cpp:220
+#: ui/dialog.cpp:217
 msgctxt "Sonnet::Dialog|"
 msgid "Spell check stopped."
 msgstr "Spellingcontrole gestopt."
 
-#: ui/dialog.cpp:230
+#: ui/dialog.cpp:227
 msgctxt "Sonnet::Dialog|"
 msgid "Spell check canceled."
 msgstr "Spellingcontrole geannuleerd."
 
-#: ui/dialog.cpp:405 ui/dialog.cpp:408
+#: ui/dialog.cpp:399 ui/dialog.cpp:402
 msgctxt "Sonnet::Dialog|"
 msgid "Spell check complete."
 msgstr "Spellingcontrole voltooid."
