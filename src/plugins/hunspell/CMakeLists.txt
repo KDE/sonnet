@@ -1,8 +1,9 @@
-set(sonnet_hunspell_PART_SRCS
+add_library(sonnet_hunspell MODULE
     hunspellclient.cpp
     hunspelldict.cpp
 )
-ecm_qt_declare_logging_category(sonnet_hunspell_PART_SRCS
+
+ecm_qt_declare_logging_category(sonnet_hunspell
     HEADER hunspelldebug.h
     IDENTIFIER SONNET_HUNSPELL
     CATEGORY_NAME kf.sonnet.clients.hunspell
@@ -20,7 +21,6 @@ message(STATUS "Using old hunspell API: ${USE_OLD_HUNSPELL_API}")
 
 configure_file(config-hunspell.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-hunspell.h)
 
-add_library(sonnet_hunspell MODULE ${sonnet_hunspell_PART_SRCS})
 target_include_directories(sonnet_hunspell SYSTEM PUBLIC ${HUNSPELL_INCLUDE_DIRS})
 target_link_libraries(sonnet_hunspell PRIVATE KF6::SonnetCore ${HUNSPELL_LIBRARIES})
 

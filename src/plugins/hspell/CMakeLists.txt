@@ -1,5 +1,3 @@
-include_directories(${HSPELL_INCLUDE_DIR})
-
 find_package(ZLIB)
 set_package_properties(ZLIB PROPERTIES DESCRIPTION "Support for gzip compressed files and data streams"
                        URL "https://www.zlib.net"
@@ -7,12 +5,16 @@ set_package_properties(ZLIB PROPERTIES DESCRIPTION "Support for gzip compressed 
                        PURPOSE "Required by the hspell sonnet plugin"
                        )
 
+add_library(sonnet_hspell MODULE
+    hspellclient.cpp
+    hspelldict.cpp
+)
 
-########### next target ###############
+target_include_directories(sonnet_hspell PRIVATE
+    ${HSPELL_INCLUDE_DIR}
+)
 
-set(sonnet_hspell_PART_SRCS hspellclient.cpp hspelldict.cpp)
-
-ecm_qt_declare_logging_category(sonnet_hspell_PART_SRCS
+ecm_qt_declare_logging_category(sonnet_hspell
     HEADER hspell_debug.h
     IDENTIFIER SONNET_LOG_HSPELL
     CATEGORY_NAME kf.sonnet.clients.hspell
@@ -20,8 +22,6 @@ ecm_qt_declare_logging_category(sonnet_hspell_PART_SRCS
     DESCRIPTION "Sonnet Hspell plugin"
     EXPORT SONNET
 )
-
-add_library(sonnet_hspell MODULE ${sonnet_hspell_PART_SRCS})
 
 target_link_libraries(sonnet_hspell PRIVATE KF6::SonnetCore ${HSPELL_LIBRARIES} ZLIB::ZLIB)
 

@@ -1,4 +1,13 @@
-set(sonnetcore_SRCS
+add_library(KF6SonnetCore)
+add_library(KF6::SonnetCore ALIAS KF6SonnetCore)
+
+set_target_properties(KF6SonnetCore PROPERTIES
+    VERSION     ${SONNET_VERSION}
+    SOVERSION   ${SONNET_SOVERSION}
+    EXPORT_NAME SonnetCore
+)
+
+target_sources(KF6SonnetCore PRIVATE
     backgroundchecker.cpp
     backgroundchecker.h
     backgroundchecker_p.h
@@ -29,10 +38,10 @@ if (TARGET KF6::parsetrigrams)
     add_custom_command(OUTPUT "${CMAKE_BINARY_DIR}/data/trigrams.map"
                        COMMAND KF6::parsetrigrams "${CMAKE_SOURCE_DIR}/data/trigrams" > "${CMAKE_BINARY_DIR}/data/trigrams.map")
     configure_file(${CMAKE_SOURCE_DIR}/data/trigrams.qrc.in ${CMAKE_BINARY_DIR}/data/trigrams.qrc @ONLY)
-    qt_add_resources(sonnetcore_SRCS "${CMAKE_BINARY_DIR}/data/trigrams.qrc")
+    target_sources(KF6SonnetCore PRIVATE "${CMAKE_BINARY_DIR}/data/trigrams.qrc")
 endif()
 
-ecm_qt_declare_logging_category(sonnetcore_SRCS
+ecm_qt_declare_logging_category(KF6SonnetCore
     HEADER core_debug.h
     IDENTIFIER SONNET_LOG_CORE
     CATEGORY_NAME kf.sonnet.core
@@ -45,7 +54,6 @@ ecm_qt_declare_logging_category(sonnetcore_SRCS
 add_definitions(-DINSTALLATION_PLUGIN_PATH="${CMAKE_INSTALL_PREFIX}/${KDE_INSTALL_PLUGINDIR}")
 
 
-add_library(KF6SonnetCore ${sonnetcore_SRCS})
 ecm_generate_export_header(KF6SonnetCore
     BASE_NAME SonnetCore
     GROUP_BASE_NAME KF
@@ -55,8 +63,6 @@ ecm_generate_export_header(KF6SonnetCore
     EXCLUDE_DEPRECATED_BEFORE_AND_AT ${EXCLUDE_DEPRECATED_BEFORE_AND_AT}
 )
 
-
-add_library(KF6::SonnetCore ALIAS KF6SonnetCore)
 
 ecm_generate_headers(SonnetCore_CamelCase_HEADERS
   HEADER_NAMES
@@ -70,17 +76,10 @@ ecm_generate_headers(SonnetCore_CamelCase_HEADERS
 
 target_link_libraries(KF6SonnetCore PUBLIC Qt6::Core)
 
-set_target_properties(KF6SonnetCore PROPERTIES VERSION ${SONNET_VERSION}
-                                               SOVERSION ${SONNET_SOVERSION}
-                                               EXPORT_NAME SonnetCore
-)
-
-# CMAKE_CURRENT_BINARY_DIR: for camelcase headers and lowercase forwarders
 target_include_directories(KF6SonnetCore INTERFACE
     "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/SonnetCore>"
     "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/Sonnet>"
 )
-target_include_directories(KF6SonnetCore PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>")
 
 install(TARGETS KF6SonnetCore EXPORT KF6SonnetTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
 

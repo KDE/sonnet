@@ -1,10 +1,9 @@
-include_directories(${VOIKKO_INCLUDE_DIR})
+add_library(sonnet_voikko MODULE
+    voikkoclient.cpp
+    voikkodict.cpp
+)
 
-
-########### next target ###############
-
-set(sonnet_voikko_PART_SRCS voikkoclient.cpp voikkodict.cpp)
-ecm_qt_declare_logging_category(sonnet_voikko_PART_SRCS
+ecm_qt_declare_logging_category(sonnet_voikko
     HEADER voikkodebug.h
     IDENTIFIER SONNET_VOIKKO
     CATEGORY_NAME kf.sonnet.clients.voikko
@@ -13,7 +12,7 @@ ecm_qt_declare_logging_category(sonnet_voikko_PART_SRCS
     EXPORT SONNET
 )
 
-add_library(sonnet_voikko MODULE ${sonnet_voikko_PART_SRCS})
+target_include_directories(sonnet_voikko PRIVATE ${VOIKKO_INCLUDE_DIR})
 
 target_link_libraries(sonnet_voikko PRIVATE KF6::SonnetCore ${VOIKKO_LIBRARIES})
 
