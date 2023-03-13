@@ -571,11 +571,13 @@ QString GuessLanguage::identify(const QString &text, const QStringList &suggesti
     QStringList candidateLanguages = d->identify(text, scriptsList);
 
     // if guessing from trigrams fail
-    for (const QChar::Script script : scriptsList) {
-        const auto languagesList = d->s_scriptLanguages.values(script);
-        for (const QString &lang : languagesList) {
-            if (!d->s_knownModels.contains(lang)) {
-                candidateLanguages.append(lang);
+    if (candidateLanguages.isEmpty()) {
+        for (const QChar::Script script : scriptsList) {
+            const auto languagesList = d->s_scriptLanguages.values(script);
+            for (const QString &lang : languagesList) {
+                if (!d->s_knownModels.contains(lang)) {
+                    candidateLanguages.append(lang);
+                }
             }
         }
     }
