@@ -7,7 +7,7 @@ set_target_properties(KF6SonnetUi PROPERTIES
     EXPORT_NAME SonnetUi
 )
 
-ecm_create_qm_loader(KF6SonnetUi sonnet5_qt)
+ecm_create_qm_loader(KF6SonnetUi sonnet6_qt)
 
 qt_wrap_ui(sonnetui_ui_SRCS
     configui.ui
