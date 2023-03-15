@@ -1,4 +1,4 @@
-# Translation of sonnet5_qt to Norwegian Nynorsk
+# Translation of sonnet6_qt to Norwegian Nynorsk
 #
 # Gaute Hvoslef Kvalnes <gaute@verdsveven.com>, 2003, 2004, 2005, 2006.
 # Håvard Korsvoll <korsvoll@skulelinux.no>, 2003, 2005.
