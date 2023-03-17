@@ -11,6 +11,8 @@
 #include <QString>
 #include <QStringList>
 
+#include <memory>
+
 namespace Sonnet
 {
 class Loader;
@@ -72,7 +74,7 @@ private:
     explicit SettingsImpl(Loader *loader);
 
 private:
-    SettingsImplPrivate *const d;
+    std::unique_ptr<SettingsImplPrivate> const d;
 };
 }
 

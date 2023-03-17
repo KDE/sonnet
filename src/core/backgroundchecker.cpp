@@ -68,8 +68,8 @@ BackgroundChecker::BackgroundChecker(QObject *parent)
     : QObject(parent)
     , d(new BackgroundCheckerPrivate)
 {
-    connect(d, &BackgroundCheckerPrivate::misspelling, this, &BackgroundChecker::misspelling);
-    connect(d, &BackgroundCheckerPrivate::done, this, &BackgroundChecker::slotEngineDone);
+    connect(d.get(), &BackgroundCheckerPrivate::misspelling, this, &BackgroundChecker::misspelling);
+    connect(d.get(), &BackgroundCheckerPrivate::done, this, &BackgroundChecker::slotEngineDone);
 }
 
 BackgroundChecker::BackgroundChecker(const Speller &speller, QObject *parent)
@@ -77,14 +77,11 @@ BackgroundChecker::BackgroundChecker(const Speller &speller, QObject *parent)
     , d(new BackgroundCheckerPrivate)
 {
     d->currentDict = speller;
-    connect(d, &BackgroundCheckerPrivate::misspelling, this, &BackgroundChecker::misspelling);
-    connect(d, &BackgroundCheckerPrivate::done, this, &BackgroundChecker::slotEngineDone);
+    connect(d.get(), &BackgroundCheckerPrivate::misspelling, this, &BackgroundChecker::misspelling);
+    connect(d.get(), &BackgroundCheckerPrivate::done, this, &BackgroundChecker::slotEngineDone);
 }
 
-BackgroundChecker::~BackgroundChecker()
-{
-    delete d;
-}
+BackgroundChecker::~BackgroundChecker() = default;
 
 void BackgroundChecker::setText(const QString &text)
 {

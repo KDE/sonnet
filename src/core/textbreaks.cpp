@@ -29,10 +29,7 @@ TextBreaks::TextBreaks(const QString &text)
     setText(text);
 }
 
-TextBreaks::~TextBreaks()
-{
-    delete d;
-}
+TextBreaks::~TextBreaks() = default;
 
 QString TextBreaks::text() const
 {

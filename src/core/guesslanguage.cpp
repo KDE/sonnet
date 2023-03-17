@@ -545,10 +545,7 @@ GuessLanguage::GuessLanguage()
 {
 }
 
-GuessLanguage::~GuessLanguage()
-{
-    delete d;
-}
+GuessLanguage::~GuessLanguage() = default;
 
 QString GuessLanguage::identify(const QString &text, const QStringList &suggestionsListIn) const
 {

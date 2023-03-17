@@ -96,10 +96,7 @@ Dialog::Dialog(BackgroundChecker *checker, QWidget *parent)
     initConnections();
 }
 
-Dialog::~Dialog()
-{
-    delete d;
-}
+Dialog::~Dialog() = default;
 
 void Dialog::initConnections()
 {

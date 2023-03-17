@@ -150,10 +150,7 @@ WordTokenizer::WordTokenizer(const QString &buffer)
     setBuffer(buffer);
 }
 
-WordTokenizer::~WordTokenizer()
-{
-    delete d;
-}
+WordTokenizer::~WordTokenizer() = default;
 
 bool WordTokenizer::hasNext() const
 {
@@ -238,10 +235,7 @@ SentenceTokenizer::SentenceTokenizer(const QString &buffer)
     setBuffer(buffer);
 }
 
-SentenceTokenizer::~SentenceTokenizer()
-{
-    delete d;
-}
+SentenceTokenizer::~SentenceTokenizer() = default;
 
 bool SentenceTokenizer::hasNext() const
 {

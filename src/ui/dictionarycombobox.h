@@ -12,6 +12,8 @@
 
 #include <QComboBox>
 
+#include <memory>
+
 namespace Sonnet
 {
 class DictionaryComboBoxPrivate;
@@ -96,7 +98,7 @@ Q_SIGNALS:
     void dictionaryNameChanged(const QString &dictionaryName);
 
 private:
-    DictionaryComboBoxPrivate *const d;
+    std::unique_ptr<DictionaryComboBoxPrivate> const d;
     Q_PRIVATE_SLOT(d, void slotDictionaryChanged(int))
 };
 }

@@ -11,8 +11,11 @@
 
 #include "sonnetcore_export.h"
 
+#include <memory>
+
 namespace Sonnet
 {
+class SpellerPluginPrivate;
 /**
  * Class is returned by from Loader. It acts
  * as the actual spellchecker.
@@ -20,7 +23,6 @@ namespace Sonnet
  * @author Zack Rusin <zack@kde.org>
  * @short class used for actual spell checking
  */
-class SpellerPluginPrivate;
 class SONNETCORE_EXPORT SpellerPlugin
 {
 public:
@@ -78,7 +80,7 @@ protected:
     SpellerPlugin(const QString &lang);
 
 private:
-    SpellerPluginPrivate *const d;
+    std::unique_ptr<SpellerPluginPrivate> const d;
 };
 }
 

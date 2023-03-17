@@ -12,6 +12,8 @@
 
 #include "sonnetcore_export.h"
 
+#include <memory>
+
 namespace Sonnet
 {
 class SpellerPrivate;
@@ -141,7 +143,7 @@ public: // Configuration API
     bool testAttribute(Attribute attr) const;
 
 private:
-    SpellerPrivate *const d;
+    std::unique_ptr<SpellerPrivate> const d;
 };
 }
 #endif

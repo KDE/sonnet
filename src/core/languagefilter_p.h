@@ -13,6 +13,8 @@
 
 #include <QString>
 
+#include <memory>
+
 namespace Sonnet
 {
 class LanguageFilterPrivate;
@@ -50,7 +52,7 @@ public:
     void replace(int position, int len, const QString &newWord) override;
 
 private:
-    LanguageFilterPrivate *const d;
+    std::unique_ptr<LanguageFilterPrivate> const d;
 };
 }
 #endif

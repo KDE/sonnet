@@ -15,7 +15,8 @@
 
 #include <QObject>
 
-using namespace Sonnet;
+namespace Sonnet
+{
 
 class BackgroundCheckerPrivate : public QObject
 {
@@ -44,5 +45,7 @@ Q_SIGNALS:
     void misspelling(const QString &, int);
     void done();
 };
+
+}
 
 #endif

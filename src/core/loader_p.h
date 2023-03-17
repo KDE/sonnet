@@ -13,6 +13,8 @@
 #include <QString>
 #include <QStringList>
 
+#include <memory>
+
 namespace Sonnet
 {
 class SettingsImpl;
@@ -131,7 +133,7 @@ private:
     void loadPlugin(const QString &pluginPath);
 
 private:
-    LoaderPrivate *const d;
+    std::unique_ptr<LoaderPrivate> const d;
 };
 }
 

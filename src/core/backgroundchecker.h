@@ -13,13 +13,15 @@
 #include "sonnetcore_export.h"
 
 #include <QObject>
-class BackgroundCheckerPrivate;
+
+#include <memory>
 
 /**
  * The sonnet namespace.
  */
 namespace Sonnet
 {
+class BackgroundCheckerPrivate;
 class Speller;
 
 /**
@@ -138,7 +140,7 @@ protected Q_SLOTS:
     void slotEngineDone();
 
 private:
-    BackgroundCheckerPrivate *const d;
+    std::unique_ptr<BackgroundCheckerPrivate> const d;
 };
 }
 

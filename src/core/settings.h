@@ -13,6 +13,8 @@
 
 #include "sonnetcore_export.h"
 
+#include <memory>
+
 namespace Sonnet
 {
 class Loader;
@@ -115,7 +117,7 @@ Q_SIGNALS:
 
 private:
     friend class Loader;
-    SettingsPrivate *const d;
+    std::unique_ptr<SettingsPrivate> const d;
 };
 }
 Q_DECLARE_METATYPE(QAbstractListModel *)

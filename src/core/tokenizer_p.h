@@ -11,6 +11,8 @@
 #include "sonnetcore_export.h"
 #include <QString>
 
+#include <memory>
+
 namespace Sonnet
 {
 struct Token {
@@ -142,7 +144,9 @@ public:
 
 private:
     bool isUppercase(QStringView word) const;
-    BreakTokenizerPrivate *const d;
+
+private:
+    std::unique_ptr<BreakTokenizerPrivate> const d;
 };
 
 /**
@@ -163,7 +167,7 @@ public:
     void replace(int position, int len, const QString &newWord) override;
 
 private:
-    BreakTokenizerPrivate *const d;
+    std::unique_ptr<BreakTokenizerPrivate> const d;
 };
 }
 #endif

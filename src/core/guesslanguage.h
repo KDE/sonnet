@@ -12,6 +12,8 @@
 
 #include "sonnetcore_export.h"
 
+#include <memory>
+
 namespace Sonnet
 {
 // Amount of trigrams in each file
@@ -75,7 +77,7 @@ public:
     QString identify(const QString &text, const QStringList &suggestions = QStringList()) const;
 
 private:
-    GuessLanguagePrivate *const d;
+    std::unique_ptr<GuessLanguagePrivate> const d;
 };
 }
 

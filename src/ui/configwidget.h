@@ -7,12 +7,15 @@
 #ifndef SONNET_CONFIGWIDGET_H
 #define SONNET_CONFIGWIDGET_H
 
-#include <QWidget>
-class ConfigWidgetPrivate;
 #include "sonnetui_export.h"
+#include <QWidget>
+
+#include <memory>
 
 namespace Sonnet
 {
+class ConfigWidgetPrivate;
+
 /// The sonnet ConfigWidget
 class SONNETUI_EXPORT ConfigWidget : public QWidget
 {
@@ -63,7 +66,7 @@ private:
     void setFromGui();
 
 private:
-    ConfigWidgetPrivate *const d;
+    std::unique_ptr<ConfigWidgetPrivate> const d;
 };
 }
 

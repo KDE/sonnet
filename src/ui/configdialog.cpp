@@ -13,7 +13,7 @@
 
 using namespace Sonnet;
 
-class ConfigDialogPrivate
+class Sonnet::ConfigDialogPrivate
 {
 public:
     ConfigDialogPrivate(ConfigDialog *parent)
@@ -55,10 +55,7 @@ ConfigDialog::ConfigDialog(QWidget *parent)
     connect(d->ui, &ConfigWidget::configChanged, this, &ConfigDialog::configChanged);
 }
 
-ConfigDialog::~ConfigDialog()
-{
-    delete d;
-}
+ConfigDialog::~ConfigDialog() = default;
 
 void ConfigDialog::slotOk()
 {

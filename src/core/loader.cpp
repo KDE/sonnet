@@ -69,7 +69,6 @@ Loader::~Loader()
     qCDebug(SONNET_LOG_CORE) << "Removing loader: " << this;
     delete d->settings;
     d->settings = nullptr;
-    delete d;
 }
 
 SpellerPlugin *Loader::createSpeller(const QString &language, const QString &clientName) const

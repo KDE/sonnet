@@ -11,6 +11,8 @@ class QString;
 
 #include "sonnetcore_export.h"
 
+#include <memory>
+
 namespace Sonnet
 {
 class TextBreaksPrivate;
@@ -90,7 +92,7 @@ public:
     virtual Positions sentenceBreaks() const;
 
 private:
-    TextBreaksPrivate *const d;
+    std::unique_ptr<TextBreaksPrivate> const d;
 };
 }
 #endif

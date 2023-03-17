@@ -70,10 +70,7 @@ LanguageFilter::LanguageFilter(const LanguageFilter &other)
     d->prevLanguage = other.d->prevLanguage;
 }
 
-LanguageFilter::~LanguageFilter()
-{
-    delete d;
-}
+LanguageFilter::~LanguageFilter() = default;
 
 bool LanguageFilter::hasNext() const
 {

@@ -12,10 +12,12 @@
 
 #include "sonnetui_export.h"
 
-class ConfigViewPrivate;
+#include <memory>
 
 namespace Sonnet
 {
+class ConfigViewPrivate;
+
 class SONNETUI_EXPORT ConfigView : public QWidget
 {
     Q_OBJECT
@@ -45,7 +47,7 @@ Q_SIGNALS:
     void configChanged();
 
 private:
-    ConfigViewPrivate *const d;
+    std::unique_ptr<ConfigViewPrivate> const d;
 };
 }
 

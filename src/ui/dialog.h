@@ -12,6 +12,8 @@
 #include "sonnetui_export.h"
 #include <QDialog>
 
+#include <memory>
+
 class QModelIndex;
 
 namespace Sonnet

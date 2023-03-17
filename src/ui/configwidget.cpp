@@ -21,7 +21,7 @@
 
 using namespace Sonnet;
 
-class ConfigWidgetPrivate
+class Sonnet::ConfigWidgetPrivate
 {
 public:
     Ui_SonnetConfigUI ui;
@@ -86,10 +86,7 @@ ConfigWidget::ConfigWidget(QWidget *parent)
     d->ui.removeButton->setEnabled(false);
 }
 
-ConfigWidget::~ConfigWidget()
-{
-    delete d;
-}
+ConfigWidget::~ConfigWidget() = default;
 
 void ConfigWidget::slotUpdateButton(const QString &text)
 {

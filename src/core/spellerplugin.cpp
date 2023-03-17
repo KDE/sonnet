@@ -19,10 +19,7 @@ SpellerPlugin::SpellerPlugin(const QString &lang)
     d->language = lang;
 }
 
-SpellerPlugin::~SpellerPlugin()
-{
-    delete d;
-}
+SpellerPlugin::~SpellerPlugin() = default;
 
 QString SpellerPlugin::language() const
 {

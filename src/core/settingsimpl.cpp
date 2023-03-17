@@ -48,10 +48,7 @@ SettingsImpl::SettingsImpl(Loader *loader)
     restore();
 }
 
-SettingsImpl::~SettingsImpl()
-{
-    delete d;
-}
+SettingsImpl::~SettingsImpl() = default;
 
 bool SettingsImpl::setDefaultLanguage(const QString &lang)
 {

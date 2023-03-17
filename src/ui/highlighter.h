@@ -13,6 +13,8 @@
 #include <QStringList>
 #include <QSyntaxHighlighter>
 
+#include <memory>
+
 class QTextEdit;
 class QPlainTextEdit;
 
@@ -226,7 +228,7 @@ private Q_SLOTS:
     void contentsChange(int pos, int added, int removed);
 
 private:
-    HighlighterPrivate *const d;
+    std::unique_ptr<HighlighterPrivate> const d;
     Q_DISABLE_COPY(Highlighter)
 };
 }

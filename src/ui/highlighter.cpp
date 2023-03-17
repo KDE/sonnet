@@ -159,10 +159,7 @@ Highlighter::Highlighter(QPlainTextEdit *edit, const QColor &col)
     d->plainTextEdit->viewport()->installEventFilter(this);
 }
 
-Highlighter::~Highlighter()
-{
-    delete d;
-}
+Highlighter::~Highlighter() = default;
 
 bool Highlighter::spellCheckerFound() const
 {

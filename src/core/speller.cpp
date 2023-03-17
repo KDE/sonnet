@@ -69,7 +69,6 @@ Speller::Speller(const QString &lang)
 Speller::~Speller()
 {
     qCDebug(SONNET_LOG_CORE) << "deleting" << this << "for" << d->language;
-    delete d;
 }
 
 Speller::Speller(const Speller &speller)

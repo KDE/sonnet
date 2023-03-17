@@ -17,7 +17,7 @@
 
 using namespace Sonnet;
 
-class ConfigViewPrivate
+class Sonnet::ConfigViewPrivate
 {
 public:
     explicit ConfigViewPrivate(ConfigView *v);
@@ -122,10 +122,7 @@ ConfigView::ConfigView(QWidget *parent)
     connect(d->ui.kcfg_autodetectLanguage, &QAbstractButton::clicked, this, &ConfigView::configChanged);
 }
 
-ConfigView::~ConfigView()
-{
-    delete d;
-}
+ConfigView::~ConfigView() = default;
 
 void ConfigView::setNoBackendFoundVisible(bool show)
 {

@@ -121,10 +121,7 @@ Settings::Settings(QObject *parent)
     d->loader = Loader::openLoader();
 }
 
-Settings::~Settings()
-{
-    delete d;
-}
+Settings::~Settings() = default;
 
 void Settings::setDefaultLanguage(const QString &lang)
 {

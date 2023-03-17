@@ -41,10 +41,7 @@ DictionaryComboBox::DictionaryComboBox(QWidget *parent)
     connect(this, SIGNAL(activated(int)), SLOT(slotDictionaryChanged(int)));
 }
 
-DictionaryComboBox::~DictionaryComboBox()
-{
-    delete d;
-}
+DictionaryComboBox::~DictionaryComboBox() = default;
 
 QString DictionaryComboBox::currentDictionaryName() const
 {
