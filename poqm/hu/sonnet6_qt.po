@@ -161,8 +161,8 @@ msgstr "Helyesírás-ellenőrzés beállítása"
 
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Nem található modul a helyesírás-ellenőrzéshez"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -538,6 +538,10 @@ msgstr "Mellőzés"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Hozzáadás a szótárhoz"
+
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Nem található modul a helyesírás-ellenőrzéshez"
 
 #~ msgctxt "SonnetUi|"
 #~ msgid "Suggested Words"

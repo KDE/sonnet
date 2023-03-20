@@ -181,8 +181,8 @@ msgstr "Oikoluvun asetukset"
 
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Yhtään oikoluvun taustaosaa ei löytynyt"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -553,6 +553,10 @@ msgstr "Ohita"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Lisää sanakirjaan"
+
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Yhtään oikoluvun taustaosaa ei löytynyt"
 
 #~ msgctxt "SonnetUi|"
 #~ msgid "Suggested Words"

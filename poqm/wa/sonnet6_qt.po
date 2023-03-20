@@ -229,11 +229,9 @@ msgid "Spell Checking Configuration"
 msgstr "Evoyî acertinaedje"
 
 #: ui/configui.ui:26
-#, fuzzy
-#| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Mete en alaedje li coridjaedje di speli e &fond"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 #, fuzzy
@@ -768,6 +766,12 @@ msgstr "Passer houte"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Radjouter å motî"
+
+#, fuzzy
+#~| msgid "Enable &background spellchecking"
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Mete en alaedje li coridjaedje di speli e &fond"
 
 #, fuzzy
 #~| msgid "Suggested Words"

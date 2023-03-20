@@ -174,8 +174,8 @@ msgstr "Танзимоти санҷиши имло"
 
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Ягон низом барои санҷиши имло ёфт нашуд"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -559,6 +559,10 @@ msgstr "Рад кардан"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Илова кардан ба луғат"
+
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Ягон низом барои санҷиши имло ёфт нашуд"
 
 #, fuzzy
 #~| msgid "Suggested Words"

@@ -234,11 +234,9 @@ msgid "Spell Checking Configuration"
 msgstr "Pareizrakstības pārbaudes konfigurācija"
 
 #: ui/configui.ui:26
-#, fuzzy
-#| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Ieslēgt pareizrakstības pārbaudi &fonā"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 #, fuzzy
@@ -777,6 +775,12 @@ msgstr "Ignorēt"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Pievienot vārdnīcai"
+
+#, fuzzy
+#~| msgid "Enable &background spellchecking"
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Ieslēgt pareizrakstības pārbaudi &fonā"
 
 #, fuzzy
 #~| msgid "Suggested Words"

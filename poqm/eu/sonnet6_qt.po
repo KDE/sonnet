@@ -169,8 +169,8 @@ msgstr "Ortografia-egiaztatzeko konfigurazioa"
 
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Ortografia-egiaztatzeko bizkarraldekorik ez"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -545,6 +545,10 @@ msgstr "Ez ikusi egin"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Gehitu hiztegira"
+
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Ortografia-egiaztatzeko bizkarraldekorik ez"
 
 #, fuzzy
 #~| msgid "Suggested Words"

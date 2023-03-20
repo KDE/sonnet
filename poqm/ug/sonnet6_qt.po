@@ -225,11 +225,9 @@ msgid "Spell Checking Configuration"
 msgstr "ئىملا تەكشۈر تەڭشىكى"
 
 #: ui/configui.ui:26
-#, fuzzy
-#| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "ئارقا سۇپىدا ئىملا تەكشۈرۈشنى قوزغات"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 #, fuzzy
@@ -761,6 +759,12 @@ msgstr "پەرۋا قىلما"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "لۇغەتكە قوش"
+
+#, fuzzy
+#~| msgid "Enable &background spellchecking"
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "ئارقا سۇپىدا ئىملا تەكشۈرۈشنى قوزغات"
 
 #, fuzzy
 #~| msgid "Suggested Words"

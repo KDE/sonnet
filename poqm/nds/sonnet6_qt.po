@@ -169,12 +169,9 @@ msgid "Spell Checking Configuration"
 msgstr "Klookschriever instellen"
 
 #: ui/configui.ui:26
-#, fuzzy
-#| msgctxt "SonnetConfigUI|"
-#| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "&Achtergrund-Klookschriever anmaken"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -546,6 +543,13 @@ msgstr "Nich ännern"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Na Wöörbook tofögen"
+
+#, fuzzy
+#~| msgctxt "SonnetConfigUI|"
+#~| msgid "Enable &background spellchecking"
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "&Achtergrund-Klookschriever anmaken"
 
 #~ msgctxt "SonnetUi|"
 #~ msgid "Suggested Words"

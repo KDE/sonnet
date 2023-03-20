@@ -222,11 +222,9 @@ msgid "Spell Checking Configuration"
 msgstr "Dërgo Konfirmimin"
 
 #: ui/configui.ui:26
-#, fuzzy
-#| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Aktivizo &kontrollin e drejtshkrimit në sfond"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 #, fuzzy
@@ -718,6 +716,12 @@ msgstr "Shpërfille"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Shtoje në Fjalor"
+
+#, fuzzy
+#~| msgid "Enable &background spellchecking"
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Aktivizo &kontrollin e drejtshkrimit në sfond"
 
 #, fuzzy
 #~| msgid "Suggested Words"

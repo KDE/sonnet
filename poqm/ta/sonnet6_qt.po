@@ -3,21 +3,22 @@
 #
 # Sivakumar Shanmugasundaram <sshanmu@yahoo.com>, 2000.
 # Thuraiappah Vaseeharan <t_vasee@yahoo.com>, 2000-2001.
-# ம. ஸ்ரீ ராமதாஸ் | Sri Ramadoss M <amachu@yavarkkum.org>, 2007-2012
+# ம. ஸ்ரீ ராமதாஸ் | Sri Ramadoss M <amachu@yavarkkum.org>, 2007-2012.
+# Kishore G <kishore96@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-03-23 01:50+0000\n"
-"PO-Revision-Date: 2012-03-25 21:39+0530\n"
-"Last-Translator: Sri Ramadoss M <amachu@yavarkkum.org>\n"
-"Language-Team: Tamil <podhu@madaladal.yavarkkum.org>\n"
+"PO-Revision-Date: 2023-03-19 12:08+0530\n"
+"Last-Translator: Kishore G <kishore96@gmail.com>\n"
+"Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Lokalize 22.12.3\n"
 "X-Qt-Contexts: true\n"
 
 #: core/loader.cpp:184
@@ -226,15 +227,11 @@ msgid "Spell Checking Configuration"
 msgstr "எழுத்துப் பிழைபார்ப்பை வடிவமை"
 
 #: ui/configui.ui:26
-#, fuzzy
-#| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "எழுத்துப்பிழை சரிபார்ப்பதை &பின்னணியில் செயற்படுத்தவும்"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
-#, fuzzy
-#| msgid "Default language:"
 msgctxt "SonnetConfigUI|"
 msgid "Default language:"
 msgstr "இயல்பிருப்பு மொழி:"
@@ -242,33 +239,27 @@ msgstr "இயல்பிருப்பு மொழி:"
 #: ui/configui.ui:63
 msgctxt "SonnetConfigUI|"
 msgid "Choose your preferred languages"
-msgstr ""
+msgstr "முதன்மையான மொழிகளை தேர்ந்தெடுங்கள்"
 
 #: ui/configui.ui:71
-#, fuzzy
-#| msgid "Options"
 msgctxt "SonnetConfigUI|"
 msgid "Options"
-msgstr "தேர்வுகள்"
+msgstr "விருப்பங்கள்"
 
 #: ui/configui.ui:77
 msgctxt "SonnetConfigUI|"
 msgid "Enable autodetection of &language"
-msgstr ""
+msgstr "&மொழியை தானாக கண்டறி"
 
 #: ui/configui.ui:84
-#, fuzzy
-#| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
 msgid "Enable &background spellchecking"
-msgstr "எழுத்துப்பிழை சரிபார்ப்பதை &பின்னணியில் செயற்படுத்தவும்"
+msgstr "&பின்னணியில் எழுத்தாக்கத்தை சரிபார்"
 
 #: ui/configui.ui:91
-#, fuzzy
-#| msgid "&Automatic spell checking enabled by default"
 msgctxt "SonnetConfigUI|"
 msgid "&Automatic spell checking enabled by default"
-msgstr "&தானாக எழுத்துப்பிழை சரிபார்ப்பது இயல்பிருப்பாக செயற்படுத்தப்பட்டுள்ளது"
+msgstr "&தானியங்கி எழுத்தாக்க சரிபார்ப்பை இயல்பிருப்பாக இயக்கு"
 
 #: ui/configui.ui:98
 #, fuzzy
@@ -285,68 +276,49 @@ msgid "S&kip run-together words"
 msgstr "run-together சொற்களைத் &தவிர்க்கவும்"
 
 #: ui/configui.ui:115
-#, fuzzy
-#| msgid "Ignored Words"
 msgctxt "SonnetConfigUI|"
 msgid "Ignored Words:"
-msgstr "புறக்கணிக்கப்பட்ட சொற்கள் "
+msgstr "பொருட்படுத்தப்படா சொற்கள்:"
 
 #: ui/configui.ui:129
-#, fuzzy
-#| msgid "&Add"
 msgctxt "SonnetConfigUI|"
 msgid "&Add"
-msgstr "&சேர்க்க"
+msgstr "&சேர்"
 
 #: ui/configui.ui:142
-#, fuzzy
-#| msgid "&Remove"
 msgctxt "SonnetConfigUI|"
 msgid "&Remove"
-msgstr "&நீக்குக"
+msgstr "&நீக்கு"
 
 #: ui/dialog.cpp:85 ui/dialog.cpp:194 ui/dialog.cpp:399
-#, fuzzy
-#| msgid "Check Spelling"
 msgctxt "Sonnet::Dialog|@title:window"
 msgid "Check Spelling"
-msgstr "சொல்லை சரிபார்"
+msgstr "எழுத்தாக்கத்தை சரிபார்ப்பது"
 
 #: ui/dialog.cpp:193
-#, fuzzy
-#| msgctxt "progress label"
-#| msgid "Spell checking in progress..."
 msgctxt "Sonnet::Dialog|progress label"
 msgid "Spell checking in progress..."
-msgstr "எழுத்துப் பிழை பார்ப்பு நடைபெறுகிறது..."
+msgstr "எழுத்தாக்க சரிபார்ப்பு நடைபெறுகிறது..."
 
 #: ui/dialog.cpp:214
-#, fuzzy
-#| msgid "Spell check stopped."
 msgctxt "Sonnet::Dialog|"
 msgid "Spell check stopped."
-msgstr "சொல் திருத்தம் நிறுத்தப்பட்டது."
+msgstr "எழுத்தாக்க சரிபார்ப்பு நிறுத்தப்பட்டது."
 
 #: ui/dialog.cpp:224
-#, fuzzy
-#| msgid "Spell check canceled."
 msgctxt "Sonnet::Dialog|"
 msgid "Spell check canceled."
-msgstr "சொல் திருத்தம் இரத்து செய்யப்பட்டது."
+msgstr "எழுத்தாக்க சரிபார்ப்பு இரத்து செய்யப்பட்டது."
 
 #: ui/dialog.cpp:396 ui/dialog.cpp:399
-#, fuzzy
-#| msgid "Spell check complete."
 msgctxt "Sonnet::Dialog|"
 msgid "Spell check complete."
-msgstr "சொல் திருத்தம் பூர்த்தியானது."
+msgstr "எழுத்தாக்க சரிபார்ப்பு நிறைவடைந்த‍து."
 
 #: ui/highlighter.cpp:251 ui/highlighter.cpp:274
-#, fuzzy
-#| msgid "As-you-type spell checking enabled."
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking enabled."
-msgstr "உள்ளிடுகையிலேயே சொல் திருத்தி செயற்படுத்தப்பட்டுள்ளது."
+msgstr "தட்டச்சிடும்போதான எழுத்தாக்க சரிபார்ப்பு இயக்கப்பட்டுள்ளது."
 
 #: ui/highlighter.cpp:255
 #, fuzzy
@@ -356,11 +328,9 @@ msgid "Too many misspelled words. As-you-type spell checking disabled."
 msgstr "பலப் பிழையுள்ள சொற்களிருக்கின்றன. உள்ளிடுகையிலேயே சொல் திருத்தம் முடக்கப்பட்டது. "
 
 #: ui/highlighter.cpp:276
-#, fuzzy
-#| msgid "As-you-type spell checking disabled."
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking disabled."
-msgstr "உள்ளிடுகையிலேயே சொல் திருத்தும் முறை முடக்கப்பட்டது."
+msgstr "தட்டச்சிடும்போதான எழுத்தாக்க சரிபார்ப்பு முடக்கப்பட்டுள்ளது."
 
 #: ui/sonnetui.ui:41 ui/sonnetui.ui:57
 #, fuzzy
@@ -404,18 +374,14 @@ msgstr ""
 "</qt>"
 
 #: ui/sonnetui.ui:47
-#, fuzzy
-#| msgid "Unknown word:"
 msgctxt "SonnetUi|"
 msgid "Unknown word:"
-msgstr "அறியப்படாதச் சொல்:"
+msgstr "தெரியாத சொல்:"
 
 #: ui/sonnetui.ui:54
-#, fuzzy
-#| msgid "Unknown word"
 msgctxt "SonnetUi|"
 msgid "Unknown word"
-msgstr "அறியப்படாதச் சொல்"
+msgstr "தெரியாத சொல்"
 
 #: ui/sonnetui.ui:63
 #, fuzzy
@@ -441,8 +407,6 @@ msgstr ""
 "</qt>"
 
 #: ui/sonnetui.ui:75
-#, fuzzy
-#| msgid "&Language:"
 msgctxt "SonnetUi|"
 msgid "&Language:"
 msgstr "&மொழி:"
@@ -519,15 +483,11 @@ msgstr ""
 "</qt>"
 
 #: ui/sonnetui.ui:112
-#, fuzzy
-#| msgid "<< Add to Dictionary"
 msgctxt "SonnetUi|"
 msgid "<< Add to Dictionary"
-msgstr "<< அகராதியில் சேர்க்க"
+msgstr "<< அகரமுதலியில் சேர்"
 
 #: ui/sonnetui.ui:135
-#, fuzzy
-#| msgid "Suggestion List"
 msgctxt "SonnetUi|"
 msgid "Suggestion List"
 msgstr "பரிந்துரைப் பட்டியல்"
@@ -592,25 +552,19 @@ msgstr ""
 "</qt>"
 
 #: ui/sonnetui.ui:157
-#, fuzzy
-#| msgid "Replace &with:"
 msgctxt "SonnetUi|"
 msgid "Replace &with:"
-msgstr "&இதனால் மாற்றுக:"
+msgstr "&பதிலாக இதையிடு:"
 
 #: ui/sonnetui.ui:177
-#, fuzzy
-#| msgid "Language Selection"
 msgctxt "SonnetUi|"
 msgid "Language Selection"
 msgstr "மொழித் தேர்வு"
 
 #: ui/sonnetui.ui:206
-#, fuzzy
-#| msgid "S&uggest"
 msgctxt "SonnetUi|"
 msgid "S&uggest"
-msgstr "&பரிந்துரைக்க"
+msgstr "&பரிந்துரை"
 
 #: ui/sonnetui.ui:213
 #, fuzzy
@@ -632,11 +586,9 @@ msgstr ""
 "</qt>"
 
 #: ui/sonnetui.ui:218
-#, fuzzy
-#| msgid "&Replace"
 msgctxt "SonnetUi|"
 msgid "&Replace"
-msgstr "&மாற்றுக"
+msgstr "&மாற்று"
 
 #: ui/sonnetui.ui:225
 #, fuzzy
@@ -658,11 +610,9 @@ msgstr ""
 "</qt>"
 
 #: ui/sonnetui.ui:230
-#, fuzzy
-#| msgid "R&eplace All"
 msgctxt "SonnetUi|"
 msgid "R&eplace All"
-msgstr "அனைத்தையும் மாற்று&க"
+msgstr "அ&னைத்தையும் மாற்று"
 
 #: ui/sonnetui.ui:237
 #, fuzzy
@@ -691,11 +641,9 @@ msgstr ""
 "</qt>"
 
 #: ui/sonnetui.ui:243
-#, fuzzy
-#| msgid "&Ignore"
 msgctxt "SonnetUi|"
 msgid "&Ignore"
-msgstr "&தவிர்க்க"
+msgstr "&பொருட்படுத்தாதே"
 
 #: ui/sonnetui.ui:250 ui/sonnetui.ui:263
 #, fuzzy
@@ -726,39 +674,36 @@ msgstr ""
 "</qt>"
 
 #: ui/sonnetui.ui:256
-#, fuzzy
-#| msgid "I&gnore All"
 msgctxt "SonnetUi|"
 msgid "I&gnore All"
-msgstr "அனைத்தையும் த&விர்க்க"
+msgstr "&அனைத்தையும் பொருட்படுத்தாதே"
 
 #: ui/sonnetui.ui:269
-#, fuzzy
-#| msgid "Autocorrect"
 msgctxt "SonnetUi|"
 msgid "Autocorrect"
-msgstr "சுயத்தீர்வு"
+msgstr "தானாக திருத்து"
 
 #: ui/spellcheckdecorator.cpp:172
-#, fuzzy, qt-format
-#| msgid "No suggestions for %1"
+#, qt-format
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "No suggestions for %1"
-msgstr "%1 க்கு பரிந்துரைகள் ஏதும் இல்லை"
+msgstr "%1 என்பதற்கு எதுவும் பரிந்துரைக்கப்படவில்லை"
 
 #: ui/spellcheckdecorator.cpp:183
-#, fuzzy
-#| msgid "Ignore"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Ignore"
-msgstr "தவிர்க்க"
+msgstr "பொருட்படுத்தாதே"
 
 #: ui/spellcheckdecorator.cpp:184
-#, fuzzy
-#| msgid "Add to Dictionary"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
-msgstr "அகராதியில் சேர்க்க"
+msgstr "அகரமுதலியில் சேர்"
+
+#, fuzzy
+#~| msgid "Enable &background spellchecking"
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "எழுத்துப்பிழை சரிபார்ப்பதை &பின்னணியில் செயற்படுத்தவும்"
 
 #, fuzzy
 #~| msgid "Suggested Words"

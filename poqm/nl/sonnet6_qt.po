@@ -175,8 +175,8 @@ msgstr "Instellingen van spellingcontrole"
 
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Geen backend voor spellingcontrole gevonden"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -553,6 +553,10 @@ msgstr "Negeren"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Aan woordenboek toevoegen"
+
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Geen backend voor spellingcontrole gevonden"
 
 #~ msgctxt "SonnetUi|"
 #~ msgid "Suggested Words"

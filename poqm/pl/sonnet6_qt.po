@@ -171,8 +171,8 @@ msgstr "Ustawienia sprawdzania pisowni"
 
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Brak silnika do sprawdzania pisowni"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -544,6 +544,10 @@ msgstr "Pomiń"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Dodaj do słownika"
+
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Brak silnika do sprawdzania pisowni"
 
 #~ msgctxt "SonnetUi|"
 #~ msgid "Suggested Words"

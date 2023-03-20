@@ -176,8 +176,8 @@ msgstr "تضبيط التدقيق الإملائي"
 
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "لا يعثر على خلفية للتدقيق الإملائي"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -542,6 +542,10 @@ msgstr "تجاهل"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "أضف إلى القاموس"
+
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "لا يعثر على خلفية للتدقيق الإملائي"
 
 #~ msgctxt "SonnetUi|"
 #~ msgid "Suggested Words"

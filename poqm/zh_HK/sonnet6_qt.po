@@ -191,11 +191,9 @@ msgid "Spell Checking Configuration"
 msgstr "資源設定"
 
 #: ui/configui.ui:26
-#, fuzzy
-#| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "啟動背景拼字檢查(&B)"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 #, fuzzy
@@ -710,6 +708,12 @@ msgstr "略過"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "<< 加到字典中"
+
+#, fuzzy
+#~| msgid "Enable &background spellchecking"
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "啟動背景拼字檢查(&B)"
 
 #, fuzzy
 #~| msgid "Suggested Words"

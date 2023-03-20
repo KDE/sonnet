@@ -186,10 +186,9 @@ msgid "Spell Checking Configuration"
 msgstr "അക്ഷരത്തെറ്റ് പരിശോധനയ്ക്കുള്ള ക്രമീകരണം"
 
 #: ui/configui.ui:26
-#, fuzzy
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "പശ്ചാത്തലത്തിലെ അക്ഷരവിന്യാസത്തിന്റെ പരിശോധന പ്രാവര്‍ത്തികമാക്കുക &b"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 #, fuzzy
@@ -566,6 +565,11 @@ msgstr "അവഗണിയ്ക്കുക"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "നിഘണ്ടുവില്‍ ചേര്‍ക്കുക"
+
+#, fuzzy
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "പശ്ചാത്തലത്തിലെ അക്ഷരവിന്യാസത്തിന്റെ പരിശോധന പ്രാവര്‍ത്തികമാക്കുക &b"
 
 #, fuzzy
 #~ msgctxt "SonnetUi|"

@@ -227,11 +227,9 @@ msgid "Spell Checking Configuration"
 msgstr "Teyitni Yiber"
 
 #: ui/configui.ui:26
-#, fuzzy
-#| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "&Arqazemin imlâ teşkerüvini qabilleştir"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 #, fuzzy
@@ -672,6 +670,12 @@ msgstr "İhmal Et"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Luğatqa Ekle"
+
+#, fuzzy
+#~| msgid "Enable &background spellchecking"
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "&Arqazemin imlâ teşkerüvini qabilleştir"
 
 #, fuzzy
 #~| msgid "Suggested Words"

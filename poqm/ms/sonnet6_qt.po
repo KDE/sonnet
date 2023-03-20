@@ -230,11 +230,9 @@ msgid "Spell Checking Configuration"
 msgstr "Tetapan"
 
 #: ui/configui.ui:26
-#, fuzzy
-#| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Hidupkan penyemak ejaan latar&belakang"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 #, fuzzy
@@ -771,6 +769,12 @@ msgstr "Abai"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Tambah ke Kamus"
+
+#, fuzzy
+#~| msgid "Enable &background spellchecking"
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Hidupkan penyemak ejaan latar&belakang"
 
 #, fuzzy
 #~| msgid "Suggested Words"

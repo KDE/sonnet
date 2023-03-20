@@ -154,8 +154,8 @@ msgstr "Inställning av stavningskontroll"
 
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Inget gränssnitt hittades för stavningskontroll"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -531,6 +531,10 @@ msgstr "Ignorera"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Lägg till i ordlista"
+
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Inget gränssnitt hittades för stavningskontroll"
 
 #~ msgctxt "SonnetUi|"
 #~ msgid "Suggested Words"

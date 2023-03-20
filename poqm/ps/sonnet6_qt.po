@@ -227,11 +227,9 @@ msgid "Spell Checking Configuration"
 msgstr "د لېږلو باوريينه"
 
 #: ui/configui.ui:26
-#, fuzzy
-#| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "شاليد ليکدود کتنه توانول"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 #, fuzzy
@@ -615,6 +613,12 @@ msgstr "پرېښودل"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "ويېپانګه کې زياتول"
+
+#, fuzzy
+#~| msgid "Enable &background spellchecking"
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "شاليد ليکدود کتنه توانول"
 
 #, fuzzy
 #~| msgid "Suggested Words"

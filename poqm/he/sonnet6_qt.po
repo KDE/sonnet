@@ -188,10 +188,9 @@ msgid "Spell Checking Configuration"
 msgstr "הגדרת בדיקת איות"
 
 #: ui/configui.ui:26
-#, fuzzy
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "אפשר בדיקת איות ב&רקע"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -570,3 +569,8 @@ msgstr "התעלם"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "הוסף למילון"
+
+#, fuzzy
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "אפשר בדיקת איות ב&רקע"

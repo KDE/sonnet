@@ -170,8 +170,8 @@ msgstr "Configuració de la verificació ortogràfica"
 
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "No s'ha trobat cap dorsal per a la verificació ortogràfica"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -550,6 +550,6 @@ msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Afegeix al diccionari"
 
-#~ msgctxt "SonnetUi|"
-#~ msgid "Suggested Words"
-#~ msgstr "Paraules suggerides"
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "No s'ha trobat cap dorsal per a la verificació ortogràfica"

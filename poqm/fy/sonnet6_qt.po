@@ -235,11 +235,9 @@ msgid "Spell Checking Configuration"
 msgstr "Stjoer Befêstiging"
 
 #: ui/configui.ui:26
-#, fuzzy
-#| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Staveringshifker op de e&ftergrûn ynskeakelje"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 #, fuzzy
@@ -772,6 +770,12 @@ msgstr "Negearje"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Taheakje oan Wurdboek"
+
+#, fuzzy
+#~| msgid "Enable &background spellchecking"
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Staveringshifker op de e&ftergrûn ynskeakelje"
 
 #, fuzzy
 #~| msgid "Suggested Words"

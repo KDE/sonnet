@@ -171,8 +171,8 @@ msgstr "Konfigurasi Pemeriksa Ejaan"
 
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Tidak ada backend yang ditemukan untuk pemeriksa ejaan"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -550,6 +550,10 @@ msgstr "Abaikan"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Tambah ke Kamus"
+
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Tidak ada backend yang ditemukan untuk pemeriksa ejaan"
 
 #~ msgctxt "SonnetUi|"
 #~ msgid "Suggested Words"

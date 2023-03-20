@@ -170,8 +170,8 @@ msgstr "Configurazione del controllo ortografico"
 
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Nessun motore trovato per il controllo ortografico"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -550,6 +550,10 @@ msgstr "Ignora"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Aggiungi al dizionario"
+
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Nessun motore trovato per il controllo ortografico"
 
 #~ msgctxt "SonnetUi|"
 #~ msgid "Suggested Words"

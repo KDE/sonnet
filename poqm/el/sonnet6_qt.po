@@ -175,8 +175,8 @@ msgstr "Διαμόρφωση ορθογραφικού ελέγχου"
 
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Δεν βρέθηκε σύστημα υποστήριξης για τον ορθογραφικό έλεγχο"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -558,6 +558,10 @@ msgstr "Παράβλεψη"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Προσθήκη στο λεξικό"
+
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Δεν βρέθηκε σύστημα υποστήριξης για τον ορθογραφικό έλεγχο"
 
 #~ msgctxt "SonnetUi|"
 #~ msgid "Suggested Words"

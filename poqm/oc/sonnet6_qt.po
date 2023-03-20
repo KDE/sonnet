@@ -185,11 +185,9 @@ msgid "Spell Checking Configuration"
 msgstr "Mandar una confirmacion"
 
 #: ui/configui.ui:26
-#, fuzzy
-#| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Activar la verificacion ortografica en &rèire plan"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 #, fuzzy
@@ -712,6 +710,12 @@ msgstr "&Ignorar"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "<< Apondre al diccionari"
+
+#, fuzzy
+#~| msgid "Enable &background spellchecking"
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Activar la verificacion ortografica en &rèire plan"
 
 #, fuzzy
 #~| msgid "Suggested Words"

@@ -226,11 +226,9 @@ msgid "Spell Checking Configuration"
 msgstr "ନିଶ୍ଚିତତା ପଠାନ୍ତୁ"
 
 #: ui/configui.ui:26
-#, fuzzy
-#| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "&ପୃଷ୍ଠଭୂମି ବନାନ ଯାଞ୍ଚକୁ ସକ୍ରିୟ କରନ୍ତୁ"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 #, fuzzy
@@ -667,6 +665,12 @@ msgstr "ଅଗ୍ରାହ୍ଯ କରନ୍ତୁ"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "ଅଭିଧାନରେ ଯୋଗ କରନ୍ତୁ"
+
+#, fuzzy
+#~| msgid "Enable &background spellchecking"
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "&ପୃଷ୍ଠଭୂମି ବନାନ ଯାଞ୍ଚକୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
 #, fuzzy
 #~| msgid "Suggested Words"

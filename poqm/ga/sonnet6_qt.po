@@ -227,11 +227,9 @@ msgid "Spell Checking Configuration"
 msgstr "Cumraíocht an Litreora"
 
 #: ui/configui.ui:26
-#, fuzzy
-#| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "&Cumasaigh seiceáil an litriú sa chúlra"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 #, fuzzy
@@ -766,6 +764,12 @@ msgstr "Déan neamhaird de"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Cuir san Fhoclóir"
+
+#, fuzzy
+#~| msgid "Enable &background spellchecking"
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "&Cumasaigh seiceáil an litriú sa chúlra"
 
 #, fuzzy
 #~| msgid "Suggested Words"

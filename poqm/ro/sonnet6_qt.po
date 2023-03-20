@@ -163,8 +163,8 @@ msgstr "Configurarea verificării ortografice"
 
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Nu a fost găsită nicio platformă de verificare a ortografiei"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -542,6 +542,10 @@ msgstr "Ignoră"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Adaugă la dicționar"
+
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Nu a fost găsită nicio platformă de verificare a ortografiei"
 
 #, fuzzy
 #~| msgid "Suggested Words"

@@ -166,8 +166,8 @@ msgstr "Nastavení kontroly pravopisu"
 
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Pro kontrolu pravopisu nebyla nalezena žádná podpůrná vrstva"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -538,3 +538,7 @@ msgstr "Ignorovat"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Přidat do slovníku"
+
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Pro kontrolu pravopisu nebyla nalezena žádná podpůrná vrstva"

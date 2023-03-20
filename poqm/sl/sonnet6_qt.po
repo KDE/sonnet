@@ -173,8 +173,8 @@ msgstr "Nastavitev preverjanja črkovanja"
 
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Ni bilo najdenega zaledja za preverjanje črkovanja"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -547,6 +547,10 @@ msgstr "Prezri"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Dodaj v slovar"
+
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Ni bilo najdenega zaledja za preverjanje črkovanja"
 
 #~ msgctxt "SonnetUi|"
 #~ msgid "Suggested Words"

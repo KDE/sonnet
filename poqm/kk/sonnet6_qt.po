@@ -225,11 +225,9 @@ msgid "Spell Checking Configuration"
 msgstr "Емле тексеру параметрлері"
 
 #: ui/configui.ui:26
-#, fuzzy
-#| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Жұмыс &кезінде емле тексерісі жүргізілсін"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 #, fuzzy
@@ -753,6 +751,12 @@ msgstr "Елемеу"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Сөздікке қосу"
+
+#, fuzzy
+#~| msgid "Enable &background spellchecking"
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Жұмыс &кезінде емле тексерісі жүргізілсін"
 
 #, fuzzy
 #~| msgid "Suggested Words"

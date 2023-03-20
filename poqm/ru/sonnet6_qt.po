@@ -178,8 +178,8 @@ msgstr "Настройка проверки орфографии"
 
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Не найдено модулей, реализующих проверку орфографии."
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -542,6 +542,10 @@ msgstr "Игнорировать"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Добавить в словарь"
+
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Не найдено модулей, реализующих проверку орфографии."
 
 #~ msgctxt "SonnetUi|"
 #~ msgid "Suggested Words"

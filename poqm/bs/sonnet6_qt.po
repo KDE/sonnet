@@ -162,12 +162,9 @@ msgid "Spell Checking Configuration"
 msgstr "Konfiguracija kontrole pravopisa"
 
 #: ui/configui.ui:26
-#, fuzzy
-#| msgctxt "SonnetConfigUI|"
-#| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Uključi &provjeru pravopisa u pozadini"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -542,6 +539,13 @@ msgstr "Ignoriši"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Dodaj u rječnik"
+
+#, fuzzy
+#~| msgctxt "SonnetConfigUI|"
+#~| msgid "Enable &background spellchecking"
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Uključi &provjeru pravopisa u pozadini"
 
 #~ msgctxt "SonnetUi|"
 #~ msgid "Suggested Words"

@@ -164,8 +164,8 @@ msgstr "Cấu hình kiểm tra đánh vần"
 
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Không tìm thấy hậu phương nào cho việc kiểm tra đánh vần"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -539,3 +539,7 @@ msgstr "Bỏ qua"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Thêm vào từ điển"
+
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Không tìm thấy hậu phương nào cho việc kiểm tra đánh vần"

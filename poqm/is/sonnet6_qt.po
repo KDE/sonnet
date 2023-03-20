@@ -164,8 +164,8 @@ msgstr "Stilla yfirlestur stafsetningar"
 
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Enginn bakendi fannst fyrir stafsetningaryfirferð"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -535,6 +535,10 @@ msgstr "Hunsa"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Bæta við orðalista"
+
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Enginn bakendi fannst fyrir stafsetningaryfirferð"
 
 #, fuzzy
 #~| msgid "Suggested Words"

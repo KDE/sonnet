@@ -172,8 +172,8 @@ msgstr "वर्तनी जांच विन्यास"
 
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "वर्तनी जाँच के लिए कोई पृष्ठभाग नहीं मिला"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -542,6 +542,10 @@ msgstr "अनदेखा करें"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "शब्दकोष में जोड़ें"
+
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "वर्तनी जाँच के लिए कोई पृष्ठभाग नहीं मिला"
 
 #, fuzzy
 #~| msgid "Suggested Words"

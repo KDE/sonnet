@@ -223,11 +223,9 @@ msgid "Spell Checking Configuration"
 msgstr "ការ​កំណត់​រចនាសម្ព័ន្ធ​ការ​ពិនិត្យ​អក្ខរាវិរុទ្ធ"
 
 #: ui/configui.ui:26
-#, fuzzy
-#| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "អនុញ្ញាត​ការពិនិត្យ​អក្ខរាវិរុទ្ធ​នៅ​ផ្ទៃ​ខាងក្រោយ"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 #, fuzzy
@@ -749,6 +747,12 @@ msgstr "មិន​អើពើ"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "បន្ថែម​ទៅ​វចនានុក្រម"
+
+#, fuzzy
+#~| msgid "Enable &background spellchecking"
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "អនុញ្ញាត​ការពិនិត្យ​អក្ខរាវិរុទ្ធ​នៅ​ផ្ទៃ​ខាងក្រោយ"
 
 #, fuzzy
 #~| msgid "Suggested Words"

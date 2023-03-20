@@ -168,8 +168,8 @@ msgstr "Rèiteachadh airson dearbhadh an litreachaidh"
 
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Cha deach backend airson dearbhadh an litreachaidh a lorg"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -556,6 +556,10 @@ msgstr "Leig seachad"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Cuir ris an fhaclair"
+
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Cha deach backend airson dearbhadh an litreachaidh a lorg"
 
 #~ msgctxt "SonnetUi|"
 #~ msgid "Suggested Words"

@@ -189,7 +189,7 @@ msgstr "Kefluniadur an danvez"
 
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
+msgid "No backend like hunspell/aspell/myspell installed"
 msgstr ""
 
 #: ui/configui.ui:36

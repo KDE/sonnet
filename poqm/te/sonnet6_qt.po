@@ -231,11 +231,9 @@ msgid "Spell Checking Configuration"
 msgstr "ప"
 
 #: ui/configui.ui:26
-#, fuzzy
-#| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "(&b) బ్యాక్‌గ్రౌండ్ వ్యాకరణపరిశీలన(స్పెల్‌చెకింగ్)ను చేతనం చేయుము"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 #, fuzzy
@@ -760,6 +758,12 @@ msgstr "విస్మరించు"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "నిఘంటువుకు జతచేయుము"
+
+#, fuzzy
+#~| msgid "Enable &background spellchecking"
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "(&b) బ్యాక్‌గ్రౌండ్ వ్యాకరణపరిశీలన(స్పెల్‌చెకింగ్)ను చేతనం చేయుము"
 
 #, fuzzy
 #~| msgid "Suggested Words"

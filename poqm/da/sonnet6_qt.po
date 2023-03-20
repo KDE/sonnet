@@ -171,8 +171,8 @@ msgstr "Indstilling af stavekontrol"
 
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Ingen motor til stavekontrol fundet"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -549,6 +549,10 @@ msgstr "Ignorér"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Føj til ordbog"
+
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Ingen motor til stavekontrol fundet"
 
 #~ msgctxt "SonnetUi|"
 #~ msgid "Suggested Words"

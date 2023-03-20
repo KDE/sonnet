@@ -155,8 +155,8 @@ msgstr "Orfoqrafiya yoxlaması ayarları"
 
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Orfoqrafiyanı toxlamaq üçün modul tapılmadı"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -525,3 +525,7 @@ msgstr "Məhəl qoymamaq"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Lüğətə əlavə etmək"
+
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Orfoqrafiyanı toxlamaq üçün modul tapılmadı"

@@ -235,11 +235,9 @@ msgid "Spell Checking Configuration"
 msgstr "Mîhengên kontrola rastnivîsê"
 
 #: ui/configui.ui:26
-#, fuzzy
-#| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "&Li rûerd kontrola rastnivîsê çalak bike"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 #, fuzzy
@@ -772,6 +770,12 @@ msgstr "Guh nede"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Li Ferhengê Zêde Bike"
+
+#, fuzzy
+#~| msgid "Enable &background spellchecking"
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "&Li rûerd kontrola rastnivîsê çalak bike"
 
 #, fuzzy
 #~| msgid "Suggested Words"

@@ -161,8 +161,8 @@ msgstr "맞춤법 검사 설정"
 
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "맞춤법 검사 백엔드를 찾을 수 없음"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -528,6 +528,10 @@ msgstr "무시"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "사전에 추가하기"
+
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "맞춤법 검사 백엔드를 찾을 수 없음"
 
 #~ msgctxt "SonnetUi|"
 #~ msgid "Suggested Words"

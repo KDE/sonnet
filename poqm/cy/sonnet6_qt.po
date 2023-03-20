@@ -187,11 +187,9 @@ msgid "Spell Checking Configuration"
 msgstr "Ffurfweddiad Adnoddau"
 
 #: ui/configui.ui:26
-#, fuzzy
-#| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Alluogi &gwirio sillafu yn y cefndir"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 #, fuzzy
@@ -727,6 +725,12 @@ msgstr "Anwybyddu"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "<< Ychwanegu i'r Geiriadur"
+
+#, fuzzy
+#~| msgid "Enable &background spellchecking"
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Alluogi &gwirio sillafu yn y cefndir"
 
 #, fuzzy
 #~| msgid "Suggested Words"

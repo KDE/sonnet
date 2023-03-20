@@ -228,11 +228,9 @@ msgid "Spell Checking Configuration"
 msgstr "Paćvierdžańnie vysyłańnia"
 
 #: ui/configui.ui:26
-#, fuzzy
-#| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Uklučy &fonavaje spraŭdžvańnie pravapisu"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 #, fuzzy
@@ -767,6 +765,12 @@ msgstr "Abmini"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Dadaj u słoŭnik"
+
+#, fuzzy
+#~| msgid "Enable &background spellchecking"
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Uklučy &fonavaje spraŭdžvańnie pravapisu"
 
 #, fuzzy
 #~| msgid "Suggested Words"

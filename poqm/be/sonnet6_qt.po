@@ -235,11 +235,9 @@ msgid "Spell Checking Configuration"
 msgstr "Даслаць пацверджанне"
 
 #: ui/configui.ui:26
-#, fuzzy
-#| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Уключыць &фонавае спраўджванне правапісу"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 #, fuzzy
@@ -768,6 +766,12 @@ msgstr "Ігнараваць"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "<< Дадаць у слоўнік"
+
+#, fuzzy
+#~| msgid "Enable &background spellchecking"
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Уключыць &фонавае спраўджванне правапісу"
 
 #, fuzzy
 #~| msgid "Suggested Words"

@@ -227,13 +227,10 @@ msgctxt "Sonnet::ConfigDialog|"
 msgid "Spell Checking Configuration"
 msgstr "Ուղղագրության ստուգման կարգավորում"
 
-# երանգային   տարբերակ-  ետին  պլան
 #: ui/configui.ui:26
-#, fuzzy
-#| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "&Միացնել ուղղագրության ստուգման երանգային տարբերակը"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 # լռելյայն լեզու
 #: ui/configui.ui:36
@@ -760,6 +757,13 @@ msgstr "Թողնել"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Ացելացնել բառարանի մեջ"
+
+# երանգային   տարբերակ-  ետին  պլան
+#, fuzzy
+#~| msgid "Enable &background spellchecking"
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "&Միացնել ուղղագրության ստուգման երանգային տարբերակը"
 
 #, fuzzy
 #~| msgid "Suggested Words"

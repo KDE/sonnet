@@ -175,12 +175,9 @@ msgid "Spell Checking Configuration"
 msgstr "Rašybos tikrinimo konfigūracija"
 
 #: ui/configui.ui:26
-#, fuzzy
-#| msgctxt "SonnetConfigUI|"
-#| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "Įjungti f&oninį klaidų tikrinimą"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -558,6 +555,13 @@ msgstr "Ignoruoti"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Pridėti į žodyną"
+
+#, fuzzy
+#~| msgctxt "SonnetConfigUI|"
+#~| msgid "Enable &background spellchecking"
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "Įjungti f&oninį klaidų tikrinimą"
 
 #~ msgctxt "SonnetUi|"
 #~ msgid "Suggested Words"

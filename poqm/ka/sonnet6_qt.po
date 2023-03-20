@@ -156,8 +156,8 @@ msgstr "მართლწერის შემოწმების მორ�
 
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
-msgid "No backend found for spell checking"
-msgstr "მართლწერის შემოწმების უკანაბოლო ნაპოვნი არაა"
+msgid "No backend like hunspell/aspell/myspell installed"
+msgstr ""
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -527,3 +527,7 @@ msgstr "იგნორი"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "სიტყვის ლექსიკონში ჩამატება"
+
+#~ msgctxt "SonnetConfigUI|"
+#~ msgid "No backend found for spell checking"
+#~ msgstr "მართლწერის შემოწმების უკანაბოლო ნაპოვნი არაა"
