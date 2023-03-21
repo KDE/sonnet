@@ -538,7 +538,3 @@ msgstr "Ignorovat"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Přidat do slovníku"
-
-#~ msgctxt "SonnetConfigUI|"
-#~ msgid "No backend found for spell checking"
-#~ msgstr "Pro kontrolu pravopisu nebyla nalezena žádná podpůrná vrstva"

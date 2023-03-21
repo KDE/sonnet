@@ -530,7 +530,3 @@ msgstr "Ignorer"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Legg til i ordlista"
-
-#~ msgctxt "SonnetConfigUI|"
-#~ msgid "No backend found for spell checking"
-#~ msgstr "Fann ingen stavekontrollmotor"
