@@ -69,7 +69,7 @@ private:
 
 private:
     friend class Loader;
-    explicit SettingsImpl(Loader *loader);
+    SONNETCORE_NO_EXPORT explicit SettingsImpl(Loader *loader);
 
 private:
     SettingsImplPrivate *const d;
