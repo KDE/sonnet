@@ -5,7 +5,7 @@
 # Georg Schuster <gschuster@utanet.at>, 2005.
 # Thomas Reitelbach <tr@erdfunkstelle.de>, 2005, 2006, 2007, 2008, 2009.
 # Burkhard Lück <lueck@hube-lueck.de>, 2006, 2007, 2009, 2010, 2011, 2012, 2013, 2014, 2016, 2018.
-# Frederik Schwarzer <schwarzer@kde.org>, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2022.
+# Frederik Schwarzer <schwarzer@kde.org>, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2022, 2023.
 # Johannes Obermayr <johannesobermayr@gmx.de>, 2010.
 # Panagiotis Papadopoulos <pano_90@gmx.net>, 2010.
 # Rolf Eike Beer <kde@opensource.sf-tec.de>, 2012.
@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-03-23 01:50+0000\n"
-"PO-Revision-Date: 2022-08-20 20:51+0200\n"
+"PO-Revision-Date: 2023-03-21 20:07+0100\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 22.12.3\n"
 "X-Qt-Contexts: true\n"
 
 #: core/loader.cpp:184
@@ -169,7 +169,7 @@ msgstr "Einrichtung der Rechtschreibprüfung"
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
 msgid "No backend like hunspell/aspell/myspell installed"
-msgstr ""
+msgstr "Es ist kein Backend wie hunspell/aspell/myspell installiert"
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
