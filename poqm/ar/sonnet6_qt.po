@@ -13,7 +13,7 @@
 # Khaled Hosny <khaledhosny@eglug.org>, 2007.
 # Youssef Chahibi <chahibi@gmail.com>, 2007.
 # zayed <zayed.alsaidi@gmail.com>, 2008, 2009.
-# Zayed Al-Saidi <zayed.alsaidi@gmail.com>, 2009, 2021.
+# Zayed Al-Saidi <zayed.alsaidi@gmail.com>, 2009, 2021, 2023.
 # hanny <hannysabbagh@hotmail.com>, 2012.
 # Abderrahim Kitouni <a.kitouni@gmail.com>, 2012.
 # Safa Alfulaij <safaalfulaij@hotmail.com>, 2013.
@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-06-28 15:38+0300\n"
-"PO-Revision-Date: 2021-12-11 20:41+0400\n"
+"PO-Revision-Date: 2023-03-23 10:42+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -32,7 +32,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Lokalize 21.07.70\n"
+"X-Generator: Lokalize 21.12.3\n"
 "X-Qt-Contexts: true\n"
 
 #: core/loader.cpp:184
@@ -177,7 +177,7 @@ msgstr "تضبيط التدقيق الإملائي"
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
 msgid "No backend like hunspell/aspell/myspell installed"
-msgstr ""
+msgstr "لم يثبت أي خلفية للتهجية مثل هانسبل أو ايسبيل أو مايسبيل"
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
