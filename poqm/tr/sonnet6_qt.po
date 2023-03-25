@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-03-23 01:50+0000\n"
-"PO-Revision-Date: 2023-03-20 12:46+0300\n"
+"PO-Revision-Date: 2023-03-24 15:09+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -223,7 +223,7 @@ msgstr "&Bitişik sözcükleri atla"
 #: ui/configui.ui:115
 msgctxt "SonnetConfigUI|"
 msgid "Ignored Words:"
-msgstr "Yok Sayılan Sözcükler:"
+msgstr "Yok sayılan sözcükler:"
 
 #: ui/configui.ui:129
 msgctxt "SonnetConfigUI|"

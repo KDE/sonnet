@@ -157,7 +157,7 @@ msgstr "მართლწერის შემოწმების მორ�
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
 msgid "No backend like hunspell/aspell/myspell installed"
-msgstr ""
+msgstr "Hunspell/aspell/myspell-ის მსგავსი უკანაბოლო დაყენებული არაა"
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
