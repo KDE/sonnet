@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-03-23 01:50+0000\n"
-"PO-Revision-Date: 2023-03-24 15:09+0300\n"
+"PO-Revision-Date: 2023-03-26 16:26+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -62,22 +62,22 @@ msgstr "-ize sonekleri"
 #: core/loader.cpp:189
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "-ise suffixes and with accents"
-msgstr "-ise sonekleri vurgulu"
+msgstr "-ise sonekleri aksanlı"
 
 #: core/loader.cpp:190
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "-ise suffixes and without accents"
-msgstr "-ise sonekleri vurgusuz"
+msgstr "-ise sonekleri aksansız"
 
 #: core/loader.cpp:191
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "-ize suffixes and with accents"
-msgstr "-ize sonekleri vurgulu"
+msgstr "-ize sonekleri aksanlı"
 
 #: core/loader.cpp:192
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "-ize suffixes and without accents"
-msgstr "-ize sonekleri vurgusuz"
+msgstr "-ize sonekleri aksansız"
 
 #: core/loader.cpp:193
 msgctxt "Sonnet::Loader|dictionary variant"
