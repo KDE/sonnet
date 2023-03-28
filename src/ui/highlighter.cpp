@@ -316,18 +316,7 @@ void Highlighter::highlightBlock(const QString &text)
         connect(document(), &QTextDocument::contentsChange, this, &Highlighter::contentsChange);
         d->connected = true;
     }
-    QTextCursor cursor;
-    if (d->textEdit) {
-        cursor = d->textEdit->textCursor();
-    } else {
-        cursor = d->plainTextEdit->textCursor();
-    }
-    int index = cursor.position();
 
-    const int lengthPosition = text.length() - 1;
-
-    if (index != lengthPosition //
-        || (lengthPosition > 0 && !text[lengthPosition - 1].isLetter())) {
         d->languageFilter->setBuffer(text);
 
         LanguageCache *cache = dynamic_cast<LanguageCache *>(currentBlockUserData());
@@ -374,7 +363,6 @@ void Highlighter::highlightBlock(const QString &text)
                 }
             }
         }
-    }
     // QTimer::singleShot( 0, this, SLOT(checkWords()) );
     setCurrentBlockState(0);
 }
