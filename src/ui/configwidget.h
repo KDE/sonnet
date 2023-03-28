@@ -52,8 +52,8 @@ protected Q_SLOTS:
     void slotIgnoreWordRemoved();
     void slotIgnoreWordAdded();
 private Q_SLOTS:
-    void slotUpdateButton(const QString &text);
-    void slotSelectionChanged();
+    SONNETUI_NO_EXPORT void slotUpdateButton(const QString &text);
+    SONNETUI_NO_EXPORT void slotSelectionChanged();
 
 Q_SIGNALS:
     /**

@@ -225,7 +225,7 @@ public Q_SLOTS:
     void slotRehighlight();
 
 private Q_SLOTS:
-    void contentsChange(int pos, int added, int removed);
+    SONNETUI_NO_EXPORT void contentsChange(int pos, int added, int removed);
 
 private:
     std::unique_ptr<HighlighterPrivate> const d;
