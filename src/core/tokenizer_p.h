@@ -141,7 +141,7 @@ public:
     void setIgnoreUppercase(bool val);
 
 private:
-    bool isUppercase(QStringView word) const;
+    SONNETCORE_NO_EXPORT bool isUppercase(QStringView word) const;
     BreakTokenizerPrivate *const d;
 };
 

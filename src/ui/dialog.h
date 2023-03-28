@@ -143,13 +143,13 @@ private Q_SLOTS:
     SONNETUI_NO_EXPORT void setProgressDialogVisible(bool b);
 
 private:
-    void updateDialog(const QString &word);
-    void fillDictionaryComboBox();
-    void updateDictionaryComboBox();
-    void fillSuggestions(const QStringList &suggs);
-    void initConnections();
-    void initGui();
-    void continueChecking();
+    SONNETUI_NO_EXPORT void updateDialog(const QString &word);
+    SONNETUI_NO_EXPORT void fillDictionaryComboBox();
+    SONNETUI_NO_EXPORT void updateDictionaryComboBox();
+    SONNETUI_NO_EXPORT void fillSuggestions(const QStringList &suggs);
+    SONNETUI_NO_EXPORT void initConnections();
+    SONNETUI_NO_EXPORT void initGui();
+    SONNETUI_NO_EXPORT void continueChecking();
 
 private:
     DialogPrivate *const d;

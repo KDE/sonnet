@@ -60,7 +60,7 @@ Q_SIGNALS:
     void configChanged();
 
 private:
-    void setFromGui();
+    SONNETUI_NO_EXPORT void setFromGui();
 
 private:
     ConfigWidgetPrivate *const d;

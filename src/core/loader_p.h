@@ -127,8 +127,8 @@ protected:
     void changed();
 
 private:
-    void loadPlugins();
-    void loadPlugin(const QString &pluginPath);
+    SONNETCORE_NO_EXPORT void loadPlugins();
+    SONNETCORE_NO_EXPORT void loadPlugin(const QString &pluginPath);
 
 private:
     LoaderPrivate *const d;

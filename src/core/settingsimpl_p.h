@@ -65,7 +65,7 @@ public:
     int disableWordErrorCount() const;
 
 private:
-    bool setQuietIgnoreList(const QStringList &ignores);
+    SONNETCORE_NO_EXPORT bool setQuietIgnoreList(const QStringList &ignores);
 
 private:
     friend class Loader;
