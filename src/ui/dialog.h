@@ -123,24 +123,24 @@ Q_SIGNALS:
     void languageChanged(const QString &language);
 
 private Q_SLOTS:
-    void slotMisspelling(const QString &word, int start);
-    void slotDone();
+    SONNETUI_NO_EXPORT void slotMisspelling(const QString &word, int start);
+    SONNETUI_NO_EXPORT void slotDone();
 
-    void slotFinished();
-    void slotCancel();
+    SONNETUI_NO_EXPORT void slotFinished();
+    SONNETUI_NO_EXPORT void slotCancel();
 
-    void slotAddWord();
-    void slotReplaceWord();
-    void slotReplaceAll();
-    void slotSkip();
-    void slotSkipAll();
-    void slotSuggest();
-    void slotChangeLanguage(const QString &);
-    void slotSelectionChanged(const QModelIndex &);
-    void slotAutocorrect();
+    SONNETUI_NO_EXPORT void slotAddWord();
+    SONNETUI_NO_EXPORT void slotReplaceWord();
+    SONNETUI_NO_EXPORT void slotReplaceAll();
+    SONNETUI_NO_EXPORT void slotSkip();
+    SONNETUI_NO_EXPORT void slotSkipAll();
+    SONNETUI_NO_EXPORT void slotSuggest();
+    SONNETUI_NO_EXPORT void slotChangeLanguage(const QString &);
+    SONNETUI_NO_EXPORT void slotSelectionChanged(const QModelIndex &);
+    SONNETUI_NO_EXPORT void slotAutocorrect();
 
-    void setGuiEnabled(bool b);
-    void setProgressDialogVisible(bool b);
+    SONNETUI_NO_EXPORT void setGuiEnabled(bool b);
+    SONNETUI_NO_EXPORT void setProgressDialogVisible(bool b);
 
 private:
     void updateDialog(const QString &word);
