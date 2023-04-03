@@ -51,6 +51,8 @@ ecm_generate_export_header(KF6SonnetUi
     BASE_NAME SonnetUi
     GROUP_BASE_NAME KF
     VERSION ${KF_VERSION}
+    USE_VERSION_HEADER
+    VERSION_BASE_NAME Sonnet
     DEPRECATED_BASE_VERSION 0
     DEPRECATION_VERSIONS
     EXCLUDE_DEPRECATED_BEFORE_AND_AT ${EXCLUDE_DEPRECATED_BEFORE_AND_AT}
@@ -61,9 +63,12 @@ target_link_libraries(KF6SonnetUi
     PRIVATE KF6::SonnetCore
 )
 
-target_include_directories(KF6SonnetUi INTERFACE
-    "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/SonnetUi>"
-    "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/Sonnet>"
+target_include_directories(KF6SonnetUi
+    INTERFACE
+        "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/SonnetUi>"
+        "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/Sonnet>"
+    PUBLIC
+        "$<BUILD_INTERFACE:${CMAKE_BINARY_DIR}>" # version header
 )
 
 install(TARGETS KF6SonnetUi EXPORT KF6SonnetTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})

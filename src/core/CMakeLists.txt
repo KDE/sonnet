@@ -53,16 +53,16 @@ ecm_qt_declare_logging_category(KF6SonnetCore
 # Dear packagers, this is just used as an extra search paths for plugins. Don't get your panties in a twist.
 add_definitions(-DINSTALLATION_PLUGIN_PATH="${CMAKE_INSTALL_PREFIX}/${KDE_INSTALL_PLUGINDIR}")
 
-
 ecm_generate_export_header(KF6SonnetCore
     BASE_NAME SonnetCore
     GROUP_BASE_NAME KF
     VERSION ${KF_VERSION}
+    USE_VERSION_HEADER
+    VERSION_BASE_NAME Sonnet
     DEPRECATED_BASE_VERSION 0
     DEPRECATION_VERSIONS
     EXCLUDE_DEPRECATED_BEFORE_AND_AT ${EXCLUDE_DEPRECATED_BEFORE_AND_AT}
 )
-
 
 ecm_generate_headers(SonnetCore_CamelCase_HEADERS
   HEADER_NAMES
@@ -76,9 +76,12 @@ ecm_generate_headers(SonnetCore_CamelCase_HEADERS
 
 target_link_libraries(KF6SonnetCore PUBLIC Qt6::Core)
 
-target_include_directories(KF6SonnetCore INTERFACE
-    "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/SonnetCore>"
-    "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/Sonnet>"
+target_include_directories(KF6SonnetCore
+    INTERFACE
+        "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/SonnetCore>"
+        "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/Sonnet>"
+    PUBLIC
+        "$<BUILD_INTERFACE:${CMAKE_BINARY_DIR}>" # version header
 )
 
 install(TARGETS KF6SonnetCore EXPORT KF6SonnetTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
