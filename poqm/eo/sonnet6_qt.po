@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-03-23 01:50+0000\n"
-"PO-Revision-Date: 2023-01-04 22:00+0100\n"
+"PO-Revision-Date: 2023-04-16 02:31+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-doc@kde.org>\n"
 "Language: eo\n"
@@ -114,17 +114,17 @@ msgstr "kun akcentoj"
 #: core/loader.cpp:201
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "with ye, modern russian"
-msgstr ""
+msgstr "kun ye, moderna rusa"
 
 #: core/loader.cpp:202
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "with yeyo, modern and old russian"
-msgstr ""
+msgstr "kun yeyo, moderna kaj olda rusa"
 
 #: core/loader.cpp:203
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "with yo, old russian"
-msgstr ""
+msgstr "kun yo, olda rusa"
 
 #: core/loader.cpp:204
 msgctxt "Sonnet::Loader|dictionary variant"
@@ -168,7 +168,7 @@ msgstr "Agordoj de literumado"
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
 msgid "No backend like hunspell/aspell/myspell installed"
-msgstr ""
+msgstr "Neniu backend kiel hunspell/aspell/myspell instalita"
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -178,7 +178,7 @@ msgstr "Apriora lingvo:"
 #: ui/configui.ui:63
 msgctxt "SonnetConfigUI|"
 msgid "Choose your preferred languages"
-msgstr ""
+msgstr "Elektu vian preferatan lingvon"
 
 #: ui/configui.ui:71
 msgctxt "SonnetConfigUI|"
@@ -188,7 +188,7 @@ msgstr "Opcioj"
 #: ui/configui.ui:77
 msgctxt "SonnetConfigUI|"
 msgid "Enable autodetection of &language"
-msgstr ""
+msgstr "Ebligi aŭtomatan detekton de &lingvo"
 
 #: ui/configui.ui:84
 msgctxt "SonnetConfigUI|"
@@ -540,7 +540,3 @@ msgstr "Ignori"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "Aldoni al vortaro"
-
-#~ msgctxt "SonnetConfigUI|"
-#~ msgid "No backend found for spell checking"
-#~ msgstr "Neniu literumila realigo trovata"
