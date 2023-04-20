@@ -2897,7 +2897,7 @@ msgstr "Adde al dictionario"
 #~ msgstr "Vista Preliminar de &Imprimer"
 
 #~ msgid "Show a print preview of document"
-#~ msgstr "Monstra un vista preliminari del documento"
+#~ msgstr "Monstra un vista preliminar del documento"
 
 #~ msgid "&Mail..."
 #~ msgstr "Invia via &E-posta..."
@@ -4640,13 +4640,13 @@ msgstr "Adde al dictionario"
 #~ msgstr "Tu pressa per selectionar un font"
 
 #~ msgid "Preview of the selected font"
-#~ msgstr "Vista preliminari de le font selectionate"
+#~ msgstr "Vista preliminar de le font selectionate"
 
 #~ msgid ""
 #~ "This is a preview of the selected font. You can change it by clicking the "
 #~ "\"Choose...\" button."
 #~ msgstr ""
-#~ "Isto es un vista preliminari de le font selectionate. Tu pote cambiar lo "
+#~ "Isto es un vista preliminar de le font selectionate. Tu pote cambiar lo "
 #~ "per pressar le button \"Selectiona ...\""
 
 #~ msgid "Preview of the \"%1\" font"
@@ -4656,7 +4656,7 @@ msgstr "Adde al dictionario"
 #~ "This is a preview of the \"%1\" font. You can change it by clicking the "
 #~ "\"Choose...\" button."
 #~ msgstr ""
-#~ "Isto es un vista preliminari de le font \"%1\". Tu pote cambiar per "
+#~ "Isto es un vista preliminar de le font \"%1\". Tu pote cambiar per "
 #~ "pressar le button \"Selectiona...\"."
 
 #~ msgid "Search"
@@ -5069,7 +5069,7 @@ msgstr "Adde al dictionario"
 
 #~ msgctxt "@action"
 #~ msgid "Print Preview"
-#~ msgstr "Vista preliminari de imprimer"
+#~ msgstr "Vista preliminar de imprimer"
 
 #~ msgctxt "@action"
 #~ msgid "Mail"
@@ -8559,10 +8559,10 @@ msgstr "Adde al dictionario"
 #~ msgstr "Evalutation : %1"
 
 #~ msgid "No Preview"
-#~ msgstr "Nulle vista preliminari"
+#~ msgstr "Nulle vista preliminar"
 
 #~ msgid "Loading Preview"
-#~ msgstr "Cargante le vista preliminari"
+#~ msgstr "Cargante le vista preliminar"
 
 #~ msgid "Comments"
 #~ msgstr "Commentos"
@@ -8710,7 +8710,7 @@ msgstr "Adde al dictionario"
 #~ msgstr "BSD"
 
 #~ msgid "Preview URL:"
-#~ msgstr "URL de vista preliminari:"
+#~ msgstr "URL de vista preliminar:"
 
 #~ msgid "Language:"
 #~ msgstr "Linguage:"
@@ -8794,7 +8794,7 @@ msgstr "Adde al dictionario"
 
 #~ msgid "Loading one preview"
 #~ msgid_plural "Loading %1 previews"
-#~ msgstr[0] "Cargante un vista preliminari"
+#~ msgstr[0] "Cargante un vista preliminar"
 #~ msgstr[1] "Cargante %1 vistas preliminar"
 
 #~ msgid "Installing"
@@ -8979,7 +8979,7 @@ msgstr "Adde al dictionario"
 #~ msgstr "Le categoria selectionate \"%1\" es invalide."
 
 #~ msgid "Select preview image"
-#~ msgstr "Selectiona le Imagine de vista preliminari"
+#~ msgstr "Selectiona le Imagine de vista preliminar"
 
 #~ msgid "There was a network error."
 #~ msgstr "Il habeva un error de rete"
@@ -9013,10 +9013,10 @@ msgstr "Adde al dictionario"
 #~ "mesmo texto que le titulo del file kvtml"
 
 #~ msgid "Preview Images"
-#~ msgstr "Imagines de vista preliminari"
+#~ msgstr "Imagines de vista preliminar"
 
 #~ msgid "Select Preview..."
-#~ msgstr "Selectiona vista preliminari..."
+#~ msgstr "Selectiona vista preliminar..."
 
 #~ msgid "Set a price for this item"
 #~ msgstr "Fixa un precio pro iste articulo"
@@ -9040,17 +9040,17 @@ msgstr "Adde al dictionario"
 #~ msgstr "Incarga contento"
 
 #~ msgid "Upload first preview"
-#~ msgstr "Incarga prime vista preliminari"
+#~ msgstr "Incarga prime vista preliminar"
 
 #~ msgid "Note: You can edit, update and delete your content on the website."
 #~ msgstr ""
 #~ "Nota: tu pote editar, actualisar e cancellar tu contento sur le sito web."
 
 #~ msgid "Upload second preview"
-#~ msgstr "Incarga le secunde vista preliminari"
+#~ msgstr "Incarga le secunde vista preliminar"
 
 #~ msgid "Upload third preview"
-#~ msgstr "Incarga le tertie vista preliminari"
+#~ msgstr "Incarga le tertie vista preliminar"
 
 #~ msgid ""
 #~ "I ensure that this content does not violate any existing copyright, law "
@@ -9481,7 +9481,7 @@ msgstr "Adde al dictionario"
 #~ msgstr "On usa pro le auto-completion in dialogos de file, pro exemplo"
 
 #~ msgid "Show file preview in file dialog"
-#~ msgstr "Monstra le vista preliminari de file in le dialogo de file"
+#~ msgstr "Monstra le vista preliminar de file in le dialogo de file"
 
 #~ msgid "Show hidden files"
 #~ msgstr "Monstra le files celate"
@@ -9613,10 +9613,10 @@ msgstr "Adde al dictionario"
 #~ msgstr "A proposito de %1"
 
 #~ msgid "Could not load print preview part"
-#~ msgstr "Il non pote cargar le parte de le vista preliminari de impression"
+#~ msgstr "Il non pote cargar le parte de le vista preliminar de impression"
 
 #~ msgid "Print Preview"
-#~ msgstr "Vista preliminari de impression"
+#~ msgstr "Vista preliminar de impression"
 
 #~ msgid "Select Components"
 #~ msgstr "Selectionar componentes"
@@ -10226,7 +10226,7 @@ msgstr "Adde al dictionario"
 #~ msgstr "Le provider pote non esser initiate."
 
 #~ msgid "Uploading preview image and content..."
-#~ msgstr "Cargamento de le imagine de vista preliminari e contento ..."
+#~ msgstr "Cargamento de le imagine de vista preliminar e contento ..."
 
 #~ msgid "Content Added"
 #~ msgstr "Contento addite"
