@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-03-23 01:50+0000\n"
-"PO-Revision-Date: 2023-03-20 10:14+0100\n"
+"PO-Revision-Date: 2023-04-23 14:33+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -181,7 +181,7 @@ msgstr "Geen backend zoals hunspell/aspell/myspell geïnstalleerd"
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
 msgid "Default language:"
-msgstr "Standaardtaal:"
+msgstr "Standaard taal:"
 
 #: ui/configui.ui:63
 msgctxt "SonnetConfigUI|"
