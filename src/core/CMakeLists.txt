@@ -35,10 +35,10 @@ target_sources(KF6SonnetCore PRIVATE
 
 # create trigrams file + add trigrams resource
 if (TARGET KF6::parsetrigrams)
-    add_custom_command(OUTPUT "${CMAKE_BINARY_DIR}/data/trigrams.map"
-                       COMMAND KF6::parsetrigrams "${CMAKE_SOURCE_DIR}/data/trigrams" > "${CMAKE_BINARY_DIR}/data/trigrams.map")
-    configure_file(${CMAKE_SOURCE_DIR}/data/trigrams.qrc.in ${CMAKE_BINARY_DIR}/data/trigrams.qrc @ONLY)
-    target_sources(KF6SonnetCore PRIVATE "${CMAKE_BINARY_DIR}/data/trigrams.qrc")
+    add_custom_command(OUTPUT "${PROJECT_BINARY_DIR}/data/trigrams.map"
+                       COMMAND KF6::parsetrigrams "${PROJECT_SOURCE_DIR}/data/trigrams" > "${PROJECT_BINARY_DIR}/data/trigrams.map")
+    configure_file(${PROJECT_SOURCE_DIR}/data/trigrams.qrc.in "${PROJECT_BINARY_DIR}/data/trigrams.qrc" @ONLY)
+    target_sources(KF6SonnetCore PRIVATE "${PROJECT_BINARY_DIR}/data/trigrams.qrc")
 endif()
 
 ecm_qt_declare_logging_category(KF6SonnetCore
