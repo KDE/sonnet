@@ -1,7 +1,6 @@
 # translation of kdelibs4.po to galician
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-#
 # mvillarino <mvillarino@users.sourceforge.net>, 2007, 2008, 2009.
 # Marce Villarino <mvillarino@kde-espana.es>, 2008, 2009.
 # marce villarino <mvillarino@users.sourceforge.net>, 2009.
@@ -10,20 +9,22 @@
 # Xosé <xosecalvo@gmail.com>, 2010.
 # Marce Villarino <mvillarino@kde-espana.es>, 2011, 2012, 2013, 2014.
 # Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail.com>, 2015, 2017.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018.
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2023.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-03-23 01:50+0000\n"
-"PO-Revision-Date: 2018-12-10 19:50+0100\n"
+"PO-Revision-Date: 2023-04-28 17:03+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
-"Language-Team: Galician <kde-i18n-doc@kde.org>\n"
+"Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 23.04.0\n"
 "X-Qt-Contexts: true\n"
 
 #: core/loader.cpp:185
@@ -146,17 +147,11 @@ msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
 #: quick/spellcheckhighlighter.cpp:236 quick/spellcheckhighlighter.cpp:260
-#, fuzzy
-#| msgctxt "Sonnet::Highlighter|"
-#| msgid "As-you-type spell checking enabled."
 msgctxt "SpellcheckHighlighter|"
 msgid "As-you-type spell checking enabled."
 msgstr "A corrección ortográfica mentres escribe está activada."
 
 #: quick/spellcheckhighlighter.cpp:240
-#, fuzzy
-#| msgctxt "Sonnet::Highlighter|"
-#| msgid "Too many misspelled words. As-you-type spell checking disabled."
 msgctxt "SpellcheckHighlighter|"
 msgid "Too many misspelled words. As-you-type spell checking disabled."
 msgstr ""
@@ -164,9 +159,6 @@ msgstr ""
 "ortográfica mentres escribe."
 
 #: quick/spellcheckhighlighter.cpp:262
-#, fuzzy
-#| msgctxt "Sonnet::Highlighter|"
-#| msgid "As-you-type spell checking disabled."
 msgctxt "SpellcheckHighlighter|"
 msgid "As-you-type spell checking disabled."
 msgstr "A corrección ortográfica mentres escribe está desactivada."
