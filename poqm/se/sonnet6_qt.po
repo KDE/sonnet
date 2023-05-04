@@ -1,4 +1,4 @@
-# Translation of sonnet5_qt to Northern Sami
+# Translation of sonnet6_qt to Northern Sami
 #
 # Børre Gaup <boerre@skolelinux.no>, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012.
 msgid ""
