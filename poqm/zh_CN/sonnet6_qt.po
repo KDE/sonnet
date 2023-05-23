@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
-"PO-Revision-Date: 2023-02-24 12:44\n"
+"PO-Revision-Date: 2023-05-22 13:58\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -12,8 +12,8 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf5-trunk/messages/sonnet/sonnet5_qt.pot\n"
-"X-Crowdin-File-ID: 5587\n"
+"X-Crowdin-File: /kf6-trunk/messages/sonnet/sonnet6_qt.pot\n"
+"X-Crowdin-File-ID: 43561\n"
 
 #: core/loader.cpp:184
 msgctxt "Sonnet::Loader|dictionary variant"
@@ -157,7 +157,7 @@ msgstr "拼写检查配置"
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
 msgid "No backend like hunspell/aspell/myspell installed"
-msgstr ""
+msgstr "没有安装 hunspell/aspell/myspell 等后端程序"
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -517,7 +517,3 @@ msgstr "忽略(&I)"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
 msgstr "添加到字典"
-
-#~ msgctxt "SonnetConfigUI|"
-#~ msgid "No backend found for spell checking"
-#~ msgstr "未找到拼写检查后端"
