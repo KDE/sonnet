@@ -138,18 +138,18 @@ msgctxt "Sonnet::Loader|dictionary name; %1 = language name, %2 = country name"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: quick/spellcheckhighlighter.cpp:236 quick/spellcheckhighlighter.cpp:260
+#: quick/spellcheckhighlighter.cpp:245 quick/spellcheckhighlighter.cpp:269
 msgctxt "SpellcheckHighlighter|"
 msgid "As-you-type spell checking enabled."
 msgstr "실시간 맞춤법 검사를 사용합니다."
 
-#: quick/spellcheckhighlighter.cpp:240
+#: quick/spellcheckhighlighter.cpp:249
 msgctxt "SpellcheckHighlighter|"
 msgid "Too many misspelled words. As-you-type spell checking disabled."
 msgstr ""
 "너무 많은 단어가 잘못되었습니다. 실시간 맞춤법 검사를 사용하지 않습니다."
 
-#: quick/spellcheckhighlighter.cpp:262
+#: quick/spellcheckhighlighter.cpp:271
 msgctxt "SpellcheckHighlighter|"
 msgid "As-you-type spell checking disabled."
 msgstr "실시간 맞춤법 검사를 사용하지 않습니다."
