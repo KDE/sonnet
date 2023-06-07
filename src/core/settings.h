@@ -7,9 +7,9 @@
 #define SONNET_SETTINGS_H
 
 #include <QAbstractListModel>
+#include <QObject>
 #include <QString>
 #include <QStringList>
-#include <QtCore/QObject>
 
 #include "sonnetcore_export.h"
 
