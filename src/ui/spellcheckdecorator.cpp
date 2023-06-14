@@ -223,15 +223,20 @@ SpellCheckDecorator::SpellCheckDecorator(QTextEdit *textEdit)
     : QObject(textEdit)
     , d(std::make_unique<SpellCheckDecoratorPrivate>(this, textEdit))
 {
+    qDebug() << " SpellCheckDecorator::SpellCheckDecorator222 " << this;
 }
 
 SpellCheckDecorator::SpellCheckDecorator(QPlainTextEdit *textEdit)
     : QObject(textEdit)
     , d(std::make_unique<SpellCheckDecoratorPrivate>(this, textEdit))
 {
+    qDebug() << " SpellCheckDecorator::SpellCheckDecorator " << this;
 }
 
-SpellCheckDecorator::~SpellCheckDecorator() = default;
+SpellCheckDecorator::~SpellCheckDecorator()
+{
+    qDebug() << " SpellCheckDecorator::~SpellCheckDecorator() " << this;
+}
 
 void SpellCheckDecorator::setHighlighter(Highlighter *highlighter)
 {

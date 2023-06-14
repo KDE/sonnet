@@ -271,7 +271,7 @@ void Loader::loadPlugins()
 {
 #ifndef SONNET_STATIC
     const QStringList libPaths = QCoreApplication::libraryPaths() << QStringLiteral(INSTALLATION_PLUGIN_PATH);
-    const QString pathSuffix(QStringLiteral("/kf" QT_STRINGIFY(QT_VERSION_MAJOR)) + QStringLiteral("/sonnet/"));
+    const QString pathSuffix(QStringLiteral("/kf6/sonnet/"));
     for (const QString &libPath : libPaths) {
         QDir dir(libPath + pathSuffix);
         if (!dir.exists()) {
