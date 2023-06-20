@@ -356,7 +356,7 @@ msgstr ""
 #: ui/sonnetui.ui:96
 msgctxt "SonnetUi|"
 msgid "... the <b>misspelled</b> word shown in context ..."
-msgstr "…a palabra <b>incorrecta</b> mostrada no seu contexto…"
+msgstr "…a palabra <b>incorrecta</b> amosada no seu contexto…"
 
 #: ui/sonnetui.ui:106
 msgctxt "SonnetUi|"
@@ -495,7 +495,7 @@ msgstr ""
 "<qt>\n"
 "<p>Prema aquí para deixar a palabra descoñecida como está por esta vez.</p>\n"
 "<p>Esta acción é útil cando a palabra é un nome, unhas siglas, un "
-"estranxeirismo ou calquera outra palabra que queira empregar sen engadila no "
+"estranxeirismo ou calquera outra palabra que queira usar sen engadila no "
 "dicionario.</p>\n"
 "</qt>"
 
@@ -518,7 +518,7 @@ msgstr ""
 "<qt>\n"
 "<p>Prema aquí para deixar sempre esta palabra descoñecida como está.</p>\n"
 "<p> Esta acción é útil cando a palabra é un nome, unhas siglas, un "
-"estranxeirismo ou calquera outra palabra que queira empregar sen engadila no "
+"estranxeirismo ou calquera outra palabra que queira usar sen engadila no "
 "dicionario.</p>\n"
 "</qt>"
 
