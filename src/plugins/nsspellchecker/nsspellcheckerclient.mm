@@ -42,3 +42,5 @@ QStringList NSSpellCheckerClient::languages() const
     return lst;
 }
 
+
+#include "moc_nsspellcheckerclient.cpp"

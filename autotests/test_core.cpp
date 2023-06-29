@@ -89,3 +89,5 @@ void SonnetCoreTest::testCore2()
 
     // qDebug() << "\tlang is" << Sonnet::detectLanguage(sentence);
 }
+
+#include "moc_test_core.cpp"

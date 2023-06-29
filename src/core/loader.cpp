@@ -350,3 +350,5 @@ void Loader::changed()
     Q_EMIT configurationChanged();
 }
 }
+
+#include "moc_loader_p.cpp"

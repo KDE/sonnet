@@ -517,3 +517,5 @@ void Highlighter::setDocument(QTextDocument *document)
     QSyntaxHighlighter::setDocument(document);
 }
 }
+
+#include "moc_highlighter.cpp"

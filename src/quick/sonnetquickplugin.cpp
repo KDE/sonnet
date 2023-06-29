@@ -11,3 +11,5 @@ void SonnetQuickPlugin::registerTypes(const char *uri)
     qmlRegisterType<SpellcheckHighlighter>(uri, 1, 0, "SpellcheckHighlighter");
     qmlRegisterType<Sonnet::Settings>(uri, 1, 0, "Settings");
 }
+
+#include "moc_sonnetquickplugin.cpp"

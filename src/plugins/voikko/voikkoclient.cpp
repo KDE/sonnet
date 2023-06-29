@@ -59,3 +59,5 @@ QString VoikkoClient::name() const
 {
     return QStringLiteral("Voikko");
 }
+
+#include "moc_voikkoclient.cpp"

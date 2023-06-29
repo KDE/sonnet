@@ -11,3 +11,5 @@ Client::Client(QObject *parent)
     : QObject(parent)
 {
 }
+
+#include "moc_client_p.cpp"

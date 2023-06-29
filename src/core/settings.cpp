@@ -345,4 +345,5 @@ QAbstractListModel *Settings::dictionaryModel()
 }
 }
 
+#include "moc_settings.cpp"
 #include "settings.moc"

@@ -129,3 +129,5 @@ void SonnetFilterTest::testSentence()
     }
     QCOMPARE(hitNumber, hits.count());
 }
+
+#include "moc_test_filter.cpp"

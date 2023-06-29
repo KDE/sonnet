@@ -161,3 +161,5 @@ void SonnetSettingsTest::testSpellerAPIChangeSaves()
     QCOMPARE(autodetectLanguage, settingsAutoDetectLanguage);
     QCOMPARE(autodetectLanguage, speller.testAttribute(Speller::AutoDetectLanguage));
 }
+
+#include "moc_test_settings.cpp"

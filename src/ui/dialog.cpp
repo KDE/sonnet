@@ -401,3 +401,5 @@ void Dialog::slotDone()
     }
 }
 }
+
+#include "moc_dialog.cpp"

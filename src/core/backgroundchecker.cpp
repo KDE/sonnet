@@ -211,3 +211,6 @@ void Sonnet::BackgroundChecker::replace(int start, const QString &oldText, const
     d->words.replace(start - (d->sentenceOffset), oldText.length(), newText);
     d->mainTokenizer.replace(start, oldText.length(), newText);
 }
+
+#include "moc_backgroundchecker.cpp"
+#include "moc_backgroundchecker_p.cpp"
