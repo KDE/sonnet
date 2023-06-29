@@ -87,3 +87,5 @@ QStringList HunspellClient::languages() const
 {
     return m_languagePaths.keys() + m_languageAliases.keys();
 }
+
+#include "moc_hunspellclient.cpp"

@@ -62,3 +62,5 @@ QStringList ISpellCheckerClient::languages() const
 {
     return m_languages.keys();
 }
+
+#include "moc_ispellcheckerclient.cpp"

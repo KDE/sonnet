@@ -651,3 +651,5 @@ bool SpellcheckHighlighter::eventFilter(QObject *o, QEvent *e)
     }
     return false;
 }
+
+#include "moc_spellcheckhighlighter.cpp"

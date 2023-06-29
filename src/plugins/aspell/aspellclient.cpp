@@ -52,3 +52,5 @@ QStringList ASpellClient::languages() const
 
     return langs;
 }
+
+#include "moc_aspellclient.cpp"

@@ -36,3 +36,5 @@ QStringList HSpellClient::languages() const
     }
     return langs;
 }
+
+#include "moc_hspellclient.cpp"

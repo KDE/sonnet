@@ -200,3 +200,5 @@ QStringList ConfigView::ignoreList() const
 {
     return d->ignoreList;
 }
+
+#include "moc_configview.cpp"
