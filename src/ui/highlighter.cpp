@@ -82,7 +82,6 @@ public:
         active = true;
         automatic = false;
         autoDetectLanguageDisabled = false;
-        connected = false;
         wordCount = 0;
         errorCount = 0;
         intraWordEditing = false;
@@ -124,7 +123,7 @@ public:
     bool completeRehighlightRequired;
     bool intraWordEditing;
     bool spellCheckerFound; // cached d->dict->isValid() value
-    bool connected;
+    QMetaObject::Connection contentsChangeConnection;
     int disablePercentage = 0;
     int disableWordCount = 0;
     int wordCount, errorCount;
@@ -159,7 +158,14 @@ Highlighter::Highlighter(QPlainTextEdit *edit, const QColor &col)
     d->plainTextEdit->viewport()->installEventFilter(this);
 }
 
-Highlighter::~Highlighter() = default;
+Highlighter::~Highlighter()
+{
+    if (d->contentsChangeConnection) {
+        // prevent crash from QSyntaxHighlighter::~QSyntaxHighlighter -> (...) -> QTextDocument::contentsChange() signal emission:
+        // ASSERT failure in Sonnet::Highlighter: "Called object is not of the correct type (class destructor may have already run)"
+        QObject::disconnect(d->contentsChangeConnection);
+    }
+}
 
 bool Highlighter::spellCheckerFound() const
 {
@@ -312,9 +318,8 @@ void Highlighter::highlightBlock(const QString &text)
         return;
     }
 
-    if (!d->connected) {
-        connect(document(), &QTextDocument::contentsChange, this, &Highlighter::contentsChange);
-        d->connected = true;
+    if (!d->contentsChangeConnection) {
+        d->contentsChangeConnection = connect(document(), &QTextDocument::contentsChange, this, &Highlighter::contentsChange);
     }
 
         d->languageFilter->setBuffer(text);
@@ -513,7 +518,7 @@ bool Highlighter::checkerEnabledByDefault() const
 
 void Highlighter::setDocument(QTextDocument *document)
 {
-    d->connected = false;
+    d->contentsChangeConnection = {};
     QSyntaxHighlighter::setDocument(document);
 }
 }
