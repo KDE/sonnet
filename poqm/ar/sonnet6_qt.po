@@ -259,17 +259,17 @@ msgctxt "Sonnet::Dialog|"
 msgid "Spell check complete."
 msgstr "اكتمل تدقيق الإملاء."
 
-#: ui/highlighter.cpp:251 ui/highlighter.cpp:274
+#: ui/highlighter.cpp:257 ui/highlighter.cpp:280
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking enabled."
 msgstr "التدقيق الإملائي أثناء الكتابة مفعَّل."
 
-#: ui/highlighter.cpp:255
+#: ui/highlighter.cpp:261
 msgctxt "Sonnet::Highlighter|"
 msgid "Too many misspelled words. As-you-type spell checking disabled."
 msgstr "الكلمات الخاطئة إملائيًّا كثيرة جدًّا."
 
-#: ui/highlighter.cpp:276
+#: ui/highlighter.cpp:282
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking disabled."
 msgstr "التدقيق الإملائي أثنا الكتابة معطَّل."

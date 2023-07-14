@@ -259,19 +259,19 @@ msgctxt "Sonnet::Dialog|"
 msgid "Spell check complete."
 msgstr "Rašybos tikrinimas baigtas."
 
-#: ui/highlighter.cpp:251 ui/highlighter.cpp:274
+#: ui/highlighter.cpp:257 ui/highlighter.cpp:280
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking enabled."
 msgstr "Įjungtas klaidų tikrinimas spausdinimo metu."
 
-#: ui/highlighter.cpp:255
+#: ui/highlighter.cpp:261
 msgctxt "Sonnet::Highlighter|"
 msgid "Too many misspelled words. As-you-type spell checking disabled."
 msgstr ""
 "Pernelyg daug klaidingai parašytų žodžių. Klaidų tikrinimas spausdinant "
 "išjungiamas."
 
-#: ui/highlighter.cpp:276
+#: ui/highlighter.cpp:282
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking disabled."
 msgstr "Klaidų tikrinimas spausdinimo metu išjungtas."

@@ -244,18 +244,18 @@ msgctxt "Sonnet::Dialog|"
 msgid "Spell check complete."
 msgstr "맞춤법 검사가 끝났습니다."
 
-#: ui/highlighter.cpp:251 ui/highlighter.cpp:274
+#: ui/highlighter.cpp:257 ui/highlighter.cpp:280
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking enabled."
 msgstr "실시간 맞춤법 검사를 사용합니다."
 
-#: ui/highlighter.cpp:255
+#: ui/highlighter.cpp:261
 msgctxt "Sonnet::Highlighter|"
 msgid "Too many misspelled words. As-you-type spell checking disabled."
 msgstr ""
 "너무 많은 단어가 잘못되었습니다. 실시간 맞춤법 검사를 사용하지 않습니다."
 
-#: ui/highlighter.cpp:276
+#: ui/highlighter.cpp:282
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking disabled."
 msgstr "실시간 맞춤법 검사를 사용하지 않습니다."

@@ -247,17 +247,17 @@ msgctxt "Sonnet::Dialog|"
 msgid "Spell check complete."
 msgstr "Stafsetningaryfirferð lokið."
 
-#: ui/highlighter.cpp:251 ui/highlighter.cpp:274
+#: ui/highlighter.cpp:257 ui/highlighter.cpp:280
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking enabled."
 msgstr "Meðan-skrifað-er villuleit er virk."
 
-#: ui/highlighter.cpp:255
+#: ui/highlighter.cpp:261
 msgctxt "Sonnet::Highlighter|"
 msgid "Too many misspelled words. As-you-type spell checking disabled."
 msgstr "Of mörg orð röng. Meðan-skrifað-er villuleit er nú óvirk."
 
-#: ui/highlighter.cpp:276
+#: ui/highlighter.cpp:282
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking disabled."
 msgstr "Meðan-skrifað-er villuleit er óvirk."

@@ -315,19 +315,19 @@ msgctxt "Sonnet::Dialog|"
 msgid "Spell check complete."
 msgstr "எழுத்தாக்க சரிபார்ப்பு நிறைவடைந்த‍து."
 
-#: ui/highlighter.cpp:251 ui/highlighter.cpp:274
+#: ui/highlighter.cpp:257 ui/highlighter.cpp:280
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking enabled."
 msgstr "தட்டச்சிடும்போதான எழுத்தாக்க சரிபார்ப்பு இயக்கப்பட்டுள்ளது."
 
-#: ui/highlighter.cpp:255
+#: ui/highlighter.cpp:261
 #, fuzzy
 #| msgid "Too many misspelled words. As-you-type spell checking disabled."
 msgctxt "Sonnet::Highlighter|"
 msgid "Too many misspelled words. As-you-type spell checking disabled."
 msgstr "பலப் பிழையுள்ள சொற்களிருக்கின்றன. உள்ளிடுகையிலேயே சொல் திருத்தம் முடக்கப்பட்டது. "
 
-#: ui/highlighter.cpp:276
+#: ui/highlighter.cpp:282
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking disabled."
 msgstr "தட்டச்சிடும்போதான எழுத்தாக்க சரிபார்ப்பு முடக்கப்பட்டுள்ளது."

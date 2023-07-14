@@ -251,19 +251,19 @@ msgctxt "Sonnet::Dialog|"
 msgid "Spell check complete."
 msgstr "Ortografia-egiaztatzea burutu da."
 
-#: ui/highlighter.cpp:251 ui/highlighter.cpp:274
+#: ui/highlighter.cpp:257 ui/highlighter.cpp:280
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking enabled."
 msgstr "Idatzi ahala ortografia-egiaztatzea gaituta."
 
-#: ui/highlighter.cpp:255
+#: ui/highlighter.cpp:261
 msgctxt "Sonnet::Highlighter|"
 msgid "Too many misspelled words. As-you-type spell checking disabled."
 msgstr ""
 "Gaizki idatzitako hitz gehiegi. Idatzi ahala ortografia-egiaztatzea "
 "desgaituta."
 
-#: ui/highlighter.cpp:276
+#: ui/highlighter.cpp:282
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking disabled."
 msgstr "Idatzi ahala ortografia-egiaztatzea desgaituta. "

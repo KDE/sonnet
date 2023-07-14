@@ -342,14 +342,14 @@ msgctxt "Sonnet::Dialog|"
 msgid "Spell check complete."
 msgstr "Semakan ejaan selesai."
 
-#: ui/highlighter.cpp:251 ui/highlighter.cpp:274
+#: ui/highlighter.cpp:257 ui/highlighter.cpp:280
 #, fuzzy
 #| msgid "As-you-type spell checking enabled."
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking enabled."
 msgstr "Penyemakan ejaan semasa-anda-taip diaktifkan."
 
-#: ui/highlighter.cpp:255
+#: ui/highlighter.cpp:261
 #, fuzzy
 #| msgid "Too many misspelled words. As-you-type spell checking disabled."
 msgctxt "Sonnet::Highlighter|"
@@ -358,7 +358,7 @@ msgstr ""
 "Terlalu banyak perkataan kesilapan ejaan. Penyemakan ejaan semasa-anda-taip "
 "dinyahaktifkan."
 
-#: ui/highlighter.cpp:276
+#: ui/highlighter.cpp:282
 #, fuzzy
 #| msgid "As-you-type spell checking disabled."
 msgctxt "Sonnet::Highlighter|"

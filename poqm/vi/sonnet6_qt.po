@@ -247,19 +247,19 @@ msgctxt "Sonnet::Dialog|"
 msgid "Spell check complete."
 msgstr "Kiểm tra đánh vần xong."
 
-#: ui/highlighter.cpp:251 ui/highlighter.cpp:274
+#: ui/highlighter.cpp:257 ui/highlighter.cpp:280
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking enabled."
 msgstr "Đã bật tính năng kiểm tra đánh vần trong khi gõ."
 
-#: ui/highlighter.cpp:255
+#: ui/highlighter.cpp:261
 msgctxt "Sonnet::Highlighter|"
 msgid "Too many misspelled words. As-you-type spell checking disabled."
 msgstr ""
 "Quá nhiều từ bị đánh vần sai. Đã tắt tính năng kiểm tra đánh vần trong khi "
 "gõ."
 
-#: ui/highlighter.cpp:276
+#: ui/highlighter.cpp:282
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking disabled."
 msgstr "Đã tắt tính năng kiểm tra đánh vần trong khi gõ."

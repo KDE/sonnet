@@ -257,19 +257,19 @@ msgctxt "Sonnet::Dialog|"
 msgid "Spell check complete."
 msgstr "Санҷиши имло ба анҷом расид."
 
-#: ui/highlighter.cpp:251 ui/highlighter.cpp:274
+#: ui/highlighter.cpp:257 ui/highlighter.cpp:280
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking enabled."
 msgstr "Вақте ки шумо менависед, санҷиши имло фаъол карда мешавад."
 
-#: ui/highlighter.cpp:255
+#: ui/highlighter.cpp:261
 msgctxt "Sonnet::Highlighter|"
 msgid "Too many misspelled words. As-you-type spell checking disabled."
 msgstr ""
 "Аз ҳад зиёд калимаҳои ғалатдор. Вақте ки шумо менависед, санҷиши имло фаъол "
 "карда намешавад."
 
-#: ui/highlighter.cpp:276
+#: ui/highlighter.cpp:282
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking disabled."
 msgstr "Вақте ки шумо менависед, санҷиши имло фаъол карда намешавад."

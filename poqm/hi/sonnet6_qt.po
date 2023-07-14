@@ -255,17 +255,17 @@ msgctxt "Sonnet::Dialog|"
 msgid "Spell check complete."
 msgstr "वर्तनी जांच सम्पन्न हुइ।"
 
-#: ui/highlighter.cpp:251 ui/highlighter.cpp:274
+#: ui/highlighter.cpp:257 ui/highlighter.cpp:280
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking enabled."
 msgstr "टाइप करते समय वर्तनी जांच सक्षम है।"
 
-#: ui/highlighter.cpp:255
+#: ui/highlighter.cpp:261
 msgctxt "Sonnet::Highlighter|"
 msgid "Too many misspelled words. As-you-type spell checking disabled."
 msgstr "बहुत सारे गलत वर्तनी वाले शब्द हैं। टाइप करने के दौरान वर्तनी जांच बंद रखा गया है।"
 
-#: ui/highlighter.cpp:276
+#: ui/highlighter.cpp:282
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking disabled."
 msgstr "टाइप करते समय वर्तनी जांच अक्षम रखें"

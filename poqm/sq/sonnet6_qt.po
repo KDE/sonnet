@@ -334,14 +334,14 @@ msgctxt "Sonnet::Dialog|"
 msgid "Spell check complete."
 msgstr "Kontrolli i drejtshkrimit u kompletua."
 
-#: ui/highlighter.cpp:251 ui/highlighter.cpp:274
+#: ui/highlighter.cpp:257 ui/highlighter.cpp:280
 #, fuzzy
 #| msgid "As-you-type spell checking enabled."
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking enabled."
 msgstr "Kontrolli i shqiptimit ndërkohë që shtypni është aktivizuar."
 
-#: ui/highlighter.cpp:255
+#: ui/highlighter.cpp:261
 #, fuzzy
 #| msgid "Too many misspelled words. As-you-type spell checking disabled."
 msgctxt "Sonnet::Highlighter|"
@@ -350,7 +350,7 @@ msgstr ""
 "Shumë fjalë janë shqiptuar keq. Kontrolli i shqiptimit ndërkohë që shtypni u "
 "çaktivizua."
 
-#: ui/highlighter.cpp:276
+#: ui/highlighter.cpp:282
 #, fuzzy
 #| msgid "As-you-type spell checking disabled."
 msgctxt "Sonnet::Highlighter|"

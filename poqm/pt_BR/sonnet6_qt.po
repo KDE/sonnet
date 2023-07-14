@@ -254,18 +254,18 @@ msgctxt "Sonnet::Dialog|"
 msgid "Spell check complete."
 msgstr "Verificação ortográfica concluída."
 
-#: ui/highlighter.cpp:251 ui/highlighter.cpp:274
+#: ui/highlighter.cpp:257 ui/highlighter.cpp:280
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking enabled."
 msgstr "Verificação ortográfica ao digitar ativada."
 
-#: ui/highlighter.cpp:255
+#: ui/highlighter.cpp:261
 msgctxt "Sonnet::Highlighter|"
 msgid "Too many misspelled words. As-you-type spell checking disabled."
 msgstr ""
 "Há muitas palavras incorretas. Verificação ortográfica ao digitar desativada."
 
-#: ui/highlighter.cpp:276
+#: ui/highlighter.cpp:282
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking disabled."
 msgstr "Verificação ortográfica ao digitar desativada."

@@ -244,19 +244,19 @@ msgctxt "Sonnet::Dialog|"
 msgid "Spell check complete."
 msgstr "A helyesírás-ellenőrzés befejeződött."
 
-#: ui/highlighter.cpp:251 ui/highlighter.cpp:274
+#: ui/highlighter.cpp:257 ui/highlighter.cpp:280
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking enabled."
 msgstr "Az automatikus helyesírás-ellenőrzés bekapcsolva."
 
-#: ui/highlighter.cpp:255
+#: ui/highlighter.cpp:261
 msgctxt "Sonnet::Highlighter|"
 msgid "Too many misspelled words. As-you-type spell checking disabled."
 msgstr ""
 "Túl sok a hibásan írt szó, ezért az automatikus helyesírás-ellenőrzés ki "
 "lesz kapcsolva."
 
-#: ui/highlighter.cpp:276
+#: ui/highlighter.cpp:282
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking disabled."
 msgstr "Az automatikus helyesírás-ellenőrzés kikapcsolva."

@@ -284,13 +284,13 @@ msgctxt "Sonnet::Dialog|"
 msgid "Spell check complete."
 msgstr "അക്ഷരത്തെറ്റു് പരിശോധന പൂര്‍ത്തിയായി."
 
-#: ui/highlighter.cpp:251 ui/highlighter.cpp:274
+#: ui/highlighter.cpp:257 ui/highlighter.cpp:280
 #, fuzzy
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking enabled."
 msgstr "ടൈപ്പ് ചെയ്യുന്നതനുസരിച്ചു് അക്ഷരത്തെറ്റു് പരിശോധന സജ്ജമാക്കിയിരിക്കുന്നു."
 
-#: ui/highlighter.cpp:255
+#: ui/highlighter.cpp:261
 #, fuzzy
 msgctxt "Sonnet::Highlighter|"
 msgid "Too many misspelled words. As-you-type spell checking disabled."
@@ -298,7 +298,7 @@ msgstr ""
 "ഒരുപാടു് തെറ്റുള്ള വാക്കുകളുണ്ടു്. ടൈപ്പ് ചെയ്യുന്നതനുസരിച്ചുള്ള അക്ഷരത്തെറ്റു് പരിശോധന നിര്‍"
 "ജ്ജീമാക്കിയിരിക്കുന്നു."
 
-#: ui/highlighter.cpp:276
+#: ui/highlighter.cpp:282
 #, fuzzy
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking disabled."

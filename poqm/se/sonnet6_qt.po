@@ -277,13 +277,13 @@ msgctxt "Sonnet::Dialog|"
 msgid "Spell check complete."
 msgstr "Čállindárkkisteapmi lea geargan."
 
-#: ui/highlighter.cpp:251 ui/highlighter.cpp:274
+#: ui/highlighter.cpp:257 ui/highlighter.cpp:280
 #, fuzzy
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking enabled."
 msgstr "Čáledettiin dárkkisteapmi lea jođus."
 
-#: ui/highlighter.cpp:255
+#: ui/highlighter.cpp:261
 #, fuzzy
 msgctxt "Sonnet::Highlighter|"
 msgid "Too many misspelled words. As-you-type spell checking disabled."
@@ -291,7 +291,7 @@ msgstr ""
 "Menddo máŋga boasttočállon sánit. Čáledettiin dárkkisteapmi ii leat šat "
 "jođus."
 
-#: ui/highlighter.cpp:276
+#: ui/highlighter.cpp:282
 #, fuzzy
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking disabled."

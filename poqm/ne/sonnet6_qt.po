@@ -341,21 +341,21 @@ msgctxt "Sonnet::Dialog|"
 msgid "Spell check complete."
 msgstr "हिज्जे परीक्षक"
 
-#: ui/highlighter.cpp:251 ui/highlighter.cpp:274
+#: ui/highlighter.cpp:257 ui/highlighter.cpp:280
 #, fuzzy
 #| msgid "As-you-type spell checking enabled."
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking enabled."
 msgstr "तपाईँले टाइप गर्दा हिज्जे जाँच सक्षम पारियो ।"
 
-#: ui/highlighter.cpp:255
+#: ui/highlighter.cpp:261
 #, fuzzy
 #| msgid "Too many misspelled words. As-you-type spell checking disabled."
 msgctxt "Sonnet::Highlighter|"
 msgid "Too many misspelled words. As-you-type spell checking disabled."
 msgstr "अति धेरै हिज्जे गलत भएका शब्दहरू । तपाईँले टाइप गर्दा हिज्जे जाँच अक्षम पारियो ।"
 
-#: ui/highlighter.cpp:276
+#: ui/highlighter.cpp:282
 #, fuzzy
 #| msgid "As-you-type spell checking disabled."
 msgctxt "Sonnet::Highlighter|"
