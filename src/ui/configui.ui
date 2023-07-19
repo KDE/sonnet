@@ -129,8 +129,7 @@
                <string>&amp;Add</string>
               </property>
               <property name="icon">
-               <iconset theme="list-add">
-                <normaloff>.</normaloff>.</iconset>
+               <iconset theme="list-add"/>
               </property>
              </widget>
             </item>
@@ -142,8 +141,7 @@
                  <string>&amp;Remove</string>
                 </property>
                 <property name="icon">
-                 <iconset theme="list-remove">
-                  <normaloff>.</normaloff>.</iconset>
+                 <iconset theme="list-remove"/>
                 </property>
                </widget>
               </item>
