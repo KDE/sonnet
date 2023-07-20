@@ -3330,7 +3330,7 @@ msgstr "Adde al dictionario"
 #~ msgstr "Pagina Domo o Principal"
 
 #~ msgid "About KDE"
-#~ msgstr "A proposio de KDE"
+#~ msgstr "A proposito de KDE"
 
 #~ msgid ""
 #~ "<html><font size=\"5\">KDE - Be Free!</font><br /><b>Platform Version %1</"
