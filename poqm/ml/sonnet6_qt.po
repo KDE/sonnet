@@ -248,7 +248,7 @@ msgctxt "SonnetConfigUI|"
 msgid "&Add"
 msgstr "&കൂട്ടിച്ചേര്‍ക്കുക"
 
-#: ui/configui.ui:142
+#: ui/configui.ui:141
 #, fuzzy
 msgctxt "SonnetConfigUI|"
 msgid "&Remove"

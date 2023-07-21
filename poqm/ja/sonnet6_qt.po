@@ -303,7 +303,7 @@ msgctxt "SonnetConfigUI|"
 msgid "&Add"
 msgstr "追加(&A)"
 
-#: ui/configui.ui:142
+#: ui/configui.ui:141
 #, fuzzy
 #| msgid "&Remove"
 msgctxt "SonnetConfigUI|"

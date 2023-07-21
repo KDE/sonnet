@@ -219,7 +219,7 @@ msgctxt "SonnetConfigUI|"
 msgid "&Add"
 msgstr "&Pridať"
 
-#: ui/configui.ui:142
+#: ui/configui.ui:141
 msgctxt "SonnetConfigUI|"
 msgid "&Remove"
 msgstr "O&dstrániť"

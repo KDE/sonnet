@@ -228,7 +228,7 @@ msgctxt "SonnetConfigUI|"
 msgid "&Add"
 msgstr "ਸ਼ਾਮਿਲ(&A)"
 
-#: ui/configui.ui:142
+#: ui/configui.ui:141
 msgctxt "SonnetConfigUI|"
 msgid "&Remove"
 msgstr "ਹਟਾਓ(&R)"
