@@ -214,7 +214,7 @@ msgctxt "SonnetConfigUI|"
 msgid "&Add"
 msgstr "추가(&A)"
 
-#: ui/configui.ui:142
+#: ui/configui.ui:141
 msgctxt "SonnetConfigUI|"
 msgid "&Remove"
 msgstr "삭제(&R)"

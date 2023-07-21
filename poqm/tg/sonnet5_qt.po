@@ -227,7 +227,7 @@ msgctxt "SonnetConfigUI|"
 msgid "&Add"
 msgstr "&Илова кардан"
 
-#: ui/configui.ui:142
+#: ui/configui.ui:141
 msgctxt "SonnetConfigUI|"
 msgid "&Remove"
 msgstr "&Тоза кардан"

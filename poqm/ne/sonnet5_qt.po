@@ -301,7 +301,7 @@ msgctxt "SonnetConfigUI|"
 msgid "&Add"
 msgstr "थप्नुहोस्"
 
-#: ui/configui.ui:142
+#: ui/configui.ui:141
 #, fuzzy
 #| msgid "&Remove"
 msgctxt "SonnetConfigUI|"

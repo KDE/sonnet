@@ -221,7 +221,7 @@ msgctxt "SonnetConfigUI|"
 msgid "&Add"
 msgstr "&Cuir ris"
 
-#: ui/configui.ui:142
+#: ui/configui.ui:141
 msgctxt "SonnetConfigUI|"
 msgid "&Remove"
 msgstr "Thoi&r air falbh"

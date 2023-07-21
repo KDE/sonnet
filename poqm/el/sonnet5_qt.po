@@ -228,7 +228,7 @@ msgctxt "SonnetConfigUI|"
 msgid "&Add"
 msgstr "Πρ&οσθήκη"
 
-#: ui/configui.ui:142
+#: ui/configui.ui:141
 msgctxt "SonnetConfigUI|"
 msgid "&Remove"
 msgstr "Α&φαίρεση"
