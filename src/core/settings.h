@@ -120,6 +120,5 @@ private:
     std::unique_ptr<SettingsPrivate> const d;
 };
 }
-Q_DECLARE_METATYPE(QAbstractListModel *)
 
 #endif // SONNET_SETTINGS_H
