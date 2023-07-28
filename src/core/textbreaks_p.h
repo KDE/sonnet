@@ -95,4 +95,7 @@ private:
     std::unique_ptr<TextBreaksPrivate> const d;
 };
 }
+
+Q_DECLARE_TYPEINFO(Sonnet::TextBreaks::Position, Q_PRIMITIVE_TYPE);
+
 #endif
