@@ -127,7 +127,8 @@ Token BreakTokenizerPrivate::next()
 
     itemPosition++;
 
-    const TextBreaks::Position &textBreak = this->breaks().at(itemPosition);
+    const TextBreaks::Positions breaks = this->breaks();
+    const TextBreaks::Position &textBreak = breaks.at(itemPosition);
     QStringView token = QStringView(buffer).mid(textBreak.start, textBreak.length);
     last = {token, textBreak.start};
     return last;
