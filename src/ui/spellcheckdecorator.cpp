@@ -47,7 +47,7 @@ public:
     {
         if (m_plainTextEdit) {
             m_plainTextEdit->removeEventFilter(q);
-            m_plainTextEdit->removeEventFilter(q);
+            m_plainTextEdit->viewport()->removeEventFilter(q);
         }
         if (m_textEdit) {
             m_textEdit->removeEventFilter(q);
