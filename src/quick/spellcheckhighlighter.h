@@ -19,10 +19,12 @@ class HighlighterPrivate;
 /// when detecting spelling mistakes.
 ///
 /// SpellcheckHighlighter is adapted for QML applications. In usual Kirigami/QQC2-desktop-style
-/// applications, this can be used directly by adding `Kirigami.SpellChecking.enabled: true` on
-/// a TextArea/TextField.
+/// applications, this can be used directly by adding `Kirigami.SpellCheck.enabled: true` on
+/// a TextArea.
 ///
-/// On other QML applications, you can add the SpellcheckHighlighter as a child of a TextArea/TextField.
+/// On other QML applications, you can add the SpellcheckHighlighter as a child of a TextArea.
+///
+/// Note: TextField is not supported, as it lacks QTextDocument API that Sonnet relies on.
 ///
 /// \code{.qml}
 /// TextArea {
