@@ -51,6 +51,7 @@ class HighlighterPrivate;
 class SpellcheckHighlighter : public QSyntaxHighlighter
 {
     Q_OBJECT
+    QML_ELEMENT
     /// This property holds the underneath document from a QML TextEdit.
     /// \since 5.88
     Q_PROPERTY(QQuickTextDocument *document READ quickDocument WRITE setQuickDocument NOTIFY documentChanged)

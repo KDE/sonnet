@@ -1,8 +1,7 @@
-ecm_add_qml_module(sonnetquickplugin URI "org.kde.sonnet" VERSION 1.0)
+ecm_add_qml_module(sonnetquickplugin URI "org.kde.sonnet" VERSION 1.0 GENERATE_PLUGIN_SOURCE)
 
 target_sources(sonnetquickplugin PRIVATE
-    sonnetquickplugin.cpp
-    sonnetquickplugin.h
+    types.h
     spellcheckhighlighter.cpp
     spellcheckhighlighter.h )
 
@@ -19,9 +18,4 @@ target_link_libraries(sonnetquickplugin
     PRIVATE KF6SonnetCore
 )
 
-set(bindest "${CMAKE_BINARY_DIR}/bin/qml/org/kde/sonnet/")
-set_target_properties(sonnetquickplugin PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${bindest}")
-
 ecm_finalize_qml_module(sonnetquickplugin DESTINATION ${KDE_INSTALL_QMLDIR})
-
-ecm_generate_qmltypes(org.kde.sonnet 1.0 DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/sonnet)

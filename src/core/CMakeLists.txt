@@ -1,6 +1,8 @@
 add_library(KF6SonnetCore)
 add_library(KF6::SonnetCore ALIAS KF6SonnetCore)
 
+qt_extract_metatypes(KF6SonnetCore)
+
 set_target_properties(KF6SonnetCore PROPERTIES
     VERSION     ${SONNET_VERSION}
     SOVERSION   ${SONNET_SOVERSION}
