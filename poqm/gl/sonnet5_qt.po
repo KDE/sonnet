@@ -236,7 +236,7 @@ msgstr "Comprobar a ortografía"
 #: ui/dialog.cpp:196
 msgctxt "Sonnet::Dialog|progress label"
 msgid "Spell checking in progress..."
-msgstr "Estase a corrixir a ortografía…"
+msgstr "Corrixindo a ortografía…"
 
 #: ui/dialog.cpp:220
 msgctxt "Sonnet::Dialog|"
