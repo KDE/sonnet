@@ -12,10 +12,8 @@ portingAid: false
 deprecated: false
 release: true
 libraries:
- - qmake: SonnetCore
-   cmake: "KF6::SonnetCore"
- - qmake: SonnetUi
-   cmake: "KF6::SonnetUi"
+ - cmake: "KF6::SonnetCore"
+ - cmake: "KF6::SonnetUi"
 cmakename: KF6Sonnet
 
 public_lib: true
