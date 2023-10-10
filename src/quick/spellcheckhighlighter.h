@@ -115,6 +115,7 @@ class SpellcheckHighlighter : public QSyntaxHighlighter
 
 public:
     explicit SpellcheckHighlighter(QObject *parent = nullptr);
+    ~SpellcheckHighlighter() override;
 
     /// Returns a list of suggested replacements for the given misspelled word.
     /// If the word is not misspelled, the list will be empty.

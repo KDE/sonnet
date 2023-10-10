@@ -160,6 +160,13 @@ SpellcheckHighlighter::SpellcheckHighlighter(QObject *parent)
 {
 }
 
+SpellcheckHighlighter::~SpellcheckHighlighter()
+{
+    if (document()) {
+        disconnect(document(), nullptr, this, nullptr);
+    }
+}
+
 bool SpellcheckHighlighter::spellCheckerFound() const
 {
     return d->spellCheckerFound;
