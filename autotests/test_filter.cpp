@@ -9,8 +9,8 @@
 #include "test_filter.h"
 #include "tokenizer_p.h"
 
+#include <QList>
 #include <QTest>
-#include <QVector>
 
 QTEST_GUILESS_MAIN(SonnetFilterTest)
 
@@ -56,9 +56,9 @@ void SonnetFilterTest::testLatin()
     QCOMPARE(hitNumber, hits.count());
 }
 
-static QVector<ushort> convertToUnicode(const QString &str)
+static QList<ushort> convertToUnicode(const QString &str)
 {
-    QVector<ushort> unicode;
+    QList<ushort> unicode;
     for (int i = 0; i < str.length(); ++i) {
         unicode += str[i].unicode();
     }
@@ -100,7 +100,7 @@ void SonnetFilterTest::testIndic()
     int hitNumber = 0;
     while (tokenizer.hasNext()) {
         w = tokenizer.next();
-        QVector<ushort> unicode = convertToUnicode(w.toString());
+        QList<ushort> unicode = convertToUnicode(w.toString());
         QCOMPARE(w.toString(), hits[hitNumber].word);
         QCOMPARE(w.position(), hits[hitNumber].start);
         ++hitNumber;

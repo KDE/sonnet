@@ -53,8 +53,8 @@ public:
 
     void loadModels();
     QList<QChar::Script> findRuns(const QString &text);
-    QVector<QString> createOrderedModel(const QString &content);
-    int distance(const QVector<QString> &model, const QHash<QString, int> &knownModel);
+    QList<QString> createOrderedModel(const QString &content);
+    int distance(const QList<QString> &model, const QHash<QString, int> &knownModel);
     QStringList guessFromTrigrams(const QString &sample, const QStringList &langs);
     QStringList identify(const QString &sample, const QList<QChar::Script> &scripts);
     QString guessFromDictionaries(const QString &sentence, const QStringList &candidates);
@@ -717,7 +717,7 @@ QStringList GuessLanguagePrivate::guessFromTrigrams(const QString &sample, const
 {
     QStringList ret;
 
-    const QVector<QString> sampleTrigrams = createOrderedModel(sample);
+    const QList<QString> sampleTrigrams = createOrderedModel(sample);
 
     // Sort by score
     QMultiMap<int, QString> scores;
@@ -757,7 +757,7 @@ QStringList GuessLanguagePrivate::guessFromTrigrams(const QString &sample, const
     return ret;
 }
 
-QVector<QString> GuessLanguagePrivate::createOrderedModel(const QString &content)
+QList<QString> GuessLanguagePrivate::createOrderedModel(const QString &content)
 {
     QHash<QString, int> trigramCounts;
 
@@ -769,7 +769,7 @@ QVector<QString> GuessLanguagePrivate::createOrderedModel(const QString &content
     }
 
     // invert the map <freq, trigram>
-    QVector<QPair<int, QString>> trigramFrequencyList;
+    QList<QPair<int, QString>> trigramFrequencyList;
     trigramFrequencyList.reserve(trigramCounts.size());
 
     auto it = trigramCounts.constBegin();
@@ -789,7 +789,7 @@ QVector<QString> GuessLanguagePrivate::createOrderedModel(const QString &content
         return a.first > b.first;
     });
 
-    QVector<QString> orderedTrigrams;
+    QList<QString> orderedTrigrams;
     orderedTrigrams.reserve(trigramFrequencyList.size());
     for (const auto &tri : std::as_const(trigramFrequencyList)) {
         orderedTrigrams.append(tri.second);
@@ -798,7 +798,7 @@ QVector<QString> GuessLanguagePrivate::createOrderedModel(const QString &content
     return orderedTrigrams;
 }
 
-int GuessLanguagePrivate::distance(const QVector<QString> &model, const QHash<QString, int> &knownModel)
+int GuessLanguagePrivate::distance(const QList<QString> &model, const QHash<QString, int> &knownModel)
 {
     int counter = -1;
     int dist = 0;

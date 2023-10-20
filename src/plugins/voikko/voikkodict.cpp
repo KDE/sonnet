@@ -10,8 +10,8 @@
 #include "voikkodebug.h"
 
 #include <QDir>
+#include <QList>
 #include <QStandardPaths>
-#include <QVector>
 #ifdef Q_IS_WIN
 #include <QSysInfo>
 #endif
@@ -123,7 +123,7 @@ public:
     QString m_userDictionaryFilepath;
 
     // Used when converting Qstring to wchar_t strings
-    QVector<wchar_t> m_conversionBuffer;
+    QList<wchar_t> m_conversionBuffer;
 
     VoikkoDictPrivate(const QString &language, const VoikkoDict *publicPart) Q_DECL_NOEXCEPT : q(publicPart),
                                                                                                m_userDictionaryFilepath(getUserDictionaryPath()),
@@ -198,7 +198,7 @@ public:
 
     /**
      * Convert the given QString to a \0 terminated wchar_t string.
-     * Uses QVector as a buffer and return it's internal data pointer.
+     * Uses QList as a buffer and return it's internal data pointer.
      */
     inline const wchar_t *QStringToWchar(const QString &str) Q_DECL_NOEXCEPT
     {

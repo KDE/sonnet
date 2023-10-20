@@ -14,10 +14,10 @@
 #include <QCoreApplication>
 #include <QDir>
 #include <QHash>
+#include <QList>
 #include <QLocale>
 #include <QMap>
 #include <QPluginLoader>
-#include <QVector>
 
 #include <algorithm>
 
@@ -36,7 +36,7 @@ public:
     SettingsImpl *settings;
 
     // <language, Clients with that language >
-    QMap<QString, QVector<Client *>> languageClients;
+    QMap<QString, QList<Client *>> languageClients;
     QStringList clients;
 
     QSet<QString> loadedPlugins;
@@ -91,7 +91,7 @@ SpellerPlugin *Loader::createSpeller(const QString &language, const QString &cli
         return nullptr;
     }
 
-    const QVector<Client *> lClients = *clientsItr;
+    const QList<Client *> lClients = *clientsItr;
 
     if (backend.isEmpty()) {
         backend = d->settings->defaultClient();
@@ -108,7 +108,7 @@ SpellerPlugin *Loader::createSpeller(const QString &language, const QString &cli
         }
     }
 
-    QVectorIterator<Client *> itr(lClients);
+    QListIterator<Client *> itr(lClients);
     while (itr.hasNext()) {
         Client *item = itr.next();
         if (!backend.isEmpty()) {
@@ -334,7 +334,7 @@ void Loader::loadPlugin(const QString &pluginPath)
     d->clients.append(client->name());
 
     for (const QString &language : languages) {
-        QVector<Client *> &languageClients = d->languageClients[language];
+        QList<Client *> &languageClients = d->languageClients[language];
 
         if (languageClients.isEmpty() //
             || client->reliability() < languageClients.first()->reliability()) {
