@@ -18,16 +18,18 @@
 # tahmar1900 <tahmar1900@gmail.com>, 2008, 2009.
 # Elkana Bardugo <ttv200@gmail.com>, 2016.
 # Elkana Bardugo <ttv200@gmail.com>, 2017. #zanata
+# SPDX-FileCopyrightText: 2023 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-05-16 06:50-0400\n"
-"Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
-"Language-Team: Hebrew <kde-i18n-doc@kde.org>\n"
+"Project-Id-Version: \n"
+"PO-Revision-Date: 2023-10-21 21:30+0300\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Zanata 3.9.6\n"
+"X-Generator: Lokalize 23.08.1\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
 "X-Qt-Contexts: true\n"
@@ -48,40 +50,34 @@ msgid "80"
 msgstr "80"
 
 #: core/loader.cpp:187
-#, fuzzy
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "-ise suffixes"
 msgstr "סיומות ‎-ise"
 
 #: core/loader.cpp:188
-#, fuzzy
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "-ize suffixes"
 msgstr "סיומות ‎-ize"
 
 #: core/loader.cpp:189
-#, fuzzy
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "-ise suffixes and with accents"
-msgstr "סיומות ‎-ise עם מבטאים"
+msgstr "סיומות ‎-ise עם הטעמות"
 
 #: core/loader.cpp:190
-#, fuzzy
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "-ise suffixes and without accents"
-msgstr "סיומות ‎-ise בלי מבטאים"
+msgstr "סיומות ‎-ise בלי הטעמות"
 
 #: core/loader.cpp:191
-#, fuzzy
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "-ize suffixes and with accents"
-msgstr "סיומות ‎-ize עם מבטאים"
+msgstr "סיומות ‎-ize עם הטעמות"
 
 #: core/loader.cpp:192
-#, fuzzy
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "-ize suffixes and without accents"
-msgstr "סיומות ‎-ize בלי מבטאים"
+msgstr "סיומות ‎-ize ובלי הטעמות"
 
 #: core/loader.cpp:193
 msgctxt "Sonnet::Loader|dictionary variant"
@@ -114,31 +110,29 @@ msgid "variant 2"
 msgstr "חלופה 2"
 
 #: core/loader.cpp:199
-#, fuzzy
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "without accents"
-msgstr "בלי מבטאים"
+msgstr "בלי הטעמות"
 
 #: core/loader.cpp:200
-#, fuzzy
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "with accents"
-msgstr "עם מבטאים"
+msgstr "עם הטעמות"
 
 #: core/loader.cpp:201
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "with ye, modern russian"
-msgstr ""
+msgstr "עם יֶה, רוסית מודרנית"
 
 #: core/loader.cpp:202
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "with yeyo, modern and old russian"
-msgstr ""
+msgstr "עם יֶהיוֹ, רוסית מודרנית ועתיקה"
 
 #: core/loader.cpp:203
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "with yo, old russian"
-msgstr ""
+msgstr "עם יוֹ, רוסית עתיקה"
 
 #: core/loader.cpp:204
 msgctxt "Sonnet::Loader|dictionary variant"
@@ -160,28 +154,19 @@ msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
 #: quick/spellcheckhighlighter.cpp:252 quick/spellcheckhighlighter.cpp:276
-#, fuzzy
-#| msgctxt "Sonnet::Highlighter|"
-#| msgid "As-you-type spell checking enabled."
 msgctxt "SpellcheckHighlighter|"
 msgid "As-you-type spell checking enabled."
-msgstr "בדיקת איות תוך כדי כתיבה מופעלת."
+msgstr "בדיקת איות תוך כדי הקלדה פעילה."
 
 #: quick/spellcheckhighlighter.cpp:256
-#, fuzzy
-#| msgctxt "Sonnet::Highlighter|"
-#| msgid "Too many misspelled words. As-you-type spell checking disabled."
 msgctxt "SpellcheckHighlighter|"
 msgid "Too many misspelled words. As-you-type spell checking disabled."
-msgstr "יותר מדי שגיאות כתיב. בדיקת איות תוך כדי כתיבה מבוטלת."
+msgstr "יותר מדי שגיאות כתיב. בדיקת איות תוך כדי הקלדה מושבתת."
 
 #: quick/spellcheckhighlighter.cpp:278
-#, fuzzy
-#| msgctxt "Sonnet::Highlighter|"
-#| msgid "As-you-type spell checking disabled."
 msgctxt "SpellcheckHighlighter|"
 msgid "As-you-type spell checking disabled."
-msgstr "בדיקת איות תוך כדי כתיבה מבוטלת."
+msgstr "בדיקת איות תוך כדי הקלדה מושבתת."
 
 #: ui/configdialog.cpp:40
 msgctxt "Sonnet::ConfigDialog|"
@@ -191,7 +176,7 @@ msgstr "הגדרת בדיקת איות"
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
 msgid "No backend like hunspell/aspell/myspell installed"
-msgstr ""
+msgstr "לא מותקן מנגנון כגון hunspell/aspell/myspell"
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -201,7 +186,7 @@ msgstr "שפת ברירת־מחדל:"
 #: ui/configui.ui:63
 msgctxt "SonnetConfigUI|"
 msgid "Choose your preferred languages"
-msgstr ""
+msgstr "נא לבחור את השפות המועדפות עליך"
 
 #: ui/configui.ui:71
 msgctxt "SonnetConfigUI|"
@@ -211,12 +196,12 @@ msgstr "אפשרויות"
 #: ui/configui.ui:77
 msgctxt "SonnetConfigUI|"
 msgid "Enable autodetection of &language"
-msgstr "אפשר זיהוי &שפה אוטומטי"
+msgstr "הפעלת זיהוי &שפה אוטומטי"
 
 #: ui/configui.ui:84
 msgctxt "SonnetConfigUI|"
 msgid "Enable &background spellchecking"
-msgstr "אפשר בדיקת איות ב&רקע"
+msgstr "הפעלת בדיקת איות ב&רקע"
 
 #: ui/configui.ui:91
 msgctxt "SonnetConfigUI|"
@@ -226,67 +211,67 @@ msgstr "&בדיקת איות אוטומטית מופעלת כברירת מחדל
 #: ui/configui.ui:98
 msgctxt "SonnetConfigUI|"
 msgid "Skip all &uppercase words"
-msgstr "&דלג על כל המילים בעלות אותיות רישיות בלבד"
+msgstr "&דילוג על כל המילים שמורכבות מאותיות גדולות בלבד"
 
 #: ui/configui.ui:105
 msgctxt "SonnetConfigUI|"
 msgid "S&kip run-together words"
-msgstr "דלג על &מילים מחוברות"
+msgstr "דילוג על &מילים מחוברות"
 
 #: ui/configui.ui:115
 msgctxt "SonnetConfigUI|"
 msgid "Ignored Words:"
-msgstr "מילים שיש להתעלם מהן"
+msgstr "מילים שיש להתעלם מהן:"
 
 #: ui/configui.ui:129
 msgctxt "SonnetConfigUI|"
 msgid "&Add"
-msgstr "&הוסף"
+msgstr "הו&ספה"
 
 #: ui/configui.ui:141
 msgctxt "SonnetConfigUI|"
 msgid "&Remove"
-msgstr "&הסר"
+msgstr "הס&רה"
 
 #: ui/dialog.cpp:85 ui/dialog.cpp:194 ui/dialog.cpp:399
 msgctxt "Sonnet::Dialog|@title:window"
 msgid "Check Spelling"
-msgstr "בדוק איות"
+msgstr "בדיקת איות"
 
 #: ui/dialog.cpp:193
 msgctxt "Sonnet::Dialog|progress label"
 msgid "Spell checking in progress..."
-msgstr "בדיקת איות בפעולה..."
+msgstr "מתבצעת בדיקת איות…"
 
 #: ui/dialog.cpp:214
 msgctxt "Sonnet::Dialog|"
 msgid "Spell check stopped."
-msgstr "בדיקת איות נעצרה."
+msgstr "בדיקת האיות נעצרה."
 
 #: ui/dialog.cpp:224
 msgctxt "Sonnet::Dialog|"
 msgid "Spell check canceled."
-msgstr "בדיקת איות בוטלה."
+msgstr "בדיקת האיות בוטלה."
 
 #: ui/dialog.cpp:396 ui/dialog.cpp:399
 msgctxt "Sonnet::Dialog|"
 msgid "Spell check complete."
-msgstr "בדיקת איות הושלמה."
+msgstr "בדיקת האיות הושלמה."
 
 #: ui/highlighter.cpp:257 ui/highlighter.cpp:280
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking enabled."
-msgstr "בדיקת איות תוך כדי כתיבה מופעלת."
+msgstr "בדיקת איות תוך כדי הקלדה מופעלת."
 
 #: ui/highlighter.cpp:261
 msgctxt "Sonnet::Highlighter|"
 msgid "Too many misspelled words. As-you-type spell checking disabled."
-msgstr "יותר מדי שגיאות כתיב. בדיקת איות תוך כדי כתיבה מבוטלת."
+msgstr "יותר מדי שגיאות כתיב. בדיקת איות תוך כדי הקלדה מושבתת."
 
 #: ui/highlighter.cpp:282
 msgctxt "Sonnet::Highlighter|"
 msgid "As-you-type spell checking disabled."
-msgstr "בדיקת איות תוך כדי כתיבה מבוטלת."
+msgstr "בדיקת איות תוך כדי הקלדה מושבתת."
 
 #: ui/sonnetui.ui:41 ui/sonnetui.ui:57
 msgctxt "SonnetUi|"
@@ -304,26 +289,26 @@ msgid ""
 "All</b>.</p>\n"
 "</qt>"
 msgstr ""
-"<qt><p>מלה זו היא מלה \"לא מוכרת\" כיוון שהיא לא מתאימה לאף ערך במילון "
-"שמשתמשים בו כרגע. ייתכן גם שזו מלה בשפה זרה.</p>\n"
-"<p>אם איות המילה אינו שגוי, ייתכן שיהיה ברצונך להוסיף את המילה למילון על ידי "
-"לחיצה על <b>הוסף למילון</b>. אם אין ברצונך להוסיף את המלה הלא מוכרת למילון, "
-"אך ברצונך להשאירה ללא שינויים, לחץ על <b>התעלם</b> או <b>התעלם מהכל</b>.</"
+"<qt><p>מילה זו היא מילה „לא מוכרת” כיוון שאינה מתאימה לאף ערך במילון "
+"שמשתמשים בו כרגע. ייתכן גם שזו מילה בשפה זרה.</p>\n"
+"<p>אם איות המילה אינו שגוי, אולי יעניין אותך להוסיף את המילה למילון על ידי "
+"לחיצה על <b>הוספה למילון</b>. כדי לא להוסיף את המילה הלא מוכרת למילון, אך "
+"להשאירה ללא שינויים, יש ללחוץ על <b>התעלמות</b> או <b>התעלמות מהכול</b>.</"
 "p>\n"
-"<p>עם זאת, אם איות המילה הינו שגוי, באפשרותך לנסות למצוא את התיקון המתאים "
-"מהרשימה להלן. אם אין אפשרותך למצוא שם תיקון, באפשרותך להקליד אותו בתיבת "
-"הטקסט להלן וללחוץ על <b>החלף</b> או <b>החלף הכל</b>.</p>\n"
+"<p>עם זאת, אם איות המילה שגוי, אפשר לנסות למצוא את התיקון המתאים מהרשימה "
+"להלן. אם לא הצלחת למצוא שם תיקון, ניתן להקליד אותו בתיבת הטקסט להלן וללחוץ "
+"על <b>החלפה</b> או <b>החלפה של הכול</b>.</p>\n"
 "</qt>"
 
 #: ui/sonnetui.ui:47
 msgctxt "SonnetUi|"
 msgid "Unknown word:"
-msgstr "מילה לא מוכרת:"
+msgstr "מילה בלתי מוכרת:"
 
 #: ui/sonnetui.ui:54
 msgctxt "SonnetUi|"
 msgid "Unknown word"
-msgstr "מילה לא מוכרת"
+msgstr "מילה בלתי מוכרת"
 
 #: ui/sonnetui.ui:63
 msgctxt "SonnetUi|"
@@ -338,7 +323,7 @@ msgid ""
 "</qt>"
 msgstr ""
 "<qt>\n"
-"<p>בחר כאן את שפת המסמך הנבדק.</p>\n"
+"<p>נא לבחור את שפת המסמך שנתון להגהתך.</p>\n"
 "</qt>"
 
 #: ui/sonnetui.ui:75
@@ -347,13 +332,11 @@ msgid "&Language:"
 msgstr "&שפה:"
 
 #: ui/sonnetui.ui:85
-#, fuzzy
 msgctxt "SonnetUi|"
 msgid "Text excerpt showing the unknown word in its context."
-msgstr "קטע מתוך הטקסט המציג את המילה שאינה מוכרת וההקשר בו היא מופיעה."
+msgstr "מובאת טקסט שמציגה את המילה הבלתי־מוכרת בהקשר שלה."
 
 #: ui/sonnetui.ui:88
-#, fuzzy
 msgctxt "SonnetUi|"
 msgid ""
 "<qt>\n"
@@ -364,20 +347,18 @@ msgid ""
 "</qt>"
 msgstr ""
 "<qt>\n"
-"<p>כאן באפשרותך לראות קטע מתוך הטקסט המציג את המלה שאינה מוכרת בהקשר בו היא "
-"מופיעה. אם מידע זה אינו מספיק לך כדי לבחור את התיקון המתאים למלה הלא מוכרת, "
-"באפשרותך ללחוץ על המסמך שנמצא בבדיקה, לקרוא קטע טקסט גדול יותר ולחזור לכאן "
-"כדי להמשיך בבדיקה.</p>\n"
+"<p>כאן אפשר לראות קטע מתוך הטקסט המציג את המילה הבלתי־מוכרת בהקשר בו היא "
+"מופיעה. אם מידע זה לא מספיק לך כדי לבחור את התיקון המתאים למילה הלא מוכרת, "
+"אפשר ללחוץ על המסמך שנמצא בבדיקתך, לקרוא קטע טקסט גדול יותר ולחזור לכאן כדי "
+"להמשיך בבדיקה.</p>\n"
 "</qt>"
 
 #: ui/sonnetui.ui:96
-#, fuzzy
 msgctxt "SonnetUi|"
 msgid "... the <b>misspelled</b> word shown in context ..."
-msgstr "...המילה עם <b>שגיאת הכתיב</b> בהקשר שלה..."
+msgstr "…המילה עם <b>שגיאת הכתיב</b> בהקשר שלה…"
 
 #: ui/sonnetui.ui:106
-#, fuzzy
 msgctxt "SonnetUi|"
 msgid ""
 "<qt>\n"
@@ -390,17 +371,17 @@ msgid ""
 "</qt>"
 msgstr ""
 "<qt>\n"
-"<p>המלה הלא מוכרת נמצאה וסומנה כלא מוכרת כיוון שהיא לא מופיעה במילון.<br>\n"
-"לחץ כאן אם אתה סבור שאיות המלה אינו שגוי וברצונך להימנע מסימונה כשגויה "
-"בעתיד. אם ברצונך להשאיר את המצב כפי שהוא, אך לא להוסיף את המלה למילון, לחץ "
-"במקום זאת על <b>התעלם</b> או <b>התעלם מהכל</b>. </p>\n"
+"<p>המילה הבלתי־מוכרת נמצאה וסומנה כבלתי־מוכרת כיוון שאינה מופיעה במילון."
+"<br>\n"
+"יש ללחוץ כאן אם להערכתך איות המילה תקין וברצונך להימנע מסימונה כשגויה בעתיד. "
+"כדי להשאיר את המצב כפי שהוא, אך לא להוסיף את המלה למילון, יש ללחוץ במקום זאת "
+"על <b>התעלמות</b> או <b>התעלמות מהכול</b>. </p>\n"
 "</qt>"
 
 #: ui/sonnetui.ui:112
-#, fuzzy
 msgctxt "SonnetUi|"
 msgid "<< Add to Dictionary"
-msgstr "<< הוסף למילון"
+msgstr "<< הוספה למילון"
 
 #: ui/sonnetui.ui:135
 msgctxt "SonnetUi|"
@@ -408,7 +389,6 @@ msgid "Suggestion List"
 msgstr "רשימת הצעות"
 
 #: ui/sonnetui.ui:138
-#, fuzzy
 msgctxt "SonnetUi|"
 msgid ""
 "<qt>\n"
@@ -422,15 +402,14 @@ msgid ""
 "</qt>"
 msgstr ""
 "<qt>\n"
-"<p>אם איות המלה הלא מוכרת שגוי, בדוק אם התיקון הנכון זמין ואם כן, לחץ עליו. "
-"אם אף אחת מהמילים ברשימה אינה התיקון המתאים, באפשרותך להקליד את המילה הנכונה "
-"בתיבת העריכה לעיל.</p>\n"
-"<p>כדי לתקן מילה זו לחץ על <b>החלף</b> אם ברצונך לתקן מופע זה בלבד, או "
-"<b>החלף הכל</b> אם ברצונך לתקן את כל המופעים.</p>\n"
+"<p>אם איות המלה הבלתי־מוכרת שגוי, רצוי לבדוק אם התיקון הנכון זמין ואם כן, "
+"ללחוץ עליו. אם אף אחת מהמילים ברשימה אינה התיקון המתאים, אפשר להקליד את "
+"המילה הנכונה בתיבת העריכה לעיל.</p>\n"
+"<p>כדי לתקן מילה זו יש ללחוץ על <b>החלפה</b> כדי לתקן מופע זה בלבד, או "
+"<b>החלפה של הכול</b> אם ברצונך לתקן את כל המופעים.</p>\n"
 "</qt>"
 
 #: ui/sonnetui.ui:151 ui/sonnetui.ui:167
-#, fuzzy
 msgctxt "SonnetUi|"
 msgid ""
 "<qt>\n"
@@ -442,20 +421,18 @@ msgid ""
 "</qt>"
 msgstr ""
 "<qt>\n"
-"<p>אם איות המלה הלא מוכרת שגוי, באפשרותך להקליד כאן את התיקון למלה או לבחור "
+"<p>אם איות המילה הבלתי־מוכרת שגוי, אפשר להקליד כאן את התיקון למילה או לבחור "
 "אותו מהרשימה להלן.</p>\n"
-"<p>אחר כך באפשרותך ללחוץ על <b>החלף</b> אם ברצונך לתקן מופע זה בלבד, או "
-"<b>החלף הכל</b> אם ברצונך לתקן את כל המופעים.</p>\n"
+"<p>אחר כך אפשר ללחוץ על <b>החלפה</b> כדי לתקן מופע זה בלבד, או <b>החלפה של "
+"הכול</b> אם ברצונך לתקן את כל המופעים.</p>\n"
 "</qt>"
 
 #: ui/sonnetui.ui:157
-#, fuzzy
 msgctxt "SonnetUi|"
 msgid "Replace &with:"
-msgstr "החלף &עם:"
+msgstr "החלפה &ב־:"
 
 #: ui/sonnetui.ui:177
-#, fuzzy
 msgctxt "SonnetUi|"
 msgid "Language Selection"
 msgstr "בחירת שפה"
@@ -463,10 +440,9 @@ msgstr "בחירת שפה"
 #: ui/sonnetui.ui:206
 msgctxt "SonnetUi|"
 msgid "S&uggest"
-msgstr "ה&צע"
+msgstr "ה&צעה"
 
 #: ui/sonnetui.ui:213
-#, fuzzy
 msgctxt "SonnetUi|"
 msgid ""
 "<qt>\n"
@@ -475,17 +451,16 @@ msgid ""
 "</qt>"
 msgstr ""
 "<qt>\n"
-"<p>לחץ כאן כדי להחליף מופע זה של הטקסט הלא מוכר בטקסט שבתיבת העריכה לעיל "
-"(בצד ימין).</p>\n"
+"<p>לחיצה כאן תחליף מופע זה של הטקסט הבלתי־מוכר בטקסט שבתיבת העריכה לעיל (בצד "
+"ימין).</p>\n"
 "</qt>"
 
 #: ui/sonnetui.ui:218
 msgctxt "SonnetUi|"
 msgid "&Replace"
-msgstr "&החלף"
+msgstr "הח&לפה"
 
 #: ui/sonnetui.ui:225
-#, fuzzy
 msgctxt "SonnetUi|"
 msgid ""
 "<qt>\n"
@@ -494,17 +469,16 @@ msgid ""
 "</qt>"
 msgstr ""
 "<qt>\n"
-"<p>לחץ כאן כדי להחליף את כל המופעים של הטקסט הלא מוכר בטקסט שבתיבת העריכה "
+"<p>לחיצה כאן תחליף את כל המופעים של הטקסט הבלתי־מוכר בטקסט שבתיבת העריכה "
 "לעיל (בצד ימין).</p>\n"
 "</qt>"
 
 #: ui/sonnetui.ui:230
 msgctxt "SonnetUi|"
 msgid "R&eplace All"
-msgstr "ה&חלף הכל"
+msgstr "ה&חלפה של הכול"
 
 #: ui/sonnetui.ui:237
-#, fuzzy
 msgctxt "SonnetUi|"
 msgid ""
 "<qt>\n"
@@ -515,19 +489,18 @@ msgid ""
 "</qt>"
 msgstr ""
 "<qt>\n"
-"<p>לחץ כאן כדי להשאיר את המופע הזה של המלה הלא מוכרת כפי שהוא ולא לשנותו.</"
-"p>\n"
-"<p>פעולה זו שימושית כאשר המלה היא שם, ראשי תיבות, מילה זרה או כל מילה לא "
+"<p>לחיצה כאן תשאיר את המופע הזה של המילה הבלתי־מוכרת כפי שהוא ולא תשנה אותו."
+"</p>\n"
+"<p>פעולה זו שימושית כאשר המילה היא שם, ראשי תיבות, מילה זרה או כל מילה לא "
 "מוכרת אחרת שברצונך להשתמש בה אך לא להוסיפה למילון.</p>\n"
 "</qt>"
 
 #: ui/sonnetui.ui:243
 msgctxt "SonnetUi|"
 msgid "&Ignore"
-msgstr "&התעלם"
+msgstr "ה&תעלמות"
 
 #: ui/sonnetui.ui:250 ui/sonnetui.ui:263
-#, fuzzy
 msgctxt "SonnetUi|"
 msgid ""
 "<qt>\n"
@@ -539,16 +512,16 @@ msgid ""
 "</qt>"
 msgstr ""
 "<qt>\n"
-"<p>לחץ כאן כדי להשאיר את כל המופעים של המלה הלא מוכרת כפי שהם ולא לשנותם.</"
-"p>\n"
-"<p>פעולה זו שימושית כאשר המלה היא שם, ראשי תיבות, מילה זרה או כל מילה לא "
+"<p>לחיצה כאן תשאיר את כל המופעים של המילה הבלתי־מוכרת כפי שהם ולא תשנה אותם."
+"</p>\n"
+"<p>פעולה זו שימושית כאשר המילה היא שם, ראשי תיבות, מילה זרה או כל מילה לא "
 "מוכרת אחרת שברצונך להשתמש בה אך לא להוסיפה למילון.</p>\n"
 "</qt>"
 
 #: ui/sonnetui.ui:256
 msgctxt "SonnetUi|"
 msgid "I&gnore All"
-msgstr "הת&עלם מהכל"
+msgstr "הת&עלמות מהכול"
 
 #: ui/sonnetui.ui:269
 msgctxt "SonnetUi|"
@@ -564,12 +537,12 @@ msgstr "אין הצעות עבור %1"
 #: ui/spellcheckdecorator.cpp:183
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Ignore"
-msgstr "התעלם"
+msgstr "התעלמות"
 
 #: ui/spellcheckdecorator.cpp:184
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
-msgstr "הוסף למילון"
+msgstr "הוספה למילון"
 
 #, fuzzy
 #~ msgctxt "SonnetConfigUI|"
