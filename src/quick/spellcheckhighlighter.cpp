@@ -128,9 +128,9 @@ public:
     std::unique_ptr<Sonnet::GuessLanguage> languageGuesser;
     QString selectedWord;
     QQuickTextDocument *document = nullptr;
-    int cursorPosition;
-    int selectionStart;
-    int selectionEnd;
+    int cursorPosition = -1;
+    int selectionStart = -1;
+    int selectionEnd = -1;
 
     int autoCompleteBeginPosition = -1;
     int autoCompleteEndPosition = -1;
