@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2023-10-24 23:40+0200\n"
+"PO-Revision-Date: 2023-11-07 23:27+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: \n"
 "Language: ast\n"
@@ -16,47 +16,47 @@ msgstr ""
 #: core/loader.cpp:184
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "40"
-msgstr ""
+msgstr "40"
 
 #: core/loader.cpp:185
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "60"
-msgstr ""
+msgstr "60"
 
 #: core/loader.cpp:186
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "80"
-msgstr ""
+msgstr "80"
 
 #: core/loader.cpp:187
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "-ise suffixes"
-msgstr ""
+msgstr "sufixos -ise"
 
 #: core/loader.cpp:188
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "-ize suffixes"
-msgstr ""
+msgstr "sufixos -ize"
 
 #: core/loader.cpp:189
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "-ise suffixes and with accents"
-msgstr ""
+msgstr "sufixos -ise ya con acentos"
 
 #: core/loader.cpp:190
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "-ise suffixes and without accents"
-msgstr ""
+msgstr "sufixos -ise ya ensin acentos"
 
 #: core/loader.cpp:191
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "-ize suffixes and with accents"
-msgstr ""
+msgstr "sufixos -ize ya con acentos"
 
 #: core/loader.cpp:192
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "-ize suffixes and without accents"
-msgstr ""
+msgstr "sufixos -ize ya ensin acentos"
 
 #: core/loader.cpp:193
 msgctxt "Sonnet::Loader|dictionary variant"
@@ -76,42 +76,42 @@ msgstr ""
 #: core/loader.cpp:196
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "variant 0"
-msgstr ""
+msgstr "variante 0"
 
 #: core/loader.cpp:197
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "variant 1"
-msgstr ""
+msgstr "variante 1"
 
 #: core/loader.cpp:198
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "variant 2"
-msgstr ""
+msgstr "variante 2"
 
 #: core/loader.cpp:199
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "without accents"
-msgstr ""
+msgstr "ensin acentos"
 
 #: core/loader.cpp:200
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "with accents"
-msgstr ""
+msgstr "con acentos"
 
 #: core/loader.cpp:201
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "with ye, modern russian"
-msgstr ""
+msgstr "con ye, rusu moderno"
 
 #: core/loader.cpp:202
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "with yeyo, modern and old russian"
-msgstr ""
+msgstr "con yeyo, rusu moderno ya antiguo"
 
 #: core/loader.cpp:203
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "with yo, old russian"
-msgstr ""
+msgstr "con yo, rusu antiguo"
 
 #: core/loader.cpp:204
 msgctxt "Sonnet::Loader|dictionary variant"
@@ -160,7 +160,7 @@ msgstr ""
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
 msgid "Default language:"
-msgstr ""
+msgstr "Llingua predeterminada:"
 
 #: ui/configui.ui:63
 msgctxt "SonnetConfigUI|"
@@ -200,17 +200,17 @@ msgstr ""
 #: ui/configui.ui:115
 msgctxt "SonnetConfigUI|"
 msgid "Ignored Words:"
-msgstr ""
+msgstr "Pallabres inoraes:"
 
 #: ui/configui.ui:129
 msgctxt "SonnetConfigUI|"
 msgid "&Add"
-msgstr ""
+msgstr "&Amestar"
 
 #: ui/configui.ui:141
 msgctxt "SonnetConfigUI|"
 msgid "&Remove"
-msgstr ""
+msgstr "&Quitar"
 
 #: ui/dialog.cpp:85 ui/dialog.cpp:194 ui/dialog.cpp:399
 msgctxt "Sonnet::Dialog|@title:window"
@@ -295,7 +295,7 @@ msgstr ""
 #: ui/sonnetui.ui:75
 msgctxt "SonnetUi|"
 msgid "&Language:"
-msgstr ""
+msgstr "&Lllingua:"
 
 #: ui/sonnetui.ui:85
 msgctxt "SonnetUi|"
@@ -380,7 +380,7 @@ msgstr ""
 #: ui/sonnetui.ui:206
 msgctxt "SonnetUi|"
 msgid "S&uggest"
-msgstr ""
+msgstr "S&uxerir"
 
 #: ui/sonnetui.ui:213
 msgctxt "SonnetUi|"
@@ -394,7 +394,7 @@ msgstr ""
 #: ui/sonnetui.ui:218
 msgctxt "SonnetUi|"
 msgid "&Replace"
-msgstr ""
+msgstr "&Trocar"
 
 #: ui/sonnetui.ui:225
 msgctxt "SonnetUi|"
@@ -408,7 +408,7 @@ msgstr ""
 #: ui/sonnetui.ui:230
 msgctxt "SonnetUi|"
 msgid "R&eplace All"
-msgstr ""
+msgstr "T&rocar too"
 
 #: ui/sonnetui.ui:237
 msgctxt "SonnetUi|"
@@ -424,7 +424,7 @@ msgstr ""
 #: ui/sonnetui.ui:243
 msgctxt "SonnetUi|"
 msgid "&Ignore"
-msgstr ""
+msgstr "&Inorar"
 
 #: ui/sonnetui.ui:250 ui/sonnetui.ui:263
 msgctxt "SonnetUi|"
@@ -457,7 +457,7 @@ msgstr ""
 #: ui/spellcheckdecorator.cpp:183
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Ignore"
-msgstr ""
+msgstr "Inorar"
 
 #: ui/spellcheckdecorator.cpp:184
 msgctxt "Sonnet::SpellCheckDecorator|"
