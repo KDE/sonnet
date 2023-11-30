@@ -1,11 +1,11 @@
 add_subdirectory(core)
 add_subdirectory(plugins)
 
-if(TARGET Qt6::Widgets)
+if(SONNET_USE_WIDGETS)
     add_subdirectory(ui)
 endif()
 
-if(TARGET Qt6::Quick)
+if(SONNET_USE_QML)
     add_subdirectory(quick)
 endif()
 
