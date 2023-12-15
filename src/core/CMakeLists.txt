@@ -83,7 +83,7 @@ target_include_directories(KF6SonnetCore
         "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/SonnetCore>"
         "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/Sonnet>"
     PUBLIC
-        "$<BUILD_INTERFACE:${CMAKE_BINARY_DIR}>" # version header
+        "$<BUILD_INTERFACE:${PROJECT_BINARY_DIR}>" # version header
 )
 
 install(TARGETS KF6SonnetCore EXPORT KF6SonnetTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
