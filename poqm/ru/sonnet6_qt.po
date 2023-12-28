@@ -14,15 +14,15 @@
 # Inga Barinova <ingabarinova@gmail.com>, 2012.
 # Julia Dronova <juliette.tux@gmail.com>, 2012.
 # Alexander Lakhin <exclusion@gmail.com>, 2013.
-# Alexander Yavorsky <kekcuha@gmail.com>, 2019.
+# Alexander Yavorsky <kekcuha@gmail.com>, 2019, 2023.
 # Мария Шикунова <translation-team@basealt.ru>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-03-23 01:50+0000\n"
-"PO-Revision-Date: 2022-02-16 15:22+0300\n"
-"Last-Translator: Мария Шикунова <translation-team@basealt.ru>\n"
+"PO-Revision-Date: 2023-12-27 09:53+0300\n"
+"Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -180,6 +180,8 @@ msgstr "Настройка проверки орфографии"
 msgctxt "SonnetConfigUI|"
 msgid "No backend like hunspell/aspell/myspell installed"
 msgstr ""
+"Не установлено ни одной системы проверки орфографии:  hunspell, aspell или "
+"myspell"
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
