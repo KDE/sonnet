@@ -103,6 +103,7 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/sonnet_version.h
         DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/Sonnet COMPONENT Devel)
 
 include(ECMFeatureSummary)
-ecm_feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
+include(ECMFeatureSummary)
+ecm_ecm_feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
 kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
