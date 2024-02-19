@@ -1,23 +1,22 @@
 # Traducerea kdelibs4.po în Română
 # Laurenţiu Buzdugan <lbuz@rolix.org>, 2008, 2009.
-# Sergiu Bivol <sergiu@cip.md>, 2008, 2009, 2010.
-# Sergiu Bivol <sergiu@cip.md>, 2010, 2012, 2013, 2014, 2020, 2022.
+# Sergiu Bivol <sergiu@cip.md>, 2008, 2009, 2010, 2012, 2013, 2014, 2020, 2022, 2024.
 # Cristian Oneț <onet.cristian@gmail.com>, 2010, 2011, 2012, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-03-23 01:50+0000\n"
-"PO-Revision-Date: 2022-02-06 17:12+0000\n"
+"PO-Revision-Date: 2024-02-18 14:44+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
-"Language-Team: Romanian\n"
+"Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Lokalize 21.12.2\n"
+"X-Generator: Lokalize 21.12.3\n"
 "X-Qt-Contexts: true\n"
 
 #: core/loader.cpp:184
@@ -164,7 +163,7 @@ msgstr "Configurarea verificării ortografice"
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
 msgid "No backend like hunspell/aspell/myspell installed"
-msgstr ""
+msgstr "Nu e instalată nicio platformă ca hunspell/aspell/myspell"
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -553,14 +552,6 @@ msgstr "Adaugă la dicționar"
 #~ msgid "Suggested Words"
 #~ msgstr "Cuvinte sugerate"
 
-#~ msgctxt "NAME OF TRANSLATORS"
-#~ msgid "Your names"
-#~ msgstr "Claudiu Costin,Sergiu Bivol,Laurențiu Buzdugan,Cristian Oneț"
-
-#~ msgctxt "EMAIL OF TRANSLATORS"
-#~ msgid "Your emails"
-#~ msgstr ",sergiu@ase.md,lbuz@rolix.org,onet.cristian@gmail.com"
-
 #~ msgid "Name"
 #~ msgstr "Denumire"
 
@@ -584,9 +575,6 @@ msgstr "Adaugă la dicționar"
 
 #~ msgid "System Default (currently: %1)"
 #~ msgstr "Implicit sistem (curent: %1)"
-
-#~ msgid "Editor Chooser"
-#~ msgstr "Alegere editor"
 
 #~ msgid ""
 #~ "Please choose the default text editing component that you wish to use in "
@@ -612,9 +600,6 @@ msgstr "Adaugă la dicționar"
 #~ "\n"
 #~ "Vă rugăm să instalați pachetul KDEPIM/Kontact pe sistemul dvs."
 
-#~ msgid "TETest"
-#~ msgstr "TETest"
-
 #~ msgid "Only local files are supported."
 #~ msgstr "Sunt suportate numai fișiere locale."
 
@@ -633,18 +618,6 @@ msgstr "Adaugă la dicționar"
 #~ msgid "KDE Tool for updating user configuration files"
 #~ msgstr ""
 #~ "Utilitar KDE pentru actualizarea fișierelor de configurare utilizator"
-
-#~ msgid "(c) 2001, Waldo Bastian"
-#~ msgstr "(c) 2001, Waldo Bastian"
-
-#~ msgid "Waldo Bastian"
-#~ msgstr "Waldo Bastian"
-
-#~ msgid "??"
-#~ msgstr "??"
-
-#~ msgid "&About"
-#~ msgstr "&Despre"
 
 #~ msgid ""
 #~ "No information available.\n"
@@ -668,27 +641,6 @@ msgstr "Adaugă la dicționar"
 
 #~ msgid "Please report bugs to <a href=\"mailto:%1\">%2</a>.\n"
 #~ msgstr "Utilizați <a href=\"mailto:%1\">%2</a> pentru a raporta erori.\n"
-
-#~ msgid "&Thanks To"
-#~ msgstr "&Mulțumiri"
-
-#~ msgid "T&ranslation"
-#~ msgstr "&Traducerea"
-
-#~ msgid "&License Agreement"
-#~ msgstr "&Licență"
-
-#~ msgid "Author"
-#~ msgstr "Autor"
-
-#~ msgid "Email"
-#~ msgstr "Email"
-
-#~ msgid "Homepage"
-#~ msgstr "Pagină web"
-
-#~ msgid "Task"
-#~ msgstr "Proces"
 
 #~ msgid ""
 #~ "<html><font size=\"5\">%1</font><br/><b>version %2</b><br/>Using KDE %3</"
