@@ -1,17 +1,17 @@
-# SPDX-FileCopyrightText: 2023 Enol P. <enolp@softastur.org>
+# SPDX-FileCopyrightText: 2023, 2024 Enol P. <enolp@softastur.org>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2023-11-07 23:27+0100\n"
+"PO-Revision-Date: 2024-03-15 01:17+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
-"Language-Team: \n"
+"Language-Team: Asturian <alministradores@softastur.org>\n"
 "Language: ast\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Qt-Contexts: true\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.2\n"
+"X-Generator: Lokalize 24.02.0\n"
 
 #: core/loader.cpp:184
 msgctxt "Sonnet::Loader|dictionary variant"
@@ -41,22 +41,22 @@ msgstr "sufixos -ize"
 #: core/loader.cpp:189
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "-ise suffixes and with accents"
-msgstr "sufixos -ise ya con acentos"
+msgstr "sufixos -ise y con acentos"
 
 #: core/loader.cpp:190
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "-ise suffixes and without accents"
-msgstr "sufixos -ise ya ensin acentos"
+msgstr "sufixos -ise y ensin acentos"
 
 #: core/loader.cpp:191
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "-ize suffixes and with accents"
-msgstr "sufixos -ize ya con acentos"
+msgstr "sufixos -ize y con acentos"
 
 #: core/loader.cpp:192
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "-ize suffixes and without accents"
-msgstr "sufixos -ize ya ensin acentos"
+msgstr "sufixos -ize y ensin acentos"
 
 #: core/loader.cpp:193
 msgctxt "Sonnet::Loader|dictionary variant"
@@ -106,7 +106,7 @@ msgstr "con ye, rusu moderno"
 #: core/loader.cpp:202
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "with yeyo, modern and old russian"
-msgstr "con yeyo, rusu moderno ya antiguo"
+msgstr "con yeyo, rusu moderno y antiguo"
 
 #: core/loader.cpp:203
 msgctxt "Sonnet::Loader|dictionary variant"
