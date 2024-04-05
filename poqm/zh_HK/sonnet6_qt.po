@@ -202,66 +202,73 @@ msgctxt "SonnetConfigUI|"
 msgid "Default language:"
 msgstr "預設語言："
 
-#: ui/configui.ui:63
+#: ui/configui.ui:56
+#, fuzzy
+#| msgid "Preferred Number"
+msgctxt "SonnetConfigUI|"
+msgid "Preferred Languages"
+msgstr "首選電話"
+
+#: ui/configui.ui:65
 msgctxt "SonnetConfigUI|"
 msgid "Choose your preferred languages"
 msgstr ""
 
-#: ui/configui.ui:71
+#: ui/configui.ui:75
 #, fuzzy
 #| msgid "Options"
 msgctxt "SonnetConfigUI|"
 msgid "Options"
 msgstr "選項"
 
-#: ui/configui.ui:77
+#: ui/configui.ui:84
 msgctxt "SonnetConfigUI|"
 msgid "Enable autodetection of &language"
 msgstr ""
 
-#: ui/configui.ui:84
+#: ui/configui.ui:91
 #, fuzzy
 #| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
 msgid "Enable &background spellchecking"
 msgstr "啟動背景拼字檢查(&B)"
 
-#: ui/configui.ui:91
+#: ui/configui.ui:98
 #, fuzzy
 #| msgid "As-you-type spell checking enabled."
 msgctxt "SonnetConfigUI|"
 msgid "&Automatic spell checking enabled by default"
 msgstr "即時拼字檢察啟動"
 
-#: ui/configui.ui:98
+#: ui/configui.ui:105
 #, fuzzy
 #| msgid "Skip all &uppercase words"
 msgctxt "SonnetConfigUI|"
 msgid "Skip all &uppercase words"
 msgstr "跳過所有大寫詞語(&U)"
 
-#: ui/configui.ui:105
+#: ui/configui.ui:112
 #, fuzzy
 #| msgid "S&kip run-together words"
 msgctxt "SonnetConfigUI|"
 msgid "S&kip run-together words"
 msgstr "跳過所有連在一起的詞語(&K)"
 
-#: ui/configui.ui:115
+#: ui/configui.ui:122
 #, fuzzy
 #| msgid "Ignore These Words"
 msgctxt "SonnetConfigUI|"
-msgid "Ignored Words:"
+msgid "Ignored Words"
 msgstr "略過這些文字"
 
-#: ui/configui.ui:129
+#: ui/configui.ui:139
 #, fuzzy
 #| msgid "&Add"
 msgctxt "SonnetConfigUI|"
 msgid "&Add"
 msgstr "新增(&A)"
 
-#: ui/configui.ui:141
+#: ui/configui.ui:151
 #, fuzzy
 #| msgid "&Remove"
 msgctxt "SonnetConfigUI|"
@@ -12484,9 +12491,6 @@ msgstr "<< 加到字典中"
 
 #~ msgid "Messenger"
 #~ msgstr "信差"
-
-#~ msgid "Preferred Number"
-#~ msgstr "首選電話"
 
 #~ msgid "Voice"
 #~ msgstr "語音"

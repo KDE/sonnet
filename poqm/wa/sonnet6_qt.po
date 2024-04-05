@@ -240,66 +240,74 @@ msgctxt "SonnetConfigUI|"
 msgid "Default language:"
 msgstr "Prémetou lingaedje:"
 
-#: ui/configui.ui:63
+#: ui/configui.ui:56
+#, fuzzy
+#| msgctxt "@action"
+#| msgid "Preferences"
+msgctxt "SonnetConfigUI|"
+msgid "Preferred Languages"
+msgstr "Preferinces"
+
+#: ui/configui.ui:65
 msgctxt "SonnetConfigUI|"
 msgid "Choose your preferred languages"
 msgstr ""
 
-#: ui/configui.ui:71
+#: ui/configui.ui:75
 #, fuzzy
 #| msgid "Options"
 msgctxt "SonnetConfigUI|"
 msgid "Options"
 msgstr "Tchuzes"
 
-#: ui/configui.ui:77
+#: ui/configui.ui:84
 msgctxt "SonnetConfigUI|"
 msgid "Enable autodetection of &language"
 msgstr ""
 
-#: ui/configui.ui:84
+#: ui/configui.ui:91
 #, fuzzy
 #| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
 msgid "Enable &background spellchecking"
 msgstr "Mete en alaedje li coridjaedje di speli e &fond"
 
-#: ui/configui.ui:91
+#: ui/configui.ui:98
 #, fuzzy
 #| msgid "&Automatic spell checking enabled by default"
 msgctxt "SonnetConfigUI|"
 msgid "&Automatic spell checking enabled by default"
 msgstr "Coridjaedje come dji t&ape prémetou en alaedje."
 
-#: ui/configui.ui:98
+#: ui/configui.ui:105
 #, fuzzy
 #| msgid "Skip all &uppercase words"
 msgctxt "SonnetConfigUI|"
 msgid "Skip all &uppercase words"
 msgstr "Passer houte tos les mots e &grandès letes"
 
-#: ui/configui.ui:105
+#: ui/configui.ui:112
 #, fuzzy
 #| msgid "S&kip run-together words"
 msgctxt "SonnetConfigUI|"
 msgid "S&kip run-together words"
 msgstr "Passer &houte les mots aclapés eshonne"
 
-#: ui/configui.ui:115
+#: ui/configui.ui:122
 #, fuzzy
 #| msgid "Ignored Words"
 msgctxt "SonnetConfigUI|"
-msgid "Ignored Words:"
+msgid "Ignored Words"
 msgstr "Mots passés houte"
 
-#: ui/configui.ui:129
+#: ui/configui.ui:139
 #, fuzzy
 #| msgid "&Add"
 msgctxt "SonnetConfigUI|"
 msgid "&Add"
 msgstr "R&adjouter"
 
-#: ui/configui.ui:141
+#: ui/configui.ui:151
 #, fuzzy
 #| msgid "&Remove"
 msgctxt "SonnetConfigUI|"
@@ -5148,10 +5156,6 @@ msgstr "Radjouter å motî"
 #~ msgctxt "@action"
 #~ msgid "Key Bindings"
 #~ msgstr "Assoçnaedje di tapes"
-
-#~ msgctxt "@action"
-#~ msgid "Preferences"
-#~ msgstr "Preferinces"
 
 #~ msgctxt "@action"
 #~ msgid "Configure Toolbars"

@@ -178,52 +178,63 @@ msgctxt "SonnetConfigUI|"
 msgid "Default language:"
 msgstr "Standardspraak:"
 
-#: ui/configui.ui:63
+#: ui/configui.ui:56
+#, fuzzy
+#| msgctxt "@action"
+#| msgid "Preferences"
+msgctxt "SonnetConfigUI|"
+msgid "Preferred Languages"
+msgstr "Instellen"
+
+#: ui/configui.ui:65
 msgctxt "SonnetConfigUI|"
 msgid "Choose your preferred languages"
 msgstr ""
 
-#: ui/configui.ui:71
+#: ui/configui.ui:75
 msgctxt "SonnetConfigUI|"
 msgid "Options"
 msgstr "Optschonen"
 
-#: ui/configui.ui:77
+#: ui/configui.ui:84
 msgctxt "SonnetConfigUI|"
 msgid "Enable autodetection of &language"
 msgstr "&Spraak automaatsch opdecken"
 
-#: ui/configui.ui:84
+#: ui/configui.ui:91
 msgctxt "SonnetConfigUI|"
 msgid "Enable &background spellchecking"
 msgstr "&Achtergrund-Klookschriever anmaken"
 
-#: ui/configui.ui:91
+#: ui/configui.ui:98
 msgctxt "SonnetConfigUI|"
 msgid "&Automatic spell checking enabled by default"
 msgstr "&Klookschriever standardwies anmaken"
 
-#: ui/configui.ui:98
+#: ui/configui.ui:105
 msgctxt "SonnetConfigUI|"
 msgid "Skip all &uppercase words"
 msgstr "Heel &grootschreven Wöör övergahn"
 
-#: ui/configui.ui:105
+#: ui/configui.ui:112
 msgctxt "SonnetConfigUI|"
 msgid "S&kip run-together words"
 msgstr "&Tosamentrocken Wöör övergahn"
 
-#: ui/configui.ui:115
+#: ui/configui.ui:122
+#, fuzzy
+#| msgctxt "SonnetConfigUI|"
+#| msgid "Ignored Words:"
 msgctxt "SonnetConfigUI|"
-msgid "Ignored Words:"
+msgid "Ignored Words"
 msgstr "Övergahn Wöör:"
 
-#: ui/configui.ui:129
+#: ui/configui.ui:139
 msgctxt "SonnetConfigUI|"
 msgid "&Add"
 msgstr "&Tofögen"
 
-#: ui/configui.ui:141
+#: ui/configui.ui:151
 msgctxt "SonnetConfigUI|"
 msgid "&Remove"
 msgstr "&Wegmaken"
@@ -5124,10 +5135,6 @@ msgstr "Na Wöörbook tofögen"
 #~ msgctxt "@action"
 #~ msgid "Key Bindings"
 #~ msgstr "Tasttowiesen"
-
-#~ msgctxt "@action"
-#~ msgid "Preferences"
-#~ msgstr "Instellen"
 
 #~ msgctxt "@action"
 #~ msgid "Configure Toolbars"

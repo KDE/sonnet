@@ -235,66 +235,74 @@ msgctxt "SonnetConfigUI|"
 msgid "Default language:"
 msgstr "පෙරනිමි භාෂාව:"
 
-#: ui/configui.ui:63
+#: ui/configui.ui:56
+#, fuzzy
+#| msgctxt "@action"
+#| msgid "Preferences"
+msgctxt "SonnetConfigUI|"
+msgid "Preferred Languages"
+msgstr "අභිප්‍රේත"
+
+#: ui/configui.ui:65
 msgctxt "SonnetConfigUI|"
 msgid "Choose your preferred languages"
 msgstr ""
 
-#: ui/configui.ui:71
+#: ui/configui.ui:75
 #, fuzzy
 #| msgid "Options"
 msgctxt "SonnetConfigUI|"
 msgid "Options"
 msgstr "විකල්ප"
 
-#: ui/configui.ui:77
+#: ui/configui.ui:84
 msgctxt "SonnetConfigUI|"
 msgid "Enable autodetection of &language"
 msgstr ""
 
-#: ui/configui.ui:84
+#: ui/configui.ui:91
 #, fuzzy
 #| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
 msgid "Enable &background spellchecking"
 msgstr "පසුබිම් අක්‍ෂරවින්‍යාස පරික්‍ෂාව සක්‍රීය කරන්න (&b)"
 
-#: ui/configui.ui:91
+#: ui/configui.ui:98
 #, fuzzy
 #| msgid "&Automatic spell checking enabled by default"
 msgctxt "SonnetConfigUI|"
 msgid "&Automatic spell checking enabled by default"
 msgstr "ස්වයංක්‍රීය අක්ෂර වින්‍යාසය පිරික්සුම පෙරනිමියෙන් ඇත."
 
-#: ui/configui.ui:98
+#: ui/configui.ui:105
 #, fuzzy
 #| msgid "Skip all &uppercase words"
 msgctxt "SonnetConfigUI|"
 msgid "Skip all &uppercase words"
 msgstr "සියළුම විශාලකුරු වචන මගහරින්න (&u)"
 
-#: ui/configui.ui:105
+#: ui/configui.ui:112
 #, fuzzy
 #| msgid "S&kip run-together words"
 msgctxt "SonnetConfigUI|"
 msgid "S&kip run-together words"
 msgstr "S&kip run-together words"
 
-#: ui/configui.ui:115
+#: ui/configui.ui:122
 #, fuzzy
 #| msgid "Ignored Words"
 msgctxt "SonnetConfigUI|"
-msgid "Ignored Words:"
+msgid "Ignored Words"
 msgstr "නොසැලකූ වචන"
 
-#: ui/configui.ui:129
+#: ui/configui.ui:139
 #, fuzzy
 #| msgid "&Add"
 msgctxt "SonnetConfigUI|"
 msgid "&Add"
 msgstr "එක් කරන්න (&A)"
 
-#: ui/configui.ui:141
+#: ui/configui.ui:151
 #, fuzzy
 #| msgid "&Remove"
 msgctxt "SonnetConfigUI|"
@@ -5095,10 +5103,6 @@ msgstr "ශබ්දකෝෂයට එක් කරන්න"
 #~ msgctxt "@action"
 #~ msgid "Key Bindings"
 #~ msgstr "යතුරු බැඳීම"
-
-#~ msgctxt "@action"
-#~ msgid "Preferences"
-#~ msgstr "අභිප්‍රේත"
 
 #~ msgctxt "@action"
 #~ msgid "Configure Toolbars"

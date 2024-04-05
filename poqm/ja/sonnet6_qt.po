@@ -244,66 +244,71 @@ msgctxt "SonnetConfigUI|"
 msgid "Default language:"
 msgstr "デフォルトの言語:"
 
-#: ui/configui.ui:63
+#: ui/configui.ui:56
+msgctxt "SonnetConfigUI|"
+msgid "Preferred Languages"
+msgstr ""
+
+#: ui/configui.ui:65
 msgctxt "SonnetConfigUI|"
 msgid "Choose your preferred languages"
 msgstr ""
 
-#: ui/configui.ui:71
+#: ui/configui.ui:75
 #, fuzzy
 #| msgid "Options"
 msgctxt "SonnetConfigUI|"
 msgid "Options"
 msgstr "オプション"
 
-#: ui/configui.ui:77
+#: ui/configui.ui:84
 msgctxt "SonnetConfigUI|"
 msgid "Enable autodetection of &language"
 msgstr ""
 
-#: ui/configui.ui:84
+#: ui/configui.ui:91
 #, fuzzy
 #| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
 msgid "Enable &background spellchecking"
 msgstr "バックグラウンドスペルチェックを有効にする(&B)"
 
-#: ui/configui.ui:91
+#: ui/configui.ui:98
 #, fuzzy
 #| msgid "&Automatic spell checking enabled by default"
 msgctxt "SonnetConfigUI|"
 msgid "&Automatic spell checking enabled by default"
 msgstr "デフォルトで自動スペルチェックを有効にする(&A)"
 
-#: ui/configui.ui:98
+#: ui/configui.ui:105
 #, fuzzy
 #| msgid "Skip all &uppercase words"
 msgctxt "SonnetConfigUI|"
 msgid "Skip all &uppercase words"
 msgstr "すべて大文字の単語をスキップする(&U)"
 
-#: ui/configui.ui:105
+#: ui/configui.ui:112
 #, fuzzy
 #| msgid "S&kip run-together words"
 msgctxt "SonnetConfigUI|"
 msgid "S&kip run-together words"
 msgstr "連結語をスキップする(&K)"
 
-#: ui/configui.ui:115
+#: ui/configui.ui:122
 #, fuzzy
 #| msgid "Ignored Words"
 msgctxt "SonnetConfigUI|"
-msgid "Ignored Words:"
+msgid "Ignored Words"
 msgstr "無視する単語"
 
-#: ui/configui.ui:129
+#: ui/configui.ui:139
 #, fuzzy
 #| msgid "&Add"
 msgctxt "SonnetConfigUI|"
 msgid "&Add"
 msgstr "追加(&A)"
 
-#: ui/configui.ui:141
+#: ui/configui.ui:151
 #, fuzzy
 #| msgid "&Remove"
 msgctxt "SonnetConfigUI|"

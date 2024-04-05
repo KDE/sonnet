@@ -236,56 +236,67 @@ msgctxt "SonnetConfigUI|"
 msgid "Default language:"
 msgstr "இயல்பிருப்பு மொழி:"
 
-#: ui/configui.ui:63
+#: ui/configui.ui:56
+#, fuzzy
+#| msgctxt "SonnetConfigUI|"
+#| msgid "Choose your preferred languages"
+msgctxt "SonnetConfigUI|"
+msgid "Preferred Languages"
+msgstr "முதன்மையான மொழிகளை தேர்ந்தெடுங்கள்"
+
+#: ui/configui.ui:65
 msgctxt "SonnetConfigUI|"
 msgid "Choose your preferred languages"
 msgstr "முதன்மையான மொழிகளை தேர்ந்தெடுங்கள்"
 
-#: ui/configui.ui:71
+#: ui/configui.ui:75
 msgctxt "SonnetConfigUI|"
 msgid "Options"
 msgstr "விருப்பங்கள்"
 
-#: ui/configui.ui:77
+#: ui/configui.ui:84
 msgctxt "SonnetConfigUI|"
 msgid "Enable autodetection of &language"
 msgstr "&மொழியை தானாக கண்டறி"
 
-#: ui/configui.ui:84
+#: ui/configui.ui:91
 msgctxt "SonnetConfigUI|"
 msgid "Enable &background spellchecking"
 msgstr "&பின்னணியில் எழுத்தாக்கத்தை சரிபார்"
 
-#: ui/configui.ui:91
+#: ui/configui.ui:98
 msgctxt "SonnetConfigUI|"
 msgid "&Automatic spell checking enabled by default"
 msgstr "&தானியங்கி எழுத்தாக்க சரிபார்ப்பை இயல்பிருப்பாக இயக்கு"
 
-#: ui/configui.ui:98
+#: ui/configui.ui:105
 #, fuzzy
 #| msgid "Skip all &uppercase words"
 msgctxt "SonnetConfigUI|"
 msgid "Skip all &uppercase words"
 msgstr "&பெருவெழுத்துக்கள் அனைத்தையும் தவிர்க்க"
 
-#: ui/configui.ui:105
+#: ui/configui.ui:112
 #, fuzzy
 #| msgid "S&kip run-together words"
 msgctxt "SonnetConfigUI|"
 msgid "S&kip run-together words"
 msgstr "run-together சொற்களைத் &தவிர்க்கவும்"
 
-#: ui/configui.ui:115
+#: ui/configui.ui:122
+#, fuzzy
+#| msgctxt "SonnetConfigUI|"
+#| msgid "Ignored Words:"
 msgctxt "SonnetConfigUI|"
-msgid "Ignored Words:"
+msgid "Ignored Words"
 msgstr "பொருட்படுத்தப்படா சொற்கள்:"
 
-#: ui/configui.ui:129
+#: ui/configui.ui:139
 msgctxt "SonnetConfigUI|"
 msgid "&Add"
 msgstr "&சேர்"
 
-#: ui/configui.ui:141
+#: ui/configui.ui:151
 msgctxt "SonnetConfigUI|"
 msgid "&Remove"
 msgstr "&நீக்கு"

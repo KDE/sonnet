@@ -181,52 +181,63 @@ msgctxt "SonnetConfigUI|"
 msgid "Default language:"
 msgstr "Privzeti jezik:"
 
-#: ui/configui.ui:63
+#: ui/configui.ui:56
+#, fuzzy
+#| msgctxt "SonnetConfigUI|"
+#| msgid "Choose your preferred languages"
+msgctxt "SonnetConfigUI|"
+msgid "Preferred Languages"
+msgstr "Izberite vaše najbolj zaželene jezike"
+
+#: ui/configui.ui:65
 msgctxt "SonnetConfigUI|"
 msgid "Choose your preferred languages"
 msgstr "Izberite vaše najbolj zaželene jezike"
 
-#: ui/configui.ui:71
+#: ui/configui.ui:75
 msgctxt "SonnetConfigUI|"
 msgid "Options"
 msgstr "Možnosti"
 
-#: ui/configui.ui:77
+#: ui/configui.ui:84
 msgctxt "SonnetConfigUI|"
 msgid "Enable autodetection of &language"
 msgstr "Omogoči samodejno zaznavanje &jezika"
 
-#: ui/configui.ui:84
+#: ui/configui.ui:91
 msgctxt "SonnetConfigUI|"
 msgid "Enable &background spellchecking"
 msgstr "Omogoči preverjanje &črkovanja v ozadju"
 
-#: ui/configui.ui:91
+#: ui/configui.ui:98
 msgctxt "SonnetConfigUI|"
 msgid "&Automatic spell checking enabled by default"
 msgstr "S&amodejno preverjanje črkovanja je privzeto omogočeno"
 
-#: ui/configui.ui:98
+#: ui/configui.ui:105
 msgctxt "SonnetConfigUI|"
 msgid "Skip all &uppercase words"
 msgstr "Preskoči vse besede v &VELIKIH črkah"
 
-#: ui/configui.ui:105
+#: ui/configui.ui:112
 msgctxt "SonnetConfigUI|"
 msgid "S&kip run-together words"
 msgstr "Preskoči &besede, ki-se-držijo-skupaj"
 
-#: ui/configui.ui:115
+#: ui/configui.ui:122
+#, fuzzy
+#| msgctxt "SonnetConfigUI|"
+#| msgid "Ignored Words:"
 msgctxt "SonnetConfigUI|"
-msgid "Ignored Words:"
+msgid "Ignored Words"
 msgstr "Prezrte besede:"
 
-#: ui/configui.ui:129
+#: ui/configui.ui:139
 msgctxt "SonnetConfigUI|"
 msgid "&Add"
 msgstr "Dod&aj"
 
-#: ui/configui.ui:141
+#: ui/configui.ui:151
 msgctxt "SonnetConfigUI|"
 msgid "&Remove"
 msgstr "Odst&rani"

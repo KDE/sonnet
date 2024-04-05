@@ -169,52 +169,63 @@ msgctxt "SonnetConfigUI|"
 msgid "Default language:"
 msgstr "기본 언어:"
 
-#: ui/configui.ui:63
+#: ui/configui.ui:56
+#, fuzzy
+#| msgctxt "SonnetConfigUI|"
+#| msgid "Choose your preferred languages"
+msgctxt "SonnetConfigUI|"
+msgid "Preferred Languages"
+msgstr "선호하는 언어 선택"
+
+#: ui/configui.ui:65
 msgctxt "SonnetConfigUI|"
 msgid "Choose your preferred languages"
 msgstr "선호하는 언어 선택"
 
-#: ui/configui.ui:71
+#: ui/configui.ui:75
 msgctxt "SonnetConfigUI|"
 msgid "Options"
 msgstr "옵션"
 
-#: ui/configui.ui:77
+#: ui/configui.ui:84
 msgctxt "SonnetConfigUI|"
 msgid "Enable autodetection of &language"
 msgstr "언어 자동 감지 사용(&L)"
 
-#: ui/configui.ui:84
+#: ui/configui.ui:91
 msgctxt "SonnetConfigUI|"
 msgid "Enable &background spellchecking"
 msgstr "맞춤법 검사 사용하기(&B)"
 
-#: ui/configui.ui:91
+#: ui/configui.ui:98
 msgctxt "SonnetConfigUI|"
 msgid "&Automatic spell checking enabled by default"
 msgstr "자동 맞춤법 검사 사용하기(&A)"
 
-#: ui/configui.ui:98
+#: ui/configui.ui:105
 msgctxt "SonnetConfigUI|"
 msgid "Skip all &uppercase words"
 msgstr "모든 대문자 단어 건너뛰기(&U)"
 
-#: ui/configui.ui:105
+#: ui/configui.ui:112
 msgctxt "SonnetConfigUI|"
 msgid "S&kip run-together words"
 msgstr "붙어 있는 단어 건너뛰기(&K)"
 
-#: ui/configui.ui:115
+#: ui/configui.ui:122
+#, fuzzy
+#| msgctxt "SonnetConfigUI|"
+#| msgid "Ignored Words:"
 msgctxt "SonnetConfigUI|"
-msgid "Ignored Words:"
+msgid "Ignored Words"
 msgstr "무시하는 단어:"
 
-#: ui/configui.ui:129
+#: ui/configui.ui:139
 msgctxt "SonnetConfigUI|"
 msgid "&Add"
 msgstr "추가(&A)"
 
-#: ui/configui.ui:141
+#: ui/configui.ui:151
 msgctxt "SonnetConfigUI|"
 msgid "&Remove"
 msgstr "삭제(&R)"

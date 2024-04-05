@@ -183,66 +183,73 @@ msgctxt "SonnetConfigUI|"
 msgid "Default language:"
 msgstr "Andoza til:"
 
-#: ui/configui.ui:63
+#: ui/configui.ui:56
+#, fuzzy
+#| msgid "Preferred Number"
+msgctxt "SonnetConfigUI|"
+msgid "Preferred Languages"
+msgstr "Eng afzal raqam"
+
+#: ui/configui.ui:65
 msgctxt "SonnetConfigUI|"
 msgid "Choose your preferred languages"
 msgstr ""
 
-#: ui/configui.ui:71
+#: ui/configui.ui:75
 #, fuzzy
 #| msgid "Options"
 msgctxt "SonnetConfigUI|"
 msgid "Options"
 msgstr "Parametrlar"
 
-#: ui/configui.ui:77
+#: ui/configui.ui:84
 msgctxt "SonnetConfigUI|"
 msgid "Enable autodetection of &language"
 msgstr ""
 
-#: ui/configui.ui:84
+#: ui/configui.ui:91
 #, fuzzy
 #| msgid "Enable &background spellchecking"
 msgctxt "SonnetConfigUI|"
 msgid "Enable &background spellchecking"
 msgstr "&Avto-tekshirishni yoqish"
 
-#: ui/configui.ui:91
+#: ui/configui.ui:98
 #, fuzzy
 #| msgid "As-you-type spell checking enabled."
 msgctxt "SonnetConfigUI|"
 msgid "&Automatic spell checking enabled by default"
 msgstr "Imloni avto-tekshirish yoqildi."
 
-#: ui/configui.ui:98
+#: ui/configui.ui:105
 #, fuzzy
 #| msgid "Skip all &uppercase words"
 msgctxt "SonnetConfigUI|"
 msgid "Skip all &uppercase words"
 msgstr "&Katta harflar bilan yozilgan soʻzlarga eʼtibor berilmasin"
 
-#: ui/configui.ui:105
+#: ui/configui.ui:112
 #, fuzzy
 #| msgid "S&kip run-together words"
 msgctxt "SonnetConfigUI|"
 msgid "S&kip run-together words"
 msgstr "&Birga yozilgan soʻzlarga eʼtibor berilmasin"
 
-#: ui/configui.ui:115
+#: ui/configui.ui:122
 #, fuzzy
 #| msgid "Ignore These Words"
 msgctxt "SonnetConfigUI|"
-msgid "Ignored Words:"
+msgid "Ignored Words"
 msgstr "Quyidagi soʻzlarga eʼtibor berilmasin"
 
-#: ui/configui.ui:129
+#: ui/configui.ui:139
 #, fuzzy
 #| msgid "&Add"
 msgctxt "SonnetConfigUI|"
 msgid "&Add"
 msgstr "&Qoʻshish"
 
-#: ui/configui.ui:141
+#: ui/configui.ui:151
 #, fuzzy
 #| msgid "&Remove"
 msgctxt "SonnetConfigUI|"
@@ -11712,9 +11719,6 @@ msgstr "<< Lugʻatga qoʻshish"
 
 #~ msgid "Messenger"
 #~ msgstr "Messenjer"
-
-#~ msgid "Preferred Number"
-#~ msgstr "Eng afzal raqam"
 
 #~ msgid "Voice"
 #~ msgstr "Tovushli"
