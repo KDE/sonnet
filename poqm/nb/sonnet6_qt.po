@@ -217,8 +217,6 @@ msgstr "Hopp over &sammensatte ord"
 
 #: ui/configui.ui:122
 #, fuzzy
-#| msgctxt "SonnetConfigUI|"
-#| msgid "Ignored Words:"
 msgctxt "SonnetConfigUI|"
 msgid "Ignored Words"
 msgstr "Ignorerte ord:"

@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Qt-Contexts: true\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: core/loader.cpp:184
 msgctxt "Sonnet::Loader|dictionary variant"
@@ -165,12 +165,9 @@ msgid "Default language:"
 msgstr "ნაგულისხმები ენა:"
 
 #: ui/configui.ui:56
-#, fuzzy
-#| msgctxt "SonnetConfigUI|"
-#| msgid "Choose your preferred languages"
 msgctxt "SonnetConfigUI|"
 msgid "Preferred Languages"
-msgstr "აირჩიეთ სასურველი ენა"
+msgstr "სასურველი ენები"
 
 #: ui/configui.ui:65
 msgctxt "SonnetConfigUI|"
@@ -208,12 +205,9 @@ msgid "S&kip run-together words"
 msgstr "&ერთად შესამოწმებელი სიტყვების გამოტოვება"
 
 #: ui/configui.ui:122
-#, fuzzy
-#| msgctxt "SonnetConfigUI|"
-#| msgid "Ignored Words:"
 msgctxt "SonnetConfigUI|"
 msgid "Ignored Words"
-msgstr "იგნორირებული სიტყვები:"
+msgstr "გამოტოვებული სიტყვები"
 
 #: ui/configui.ui:139
 msgctxt "SonnetConfigUI|"

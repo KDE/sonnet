@@ -18,17 +18,17 @@ msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-03-23 01:50+0000\n"
-"PO-Revision-Date: 2023-03-20 08:25+0100\n"
+"PO-Revision-Date: 2024-04-05 09:35+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Lokalize 22.12.3\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n"
 "%100<=4 ? 2 : 3);\n"
+"Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Qt-Contexts: true\n"
 
 #: core/loader.cpp:184
@@ -182,12 +182,9 @@ msgid "Default language:"
 msgstr "Privzeti jezik:"
 
 #: ui/configui.ui:56
-#, fuzzy
-#| msgctxt "SonnetConfigUI|"
-#| msgid "Choose your preferred languages"
 msgctxt "SonnetConfigUI|"
 msgid "Preferred Languages"
-msgstr "Izberite vaše najbolj zaželene jezike"
+msgstr "Prednostni jeziki"
 
 #: ui/configui.ui:65
 msgctxt "SonnetConfigUI|"
@@ -225,12 +222,9 @@ msgid "S&kip run-together words"
 msgstr "Preskoči &besede, ki-se-držijo-skupaj"
 
 #: ui/configui.ui:122
-#, fuzzy
-#| msgctxt "SonnetConfigUI|"
-#| msgid "Ignored Words:"
 msgctxt "SonnetConfigUI|"
 msgid "Ignored Words"
-msgstr "Prezrte besede:"
+msgstr "Prezrte besede"
 
 #: ui/configui.ui:139
 msgctxt "SonnetConfigUI|"
