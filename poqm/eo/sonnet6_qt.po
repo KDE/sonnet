@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-03-23 01:50+0000\n"
-"PO-Revision-Date: 2023-04-16 02:31+0100\n"
+"PO-Revision-Date: 2024-04-06 22:35+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -176,12 +176,9 @@ msgid "Default language:"
 msgstr "Apriora lingvo:"
 
 #: ui/configui.ui:56
-#, fuzzy
-#| msgctxt "SonnetConfigUI|"
-#| msgid "Choose your preferred languages"
 msgctxt "SonnetConfigUI|"
 msgid "Preferred Languages"
-msgstr "Elektu vian preferatan lingvon"
+msgstr "Preferataj Lingvoj"
 
 #: ui/configui.ui:65
 msgctxt "SonnetConfigUI|"
@@ -216,15 +213,12 @@ msgstr "Preterpasi ĉiujn maj&usklajn vortojn"
 #: ui/configui.ui:112
 msgctxt "SonnetConfigUI|"
 msgid "S&kip run-together words"
-msgstr "Preterpasi &kunigitajn vortojn"
+msgstr "Preterlasi &kundevigitajn vortojn"
 
 #: ui/configui.ui:122
-#, fuzzy
-#| msgctxt "SonnetConfigUI|"
-#| msgid "Ignored Words:"
 msgctxt "SonnetConfigUI|"
 msgid "Ignored Words"
-msgstr "Ignorataj vortoj"
+msgstr "Ignorataj Vortoj"
 
 #: ui/configui.ui:139
 msgctxt "SonnetConfigUI|"
