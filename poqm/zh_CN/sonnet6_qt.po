@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
-"PO-Revision-Date: 2024-04-03 19:13\n"
+"PO-Revision-Date: 2024-04-07 14:28\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -165,12 +165,9 @@ msgid "Default language:"
 msgstr "默认语言："
 
 #: ui/configui.ui:56
-#, fuzzy
-#| msgctxt "SonnetConfigUI|"
-#| msgid "Choose your preferred languages"
 msgctxt "SonnetConfigUI|"
 msgid "Preferred Languages"
-msgstr "选择您的偏好语言"
+msgstr ""
 
 #: ui/configui.ui:65
 msgctxt "SonnetConfigUI|"
@@ -208,12 +205,9 @@ msgid "S&kip run-together words"
 msgstr "跳过连字符连接的单词(&K)"
 
 #: ui/configui.ui:122
-#, fuzzy
-#| msgctxt "SonnetConfigUI|"
-#| msgid "Ignored Words:"
 msgctxt "SonnetConfigUI|"
 msgid "Ignored Words"
-msgstr "忽略单词："
+msgstr ""
 
 #: ui/configui.ui:139
 msgctxt "SonnetConfigUI|"

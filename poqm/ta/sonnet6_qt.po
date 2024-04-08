@@ -4,13 +4,13 @@
 # Sivakumar Shanmugasundaram <sshanmu@yahoo.com>, 2000.
 # Thuraiappah Vaseeharan <t_vasee@yahoo.com>, 2000-2001.
 # ம. ஸ்ரீ ராமதாஸ் | Sri Ramadoss M <amachu@yavarkkum.org>, 2007-2012.
-# Kishore G <kishore96@gmail.com>, 2023.
+# SPDX-FileCopyrightText: 2023, 2024 Kishore G <kishore96@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-03-23 01:50+0000\n"
-"PO-Revision-Date: 2023-03-19 12:08+0530\n"
+"PO-Revision-Date: 2024-04-07 16:54+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 24.02.1\n"
 "X-Qt-Contexts: true\n"
 
 #: core/loader.cpp:184
@@ -99,47 +99,32 @@ msgstr "-ize பகுதிகள் உச்சரிப்பு இல்�
 #| msgid "large"
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "large"
-msgstr "பெரிய"
+msgstr "பெரியது"
 
 #: core/loader.cpp:194
-#, fuzzy
-#| msgctxt "dictionary variant"
-#| msgid "medium"
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "medium"
-msgstr "நடுத்தர"
+msgstr "நடுத்தரமானது"
 
 #: core/loader.cpp:195
-#, fuzzy
-#| msgctxt "dictionary variant"
-#| msgid "small"
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "small"
-msgstr "சிறிய"
+msgstr "சிறியது"
 
 #: core/loader.cpp:196
-#, fuzzy
-#| msgctxt "dictionary variant"
-#| msgid "variant 0"
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "variant 0"
-msgstr "மாறி 0"
+msgstr "திரிபு 0"
 
 #: core/loader.cpp:197
-#, fuzzy
-#| msgctxt "dictionary variant"
-#| msgid "variant 1"
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "variant 1"
-msgstr "மாறி 1"
+msgstr "திரிபு 1"
 
 #: core/loader.cpp:198
-#, fuzzy
-#| msgctxt "dictionary variant"
-#| msgid "variant 2"
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "variant 2"
-msgstr "மாறி 2"
+msgstr "திரிபு 2"
 
 #: core/loader.cpp:199
 #, fuzzy
@@ -173,17 +158,12 @@ msgid "with yo, old russian"
 msgstr ""
 
 #: core/loader.cpp:204
-#, fuzzy
-#| msgctxt "dictionary variant"
-#| msgid "extended"
 msgctxt "Sonnet::Loader|dictionary variant"
 msgid "extended"
-msgstr "விரிவுபடுத்தப்பட்ட"
+msgstr "விரிவுபடுத்தப்பட்டது"
 
 #: core/loader.cpp:238
-#, fuzzy, qt-format
-#| msgctxt "dictionary name. %1-language, %2-country and %3 variant name"
-#| msgid "%1 (%2) [%3]"
+#, qt-format
 msgctxt ""
 "Sonnet::Loader|dictionary name; %1 = language name, %2 = country name and %3 "
 "= language variant name"
@@ -191,45 +171,37 @@ msgid "%1 (%2) [%3]"
 msgstr "%1 (%2) [%3]"
 
 #: core/loader.cpp:241
-#, fuzzy, qt-format
-#| msgctxt "name of digit set with digit string, e.g. 'Arabic (0123456789)'"
-#| msgid "%1 (%2)"
+#, qt-format
 msgctxt "Sonnet::Loader|dictionary name; %1 = language name, %2 = country name"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
 #: quick/spellcheckhighlighter.cpp:252 quick/spellcheckhighlighter.cpp:276
-#, fuzzy
-#| msgid "As-you-type spell checking enabled."
 msgctxt "SpellcheckHighlighter|"
 msgid "As-you-type spell checking enabled."
-msgstr "உள்ளிடுகையிலேயே சொல் திருத்தி செயற்படுத்தப்பட்டுள்ளது."
+msgstr "தட்டச்சிடும்போதான எழுத்தாக்க சரிபார்ப்பு இயக்கப்பட்டுள்ளது."
 
 #: quick/spellcheckhighlighter.cpp:256
-#, fuzzy
-#| msgid "Too many misspelled words. As-you-type spell checking disabled."
 msgctxt "SpellcheckHighlighter|"
 msgid "Too many misspelled words. As-you-type spell checking disabled."
-msgstr "பலப் பிழையுள்ள சொற்களிருக்கின்றன. உள்ளிடுகையிலேயே சொல் திருத்தம் முடக்கப்பட்டது. "
+msgstr ""
+"பிழைகளுள்ள சொற்கள் மிகையாக உள்ளன. தட்டச்சிடும்போதான எழுத்தாக்க சரிபார்ப்பு "
+"முடக்கப்பட்டுள்ளது."
 
 #: quick/spellcheckhighlighter.cpp:278
-#, fuzzy
-#| msgid "As-you-type spell checking disabled."
 msgctxt "SpellcheckHighlighter|"
 msgid "As-you-type spell checking disabled."
-msgstr "உள்ளிடுகையிலேயே சொல் திருத்தும் முறை முடக்கப்பட்டது."
+msgstr "தட்டச்சிடும்போதான எழுத்தாக்க சரிபார்ப்பு முடக்கப்பட்டுள்ளது."
 
 #: ui/configdialog.cpp:40
-#, fuzzy
-#| msgid "Spell Checking Configuration"
 msgctxt "Sonnet::ConfigDialog|"
 msgid "Spell Checking Configuration"
-msgstr "எழுத்துப் பிழைபார்ப்பை வடிவமை"
+msgstr "எழுத்தாக்க சரிபார்ப்பு அமைப்புகள்"
 
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
 msgid "No backend like hunspell/aspell/myspell installed"
-msgstr ""
+msgstr "Hunspell/aspell/myspell போன்ற எந்த பின்நிரலும் நிறுவப்படவில்லை"
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -237,12 +209,9 @@ msgid "Default language:"
 msgstr "இயல்பிருப்பு மொழி:"
 
 #: ui/configui.ui:56
-#, fuzzy
-#| msgctxt "SonnetConfigUI|"
-#| msgid "Choose your preferred languages"
 msgctxt "SonnetConfigUI|"
 msgid "Preferred Languages"
-msgstr "முதன்மையான மொழிகளை தேர்ந்தெடுங்கள்"
+msgstr "முதன்மையான மொழிகள்"
 
 #: ui/configui.ui:65
 msgctxt "SonnetConfigUI|"
@@ -270,26 +239,19 @@ msgid "&Automatic spell checking enabled by default"
 msgstr "&தானியங்கி எழுத்தாக்க சரிபார்ப்பை இயல்பிருப்பாக இயக்கு"
 
 #: ui/configui.ui:105
-#, fuzzy
-#| msgid "Skip all &uppercase words"
 msgctxt "SonnetConfigUI|"
 msgid "Skip all &uppercase words"
-msgstr "&பெருவெழுத்துக்கள் அனைத்தையும் தவிர்க்க"
+msgstr "&முழுதாக பேரெழுத்துகளைக் கொண்ட சொற்களை பொருட்படுத்தாதே"
 
 #: ui/configui.ui:112
-#, fuzzy
-#| msgid "S&kip run-together words"
 msgctxt "SonnetConfigUI|"
 msgid "S&kip run-together words"
-msgstr "run-together சொற்களைத் &தவிர்க்கவும்"
+msgstr "பல சொற்களை இடைவெளியில்லாமல் கூட்டுவதை பொருட்படுத்தாதே&"
 
 #: ui/configui.ui:122
-#, fuzzy
-#| msgctxt "SonnetConfigUI|"
-#| msgid "Ignored Words:"
 msgctxt "SonnetConfigUI|"
 msgid "Ignored Words"
-msgstr "பொருட்படுத்தப்படா சொற்கள்:"
+msgstr "பொருட்படுத்தப்படா சொற்கள்"
 
 #: ui/configui.ui:139
 msgctxt "SonnetConfigUI|"
@@ -332,11 +294,11 @@ msgid "As-you-type spell checking enabled."
 msgstr "தட்டச்சிடும்போதான எழுத்தாக்க சரிபார்ப்பு இயக்கப்பட்டுள்ளது."
 
 #: ui/highlighter.cpp:261
-#, fuzzy
-#| msgid "Too many misspelled words. As-you-type spell checking disabled."
 msgctxt "Sonnet::Highlighter|"
 msgid "Too many misspelled words. As-you-type spell checking disabled."
-msgstr "பலப் பிழையுள்ள சொற்களிருக்கின்றன. உள்ளிடுகையிலேயே சொல் திருத்தம் முடக்கப்பட்டது. "
+msgstr ""
+"பிழைகளுள்ள சொற்கள் மிகையாக உள்ளன. தட்டச்சிடும்போதான எழுத்தாக்க சரிபார்ப்பு "
+"முடக்கப்பட்டுள்ளது."
 
 #: ui/highlighter.cpp:282
 msgctxt "Sonnet::Highlighter|"
@@ -395,11 +357,9 @@ msgid "Unknown word"
 msgstr "தெரியாத சொல்"
 
 #: ui/sonnetui.ui:63
-#, fuzzy
-#| msgid "<b>misspelled</b>"
 msgctxt "SonnetUi|"
 msgid "<b>misspelled</b>"
-msgstr "<b>எழுத்துப்பிழையுள்ள</b>"
+msgstr "<b>தவறு</b>"
 
 #: ui/sonnetui.ui:70 ui/sonnetui.ui:180
 #, fuzzy
@@ -423,11 +383,9 @@ msgid "&Language:"
 msgstr "&மொழி:"
 
 #: ui/sonnetui.ui:85
-#, fuzzy
-#| msgid "Text excerpt showing the unknown word in its context."
 msgctxt "SonnetUi|"
 msgid "Text excerpt showing the unknown word in its context."
-msgstr "இடத்தோடு பொருந்தாத சொல்லைக் காட்டும் உரைத் துண்டு."
+msgstr "தெரியாத சொல்லை அதன் சூழலில் காட்டும் மேற்கோள்"
 
 #: ui/sonnetui.ui:88
 #, fuzzy
