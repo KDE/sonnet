@@ -175,12 +175,9 @@ msgid "Default language:"
 msgstr "Výchozí jazyk:"
 
 #: ui/configui.ui:56
-#, fuzzy
-#| msgctxt "SonnetConfigUI|"
-#| msgid "Choose your preferred languages"
 msgctxt "SonnetConfigUI|"
 msgid "Preferred Languages"
-msgstr "Zvolte preferované jazyky"
+msgstr ""
 
 #: ui/configui.ui:65
 msgctxt "SonnetConfigUI|"
@@ -218,12 +215,9 @@ msgid "S&kip run-together words"
 msgstr "Přes&kakovat spojená slova"
 
 #: ui/configui.ui:122
-#, fuzzy
-#| msgctxt "SonnetConfigUI|"
-#| msgid "Ignored Words:"
 msgctxt "SonnetConfigUI|"
 msgid "Ignored Words"
-msgstr "Ignorovaná slova:"
+msgstr ""
 
 #: ui/configui.ui:139
 msgctxt "SonnetConfigUI|"
