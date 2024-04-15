@@ -1,4 +1,4 @@
-ecm_add_qml_module(sonnetquickplugin URI "org.kde.sonnet" VERSION 1.0 GENERATE_PLUGIN_SOURCE)
+ecm_add_qml_module(sonnetquickplugin URI "org.kde.sonnet" VERSION 1.0 GENERATE_PLUGIN_SOURCE DEPENDENCIES QtQuick)
 
 target_sources(sonnetquickplugin PRIVATE
     types.h
