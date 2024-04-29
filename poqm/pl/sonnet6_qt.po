@@ -11,20 +11,20 @@
 # Marta Rybczyńska <kde-i18n@rybczynska.net>, 2007, 2008, 2009, 2010, 2011, 2012, 2013.
 # Michal Rudolf <michal@rudolf.waw.pl>, 2010.
 # Artur Chłond <eugenewolfe@o2.pl>, 2010.
-# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2011, 2012, 2013, 2014, 2015, 2016, 2018, 2021, 2023.
+# SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2018, 2021, 2023, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-03-23 01:50+0000\n"
-"PO-Revision-Date: 2023-04-10 10:52+0200\n"
+"PO-Revision-Date: 2024-04-28 12:16+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Qt-Contexts: true\n"
@@ -180,12 +180,9 @@ msgid "Default language:"
 msgstr "Domyślny język:"
 
 #: ui/configui.ui:56
-#, fuzzy
-#| msgctxt "SonnetConfigUI|"
-#| msgid "Choose your preferred languages"
 msgctxt "SonnetConfigUI|"
 msgid "Preferred Languages"
-msgstr "Wybierz swój język"
+msgstr "Ulubione języki"
 
 #: ui/configui.ui:65
 msgctxt "SonnetConfigUI|"
@@ -223,12 +220,9 @@ msgid "S&kip run-together words"
 msgstr "Pomijaj &połączenia słów"
 
 #: ui/configui.ui:122
-#, fuzzy
-#| msgctxt "SonnetConfigUI|"
-#| msgid "Ignored Words:"
 msgctxt "SonnetConfigUI|"
 msgid "Ignored Words"
-msgstr "Pomijane słowa:"
+msgstr "Pomijane słowa"
 
 #: ui/configui.ui:139
 msgctxt "SonnetConfigUI|"
