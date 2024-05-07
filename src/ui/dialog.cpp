@@ -190,7 +190,7 @@ void Dialog::setProgressDialogVisible(bool b)
             return;
         }
         d->progressDialog = new QProgressDialog(this);
-        d->progressDialog->setLabelText(tr("Spell checking in progress...", "progress label"));
+        d->progressDialog->setLabelText(tr("Spell checking in progress…", "@info:progress"));
         d->progressDialog->setWindowTitle(tr("Check Spelling", "@title:window"));
         d->progressDialog->setModal(true);
         d->progressDialog->setAutoClose(false);
