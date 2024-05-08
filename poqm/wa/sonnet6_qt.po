@@ -325,8 +325,8 @@ msgstr "Coridjî ortografeye"
 #, fuzzy
 #| msgctxt "progress label"
 #| msgid "Spell checking in progress..."
-msgctxt "Sonnet::Dialog|progress label"
-msgid "Spell checking in progress..."
+msgctxt "Sonnet::Dialog|@info:progress"
+msgid "Spell checking in progress…"
 msgstr "Coridjaedje d' ortografeye èn alaedje..."
 
 #: ui/dialog.cpp:214

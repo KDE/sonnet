@@ -270,8 +270,8 @@ msgstr "അക്ഷരത്തെറ്റു്ം പരിശോധിക�
 
 #: ui/dialog.cpp:193
 #, fuzzy
-msgctxt "Sonnet::Dialog|progress label"
-msgid "Spell checking in progress..."
+msgctxt "Sonnet::Dialog|@info:progress"
+msgid "Spell checking in progress…"
 msgstr "അക്ഷരത്തെറ്റു് പരിശോധന നടന്നുകൊണ്ടിരിയ്ക്കുന്നു..."
 
 #: ui/dialog.cpp:214

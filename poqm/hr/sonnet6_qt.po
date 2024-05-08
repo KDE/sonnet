@@ -334,8 +334,8 @@ msgstr "Provjeri pravopis"
 #, fuzzy
 #| msgctxt "progress label"
 #| msgid "Spell checking in progress..."
-msgctxt "Sonnet::Dialog|progress label"
-msgid "Spell checking in progress..."
+msgctxt "Sonnet::Dialog|@info:progress"
+msgid "Spell checking in progress…"
 msgstr "Provjera pravopisa u tijeku…"
 
 #: ui/dialog.cpp:214

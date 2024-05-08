@@ -327,8 +327,8 @@ msgstr "అచ్చుతప్పులు సరిచూడు"
 #, fuzzy
 #| msgctxt "progress label"
 #| msgid "Spell checking in progress..."
-msgctxt "Sonnet::Dialog|progress label"
-msgid "Spell checking in progress..."
+msgctxt "Sonnet::Dialog|@info:progress"
+msgid "Spell checking in progress…"
 msgstr "అచ్చుతప్పులు సరిచూడుట జరుగుతూ ఉంది "
 
 #: ui/dialog.cpp:214

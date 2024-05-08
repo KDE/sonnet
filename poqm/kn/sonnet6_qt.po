@@ -324,8 +324,8 @@ msgstr "ಕಾಗುಣಿತ ಪರೀಕ್ಷಣೆ"
 #, fuzzy
 #| msgctxt "progress label"
 #| msgid "Spell checking in progress..."
-msgctxt "Sonnet::Dialog|progress label"
-msgid "Spell checking in progress..."
+msgctxt "Sonnet::Dialog|@info:progress"
+msgid "Spell checking in progress…"
 msgstr "ಕಾಗುಣಿತ ಪರಿಶೀಲನೆಯು ಪ್ರಗತಿಯಲ್ಲಿದೆ..."
 
 #: ui/dialog.cpp:214

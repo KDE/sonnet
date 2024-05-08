@@ -278,8 +278,8 @@ msgstr "Verificar l'ortografia"
 #: ui/dialog.cpp:193
 #, fuzzy
 #| msgid "Spell Checking"
-msgctxt "Sonnet::Dialog|progress label"
-msgid "Spell checking in progress..."
+msgctxt "Sonnet::Dialog|@info:progress"
+msgid "Spell checking in progress…"
 msgstr "Verificar l'ortografia"
 
 #: ui/dialog.cpp:214

@@ -323,8 +323,8 @@ msgstr "वर्तनी जाँचू "
 #, fuzzy
 #| msgctxt "progress label"
 #| msgid "Spell checking in progress..."
-msgctxt "Sonnet::Dialog|progress label"
-msgid "Spell checking in progress..."
+msgctxt "Sonnet::Dialog|@info:progress"
+msgid "Spell checking in progress…"
 msgstr "वर्तनी जाँचि प्रगति पर अछि."
 
 #: ui/dialog.cpp:214

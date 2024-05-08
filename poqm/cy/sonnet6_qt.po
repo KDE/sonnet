@@ -280,8 +280,8 @@ msgstr "Gwirio Sillafu"
 #: ui/dialog.cpp:193
 #, fuzzy
 #| msgid "Spell Checker"
-msgctxt "Sonnet::Dialog|progress label"
-msgid "Spell checking in progress..."
+msgctxt "Sonnet::Dialog|@info:progress"
+msgid "Spell checking in progress…"
 msgstr "Cywirydd Sillafu"
 
 #: ui/dialog.cpp:214

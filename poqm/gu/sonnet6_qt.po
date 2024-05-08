@@ -321,8 +321,8 @@ msgstr "જોડણી ચકાસો"
 #, fuzzy
 #| msgctxt "progress label"
 #| msgid "Spell checking in progress..."
-msgctxt "Sonnet::Dialog|progress label"
-msgid "Spell checking in progress..."
+msgctxt "Sonnet::Dialog|@info:progress"
+msgid "Spell checking in progress…"
 msgstr "જોડણી તપાસ પ્રગતિ પર છે..."
 
 #: ui/dialog.cpp:214

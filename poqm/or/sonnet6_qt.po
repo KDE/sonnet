@@ -321,8 +321,8 @@ msgstr "ବନାନ ଯାଞ୍ଚ କରନ୍ତୁ"
 #: ui/dialog.cpp:193
 #, fuzzy
 #| msgid "Spell check stopped."
-msgctxt "Sonnet::Dialog|progress label"
-msgid "Spell checking in progress..."
+msgctxt "Sonnet::Dialog|@info:progress"
+msgid "Spell checking in progress…"
 msgstr "ବନାନଯାଞ୍ଚ ଅଟକିଯାଇଛି।"
 
 #: ui/dialog.cpp:214

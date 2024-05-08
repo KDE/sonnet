@@ -331,8 +331,8 @@ msgstr "Rastnivîsê Kontrol Bike"
 #, fuzzy
 #| msgctxt "progress label"
 #| msgid "Spell checking in progress..."
-msgctxt "Sonnet::Dialog|progress label"
-msgid "Spell checking in progress..."
+msgctxt "Sonnet::Dialog|@info:progress"
+msgid "Spell checking in progress…"
 msgstr "Kontrolkerê rastnivîsê dixebite"
 
 #: ui/dialog.cpp:214

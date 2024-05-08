@@ -328,8 +328,8 @@ msgstr "غلط‌یابی"
 #, fuzzy
 #| msgctxt "progress label"
 #| msgid "Spell checking in progress..."
-msgctxt "Sonnet::Dialog|progress label"
-msgid "Spell checking in progress..."
+msgctxt "Sonnet::Dialog|@info:progress"
+msgid "Spell checking in progress…"
 msgstr "در حال غلط‌یابی..."
 
 #: ui/dialog.cpp:214

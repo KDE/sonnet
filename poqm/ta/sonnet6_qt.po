@@ -269,8 +269,11 @@ msgid "Check Spelling"
 msgstr "எழுத்தாக்கத்தை சரிபார்ப்பது"
 
 #: ui/dialog.cpp:193
-msgctxt "Sonnet::Dialog|progress label"
-msgid "Spell checking in progress..."
+#, fuzzy
+#| msgctxt "Sonnet::Dialog|progress label"
+#| msgid "Spell checking in progress..."
+msgctxt "Sonnet::Dialog|@info:progress"
+msgid "Spell checking in progress…"
 msgstr "எழுத்தாக்க சரிபார்ப்பு நடைபெறுகிறது..."
 
 #: ui/dialog.cpp:214

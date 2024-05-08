@@ -322,8 +322,8 @@ msgstr "Ceartaigh Litriú"
 #, fuzzy
 #| msgctxt "progress label"
 #| msgid "Spell checking in progress..."
-msgctxt "Sonnet::Dialog|progress label"
-msgid "Spell checking in progress..."
+msgctxt "Sonnet::Dialog|@info:progress"
+msgid "Spell checking in progress…"
 msgstr "Seiceáil litrithe ar siúl..."
 
 #: ui/dialog.cpp:214

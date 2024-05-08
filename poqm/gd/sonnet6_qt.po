@@ -240,8 +240,11 @@ msgid "Check Spelling"
 msgstr "Dearbhaich an litreachadh"
 
 #: ui/dialog.cpp:193
-msgctxt "Sonnet::Dialog|progress label"
-msgid "Spell checking in progress..."
+#, fuzzy
+#| msgctxt "Sonnet::Dialog|progress label"
+#| msgid "Spell checking in progress..."
+msgctxt "Sonnet::Dialog|@info:progress"
+msgid "Spell checking in progress…"
 msgstr "Tha an litreachadh 'ga dhearbhadh..."
 
 #: ui/dialog.cpp:214

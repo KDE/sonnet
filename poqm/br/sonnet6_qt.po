@@ -274,8 +274,8 @@ msgstr "Gwiriekaat ar reizhskrivadur"
 #: ui/dialog.cpp:193
 #, fuzzy
 #| msgid "Spell Checker"
-msgctxt "Sonnet::Dialog|progress label"
-msgid "Spell checking in progress..."
+msgctxt "Sonnet::Dialog|@info:progress"
+msgid "Spell checking in progress…"
 msgstr "Gwirieker ar skritur"
 
 #: ui/dialog.cpp:214

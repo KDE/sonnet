@@ -247,8 +247,11 @@ msgid "Check Spelling"
 msgstr "वर्तनी जांचें"
 
 #: ui/dialog.cpp:193
-msgctxt "Sonnet::Dialog|progress label"
-msgid "Spell checking in progress..."
+#, fuzzy
+#| msgctxt "Sonnet::Dialog|progress label"
+#| msgid "Spell checking in progress..."
+msgctxt "Sonnet::Dialog|@info:progress"
+msgid "Spell checking in progress…"
 msgstr "वर्तनी जांच जारी है..."
 
 #: ui/dialog.cpp:214

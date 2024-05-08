@@ -260,8 +260,8 @@ msgstr "Čállindárkkisteapmi"
 
 #: ui/dialog.cpp:193
 #, fuzzy
-msgctxt "Sonnet::Dialog|progress label"
-msgid "Spell checking in progress..."
+msgctxt "Sonnet::Dialog|@info:progress"
+msgid "Spell checking in progress…"
 msgstr "Čállindárkkisteapmi lea jođus …"
 
 #: ui/dialog.cpp:214

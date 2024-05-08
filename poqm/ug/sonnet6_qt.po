@@ -321,8 +321,8 @@ msgstr "ئىملا تەكشۈر"
 #, fuzzy
 #| msgctxt "progress label"
 #| msgid "Spell checking in progress..."
-msgctxt "Sonnet::Dialog|progress label"
-msgid "Spell checking in progress..."
+msgctxt "Sonnet::Dialog|@info:progress"
+msgid "Spell checking in progress…"
 msgstr "ئىملا تەكشۈرۈۋاتىدۇ..."
 
 #: ui/dialog.cpp:214

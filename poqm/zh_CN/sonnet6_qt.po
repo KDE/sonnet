@@ -225,8 +225,11 @@ msgid "Check Spelling"
 msgstr "检查拼写"
 
 #: ui/dialog.cpp:193
-msgctxt "Sonnet::Dialog|progress label"
-msgid "Spell checking in progress..."
+#, fuzzy
+#| msgctxt "Sonnet::Dialog|progress label"
+#| msgid "Spell checking in progress..."
+msgctxt "Sonnet::Dialog|@info:progress"
+msgid "Spell checking in progress…"
 msgstr "正在进行拼写检查..."
 
 #: ui/dialog.cpp:214

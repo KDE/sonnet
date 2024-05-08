@@ -319,8 +319,8 @@ msgstr "ពិនិត្យ​អក្ខរាវិរុទ្ធ"
 #, fuzzy
 #| msgctxt "progress label"
 #| msgid "Spell checking in progress..."
-msgctxt "Sonnet::Dialog|progress label"
-msgid "Spell checking in progress..."
+msgctxt "Sonnet::Dialog|@info:progress"
+msgid "Spell checking in progress…"
 msgstr "កំពុង​ពិនិត្យ​មើល​អក្ខរាវិរុទ្ធ..."
 
 #: ui/dialog.cpp:214
