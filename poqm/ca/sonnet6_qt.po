@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: sonnet\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2014-03-23 01:50+0000\n"
-"PO-Revision-Date: 2024-04-05 11:03+0200\n"
+"PO-Revision-Date: 2024-05-08 16:08+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -239,12 +239,9 @@ msgid "Check Spelling"
 msgstr "Verificació ortogràfica"
 
 #: ui/dialog.cpp:193
-#, fuzzy
-#| msgctxt "Sonnet::Dialog|progress label"
-#| msgid "Spell checking in progress..."
 msgctxt "Sonnet::Dialog|@info:progress"
 msgid "Spell checking in progress…"
-msgstr "Verificació ortogràfica en curs..."
+msgstr "Verificació ortogràfica en curs…"
 
 #: ui/dialog.cpp:214
 msgctxt "Sonnet::Dialog|"
