@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-06-28 15:38+0300\n"
-"PO-Revision-Date: 2024-04-07 11:58+0400\n"
+"PO-Revision-Date: 2024-05-09 09:54+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -245,12 +245,9 @@ msgid "Check Spelling"
 msgstr "دقّق الإملاء"
 
 #: ui/dialog.cpp:193
-#, fuzzy
-#| msgctxt "Sonnet::Dialog|progress label"
-#| msgid "Spell checking in progress..."
 msgctxt "Sonnet::Dialog|@info:progress"
 msgid "Spell checking in progress…"
-msgstr "التدقيق الإملائي في تقدّم..."
+msgstr "تدقيق الهجاء جارٍ…"
 
 #: ui/dialog.cpp:214
 msgctxt "Sonnet::Dialog|"

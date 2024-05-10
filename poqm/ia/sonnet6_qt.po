@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-03-23 01:50+0000\n"
-"PO-Revision-Date: 2024-04-05 18:25+0200\n"
+"PO-Revision-Date: 2024-05-09 11:47+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -231,12 +231,9 @@ msgid "Check Spelling"
 msgstr "Controlo Orthographic"
 
 #: ui/dialog.cpp:193
-#, fuzzy
-#| msgctxt "Sonnet::Dialog|progress label"
-#| msgid "Spell checking in progress..."
 msgctxt "Sonnet::Dialog|@info:progress"
 msgid "Spell checking in progress…"
-msgstr "Controlo Orthographic in progresso ..."
+msgstr "Controlo Orthographic in progresso …"
 
 #: ui/dialog.cpp:214
 msgctxt "Sonnet::Dialog|"
