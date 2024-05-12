@@ -236,7 +236,7 @@ msgstr "Verificació ortogràfica"
 #: ui/dialog.cpp:196
 msgctxt "Sonnet::Dialog|progress label"
 msgid "Spell checking in progress..."
-msgstr "Verificació ortogràfica en curs..."
+msgstr "Verificació ortogràfica en curs…"
 
 #: ui/dialog.cpp:220
 msgctxt "Sonnet::Dialog|"
@@ -356,7 +356,7 @@ msgstr ""
 #: ui/sonnetui.ui:96
 msgctxt "SonnetUi|"
 msgid "... the <b>misspelled</b> word shown in context ..."
-msgstr "...la paraula <b>mal escrita</b> mostrada en context..."
+msgstr "…la paraula <b>mal escrita</b> mostrada en context…"
 
 #: ui/sonnetui.ui:106
 msgctxt "SonnetUi|"
