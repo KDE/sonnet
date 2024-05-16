@@ -3,7 +3,7 @@
 # Wolfram Diestel <wolfram@steloj.de>, 1998.
 # Heiko Evermann <heiko@evermann.de>, 2002, 2003.
 # Matthias Peick <matthias@peick.de>, 2004, 2005.
-# Oliver Kellogg <okellogg@users.sourceforge.net>,2007.
+# Oliver Kellogg <olivermkellogg@gmail.com>,2007.
 # Cindy McKee <cfmckee@gmail.com>, 2007, 2008.
 # Axel Rousseau <axel@esperanto-jeunes.org>, 2009.
 # Michael Moroni <michael.moroni@mailoo.org>, 2012.
@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-03-23 01:50+0000\n"
-"PO-Revision-Date: 2024-04-06 22:35+0100\n"
-"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
+"PO-Revision-Date: 2024-05-15 09:56+0100\n"
+"Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
@@ -236,12 +236,9 @@ msgid "Check Spelling"
 msgstr "Kontroli literumadon"
 
 #: ui/dialog.cpp:193
-#, fuzzy
-#| msgctxt "Sonnet::Dialog|progress label"
-#| msgid "Spell checking in progress..."
 msgctxt "Sonnet::Dialog|@info:progress"
 msgid "Spell checking in progress…"
-msgstr "Literumado farata..."
+msgstr "Farante literumkontrolon…"
 
 #: ui/dialog.cpp:214
 msgctxt "Sonnet::Dialog|"
