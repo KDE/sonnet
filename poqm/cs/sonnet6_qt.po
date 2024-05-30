@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-03-23 01:50+0000\n"
-"PO-Revision-Date: 2024-05-07 10:46+0200\n"
+"PO-Revision-Date: 2024-05-29 11:23+0200\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -237,7 +237,7 @@ msgstr "Zkontrolovat pravopis"
 #: ui/dialog.cpp:193
 msgctxt "Sonnet::Dialog|@info:progress"
 msgid "Spell checking in progress…"
-msgstr ""
+msgstr "Probíhá kontrola pravopisu…"
 
 #: ui/dialog.cpp:214
 msgctxt "Sonnet::Dialog|"
