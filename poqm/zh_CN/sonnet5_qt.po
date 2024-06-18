@@ -177,7 +177,7 @@ msgstr "选项"
 #: ui/configui.ui:77
 msgctxt "SonnetConfigUI|"
 msgid "Enable autodetection of &language"
-msgstr "启动语言自动检测(&L)"
+msgstr "启用语言自动检测(&L)"
 
 #: ui/configui.ui:84
 msgctxt "SonnetConfigUI|"
