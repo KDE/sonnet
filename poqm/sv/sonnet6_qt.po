@@ -1,9 +1,9 @@
-# Stefan Asserhäll <stefan.asserhall@gmail.com>, 2014, 2015, 2018, 2021.
+# SPDX-FileCopyrightText: 2014, 2015, 2018, 2021, 2024 Stefan Asserhäll <stefan.asserhall@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2021-10-05 17:04+0200\n"
-"Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
+"PO-Revision-Date: 2024-06-18 00:45+0200\n"
+"Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Qt-Contexts: true\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.08.1\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: core/loader.cpp:184
 msgctxt "Sonnet::Loader|dictionary variant"
@@ -155,7 +155,7 @@ msgstr "Inställning av stavningskontroll"
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
 msgid "No backend like hunspell/aspell/myspell installed"
-msgstr ""
+msgstr "Inget gränssnitt som hunspell,aspell eller myspell installerat"
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
@@ -163,12 +163,9 @@ msgid "Default language:"
 msgstr "Förvalt språk:"
 
 #: ui/configui.ui:56
-#, fuzzy
-#| msgctxt "SonnetConfigUI|"
-#| msgid "Choose your preferred languages"
 msgctxt "SonnetConfigUI|"
 msgid "Preferred Languages"
-msgstr "Välj föredragna språk"
+msgstr "Föredragna språk"
 
 #: ui/configui.ui:65
 msgctxt "SonnetConfigUI|"
@@ -206,12 +203,9 @@ msgid "S&kip run-together words"
 msgstr "&Hoppa över sammansatta ord"
 
 #: ui/configui.ui:122
-#, fuzzy
-#| msgctxt "SonnetConfigUI|"
-#| msgid "Ignored Words:"
 msgctxt "SonnetConfigUI|"
 msgid "Ignored Words"
-msgstr "Ignorerade ord:"
+msgstr "Ignorerade ord"
 
 #: ui/configui.ui:139
 msgctxt "SonnetConfigUI|"
@@ -229,12 +223,9 @@ msgid "Check Spelling"
 msgstr "Kontrollera stavning"
 
 #: ui/dialog.cpp:193
-#, fuzzy
-#| msgctxt "Sonnet::Dialog|progress label"
-#| msgid "Spell checking in progress..."
 msgctxt "Sonnet::Dialog|@info:progress"
 msgid "Spell checking in progress…"
-msgstr "Stavningskontroll pågår..."
+msgstr "Stavningskontroll pågår…"
 
 #: ui/dialog.cpp:214
 msgctxt "Sonnet::Dialog|"
