@@ -86,7 +86,7 @@ SpellerPlugin *Loader::createSpeller(const QString &language, const QString &cli
             qCDebug(SONNET_LOG_CORE) << "No language dictionaries for the language:" << plang << "trying to load en_US as default";
             return createSpeller(QStringLiteral("en_US"), clientName);
         }
-        qCWarning(SONNET_LOG_CORE) << "No language dictionaries for the language:" << plang;
+        qCDebug(SONNET_LOG_CORE) << "No language dictionaries for the language:" << plang;
         Q_EMIT loadingDictionaryFailed(plang);
         return nullptr;
     }
