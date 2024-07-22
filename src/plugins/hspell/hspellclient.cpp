@@ -8,7 +8,11 @@
  */
 #include "hspellclient.h"
 
+#include "hspell.h"
 #include "hspelldict.h"
+
+#include <QFileInfo>
+#include <QUrl>
 
 using namespace Sonnet;
 
@@ -29,12 +33,11 @@ SpellerPlugin *HSpellClient::createSpeller(const QString &language)
 
 QStringList HSpellClient::languages() const
 {
-    QStringList langs;
-    HSpellDict ad(QStringLiteral("he"));
-    if (ad.isInitialized()) {
-        langs.append(QStringLiteral("he"));
+    QString dictPath(QString::fromUtf8(hspell_get_dictionary_path()));
+    if (QUrl(dictPath).isLocalFile() && QFileInfo::exists(dictPath)) {
+        return {QStringLiteral("he")};
     }
-    return langs;
+    return {};
 }
 
 #include "moc_hspellclient.cpp"
