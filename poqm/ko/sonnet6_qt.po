@@ -1,14 +1,14 @@
 # Korean messages for kdelibs.
 # Copyright (C) Free Software Foundation, Inc.
 # Cho Sung Jae <cho.sungjae@gmail.com>, 2007.
-# Shinjo Park <kde@peremen.name>, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2019, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2019, 2020, 2021, 2022, 2023, 2024 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-03-23 01:50+0000\n"
-"PO-Revision-Date: 2023-04-22 00:09+0200\n"
+"PO-Revision-Date: 2024-08-20 00:57+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 "X-Qt-Contexts: true\n"
 
 #: core/loader.cpp:184
@@ -170,12 +170,9 @@ msgid "Default language:"
 msgstr "기본 언어:"
 
 #: ui/configui.ui:56
-#, fuzzy
-#| msgctxt "SonnetConfigUI|"
-#| msgid "Choose your preferred languages"
 msgctxt "SonnetConfigUI|"
 msgid "Preferred Languages"
-msgstr "선호하는 언어 선택"
+msgstr "선호하는 언어"
 
 #: ui/configui.ui:65
 msgctxt "SonnetConfigUI|"
@@ -213,12 +210,9 @@ msgid "S&kip run-together words"
 msgstr "붙어 있는 단어 건너뛰기(&K)"
 
 #: ui/configui.ui:122
-#, fuzzy
-#| msgctxt "SonnetConfigUI|"
-#| msgid "Ignored Words:"
 msgctxt "SonnetConfigUI|"
 msgid "Ignored Words"
-msgstr "무시하는 단어:"
+msgstr "무시하는 단어"
 
 #: ui/configui.ui:139
 msgctxt "SonnetConfigUI|"
@@ -236,12 +230,9 @@ msgid "Check Spelling"
 msgstr "맞춤법 검사"
 
 #: ui/dialog.cpp:193
-#, fuzzy
-#| msgctxt "Sonnet::Dialog|progress label"
-#| msgid "Spell checking in progress..."
 msgctxt "Sonnet::Dialog|@info:progress"
 msgid "Spell checking in progress…"
-msgstr "맞춤법 검사 중..."
+msgstr "맞춤법 검사 중…"
 
 #: ui/dialog.cpp:214
 msgctxt "Sonnet::Dialog|"
