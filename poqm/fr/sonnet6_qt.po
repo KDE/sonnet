@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: kdelibs4\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-03-23 01:50+0000\n"
-"PO-Revision-Date: 2024-05-08 18:06+0200\n"
+"PO-Revision-Date: 2024-08-13 13:52+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -183,7 +183,7 @@ msgstr "Configuration de la vérification de l'orthographe"
 #: ui/configui.ui:26
 msgctxt "SonnetConfigUI|"
 msgid "No backend like hunspell/aspell/myspell installed"
-msgstr "Aucun moteur comme HUnspell, Aspell ou Myspell n'est installé."
+msgstr "Aucun moteur comme Hunspell, Aspell ou Myspell n'est installé."
 
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
