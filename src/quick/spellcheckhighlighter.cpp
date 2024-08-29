@@ -128,23 +128,24 @@ public:
     std::unique_ptr<Sonnet::GuessLanguage> languageGuesser;
     QString selectedWord;
     QQuickTextDocument *document = nullptr;
-    int cursorPosition = -1;
-    int selectionStart = -1;
-    int selectionEnd = -1;
+    int cursorPosition = 0;
+    int selectionStart = 0;
+    int selectionEnd = 0;
 
     int autoCompleteBeginPosition = -1;
     int autoCompleteEndPosition = -1;
     int wordIsMisspelled = false;
-    bool active;
-    bool automatic;
-    bool autoDetectLanguageDisabled;
-    bool completeRehighlightRequired;
-    bool intraWordEditing;
-    bool spellCheckerFound; // cached d->dict->isValid() value
-    bool connected;
+    bool active = false;
+    bool automatic = false;
+    bool autoDetectLanguageDisabled = false;
+    bool completeRehighlightRequired = false;
+    bool intraWordEditing = false;
+    bool spellCheckerFound = false; // cached d->dict->isValid() value
+    bool connected = false;
     int disablePercentage = 0;
     int disableWordCount = 0;
-    int wordCount, errorCount;
+    int wordCount = 0;
+    int errorCount = 0;
     QTimer *rehighlightRequest = nullptr;
     QColor spellColor;
     SpellcheckHighlighter *const q;
