@@ -17,3 +17,5 @@ target_include_directories(sonnet_voikko PRIVATE ${VOIKKO_INCLUDE_DIR})
 target_link_libraries(sonnet_voikko PRIVATE KF6::SonnetCore ${VOIKKO_LIBRARIES})
 
 install(TARGETS sonnet_voikko  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf6/sonnet/)
+
+set(SONNET_BACKEND_FOUND TRUE PARENT_SCOPE)
