@@ -17,5 +17,3 @@ ecm_qt_declare_logging_category(sonnet_aspell
 target_link_libraries(sonnet_aspell PRIVATE KF6::SonnetCore ${ASPELL_LIBRARIES})
 
 install(TARGETS sonnet_aspell  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf6/sonnet/)
-
-set(SONNET_BACKEND_FOUND TRUE PARENT_SCOPE)

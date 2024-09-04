@@ -26,5 +26,3 @@ ecm_qt_declare_logging_category(sonnet_hspell
 target_link_libraries(sonnet_hspell PRIVATE KF6::SonnetCore ${HSPELL_LIBRARIES} ZLIB::ZLIB)
 
 install(TARGETS sonnet_hspell  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf6/sonnet/)
-
-set(SONNET_BACKEND_FOUND TRUE PARENT_SCOPE)

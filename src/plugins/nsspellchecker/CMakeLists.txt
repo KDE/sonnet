@@ -15,5 +15,3 @@ ecm_qt_declare_logging_category(sonnet_nsspellchecker
 target_link_libraries(sonnet_nsspellchecker PRIVATE KF6::SonnetCore "-framework AppKit")
 
 install(TARGETS sonnet_nsspellchecker  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf6/sonnet/)
-
-set(SONNET_BACKEND_FOUND TRUE PARENT_SCOPE)

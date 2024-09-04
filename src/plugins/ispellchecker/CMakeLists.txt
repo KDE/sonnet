@@ -27,5 +27,3 @@ target_link_libraries(sonnet_ispellchecker PRIVATE KF6::SonnetCore)
 target_compile_definitions(sonnet_ispellchecker PRIVATE DEFINITIONS SONNET_INSTALL_PREFIX="${CMAKE_INSTALL_PREFIX}")
 
 install(TARGETS sonnet_ispellchecker  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf6/sonnet/)
-
-set(SONNET_BACKEND_FOUND TRUE PARENT_SCOPE)

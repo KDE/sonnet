@@ -51,8 +51,3 @@ endif ()
 if (WIN32)
     add_subdirectory( ispellchecker )
 endif ()
-
-# if we did not find any backend, that is bad
-if (NOT SONNET_BACKEND_FOUND)
-    message(FATAL_ERROR "Can not build any backend plugin for Sonnet.")
-endif ()
