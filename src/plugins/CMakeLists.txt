@@ -8,7 +8,7 @@ set_package_properties(ASPELL PROPERTIES
     DESCRIPTION "Spell checking support via Aspell"
     TYPE OPTIONAL
 )
-if (ASPELL_FOUND)
+if (ASPELL_INCLUDE_DIR AND ASPELL_LIBRARIES)
    add_subdirectory( aspell )
 endif ()
 
