@@ -53,7 +53,7 @@ if (WIN32)
 endif ()
 
 # if we did not find any backend, that is bad
-# do that on Andriod, too, if we have some backend for it
-if (NOT ANDROID AND NOT SONNET_BACKEND_FOUND)
+# do that on Android, too, if we have some backend for it
+if (NOT ANDROID AND NOT SONNET_BACKEND_FOUND AND NOT SONNET_NO_BACKENDS)
     message(FATAL_ERROR "Can not build any backend plugin for Sonnet.")
 endif ()
