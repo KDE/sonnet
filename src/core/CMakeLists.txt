@@ -76,6 +76,8 @@ ecm_generate_headers(SonnetCore_CamelCase_HEADERS
   REQUIRED_HEADERS SonnetCore_HEADERS
 )
 
+qt_import_plugins(KF6SonnetCore INCLUDE_BY_TYPE "kf6/sonnet")
+
 target_link_libraries(KF6SonnetCore PUBLIC Qt6::Core)
 
 target_include_directories(KF6SonnetCore
