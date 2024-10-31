@@ -43,11 +43,13 @@ void SonnetAutoDetectTest::initTestCase()
     Speller speller(QStringLiteral("en_US"));
 
     if (speller.availableBackends().empty()) {
-        QSKIP("No backends available");
+        // QSKIP("No backends available");
+        qWarning() << "No backend";
     }
 
     if (!speller.availableBackends().contains(QLatin1String("Hunspell"))) {
-        QSKIP("Hunspell not available");
+        // QSKIP("Hunspell not available");
+        qWarning() << "no hunspell";
     }
 
     speller.setDefaultClient(QStringLiteral("Hunspell"));

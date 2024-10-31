@@ -47,10 +47,12 @@ void SuggestTest::aspell_english()
 
     Speller dict(QStringLiteral("en_US"));
     if (!dict.availableBackends().contains(QLatin1String("ASpell"))) {
-        QSKIP("ASpell not available");
+        qWarning() << "no aspell";
+        // QSKIP("ASpell not available");
     }
     if (!dict.availableLanguages().contains(QLatin1String("en"))) {
-        QSKIP("'en' not available");
+        qWarning() << "no en";
+        // QSKIP("'en' not available");
     }
     dict.setDefaultClient(QStringLiteral("ASpell"));
     dict.setDefaultLanguage(QStringLiteral("en"));
