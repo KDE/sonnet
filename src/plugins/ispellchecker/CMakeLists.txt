@@ -9,7 +9,13 @@ if (NOT HAS_SPELLCHECK_H)
     return()
 endif()
 
-add_library(sonnet_ispellchecker MODULE
+if (BUILD_SHARED_LIBS)
+    add_library(sonnet_ispellchecker MODULE)
+else()
+    add_library(sonnet_ispellchecker STATIC)
+endif()
+
+target_sources(sonnet_ispellchecker PRIVATE
     ispellcheckerclient.cpp
     ispellcheckerdict.cpp
 )

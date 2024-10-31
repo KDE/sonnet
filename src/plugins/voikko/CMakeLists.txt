@@ -1,4 +1,10 @@
-add_library(sonnet_voikko MODULE
+if (BUILD_SHARED_LIBS)
+    add_library(sonnet_voikko MODULE)
+else()
+    add_library(sonnet_voikko STATIC)
+endif()
+
+target_sources(sonnet_voikko PRIVATE
     voikkoclient.cpp
     voikkodict.cpp
 )

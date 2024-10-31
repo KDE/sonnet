@@ -1,4 +1,10 @@
-add_library(sonnet_nsspellchecker MODULE
+if (BUILD_SHARED_LIBS)
+    add_library(sonnet_nsspellchecker MODULE)
+else()
+    add_library(sonnet_nsspellchecker STATIC)
+endif()
+
+target_sources(sonnet_nsspellchecker PRIVATE
     nsspellcheckerclient.mm
     nsspellcheckerdict.mm
 )

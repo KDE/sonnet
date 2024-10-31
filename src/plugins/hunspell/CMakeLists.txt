@@ -1,4 +1,10 @@
-add_library(sonnet_hunspell MODULE
+if (BUILD_SHARED_LIBS)
+    add_library(sonnet_hunspell MODULE)
+else()
+    add_library(sonnet_hunspell STATIC)
+endif()
+
+target_sources(sonnet_hunspell PRIVATE
     hunspellclient.cpp
     hunspelldict.cpp
 )

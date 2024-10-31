@@ -1,4 +1,10 @@
-add_library(sonnet_aspell MODULE
+if (BUILD_SHARED_LIBS)
+    add_library(sonnet_aspell MODULE)
+else()
+    add_library(sonnet_aspell STATIC)
+endif()
+
+target_sources(sonnet_aspell PRIVATE
     aspellclient.cpp
     aspelldict.cpp
 )
