@@ -5,7 +5,7 @@ project(Sonnet VERSION ${KF_VERSION})
 
 include(FeatureSummary)
 include(CMakeDependentOption)
-find_package(ECM 6.7.0  NO_MODULE)
+find_package(ECM 6.8.0  NO_MODULE)
 set_package_properties(ECM PROPERTIES TYPE REQUIRED DESCRIPTION "Extra CMake Modules." URL "https://commits.kde.org/extra-cmake-modules")
 feature_summary(WHAT REQUIRED_PACKAGES_NOT_FOUND FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
