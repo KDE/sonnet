@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2024-12-14 01:13+0530\n"
+"PO-Revision-Date: 2024-12-20 21:54+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
@@ -130,7 +130,7 @@ msgstr "%1 (%2) [%3] ।"
 #, qt-format
 msgctxt "Sonnet::Loader|dictionary name; %1 = language name, %2 = country name"
 msgid "%1 (%2)"
-msgstr "%1 (%2) २."
+msgstr "%1 (%2)"
 
 #: quick/spellcheckhighlighter.cpp:253 quick/spellcheckhighlighter.cpp:277
 msgctxt "SpellcheckHighlighter|"
@@ -160,7 +160,7 @@ msgstr "hunspell/aspell/myspell इव पृष्ठभागः संस्�
 #: ui/configui.ui:36
 msgctxt "SonnetConfigUI|"
 msgid "Default language:"
-msgstr "पूर्वनिर्धारितभाषा : १."
+msgstr "पूर्वनिर्धारितभाषा :"
 
 #: ui/configui.ui:56
 msgctxt "SonnetConfigUI|"
@@ -285,7 +285,7 @@ msgstr ""
 #: ui/sonnetui.ui:47
 msgctxt "SonnetUi|"
 msgid "Unknown word:"
-msgstr "अज्ञातशब्दः : १."
+msgstr "अज्ञातशब्दः :"
 
 #: ui/sonnetui.ui:54
 msgctxt "SonnetUi|"
