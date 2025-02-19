@@ -23,9 +23,9 @@ include(ECMGenerateHeaders)
 include(ECMGenerateQmlTypes)
 include(ECMFindQmlModule)
 include(ECMDeprecationSettings)
-include(ECMAddQch)
 include(ECMPoQmTools)
 include(CMakeDependentOption)
+include(ECMGenerateQDoc)
 
 set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprecated API excluded from the build [default=0].")
 
@@ -49,9 +49,6 @@ ecm_setup_version(PROJECT VARIABLE_PREFIX SONNET
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/sonnet_version.h"
                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF6SonnetConfigVersion.cmake"
                         SOVERSION 6)
-
-option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
-add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)")
 
 if(SONNET_USE_WIDGETS)
     cmake_dependent_option(BUILD_DESIGNERPLUGIN "Build plugin for Qt Designer" ON "NOT CMAKE_CROSSCOMPILING" OFF)
@@ -82,16 +79,6 @@ endif()
 
 # create a Config.cmake and a ConfigVersion.cmake file and install them
 set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF6Sonnet")
-
-if (BUILD_QCH)
-    ecm_install_qch_export(
-        TARGETS KF6SonnetCore_QCH KF6SonnetUi_QCH
-        FILE KF6SonnetQchTargets.cmake
-        DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
-        COMPONENT Devel
-    )
-    set(PACKAGE_INCLUDE_QCHTARGETS "include(\"\${CMAKE_CURRENT_LIST_DIR}/KF6SonnetQchTargets.cmake\")")
-endif()
 
 include(CMakePackageConfigHelpers)
 
