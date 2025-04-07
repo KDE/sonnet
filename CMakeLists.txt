@@ -29,7 +29,7 @@ include(CMakeDependentOption)
 
 set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprecated API excluded from the build [default=0].")
 
-set(REQUIRED_QT_VERSION 6.6.0)
+set(REQUIRED_QT_VERSION 6.7.0)
 option(SONNET_USE_WIDGETS "Build components using Qt6Widgets" ON)
 option(SONNET_USE_QML "Build components using Qt6Quick" ON)
 option(SONNET_NO_BACKENDS "Do not fail when no backends are built (to be used for cross-build host tooling)" OFF)
