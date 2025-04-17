@@ -66,9 +66,8 @@ HunspellClient::HunspellClient(QObject *parent)
                     m_languageAliases.insert(language, alias);
                     continue;
                 }
-            } else {
-                m_languagePaths.insert(language, dict.canonicalPath());
             }
+            m_languagePaths.insert(language, dict.canonicalPath());
         }
     }
 }
