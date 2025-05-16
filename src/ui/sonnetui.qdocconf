@@ -12,6 +12,8 @@ imagedirs = ../docs/pics
 
 outputformats = HTML
 
+navigation.landingpage = "Sonnet"
+
 depends +=  kde qtwidgets qtquick qtcore sonnetcore
 
 qhp.projects            = SonnetUi
