@@ -21,11 +21,11 @@ qhp.projects            = SonnetUi
 qhp.SonnetUi.file                = sonnetui.qhp
 qhp.SonnetUi.namespace           = org.kde.sonnetui.$QT_VERSION_TAG
 qhp.SonnetUi.virtualFolder       = sonnetui
-qhp.SonnetUi.indexTitle          = SonnetUi
+qhp.SonnetUi.indexTitle          = Sonnet UI
 qhp.SonnetUi.indexRoot           =
 
 qhp.SonnetUi.subprojects         = classes
 qhp.SonnetUi.subprojects.classes.title = C++ Classes
-qhp.SonnetUi.subprojects.classes.indexTitle = SonnetUi C++ Classes
+qhp.SonnetUi.subprojects.classes.indexTitle = Sonnet UI C++ Classes
 qhp.SonnetUi.subprojects.classes.selectors = class fake:headerfile
 qhp.SonnetUi.subprojects.classes.sortPages = true
