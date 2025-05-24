@@ -29,3 +29,5 @@ qhp.SonnetCore.subprojects.classes.title = C++ Classes
 qhp.SonnetCore.subprojects.classes.indexTitle = Sonnet Core C++ Classes
 qhp.SonnetCore.subprojects.classes.selectors = class fake:headerfile
 qhp.SonnetCore.subprojects.classes.sortPages = true
+
+tagfile = sonnetcore.tags

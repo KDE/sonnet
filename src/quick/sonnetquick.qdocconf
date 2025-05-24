@@ -31,3 +31,5 @@ qhp.SonnetQuick.subprojects.qmltypes.title = QML Types
 qhp.SonnetQuick.subprojects.qmltypes.indexTitle = Sonnet QML Types
 qhp.SonnetQuick.subprojects.qmltypes.selectors = qmltype
 qhp.SonnetQuick.subprojects.qmltypes.sortPages = true
+
+tagfile = sonnetquick.tags

@@ -29,3 +29,5 @@ qhp.SonnetUi.subprojects.classes.title = C++ Classes
 qhp.SonnetUi.subprojects.classes.indexTitle = Sonnet UI C++ Classes
 qhp.SonnetUi.subprojects.classes.selectors = class fake:headerfile
 qhp.SonnetUi.subprojects.classes.sortPages = true
+
+tagfile = sonnetui.tags
