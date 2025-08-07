@@ -47,7 +47,6 @@ public:
 private:
     QMap<QString, QString> m_languagePaths;
     QMap<QString, std::weak_ptr<Hunspell>> m_hunspellCache;
-    QMap<QString, QString> m_languageAliases;
 };
 
 #endif
