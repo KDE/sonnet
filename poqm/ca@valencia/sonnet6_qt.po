@@ -186,7 +186,7 @@ msgstr "Idiomes preferits"
 #: ui/configui.ui:65
 msgctxt "SonnetConfigUI|"
 msgid "Choose your preferred languages"
-msgstr "Seleccioneu els idiomes preferits"
+msgstr "Trieu els idiomes preferits"
 
 #: ui/configui.ui:75
 msgctxt "SonnetConfigUI|"
@@ -206,7 +206,8 @@ msgstr "Habilita la verificació de l'&ortografia en segon pla"
 #: ui/configui.ui:98
 msgctxt "SonnetConfigUI|"
 msgid "&Automatic spell checking enabled by default"
-msgstr "Verificació &automàtica de l'ortografia habilitada per defecte"
+msgstr ""
+"Verificació &automàtica de l'ortografia habilitada de manera predeterminada"
 
 #: ui/configui.ui:105
 msgctxt "SonnetConfigUI|"
@@ -327,7 +328,7 @@ msgid ""
 "</qt>"
 msgstr ""
 "<qt>\n"
-"<p>Seleccioneu ací l'idioma del document que esteu revisant.</p>\n"
+"<p>Trieu ací l'idioma del document que esteu revisant.</p>\n"
 "</qt>"
 
 #: ui/sonnetui.ui:75
@@ -430,8 +431,7 @@ msgid ""
 msgstr ""
 "<qt>\n"
 "<p>Si la paraula desconeguda està mal escrita, heu de teclejar la correcció "
-"de l'error ortogràfic ací o seleccionar-la des en la llista a continuació.</"
-"p>\n"
+"de l'error ortogràfic ací o triar-la des en la llista a continuació.</p>\n"
 "<p>Llavors podeu clicar damunt <b>Substituïx</b> si voleu corregir només "
 "este cas de la paraula o <b>Substituïx-ho tot</b> si voleu corregir totes "
 "les ocurrències.</p>\n"
@@ -445,7 +445,7 @@ msgstr "Su&bstituïx amb:"
 #: ui/sonnetui.ui:177
 msgctxt "SonnetUi|"
 msgid "Language Selection"
-msgstr "Seleccioneu l'idioma"
+msgstr "Trieu l'idioma"
 
 #: ui/sonnetui.ui:206
 msgctxt "SonnetUi|"
