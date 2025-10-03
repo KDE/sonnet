@@ -24,6 +24,7 @@ ecm_add_tests(
 )
 
 ecm_add_tests(
+ test_decorator.cpp
  test_highlighter.cpp
  NAME_PREFIX "sonnet-"
  LINK_LIBRARIES KF6::SonnetUi KF6::SonnetCore Qt6::Test ${sonnet_plugins}
