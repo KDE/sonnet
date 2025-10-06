@@ -623,20 +623,20 @@ msgctxt "SonnetUi|"
 msgid "Autocorrect"
 msgstr "अपने-अपन सुधार"
 
-#: ui/spellcheckdecorator.cpp:172
+#: ui/spellcheckdecorator.cpp:180
 #, fuzzy, qt-format
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "No suggestions for %1"
 msgstr "सुझाव"
 
-#: ui/spellcheckdecorator.cpp:183
+#: ui/spellcheckdecorator.cpp:191
 #, fuzzy
 #| msgid "Ignore"
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Ignore"
 msgstr "अनदेखा करव"
 
-#: ui/spellcheckdecorator.cpp:184
+#: ui/spellcheckdecorator.cpp:192
 #, fuzzy
 #| msgid "Add to Dictionary"
 msgctxt "Sonnet::SpellCheckDecorator|"

@@ -556,19 +556,19 @@ msgctxt "SonnetUi|"
 msgid "Autocorrect"
 msgstr "സ്വയംതിരുത്തുക"
 
-#: ui/spellcheckdecorator.cpp:172
+#: ui/spellcheckdecorator.cpp:180
 #, fuzzy, qt-format
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "No suggestions for %1"
 msgstr "%1 നു് നിര്‍‌ദ്ദേശങ്ങളൊന്നുമില്ല"
 
-#: ui/spellcheckdecorator.cpp:183
+#: ui/spellcheckdecorator.cpp:191
 #, fuzzy
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Ignore"
 msgstr "അവഗണിയ്ക്കുക"
 
-#: ui/spellcheckdecorator.cpp:184
+#: ui/spellcheckdecorator.cpp:192
 #, fuzzy
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"

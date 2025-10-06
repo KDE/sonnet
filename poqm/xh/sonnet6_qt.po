@@ -508,19 +508,19 @@ msgctxt "SonnetUi|"
 msgid "Autocorrect"
 msgstr "Uvalo-oluzenzekelayo"
 
-#: ui/spellcheckdecorator.cpp:172
+#: ui/spellcheckdecorator.cpp:180
 #, fuzzy, qt-format
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "No suggestions for %1"
 msgstr "Uluhlu Lonikezelo"
 
-#: ui/spellcheckdecorator.cpp:183
+#: ui/spellcheckdecorator.cpp:191
 #, fuzzy
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Ignore"
 msgstr "&Sukuhoya"
 
-#: ui/spellcheckdecorator.cpp:184
+#: ui/spellcheckdecorator.cpp:192
 #, fuzzy
 msgctxt "Sonnet::SpellCheckDecorator|"
 msgid "Add to Dictionary"
