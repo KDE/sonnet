@@ -5,7 +5,7 @@ if(SONNET_USE_WIDGETS)
     add_subdirectory(ui)
 endif()
 
-if(SONNET_USE_QML)
+if(USE_QML)
     add_subdirectory(quick)
 endif()
 
