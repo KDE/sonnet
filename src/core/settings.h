@@ -180,7 +180,14 @@ public:
 
     [[nodiscard]] static bool defaultCheckerEnabledByDefault();
 
+#if SONNETCORE_BUILD_DEPRECATED_SINCE(6, 30)
+    /*!
+     * \deprecated Use Settings::defaultSkipRunTogether
+     */
     [[nodiscard]] static bool defauktSkipRunTogether();
+#endif
+
+    [[nodiscard]] static bool defaultSkipRunTogether();
 
     [[nodiscard]] static QString defaultDefaultLanguage();
 
