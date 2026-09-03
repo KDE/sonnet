@@ -170,15 +170,15 @@ public:
      */
     Q_INVOKABLE void save();
 
-    [[nodiscard]] static QStringList defaultIgnoreList();
+    Q_INVOKABLE [[nodiscard]] static QStringList defaultIgnoreList();
 
-    [[nodiscard]] static bool defaultSkipUppercase();
+    Q_INVOKABLE [[nodiscard]] static bool defaultSkipUppercase();
 
-    [[nodiscard]] static bool defaultAutodetectLanguage();
+    Q_INVOKABLE [[nodiscard]] static bool defaultAutodetectLanguage();
 
-    [[nodiscard]] static bool defaultBackgroundCheckerEnabled();
+    Q_INVOKABLE [[nodiscard]] static bool defaultBackgroundCheckerEnabled();
 
-    [[nodiscard]] static bool defaultCheckerEnabledByDefault();
+    Q_INVOKABLE [[nodiscard]] static bool defaultCheckerEnabledByDefault();
 
 #if SONNETCORE_BUILD_DEPRECATED_SINCE(6, 30)
     /*!
@@ -187,11 +187,11 @@ public:
     [[nodiscard]] static bool defauktSkipRunTogether();
 #endif
 
-    [[nodiscard]] static bool defaultSkipRunTogether();
+    Q_INVOKABLE [[nodiscard]] static bool defaultSkipRunTogether();
 
-    [[nodiscard]] static QString defaultDefaultLanguage();
+    Q_INVOKABLE [[nodiscard]] static QString defaultDefaultLanguage();
 
-    [[nodiscard]] static QStringList defaultPreferredLanguages();
+    Q_INVOKABLE [[nodiscard]] static QStringList defaultPreferredLanguages();
 
 Q_SIGNALS:
 
