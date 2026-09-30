@@ -102,12 +102,12 @@ public:
         rehighlightRequest->start();
 
         // Danger red from our color scheme
-        errorFormat.setForeground(spellColor);
         errorFormat.setUnderlineColor(spellColor);
 #if QT_VERSION >= QT_VERSION_CHECK(6, 12, 0)
         // Qt 6.12 has support for this underline style finally!
         errorFormat.setUnderlineStyle(QTextCharFormat::SpellCheckUnderline);
 #else
+        errorFormat.setForeground(spellColor);
         errorFormat.setUnderlineStyle(QTextCharFormat::SingleUnderline);
 #endif
 
