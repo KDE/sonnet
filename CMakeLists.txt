@@ -61,6 +61,9 @@ ecm_set_disabled_deprecation_versions(
     QT 6.11.0
 )
 
+# make plugins findable prior to installation for tests
+set(SONNET_PLUGIN_OUTPUT_DIRECTORY "${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/kf6/sonnet")
+
 add_subdirectory(data)
 add_subdirectory(src)
 

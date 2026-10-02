@@ -26,6 +26,7 @@ ecm_qt_declare_logging_category(sonnet_hspell
 )
 
 target_link_libraries(sonnet_hspell PRIVATE KF6::SonnetCore ${HSPELL_LIBRARIES} ZLIB::ZLIB)
+set_target_properties(sonnet_hspell PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${SONNET_PLUGIN_OUTPUT_DIRECTORY})
 
 install(TARGETS sonnet_hspell  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf6/sonnet/)
 

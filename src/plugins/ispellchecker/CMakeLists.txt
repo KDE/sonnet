@@ -27,6 +27,7 @@ ecm_qt_declare_logging_category(sonnet_ispellchecker
 
 target_link_libraries(sonnet_ispellchecker PRIVATE KF6::SonnetCore)
 target_compile_definitions(sonnet_ispellchecker PRIVATE DEFINITIONS SONNET_INSTALL_PREFIX="${CMAKE_INSTALL_PREFIX}")
+set_target_properties(sonnet_ispellchecker PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${SONNET_PLUGIN_OUTPUT_DIRECTORY})
 
 install(TARGETS sonnet_ispellchecker  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf6/sonnet/)
 
