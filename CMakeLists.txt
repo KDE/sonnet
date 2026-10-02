@@ -65,6 +65,9 @@ if (NOT BUILD_SHARED_LIBS)
     add_definitions(-DSONNET_STATIC)
 endif()
 
+# make plugins findable prior to installation for tests
+set(SONNET_PLUGIN_OUTPUT_DIRECTORY "${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/kf6/sonnet")
+
 add_subdirectory(data)
 add_subdirectory(src)
 

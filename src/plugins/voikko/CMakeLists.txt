@@ -17,6 +17,7 @@ ecm_qt_declare_logging_category(sonnet_voikko
 target_include_directories(sonnet_voikko PRIVATE ${VOIKKO_INCLUDE_DIR})
 
 target_link_libraries(sonnet_voikko PRIVATE KF6::SonnetCore ${VOIKKO_LIBRARIES})
+set_target_properties(sonnet_voikko PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${SONNET_PLUGIN_OUTPUT_DIRECTORY})
 
 install(TARGETS sonnet_voikko  DESTINATION ${KDE_INSTALL_PLUGINDIR}/kf6/sonnet/)
 
