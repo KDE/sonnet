@@ -8,6 +8,7 @@
 #include "backgroundtest.h"
 
 #include "speller.h"
+using namespace Qt::Literals;
 using namespace Sonnet;
 
 #include <QApplication>
@@ -119,15 +120,15 @@ Discussion\
 If you want to talk about this code feel free to mail us.";
 
 BackgroundTest::BackgroundTest()
-    : QObject(0)
-    , m_speller("en")
+    : QObject(nullptr)
+    , m_speller(u"en"_s)
 {
     m_checker = new BackgroundChecker(m_speller, this);
     connect(m_checker, SIGNAL(done()), SLOT(slotDone()));
     connect(m_checker, SIGNAL(misspelling(QString, int)), SLOT(slotMisspelling(QString, int)));
     m_len = strlen(text);
-    m_checker->setText(text);
-    m_checker->speller().setLanguage("en");
+    m_checker->setText(QLatin1StringView(text));
+    m_checker->speller().setLanguage(u"en"_s);
     m_timer.start();
 }
 

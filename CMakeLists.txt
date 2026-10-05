@@ -66,6 +66,7 @@ add_subdirectory(src)
 
 if (BUILD_TESTING)
      add_subdirectory(autotests)
+     add_subdirectory(tests)
 endif()
 
 cmake_dependent_option(BUILD_EXAMPLES "Whether to build the examples" OFF "SONNET_USE_WIDGETS" OFF)
