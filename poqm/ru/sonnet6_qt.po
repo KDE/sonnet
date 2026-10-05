@@ -181,8 +181,8 @@ msgstr "Настройка проверки орфографии"
 msgctxt "SonnetConfigUI|"
 msgid "No backend like hunspell/aspell/myspell installed"
 msgstr ""
-"Не установлено ни одной системы проверки орфографии:  hunspell, aspell или "
-"myspell"
+"Не установлено ни одной системы проверки орфографии (hunspell, aspell или "
+"myspell)"
 
 #: ui/configui.ui:35
 msgctxt "SonnetConfigUI|"
@@ -197,7 +197,7 @@ msgstr "Предпочитаемые языки"
 #: ui/configui.ui:79
 msgctxt "SonnetConfigUI|"
 msgid "Choose your preferred languages"
-msgstr "Выберите предпочитаемый язык"
+msgstr "Выберите предпочитаемые языки"
 
 #: ui/configui.ui:89
 msgctxt "SonnetConfigUI|"
