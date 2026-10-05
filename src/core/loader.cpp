@@ -262,7 +262,6 @@ SettingsImpl *Loader::settings() const
 
 void Loader::loadPlugins()
 {
-#ifndef SONNET_STATIC
     const QStringList libPaths = QCoreApplication::libraryPaths() << QStringLiteral(INSTALLATION_PLUGIN_PATH);
     const QString pathSuffix(QStringLiteral("/kf6/sonnet/"));
     for (const QString &libPath : libPaths) {
@@ -275,16 +274,15 @@ void Loader::loadPlugins()
         }
     }
 
-    if (d->loadedPlugins.isEmpty()) {
-        qCWarning(SONNET_LOG_CORE) << "Sonnet: No speller backends available!";
-    }
-#else
     for (auto plugin : QPluginLoader::staticPlugins()) {
         if (plugin.metaData()[QLatin1String("IID")].toString() == QLatin1String("org.kde.sonnet.Client")) {
             loadPlugin(plugin);
         }
     }
-#endif
+
+    if (d->loadedPlugins.isEmpty()) {
+        qCWarning(SONNET_LOG_CORE) << "Sonnet: No speller backends available!";
+    }
 }
 
 void Loader::loadPlugin(const QStaticPlugin &plugin)

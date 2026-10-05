@@ -61,10 +61,6 @@ ecm_set_disabled_deprecation_versions(
     QT 6.11.0
 )
 
-if (NOT BUILD_SHARED_LIBS)
-    add_definitions(-DSONNET_STATIC)
-endif()
-
 add_subdirectory(data)
 add_subdirectory(src)
 
