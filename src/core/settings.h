@@ -101,13 +101,60 @@ class SONNETCORE_EXPORT Settings : public QObject
      */
     Q_PROPERTY(bool modified READ modified NOTIFY modifiedChanged)
 
+    /*!
+     * \property Sonnet::Settings::defaultIgnoreList
+     *
+     * This property holds the default value for the currentIgnoreList property.
+     */
     Q_PROPERTY(QStringList defaultIgnoreList READ defaultIgnoreList CONSTANT)
+
+    /*!
+     * \property Sonnet::Settings::defaultSkipUppercase
+     *
+     * This property holds the default value for the skipUppercase property.
+     */
     Q_PROPERTY(bool defaultSkipUppercase READ defaultSkipUppercase CONSTANT)
+
+    /*!
+     * \property Sonnet::Settings::defaultAutodetectLanguage
+     *
+     * This property holds the default value for the autoDetectLanguage property.
+     */
     Q_PROPERTY(bool defaultAutodetectLanguage READ defaultAutodetectLanguage CONSTANT)
+
+    /*!
+     * \property Sonnet::Settings::defaultBackgroundCheckerEnabled
+     *
+     * This property holds the default value for the backgroundCheckerEnabled property.
+     */
     Q_PROPERTY(bool defaultBackgroundCheckerEnabled READ defaultBackgroundCheckerEnabled CONSTANT)
+
+    /*!
+     * \property Sonnet::Settings::defaultCheckerEnabledByDefault
+     *
+     * This property holds the default value for the list checkerEnabledByDefault property.
+     */
     Q_PROPERTY(bool defaultCheckerEnabledByDefault READ defaultCheckerEnabledByDefault CONSTANT)
+
+    /*!
+     * \property Sonnet::Settings::defaultSkipRunTogether
+     *
+     * This property holds the default value for the skipRunTogether property.
+     */
     Q_PROPERTY(bool defaultSkipRunTogether READ defaultSkipRunTogether CONSTANT)
+
+    /*!
+     * \property Sonnet::Settings::defaultDefaultLanguage
+     *
+     * This property holds the default value for the defaultLanguage property.
+     */
     Q_PROPERTY(QString defaultDefaultLanguage READ defaultDefaultLanguage CONSTANT)
+
+    /*!
+     * \property Sonnet::Settings::defaultPreferredLanguages
+     *
+     * This property holds the default value for the preferredLanguages property.
+     */
     Q_PROPERTY(QStringList defaultPreferredLanguages READ defaultPreferredLanguages CONSTANT)
 
 public:
