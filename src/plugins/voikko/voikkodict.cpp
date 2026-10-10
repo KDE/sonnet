@@ -139,6 +139,13 @@ public:
         }
     }
 
+    ~VoikkoDictPrivate()
+    {
+        if (m_handle) {
+            voikkoTerminate(m_handle);
+        }
+    }
+
     /**
      * Store a new ignored/personal word or replacement pair in the user's
      * dictionary m_userDictionaryFilepath.
