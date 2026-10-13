@@ -51,7 +51,8 @@ bool ASpellDict::isCorrect(const QString &word) const
     if (!m_speller) {
         return false;
     }
-    int correct = aspell_speller_check(m_speller, word.toUtf8().constData(), word.toUtf8().length());
+    const auto utf8Word = word.toUtf8();
+    int correct = aspell_speller_check(m_speller, utf8Word.constData(), utf8Word.length());
     return correct;
 }
 
@@ -63,7 +64,8 @@ QStringList ASpellDict::suggest(const QString &word) const
 
     /* ASpell is expecting length of a string in char representation */
     /* word.length() != word.toUtf8().length() for nonlatin strings    */
-    const AspellWordList *suggestions = aspell_speller_suggest(m_speller, word.toUtf8().constData(), word.toUtf8().length());
+    const auto utf8Word = word.toUtf8();
+    const AspellWordList *suggestions = aspell_speller_suggest(m_speller, utf8Word.constData(), utf8Word.length());
 
     AspellStringEnumeration *elements = aspell_word_list_elements(suggestions);
 
