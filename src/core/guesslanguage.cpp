@@ -18,6 +18,7 @@
 #include "speller.h"
 #include "spellerplugin_p.h"
 #include "tokenizer_p.h"
+#include "trigram_p.h"
 
 /*
 All language tags should be valid according to IETF BCP 47, as codified in RFC 4646.
@@ -53,8 +54,8 @@ public:
 
     void loadModels();
     QList<QChar::Script> findRuns(const QString &text);
-    QList<QString> createOrderedModel(const QString &content);
-    int distance(const QList<QString> &model, const QHash<QString, int> &knownModel);
+    QList<Trigram> createOrderedModel(QStringView content);
+    int distance(const QList<Trigram> &model, const QHash<QString, int> &knownModel);
     QStringList guessFromTrigrams(const QString &sample, const QStringList &langs);
     QStringList identify(const QString &sample, const QList<QChar::Script> &scripts);
     QString guessFromDictionaries(const QString &sentence, const QStringList &candidates);
@@ -717,7 +718,7 @@ QStringList GuessLanguagePrivate::guessFromTrigrams(const QString &sample, const
 {
     QStringList ret;
 
-    const QList<QString> sampleTrigrams = createOrderedModel(sample);
+    const QList<Trigram> sampleTrigrams = createOrderedModel(sample);
 
     // Sort by score
     QMultiMap<int, QString> scores;
@@ -757,39 +758,36 @@ QStringList GuessLanguagePrivate::guessFromTrigrams(const QString &sample, const
     return ret;
 }
 
-QList<QString> GuessLanguagePrivate::createOrderedModel(const QString &content)
+QList<Trigram> GuessLanguagePrivate::createOrderedModel(QStringView content)
 {
-    QHash<QString, int> trigramCounts;
+    QHash<Trigram, int> trigramCounts;
 
     // collect trigrams
     trigramCounts.reserve(content.size() - 2);
     for (int i = 0; i < (content.size() - 2); ++i) {
-        QString tri = content.mid(i, 3).toLower();
+        Trigram tri(content.mid(i, 3));
         trigramCounts[tri]++;
     }
 
     // invert the map <freq, trigram>
-    QList<QPair<int, QString>> trigramFrequencyList;
+    QList<QPair<int, Trigram>> trigramFrequencyList;
     trigramFrequencyList.reserve(trigramCounts.size());
 
     auto it = trigramCounts.constBegin();
     for (; it != trigramCounts.constEnd(); ++it) {
-        const QChar *data = it.key().constData();
-        bool hasTwoSpaces = (data[1].isSpace() && (data[0].isSpace() || data[2].isSpace()));
-
-        if (!hasTwoSpaces) {
+        if (!it.key().hasTwoConsecutiveSpaces()) {
             const int freq = it.value();
-            const QString &trigram = it.key();
+            const Trigram &trigram = it.key();
             trigramFrequencyList.append({freq, trigram});
         }
     }
 
     // sort descending by frequency
-    std::sort(trigramFrequencyList.begin(), trigramFrequencyList.end(), [](const QPair<int, QString> &a, const QPair<int, QString> &b) {
+    std::sort(trigramFrequencyList.begin(), trigramFrequencyList.end(), [](const QPair<int, Trigram> &a, const QPair<int, Trigram> &b) {
         return a.first > b.first;
     });
 
-    QList<QString> orderedTrigrams;
+    QList<Trigram> orderedTrigrams;
     orderedTrigrams.reserve(trigramFrequencyList.size());
     for (const auto &tri : std::as_const(trigramFrequencyList)) {
         orderedTrigrams.append(tri.second);
@@ -798,13 +796,13 @@ QList<QString> GuessLanguagePrivate::createOrderedModel(const QString &content)
     return orderedTrigrams;
 }
 
-int GuessLanguagePrivate::distance(const QList<QString> &model, const QHash<QString, int> &knownModel)
+int GuessLanguagePrivate::distance(const QList<Trigram> &model, const QHash<QString, int> &knownModel)
 {
     int counter = -1;
     int dist = 0;
 
-    for (const QString &trigram : model) {
-        const int val = knownModel.value(trigram, -1);
+    for (const auto &trigram : model) {
+        const int val = knownModel.value(QStringView(trigram), -1);
         if (val != -1) {
             dist += qAbs(++counter - val);
         } else {
