@@ -822,9 +822,10 @@ int GuessLanguagePrivate::distance(const QList<QString> &model, const QHash<QStr
 QString GuessLanguagePrivate::guessFromDictionaries(const QString &sentence, const QStringList &candidates)
 {
     // Try to see how many languages we can get spell checking for
+    const auto spellerLanguages = Loader::openLoader()->languages();
     QList<QSharedPointer<SpellerPlugin>> spellers;
     for (const QString &lang : candidates) {
-        if (!Loader::openLoader()->languages().contains(lang)) {
+        if (!spellerLanguages.contains(lang)) {
             qCWarning(SONNET_LOG_CORE) << "Dictionary asked for invalid speller" << lang;
             continue;
         }
