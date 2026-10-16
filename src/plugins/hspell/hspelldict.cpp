@@ -32,7 +32,9 @@ HSpellDict::HSpellDict(const QString &lang)
 
     QSettings settings(QStringLiteral("KDE"), QStringLiteral("SonnetHSpellPlugin"));
     const QStringList personalWordsList = settings.value(QStringLiteral("PersonalWords"), QStringList()).toStringList();
-    m_personalWords = QSet<QString>(personalWordsList.begin(), personalWordsList.end());
+    for (const auto &word : personalWordsList) {
+        m_personalWords.insert(word, QHashDummyValue{});
+    }
     QVariantHash replacementMap = settings.value(QStringLiteral("Replacements"), QVariant()).toHash();
     for (const QString &key : replacementMap.keys()) {
         m_replacements[key] = replacementMap[key].toString();
@@ -47,7 +49,7 @@ HSpellDict::~HSpellDict()
     }
 }
 
-bool HSpellDict::isCorrect(const QString &word) const
+bool HSpellDict::isCorrect(QStringView word) const
 {
     if (m_sessionWords.contains(word)) {
         return true;
@@ -78,7 +80,7 @@ bool HSpellDict::isCorrect(const QString &word) const
     return correct == 1;
 }
 
-QStringList HSpellDict::suggest(const QString &word) const
+QStringList HSpellDict::suggest(QStringView word) const
 {
     QStringList suggestions;
 
@@ -107,21 +109,21 @@ bool HSpellDict::storeReplacement(const QString &bad, const QString &good)
 
 bool HSpellDict::addToPersonal(const QString &word)
 {
-    m_personalWords.insert(word);
+    m_personalWords.insert(word, QHashDummyValue{});
     storePersonalWords();
     return true;
 }
 
 bool HSpellDict::addToSession(const QString &word)
 {
-    m_sessionWords.insert(word);
+    m_sessionWords.insert(word, QHashDummyValue{});
     return true;
 }
 
 void HSpellDict::storePersonalWords()
 {
     QSettings settings(QStringLiteral("KDE"), QStringLiteral("SonnetHSpellPlugin"));
-    const QStringList personalWordsList(m_personalWords.begin(), m_personalWords.end());
+    const QStringList personalWordsList = m_personalWords.keys();
     settings.setValue(QStringLiteral("PersonalWords"), QVariant(personalWordsList));
     QVariantHash variantHash;
     for (const QString &key : m_replacements.keys()) {

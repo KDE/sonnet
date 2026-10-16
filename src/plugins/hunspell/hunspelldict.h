@@ -21,9 +21,9 @@ class HunspellDict : public Sonnet::SpellerPlugin
 public:
     explicit HunspellDict(const QString &name, const std::shared_ptr<Hunspell> &speller);
     ~HunspellDict() override;
-    bool isCorrect(const QString &word) const override;
+    bool isCorrect(QStringView word) const override;
 
-    QStringList suggest(const QString &word) const override;
+    QStringList suggest(QStringView word) const override;
 
     bool storeReplacement(const QString &bad, const QString &good) override;
 
@@ -33,7 +33,7 @@ public:
     static std::shared_ptr<Hunspell> createHunspell(const QString &lang, QString path);
 
 private:
-    QByteArray toDictEncoding(const QString &word) const;
+    QByteArray toDictEncoding(QStringView word) const;
 
     std::shared_ptr<Hunspell> m_speller;
     mutable QStringEncoder m_encoder;

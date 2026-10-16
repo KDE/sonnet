@@ -32,26 +32,26 @@ public:
      * Checks the given word.
      * Returns false if the word is misspelled. true otherwise
      */
-    virtual bool isCorrect(const QString &word) const = 0;
+    virtual bool isCorrect(QStringView word) const = 0;
 
     /*!
      * Checks the given word.
      * Returns true if the word is misspelled. false otherwise
      */
-    bool isMisspelled(const QString &word) const;
+    bool isMisspelled(QStringView word) const;
 
     /*!
      * Fetches suggestions for the word.
      *
      * Returns list of all suggestions for the word
      */
-    virtual QStringList suggest(const QString &word) const = 0;
+    virtual QStringList suggest(QStringView word) const = 0;
 
     /*!
      * Convenient method calling isCorrect() and suggest()
      * if the word isn't correct.
      */
-    virtual bool checkAndSuggest(const QString &word, QStringList &suggestions) const;
+    virtual bool checkAndSuggest(QStringView word, QStringList &suggestions) const;
 
     /*!
      * Stores user defined good replacement for the bad word.

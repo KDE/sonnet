@@ -849,7 +849,7 @@ QString GuessLanguagePrivate::guessFromDictionaries(const QString &sentence, con
         }
 
         for (int i = 0; i < spellers.count(); ++i) {
-            if (spellers[i]->isCorrect(word.toString())) {
+            if (spellers[i]->isCorrect(word.token)) {
                 correctHits[spellers[i]->language()]++;
             }
         }
