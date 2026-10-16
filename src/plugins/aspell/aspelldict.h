@@ -17,9 +17,9 @@ class ASpellDict : public Sonnet::SpellerPlugin
 public:
     explicit ASpellDict(const QString &lang);
     ~ASpellDict() override;
-    bool isCorrect(const QString &word) const override;
+    bool isCorrect(QStringView word) const override;
 
-    QStringList suggest(const QString &word) const override;
+    QStringList suggest(QStringView word) const override;
 
     bool storeReplacement(const QString &bad, const QString &good) override;
 

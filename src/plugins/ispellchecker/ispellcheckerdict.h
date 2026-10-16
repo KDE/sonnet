@@ -16,9 +16,9 @@ class ISpellCheckerDict : public Sonnet::SpellerPlugin
 public:
     explicit ISpellCheckerDict(ISpellChecker *spellChecker, const QString &language);
     ~ISpellCheckerDict() override;
-    bool isCorrect(const QString &word) const override;
+    bool isCorrect(QStringView word) const override;
 
-    QStringList suggest(const QString &word) const override;
+    QStringList suggest(QStringView word) const override;
 
     bool storeReplacement(const QString &bad, const QString &good) override;
 

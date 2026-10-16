@@ -30,7 +30,7 @@ NSSpellCheckerDict::~NSSpellCheckerDict()
     [m_langCode release];
 }
 
-bool NSSpellCheckerDict::isCorrect(const QString &word) const
+bool NSSpellCheckerDict::isCorrect(QStringView word) const
 {
     NSString *nsWord = word.toNSString();
     NSSpellChecker *checker = [NSSpellChecker sharedSpellChecker];
@@ -50,7 +50,7 @@ bool NSSpellCheckerDict::isCorrect(const QString &word) const
     return false;
 }
 
-QStringList NSSpellCheckerDict::suggest(const QString &word) const
+QStringList NSSpellCheckerDict::suggest(QStringView word) const
 {
     NSString *nsWord = word.toNSString();
     NSSpellChecker *checker = [NSSpellChecker sharedSpellChecker];

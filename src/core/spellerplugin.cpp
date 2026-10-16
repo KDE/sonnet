@@ -26,12 +26,12 @@ QString SpellerPlugin::language() const
     return d->language;
 }
 
-bool SpellerPlugin::isMisspelled(const QString &word) const
+bool SpellerPlugin::isMisspelled(QStringView word) const
 {
     return !isCorrect(word);
 }
 
-bool SpellerPlugin::checkAndSuggest(const QString &word, QStringList &suggestions) const
+bool SpellerPlugin::checkAndSuggest(QStringView word, QStringList &suggestions) const
 {
     bool c = isCorrect(word);
     if (!c) {

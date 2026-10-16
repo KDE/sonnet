@@ -21,12 +21,20 @@ ISpellCheckerDict::~ISpellCheckerDict()
     // we don't own m_spellChecker!
 }
 
-bool ISpellCheckerDict::isCorrect(const QString &word) const
+static std::wstring toStdWString(QStringView str) //  only available on QString itself, not on QStringView
+{
+    std::wstring out;
+    out.resize(str.size());
+    out.resize(str.toWCharArray(out.data()));
+    return out;
+}
+
+bool ISpellCheckerDict::isCorrect(QStringView word) const
 {
     // check if we are incorrect, we only need to check one enum entry for that, only empty enum means OK
     bool ok = true;
     IEnumSpellingError *enumSpellingError = nullptr;
-    if (SUCCEEDED(m_spellChecker->Check(word.toStdWString().c_str(), &enumSpellingError))) {
+    if (SUCCEEDED(m_spellChecker->Check(toStdWString(word).c_str(), &enumSpellingError))) {
         ISpellingError *spellingError = nullptr;
         if (S_OK == enumSpellingError->Next(&spellingError)) {
             ok = false;
@@ -37,12 +45,12 @@ bool ISpellCheckerDict::isCorrect(const QString &word) const
     return ok;
 }
 
-QStringList ISpellCheckerDict::suggest(const QString &word) const
+QStringList ISpellCheckerDict::suggest(QStringView word) const
 {
     // query suggestions
     QStringList replacements;
     IEnumString *words = nullptr;
-    if (SUCCEEDED(m_spellChecker->Suggest(word.toStdWString().c_str(), &words))) {
+    if (SUCCEEDED(m_spellChecker->Suggest(toStdWString(word).c_str(), &words))) {
         HRESULT hr = S_OK;
         while (S_OK == hr) {
             LPOLESTR string = nullptr;

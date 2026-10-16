@@ -15,9 +15,9 @@ class NSSpellCheckerDict : public Sonnet::SpellerPlugin
 public:
     explicit NSSpellCheckerDict(const QString &lang);
     ~NSSpellCheckerDict();
-    virtual bool isCorrect(const QString &word) const;
+    virtual bool isCorrect(QStringView word) const;
 
-    virtual QStringList suggest(const QString &word) const;
+    virtual QStringList suggest(QStringView word) const;
 
     virtual bool storeReplacement(const QString &bad, const QString &good);
 

@@ -44,7 +44,7 @@ ASpellDict::~ASpellDict()
     delete_aspell_config(m_config);
 }
 
-bool ASpellDict::isCorrect(const QString &word) const
+bool ASpellDict::isCorrect(QStringView word) const
 {
     /* ASpell is expecting length of a string in char representation */
     /* word.length() != word.toUtf8().length() for nonlatin strings    */
@@ -56,7 +56,7 @@ bool ASpellDict::isCorrect(const QString &word) const
     return correct;
 }
 
-QStringList ASpellDict::suggest(const QString &word) const
+QStringList ASpellDict::suggest(QStringView word) const
 {
     if (!m_speller) {
         return QStringList();

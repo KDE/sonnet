@@ -24,9 +24,9 @@ class HSpellDict : public Sonnet::SpellerPlugin
 public:
     explicit HSpellDict(const QString &lang);
     ~HSpellDict();
-    bool isCorrect(const QString &word) const override;
+    bool isCorrect(QStringView word) const override;
 
-    QStringList suggest(const QString &word) const override;
+    QStringList suggest(QStringView word) const override;
 
     bool storeReplacement(const QString &bad, const QString &good) override;
 
@@ -44,8 +44,8 @@ private:
     mutable QStringDecoder m_decoder;
     mutable QStringEncoder m_encoder;
     bool initialized;
-    QSet<QString> m_sessionWords;
-    QSet<QString> m_personalWords;
+    QHash<QString, QHashDummyValue> m_sessionWords; // QSet doesn't support heterogeneous lookup
+    QHash<QString, QHashDummyValue> m_personalWords;
     QHash<QString, QString> m_replacements;
 };
 

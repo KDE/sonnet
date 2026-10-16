@@ -116,8 +116,8 @@ public:
     VoikkoHandle *m_handle;
     const VoikkoDict *q;
 
-    QSet<QString> m_sessionWords;
-    QSet<QString> m_personalWords;
+    QHash<QString, QHashDummyValue> m_sessionWords; // QSet doesn't support heterogeneous lookup
+    QHash<QString, QHashDummyValue> m_personalWords;
     QHash<QString, QString> m_replacements;
 
     QString m_userDictionaryFilepath;
@@ -207,7 +207,7 @@ public:
      * Convert the given QString to a \0 terminated wchar_t string.
      * Uses QList as a buffer and return it's internal data pointer.
      */
-    inline const wchar_t *QStringToWchar(const QString &str) Q_DECL_NOEXCEPT
+    inline const wchar_t *QStringToWchar(QStringView str) Q_DECL_NOEXCEPT
     {
         m_conversionBuffer.resize(str.length() + 1);
         int size = str.toWCharArray(m_conversionBuffer.data());
@@ -224,7 +224,7 @@ private:
     {
         const auto words = languageNode[personal_words_str()].toArray();
         for (auto word : words) {
-            m_personalWords.insert(word.toString());
+            m_personalWords.insert(word.toString(), QHashDummyValue{});
         }
         qCDebug(SONNET_VOIKKO) << QStringLiteral("Loaded %1 words from the user dictionary.").arg(words.size());
     }
@@ -251,7 +251,7 @@ VoikkoDict::~VoikkoDict()
 {
 }
 
-bool VoikkoDict::isCorrect(const QString &word) const
+bool VoikkoDict::isCorrect(QStringView word) const
 {
     // Check the session word list and personal word list first
     if (d->m_sessionWords.contains(word) || d->m_personalWords.contains(word)) {
@@ -261,7 +261,7 @@ bool VoikkoDict::isCorrect(const QString &word) const
     return voikkoSpellUcs4(d->m_handle, d->QStringToWchar(word)) == VOIKKO_SPELL_OK;
 }
 
-QStringList VoikkoDict::suggest(const QString &word) const
+QStringList VoikkoDict::suggest(QStringView word) const
 {
     QStringList suggestions;
 
@@ -297,14 +297,14 @@ bool VoikkoDict::storeReplacement(const QString &bad, const QString &good)
 bool VoikkoDict::addToPersonal(const QString &word)
 {
     qCDebug(SONNET_VOIKKO()) << "Adding new word to user dictionary" << word;
-    d->m_personalWords.insert(word);
+    d->m_personalWords.insert(word, QHashDummyValue{});
     return d->storePersonal(word);
 }
 
 bool VoikkoDict::addToSession(const QString &word)
 {
     qCDebug(SONNET_VOIKKO()) << "Adding new word to session dictionary" << word;
-    d->m_sessionWords.insert(word);
+    d->m_sessionWords.insert(word, QHashDummyValue{});
     return true;
 }
 

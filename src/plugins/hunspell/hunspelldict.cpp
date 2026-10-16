@@ -91,7 +91,7 @@ HunspellDict::~HunspellDict()
 {
 }
 
-QByteArray HunspellDict::toDictEncoding(const QString &word) const
+QByteArray HunspellDict::toDictEncoding(QStringView word) const
 {
     if (m_encoder.isValid()) {
         return m_encoder.encode(word);
@@ -99,7 +99,7 @@ QByteArray HunspellDict::toDictEncoding(const QString &word) const
     return {};
 }
 
-bool HunspellDict::isCorrect(const QString &word) const
+bool HunspellDict::isCorrect(QStringView word) const
 {
     qCDebug(SONNET_HUNSPELL) << " isCorrect :" << word;
     if (!m_speller) {
@@ -117,7 +117,7 @@ bool HunspellDict::isCorrect(const QString &word) const
 #endif
 }
 
-QStringList HunspellDict::suggest(const QString &word) const
+QStringList HunspellDict::suggest(QStringView word) const
 {
     if (!m_speller) {
         return QStringList();
