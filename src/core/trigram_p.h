@@ -22,10 +22,11 @@ public:
         trigram[2] = s[2].toCaseFolded();
     }
 
-    /** Trigram contains to consecutive whitespaces. */
-    [[nodiscard]] bool hasTwoConsecutiveSpaces() const
+    constexpr explicit Trigram(QChar t1, QChar t2, QChar t3)
     {
-        return trigram[1].isSpace() && (trigram[0].isSpace() || trigram[2].isSpace());
+        trigram[0] = t1;
+        trigram[1] = t2;
+        trigram[2] = t3;
     }
 
     [[nodiscard]] std::strong_ordering operator<=>(const Trigram &other) const
