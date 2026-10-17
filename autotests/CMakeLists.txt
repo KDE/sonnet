@@ -21,6 +21,7 @@ ecm_add_tests(
  test_suggest.cpp
  test_settings.cpp
  test_autodetect.cpp
+ test_trigramtokenizer.cpp
  LINK_LIBRARIES KF6::SonnetCore Qt6::Test ${sonnet_plugins}
 )
 
