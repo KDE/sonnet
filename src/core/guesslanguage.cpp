@@ -19,6 +19,7 @@
 #include "spellerplugin_p.h"
 #include "tokenizer_p.h"
 #include "trigram_p.h"
+#include "trigramtokenizer_p.h"
 
 /*
 All language tags should be valid according to IETF BCP 47, as codified in RFC 4646.
@@ -764,9 +765,8 @@ QList<Trigram> GuessLanguagePrivate::createOrderedModel(QStringView content)
 
     // collect trigrams
     trigramCounts.reserve(content.size() - 2);
-    for (int i = 0; i < (content.size() - 2); ++i) {
-        Trigram tri(content.mid(i, 3));
-        trigramCounts[tri]++;
+    for (TrigramTokenizer tokenizer(content); tokenizer.hasNext();) {
+        trigramCounts[tokenizer.next()]++;
     }
 
     // invert the map <freq, trigram>
@@ -775,11 +775,9 @@ QList<Trigram> GuessLanguagePrivate::createOrderedModel(QStringView content)
 
     auto it = trigramCounts.constBegin();
     for (; it != trigramCounts.constEnd(); ++it) {
-        if (!it.key().hasTwoConsecutiveSpaces()) {
-            const int freq = it.value();
-            const Trigram &trigram = it.key();
-            trigramFrequencyList.append({freq, trigram});
-        }
+        const int freq = it.value();
+        const Trigram &trigram = it.key();
+        trigramFrequencyList.append({freq, trigram});
     }
 
     // sort descending by frequency
