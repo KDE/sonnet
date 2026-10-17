@@ -9,6 +9,7 @@
  */
 
 #include "guesslanguage.h"
+#include "trigramtokenizer_p.h"
 
 #include <QDebug>
 #include <QFile>
@@ -35,20 +36,13 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    QHash<QString, int> model;
+    QHash<Sonnet::Trigram, int> model;
     qDebug() << "Reading in" << file.size() << "bytes";
-    QString trigram = stream.read(3);
-    QString contents = stream.readAll();
+    const QString contents = stream.readAll();
     qDebug() << "finished reading!";
     qDebug() << "Building model...";
-    for (int i = 0; i < contents.size(); i++) {
-        if (!contents[i].isPrint()) {
-            continue;
-        }
-        model[trigram]++;
-        trigram[0] = trigram[1];
-        trigram[1] = trigram[2];
-        trigram[2] = contents[i];
+    for (Sonnet::TrigramTokenizer tokenizer(contents); tokenizer.hasNext();) {
+        model[tokenizer.next()]++;
     }
     qDebug() << "model built!";
 
@@ -56,14 +50,9 @@ int main(int argc, char *argv[])
     QMultiMap<int, QString> orderedTrigrams;
 
     for (auto it = model.cbegin(); it != model.cend(); ++it) {
-        const QString data = it.key();
-        Q_ASSERT(data.size() >= 3);
-        bool hasTwoSpaces = ((data.size() > 1 && data[0].isSpace() && data[1].isSpace()) //
-                             || (data.size() > 2 && data[1].isSpace() && data[2].isSpace()));
-
-        if (!hasTwoSpaces) {
-            orderedTrigrams.insert(it.value(), data);
-        }
+        const QString data = QStringView(it.key()).toString();
+        Q_ASSERT(data.size() == 3);
+        orderedTrigrams.insert(it.value(), data);
     }
 
     qDebug() << "Sorted!";
