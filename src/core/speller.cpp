@@ -90,6 +90,11 @@ Speller &Speller::operator=(const Speller &speller)
 
 bool Speller::isCorrect(const QString &word) const
 {
+    return isCorrect(QStringView(word));
+}
+
+bool Speller::isCorrect(QStringView word) const
+{
     if (!d->isValid()) {
         return true;
     }
@@ -97,6 +102,11 @@ bool Speller::isCorrect(const QString &word) const
 }
 
 bool Speller::isMisspelled(const QString &word) const
+{
+    return isMisspelled(QStringView(word));
+}
+
+bool Speller::isMisspelled(QStringView word) const
 {
     if (!d->isValid()) {
         return false;
@@ -106,6 +116,11 @@ bool Speller::isMisspelled(const QString &word) const
 
 QStringList Speller::suggest(const QString &word) const
 {
+    return suggest(QStringView(word));
+}
+
+QStringList Speller::suggest(QStringView word) const
+{
     if (!d->isValid()) {
         return QStringList();
     }
@@ -113,6 +128,11 @@ QStringList Speller::suggest(const QString &word) const
 }
 
 bool Speller::checkAndSuggest(const QString &word, QStringList &suggestions) const
+{
+    return checkAndSuggest(QStringView(word), suggestions);
+}
+
+bool Speller::checkAndSuggest(QStringView word, QStringList &suggestions) const
 {
     if (!d->isValid()) {
         return true;
