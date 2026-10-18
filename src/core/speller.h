@@ -55,28 +55,53 @@ public:
 
     /*!
      * Checks the given word.
-     * Returns false if the word is misspelled. true otherwise
+     * \return \c false if the word is misspelled, \c true otherwise
      */
-    bool isCorrect(const QString &word) const;
+    [[nodiscard]] bool isCorrect(const QString &word) const;
+    /*!
+     * Checks the given word.
+     * \return \c false if the word is misspelled, \c true otherwise
+     *
+     * \since 6.33
+     */
+    [[nodiscard]] bool isCorrect(QStringView word) const;
 
     /*!
      * Checks the given word.
-     * Returns true if the word is misspelled. false otherwise
+     * \return \c true if the word is misspelled, \c false otherwise
      */
-    bool isMisspelled(const QString &word) const;
+    [[nodiscard]] bool isMisspelled(const QString &word) const;
+    /*!
+     * Checks the given word.
+     * \return \c true if the word is misspelled, \c false otherwise
+     */
+    [[nodiscard]] bool isMisspelled(QStringView word) const;
 
     /*!
      * Fetches suggestions for the word.
      *
-     * Returns list of all suggestions for the word
+     * \return list of all suggestions for the word
      */
-    QStringList suggest(const QString &word) const;
+    [[nodiscard]] QStringList suggest(const QString &word) const;
+    /*!
+     * Fetches suggestions for the word.
+     *
+     * \return list of all suggestions for the word
+     *
+     * \since 6.33
+     */
+    [[nodiscard]] QStringList suggest(QStringView word) const;
 
     /*!
      * Convenience method calling isCorrect() and suggest()
      * if the word isn't correct.
      */
     bool checkAndSuggest(const QString &word, QStringList &suggestions) const;
+    /*!
+     * Convenience method calling isCorrect() and suggest()
+     * if the word isn't correct.
+     */
+    bool checkAndSuggest(QStringView word, QStringList &suggestions) const;
 
     /*!
      * Stores user defined good replacement for the bad word.

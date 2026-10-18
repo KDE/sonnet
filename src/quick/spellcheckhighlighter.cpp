@@ -375,7 +375,7 @@ void SpellcheckHighlighter::highlightBlock(const QString &text)
                 continue;
             }
             ++d->wordCount;
-            if (d->spellchecker->isMisspelled(word.toString())) {
+            if (d->spellchecker->isMisspelled(word.token)) {
                 ++d->errorCount;
                 if (word.position() + offset <= cursor.position() && cursor.position() <= word.position() + offset + word.length()) {
                     setMisspelledSelected(word.position() + offset, word.length());

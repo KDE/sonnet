@@ -35,7 +35,7 @@ void BackgroundCheckerPrivate::checkNext()
             }
 
             // ok, this is valid word, do something
-            if (currentDict.isMisspelled(word.toString())) {
+            if (currentDict.isMisspelled(word.token)) {
                 lastMisspelled = word;
                 Q_EMIT misspelling(word.toString(), word.position() + sentenceOffset);
                 return;
