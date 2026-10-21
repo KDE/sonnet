@@ -74,10 +74,24 @@ public:
      * code does not exist. If \a text isn't empty, set the text to checked.
      * \a text to be identified
      *
-     * Returns list of the presumed languages of the text, sorted by decreasing confidence. Empty list means
+     * \return list of the presumed languages of the text, sorted by decreasing confidence. Empty list means
      * it is impossible to determine language with confidence required by setLimits
      */
-    QString identify(const QString &text, const QStringList &suggestions = QStringList()) const;
+    [[nodiscard]] QString identify(const QString &text, const QStringList &suggestions = QStringList()) const;
+    /*!
+     * Returns the 2 digit ISO 639-1 code for the language of the currently
+     * set text and.
+     *
+     * Three digits are returned only in the case where a 2 digit
+     * code does not exist. If \a text isn't empty, set the text to checked.
+     * \a text to be identified
+     *
+     * \return list of the presumed languages of the text, sorted by decreasing confidence. Empty list means
+     * it is impossible to determine language with confidence required by setLimits
+     *
+     * \since 6.33
+     */
+    [[nodiscard]] QString identify(QStringView text, const QStringList &suggestions = QStringList()) const;
 
 private:
     std::unique_ptr<GuessLanguagePrivate> const d;
