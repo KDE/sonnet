@@ -13,18 +13,7 @@
 
 namespace Sonnet
 {
-class TextBreaksPrivate
-{
-public:
-    TextBreaksPrivate()
-    {
-    }
-
-    QString text;
-};
-
 TextBreaks::TextBreaks(const QString &text)
-    : d(new TextBreaksPrivate())
 {
     setText(text);
 }
@@ -33,12 +22,12 @@ TextBreaks::~TextBreaks() = default;
 
 QString TextBreaks::text() const
 {
-    return d->text;
+    return m_text;
 }
 
 void TextBreaks::setText(const QString &text)
 {
-    d->text = text;
+    m_text = text;
 }
 
 TextBreaks::Positions TextBreaks::wordBreaks(const QString &text)
@@ -106,11 +95,11 @@ TextBreaks::Positions TextBreaks::sentenceBreaks(const QString &text)
 
 TextBreaks::Positions TextBreaks::wordBreaks() const
 {
-    return wordBreaks(d->text);
+    return wordBreaks(m_text);
 }
 
 TextBreaks::Positions TextBreaks::sentenceBreaks() const
 {
-    return sentenceBreaks(d->text);
+    return sentenceBreaks(m_text);
 }
 }

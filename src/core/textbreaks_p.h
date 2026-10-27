@@ -7,13 +7,8 @@
 #ifndef TEXTBREAKS_H
 #define TEXTBREAKS_H
 
-class QString;
-
-#include "sonnetcore_export.h"
-
 #include <QList>
-
-#include <memory>
+#include <QString>
 
 namespace Sonnet
 {
@@ -31,7 +26,7 @@ class TextBreaksPrivate;
  *
  * \since 4.3
  */
-class SONNETCORE_EXPORT TextBreaks
+class TextBreaks
 {
 public:
     struct Position {
@@ -53,7 +48,7 @@ public:
 
     /*! Virtual Destructor
      */
-    virtual ~TextBreaks();
+    ~TextBreaks();
 
     /*!
      * Returns the text to be checked
@@ -86,16 +81,16 @@ public:
      * Return the Positions of each word for the text previously set.
      * Returns positions of breaks
      */
-    virtual Positions wordBreaks() const;
+    Positions wordBreaks() const;
 
     /*!
      * Return the Positions of each sentence for the text previously set.
      * Returns positions of breaks
      */
-    virtual Positions sentenceBreaks() const;
+    Positions sentenceBreaks() const;
 
 private:
-    std::unique_ptr<TextBreaksPrivate> const d;
+    QString m_text;
 };
 }
 
