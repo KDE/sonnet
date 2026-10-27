@@ -4395,10 +4395,10 @@ msgstr "Adde al dictionario"
 #~ msgstr "Insimul de Characteres"
 
 #~ msgid "Repeats, Zero or More Times"
-#~ msgstr "Repite, Zero o Multe Vices"
+#~ msgstr "Repete, Zero o Multe Vices"
 
 #~ msgid "Repeats, One or More Times"
-#~ msgstr "Il Repite, uno o multe Vices"
+#~ msgstr "Il Repete, uno o multe Vices"
 
 #~ msgid "Optional"
 #~ msgstr "Optional"
