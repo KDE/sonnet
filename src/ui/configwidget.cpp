@@ -8,11 +8,7 @@
 #include "configwidget.h"
 #include "ui_configui.h"
 
-#include "loader_p.h"
 #include "settings.h"
-#include "settingsimpl_p.h"
-
-#include "ui_debug.h"
 
 #include <QCheckBox>
 #include <QLineEdit>

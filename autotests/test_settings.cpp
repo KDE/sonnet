@@ -8,7 +8,6 @@
 
 #include "test_settings.h"
 
-#include "settingsimpl_p.h"
 #include "speller.h"
 
 #include <QDateTime>

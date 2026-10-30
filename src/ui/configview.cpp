@@ -9,8 +9,6 @@
 #include "configview.h"
 #include "ui_configui.h"
 
-#include "ui_debug.h"
-
 #include <QCheckBox>
 #include <QLineEdit>
 #include <QListWidget>

@@ -9,8 +9,6 @@
 #include "backgroundchecker.h"
 #include "backgroundchecker_p.h"
 
-#include "core_debug.h"
-
 using namespace Sonnet;
 
 void BackgroundCheckerPrivate::start()

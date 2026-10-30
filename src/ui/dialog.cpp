@@ -10,7 +10,6 @@
 #include "ui_sonnetui.h"
 
 #include "backgroundchecker.h"
-#include "settingsimpl_p.h"
 #include "speller.h"
 
 #include <QProgressDialog>
