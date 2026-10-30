@@ -15,7 +15,6 @@
 #include "core_debug.h"
 #include "guesslanguage.h"
 #include "loader_p.h"
-#include "speller.h"
 #include "spellerplugin_p.h"
 #include "tokenizer_p.h"
 #include "trigram_p.h"
