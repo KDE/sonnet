@@ -183,8 +183,6 @@ private:
 
     SONNETUI_NO_EXPORT void initGui();
 
-    SONNETUI_NO_EXPORT void continueChecking();
-
 private:
     DialogPrivate *const d;
     Q_DISABLE_COPY(Dialog)

@@ -260,9 +260,6 @@ public:
     void setMisspelledColor(const QColor &color);
     [[nodiscard]] QColor misspelledColor() const;
 
-    void setQuoteColor(const QColor &color);
-    [[nodiscard]] QColor quoteColor() const;
-
     /*
      * Set a new QTextDocument for this highlighter to operate on.
      *
@@ -340,8 +337,6 @@ private:
     [[nodiscard]] QTextCursor textCursor() const;
     [[nodiscard]] QTextDocument *textDocument() const;
     void contentsChange(int pos, int add, int rem);
-
-    void autodetectLanguage(const QString &sentence);
 
     HighlighterPrivate *const d;
     Q_DISABLE_COPY(SpellcheckHighlighter)
