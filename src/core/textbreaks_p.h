@@ -46,7 +46,7 @@ public:
      */
     explicit TextBreaks(const QString &text = QString());
 
-    /*! Virtual Destructor
+    /*! Destructor
      */
     ~TextBreaks();
 
