@@ -226,6 +226,13 @@ public:
      */
     Q_INVOKABLE void save();
 
+    /*!
+     * Discards all unsaved changes and reloads the settings from the saved configuration.
+     *
+     * \since 6.32
+     */
+    Q_INVOKABLE void restore();
+
     [[nodiscard]] static QStringList defaultIgnoreList();
 
     [[nodiscard]] static bool defaultSkipUppercase();

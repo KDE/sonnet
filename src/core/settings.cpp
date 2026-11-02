@@ -269,6 +269,27 @@ void Settings::save()
     Q_EMIT modifiedChanged();
 }
 
+void Settings::restore()
+{
+    d->loader->settings()->restore();
+
+    if (d->dictionaryModel) {
+        d->dictionaryModel->reload();
+        d->dictionaryModel->setDefaultLanguage(defaultLanguage());
+    }
+
+    Q_EMIT skipUppercaseChanged();
+    Q_EMIT autodetectLanguageChanged();
+    Q_EMIT backgroundCheckerEnabledChanged();
+    Q_EMIT defaultClientChanged();
+    Q_EMIT defaultLanguageChanged();
+    Q_EMIT preferredLanguagesChanged();
+    Q_EMIT skipRunTogetherChanged();
+    Q_EMIT checkerEnabledByDefaultChanged();
+    Q_EMIT currentIgnoreListChanged();
+    Q_EMIT modifiedChanged();
+}
+
 bool Settings::modified() const
 {
     return d->loader->settings()->modified();

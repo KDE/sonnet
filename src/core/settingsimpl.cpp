@@ -264,6 +264,9 @@ void SettingsImpl::restore()
     const QString ignoreEntry = QStringLiteral("ignore_%1").arg(d->defaultLanguage);
     const QStringList ignores = settings.value(ignoreEntry, Settings::defaultIgnoreList()).toStringList();
     setQuietIgnoreList(ignores);
+
+    d->modified = false;
+    d->loader->changed();
 }
 
 bool SettingsImpl::modified() const
