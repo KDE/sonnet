@@ -770,7 +770,7 @@ QList<Trigram> GuessLanguagePrivate::createOrderedModel(QStringView content)
     }
 
     // invert the map <freq, trigram>
-    QList<QPair<int, Trigram>> trigramFrequencyList;
+    QList<std::pair<int, Trigram>> trigramFrequencyList;
     trigramFrequencyList.reserve(trigramCounts.size());
 
     auto it = trigramCounts.constBegin();
@@ -783,7 +783,7 @@ QList<Trigram> GuessLanguagePrivate::createOrderedModel(QStringView content)
     }
 
     // sort descending by frequency
-    std::sort(trigramFrequencyList.begin(), trigramFrequencyList.end(), [](const QPair<int, Trigram> &a, const QPair<int, Trigram> &b) {
+    std::sort(trigramFrequencyList.begin(), trigramFrequencyList.end(), [](const std::pair<int, Trigram> &a, const std::pair<int, Trigram> &b) {
         return a.first > b.first;
     });
 

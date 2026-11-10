@@ -36,14 +36,14 @@ namespace Sonnet
 class LanguageCache : public QTextBlockUserData
 {
 public:
-    // Key: QPair<start, length>
+    // Key: std::pair<start, length>
     // Value: language name
-    QMap<QPair<int, int>, QString> languages;
+    QMap<std::pair<int, int>, QString> languages;
 
     // Remove all cached language information after @p pos
     void invalidate(int pos)
     {
-        QMutableMapIterator<QPair<int, int>, QString> it(languages);
+        QMutableMapIterator<std::pair<int, int>, QString> it(languages);
         it.toBack();
         while (it.hasPrevious()) {
             it.previous();
@@ -58,7 +58,7 @@ public:
     QString languageAtPos(int pos) const
     {
         // The data structure isn't really great for such lookups...
-        QMapIterator<QPair<int, int>, QString> it(languages);
+        QMapIterator<std::pair<int, int>, QString> it(languages);
         while (it.hasNext()) {
             it.next();
             if (it.key().first <= pos && it.key().first + it.key().second >= pos) {
@@ -335,7 +335,7 @@ void Highlighter::highlightBlock(const QString &text)
             Token sentence = d->languageFilter->next();
             if (autodetectLanguage && !d->autoDetectLanguageDisabled) {
                 QString lang;
-                QPair<int, int> spos = QPair<int, int>(sentence.position(), sentence.length());
+                std::pair<int, int> spos = std::pair<int, int>(sentence.position(), sentence.length());
                 // try cache first
                 if (cache->languages.contains(spos)) {
                     lang = cache->languages.value(spos);
