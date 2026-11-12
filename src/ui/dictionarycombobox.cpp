@@ -105,23 +105,19 @@ void DictionaryComboBox::reloadCombo()
     clear();
     Sonnet::Speller speller;
     QMap<QString, QString> preferredDictionaries = speller.preferredDictionaries();
-    QMapIterator<QString, QString> i(preferredDictionaries);
-    while (i.hasNext()) {
-        i.next();
-        addItem(i.key(), i.value());
+    for (const auto &[dictionary, language] : preferredDictionaries.asKeyValueRange()) {
+        addItem(dictionary, language);
     }
     if (count()) {
         insertSeparator(count());
     }
 
     QMap<QString, QString> dictionaries = speller.availableDictionaries();
-    i = dictionaries;
-    while (i.hasNext()) {
-        i.next();
-        if (preferredDictionaries.contains(i.key())) {
+    for (const auto &[dictionary, language] : dictionaries.asKeyValueRange()) {
+        if (preferredDictionaries.contains(dictionary)) {
             continue;
         }
-        addItem(i.key(), i.value());
+        addItem(dictionary, language);
     }
 }
 

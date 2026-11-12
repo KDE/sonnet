@@ -101,9 +101,7 @@ SpellerPlugin *Loader::createSpeller(const QString &language, const QString &cli
         }
     }
 
-    QListIterator<Client *> itr(lClients);
-    while (itr.hasNext()) {
-        Client *item = itr.next();
+    for (Client *item : lClients) {
         if (!backend.isEmpty()) {
             if (backend == item->name()) {
                 SpellerPlugin *dict = item->createSpeller(plang);

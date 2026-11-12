@@ -639,13 +639,11 @@ void GuessLanguagePrivate::loadModels()
 
     // Sanity check
     QSet<QString> availableLanguages;
-    QHashIterator<QString, QHash<QString, int>> iterator(s_knownModels);
-    while (iterator.hasNext()) {
-        iterator.next();
-        if (iterator.value().count() < MAXGRAMS) {
-            qCWarning(SONNET_LOG_CORE) << iterator.key() << "is has only" << iterator.value().count() << "trigrams, expected" << MAXGRAMS;
+    for (const auto &[language, model] : s_knownModels.asKeyValueRange()) {
+        if (model.count() < MAXGRAMS) {
+            qCWarning(SONNET_LOG_CORE) << language << "is has only" << model.count() << "trigrams, expected" << MAXGRAMS;
         }
-        availableLanguages.insert(iterator.key());
+        availableLanguages.insert(language);
     }
     QSet<QString> knownLanguages(s_scriptLanguages.constBegin(), s_scriptLanguages.constEnd());
     knownLanguages.subtract(availableLanguages);
@@ -685,10 +683,8 @@ QList<QChar::Script> GuessLanguagePrivate::findRuns(const QString &text)
         return {scriptCounts.cbegin().key()};
     }
 
-    for (auto it = scriptCounts.cbegin(); it != scriptCounts.cend(); ++it) {
+    for (const auto &[currentScript, scriptCount] : std::as_const(scriptCounts).asKeyValueRange()) {
         // return run types that used for 40% or more of the string
-        const int scriptCount = it.value();
-        const auto currentScript = it.key();
         if (scriptCount * 100 / totalCount >= 40) {
             relevantScripts << currentScript;
             // always return basic latin if found more than 15%.
@@ -737,20 +733,18 @@ QStringList GuessLanguagePrivate::guessFromTrigrams(const QString &sample, const
     int counter = 0;
     double confidence = 0;
 
-    QMultiMapIterator<int, QString> it(scores);
-    it.next();
+    int prevScore = scores.begin().key();
+    QString prevItem = scores.begin().value();
 
-    QString prevItem = it.value();
-    int prevScore = it.key();
-
-    while (it.hasNext() && counter < m_maxItems && confidence < m_minConfidence) {
-        it.next();
+    for (auto it = std::next(scores.constKeyValueBegin()); it != scores.constKeyValueEnd() && counter < m_maxItems && confidence < m_minConfidence; ++it) {
+        const auto &[score, item] = *it;
         counter++;
-        confidence += (it.key() - prevScore) / (double)it.key();
+        confidence += (score - prevScore) / (double)score;
         ret += prevItem;
-        prevItem = it.value();
-        prevScore = it.key();
+        prevItem = item;
+        prevScore = score;
     }
+
     if (counter < m_maxItems && confidence < m_minConfidence) {
         ret += prevItem;
     }

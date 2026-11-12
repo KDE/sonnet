@@ -43,26 +43,17 @@ public:
     // Remove all cached language information after @p pos
     void invalidate(int pos)
     {
-        QMutableMapIterator<std::pair<int, int>, QString> it(languages);
-        it.toBack();
-        while (it.hasPrevious()) {
-            it.previous();
-            if (it.key().first + it.key().second >= pos) {
-                it.remove();
-            } else {
-                break;
-            }
-        }
+        languages.removeIf([pos](const std::pair<std::pair<int, int>, QString> &language) {
+            return language.first.first + language.first.second >= pos;
+        });
     }
 
     QString languageAtPos(int pos) const
     {
         // The data structure isn't really great for such lookups...
-        QMapIterator<std::pair<int, int>, QString> it(languages);
-        while (it.hasNext()) {
-            it.next();
-            if (it.key().first <= pos && it.key().first + it.key().second >= pos) {
-                return it.value();
+        for (const auto &[range, name] : languages.asKeyValueRange()) {
+            if (const auto &[start, length] = range; start <= pos && start + length >= pos) {
+                return name;
             }
         }
         return QString();
