@@ -61,6 +61,8 @@ ecm_set_disabled_deprecation_versions(
     QT 6.11.0
 )
 
+add_compile_definitions(QT_ENABLE_STRICT_MODE_UP_TO=0x060A00) # 6.10
+
 # make plugins findable prior to installation for tests
 set(SONNET_PLUGIN_OUTPUT_DIRECTORY "${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/kf6/sonnet")
 
