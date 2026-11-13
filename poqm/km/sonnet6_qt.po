@@ -308,14 +308,14 @@ msgctxt "SonnetConfigUI|"
 msgid "&Remove"
 msgstr "យក​ចេញ"
 
-#: ui/dialog.cpp:85 ui/dialog.cpp:194 ui/dialog.cpp:399
+#: ui/dialog.cpp:84 ui/dialog.cpp:193 ui/dialog.cpp:398
 #, fuzzy
 #| msgid "Check Spelling"
 msgctxt "Sonnet::Dialog|@title:window"
 msgid "Check Spelling"
 msgstr "ពិនិត្យ​អក្ខរាវិរុទ្ធ"
 
-#: ui/dialog.cpp:193
+#: ui/dialog.cpp:192
 #, fuzzy
 #| msgctxt "progress label"
 #| msgid "Spell checking in progress..."
@@ -323,21 +323,21 @@ msgctxt "Sonnet::Dialog|@info:progress"
 msgid "Spell checking in progress…"
 msgstr "កំពុង​ពិនិត្យ​មើល​អក្ខរាវិរុទ្ធ..."
 
-#: ui/dialog.cpp:214
+#: ui/dialog.cpp:213
 #, fuzzy
 #| msgid "Spell check stopped."
 msgctxt "Sonnet::Dialog|"
 msgid "Spell check stopped."
 msgstr "បាន​បញ្ឈប់​​ការ​​ពិនិត្យ​អក្ខរាវិរុទ្ធ"
 
-#: ui/dialog.cpp:224
+#: ui/dialog.cpp:223
 #, fuzzy
 #| msgid "Spell check canceled."
 msgctxt "Sonnet::Dialog|"
 msgid "Spell check canceled."
 msgstr "បានបោះបង់​កម្មវិធី​ពិនិត្យ​អក្ខរាវិរុទ្ធ"
 
-#: ui/dialog.cpp:396 ui/dialog.cpp:399
+#: ui/dialog.cpp:395 ui/dialog.cpp:398
 #, fuzzy
 #| msgid "Spell check complete."
 msgctxt "Sonnet::Dialog|"

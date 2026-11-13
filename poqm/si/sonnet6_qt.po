@@ -309,35 +309,35 @@ msgctxt "SonnetConfigUI|"
 msgid "&Remove"
 msgstr "ඉවත් කරන්න (&R)"
 
-#: ui/dialog.cpp:85 ui/dialog.cpp:194 ui/dialog.cpp:399
+#: ui/dialog.cpp:84 ui/dialog.cpp:193 ui/dialog.cpp:398
 #, fuzzy
 #| msgid "Check Spelling"
 msgctxt "Sonnet::Dialog|@title:window"
 msgid "Check Spelling"
 msgstr "අක්‍ෂර වින්‍යාසය පරීක්‍ෂා කරන්න"
 
-#: ui/dialog.cpp:193
+#: ui/dialog.cpp:192
 #, fuzzy
 #| msgid "Spell check stopped."
 msgctxt "Sonnet::Dialog|@info:progress"
 msgid "Spell checking in progress…"
 msgstr "අක්‍ෂර වින්‍යාස පරික්‍ෂාව නැවැත් විය."
 
-#: ui/dialog.cpp:214
+#: ui/dialog.cpp:213
 #, fuzzy
 #| msgid "Spell check stopped."
 msgctxt "Sonnet::Dialog|"
 msgid "Spell check stopped."
 msgstr "අක්‍ෂර වින්‍යාස පරික්‍ෂාව නැවැත් විය."
 
-#: ui/dialog.cpp:224
+#: ui/dialog.cpp:223
 #, fuzzy
 #| msgid "Spell check canceled."
 msgctxt "Sonnet::Dialog|"
 msgid "Spell check canceled."
 msgstr "අක්‍ෂර වන්‍යාසය පරීක්‍ෂාව අහෝසි කළා."
 
-#: ui/dialog.cpp:396 ui/dialog.cpp:399
+#: ui/dialog.cpp:395 ui/dialog.cpp:398
 #, fuzzy
 #| msgid "Spell check complete."
 msgctxt "Sonnet::Dialog|"
