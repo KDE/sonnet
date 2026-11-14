@@ -44,6 +44,13 @@ az-Latn    az
 
 */
 
+static void initResources()
+{
+#ifndef Q_OS_ANDROID
+    Q_INIT_RESOURCE(trigrams);
+#endif
+}
+
 namespace Sonnet
 {
 class GuessLanguagePrivate
@@ -625,6 +632,8 @@ void GuessLanguage::setLimits(int maxItems, double minConfidence)
 
 void GuessLanguagePrivate::loadModels()
 {
+    initResources();
+
     // use trigrams from resource file, easy to deploy on all platforms
     const QString triMapFile = QStringLiteral(":/org.kde.sonnet/trigrams.map");
     qCDebug(SONNET_LOG_CORE) << "Loading trigrams from" << triMapFile;
